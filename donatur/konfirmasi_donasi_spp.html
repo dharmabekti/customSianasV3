@@ -273,9 +273,42 @@
               <span class="fs-5 fw-bold">Rp 1.800.000</span>
             </div>
           </div>
-
         </div>
       </div>
+      <div class="terms-box">
+        <h3>KETENTUAN</h3>
+        <ul>
+          <li>
+            Donasi SPP bersifat rutin dan berlangsung selama 12 bulan (jika assign di bulan Juli – Oktober) atau 6 bulan
+            (jika assign di bulan Januari)
+          </li>
+          <li>
+            Donasi SPP secara otomatis akan berlanjut ke Tahun Akademik berikutnya sampai anak asuh tersebut lulus.
+          </li>
+          <li>
+            Donasi SPP bisa berhenti saat anak asuh mengundurkan diri atau Donatur tidak berkenan melanjutkan asalkan
+            menuntaskan kewajiban sampai akhir Tahun Akademik dan menghubungi Admin kami.
+          </li>
+        </ul>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="ageCheck" />
+        <label for="ageCheck"
+          >Saya menyatakan berusia 18 tahun keatas atau dalam pengawasan orang tua untuk melakukan donasi ini</label
+        >
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="commitCheck" />
+        <label for="commitCheck"
+          >Saya bersedia dan berkomitmen untuk memberikan donasi sejumlah dana yang tertera pada form ini selama waktu
+          yang disepakati pada setiap jenis donasi.</label
+        >
+      </div>
+
+      <button class="confirm-btn" id="confirmBtn" disabled>KONFIRMASI</button>
+      <a class="back-link" href="#">Kembali</a>
     </main>
 
     <!-- Modal Konfirmasi -->
@@ -397,6 +430,21 @@
       btnKonfirmasi.addEventListener('click', () => {
         alert('Donasi berhasil dibatalkan ✅');
         modal.hide();
+      });
+
+      const ageCheck = document.getElementById('ageCheck');
+      const commitCheck = document.getElementById('commitCheck');
+      const confirmBtn = document.getElementById('confirmBtn');
+
+      function toggleButton() {
+        confirmBtn.disabled = !(ageCheck.checked && commitCheck.checked);
+      }
+
+      ageCheck.addEventListener('change', toggleButton);
+      commitCheck.addEventListener('change', toggleButton);
+
+      confirmBtn.addEventListener('click', () => {
+        alert('Donasi berhasil dikonfirmasi!');
       });
     </script>
   </body>
