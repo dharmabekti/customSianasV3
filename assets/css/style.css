@@ -1,0 +1,914 @@
+/* =========================================================
+🎨 Variabel Warna
+========================================================= */
+:root {
+  --aat-primary: #08b57c;
+  --aat-primary-light: #81d199;
+  --aat-white: #fff;
+  --aat-grey: #feeebd;
+  --aat-orange: #fece2f;
+}
+
+/* =========================================================
+🧭 Navbar Desktop
+========================================================= */
+.panel-header {
+  background-color: var(--aat-white) !important;
+}
+
+.desktop-navbar {
+  background: #343a40;
+}
+
+.desktop-navbar .nav-link {
+  color: #fff !important;
+}
+
+.desktop-navbar .nav-link:hover {
+  color: #f8f9fa !important;
+}
+
+/* =========================================================
+🏷 Branding
+========================================================= */
+.branding {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #212529;
+}
+
+.branding img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.branding span {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* =========================================================
+🧩 Layout Global
+========================================================= */
+body {
+  background-color: #fdfbf7;
+}
+
+header.fixed-top,
+footer.fixed-bottom {
+  height: 70px;
+}
+
+main {
+  padding: 10px 0 60px;
+}
+
+.offcanvas {
+  z-index: 2000;
+}
+
+/* =========================================================
+✍️ Typography & Utilities
+========================================================= */
+.font-title-menu {
+  font-size: 1rem;
+}
+
+.font-subtitle-menu {
+  font-size: 0.8rem;
+}
+
+.mb-6 {
+  margin-bottom: 6rem;
+}
+
+.badge-lg {
+  font-size: 0.9rem;
+  padding: 0.5em 0.6em;
+}
+
+/* =========================================================
+💚 Warna Khusus AAT
+========================================================= */
+.bg-aat {
+  background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%) !important;
+}
+
+.bg-aat-grey {
+  background-color: var(--aat-grey) !important;
+  color: black;
+}
+
+.text-aat {
+  color: var(--aat-primary) !important;
+}
+
+.btn-aat {
+  background-color: var(--aat-grey);
+  color: #fff;
+}
+
+.btn-aat:hover {
+  background-color: var(--aat-primary);
+  color: #fff;
+}
+
+/* =========================================================
+🖼 Profil
+========================================================= */
+.profile-img {
+  background-color: var(--aat-white);
+  border: 2px solid #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+}
+
+/* =========================================================
+🟧 Navbar Umum
+========================================================= */
+.navbar .nav-link {
+  transition: all 0.2s ease;
+  border-radius: 0.4rem;
+  padding: 4px 10px !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  background-color: var(--aat-orange);
+  color: white !important;
+}
+
+/* Dropdown Item */
+.navbar .dropdown-menu .dropdown-item {
+  border-radius: 0.4rem;
+  transition: all 0.2s ease;
+  margin: 2px 4px;
+}
+
+.navbar .dropdown-menu .dropdown-item:hover,
+.navbar .dropdown-menu .dropdown-item:focus {
+  background-color: var(--aat-orange) !important;
+  color: white !important;
+}
+
+/* Divider lembut */
+.navbar .dropdown-divider {
+  border-color: rgba(255, 165, 0, 0.3);
+}
+
+/* 🔔 Notifikasi badge */
+.navbar .bi-bell {
+  color: white;
+  transition: 0.2s ease;
+}
+
+.navbar .bi-bell:hover {
+  color: var(--aat-orange);
+}
+
+.navbar .badge {
+  font-size: 0.65rem;
+  padding: 0.25em 0.4em;
+}
+
+/* Dropdown notifikasi */
+.dropdown-menu .dropdown-item.small {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+}
+
+.dropdown-menu h6.dropdown-header {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.navbar .dropdown-menu-end {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(-10px);
+}
+
+.table {
+  line-height: 1 !important;
+  font-size: 1rem;
+}
+
+.table thead th {
+  line-height: 1 !important;
+  font-size: 12px;
+}
+.table tbody td {
+  line-height: 1 !important;
+  font-size: 12px;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #ddd !important;
+  font-size: 1rem;
+}
+
+.img-fluid {
+  border-radius: 30px;
+}
+
+.modal-body {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.table-responsive-custom {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ======== MOBILE ONLY ======== */
+@media (max-width: 768px) {
+  /* Sembunyikan kolom ke-3 s.d ke-8 di mobile */
+  /* .table thead th:nth-child(2), */
+  .table thead th:nth-child(3),
+    .table thead th:nth-child(4),
+    .table thead th:nth-child(5),
+    .table thead th:nth-child(6),
+    .table thead th:nth-child(7),
+    .table thead th:nth-child(8),
+    /* .table tbody td:nth-child(2), */
+    .table tbody td:nth-child(3),
+    .table tbody td:nth-child(4),
+    .table tbody td:nth-child(5),
+    .table tbody td:nth-child(6),
+    .table tbody td:nth-child(7),
+    .table tbody td:nth-child(8) {
+    display: none;
+  }
+
+  /* Accordion detail */
+  .accordion-details {
+    display: none;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 6px;
+  }
+
+  .accordion-details.show {
+    display: block;
+    animation: fadeIn 0.2s ease-in;
+  }
+
+  /* Tombol accordion */
+  .accordion-btn {
+    display: inline-block;
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    text-align: center;
+    line-height: 26px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .accordion-btn:focus {
+    outline: none;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* ======== DESKTOP ONLY ======== */
+@media (min-width: 769px) {
+  .accordion-btn,
+  .accordion-details {
+    display: none !important;
+  }
+}
+.accordion-detail {
+  line-height: 1.4;
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  border-radius: 0 0 6px 6px;
+}
+
+.accordion-detail p {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.accordion-detail strong {
+  color: #0d6efd;
+  display: inline-block;
+  min-width: 120px;
+}
+
+/* =========================================================
+📱 Mobile Bottom Nav
+========================================================= */
+.mobile-bottom-nav {
+  display: none;
+}
+
+.mobile-bottom-nav a.active {
+  color: var(--bs-primary) !important;
+}
+
+.mobile-bottom-nav a.active i {
+  transform: translateY(-3px);
+  transition: transform 0.15s;
+}
+
+/* =========================================================
+🖥 Grid Custom (Desktop)
+========================================================= */
+@media (min-width: 992px) {
+  .custom-col-lg-7 {
+    flex: 0 0 calc(100% / 7);
+    max-width: calc(100% / 7);
+  }
+
+  .custom-col-lg-8 {
+    flex: 0 0 calc(100% / 8);
+    max-width: calc(100% / 8);
+  }
+
+  .navbar {
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%);
+  }
+
+  .navbar .dropdown {
+    position: relative;
+  }
+
+  .navbar .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
+    margin-top: 0;
+    pointer-events: none;
+  }
+
+  .navbar .dropdown:hover > .dropdown-menu,
+  .navbar .dropdown-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .navbar .nav-link.active,
+  .navbar .dropdown-item.active {
+    background-color: var(--aat-orange);
+    color: #fff !important;
+    border-radius: 0.4rem;
+  }
+
+  .navbar .nav-link.active:hover {
+    background-color: var(--aat-orange);
+    color: #fff !important;
+  }
+}
+
+/* =========================================================
+📲 Responsive (Mobile)
+========================================================= */
+@media (max-width: 991.98px) {
+  .desktop-navbar,
+  header.fixed-top {
+    display: none;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1030;
+  }
+
+  .custom-font-menu {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 0.5rem !important;
+    margin-bottom: 0.75rem;
+  }
+
+  .card h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+    margin-bottom: 0;
+    line-height: 1.2;
+  }
+
+  .card .container-fluid {
+    margin: 0.5rem 0 !important;
+  }
+
+  .card-body {
+    padding: 1rem !important;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.85rem;
+  }
+
+  .table th {
+    width: 120px;
+  }
+}
+
+/* =========================================================
+👤 Profil Tab vs Card
+========================================================= */
+@media (min-width: 768px) {
+  #profileContent {
+    display: block;
+  }
+
+  #mobileProfile {
+    display: none;
+  }
+
+  .profile-img {
+    max-width: 250px;
+    height: auto;
+  }
+}
+
+/* Ukuran default untuk mobile */
+.profile-img {
+  max-width: 150px;
+  height: auto;
+}
+
+@media (max-width: 767.98px) {
+  #profileContent {
+    display: none;
+  }
+
+  #mobileProfile {
+    display: block;
+  }
+}
+
+/* =========================================================
+📊 Tabel Estetik
+========================================================= */
+.table-estetik {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.table-estetik thead {
+  background: linear-gradient(90deg, #0069d9, #0099cc);
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.table-estetik tbody tr:nth-child(even) {
+  background-color: #f9fbfd;
+}
+
+.table-estetik tbody tr:hover {
+  background-color: #eef6ff;
+  transition: 0.3s;
+}
+
+.table-estetik th,
+.table-estetik td {
+  padding: 14px 16px;
+  vertical-align: middle;
+}
+
+.table-estetik .amount {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* =========================================================
+🏦 Rekening Card & QRIS
+========================================================= */
+.rekening-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s;
+}
+
+.rekening-card:hover {
+  transform: translateY(-5px);
+}
+
+.rekening-logo {
+  height: 50px;
+  object-fit: contain;
+}
+
+.rekening-number {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.btn-copy {
+  border: none;
+  background: var(--aat-primary);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.btn-copy:hover {
+  background: var(--aat-primary-light);
+}
+
+.qris-img {
+  width: 180px;
+  border-radius: 10px;
+  border: 2px solid var(--aat-primary-light);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.title-divider {
+  text-align: center;
+  margin: 30px 0 15px;
+  font-weight: bold;
+  color: var(--aat-primary);
+}
+
+/* =========================================================
+📋 Tabel dan Card Responsif
+========================================================= */
+@media (max-width: 767.98px) {
+  .table-desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-mobile {
+    display: none;
+  }
+}
+
+/* =========================================================
+💰 Struktur Tabel Pembayaran
+========================================================= */
+.payment-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-header,
+.payment-row {
+  display: table-row;
+}
+
+.payment-header div,
+.payment-row div {
+  display: table-cell;
+  padding: 0.8rem;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.payment-header {
+  background-color: #e9ecef;
+  font-weight: 600;
+}
+
+.payment-row:last-child div {
+  border-bottom: none;
+}
+
+@media (max-width: 767.98px) {
+  .payment-header {
+    display: none;
+  }
+
+  .payment-row {
+    display: block;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.6rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .payment-row div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 0.25rem 0;
+  }
+
+  .payment-row div strong {
+    color: #495057;
+  }
+
+  .payment-row .actions {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .payment-row .index {
+    display: none;
+  }
+}
+
+/* =========================================================
+📞 Kontak (Contact Cards)
+========================================================= */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.contact-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+}
+
+.contact-card i {
+  font-size: 2rem;
+  margin-right: 12px;
+}
+
+.contact-info h6 {
+  font-weight: 600;
+  margin: 0;
+}
+
+.contact-info p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    padding: 25px 10px;
+  }
+
+  .contact-card i {
+    margin: 0 0 10px 0;
+  }
+
+  .contact-info h6 {
+    font-size: 1.1rem;
+  }
+
+  .contact-info p {
+    font-size: 0.95rem;
+  }
+}
+
+/* =========================================================
+✅ Card Anak Asuh
+========================================================= */
+.child-card {
+  width: 100%;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  text-align: center;
+  padding: 5px;
+  position: relative;
+}
+
+.child-card img {
+  width: 70%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 5px;
+  height: 140px;
+  margin: 0 auto;
+  display: block;
+}
+
+.child-card h6 {
+  font-size: 0.8rem;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.child-card p {
+  font-size: 0.7rem;
+  margin: 0;
+}
+
+.child-card .badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+}
+
+/* Hover buttons */
+.hover-btns {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.child-card:hover .hover-btns {
+  opacity: 1;
+}
+
+.hover-btns button {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+}
+
+/* Filter Section */
+.filter-section {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background: #fff;
+}
+
+/* Grid Layout Anak Asuh */
+#childGrid .col-6.col-md-2 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+@media (min-width: 768px) {
+  #childGrid .col-6.col-md-2 {
+    width: 16.6667%;
+  }
+
+  #sortSelect,
+  #searchInput {
+    font-size: 0.9rem;
+  }
+}
+
+/* =========================================================
+🧱 Card Layout Alignment (Perbaikan Proporsional)
+========================================================= */
+.card {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.card-body {
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 220px;
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.font-title-menu {
+  font-size: 1rem;
+  font-weight: 600;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.font-subtitle-menu {
+  font-size: 0.8rem;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin: 0.5rem 0;
+}
+
+.progress {
+  margin-top: 0.25rem;
+}
+
+.custom-col-lg-8 {
+  flex: 1 1 0;
+}
+
+@media (max-width: 576px) {
+  .card-body {
+    min-height: 180px;
+  }
+}
+
+h3.page-title {
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+.payment-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.payment-card:hover {
+  transform: translateY(-2px);
+}
+.payment-info strong {
+  color: #495057;
+}
+.payment-status .badge {
+  font-size: 0.85rem;
+  padding: 0.5em 0.8em;
+}
+.payment-actions button {
+  min-width: 110px;
+}
+@media (max-width: 768px) {
+  .payment-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .payment-actions {
+    text-align: right;
+    margin-top: 0.75rem;
+  }
+}

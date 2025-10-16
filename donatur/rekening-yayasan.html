@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Admin Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <span>Sistem Informasi Anak Asuh</span>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="donasiDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Donasi
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="donasiDropdown">
+                <li><h6 class="dropdown-header">Donasi Rutin</h6></li>
+                <li><a class="dropdown-item" href="donasi_spp.html">SPP</a></li>
+                <li><a class="dropdown-item" href="#">Bantuan Pendidikan Tinggi</a></li>
+                <li><a class="dropdown-item" href="#">Operasional</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Donasi Langsung</a></li>
+                <li><a class="dropdown-item" href="#">Pembayaran Donasi</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li><a class="dropdown-item" href="#">List Sekolah</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">List BPT</a></li>
+                <li><a class="dropdown-item" href="#">List Pendidikan Tinggi</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="transfer-tak-dikenal.html">Transfer Tak Dikenal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="kontak.html">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="36"
+                  height="36"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold">Donatur</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="#">Ubah Password</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Rekening Yayasan</span>
+        <button class="btn btn-outline-light">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <!-- Profil User -->
+      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
+        <img
+          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mb-0">Admin User</h6>
+        <small class="mb-0">Administrator</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-house me-2"></i> Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#donasi"
+          >
+            <i class="bi bi-cash me-2"></i> Donasi <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="donasi">
+            <a href="donasi_spp.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">SPP</a>
+            <a href="donasi_pt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Bantuan Pendidikan Tinggi</a
+            >
+            <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
+            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
+            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="komunitas">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Sekolah</a>
+            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak BPT</a>
+            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Pendidikan Tinggi</a>
+          </div>
+          <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
+          </a>
+          <a href="transfer-tak-dikenal.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-receipt me-2"></i> Transfer Tak Dikenal
+          </a>
+          <a href="kontak.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-telephone me-2"></i> Hubungi Kami
+          </a>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia <br />
+          Developed by <span class="fw-bold">Omah IT</span> <br />
+          Maintained by <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Beranda</small>
+      </a>
+      <a href="anak_asuh.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-person-lines-fill fs-4"></i><br />
+        <small>Anak Asuh</small>
+      </a>
+      <a href="riwayat_donasi.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-receipt fs-4"></i><br />
+        <small>Riwayat Donasi</small>
+      </a>
+      <a href="profil.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-person-fill fs-4"></i><br />
+        <small>Profil</small>
+      </a>
+    </div>
+
+    <!-- Konten Utama -->
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <!-- 🏦 Konten Rekening -->
+      <div class="container my-5">
+        <h3 class="text-center text-aat mb-4"><i class="bi bi-bank2 me-2"></i>Rekening Yayasan</h3>
+        <p class="text-center text-muted mb-5">Berikut rekening resmi Yayasan untuk donasi dan pembayaran:</p>
+
+        <div class="row g-4">
+        <!-- BCA -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <img
+                src="../assets/img/bca.png"
+                alt="Logo BCA"
+                class="mb-3"
+                style="height: 50px"
+              />
+              <h5 class="card-title fw-bold">Bank BCA</h5>
+              <p class="card-text">
+                <strong>No. Rekening:</strong> 123-456-7890<br />
+                <strong>Atas Nama:</strong> Yayasan ABC
+              </p>
+              <button class="btn-copy" onclick="copyText('1234567890')"><i class="bi bi-clipboard"></i> Salin</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mandiri -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <img
+                src="../assets/img/mandiri.png"
+                alt="Logo Mandiri"
+                class="mb-3"
+                style="height: 50px"
+              />
+              <h5 class="card-title fw-bold">Bank Mandiri</h5>
+              <p class="card-text">
+                <strong>No. Rekening:</strong> 987-654-3210<br />
+                <strong>Atas Nama:</strong> Yayasan ABC
+              </p>
+              <button class="btn-copy" onclick="copyText('9876543210')"><i class="bi bi-clipboard"></i> Salin</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- QRIS -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <div>
+                <img
+                  src="../assets/img/logo-qris.jpg"
+                  alt="Logo QRIS"
+                  class="mb-3"
+                  style="height: 50px"
+                />
+                <h5 class="card-title fw-bold">QRIS Yayasan</h5>
+                <p class="card-text">Scan QR Code berikut untuk berdonasi:</p>
+              </div>
+              <div>
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?data=YayasanABC-Donasi&size=150x150"
+                  alt="QRIS Yayasan"
+                  class="img-fluid rounded mt-2"
+                  style="max-width: 150px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </main>
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer class="fixed-bottom bg-dark text-white text-center py-3 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
+    <script>
+      function copyText(text) {
+        navigator.clipboard.writeText(text);
+        alert('Nomor rekening disalin: ' + text);
+      }
+    </script>
+  </body>
+</html>
