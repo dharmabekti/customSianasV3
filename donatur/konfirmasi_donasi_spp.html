@@ -126,11 +126,12 @@
                   height="36"
                   class="rounded-circle profile-img shadow-sm me-2"
                 />
-                <span class="fw-semibold">Donatur</span>
+                <span class="fw-semibold">D-XX-XXXX</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="profil.html">Profil</a></li>
                 <li><a class="dropdown-item" href="#">Ubah Password</a></li>
+                <li><a class="dropdown-item" href="riwayat_donasi.html">Riwayat Donasi</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
               </ul>
@@ -204,8 +205,8 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
+            <a href="pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
           </div>
           <a
             href="#"
@@ -217,8 +218,8 @@
           </a>
           <div class="collapse" id="komunitas">
             <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Sekolah</a>
-            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak BPT</a>
+            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Sekolah</a>
+            <a href="bpt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak BPT</a>
             <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Pendidikan Tinggi</a>
           </div>
           <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
@@ -251,9 +252,9 @@
         <i class="bi bi-person-lines-fill fs-4"></i><br />
         <small>Anak Asuh</small>
       </a>
-      <a href="riwayat_donasi.html" class="text-dark text-center text-decoration-none">
+      <a href="pembayaran_donasi.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
-        <small>Riwayat Donasi</small>
+        <small>Pembayaran</small>
       </a>
       <a href="profil.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-person-fill fs-4"></i><br />
@@ -307,7 +308,7 @@
         >
       </div>
 
-      <button class="confirm-btn" id="confirmBtn" disabled>KONFIRMASI</button>
+      <button class="confirm-btn" id="confirmBtn" disabled onclick="window.location.href='pembayaran.html'">KONFIRMASI</button>
       <a class="back-link" href="#">Kembali</a>
     </main>
 
