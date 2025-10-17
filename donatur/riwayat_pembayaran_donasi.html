@@ -129,7 +129,7 @@
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Ubah Password</a></li>
+                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
                 <li><a class="dropdown-item" href="riwayat_donasi.html">Riwayat Donasi</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
@@ -146,7 +146,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Hubungi Kami</span>
+        <span class="navbar-brand mx-auto">Pembayaran Donasi</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -204,8 +204,12 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pembayaran Donasi</a
+            >
           </div>
           <a
             href="#"
@@ -261,14 +265,139 @@
       </a>
     </div>
 
+    <!-- Konten Utama -->
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <div class="container py-3">
-        <h2 class="text-center mb-4 d-none d-md-block">Hubungi Kami</h2>
-        <p class="text-center mb-3 text-muted">Silakan hubungi kami melalui platform berikut.</p>
-        <div id="contactList" class="contact-wrapper"></div>
+      <div class="container">
+        <h2 class="text-center mb-4 d-none d-md-block">Pembayaran Donasi</h2>
+      </div>
+
+      <div class="container">
+        <!-- Total Komitmen -->
+        <div class="mb-4">
+          <h6 class="fw-semibold mb-2 text-secondary">Total Komitmen</h6>
+          <div class="table-responsive">
+            <div class="table-responsive">
+              <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Jenis Donasi</th>
+                    <th>Donasi/Bulan</th>
+                    <th>Jumlah Bulan</th>
+                    <th>Sub Total Donasi</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Jenis Donasi"><strong>Donasi SPP</strong></td>
+                    <td data-label="Donasi/Bulan">Rp150.000</td>
+                    <td data-label="Jumlah Bulan">12</td>
+                    <td data-label="Sub Total Donasi">Rp1.800.000</td>
+                    <td data-label="Aksi">
+                      <a href="pembayaran.html" class="btn btn-sm btn-primary px-3">
+                        <i class="bi bi-wallet2 me-1"></i> Bayar
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Jenis Donasi"><strong>Donasi PT</strong></td>
+                    <td data-label="Donasi/Bulan">Rp200.000</td>
+                    <td data-label="Jumlah Bulan">12</td>
+                    <td data-label="Sub Total Donasi">Rp2.400.000</td>
+                    <td data-label="Aksi">
+                      <a href="pembayaran.html" class="btn btn-sm btn-primary px-3">
+                        <i class="bi bi-wallet2 me-1"></i> Bayar
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Jenis Donasi"><strong>Donasi OPR</strong></td>
+                    <td data-label="Donasi/Bulan">Rp20.000</td>
+                    <td data-label="Jumlah Bulan">12</td>
+                    <td data-label="Sub Total Donasi">Rp240.000</td>
+                    <td data-label="Aksi">
+                      <a href="pembayaran.html" class="btn btn-sm btn-primary px-3">
+                        <i class="bi bi-wallet2 me-1"></i> Bayar
+                      </a>
+                    </td>
+                  </tr>
+                  <tr class="fw-bold text-warning bg-light">
+                    <td data-label="Total">Total Donasi</td>
+                    <td colspan="3" class="d-none d-md-table-cell"></td>
+                    <td data-label="Jumlah">Rp4.440.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Riwayat Pembayaran -->
+        <div class="mb-4">
+          <h6 class="fw-semibold mb-2 text-secondary">Riwayat Pembayaran</h6>
+          <div class="table-responsive">
+            <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Tanggal Transfer</th>
+                  <th>Nominal Transfer</th>
+                  <th>Kode</th>
+                  <th>Status Transfer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Tanggal Transfer">2 Juli 2025</td>
+                  <td data-label="Nominal Transfer">Rp300.000</td>
+                  <td data-label="Kode">QRIS</td>
+                  <td data-label="Status Transfer">
+                    <span class="badge bg-success px-3 py-2">Valid</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Tanggal Transfer">2 Juli 2025</td>
+                  <td data-label="Nominal Transfer">Rp300.000</td>
+                  <td data-label="Kode">TF-BCA</td>
+                  <td data-label="Status Transfer">
+                    <span class="badge bg-info text-dark px-3 py-2">Menunggu Konfirmasi</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Status Donasi -->
+        <div class="mb-4">
+          <h6 class="fw-semibold mb-1 text-secondary">
+            Status Donasi
+            <small class="text-muted">
+              (*Total Transfer yang dihitung hanya yang berstatus <strong>Valid</strong>)
+            </small>
+          </h6>
+          <div class="table-responsive">
+            <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Total Transfer</th>
+                  <th>Total Donasi</th>
+                  <th>Sisa Donasi (Kekurangan - / Kelebihan +)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Total Transfer">Rp300.000</td>
+                  <td data-label="Total Donasi">Rp4.440.000</td>
+                  <td data-label="Sisa Donasi" class="text-danger">-Rp4.140.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </main>
+
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom bg-dark text-white text-center py-3 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -281,64 +410,7 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
-    <script>
-      // ✅ Data hanya sekali
-      const contacts = [
-        {
-          name: 'WhatsApp',
-          icon: 'bi-whatsapp text-success',
-          value: '08xx-xxxx-xxxx',
-          link: 'https://wa.me/628xxxxxxxxx',
-        },
-        {
-          name: 'Email',
-          icon: 'bi-envelope-fill text-danger',
-          value: 'beasiswa@aat.or.id',
-          link: 'mailto:beasiswa@aat.or.id',
-        },
-        {
-          name: 'Instagram',
-          icon: 'bi-instagram text-danger',
-          value: '@aat.indonesia',
-          link: 'https://instagram.com/aat.indonesia',
-        },
-        {
-          name: 'YouTube',
-          icon: 'bi-youtube text-danger',
-          value: 'AAT Indonesia',
-          link: 'https://youtube.com/@aatindonesia',
-        },
-        {
-          name: 'Facebook',
-          icon: 'bi-facebook text-primary',
-          value: 'AAT Indonesia',
-          link: 'https://facebook.com/aatindonesia',
-        },
-        { name: 'X (Twitter)', icon: 'bi-twitter-x', value: '@aat_indonesia', link: 'https://x.com/aat_indonesia' },
-      ];
-
-      // ✅ Render hanya sekali
-      const container = document.getElementById('contactList');
-      container.innerHTML = contacts
-        .map(
-          c => `
-      <a href="${c.link}" target="_blank" class="text-decoration-none text-dark">
-        <div class="contact-card">
-          <i class="bi ${c.icon}"></i>
-          <div class="contact-info">
-            <h6>${c.name}</h6>
-            <p>${c.value}</p>
-          </div>
-        </div>
-      </a>
-    `
-        )
-        .join('');
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

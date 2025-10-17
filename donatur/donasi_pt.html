@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
     <link href="../assets/css/style.css" rel="stylesheet" />
   </head>
   <body class="d-flex flex-column min-vh-100">
@@ -146,7 +146,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Hubungi Kami</span>
+        <span class="navbar-brand mx-auto">Bantuan PT</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -204,8 +204,12 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pembayaran Donasi</a
+            >
           </div>
           <a
             href="#"
@@ -260,85 +264,150 @@
         <small>Profil</small>
       </a>
     </div>
-
-    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+    <main class="container mt-5 pt-4 pb-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <div class="container py-3">
-        <h2 class="text-center mb-4 d-none d-md-block">Hubungi Kami</h2>
-        <p class="text-center mb-3 text-muted">Silakan hubungi kami melalui platform berikut.</p>
-        <div id="contactList" class="contact-wrapper"></div>
-      </div>
-    </main>
-    <!-- Footer Desktop (sticky di bawah halaman) -->
-    <footer class="fixed-bottom bg-dark text-white text-center py-3 mt-auto d-none d-lg-block bg-aat">
-      <small>
-        Copyright © Yayasan AAT Indonesia | Developed by
-        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
-        <span class="fw-bold">Mandhira IT</span>
-        <br />
-        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
-        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
-        <div class="d-none d-lg-block mb-5"></div>
-      </small>
-    </footer>
+      <h3 class="text-center page-title">Bantuan Pendidikan Tinggi</h3>
+      <div class="container">
+        <p class="text-secondary">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. *Perlu Pengurus Yayasan yang mengisi
+        </p>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/style.js"></script>
-    <script>
-      // ✅ Data hanya sekali
-      const contacts = [
-        {
-          name: 'WhatsApp',
-          icon: 'bi-whatsapp text-success',
-          value: '08xx-xxxx-xxxx',
-          link: 'https://wa.me/628xxxxxxxxx',
-        },
-        {
-          name: 'Email',
-          icon: 'bi-envelope-fill text-danger',
-          value: 'beasiswa@aat.or.id',
-          link: 'mailto:beasiswa@aat.or.id',
-        },
-        {
-          name: 'Instagram',
-          icon: 'bi-instagram text-danger',
-          value: '@aat.indonesia',
-          link: 'https://instagram.com/aat.indonesia',
-        },
-        {
-          name: 'YouTube',
-          icon: 'bi-youtube text-danger',
-          value: 'AAT Indonesia',
-          link: 'https://youtube.com/@aatindonesia',
-        },
-        {
-          name: 'Facebook',
-          icon: 'bi-facebook text-primary',
-          value: 'AAT Indonesia',
-          link: 'https://facebook.com/aatindonesia',
-        },
-        { name: 'X (Twitter)', icon: 'bi-twitter-x', value: '@aat_indonesia', link: 'https://x.com/aat_indonesia' },
-      ];
-
-      // ✅ Render hanya sekali
-      const container = document.getElementById('contactList');
-      container.innerHTML = contacts
-        .map(
-          c => `
-      <a href="${c.link}" target="_blank" class="text-decoration-none text-dark">
-        <div class="contact-card">
-          <i class="bi ${c.icon}"></i>
-          <div class="contact-info">
-            <h6>${c.name}</h6>
-            <p>${c.value}</p>
+        <!-- Donasi Per Bulan -->
+        <h6 class="fw-bold mt-4">Total Komitmen Donasi Per Bulan</h6>
+        <div class="row g-2 mb-3">
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="100000">Rp100.000</button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="200000">Rp200.000</button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="300000">Rp300.000</button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="500000">Rp500.000</button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="750000">Rp750.000</button>
+          </div>
+          <div class="col-6 col-md-4 col-lg-2">
+            <button class="btn btn-outline-primary w-100 btn-nominal" data-value="1000000">Rp1.000.000</button>
           </div>
         </div>
-      </a>
-    `
-        )
-        .join('');
-    </script>
 
+        <div class="row align-items-center mb-4">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Jumlah Lainnya</label>
+            <div class="input-group">
+              <span class="input-group-text">Rp</span>
+              <input type="number" class="form-control" id="customAmount" placeholder="Jumlah lainnya" />
+            </div>
+          </div>
+      <div class="d-block d-lg-none mb-3"></div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Jumlah Bulan Donasi</label>
+            <div class="input-group">
+              <input type="number" class="form-control" id="bulan" value="12" min="1" />
+              <span class="input-group-text">bulan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Donasi -->
+        <h6 class="fw-bold">Total <span class="text-decoration-underline">Komitmen Donasi</span> Per Tahun</h6>
+        <div class="input-group mb-4">
+          <span class="input-group-text fw-bold">Rp</span>
+          <input type="text" class="form-control fw-bold text-primary" id="total" readonly value="0" />
+        </div>
+
+        <!-- Ketentuan -->
+        <div class="terms-box">
+          <div class="badge bg-success mb-2">KETENTUAN</div>
+          <ul class="mb-0">
+            <li>Donasi Bantuan PT bersifat rutin dan jumlah bulan donasi sesuai dengan kemampuan donatur.</li>
+            <li>
+              Donasi Bantuan PT tidak otomatis lanjut, namun sebelum Tahun Ajaran berakhir, donatur akan diberikan
+              pilihan untuk melanjutkan atau tidak.
+            </li>
+            <li>Pastikan total komitmen donasi per tahun sesuai kemampuan donatur.</li>
+          </ul>
+        </div>
+
+        <!-- Pernyataan -->
+        <div class="checkbox-group">
+          <input type="checkbox" id="ageCheck" />
+          <label for="ageCheck"
+            >Saya menyatakan berusia 18 tahun ke atas atau dalam pengawasan orang tua untuk melakukan donasi ini
+          </label>
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="commitCheck" />
+          <label for="commitCheck"
+            >Saya bersedia dan berkomitmen untuk memberikan donasi sejumlah dana yang tertera pada form ini selama waktu
+            yang disepakati pada setiap jenis donasi. Donasi dapat bayarkan setiap bulan secara rutin atau dengan
+            membayarkanya beberapa bulan sekaligus.
+          </label>
+        </div>
+
+        <button class="confirm-btn" id="confirmBtn" disabled onclick="window.location.href='pembayaran.html'">
+          KONFIRMASI
+        </button>
+        <a class="back-link" href="index.html">Kembali</a>
+      </div>
+    </main>
+
+    <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Tambahkan di dalam <body> setelah script bootstrap -->
+
+    <script>
+      const buttons = document.querySelectorAll('.btn-nominal');
+      const custom = document.getElementById('customAmount');
+      const bulan = document.getElementById('bulan');
+      const total = document.getElementById('total');
+
+      let selectedNominal = 0;
+      const ageCheck = document.getElementById('ageCheck');
+      const commitCheck = document.getElementById('commitCheck');
+      const confirmBtn = document.getElementById('confirmBtn');
+
+      function toggleButton() {
+        confirmBtn.disabled = !(ageCheck.checked && commitCheck.checked);
+      }
+
+      ageCheck.addEventListener('change', toggleButton);
+      commitCheck.addEventListener('change', toggleButton);
+
+      confirmBtn.addEventListener('click', () => {
+        alert('Donasi berhasil dikonfirmasi!');
+      });
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectedNominal = parseInt(btn.dataset.value);
+          custom.value = '';
+          updateTotal();
+        });
+      });
+
+      custom.addEventListener('input', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        selectedNominal = parseInt(custom.value) || 0;
+        updateTotal();
+      });
+
+      bulan.addEventListener('input', updateTotal);
+
+      function updateTotal() {
+        const bulanVal = parseInt(bulan.value) || 1;
+        const totalVal = selectedNominal * bulanVal;
+        total.value = `Rp${totalVal.toLocaleString('id-ID')}`;
+      }
+    </script>
   </body>
 </html>

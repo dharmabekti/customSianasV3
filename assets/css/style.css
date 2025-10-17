@@ -24,18 +24,42 @@
 }
 
 /* Utility classes */
-.ft-10 { font-size: var(--ft-10) !important; }
-.ft-11 { font-size: var(--ft-11) !important; }
-.ft-12 { font-size: var(--ft-12) !important; }
-.ft-13 { font-size: var(--ft-13) !important; }
-.ft-14 { font-size: var(--ft-14) !important; }
-.ft-15 { font-size: var(--ft-15) !important; }
-.ft-16 { font-size: var(--ft-16) !important; }
-.ft-18 { font-size: var(--ft-18) !important; }
-.ft-20 { font-size: var(--ft-20) !important; }
-.ft-24 { font-size: var(--ft-24) !important; }
-.ft-28 { font-size: var(--ft-28) !important; }
-.ft-32 { font-size: var(--ft-32) !important; }
+.ft-10 {
+  font-size: var(--ft-10) !important;
+}
+.ft-11 {
+  font-size: var(--ft-11) !important;
+}
+.ft-12 {
+  font-size: var(--ft-12) !important;
+}
+.ft-13 {
+  font-size: var(--ft-13) !important;
+}
+.ft-14 {
+  font-size: var(--ft-14) !important;
+}
+.ft-15 {
+  font-size: var(--ft-15) !important;
+}
+.ft-16 {
+  font-size: var(--ft-16) !important;
+}
+.ft-18 {
+  font-size: var(--ft-18) !important;
+}
+.ft-20 {
+  font-size: var(--ft-20) !important;
+}
+.ft-24 {
+  font-size: var(--ft-24) !important;
+}
+.ft-28 {
+  font-size: var(--ft-28) !important;
+}
+.ft-32 {
+  font-size: var(--ft-32) !important;
+}
 
 /* =========================================================
 🧭 Navbar Desktop
@@ -484,6 +508,24 @@ main {
 }
 
 @media (max-width: 576px) {
+  .round-modal .modal-body {
+    padding: 1.5rem 1rem;
+  }
+
+  .copy-box span {
+    font-size: 0.95rem;
+  }
+
+  .btn-copy {
+    font-size: 1rem;
+  }
+
+  .d-flex.flex-column.gap-3 {
+    gap: 1rem !important; /* jarak antar kolom di HP */
+  }
+  .card-body {
+    min-height: 180px;
+  }
   .card {
     padding: 0.5rem !important;
     margin-bottom: 0.75rem;
@@ -526,6 +568,40 @@ main {
     width: 120px;
   }
 
+  .table thead {
+    display: none;
+  }
+
+  .table tbody tr {
+    display: block;
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border: none;
+    text-align: right;
+  }
+
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #6c757d;
+    text-align: left;
+  }
+
+  .table tbody tr.fw-bold {
+    background-color: #fff8e1 !important;
+    border: 1px solid #ffe082 !important;
+  }
+
   .checkbox-group {
     flex-direction: row;
     align-items: flex-start;
@@ -541,6 +617,10 @@ main {
 
   .confirm-btn {
     font-size: 1rem;
+  }
+
+  .payment-summary-box .total {
+    font-size: 1.1rem;
   }
 }
 
@@ -962,12 +1042,6 @@ main {
   flex: 1 1 0;
 }
 
-@media (max-width: 576px) {
-  .card-body {
-    min-height: 180px;
-  }
-}
-
 h3.page-title {
   font-weight: 700;
   color: #333;
@@ -1128,13 +1202,6 @@ h3.page-title {
   margin-top: 0.25rem;
 }
 
-/* Beri jarak vertikal antara total dan tombol di layar kecil */
-@media (max-width: 576px) {
-  .d-flex.flex-column.gap-3 {
-    gap: 1rem !important; /* jarak antar kolom di HP */
-  }
-}
-
 .round-modal {
   border-radius: 16px;
   overflow: hidden;
@@ -1180,21 +1247,6 @@ h3.page-title {
   border-radius: 10px;
   padding: 0.7rem 1rem;
   text-align: left;
-}
-
-/* Responsif untuk HP */
-@media (max-width: 576px) {
-  .round-modal .modal-body {
-    padding: 1.5rem 1rem;
-  }
-
-  .copy-box span {
-    font-size: 0.95rem;
-  }
-
-  .btn-copy {
-    font-size: 1rem;
-  }
 }
 
 .round-modal {
@@ -1258,7 +1310,7 @@ h3.page-title {
     border: 1px solid #dee2e6;
     border-radius: 10px;
     margin-bottom: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     padding: 1rem;
   }
 
@@ -1300,10 +1352,4 @@ h3.page-title {
 .preview-box img {
   max-height: 250px;
   object-fit: contain;
-}
-
-@media (max-width: 576px) {
-  .payment-summary-box .total {
-    font-size: 1.1rem;
-  }
 }
