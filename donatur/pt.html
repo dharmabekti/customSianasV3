@@ -147,7 +147,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Transfer Tak Dikenal</span>
+        <span class="navbar-brand mx-auto">Data Pendidikan Tinggi</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -268,20 +268,19 @@
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
       <div class="container-fluid">
-        <h3 class="mb-4 text-center fw-bold d-none d-lg-block">Konfirmasi Pembayaran</h3>
+        <h3 class="mb-4 text-center fw-bold d-none d-lg-block">Data Pendidikan Tinggi</h3>
 
         <!-- ✅ TABEL UNTUK DESKTOP -->
-        <div class="table-responsive table-desktop">
+        <div class="table-responsive table-desktop d-none d-lg-block">
           <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
             <thead class="table-light">
               <tr>
                 <th>No</th>
-                <th>Nama Donatur</th>
-                <th>Nominal</th>
-                <th>Tanggal Transfer</th>
-                <th>Bank Tujuan</th>
+                <th>Pendidikan Tinggi</th>
+                <th>Alamat</th>
+                <th>Email</th>
+                <th>Telp</th>
                 <th>Status</th>
-                <th>Aksi</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -289,7 +288,7 @@
         </div>
 
         <!-- ✅ CARD LIST UNTUK MOBILE -->
-        <div class="card-mobile">
+        <div class="card-mobile d-lg-none">
           <!-- 🔍 PENCARIAN MOBILE -->
           <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
@@ -297,12 +296,17 @@
               type="text"
               id="searchCard"
               class="form-control border-start-0"
-              placeholder="Cari donatur, bank, atau status..."
+              placeholder="Cari sekolah, alamat, email..."
             />
           </div>
 
           <!-- LIST CARD -->
-          <div id="cardList"></div>
+          <div id="cardList" class="row g-2"></div>
+
+          <!-- PAGINATION MOBILE -->
+          <div class="d-flex justify-content-center mt-3">
+            <nav><ul class="pagination" id="paginationMobile"></ul></nav>
+          </div>
         </div>
       </div>
     </main>
@@ -329,89 +333,107 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-      // ✅ 1. Data hanya didefinisikan SEKALI
-      const dataPembayaran = [
-        {
-          nama: 'Budi Santoso',
-          nominal: 'Rp500.000',
-          tanggal: '12 Okt 2025',
-          bank: 'BCA',
-          status: 'Menunggu',
-          badge: 'bg-warning text-dark',
-          button: '<button class="btn btn-sm btn-primary">Konfirmasi</button>',
-        },
-        {
-          nama: 'Sinta Wulandari',
-          nominal: 'Rp250.000',
-          tanggal: '13 Okt 2025',
-          bank: 'Mandiri',
-          status: 'Terkonfirmasi',
-          badge: 'bg-success',
-          button: '<button class="btn btn-sm btn-outline-secondary" disabled>Selesai</button>',
-        },
-        {
-          nama: 'Rudi Hartono',
-          nominal: 'Rp300.000',
-          tanggal: '10 Okt 2025',
-          bank: 'BCA',
-          status: 'Menunggu',
-          badge: 'bg-warning text-dark',
-          button: '<button class="btn btn-sm btn-primary">Konfirmasi</button>',
-        },
-      ];
+      const univData = Array.from({ length: 30 }, (_, i) => ({
+        id: i + 1,
+        nama: 'Universitas ' + (i + 1),
+        alamat: 'Jl. Contoh No. ' + (i + 1),
+        email: 'sekolah' + (i + 1) + '@example.com',
+        telp: '0812-3456-' + String(i + 1).padStart(4, '0'),
+        status: 'Aktif',
+      }));
 
-      // ✅ 2. Render ke tabel (desktop)
-      const tbody = document.querySelector('#datatable tbody');
-      dataPembayaran.forEach((d, i) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${i + 1}</td>
-          <td>${d.nama}</td>
-          <td>${d.nominal}</td>
-          <td>${d.tanggal}</td>
-          <td>${d.bank}</td>
-          <td><span class="badge ${d.badge}">${d.status}</span></td>
-          <td>${d.button}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+      const tableBody = document.querySelector('#datatable tbody');
+      const cardList = document.getElementById('cardList');
+      const searchCard = document.getElementById('searchCard');
+      const paginationMobile = document.getElementById('paginationMobile');
 
-      // ✅ 3. Fungsi render card list (mobile)
-      function renderCards(filterText = '') {
-        const cardList = document.getElementById('cardList');
-        cardList.innerHTML = '';
+      let currentPageMobile = 1;
+      const perPageMobile = 6;
 
-        const filteredData = dataPembayaran.filter(d => {
-          const text = `${d.nama} ${d.bank} ${d.status}`.toLowerCase();
-          return text.includes(filterText.toLowerCase());
-        });
+      // Render tabel desktop
+      function renderTable() {
+        tableBody.innerHTML = univData
+          .map(
+            s => `
+              <tr>
+                <td>${s.id}</td>
+                <td>${s.nama}</td>
+                <td>${s.alamat}</td>
+                <td>${s.email}</td>
+                <td>${s.telp}</td>
+                <td><span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">${s.status}</span></td>
+              </tr>
+            `
+          )
+          .join('');
+      }
 
-        if (filteredData.length === 0) {
-          cardList.innerHTML = `<p class="text-center text-muted mt-3">Tidak ada hasil.</p>`;
-          return;
-        }
+      // Render card mobile dengan pagination
+      function renderCards() {
+        const searchTerm = searchCard.value.toLowerCase();
+        const filtered = univData.filter(
+          s =>
+            s.nama.toLowerCase().includes(searchTerm) ||
+            s.alamat.toLowerCase().includes(searchTerm) ||
+            s.email.toLowerCase().includes(searchTerm)
+        );
 
-        filteredData.forEach(d => {
-          const card = document.createElement('div');
-          card.className = 'card mb-3 shadow-sm';
-          card.innerHTML = `
-            <div class="card-body">
-              <h6 class="card-title mb-2 fw-bold">${d.nama}</h6>
-              <p class="mb-1"><strong>Nominal:</strong> ${d.nominal}</p>
-              <p class="mb-1"><strong>Tanggal Transfer:</strong> ${d.tanggal}</p>
-              <p class="mb-1"><strong>Bank Tujuan:</strong> ${d.bank}</p>
-              <p class="mb-2"><strong>Status:</strong> <span class="badge ${d.badge}">${d.status}</span></p>
-              ${d.button.replace('btn-sm', 'btn-sm w-100')}
-            </div>
-          `;
-          cardList.appendChild(card);
+        const totalPages = Math.ceil(filtered.length / perPageMobile);
+        if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
+
+        const start = (currentPageMobile - 1) * perPageMobile;
+        const paginated = filtered.slice(start, start + perPageMobile);
+
+        // Render card list
+        cardList.innerHTML = paginated
+          .map(
+            s => `
+      <div class="col-12">
+        <div class="card shadow-sm p-3 mb-2">
+          <h5 class="card-title">${s.nama}</h5>
+          <p class="mb-1"><strong>alamat:</strong> ${s.alamat}</p>
+          <p class="mb-1"><strong>Email:</strong> ${s.email}</p>
+          <p class="mb-1"><strong>Telp:</strong> ${s.telp}</p>
+          <span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">${s.status}</span>
+        </div>
+      </div>`
+          )
+          .join('');
+
+        // Render pagination
+        paginationMobile.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
+          <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
+            <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+          </li>
+        `
+              ).join('')
+            : '';
+
+        // Event delegation untuk pagination
+        paginationMobile.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const page = parseInt(e.target.dataset.page);
+            if (page && page !== currentPageMobile) {
+              currentPageMobile = page;
+              renderCards();
+            }
+          });
         });
       }
 
-      renderCards(); // render awal
+      // Event search mobile
+      searchCard.addEventListener('input', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
 
-      // ✅ 4. Event pencarian mobile
-      document.getElementById('searchCard').addEventListener('input', e => renderCards(e.target.value));
+      renderTable();
+      renderCards();
 
       $(document).ready(function () {
         if (window.innerWidth >= 992) {
