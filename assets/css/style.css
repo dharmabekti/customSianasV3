@@ -91,13 +91,13 @@
 }
 
 .branding img {
-  height: 40px;
+  height: 70px;
   margin-right: 10px;
 }
 
 .branding span {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 24px;
 }
 
 /* =========================================================
@@ -112,8 +112,9 @@ body {
 
 header.fixed-top,
 footer.fixed-bottom {
-  height: 70px;
+  height: 50px;
   font-family: Arial, sans-serif;
+  font-size: 12px;
 }
 
 table {
@@ -128,26 +129,6 @@ main {
 
 .offcanvas {
   z-index: 2000;
-}
-
-/* =========================================================
-✍️ Typography & Utilities
-========================================================= */
-.font-title-menu {
-  font-size: 1rem;
-}
-
-.font-subtitle-menu {
-  font-size: 0.8rem;
-}
-
-.mb-6 {
-  margin-bottom: 6rem;
-}
-
-.badge-lg {
-  font-size: 0.9rem;
-  padding: 0.5em 0.6em;
 }
 
 /* =========================================================
@@ -428,8 +409,8 @@ main {
 
   .navbar {
     font-size: 14px;
-    font-weight: bold;
     background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%);
+    --bs-navbar-padding-y: 0;
   }
 
   .navbar .dropdown {
@@ -995,13 +976,13 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  min-height: 220px;
+  min-height: 20px;
   text-align: center;
   padding: 1rem 0.5rem;
 }
 
 .font-title-menu {
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 600;
   min-height: 38px;
   display: flex;
@@ -1011,11 +992,79 @@ main {
 }
 
 .font-subtitle-menu {
-  font-size: 0.8rem;
+  font-size: 12px;
   min-height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.card-menu .card-body img {
+  width: 70px !important; /* ukuran default di desktop */
+  height: auto !important;
+  transition: all 0.3s ease;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .font-title-menu {
+    font-size: 12px;
+  }
+
+  .font-subtitle-menu {
+    font-size: 10px;
+  }
+
+  .card-menu .card-body {
+      height: 150px; /* kamu bisa sesuaikan */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+  .card-menu .card-body img {
+    width: 76px !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .font-title-menu {
+    font-size: 12px;
+  }
+
+  .font-subtitle-menu {
+    font-size: 10px;
+  }
+  
+  .card-menu .card-body img {
+    width: 57px !important;
+  }
+}
+
+/* HP kecil banget */
+@media (max-width: 400px) {
+  .font-title-menu {
+    font-size: 12px;
+  }
+
+  .font-subtitle-menu {
+    font-size: 10px;
+  }
+  
+  .card-menu .card-body img {
+    width: 40px !important;
+  }
+}
+
+.mb-6 {
+  margin-bottom: 6rem;
+}
+
+.badge-lg {
+  font-size: 0.9rem;
+  padding: 0.5em 0.6em;
 }
 
 .card-body img {

@@ -22,7 +22,7 @@
       </div>
 
       <!-- Navbar Desktop -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm">
+      <nav class="navbar navbar-expand-lg px-3 ">
         <div class="container-fluid">
           <!-- LEFT MENU -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -73,7 +73,8 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal">Rekening Yayasan</a>
+              <!-- <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a> -->
             </li>
 
             <li class="nav-item">
@@ -123,8 +124,8 @@
                 <img
                   src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
                   alt="User"
-                  width="36"
-                  height="36"
+                  width="30"
+                  height="30"
                   class="rounded-circle profile-img shadow-sm me-2"
                 />
                 <span class="fw-semibold">D-XX-XXXX</span>
@@ -269,17 +270,17 @@
 
     <!-- Konten Utama -->
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
-      <div class="d-none d-lg-block mb-5"></div>
+      <div class="d-none d-lg-block mb-3"></div>
       <!-- Hanya muncul di layar besar -->
       <div class="card p-3">
-        <div class="container-fluid my-4">
+        <div class="container-fluid">
           <h4 class="mb-3">Selamat Datang di SIANAS</h4>
           <p class="text-muted">Master Admin AAT (MasterAdmin) - MasterAdmin</p>
         </div>
       </div>
       <div class="container-fluid my-4">
         <div class="row g-3">
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('donasi_spp')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('donasi_spp')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Donasi SPP</strong>
@@ -291,7 +292,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('anak_asuh')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('anak_asuh')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Anak Asuh Aktif</strong>
@@ -303,7 +304,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('komitmen')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('komitmen')">
             <div
               class="card shadow-sm text-center position-relative border border-warning rounded-3"
               style="box-shadow: 0 0 15px rgba(255, 230, 0, 0.6)"
@@ -313,7 +314,7 @@
                 <div class="position-relative d-inline-block">
                   <img src="../assets/img/donasi.png" alt="Donasi" />
                 </div>
-                <p class="fw-semibold mb-1">Rp1.800.000/tahun</p>
+                <p class="font-subtitle-menu">Rp1.800.000/tahun</p>
 
                 <!-- Progress bar rata tengah -->
                 <div class="progress w-75 mx-auto" style="height: 18px; border-radius: 10px">
@@ -332,7 +333,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('transfer-tak-dikenal')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('transfer-tak-dikenal')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Transfer Tak Dikenal</strong>
@@ -349,7 +350,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('donasi_langsung')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('donasi_langsung')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Donasi Langsung</strong>
@@ -361,7 +362,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('donasi_pt')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('donasi_pt')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Bantuan Pendidikan Tinggi</strong>
@@ -373,7 +374,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-4 custom-col-lg-8" onclick="openPage('donasi_opr')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('donasi_opr')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Donasi Operasional</strong>
@@ -390,7 +391,7 @@
     </main>
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
-    <footer class="fixed-bottom bg-dark text-white text-center py-3 mt-auto d-none d-lg-block bg-aat">
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
         Copyright © Yayasan AAT Indonesia | Developed by
         <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
@@ -438,6 +439,100 @@
               Tutup
             </button>
             <button type="button" class="btn btn-success w-100 w-sm-auto">Sudah Bayar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Rekening Yayasan -->
+    <div class="modal fade" id="rekeningYayasanModal" tabindex="-1" aria-labelledby="rekeningModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title fw-semibold" id="qrisModalLabel">Rekening Yayasan AAT Indonesia</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="container my-5">
+        <h3 class="text-center text-aat mb-4"><i class="bi bi-bank2 me-2"></i>Rekening Yayasan</h3>
+        <p class="text-center text-muted mb-5">Berikut rekening resmi Yayasan untuk donasi dan pembayaran:</p>
+
+        <div class="row g-4">
+        <!-- BCA -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <img
+                src="../assets/img/bca.png"
+                alt="Logo BCA"
+                class="mb-3"
+                style="height: 50px"
+              />
+              <h5 class="card-title fw-bold">Bank BCA</h5>
+              <p class="card-text">
+                <strong>No. Rekening:</strong> 123-456-7890<br />
+                <strong>Atas Nama:</strong> Yayasan ABC
+              </p>
+              <button class="btn-copy" onclick="copyText('1234567890')"><i class="bi bi-clipboard"></i> Salin</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mandiri -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+              <img
+                src="../assets/img/mandiri.png"
+                alt="Logo Mandiri"
+                class="mb-3"
+                style="height: 50px"
+              />
+              <h5 class="card-title fw-bold">Bank Mandiri</h5>
+              <p class="card-text">
+                <strong>No. Rekening:</strong> 987-654-3210<br />
+                <strong>Atas Nama:</strong> Yayasan ABC
+              </p>
+              <button class="btn-copy" onclick="copyText('9876543210')"><i class="bi bi-clipboard"></i> Salin</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- QRIS -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center d-flex flex-column justify-content-between">
+              <div>
+                <img
+                  src="../assets/img/logo-qris.jpg"
+                  alt="Logo QRIS"
+                  class="mb-3"
+                  style="height: 50px"
+                />
+                <h5 class="card-title fw-bold">QRIS Yayasan</h5>
+                <p class="card-text">Scan QR Code berikut untuk berdonasi:</p>
+              </div>
+              <div>
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?data=YayasanABC-Donasi&size=150x150"
+                  alt="QRIS Yayasan"
+                  class="img-fluid rounded mt-2"
+                  style="max-width: 150px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-between flex-wrap">
+            <button
+              type="button"
+              class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
           </div>
         </div>
       </div>
