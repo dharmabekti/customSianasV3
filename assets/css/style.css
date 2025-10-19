@@ -191,6 +191,7 @@ main {
   transition: all 0.2s ease;
   border-radius: 0.4rem;
   padding: 4px 10px !important;
+  font-size: 14px;
 }
 
 .navbar .nav-link:hover,
@@ -203,7 +204,8 @@ main {
 .navbar .dropdown-menu .dropdown-item {
   border-radius: 0.4rem;
   transition: all 0.2s ease;
-  margin: 2px 4px;
+  /* margin: 2px 4px; */
+  font-size: 14px;
 }
 
 .navbar .dropdown-menu .dropdown-item:hover,
@@ -611,6 +613,7 @@ main {
   .profile-img {
     max-width: 250px;
     height: auto;
+    font-size: 14px;
   }
 }
 
