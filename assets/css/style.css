@@ -615,7 +615,23 @@ main {
     height: auto;
     font-size: 14px;
   }
+  
 }
+
+.card-total {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  /* Sedikit rapikan tampilan di layar kecil */
+  @media (max-width: 1024px) {
+    .filter-section {
+      padding: 0.75rem;
+      font-size: 12px;
+    }
+  }
 
 /* Ukuran default untuk mobile */
 .profile-img {

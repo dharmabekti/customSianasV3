@@ -204,8 +204,12 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pembayaran Donasi</a
+            >
           </div>
           <a
             href="#"
@@ -287,17 +291,26 @@
         <!-- JUMLAH PEMBAYARAN -->
         <div class="mb-3 jumlah-pembayaran">
           <label class="form-label fw-semibold">Jumlah Pembayaran</label>
-          <div class="d-flex flex-wrap gap-2">
-            <button class="btn btn-outline-primary flex-fill">1 Bulan</button>
-            <button class="btn btn-outline-primary flex-fill active">2 Bulan</button>
-            <button class="btn btn-outline-primary flex-fill">3 Bulan</button>
-            <button class="btn btn-outline-primary flex-fill">6 Bulan</button>
-            <button class="btn btn-outline-primary flex-fill">9 Bulan</button>
-            <button class="btn btn-outline-primary flex-fill">12 Bulan</button>
-          </div>
-          <div class="mt-2 d-flex align-items-center">
-            <span class="me-2 fw-semibold">Rp</span>
-            <input type="number" class="form-control w-50" placeholder="Jumlah lainnya" />
+          <div class="row">
+            <!-- KIRI: Tombol Bulan -->
+            <div class="col-12 col-md-8">
+              <div class="d-grid gap-2" style="grid-template-columns: repeat(3, 1fr)">
+                <button class="btn btn-outline-primary">1 Bulan</button>
+                <button class="btn btn-outline-primary">2 Bulan</button>
+                <button class="btn btn-outline-primary">3 Bulan</button>
+                <button class="btn btn-outline-primary">6 Bulan</button>
+                <button class="btn btn-outline-primary">9 Bulan</button>
+                <button class="btn btn-outline-primary">12 Bulan</button>
+              </div>
+            </div>
+
+            <!-- KANAN: Nominal Lain -->
+            <div class="col-12 col-md-4 mt-3 mt-md-0">
+              <div class="d-flex align-items-center">
+                <span class="me-2 fw-semibold">Rp</span>
+                <input type="number" class="form-control" placeholder="Jumlah lainnya" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -313,51 +326,55 @@
           </div>
         </div>
 
-        <!-- CATATAN -->
-        <div class="p-3 border rounded mb-3 bg-white">
-          <div class="bg-success text-white px-2 py-1 rounded-start d-inline-block fw-bold">Catatan</div>
-          <ul class="mt-2 mb-2 ps-3 small">
-            <li>Kode Unik tidak akan diikutkan dalam perhitungan donasi.</li>
-            <li>Akumulasi Kode Unik akan dipergunakan untuk Operasional Yayasan AAT Indonesia.</li>
-          </ul>
-          <p class="small fst-italic text-muted mb-0">
-            *Kode unik tergantung dengan metode pembayaran. Jika melalui transfer BCA atau Mandiri, kode unik yang
-            muncul adalah ID 3 digit milik donatur tsb. Jika menggunakan QRIS, kode unik acak namun tetap ≤ 3 digit ID
-            milik donatur.
-          </p>
-        </div>
-
-        <!-- TOTAL PEMBAYARAN -->
-        <div class="card shadow-sm border-0 mt-4 total-card">
-          <div class="card-body">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
-              <!-- Rincian pembayaran -->
-              <div class="payment-summary">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="fw-medium text-secondary">Subtotal Pembayaran</span>
-                  <span class="fw-semibold subtotal">Rp0</span>
-                </div>
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                  <span class="fw-medium text-secondary">Kode Unik</span>
-                  <span class="kode-unik">Rp0</span>
-                </div>
-                <hr class="my-2" />
-                <div class="d-flex justify-content-between align-items-center">
-                  <span class="fw-bold text-primary">Total Pembayaran</span>
-                  <span class="fw-bold text-primary fs-5 total">Rp0</span>
+        <div class="container-fluid my-4">
+          <div class="row equal-height-row g-3">
+            <!-- Card Kiri -->
+            <div class="col-12 col-md-6">
+              <div class="card h-100 shadow-sm text-start">
+                <div class="p-3 rounded mb-3 bg-white">
+                  <div class="bg-success text-white px-2 py-1 rounded-start d-inline-block fw-bold">Catatan</div>
+                  <ul class="mt-2 mb-2 ps-3 small">
+                    <li>Kode Unik tidak akan diikutkan dalam perhitungan donasi.</li>
+                    <li>Akumulasi Kode Unik akan dipergunakan untuk Operasional Yayasan AAT Indonesia.</li>
+                  </ul>
                 </div>
               </div>
+            </div>
 
-              <!-- Tombol aksi -->
-              <div class="text-center">
-                <button
-                  class="btn btn-warning btn-lg fw-bold px-4 py-2 w-100 w-md-auto"
-                  data-bs-toggle="modal"
-                  data-bs-target="#transferModal"
-                >
-                  PEMBAYARAN
-                </button>
-                <a href="#" class="d-block mt-2 small text-decoration-none">Saya lakukan nanti</a>
+            <!-- Card Kanan -->
+            <div class="col-12 col-md-6">
+              <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                  <!-- Rincian pembayaran -->
+                  <div class="payment-summary">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="fw-medium text-secondary">Subtotal Pembayaran</span>
+                      <span class="fw-semibold subtotal">Rp0</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <span class="fw-medium text-secondary">Kode Unik</span>
+                      <span class="kode-unik">Rp0</span>
+                    </div>
+                    <hr class="my-2" />
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span class="fw-bold text-primary">Total Pembayaran</span>
+                      <span class="fw-bold text-primary fs-5 total">Rp0</span>
+                    </div>
+                  </div>
+
+                  <!-- Tombol aksi -->
+                  <div class="text-center">
+                    <br />
+                    <button
+                      class="btn btn-warning btn-lg fw-bold px-4 py-2 w-100 w-md-auto"
+                      data-bs-toggle="modal"
+                      data-bs-target="#transferModal"
+                    >
+                      PEMBAYARAN
+                    </button>
+                    <a href="#" class="d-block mt-2 small text-decoration-none">Saya lakukan nanti</a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -522,7 +539,9 @@
 
               <div class="modal-footer d-flex flex-wrap justify-content-between gap-2">
                 <button type="submit" class="btn btn-primary flex-fill fw-bold">Upload Bukti Pembayaran</button>
-                <a href="riwayat_pembayaran_donasi.html" class="d-block mt-2 small text-decoration-none">Lewati langkah ini</a>
+                <a href="riwayat_pembayaran_donasi.html" class="d-block mt-2 small text-decoration-none"
+                  >Lewati langkah ini</a
+                >
               </div>
             </form>
           </div>
