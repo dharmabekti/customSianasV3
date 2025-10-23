@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Tidak bisa di-scroll */
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+/* HEADER */
+.header {
+  flex-shrink: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.header .logo img {
+  width: 160px;
+  height: auto;
+}
+
+/* KONTEN UTAMA */
+.container {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 80px;
+  gap: 40px;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* penuh satu layar */
+  padding: 20px;
+  margin-top: 65px;
+  margin-bottom: 35px;
+}
+
+/* KIRI */
+.title h1 {
+  font-size: 60px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.title p {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.yellow {
+  color: #ffbf00;
+}
+.green {
+  color: #2bb673;
+}
+.black {
+  color: #000;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* penuh tinggi layar */
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f8f9fa;
+  color: #555;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #ddd;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2e7d32;
+}
+
+/* KANAN */
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  background: #f3f3f3;
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 50px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+.card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #00a3e0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.btn-login {
+  width: 100%;
+  color: #000;
+  background: #00b050;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-register {
+  width: 100%;
+  background: #ffb703;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.forgot-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+}
+
+.divider {
+  width: 60%;
+  margin: 0.5rem auto;
+  border: none;
+  border-top: 2px solid #009e60; /* hijau sesuai tema */
+  opacity: 0.8;
+}
+
+.divider-gradient {
+  height: 3px;
+  border: none;
+  width: 60%;
+  margin: 0.5rem auto;
+  background: linear-gradient(to right, #f7b500, #009e60);
+  border-radius: 2px;
+}
+
+.divider-text {
+  text-align: center;
+  border-bottom: 2px solid #009e60;
+  line-height: 0.1em;
+  margin: 1rem 0 1.5rem;
+}
+
+.divider-text span {
+  background: #fff;
+  padding: 0 10px;
+  font-weight: 600;
+  color: #009e60;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: normal;
+}
+
+@media (min-width: 768px) {
+  .left-section {
+    flex: 1;
+  }
+}
+
+/* RESPONSIF MOBILE */
+@media (max-width: 768px) {
+  body {
+    overflow: hidden; /* Tetap tidak scroll */
+    font-size: 12px;
+  }
+
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    height: calc(100vh - 70px);
+    text-align: center;
+    padding: 30px 15px;
+  }
+
+  .header {
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .header .logo img {
+    width: 130px;
+  }
+
+  .left-section {
+    align-items: center;
+  }
+
+  .title h1 {
+    font-size: 40px;
+  }
+
+  .title p {
+    font-size: 18px;
+  }
+
+  .card {
+    max-width: 100%;
+    padding: 25px;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    margin-top: 20px;
+  }
+}
