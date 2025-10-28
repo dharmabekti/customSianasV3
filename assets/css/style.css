@@ -1566,3 +1566,204 @@ h3.page-title {
   background-color: #128c7e;
   box-shadow: 2px 2px 8px #666;
 }
+
+.layout {
+  display: flex;
+  gap: 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  /* width: 950px; */
+}
+
+/* ================= Sidebar ================= */
+.sidebar {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-btn {
+  background: #72d2e0;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  color: #00404d;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.sidebar-btn:hover {
+  background: #4ac1ce;
+  transform: scale(1.05);
+}
+
+.sidebar-btn.active {
+  background: var(--aat-orange);
+  color: white;
+}
+
+/* ================= Content Area ================= */
+.content {
+  flex: 1;
+  background: #79dede;
+  border-radius: 20px;
+  padding: 20px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-title {
+  color: #a13a00;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.content-left,
+.content-right {
+  background: none;
+  padding: 10px;
+}
+
+.divider {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  width: 2px;
+  height: 75%;
+  background: #0099a8;
+}
+
+/* ================= Card Kiri ================= */
+.section-header {
+  background: #6286d8;
+  color: white;
+  border-radius: 20px;
+  text-align: center;
+  padding: 5px;
+  font-size: 0.9em;
+}
+
+.main-value {
+  font-size: 4em;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+.main-label {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.bar-chart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 15px;
+  margin: 10px 0;
+}
+
+.bar-segment {
+  height: 100%;
+  text-align: center;
+  color: white;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding-top: 3px;
+}
+
+.bar-sd {
+  width: 40%;
+  background: red;
+}
+.bar-smp {
+  width: 30%;
+  background: #5b5bff;
+}
+.bar-sma {
+  width: 20%;
+  background: #d892ff;
+}
+
+.section-desc {
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.info-box {
+  background: #6286d8;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 8px;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 0.9em;
+}
+
+.not-found {
+  font-style: italic;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/* ================= Card Kanan ================= */
+.summary-box {
+  border-radius: 15px;
+  margin: 10px 0;
+  padding: 10px;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+}
+
+.summary-komitmen {
+  background: #ffc107;
+}
+
+.summary-transfer {
+  background: #7dd9a3;
+}
+
+.summary-status {
+  background: #004080;
+  color: white;
+}
+
+.summary-status span {
+  display: block;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 3px;
+}
