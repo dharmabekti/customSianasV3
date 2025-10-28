@@ -268,117 +268,117 @@
     <!-- Konten Utama -->
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <div class="container">
+      <div class="container container-wrapper">
         <h2 class="text-center mb-4 d-none d-md-block">Pembayaran Donasi</h2>
-      </div>
 
-      <div class="container">
-        <!-- Total Komitmen -->
-        <div class="mb-4">
-          <h6 class="fw-semibold mb-2 text-secondary">Total Komitmen</h6>
-          <div class="table-responsive">
+        <div class="container">
+          <!-- Total Komitmen -->
+          <div class="mb-4">
+            <h6 class="fw-semibold mb-2 text-secondary">Total Komitmen</h6>
+            <div class="table-responsive">
+              <div class="table-responsive">
+                <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Jenis Donasi</th>
+                      <th>Donasi/Bulan</th>
+                      <th>Jumlah Bulan</th>
+                      <th>Sub Total Donasi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Jenis Donasi"><strong>Donasi SPP</strong></td>
+                      <td data-label="Donasi/Bulan">Rp150.000</td>
+                      <td data-label="Jumlah Bulan">12</td>
+                      <td data-label="Sub Total Donasi">Rp1.800.000</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Jenis Donasi"><strong>Donasi PT</strong></td>
+                      <td data-label="Donasi/Bulan">Rp200.000</td>
+                      <td data-label="Jumlah Bulan">12</td>
+                      <td data-label="Sub Total Donasi">Rp2.400.000</td>
+                    </tr>
+                    <tr>
+                      <td data-label="Jenis Donasi"><strong>Donasi OPR</strong></td>
+                      <td data-label="Donasi/Bulan">Rp20.000</td>
+                      <td data-label="Jumlah Bulan">12</td>
+                      <td data-label="Sub Total Donasi">Rp240.000</td>
+                    </tr>
+                    <tr class="fw-bold text-warning bg-light">
+                      <td class="d-none d-md-table-cell">Total Donasi</td>
+                      <td data-label="Donasi/bulan">Rp 370.000</td>
+                      <td class="d-none d-md-table-cell"></td>
+                      <td data-label="Total Donasi">Rp4.440.000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- Tombol Bayar Donasi -->
+            <div class="text-end mt-3">
+              <a class="btn btn-warning fw-bold px-4 py-2" href="pembayaran-2.html"> Bayar Donasi </a>
+            </div>
+          </div>
+
+          <!-- Status Donasi -->
+          <div class="mb-4">
+            <h6 class="fw-semibold mb-1 text-secondary">
+              Status Donasi <small class="ft-10">(*Total Transfer yang Dihitung hanya yang Berstatus Valid) </small>
+            </h6>
             <div class="table-responsive">
               <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
                 <thead class="table-light">
                   <tr>
-                    <th>Jenis Donasi</th>
-                    <th>Donasi/Bulan</th>
-                    <th>Jumlah Bulan</th>
-                    <th>Sub Total Donasi</th>
+                    <th>Total Transfer</th>
+                    <th>Total Donasi</th>
+                    <th>Sisa Donasi (Kekurangan - / Kelebihan +)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td data-label="Jenis Donasi"><strong>Donasi SPP</strong></td>
-                    <td data-label="Donasi/Bulan">Rp150.000</td>
-                    <td data-label="Jumlah Bulan">12</td>
-                    <td data-label="Sub Total Donasi">Rp1.800.000</td>
-                  </tr>
-                  <tr>
-                    <td data-label="Jenis Donasi"><strong>Donasi PT</strong></td>
-                    <td data-label="Donasi/Bulan">Rp200.000</td>
-                    <td data-label="Jumlah Bulan">12</td>
-                    <td data-label="Sub Total Donasi">Rp2.400.000</td>
-                  </tr>
-                  <tr>
-                    <td data-label="Jenis Donasi"><strong>Donasi OPR</strong></td>
-                    <td data-label="Donasi/Bulan">Rp20.000</td>
-                    <td data-label="Jumlah Bulan">12</td>
-                    <td data-label="Sub Total Donasi">Rp240.000</td>
-                  </tr>
-                  <tr class="fw-bold text-warning bg-light">
-                    <td class="d-none d-md-table-cell">Total Donasi</td>
-                    <td data-label="Donasi/bulan">Rp 370.000</td>
-                    <td class="d-none d-md-table-cell"></td>
+                    <td data-label="Total Transfer">Rp300.000</td>
                     <td data-label="Total Donasi">Rp4.440.000</td>
+                    <td data-label="Sisa Donasi" class="text-danger">-Rp4.140.000</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-          <!-- Tombol Bayar Donasi -->
-          <div class="text-end mt-3">
-            <a class="btn btn-warning fw-bold px-4 py-2" href="pembayaran-2.html"> Bayar Donasi </a>
-          </div>
-        </div>
 
-        <!-- Status Donasi -->
-        <div class="mb-4">
-          <h6 class="fw-semibold mb-1 text-secondary">
-            Status Donasi <small class="ft-10">(*Total Transfer yang Dihitung hanya yang Berstatus Valid) </small>
-          </h6>
-          <div class="table-responsive">
-            <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
-              <thead class="table-light">
-                <tr>
-                  <th>Total Transfer</th>
-                  <th>Total Donasi</th>
-                  <th>Sisa Donasi (Kekurangan - / Kelebihan +)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Total Transfer">Rp300.000</td>
-                  <td data-label="Total Donasi">Rp4.440.000</td>
-                  <td data-label="Sisa Donasi" class="text-danger">-Rp4.140.000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Riwayat Pembayaran -->
-        <div class="mb-4">
-          <h6 class="fw-semibold mb-2 text-secondary">Riwayat Pembayaran</h6>
-          <div class="table-responsive">
-            <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
-              <thead class="table-light">
-                <tr>
-                  <th>Tanggal Transfer</th>
-                  <th>Nominal Transfer</th>
-                  <th>Kode</th>
-                  <th>Status Transfer</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Tanggal Transfer">2 Juli 2025</td>
-                  <td data-label="Nominal Transfer">Rp300.000</td>
-                  <td data-label="Kode">QRIS</td>
-                  <td data-label="Status Transfer">
-                    <span class="badge bg-success px-3 py-2">Valid</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td data-label="Tanggal Transfer">2 Juli 2025</td>
-                  <td data-label="Nominal Transfer">Rp300.000</td>
-                  <td data-label="Kode">TF-BCA</td>
-                  <td data-label="Status Transfer">
-                    <span class="badge bg-info text-dark px-3 py-2">Menunggu Konfirmasi</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <!-- Riwayat Pembayaran -->
+          <div class="mb-4">
+            <h6 class="fw-semibold mb-2 text-secondary">Riwayat Pembayaran</h6>
+            <div class="table-responsive">
+              <table class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+                <thead class="table-light">
+                  <tr>
+                    <th>Tanggal Transfer</th>
+                    <th>Nominal Transfer</th>
+                    <th>Kode</th>
+                    <th>Status Transfer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td data-label="Tanggal Transfer">2 Juli 2025</td>
+                    <td data-label="Nominal Transfer">Rp300.000</td>
+                    <td data-label="Kode">QRIS</td>
+                    <td data-label="Status Transfer">
+                      <span class="badge bg-success px-3 py-2">Valid</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-label="Tanggal Transfer">2 Juli 2025</td>
+                    <td data-label="Nominal Transfer">Rp300.000</td>
+                    <td data-label="Kode">TF-BCA</td>
+                    <td data-label="Status Transfer">
+                      <span class="badge bg-info text-dark px-3 py-2">Menunggu Konfirmasi</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -953,6 +953,13 @@ main {
   }
 }
 
+.container-wrapper {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 25px;
+  background-color: #fff;
+}
+
 /* =========================================================
 📞 Kontak (Contact Cards)
 ========================================================= */
@@ -1093,42 +1100,42 @@ main {
 }
 
 /* ✅ Styling khusus untuk filter bar */
-  .filter-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-  }
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
 
-  .filter-bar label {
-    font-size: 0.9rem;
-    margin-right: 4px;
-    font-weight: 500;
-  }
+.filter-bar label {
+  font-size: 0.9rem;
+  margin-right: 4px;
+  font-weight: 500;
+}
 
-  .filter-bar select {
-    width: auto;
-    min-width: 120px;
-    padding: 2px 6px;
-  }
+.filter-bar select {
+  width: auto;
+  min-width: 120px;
+  padding: 2px 6px;
+}
 
-  /* ✅ Pastikan filter bar tidak mempengaruhi DataTable bawaan */
-  div.dataTables_wrapper .dataTables_filter {
-    float: right;
-    text-align: right;
-    margin-bottom: 10px;
-  }
+/* ✅ Pastikan filter bar tidak mempengaruhi DataTable bawaan */
+div.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+  margin-bottom: 10px;
+}
 
-  div.dataTables_wrapper .dataTables_filter input {
-    width: auto;
-    display: inline-block;
-  }
+div.dataTables_wrapper .dataTables_filter input {
+  width: auto;
+  display: inline-block;
+}
 
-  /* ✅ Jarak antara filter custom dan filter DataTables */
-  .dataTables_wrapper .filter-bar {
-    margin-bottom: 0;
-  }
+/* ✅ Jarak antara filter custom dan filter DataTables */
+.dataTables_wrapper .filter-bar {
+  margin-bottom: 0;
+}
 
 /* Grid Layout Anak Asuh */
 #childGrid .col-6.col-md-2 {

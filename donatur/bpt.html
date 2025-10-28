@@ -266,48 +266,50 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h2 class="text-center mb-3 d-none d-md-block">List Anak BPT</h2>
-      <div class="row">
-        <!-- ✅ FILTER -->
-        <div class="col-md-3 mb-3">
-          <div class="filter-section shadow-sm p-3 bg-white rounded">
-            <!-- ✅ Tambahan teks donasi -->
-            <div class="p-2 text-center rounded bg-light border">
-              <small class="text-muted fw-semibold">
-                Total komitmen Donasi<br />Bantuan Pendidikan Tinggi <br />
-                <span class="text-aat fw-bold">Rp150.000/bulan</span> =
-                <span class="text-aat fw-bold">Rp1.800.000/tahun</span>
-              </small>
-            </div>
-          </div>
-        </div>
-
-        <!-- ✅ GRID ANAK ASUH -->
-        <div class="col-md-9">
-          <!-- Sort & Search -->
-          <div class="row g-2 align-items-center mb-3">
-            <div class="col-6 col-md-auto d-flex align-items-center gap-2">
-              <label class="fw-bold mb-0">Sort:</label>
-              <select id="sortSelect" class="form-select form-select-sm w-100 w-md-auto">
-                <option value="nama">Nama</option>
-                <option value="spp">SPP</option>
-              </select>
-            </div>
-            <div class="col-6 col-md">
-              <input
-                type="text"
-                id="searchInput"
-                class="form-control form-control-sm w-100"
-                placeholder="Cari anak..."
-              />
+      <div class="container-fluid mb-5 container-wrapper">
+        <h2 class="text-center mb-3 d-none d-md-block">List Anak BPT</h2>
+        <div class="row">
+          <!-- ✅ FILTER -->
+          <div class="col-md-3 mb-3">
+            <div class="filter-section shadow-sm p-3 bg-white rounded">
+              <!-- ✅ Tambahan teks donasi -->
+              <div class="p-2 text-center rounded bg-light border">
+                <small class="text-muted fw-semibold">
+                  Total komitmen Donasi<br />Bantuan Pendidikan Tinggi <br />
+                  <span class="text-aat fw-bold">Rp150.000/bulan</span> =
+                  <span class="text-aat fw-bold">Rp1.800.000/tahun</span>
+                </small>
+              </div>
             </div>
           </div>
 
-          <div id="childGrid" class="row g-2"></div>
+          <!-- ✅ GRID ANAK ASUH -->
+          <div class="col-md-9">
+            <!-- Sort & Search -->
+            <div class="row g-2 align-items-center mb-3">
+              <div class="col-6 col-md-auto d-flex align-items-center gap-2">
+                <label class="fw-bold mb-0">Sort:</label>
+                <select id="sortSelect" class="form-select form-select-sm w-100 w-md-auto">
+                  <option value="nama">Nama</option>
+                  <option value="spp">SPP</option>
+                </select>
+              </div>
+              <div class="col-6 col-md">
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control form-control-sm w-100"
+                  placeholder="Cari anak..."
+                />
+              </div>
+            </div>
 
-          <!-- Pagination -->
-          <div class="d-flex justify-content-center mt-3">
-            <nav><ul class="pagination" id="pagination"></ul></nav>
+            <div id="childGrid" class="row g-2"></div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+              <nav><ul class="pagination" id="pagination"></ul></nav>
+            </div>
           </div>
         </div>
       </div>
