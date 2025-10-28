@@ -294,64 +294,66 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h2 class="text-center mb-3 d-none d-md-block">List Penanggungjawab</h2>
-      <!-- ✅ Tombol Toggle Filter (Mobile) -->
-      <div class="d-md-none mb-2">
-        <button
-          class="btn btn-outline-primary w-100"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#filterCollapse"
-          aria-expanded="false"
-          aria-controls="filterCollapse"
-        >
-          <i class="bi bi-funnel"></i> Tampilkan Filter
-        </button>
-      </div>
+      <div class="container-fluid mb-5 container-wrapper">
+        <h2 class="text-center mb-3 d-none d-md-block">List Penanggungjawab</h2>
+        <!-- ✅ Tombol Toggle Filter (Mobile) -->
+        <div class="d-md-none mb-2">
+          <button
+            class="btn btn-outline-primary w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#filterCollapse"
+            aria-expanded="false"
+            aria-controls="filterCollapse"
+          >
+            <i class="bi bi-funnel"></i> Tampilkan Filter
+          </button>
+        </div>
 
-      <div class="row">
-        <!-- ✅ FILTER -->
-        <div class="col-md-2 mb-3">
-          <div id="filterCollapse" class="collapse d-md-block">
-            <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
-              <label class="form-label fw-bold">Status</label>
-              <div id="filterStatus">
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" />
-                  <label class="form-check-label" for="aktif">Aktif</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="tidak_aktif" />
-                  <label class="form-check-label" for="tidak_aktif">Tidak Aktif</label>
-                </div>
-                <div class="form-check mb-3">
-                  <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                  <label class="form-check-label" for="pending">Pending</label>
+        <div class="row">
+          <!-- ✅ FILTER -->
+          <div class="col-md-2 mb-3">
+            <div id="filterCollapse" class="collapse d-md-block">
+              <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label class="form-label fw-bold">Status</label>
+                <div id="filterStatus">
+                  <div class="form-check">
+                    <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" />
+                    <label class="form-check-label" for="aktif">Aktif</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="tidak_aktif" />
+                    <label class="form-check-label" for="tidak_aktif">Tidak Aktif</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
+                    <label class="form-check-label" for="pending">Pending</label>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- ✅ GRID PJ -->
-        <div class="col-md-10">
-          <!-- Search -->
-          <div class="row g-2 align-items-center mb-3">
-            <div class="col-12 col-md">
-              <input
-                type="text"
-                id="searchInput"
-                class="form-control form-control-sm w-100"
-                placeholder="Cari Penanggungjawab..."
-              />
+          <!-- ✅ GRID PJ -->
+          <div class="col-md-10">
+            <!-- Search -->
+            <div class="row g-2 align-items-center mb-3">
+              <div class="col-12 col-md">
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control form-control-sm w-100"
+                  placeholder="Cari Penanggungjawab..."
+                />
+              </div>
             </div>
-          </div>
 
-          <div id="childGrid" class="row g-2"></div>
+            <div id="childGrid" class="row g-2"></div>
 
-          <!-- Pagination -->
-          <div class="d-flex justify-content-center mt-3">
-            <nav><ul class="pagination" id="pagination"></ul></nav>
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+              <nav><ul class="pagination" id="pagination"></ul></nav>
+            </div>
           </div>
         </div>
       </div>
@@ -374,56 +376,56 @@
     <script src="../assets/js/style.js"></script>
 
     <script>
-  const childAsuh = Array.from({ length: 30 }, (_, i) => ({
-    nama: 'Anak ' + (i + 1),
-    noWA: '0812' + String(10000000 + i).padStart(8, '0'), // Contoh nomor WA acak
-    namaSekolah: 'S' + ['D', 'MP', 'MA'][i % 3] + ' ' + (i + 1),
-    status: ['Aktif', 'Tidak Aktif', 'Pending'][i % 3], // Distribusi status: Aktif, Tidak Aktif, Pending
-    foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
-  }));
+      const childAsuh = Array.from({ length: 30 }, (_, i) => ({
+        nama: 'Anak ' + (i + 1),
+        noWA: '0812' + String(10000000 + i).padStart(8, '0'), // Contoh nomor WA acak
+        namaSekolah: 'S' + ['D', 'MP', 'MA'][i % 3] + ' ' + (i + 1),
+        status: ['Aktif', 'Tidak Aktif', 'Pending'][i % 3], // Distribusi status: Aktif, Tidak Aktif, Pending
+        foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
+      }));
 
-  const childGrid = document.getElementById('childGrid');
-  const searchInput = document.getElementById('searchInput');
-  const pagination = document.getElementById('pagination');
-  const statusCheckbox = document.querySelectorAll('.status');
+      const childGrid = document.getElementById('childGrid');
+      const searchInput = document.getElementById('searchInput');
+      const pagination = document.getElementById('pagination');
+      const statusCheckbox = document.querySelectorAll('.status');
 
-  let perPage = 12;
-  let currentPage = 1;
+      let perPage = 12;
+      let currentPage = 1;
 
-  // ✅ Default: status "Aktif" dicentang
-  document.getElementById('aktif').checked = true;
+      // ✅ Default: status "Aktif" dicentang
+      document.getElementById('aktif').checked = true;
 
-  function updatePerPageDynamically() {
-    const screenHeight = window.innerHeight;
-    const cardHeight = 200;
-    const rows = Math.floor((screenHeight - 250) / cardHeight);
-    perPage = rows * 6 || 6;
-  }
+      function updatePerPageDynamically() {
+        const screenHeight = window.innerHeight;
+        const cardHeight = 200;
+        const rows = Math.floor((screenHeight - 250) / cardHeight);
+        perPage = rows * 6 || 6;
+      }
 
-  function renderChild() {
-    updatePerPageDynamically();
+      function renderChild() {
+        updatePerPageDynamically();
 
-    const selectedStatus = Array.from(statusCheckbox)
-      .filter(c => c.checked)
-      .map(c => c.value);
-      
-    const searchTerm = searchInput.value.toLowerCase();
+        const selectedStatus = Array.from(statusCheckbox)
+          .filter(c => c.checked)
+          .map(c => c.value);
 
-    let filtered = childAsuh.filter(
-      a =>
-        (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
-        (a.nama.toLowerCase().includes(searchTerm) || a.namaSekolah.toLowerCase().includes(searchTerm))
-    );
+        const searchTerm = searchInput.value.toLowerCase();
 
-    const totalPages = Math.ceil(filtered.length / perPage);
-    if (currentPage > totalPages) currentPage = totalPages || 1;
+        let filtered = childAsuh.filter(
+          a =>
+            (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
+            (a.nama.toLowerCase().includes(searchTerm) || a.namaSekolah.toLowerCase().includes(searchTerm))
+        );
 
-    const start = (currentPage - 1) * perPage;
-    const paginated = filtered.slice(start, start + perPage);
+        const totalPages = Math.ceil(filtered.length / perPage);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
 
-    childGrid.innerHTML = paginated
-      .map(
-        a => `
+        const start = (currentPage - 1) * perPage;
+        const paginated = filtered.slice(start, start + perPage);
+
+        childGrid.innerHTML = paginated
+          .map(
+            a => `
     <div class="col-6 col-md-2">
       <div class="child-card">
         <img src="${a.foto}" alt="${a.nama}" />
@@ -431,44 +433,42 @@
         <p>${a.noWA}</p>
         <p>${a.namaSekolah}</p>
         <span class="badge bg-${
-          a.status === 'Aktif' ? 'success' :
-          a.status === 'Tidak Aktif' ? 'secondary' : 'warning'
+          a.status === 'Aktif' ? 'success' : a.status === 'Tidak Aktif' ? 'secondary' : 'warning'
         }">${a.status}</span>
       </div>
     </div>`
-      )
-      .join('');
+          )
+          .join('');
 
-    pagination.innerHTML =
-      totalPages > 1
-        ? Array.from(
-            { length: totalPages },
-            (_, i) => `
+        pagination.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
       <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
         <a class="page-link" href="#">${i + 1}</a>
       </li>`
-          ).join('')
-        : '';
+              ).join('')
+            : '';
 
-    document.querySelectorAll('.page-item').forEach((btn, idx) => {
-      btn.addEventListener('click', e => {
-        e.preventDefault();
-        currentPage = idx + 1;
-        renderChild();
-      });
-    });
-  }
+        document.querySelectorAll('.page-item').forEach((btn, idx) => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            currentPage = idx + 1;
+            renderChild();
+          });
+        });
+      }
 
-  [searchInput, ...statusCheckbox].forEach(el =>
-    el.addEventListener('input', () => {
-      currentPage = 1;
-      renderChild();
-    })
-  );
+      [searchInput, ...statusCheckbox].forEach(el =>
+        el.addEventListener('input', () => {
+          currentPage = 1;
+          renderChild();
+        })
+      );
 
-  window.addEventListener('resize', renderChild);
-  renderChild(); // ✅ Render awal langsung status Aktif
-</script>
-
+      window.addEventListener('resize', renderChild);
+      renderChild(); // ✅ Render awal langsung status Aktif
+    </script>
   </body>
 </html>
