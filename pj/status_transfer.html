@@ -295,12 +295,16 @@
       <div class="d-none d-lg-block mb-5"></div>
       <div class="container-fluid form-wrapper">
         <h3 class="mb-4 text-center fw-bold d-none d-lg-block">Status Transfer Beasiswa</h3>
-        <!-- ✅ TABEL UNTUK DESKTOP -->
-        <div class="table-responsive table-desktop d-none d-lg-block">
-          <div class="filter-bar">
+
+        <!-- ✅ FILTER BAR UNTUK DESKTOP -->
+        <div class="table-responsive table-desktop">
+          <div class="filter-bar d-none d-lg-flex">
             <label for="tahunFilter">Tahun:</label>
             <select id="tahunFilter" class="form-select form-select-sm">
               <option value="">Semua</option>
+              <option>2025</option>
+              <option>2024</option>
+              <option>2023</option>
             </select>
 
             <label for="bulanFilter">Bulan:</label>
@@ -320,6 +324,7 @@
               <option>Desember</option>
             </select>
           </div>
+
           <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
             <thead class="table-light">
               <tr>
@@ -339,6 +344,37 @@
 
         <!-- ✅ CARD LIST UNTUK MOBILE -->
         <div class="card-mobile d-lg-none">
+          <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
+          <div class="filter-mobile mb-3">
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun & Bulan</button>
+            <div class="filter-content" id="filterContentMobile">
+              <label for="tahunFilterMobile">Tahun:</label>
+              <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
+                <option value="">Semua</option>
+                <option>2025</option>
+                <option>2024</option>
+                <option>2023</option>
+              </select>
+
+              <label for="bulanFilterMobile">Bulan:</label>
+              <select id="bulanFilterMobile" class="form-select form-select-sm">
+                <option value="">Semua</option>
+                <option>Januari</option>
+                <option>Februari</option>
+                <option>Maret</option>
+                <option>April</option>
+                <option>Mei</option>
+                <option>Juni</option>
+                <option>Juli</option>
+                <option>Agustus</option>
+                <option>September</option>
+                <option>Oktober</option>
+                <option>November</option>
+                <option>Desember</option>
+              </select>
+            </div>
+          </div>
+
           <!-- 🔍 PENCARIAN MOBILE -->
           <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
@@ -383,6 +419,12 @@
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
+      // ✅ Toggle filter dropdown di mobile
+      function toggleFilterMobile() {
+        const content = document.getElementById('filterContentMobile');
+        content.classList.toggle('show');
+      }
+
       // ===============================
       // Daftar Bulan & Tahun
       // ===============================
@@ -402,7 +444,6 @@
       ];
 
       const tahunList = [2021, 2022, 2023, 2024, 2025];
-
       const statusList = ['Auto Reject', 'Reject by Admin', 'Waiting', 'Approved', 'Done'];
       const fileStatusList = ['Ada', 'Belum Ada'];
 
@@ -412,7 +453,7 @@
       const sekolahData = Array.from({ length: 30 }, (_, i) => {
         const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
         const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
-        const jumlah = Math.floor(Math.random() * 3000000) + 500000; // antara 500rb–3,5jt
+        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
         return {
           id: i + 1,
@@ -430,6 +471,12 @@
       const cardList = document.getElementById('cardList');
       const searchCard = document.getElementById('searchCard');
       const paginationMobile = document.getElementById('paginationMobile');
+
+      // Filter elements
+      const tahunFilter = document.getElementById('tahunFilter');
+      const bulanFilter = document.getElementById('bulanFilter');
+      const tahunFilterMobile = document.getElementById('tahunFilterMobile');
+      const bulanFilterMobile = document.getElementById('bulanFilterMobile');
 
       let currentPageMobile = 1;
       const perPageMobile = 6;
@@ -475,17 +522,17 @@
         tableBody.innerHTML = filtered
           .map(
             s => `
-        <tr>
-          <td>${s.id}</td>
-          <td>${s.tahun}</td>
-          <td>${s.sekolah}</td>
-          <td>${s.bulan}</td>
-          <td>${s.jumlah}</td>
-            <td><span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${s.kuitansi}</span></td>
-            <td><span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${s.lampiranKuitansi}</span></td>
-            <td><span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span></td>
-        </tr>
-      `
+      <tr>
+        <td>${s.id}</td>
+        <td>${s.tahun}</td>
+        <td>${s.sekolah}</td>
+        <td>${s.bulan}</td>
+        <td>${s.jumlah.toLocaleString('id-ID')}</td>
+        <td><span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${s.kuitansi}</span></td>
+        <td><span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${s.lampiranKuitansi}</span></td>
+        <td><span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span></td>
+      </tr>
+    `
           )
           .join('');
       }
@@ -495,13 +542,17 @@
       // ===============================
       function renderCards() {
         const searchTerm = searchCard.value.toLowerCase();
+        const tahunVal = tahunFilterMobile.value;
+        const bulanVal = bulanFilterMobile.value;
 
         const filtered = sekolahData.filter(
           s =>
-            s.sekolah.toLowerCase().includes(searchTerm) ||
-            s.tahun.toString().includes(searchTerm) ||
-            s.bulan.toLowerCase().includes(searchTerm) ||
-            s.status.toLowerCase().includes(searchTerm)
+            (tahunVal === '' || s.tahun == tahunVal) &&
+            (bulanVal === '' || s.bulan === bulanVal) &&
+            (s.sekolah.toLowerCase().includes(searchTerm) ||
+              s.tahun.toString().includes(searchTerm) ||
+              s.bulan.toLowerCase().includes(searchTerm) ||
+              s.status.toLowerCase().includes(searchTerm))
         );
 
         const totalPages = Math.ceil(filtered.length / perPageMobile);
@@ -510,45 +561,43 @@
         const start = (currentPageMobile - 1) * perPageMobile;
         const paginated = filtered.slice(start, start + perPageMobile);
 
-        // Render daftar kartu
         cardList.innerHTML = paginated
           .map(
             s => `
-          <div class="col-12">
-            <div class="card shadow-sm p-3 mb-2">
-              <h5 class="card-title">${s.sekolah}</h5>
-              <p class="mb-1"><strong>Tahun:</strong> ${s.tahun}</p>
-              <p class="mb-1"><strong>Bulan:</strong> ${s.bulan}</p>
-              <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
-              <p class="mb-1"><strong>Kuitansi:</strong> <span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${
+      <div class="col-12">
+        <div class="card shadow-sm p-3 mb-2">
+          <h5 class="card-title">${s.sekolah}</h5>
+          <p class="mb-1"><strong>Tahun:</strong> ${s.tahun}</p>
+          <p class="mb-1"><strong>Bulan:</strong> ${s.bulan}</p>
+          <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
+          <p class="mb-1"><strong>Kuitansi:</strong> <span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${
               s.kuitansi
             }</span></p>
-              <p class="mb-1"><strong>Lampiran:</strong> <span class="badge bg-${getFileBadgeClass(
-                s.lampiranKuitansi
-              )}">${s.lampiranKuitansi}</span></p>
-              <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
+          <p class="mb-1"><strong>Lampiran:</strong> <span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${
+              s.lampiranKuitansi
+            }</span></p>
+          <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status
             }</span></p>
-            </div>
-          </div>
-        `
+        </div>
+      </div>
+    `
           )
           .join('');
 
-        // Render Pagination
+        // Pagination
         paginationMobile.innerHTML =
           totalPages > 1
             ? Array.from(
                 { length: totalPages },
                 (_, i) => `
-              <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
-                <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
-              </li>
-            `
+            <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
+              <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+            </li>
+          `
               ).join('')
             : '';
 
-        // Event Delegation untuk Pagination
         paginationMobile.querySelectorAll('.page-link').forEach(link => {
           link.addEventListener('click', e => {
             e.preventDefault();
@@ -562,7 +611,7 @@
       }
 
       // ===============================
-      // Event Pencarian
+      // Event Listener
       // ===============================
       searchCard.addEventListener('input', () => {
         currentPageMobile = 1;
@@ -571,6 +620,15 @@
 
       tahunFilter.addEventListener('change', renderTable);
       bulanFilter.addEventListener('change', renderTable);
+
+      tahunFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+      bulanFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
 
       // ===============================
       // Inisialisasi Awal
