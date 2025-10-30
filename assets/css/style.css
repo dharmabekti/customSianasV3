@@ -1213,6 +1213,13 @@ div.dataTables_wrapper .dataTables_filter input {
   margin-bottom: 0;
 }
 
+/* Geser pagination DataTables ke kanan */
+.dataTables_wrapper .dataTables_paginate {
+  text-align: right !important;
+  justify-content: flex-end !important;
+  display: flex !important;
+}
+
 /* Grid Layout Anak Asuh */
 #childGrid .col-6.col-md-2 {
   flex: 0 0 auto;
