@@ -311,6 +311,108 @@
       </div>
     </main>
 
+    <!-- Modal Detail -->
+     <div
+      class="modal fade"
+      id="detailPT"
+      tabindex="-1"
+      aria-labelledby="detailPT"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detail PT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Nama PT</span>
+                    <span class="info-value">Universitas Atma Jaya Yogyakarta</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Alamat</span>
+                    <span class="info-value">Jalan Gajah Mada, Bandungrejo</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kabupaten</span>
+                    <span class="info-value">Purworejo</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Povinsi</span>
+                    <span class="info-value">Jawa Tengah</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kode Pos</span>
+                    <span class="info-value">54224</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Negara</span>
+                    <span class="info-value">Indonesia</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Telp</span>
+                    <span class="info-value">+62812345678</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Fax</span>
+                    <span class="info-value">0274XXX</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="info-value">Aktif</span>
+                  </div>
+                </div>
+
+                <!-- Kolom kanan -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Bank</span>
+                    <span class="info-value">BRI</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nomor Rekening</span>
+                    <span class="info-value">0048-01-027309-50-8</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Atas Nama</span>
+                    <span class="info-value">Universitas Atma Jaya Yogyakarta</span>
+                  </div>
+                  <div class="info-item"><br>
+                    <span class="info-label">Sekretariat</span>
+                    <span class="info-value">Yogyakarta</span>
+                  </div>
+                  <div class="info-item"><br>
+                    <span class="info-label">Penanggungjawab</span>
+                    <span class="info-value">Pramita Rahayu Suryaningtias S.Pd</span>
+                  </div>
+                  <div class="info-item"><br>
+                    <span class="info-label">Pendamping</span>
+                    <span class="info-value">Yohanes Richo Saputro</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-secondary px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-close me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail -->
+
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -355,7 +457,7 @@
         tableBody.innerHTML = univData
           .map(
             s => `
-              <tr>
+              <tr data-bs-toggle="modal" data-bs-target="#detailPT">
                 <td>${s.id}</td>
                 <td>${s.nama}</td>
                 <td>${s.alamat}</td>
@@ -388,7 +490,7 @@
         cardList.innerHTML = paginated
           .map(
             s => `
-      <div class="col-12">
+      <div class="col-12" data-bs-toggle="modal" data-bs-target="#detailPT">
         <div class="card shadow-sm p-3 mb-2">
           <h5 class="card-title">${s.nama}</h5>
           <p class="mb-1"><strong>alamat:</strong> ${s.alamat}</p>
