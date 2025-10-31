@@ -205,8 +205,12 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pembayaran Donasi</a
+            >
           </div>
           <a
             href="#"
@@ -263,53 +267,57 @@
     </div>
     <main class="container mt-5 pt-4 pb-5">
       <div class="d-none d-lg-block mb-6"></div>
-      <h3 class="text-center page-title">Konfirmasi Donasi SPP Anak Asuh</h3>
-      <div id="paymentList"></div>
-      <!-- Bagian Total Donasi -->
-      <div class="payment-card p-3 mb-3 shadow-sm rounded">
-        <div class="row align-items-center">
-          <div class="col-12 col-md-9 payment-info">
-            <div class="d-flex mb-2">
-              <div class="flex-grow-1"><strong>Total Donasi sampai akhir Tahun Akademik</strong></div>
-              <span class="fs-5 fw-bold">Rp 1.800.000</span>
+      <div class="container-fluid mb-5 container-wrapper">
+        <h3 class="text-center page-title">Konfirmasi Donasi SPP Anak Asuh</h3>
+        <div id="paymentList"></div>
+        <!-- Bagian Total Donasi -->
+        <div class="payment-card p-3 mb-3 shadow-sm rounded">
+          <div class="row align-items-center">
+            <div class="col-12 col-md-9 payment-info">
+              <div class="d-flex mb-2">
+                <div class="flex-grow-1"><strong>Total Donasi sampai akhir Tahun Akademik</strong></div>
+                <span class="fs-5 fw-bold">Rp 1.800.000</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="terms-box">
-        <h3>KETENTUAN</h3>
-        <ul>
-          <li>
-            Donasi SPP bersifat rutin dan berlangsung selama 12 bulan (jika assign di bulan Juli – Oktober) atau 6 bulan
-            (jika assign di bulan Januari)
-          </li>
-          <li>
-            Donasi SPP secara otomatis akan berlanjut ke Tahun Akademik berikutnya sampai anak asuh tersebut lulus.
-          </li>
-          <li>
-            Donasi SPP bisa berhenti saat anak asuh mengundurkan diri atau Donatur tidak berkenan melanjutkan asalkan
-            menuntaskan kewajiban sampai akhir Tahun Akademik dan menghubungi Admin kami.
-          </li>
-        </ul>
-      </div>
+        <div class="terms-box">
+          <h3>KETENTUAN</h3>
+          <ul>
+            <li>
+              Donasi SPP bersifat rutin dan berlangsung selama 12 bulan (jika assign di bulan Juli – Oktober) atau 6
+              bulan (jika assign di bulan Januari)
+            </li>
+            <li>
+              Donasi SPP secara otomatis akan berlanjut ke Tahun Akademik berikutnya sampai anak asuh tersebut lulus.
+            </li>
+            <li>
+              Donasi SPP bisa berhenti saat anak asuh mengundurkan diri atau Donatur tidak berkenan melanjutkan asalkan
+              menuntaskan kewajiban sampai akhir Tahun Akademik dan menghubungi Admin kami.
+            </li>
+          </ul>
+        </div>
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="ageCheck" />
-        <label for="ageCheck"
-          >Saya menyatakan berusia 18 tahun keatas atau dalam pengawasan orang tua untuk melakukan donasi ini</label
-        >
-      </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="ageCheck" />
+          <label for="ageCheck"
+            >Saya menyatakan berusia 18 tahun keatas atau dalam pengawasan orang tua untuk melakukan donasi ini</label
+          >
+        </div>
 
-      <div class="checkbox-group">
-        <input type="checkbox" id="commitCheck" />
-        <label for="commitCheck"
-          >Saya bersedia dan berkomitmen untuk memberikan donasi sejumlah dana yang tertera pada form ini selama waktu
-          yang disepakati pada setiap jenis donasi.</label
-        >
-      </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="commitCheck" />
+          <label for="commitCheck"
+            >Saya bersedia dan berkomitmen untuk memberikan donasi sejumlah dana yang tertera pada form ini selama waktu
+            yang disepakati pada setiap jenis donasi.</label
+          >
+        </div>
 
-      <button class="confirm-btn" id="confirmBtn" disabled onclick="window.location.href='pembayaran.html'">KONFIRMASI</button>
-      <a class="back-link" href="index.html">Kembali</a>
+        <button class="confirm-btn" id="confirmBtn" disabled onclick="window.location.href='pembayaran.html'">
+          KONFIRMASI
+        </button>
+        <a class="back-link" href="index.html">Kembali</a>
+      </div>
     </main>
 
     <!-- Modal Konfirmasi -->
