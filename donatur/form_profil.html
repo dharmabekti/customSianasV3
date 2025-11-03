@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -20,7 +22,7 @@
       </div>
 
       <!-- Navbar Desktop -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 shadow-sm">
+      <nav class="navbar navbar-expand-lg px-3">
         <div class="container-fluid">
           <!-- LEFT MENU -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -45,7 +47,7 @@
                 <li><a class="dropdown-item" href="donasi_pt.html">Bantuan Pendidikan Tinggi</a></li>
                 <li><a class="dropdown-item" href="donasi_opr.html">Operasional</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
+                <li><a class="dropdown-item" onclick="openPage('donasi_langsung')">Donasi Langsung</a></li>
                 <li><a class="dropdown-item" href="riwayat_pembayaran_donasi.html">Pembayaran Donasi</a></li>
               </ul>
             </li>
@@ -71,7 +73,10 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                >Rekening Yayasan</a
+              >
+              <!-- <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a> -->
             </li>
 
             <li class="nav-item">
@@ -79,7 +84,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="kontak.html">Hubungi Kami</a>
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
             </li>
           </ul>
 
@@ -121,11 +126,11 @@
                 <img
                   src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
                   alt="User"
-                  width="36"
-                  height="36"
+                  width="30"
+                  height="30"
                   class="rounded-circle profile-img shadow-sm me-2"
                 />
-                <span class="fw-semibold">D-XX-XXXX</span>
+                <span class="fw-semibold ft-12">D-XX-XXXX</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="profil.html">Profil</a></li>
@@ -146,7 +151,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Hubungi Kami</span>
+        <span class="navbar-brand mx-auto">Ubah Profil</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -204,8 +209,15 @@
               >Bantuan Pendidikan Tinggi</a
             >
             <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a href="pembayaran_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Donasi Langsung</a>
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pembayaran Donasi</a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              onclick="openPage('donasi_langsung')"
+              >Donasi Langsung</a
+            >
+            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pembayaran Donasi</a
+            >
           </div>
           <a
             href="#"
@@ -261,14 +273,82 @@
       </a>
     </div>
 
+    <!-- Konten Utama -->
     <main class="container pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Hubungi Kami</h3>
-      <p class="text-center mb-3 text-muted">Silakan hubungi kami melalui platform berikut.</p>
-      <div class="container py-3">
-        <div id="contactList" class="contact-wrapper"></div>
+      <h3 class="text-center page-title d-none d-lg-block">Ubah Profil</h3>
+      <!-- Hanya muncul di layar besar -->
+      <div class="card p-3">
+        <div class="container-fluid">
+          <form>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="nama_lengkap" value="Master Admin AAT" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" value="masteradmin@aat.or.id" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nik" class="form-label">NIK</label>
+                <input type="text" class="form-control" id="nik" value="1234567890123456" required>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                <input type="date" class="form-control" id="tanggal_lahir" value="1990-01-01" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                <select class="form-select" id="jenis_kelamin" required>
+                  <option value="Laki-Laki" selected>Laki-Laki</option>
+                  <option value="Perempuan">Perempuan</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="alamat" class="form-label">Alamat</label>
+                <textarea class="form-control" id="alamat" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="nama_ayah" class="form-label">Nama Ayah</label>
+                <input type="text" class="form-control" id="nama_ayah" value="Ayah Admin">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="nama_ibu" class="form-label">Nama Ibu</label>
+                <input type="text" class="form-control" id="nama_ibu" value="Ibu Admin">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="alamat_orangtua" class="form-label">Alamat Orang Tua</label>
+              <textarea class="form-control" id="alamat_orangtua" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="pendidikan" class="form-label">Pendidikan</label>
+              <textarea class="form-control" id="pendidikan" rows="3">S1 Informatika - Universitas AAT (2010-2014)
+S2 Teknologi Informasi - Universitas AAT (2015-2017)</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="skill" class="form-label">Skill</label>
+              <input type="text" class="form-control" id="skill" value="PHP, CodeIgniter, MySQL, Project Management">
+            </div>
+            <div class="mb-3">
+              <label for="foto_profil" class="form-label">Foto Profil</label>
+              <input type="file" class="form-control" id="foto_profil" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <a href="profil.html" class="btn btn-secondary ms-2">Batal</a>
+          </form>
+        </div>
       </div>
+      <br />
     </main>
+
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -282,8 +362,186 @@
       </small>
     </footer>
 
+    <!-- Modal QRIS -->
+    <div class="modal fade" id="qrisModal" tabindex="-1" aria-labelledby="qrisModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title fw-semibold" id="qrisModalLabel">Pembayaran via QRIS</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <p class="mb-2 text-muted">Scan kode QR berikut untuk melakukan pembayaran</p>
+
+            <!-- Gambar QRIS -->
+            <img
+              src="../assets/img/qris.png"
+              alt="QRIS Pembayaran"
+              class="img-fluid border rounded-3 shadow-sm mb-3"
+              style="max-width: 280px"
+            />
+
+            <!-- Total pembayaran -->
+            <div class="border rounded-3 py-2 px-3 mb-3 bg-light">
+              <span class="d-block fw-semibold text-secondary small">Total Pembayaran</span>
+              <span class="fw-bold fs-5 text-dark" id="totalQris">Rp300.000</span>
+            </div>
+
+            <small class="text-muted fst-italic"> Pastikan nominal sesuai sebelum melakukan transfer. </small>
+          </div>
+          <div class="modal-footer d-flex justify-content-between flex-wrap">
+            <button
+              type="button"
+              class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+            <button type="button" class="btn btn-success w-100 w-sm-auto">Sudah Bayar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Rekening Yayasan -->
+    <div
+      class="modal fade"
+      id="rekeningYayasanModal"
+      tabindex="-1"
+      aria-labelledby="rekeningModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title fw-semibold" id="qrisModalLabel">Rekening Yayasan AAT Indonesia</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="container my-3">
+              <h3 class="text-center text-aat mb-4"><i class="bi bi-bank2 me-2"></i>Rekening Yayasan</h3>
+              <p class="text-center text-muted mb-5">Berikut rekening resmi Yayasan untuk donasi dan pembayaran:</p>
+
+              <div class="row g-4">
+                <!-- BCA -->
+                <div class="col-md-4">
+                  <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                      <img src="../assets/img/bca.png" alt="Logo BCA" class="mb-3" style="height: 50px" />
+                      <h5 class="card-title fw-bold">Bank BCA</h5>
+                      <p class="card-text">
+                        <strong>No. Rekening:</strong> 123-456-7890<br />
+                        <strong>Atas Nama:</strong> Yayasan ABC
+                      </p>
+                      <button class="btn-copy" onclick="copyText('1234567890')">
+                        <i class="bi bi-clipboard"></i> Salin
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Mandiri -->
+                <div class="col-md-4">
+                  <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                      <img src="../assets/img/mandiri.png" alt="Logo Mandiri" class="mb-3" style="height: 50px" />
+                      <h5 class="card-title fw-bold">Bank Mandiri</h5>
+                      <p class="card-text">
+                        <strong>No. Rekening:</strong> 987-654-3210<br />
+                        <strong>Atas Nama:</strong> Yayasan ABC
+                      </p>
+                      <button class="btn-copy" onclick="copyText('9876543210')">
+                        <i class="bi bi-clipboard"></i> Salin
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- QRIS -->
+                <div class="col-md-4">
+                  <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center d-flex flex-column justify-content-between">
+                      <div>
+                        <img src="../assets/img/logo-qris.jpg" alt="Logo QRIS" class="mb-3" style="height: 50px" />
+                        <h5 class="card-title fw-bold">QRIS Yayasan</h5>
+                        <p class="card-text">Scan QR Code berikut untuk berdonasi:</p>
+                      </div>
+                      <div>
+                        <img
+                          src="https://api.qrserver.com/v1/create-qr-code/?data=YayasanABC-Donasi&size=150x150"
+                          alt="QRIS Yayasan"
+                          class="img-fluid rounded mt-2"
+                          style="max-width: 150px"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between flex-wrap">
+              <button
+                type="button"
+                class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
+                data-bs-dismiss="modal"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Kontak Yayasan -->
+    <div class="modal fade" id="kontakYayasanModal" tabindex="-1" aria-labelledby="kontakModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-info text-white">
+            <h5 class="modal-title fw-semibold" id="qrisModalLabel">Hubungi Kami</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-center">
+            <div class="container my-3">
+              <p class="text-center mb-3 text-muted">Silakan hubungi kami melalui platform berikut.</p>
+              <div id="contactList" class="contact-wrapper"></div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between flex-wrap">
+              <button
+                type="button"
+                class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
+                data-bs-dismiss="modal"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/628172347447?text=Hai%2C%20Admin%2E%0ASaya%20butuh%20bantuan"
+      class="whatsapp-float"
+      target="_blank"
+    >
+      <img src="../assets/img/wa_icon.png" alt="WhatsApp" />
+    </a>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script>
+      function openPage(page) {
+        if (page === 'donasi_langsung') {
+          // Buka modal QRIS langsung
+          $('#rekeningYayasanModal').modal('show');
+        } else {
+          // Pindah ke halaman lain
+          window.location.href = page + '.html';
+        }
+      }
+    </script>
     <script>
       // ✅ Data hanya sekali
       const contacts = [
@@ -315,7 +573,7 @@
           name: 'Facebook',
           icon: 'bi-facebook text-primary',
           value: 'AAT Indonesia',
-          link: 'https://facebook.com/aatindonesia',
+          link: 'https://facebook.com/aat.indonesia',
         },
         { name: 'X (Twitter)', icon: 'bi-twitter-x', value: '@aat_indonesia', link: 'https://x.com/aat_indonesia' },
       ];
@@ -338,7 +596,5 @@
         )
         .join('');
     </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

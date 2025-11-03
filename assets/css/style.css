@@ -1377,7 +1377,7 @@ div.dataTables_wrapper .dataTables_filter input {
 
 h3.page-title {
   font-weight: 700;
-  color: #333;
+  color: var(--aat-primary);
   margin-bottom: 1.5rem;
 }
 .payment-card {
