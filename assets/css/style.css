@@ -24,42 +24,18 @@
 }
 
 /* Utility classes */
-.ft-10 {
-  font-size: var(--ft-10) !important;
-}
-.ft-11 {
-  font-size: var(--ft-11) !important;
-}
-.ft-12 {
-  font-size: var(--ft-12) !important;
-}
-.ft-13 {
-  font-size: var(--ft-13) !important;
-}
-.ft-14 {
-  font-size: var(--ft-14) !important;
-}
-.ft-15 {
-  font-size: var(--ft-15) !important;
-}
-.ft-16 {
-  font-size: var(--ft-16) !important;
-}
-.ft-18 {
-  font-size: var(--ft-18) !important;
-}
-.ft-20 {
-  font-size: var(--ft-20) !important;
-}
-.ft-24 {
-  font-size: var(--ft-24) !important;
-}
-.ft-28 {
-  font-size: var(--ft-28) !important;
-}
-.ft-32 {
-  font-size: var(--ft-32) !important;
-}
+.ft-10 { font-size: var(--ft-10) !important; }
+.ft-11 { font-size: var(--ft-11) !important; }
+.ft-12 { font-size: var(--ft-12) !important; }
+.ft-13 { font-size: var(--ft-13) !important; }
+.ft-14 { font-size: var(--ft-14) !important; }
+.ft-15 { font-size: var(--ft-15) !important; }
+.ft-16 { font-size: var(--ft-16) !important; }
+.ft-18 { font-size: var(--ft-18) !important; }
+.ft-20 { font-size: var(--ft-20) !important; }
+.ft-24 { font-size: var(--ft-24) !important; }
+.ft-28 { font-size: var(--ft-28) !important; }
+.ft-32 { font-size: var(--ft-32) !important; }
 
 /* =========================================================
 🧭 Navbar Desktop
