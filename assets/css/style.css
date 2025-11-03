@@ -174,7 +174,7 @@ main {
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
   background-color: var(--aat-orange);
-  color: white !important;
+  color: black !important;
 }
 
 /* Dropdown Item */
@@ -188,7 +188,7 @@ main {
 .navbar .dropdown-menu .dropdown-item:hover,
 .navbar .dropdown-menu .dropdown-item:focus {
   background-color: var(--aat-orange) !important;
-  color: white !important;
+  color: black !important;
 }
 
 /* Dropdown notifikasi */
@@ -570,13 +570,13 @@ main {
   .navbar .nav-link.active,
   .navbar .dropdown-item.active {
     background-color: var(--aat-orange);
-    color: #fff !important;
+    color: black !important;
     border-radius: 0.4rem;
   }
 
   .navbar .nav-link.active:hover {
     background-color: var(--aat-orange);
-    color: #fff !important;
+    color: black !important;
   }
 
   /* Untuk layar kecil: submenu tampil di bawah */

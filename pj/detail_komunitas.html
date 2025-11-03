@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Komunitas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <span>Sistem Informasi Anak Asuh</span>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="input_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="naik_jenjang.html">Pengajuan Naik Jenjang</a></li>
+                <li><a class="dropdown-item" href="raport.html">Raport, SKL, & Ijazah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Komunitas/Sekolah
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="detail_komunitas.html">Detail Komunitas</a></li>
+                <li><a class="dropdown-item" href="data_pj.html">Data Penanggungjawab</a></li>
+                <li><a class="dropdown-item" href="input_pj.html">Input Penanggungjawab Baru</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="upload_kuitansi.html">Upload Kuitansi</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">PJ-XX-XXXX</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Detail Komunitas</span>
+        <button class="btn btn-outline-light">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <!-- Profil User -->
+      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
+        <img
+          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mb-0">
+          Ki Anom Dharma Bekti
+          <small class="mb-0">(PJ-XX-XXXX)</small>
+        </h6>
+        <small class="mb-0">SMA Dharma Bakti</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-house me-2"></i> Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#anakasuh"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="anakasuh">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengajuan Naik Jenjang</a>
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Raport, SKL, & Ijazah</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="komunitas">
+            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Detail Komunitas</a>
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Penanggungjawab</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="transferbeasiswa">
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Transfer</a>
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengembalian Dana Berlebih</a>
+          </div>
+          <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
+          </a>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia <br />
+          Developed by <span class="fw-bold">Omah IT</span> <br />
+          Maintained by <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Beranda</small>
+      </a>
+      <a href="anak_asuh.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-person-lines-fill fs-4"></i><br />
+        <small>Anak Asuh</small>
+      </a>
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-receipt fs-4"></i><br />
+        <small>Transfer Beasiswa</small>
+      </a>
+      <a href="profil.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-person-fill fs-4"></i><br />
+        <small>Profil</small>
+      </a>
+    </div>
+
+    <!-- Konten Utama -->
+    <main class="container pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <h3 class="text-center page-title d-none d-lg-block">Detail Komunitas</h3>
+      <div class="container my-4">
+        <!-- Card Profil Utama -->
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <!-- Logo Komunitas -->
+              <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="Logo Komunitas"
+                  class="rounded-circle img-fluid shadow-sm"
+                  style="height: 150px; width: 150px"
+                />
+                <h5 class="mt-2">SMA Dharma Bakti</h5>
+                <p class="text-muted mb-1">Sekolah Menengah Atas</p>
+                <span class="badge bg-success">Aktif</span>
+              </div>
+
+              <!-- Info Singkat -->
+              <div class="col-12 col-md-8">
+                <div class="table-responsive">
+                  <table
+                    class="table table-borderless mb-0 list-table no-mobile-hide"
+                    style="width: 100%; text-align: left"
+                  >
+                    <tbody>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal" style="width: 180px">
+                          <i class="bi bi-hash me-2 text-secondary"></i> Kode Komunitas
+                        </th>
+                        <td class="text-dark">KOM-001</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-building me-2 text-secondary"></i> Nama Sekolah/Komunitas
+                        </th>
+                        <td class="text-dark">SMA Dharma Bakti</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat
+                        </th>
+                        <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-telephone-fill me-2 text-secondary"></i> No Telp
+                        </th>
+                        <td class="text-dark">(0274) 123456</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-printer-fill me-2 text-secondary"></i> Fax
+                        </th>
+                        <td class="text-dark">(0274) 123457</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
+                        </th>
+                        <td class="text-dark">info@sma-dharmabakti.sch.id</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigasi Tab (Desktop) -->
+        <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="komunitasTab" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#informasi-umum">Informasi Umum</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak">Kontak</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rekening">Rekening</button>
+          </li>
+        </ul>
+
+        <!-- Isi Tab -->
+        <div class="tab-content" id="tabContent">
+          <div class="tab-pane fade show active" id="informasi-umum">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Informasi Umum</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-building me-2 text-secondary"></i> Jenis Komunitas
+                          </th>
+                          <td class="text-dark">Sekolah</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-mortarboard me-2 text-secondary"></i> Tingkat Pendidikan
+                          </th>
+                          <td class="text-dark">SMA (Sekolah Menengah Atas)</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-calendar me-2 text-secondary"></i> Tahun Berdiri
+                          </th>
+                          <td class="text-dark">2005</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="kontak">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3 text-start">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-telephone me-2 text-secondary"></i> No Telp
+                          </th>
+                          <td class="text-dark">(0274) 123456</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-printer me-2 text-secondary"></i> Fax
+                          </th>
+                          <td class="text-dark">(0274) 123457</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-envelope me-2 text-secondary"></i> Email
+                          </th>
+                          <td class="text-dark">info@sma-dharmabakti.sch.id</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="rekening">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Data Rekening</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-bank me-2 text-secondary"></i> Nama Bank
+                          </th>
+                          <td class="text-dark">Bank Mandiri</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-credit-card me-2 text-secondary"></i> No Rekening
+                          </th>
+                          <td class="text-dark">1234567890</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-person me-2 text-secondary"></i> Atas Nama
+                          </th>
+                          <td class="text-dark">SMA Dharma Bakti</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div id="listCardMobile" class="d-md-none"></div>
+      </div>
+
+      <br />
+    </main>
+
+    <!-- Footer Desktop -->
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
+  </body>
+</html>
