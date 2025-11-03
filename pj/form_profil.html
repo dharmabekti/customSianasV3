@@ -34,21 +34,24 @@
               <a
                 class="nav-link dropdown-toggle"
                 href="#"
-                id="donasiDropdown"
+                id="anakAsuhDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Donasi
+                Anak Asuh
               </a>
-              <ul class="dropdown-menu" aria-labelledby="donasiDropdown">
-                <li><h6 class="dropdown-header">Donasi Rutin</h6></li>
-                <li><a class="dropdown-item" href="donasi_spp.html">SPP</a></li>
-                <li><a class="dropdown-item" href="donasi_pt.html">Bantuan Pendidikan Tinggi</a></li>
-                <li><a class="dropdown-item" href="donasi_opr.html">Operasional</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" onclick="openPage('donasi_langsung')">Donasi Langsung</a></li>
-                <li><a class="dropdown-item" href="riwayat_pembayaran_donasi.html">Pembayaran Donasi</a></li>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="input_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="naik_jenjang.html">Pengajuan Naik Jenjang</a></li>
+                <li><a class="dropdown-item" href="raport.html">Raport, SKL, & Ijazah</a></li>
               </ul>
             </li>
 
@@ -60,27 +63,36 @@
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
-              >
-                Anak Asuh
+                >Komunitas/Sekolah
               </a>
               <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
-                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
-                <li><a class="dropdown-item" href="sekolah.html">List Sekolah</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="bpt.html">List BPT</a></li>
-                <li><a class="dropdown-item" href="pt.html">List Pendidikan Tinggi</a></li>
+                <li><a class="dropdown-item" href="detail_komunitas.html">Detail Komunitas</a></li>
+                <li><a class="dropdown-item" href="data_pj.html">Data Penanggungjawab</a></li>
+                <li><a class="dropdown-item" href="input_pj.html">Input Penanggungjawab Baru</a></li>
               </ul>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
-                >Rekening Yayasan</a
-              >
-              <!-- <a class="nav-link" href="rekening-yayasan.html">Rekening Yayasan</a> -->
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="transfer-tak-dikenal.html">Transfer Tak Dikenal</a>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="upload_kuitansi.html">Upload Kuitansi</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
             </li>
 
             <li class="nav-item">
@@ -130,12 +142,11 @@
                   height="30"
                   class="rounded-circle profile-img shadow-sm me-2"
                 />
-                <span class="fw-semibold ft-12">D-XX-XXXX</span>
+                <span class="fw-semibold ft-12">PJ-XX-XXXX</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="profil.html">Profil</a></li>
                 <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
-                <li><a class="dropdown-item" href="riwayat_donasi.html">Riwayat Donasi</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
               </ul>
@@ -151,7 +162,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Ubah Profil</span>
+        <span class="navbar-brand mx-auto">Informasi Akun</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -184,8 +195,11 @@
           width="80"
           height="80"
         />
-        <h6 class="mb-0">Admin User</h6>
-        <small class="mb-0">Administrator</small>
+        <h6 class="mb-0">
+          Ki Anom Dharma Bekti
+          <small class="mb-0">(PJ-XX-XXXX)</small>
+        </h6>
+        <small class="mb-0">SMA Dharma Bakti</small>
       </div>
 
       <!-- Body Sidebar -->
@@ -199,25 +213,14 @@
             href="#"
             class="list-group-item list-group-item-action bg-aat text-white"
             data-bs-toggle="collapse"
-            data-bs-target="#donasi"
+            data-bs-target="#anakasuh"
           >
-            <i class="bi bi-cash me-2"></i> Donasi <i class="bi bi-chevron-down float-end"></i>
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
           </a>
-          <div class="collapse" id="donasi">
-            <a href="donasi_spp.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">SPP</a>
-            <a href="donasi_pt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Bantuan Pendidikan Tinggi</a
-            >
-            <a href="donasi_opr.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Operasional</a>
-            <a
-              href="#"
-              class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              onclick="openPage('donasi_langsung')"
-              >Donasi Langsung</a
-            >
-            <a href="riwayat_pembayaran_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pembayaran Donasi</a
-            >
+          <div class="collapse" id="anakasuh">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengajuan Naik Jenjang</a>
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Raport, SKL, & Ijazah</a>
           </div>
           <a
             href="#"
@@ -225,22 +228,26 @@
             data-bs-toggle="collapse"
             data-bs-target="#komunitas"
           >
-            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
           </a>
           <div class="collapse" id="komunitas">
-            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Sekolah</a>
-            <a href="bpt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak BPT</a>
-            <a href="#" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Pendidikan Tinggi</a>
+            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Detail Komunitas</a>
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Penanggungjawab</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="transferbeasiswa">
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Transfer</a>
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengembalian Dana Berlebih</a>
           </div>
           <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
             <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
-          </a>
-          <a href="transfer-tak-dikenal.html" class="list-group-item list-group-item-action bg-aat text-white">
-            <i class="bi bi-receipt me-2"></i> Transfer Tak Dikenal
-          </a>
-          <a href="kontak.html" class="list-group-item list-group-item-action bg-aat text-white">
-            <i class="bi bi-telephone me-2"></i> Hubungi Kami
           </a>
         </div>
 
@@ -263,9 +270,9 @@
         <i class="bi bi-person-lines-fill fs-4"></i><br />
         <small>Anak Asuh</small>
       </a>
-      <a href="riwayat_pembayaran_donasi.html" class="text-dark text-center text-decoration-none">
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
-        <small>Pembayaran</small>
+        <small>Transfer Beasiswa</small>
       </a>
       <a href="profil.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-person-fill fs-4"></i><br />
@@ -273,7 +280,6 @@
       </a>
     </div>
 
-    <!-- Konten Utama -->
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Ubah Profil</h3>
@@ -285,40 +291,39 @@
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Nama Lengkap</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_lengkap" value="Master Admin AAT" required>
+                  <input type="text" class="form-control form-control-sm" id="nama_lengkap" required>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Email</label>
+                <label class="col-sm-5 col-form-label form-label">Agama</label>
                 <div class="col-sm-7">
-                  <input type="email" class="form-control form-control-sm" id="email" value="masteradmin@aat.or.id" required>
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">NIK</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nik" value="1234567890123456" required>
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Tanggal Lahir</label>
-                <div class="col-sm-7">
-                  <input type="date" class="form-control form-control-sm" id="tanggal_lahir" value="1990-01-01" required>
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Jenis Kelamin</label>
-                <div class="col-sm-7">
-                  <select class="form-select form-select-sm" id="jenis_kelamin" required>
-                    <option value="Laki-Laki" selected>Laki-Laki</option>
-                    <option value="Perempuan">Perempuan</option>
+                  <select class="form-select form-select-sm" id="agama" required>
+                    <option value="">Pilih Agama</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Kristen">Kristen</option>
+                    <option value="Katolik">Katolik</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Buddha">Buddha</option>
+                    <option value="Konghucu">Konghucu</option>
                   </select>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Pekerjaan</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="pekerjaan" required>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Jabatan</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="jabatan" required>
                 </div>
               </div>
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Alamat</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="alamat" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+                  <textarea class="form-control form-control-sm" id="alamat" rows="3" required></textarea>
                 </div>
               </div>
             </div>
@@ -326,7 +331,7 @@
             <!-- Kolom Tengah (Foto) -->
             <div class="col-lg-2 col-md-12 text-center">
               <div class="upload-box">
-                <input type="file" accept="image/*" onchange="previewFoto(this)" id="foto_profil" />
+                <input type="file" accept="image/*" id="foto" onchange="previewFoto(this)" required>
                 <div class="placeholder">
                   <div><em>Foto Profil</em></div>
                   <span>+</span>
@@ -341,34 +346,39 @@
             <!-- Kolom Kanan -->
             <div class="col-lg-5 col-md-6">
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ayah</label>
+                <label class="col-sm-5 col-form-label form-label">Kabupaten</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_ayah" value="Ayah Admin">
+                  <input type="text" class="form-control form-control-sm" id="kabupaten" required>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ibu</label>
+                <label class="col-sm-5 col-form-label form-label">Provinsi</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_ibu" value="Ibu Admin">
+                  <input type="text" class="form-control form-control-sm" id="provinsi" required>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Alamat Orang Tua</label>
+                <label class="col-sm-5 col-form-label form-label">Kode Pos</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="alamat_orangtua" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+                  <input type="text" class="form-control form-control-sm" id="kode_pos" required>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Pendidikan</label>
+                <label class="col-sm-5 col-form-label form-label">Negara</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="pendidikan" rows="3">S1 Informatika - Universitas AAT (2010-2014)
-S2 Teknologi Informasi - Universitas AAT (2015-2017)</textarea>
+                  <input type="text" class="form-control form-control-sm" id="negara" required>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Skill</label>
+                <label class="col-sm-5 col-form-label form-label">No HP</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="skill" value="PHP, CodeIgniter, MySQL, Project Management">
+                  <input type="text" class="form-control form-control-sm" id="nohp" required>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Email</label>
+                <div class="col-sm-7">
+                  <input type="email" class="form-control form-control-sm" id="email" required>
                 </div>
               </div>
             </div>

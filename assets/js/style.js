@@ -28,12 +28,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const profileContent = document.querySelectorAll('#profileContent .content-section');
   const mobileContainer = document.getElementById('mobileProfile');
   if (mobileContainer && profileContent.length > 0) {
+    mobileContainer.innerHTML = ''; // Clear existing content
     profileContent.forEach(section => {
       const card = document.createElement('div');
       card.className = 'card shadow-sm mb-3';
       const body = document.createElement('div');
       body.className = 'card-body';
       body.innerHTML = section.innerHTML;
+
+      // Add data-label to table cells for mobile list display
+      const table = body.querySelector('.list-table');
+      if (table) {
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const th = row.querySelector('th');
+          const td = row.querySelector('td');
+          if (th && td) {
+            td.setAttribute('data-label', th.textContent.trim());
+          }
+        });
+      }
+
       card.appendChild(body);
       mobileContainer.appendChild(card);
     });
