@@ -159,138 +159,15 @@
     <!-- Navbar Mobile (atas) -->
     <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
       <div class="container-fluid">
-        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-          <i class="bi bi-list"></i>
+        <button class="btn btn-outline-light" type="button" onclick="history.back()">
+          <i class="bi bi-arrow-left"></i>
         </button>
         <span class="navbar-brand mx-auto">Input Anak Asuh</span>
-        <button class="btn btn-outline-light">
-          <i class="bi bi-search"></i>
-        </button>
       </div>
     </nav>
 
-    <!-- Offcanvas Sidebar (Mobile) -->
-    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
-      <!-- Header Sidebar -->
-      <div class="offcanvas-header border-bottom">
-        <div class="d-flex align-items-center">
-          <img
-            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-            class="rounded-circle me-2 profile-img"
-            alt="Logo"
-            width="40"
-            height="40"
-          />
-          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
-        </div>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-      </div>
-
-      <!-- Profil User -->
-      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
-        <img
-          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-          class="rounded-circle profile-img"
-          alt="User"
-          width="80"
-          height="80"
-        />
-        <h6 class="mb-0">
-          Ki Anom Dharma Bekti
-          <small class="mb-0">(PJ-XX-XXXX)</small>
-        </h6>
-        <small class="mb-0">SMA Dharma Bakti</small>
-      </div>
-
-      <!-- Body Sidebar -->
-      <div class="offcanvas-body d-flex flex-column p-0">
-        <!-- Menu scrollable -->
-        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
-          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
-            <i class="bi bi-house me-2"></i> Beranda
-          </a>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#anakasuh"
-          >
-            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="anakasuh">
-            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pengajuan Naik Jenjang</a
-            >
-            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Raport, SKL, & Ijazah</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#komunitas"
-          >
-            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="komunitas">
-            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Detail Komunitas</a
-            >
-            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Penanggungjawab</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#transferbeasiswa"
-          >
-            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="transferbeasiswa">
-            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Transfer</a
-            >
-            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pengembalian Dana Berlebih</a
-            >
-          </div>
-          <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
-            <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
-          </a>
-        </div>
-
-        <!-- Footer Mobile -->
-        <div class="p-3 border-top small text-center text-white d-lg-none">
-          © Yayasan AAT Indonesia <br />
-          Developed by <span class="fw-bold">Omah IT</span> <br />
-          Maintained by <span class="fw-bold">Mandhira IT</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Bottom Navigation (Mobile) -->
-    <div class="mobile-bottom-nav">
-      <a href="index.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-house-fill fs-4"></i><br />
-        <small>Beranda</small>
-      </a>
-      <a href="anak_asuh.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-person-lines-fill fs-4"></i><br />
-        <small>Anak Asuh</small>
-      </a>
-      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-receipt fs-4"></i><br />
-        <small>Transfer Beasiswa</small>
-      </a>
-      <a href="profil.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-person-fill fs-4"></i><br />
-        <small>Profil</small>
-      </a>
-    </div>
+    <div class="mobile-bottom-hide"></div>
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
