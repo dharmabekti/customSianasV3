@@ -302,6 +302,101 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalPembayaran"
+      tabindex="-1"
+      aria-labelledby="modalPembayaranLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+          <div class="modal-header border-0 pb-0">
+            <!-- <h5 class="modal-title fw-bold" id="modalPembayaranLabel">Detail Pembayaran Donasi</h5> -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <!-- Bagian Total -->
+            <div class="row text-center mb-3 g-2">
+              <div class="col-md-4 col-12">
+                <div class="border rounded-3 p-2">
+                  <p class="mb-1 fw-semibold text-secondary">Total Transfer</p>
+                  <h5 class="fw-bold text-dark">Rp2.000.000</h5>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="border rounded-3 p-2">
+                  <p class="mb-1 fw-semibold text-secondary">Total Donasi</p>
+                  <h5 class="fw-bold text-dark">Rp8.100.000</h5>
+                </div>
+              </div>
+              <div class="col-md-4 col-12">
+                <div class="border rounded-3 p-2">
+                  <p class="mb-1 fw-semibold text-secondary">
+                    Sisa Donasi <span class="text-danger">(Kekurangan -)</span>
+                  </p>
+                  <h5 class="fw-bold text-danger">-Rp6.100.000</h5>
+                </div>
+              </div>
+            </div>
+
+            <!-- Besaran Transfer -->
+            <div class="mb-3">
+              <p class="fw-semibold mb-2">Rencana Besaran Transfer</p>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-primary btn-sm fw-semibold" data-percent="100">100%</button>
+                <button class="btn btn-outline-primary btn-sm fw-semibold" data-percent="75">75%</button>
+                <button class="btn btn-outline-primary btn-sm fw-semibold" data-percent="50">50%</button>
+                <button class="btn btn-outline-primary btn-sm fw-semibold" data-percent="25">25%</button>
+
+                <div class="input-group input-group-sm w-auto">
+                  <span class="input-group-text">Rp</span>
+                  <input type="number" class="form-control" placeholder="Jumlah lainnya" id="customAmount" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Metode Pembayaran -->
+            <div class="mb-4">
+              <p class="fw-semibold mb-2">Metode Pembayaran</p>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-success fw-semibold payment-method" data-method="bca">Transfer BCA</button>
+                <button class="btn btn-outline-warning fw-semibold payment-method" data-method="mandiri">Transfer Mandiri</button>
+                <button class="btn btn-outline-info fw-semibold payment-method" data-method="qris">QRIS</button>
+              </div>
+            </div>
+
+            <!-- Ringkasan Pembayaran -->
+            <div class="rounded-4 p-2 text-white" style="background-color: #00aa55">
+              <div class="d-flex justify-content-between small mb-1">
+                <span>Subtotal <strong>Pembayaran</strong></span>
+                <span id="subtotalPembayaran">Rp1.525.000</span>
+              </div>
+              <div class="d-flex justify-content-between small mb-1">
+                <span>Kode Unik</span>
+                <span id="kodeUnik">Rxxx</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="fw-bold fs-5">Total <strong>Pembayaran</strong></span>
+                <h4 class="fw-bold mb-0" id="totalPembayaran">Rp1.525.xxx</h4>
+              </div>
+
+              <div class="d-flex justify-content-end mt-3 gap-2">
+                <button class="btn btn-warning fw-bold text-white">PEMBAYARAN</button>
+                <button class="btn btn-danger fw-bold">Batalkan Transaksi</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
 
@@ -354,7 +449,7 @@
                 <button class="btn btn-primary btn-xl">Kirim Request Kelebihan TF ke TA Selanjutnya</button>
               </div>`;
         } else if (info.status === 'KEKURANGAN') {
-          buttonHTML = `<div class="summary-box mt-5">
+          buttonHTML = `<div class="summary-box mt-5" data-bs-toggle="modal" data-bs-target="#modalPembayaran">
                 <hr>
                 <button class="btn btn-primary btn-xl">Bersedia Melunasi?</button>
               </div>`;
@@ -406,6 +501,88 @@
 
       // Tampilkan default
       showData({ target: document.querySelector('.sidebar-btn.active') }, '2024/2025');
+
+      // Function to format number as Rupiah
+      function formatRupiah(number) {
+        return 'Rp' + number.toLocaleString('id-ID');
+      }
+
+      // Function to update subtotal and total pembayaran
+      function updatePembayaran(amount) {
+        const subtotalElement = document.getElementById('subtotalPembayaran');
+        const totalElement = document.getElementById('totalPembayaran');
+        const kodeUnikElement = document.getElementById('kodeUnik');
+
+        // Calculate kode unik (random 3-digit number)
+        const kodeUnik = Math.floor(Math.random() * 900) + 100;
+
+        // Update subtotal
+        subtotalElement.textContent = formatRupiah(amount);
+
+        // Update kode unik
+        kodeUnikElement.textContent = 'R' + kodeUnik;
+
+        // Update total (subtotal + kode unik)
+        const total = amount + kodeUnik;
+        totalElement.textContent = formatRupiah(total);
+      }
+
+      // Event listeners for percentage buttons
+      document.querySelectorAll('[data-percent]').forEach(button => {
+        button.addEventListener('click', function() {
+          const percent = parseInt(this.getAttribute('data-percent'));
+          const sisaDonasi = 6100000; // Rp6.100.000 (hardcoded for now, can be dynamic)
+          const amount = Math.round(sisaDonasi * (percent / 100));
+          updatePembayaran(amount);
+        });
+      });
+
+      // Event listener for custom amount input
+      document.getElementById('customAmount').addEventListener('input', function() {
+        const amount = parseInt(this.value) || 0;
+        updatePembayaran(amount);
+      });
+
+      // Event listeners for percentage buttons to make them active
+      document.querySelectorAll('[data-percent]').forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all percentage buttons
+          document.querySelectorAll('[data-percent]').forEach(btn => {
+            btn.classList.remove('active');
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-outline-primary');
+          });
+          // Add active class to clicked button
+          this.classList.add('active');
+          this.classList.remove('btn-outline-primary');
+          this.classList.add('btn-primary');
+        });
+      });
+
+      // Event listeners for payment method buttons to make them active
+      document.querySelectorAll('.payment-method').forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all payment method buttons
+          document.querySelectorAll('.payment-method').forEach(btn => {
+            btn.classList.remove('active');
+            btn.classList.remove('btn-success', 'btn-warning', 'btn-info');
+            btn.classList.add('btn-outline-success', 'btn-outline-warning', 'btn-outline-info');
+          });
+          // Add active class to clicked button
+          this.classList.add('active');
+          const method = this.getAttribute('data-method');
+          if (method === 'bca') {
+            this.classList.remove('btn-outline-success');
+            this.classList.add('btn-success');
+          } else if (method === 'mandiri') {
+            this.classList.remove('btn-outline-warning');
+            this.classList.add('btn-warning');
+          } else if (method === 'qris') {
+            this.classList.remove('btn-outline-info');
+            this.classList.add('btn-info');
+          }
+        });
+      });
     </script>
   </body>
 </html>
