@@ -314,7 +314,7 @@
           sma: 2,
           nominal: 'Rp8.100.000/tahun',
           transfer: 'Rp8.100.000',
-          status: 'LUNAS',
+          status: 'KEKURANGAN',
           spp: 'Rp675.000/bulan = Rp8.100.000/tahun',
         },
         '2023/2024': {
@@ -323,6 +323,16 @@
           smp: 3,
           sma: 2,
           nominal: 'Rp6.480.000/tahun',
+          transfer: 'Rp6.480.000',
+          status: 'LUNAS, Ada Kelebihan',
+          spp: 'Rp540.000/bulan = Rp6.480.000/tahun',
+        },
+        '2022/2023': {
+          anak: 8,
+          sd: 3,
+          smp: 3,
+          sma: 2,
+          nominal: 'Rp1.480.000/tahun',
           transfer: 'Rp6.480.000',
           status: 'LUNAS',
           spp: 'Rp540.000/bulan = Rp6.480.000/tahun',
@@ -335,6 +345,20 @@
 
         document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
+
+        console.log('Status: ' + info.status.includes('Ada kelebihan'));
+        let buttonHTML = '';
+        if (info.status === 'LUNAS, Ada Kelebihan') {
+          buttonHTML = `<div class="summary-box mt-5">
+                <hr>
+                <button class="btn btn-primary btn-xl">Kirim Request Kelebihan TF ke TA Selanjutnya</button>
+              </div>`;
+        } else if (info.status === 'KEKURANGAN') {
+          buttonHTML = `<div class="summary-box mt-5">
+                <hr>
+                <button class="btn btn-primary btn-xl">Bersedia Melunasi?</button>
+              </div>`;
+        }
 
         container.innerHTML = `
         <div class="fade-in">
@@ -374,6 +398,7 @@
                 <div>Status Donasi</div>
                 <span>${info.status}</span>
               </div>
+              ${buttonHTML}
             </div>
           </div>
         </div>`;
