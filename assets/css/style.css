@@ -228,6 +228,15 @@ main {
   transform: translateX(-10px);
 }
 
+.list-group-item{
+  color: #111 !important;
+}
+
+.list-group-item.active {
+  color: #111 !important;
+  /* background-color: blue !important; */
+}
+
 .table {
   line-height: 1 !important;
   font-size: 14px;
@@ -1730,6 +1739,7 @@ h3.page-title {
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
+  margin-bottom: 0.5rem;
 }
 
 .sidebar-btn:hover {
@@ -1739,7 +1749,7 @@ h3.page-title {
 
 .sidebar-btn.active {
   background: var(--aat-orange);
-  color: white;
+  color: black;
 }
 
 /* ================= Content Area ================= */

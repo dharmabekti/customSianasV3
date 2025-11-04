@@ -24,6 +24,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // === Highlight menu aktif di sidebar mobile ===
+  const sidebarLinks = document.querySelectorAll('.offcanvas .list-group-item');
+  sidebarLinks.forEach(item => {
+    const hrefPath = item.getAttribute('href');
+    if (hrefPath === currentPath && hrefPath !== '#') {
+      item.classList.add('active');
+      // Jika dalam collapse, buka parent-nya juga
+      const collapseParent = item.closest('.collapse');
+      if (collapseParent) {
+        const trigger = document.querySelector(`[data-bs-target="#${collapseParent.id}"]`);
+        if (trigger) {
+          trigger.classList.add('active');
+        }
+      }
+    }
+  });
+
   // === Profil (mobile view) ===
   const profileContent = document.querySelectorAll('#profileContent .content-section');
   const mobileContainer = document.getElementById('mobileProfile');

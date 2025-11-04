@@ -151,7 +151,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Beranda</span>
+        <span class="navbar-brand mx-auto">Riwayat Donasi</span>
         <button class="btn btn-outline-light">
           <i class="bi bi-search"></i>
         </button>
@@ -277,14 +277,15 @@
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Riwayat Donasi</h3>
-      <div class="mb-5"></div>
+      <!-- Dropdown untuk Mobile -->
+      <div class="d-lg-none mb-3">
+        <select id="mobileYearSelect" class="form-select" onchange="showData(null, this.value)">
+        </select>
+      </div>
+
       <div class="layout">
-        <div class="sidebar">
-          <button class="sidebar-btn active" onclick="showData(event, '2024/2025')">Tahun Ajaran 2024/2025</button>
-          <button class="sidebar-btn" onclick="showData(event, '2023/2024')">Tahun Ajaran 2023/2024</button>
-          <button class="sidebar-btn" onclick="showData(event, '2022/2023')">Tahun Ajaran 2022/2023</button>
-          <button class="sidebar-btn" onclick="showData(event, '2021/2022')">Tahun Ajaran 2021/2022</button>
-          <button class="sidebar-btn" onclick="showData(event, '2020/2021')">Tahun Ajaran 2020/2021</button>
+        <!-- Sidebar untuk Desktop -->
+        <div class="sidebar d-none d-lg-block">
         </div>
 
         <div class="content" id="main-content"></div>
@@ -401,6 +402,8 @@
     <script src="../assets/js/style.js"></script>
 
     <script>
+      const academicYears = ['2024/2025', '2023/2024', '2022/2023', '2021/2022', '2020/2021'];
+
       const data = {
         '2024/2025': {
           anak: 10,
@@ -438,8 +441,17 @@
         const container = document.getElementById('main-content');
         const info = data[key] || data['2024/2025'];
 
-        document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
-        e.target.classList.add('active');
+        // Handle active state for desktop buttons
+        if (e && e.target) {
+          document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+          e.target.classList.add('active');
+        }
+
+        // Sync mobile dropdown with selected key
+        const mobileSelect = document.getElementById('mobileYearSelect');
+        if (mobileSelect) {
+          mobileSelect.value = key;
+        }
 
         console.log('Status: ' + info.status.includes('Ada kelebihan'));
         let buttonHTML = '';
@@ -458,8 +470,8 @@
         container.innerHTML = `
         <div class="fade-in">
           <div class="content-title">${key}</div>
-          <div class="content-grid">
-            <div class="content-left">
+          <div class="content-grid d-flex flex-column flex-lg-row">
+            <div class="content-left col-12 col-lg-6">
               <div class="section-header">Donasi SPP</div>
               <div class="main-value">${info.anak}</div>
               <div class="main-label">anak</div>
@@ -478,9 +490,9 @@
               <div class="not-found">Not Found</div>
             </div>
 
-            <div class="divider"></div>
+            <div class="divider d-none d-lg-block"></div>
 
-            <div class="content-right">
+            <div class="content-right col-12 col-lg-5">
               <div class="summary-box summary-komitmen">
                 <div>Total Komitmen</div>
                 <div><b>${info.nominal}</b></div>
@@ -498,6 +510,25 @@
           </div>
         </div>`;
       }
+
+      // Generate options for mobile select
+      const mobileSelect = document.getElementById('mobileYearSelect');
+      academicYears.forEach(year => {
+        const option = document.createElement('option');
+        option.value = year;
+        option.textContent = `Tahun Ajaran ${year}`;
+        mobileSelect.appendChild(option);
+      });
+
+      // Generate buttons for desktop sidebar
+      const sidebar = document.querySelector('.sidebar');
+      academicYears.forEach((year, index) => {
+        const button = document.createElement('button');
+        button.className = 'sidebar-btn' + (index === 0 ? ' active' : '');
+        button.onclick = (event) => showData(event, year);
+        button.textContent = `Tahun Ajaran ${year}`;
+        sidebar.appendChild(button);
+      });
 
       // Tampilkan default
       showData({ target: document.querySelector('.sidebar-btn.active') }, '2024/2025');
