@@ -163,9 +163,17 @@
           <i class="bi bi-list"></i>
         </button>
         <span class="navbar-brand mx-auto">Penanggungjawab</span>
-        <button class="btn btn-outline-light">
-          <i class="bi bi-search"></i>
-        </button>
+        <div class="dropdown">
+          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
+            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -283,13 +291,13 @@
         <i class="bi bi-person-lines-fill fs-4"></i><br />
         <small>Anak Asuh</small>
       </a>
-      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+      <a href="status_transfer.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
-        <small>Transfer Beasiswa</small>
+        <small>Status Transfer</small>
       </a>
-      <a href="profil.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-person-fill fs-4"></i><br />
-        <small>Profil</small>
+      <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-journal fs-4"></i><br />
+        <small>Raport</small>
       </a>
     </div>
 
