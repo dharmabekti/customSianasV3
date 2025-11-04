@@ -164,7 +164,13 @@
         </button>
         <span class="navbar-brand mx-auto">Beranda</span>
         <div class="dropdown">
-          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
@@ -227,8 +233,12 @@
           </a>
           <div class="collapse" id="anakasuh">
             <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengajuan Naik Jenjang</a>
-            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Raport, SKL, & Ijazah</a>
+            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengajuan Naik Jenjang</a
+            >
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Raport, SKL, & Ijazah</a
+            >
           </div>
           <a
             href="#"
@@ -239,8 +249,12 @@
             <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
           </a>
           <div class="collapse" id="komunitas">
-            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Detail Komunitas</a>
-            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Penanggungjawab</a>
+            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Detail Komunitas</a
+            >
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Penanggungjawab</a
+            >
           </div>
           <a
             href="#"
@@ -251,8 +265,12 @@
             <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
           </a>
           <div class="collapse" id="transferbeasiswa">
-            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Transfer</a>
-            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengembalian Dana Berlebih</a>
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Transfer</a
+            >
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengembalian Dana Berlebih</a
+            >
           </div>
           <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
             <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
@@ -468,10 +486,12 @@
       tabindex="-1"
       aria-labelledby="rekeningModalLabel"
       aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
     >
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content border-0 shadow-lg">
-          <div class="modal-header bg-info text-white">
+          <div class="modal-header bg-aat text-white">
             <h5 class="modal-title fw-semibold" id="qrisModalLabel">Rekening Yayasan AAT Indonesia</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -537,25 +557,27 @@
                 </div>
               </div>
             </div>
-            <div class="modal-footer d-flex justify-content-between flex-wrap">
-              <button
-                type="button"
-                class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
-                data-bs-dismiss="modal"
-              >
-                Tutup
-              </button>
-            </div>
+          </div>
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal Kontak Yayasan -->
-    <div class="modal fade" id="kontakYayasanModal" tabindex="-1" aria-labelledby="kontakModalLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="kontakYayasanModal"
+      tabindex="-1"
+      aria-labelledby="kontakModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content border-0 shadow-lg">
-          <div class="modal-header bg-info text-white">
+          <div class="modal-header bg-aat text-white">
             <h5 class="modal-title fw-semibold" id="qrisModalLabel">Hubungi Kami</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
@@ -564,15 +586,9 @@
               <p class="text-center mb-3 text-muted">Silakan hubungi kami melalui platform berikut.</p>
               <div id="contactList" class="contact-wrapper"></div>
             </div>
-            <div class="modal-footer d-flex justify-content-between flex-wrap">
-              <button
-                type="button"
-                class="btn btn-outline-secondary w-100 w-sm-auto mb-2 mb-sm-0"
-                data-bs-dismiss="modal"
-              >
-                Tutup
-              </button>
-            </div>
+          </div>
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
           </div>
         </div>
       </div>
