@@ -671,7 +671,7 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
       <tr data-bs-toggle="modal" data-bs-target="#detailTransferModal">
         <td>${s.tahun}</td>
         <td>${s.tglTransfer}</td>
-        <td>${s.status === 'Sudah Transfer' ? s.sekolah : ''}</td>
+        <td>${s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''}</td>
         <td>${s.bulan}</td>
         <td>Rp${s.jumlah.toLocaleString('id-ID')}</td>
         <td><span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span></td>
@@ -713,7 +713,7 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
           <h5 class="card-title">${s.bulan}</h5>
           <p class="mb-1"><strong>Tahun Akademik:</strong> ${s.tahun}</p>
           <p class="mb-1"><strong>Tgl Transfer:</strong> ${s.tglTransfer}</p>
-          <p class="mb-1"><strong>Kode:</strong> ${s.status === 'Sudah Transfer' ? s.sekolah : ''}</p>
+          <p class="mb-1"><strong>Kode:</strong> ${s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''}</p>
           <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
           <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status
