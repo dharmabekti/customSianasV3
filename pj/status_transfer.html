@@ -290,9 +290,9 @@
         <i class="bi bi-person-lines-fill fs-4"></i><br />
         <small>Anak Asuh</small>
       </a>
-      <a href="status_transfer.html" class="text-dark text-center text-decoration-none">
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
-        <small>Status Transfer</small>
+        <small>Data Transfer</small>
       </a>
       <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-journal fs-4"></i><br />
@@ -345,6 +345,7 @@
                 <th>Kuitansi</th>
                 <th>Lampiran Kuitansi</th>
                 <th>Status</th>
+                <th>Last Update</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -565,24 +566,35 @@
       const fileStatusList = ['Ada', 'Belum Ada'];
 
       // ===============================
-      // Generate Data Sekolah
-      // ===============================
-      const sekolahData = Array.from({ length: 30 }, (_, i) => {
-        const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
-        const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
-        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+// Generate Data Sekolah
+// ===============================
+const sekolahData = Array.from({ length: 30 }, (_, i) => {
+  const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
+  const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
+  const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
-        return {
-          id: i + 1,
-          tahun,
-          sekolah: `Sekolah ${i + 1}`,
-          bulan,
-          jumlah,
-          kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-          lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-          status: statusList[Math.floor(Math.random() * statusList.length)],
-        };
-      });
+  // Generate random last update date/time
+  const now = new Date();
+  const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
+  const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
+  const randomHours = Math.floor(Math.random() * 24);
+  const randomMinutes = Math.floor(Math.random() * 60);
+  const randomSeconds = Math.floor(Math.random() * 60);
+  randomDate.setHours(randomHours, randomMinutes, randomSeconds);
+  const lastUpdate = randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + randomDate.toLocaleTimeString('id-ID');
+
+  return {
+    id: i + 1,
+    tahun,
+    sekolah: `Sekolah ${i + 1}`,
+    bulan,
+    jumlah,
+    kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    status: statusList[Math.floor(Math.random() * statusList.length)],
+    lastUpdate,
+  };
+});
 
       const tableBody = document.querySelector('#datatable tbody');
       const cardList = document.getElementById('cardList');
@@ -648,6 +660,7 @@
         <td><span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${s.kuitansi}</span></td>
         <td><span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${s.lampiranKuitansi}</span></td>
         <td><span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span></td>
+        <td>${s.lastUpdate}</td>
       </tr>
     `
           )
@@ -696,6 +709,7 @@
           <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status
             }</span></p>
+          <p class="mb-1"><strong>Last Update:</strong> ${s.lastUpdate}</p>
         </div>
       </div>
     `

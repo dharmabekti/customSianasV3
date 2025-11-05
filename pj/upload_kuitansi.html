@@ -164,13 +164,7 @@
         </button>
         <span class="navbar-brand mx-auto">Transfer Beasiswa</span>
         <div class="dropdown">
-          <button
-            class="btn btn-outline-light"
-            type="button"
-            id="mobileProfileDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
@@ -296,7 +290,7 @@
         <i class="bi bi-person-lines-fill fs-4"></i><br />
         <small>Anak Asuh</small>
       </a>
-      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+      <<a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
         <small>Data Transfer</small>
       </a>
@@ -308,231 +302,110 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Pengembalian Dana Berlebih</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Input Data Transfer Beasiswa</h3>
       <div class="container form-wrapper">
-        <div class="row g-4">
-          <!-- Kolom kiri -->
-          <div class="col-lg-4">
-            <div class="p-4 border rounded-4 text-center">
-              <div class="fw-semibold text-primary mb-2">
-                <span class="badge bg-primary rounded-circle me-2">1</span>
-                Transfer Dana Berlebih ke Rek Yayasan sesuai dengan jumlah yang telah ditentukan
+        <form action="">
+          <div class="row">
+            <!-- Kiri -->
+            <div class="col-md-7">
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">ID Komunitas</label>
+                <div class="col-sm-8 d-flex align-items-center">
+                  <input type="text" class="form-control form-control-sm" value="K-14-0209" disabled />
+                </div>
               </div>
 
-              <div class="bg-light p-4 rounded-3 mt-3">
-                <img src="../assets/img/bri.png" width="150" alt="BRI" />
-                <h6 class="mt-3 mb-0 fw-bold"><span class="badge bg-primary mt-2">IDR</span></h6>
-                <p class="mt-3 mb-1 fw-semibold">No. Rek. 0376-01-000376-56-1</p>
-                <p class="mb-0 text-secondary">Yayasan AAT Indonesia<br />Bank BRI</p>
-                <button type="button" class="btn btn-sm btn-outline-primary mt-3">Copy No Rek</button>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Komunitas</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" value="SMK Kristen 2 Magelang" disabled />
+                </div>
               </div>
-            </div>
-          </div>
 
-          <!-- Kolom kanan -->
-          <div class="col-lg-8">
-            <div class="p-4 border rounded-4 text-start">
-              <div class="fw-semibold text-primary mb-2">
-                <span class="badge bg-primary rounded-circle me-2">2</span>
-                Isi Form Pengembalian Dana
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Bank Tujuan</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" value="BRI" disabled />
+                </div>
               </div>
-              <div class="bg-light p-4 rounded-3 mt-3">
-                <form class="d-inline-block" style="max-width: 800px">
-                  <div class="row g-3">
-                    <div class="col-md-8">
-                      <div class="row g-3">
-                        <!-- ID SPP -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">ID SPP</label>
-                            </div>
-                            <div class="col-md-8">
-                              <div class="input-group input-group-sm">
-                                <input type="text" class="form-control" placeholder="Masukkan ID SPP" />
-                                <button class="btn btn-outline-primary" type="button">Cari</button>
-                              </div>
-                              <small class="text-muted fst-italic"
-                                >*ID SPP dapat ditemukan di Status Transfer Beasiswa</small
-                              >
-                            </div>
-                          </div>
-                        </div>
 
-                        <!-- Tahun Ajaran -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Tahun Ajaran</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Rek Tujuan</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" value="0048-01-027309-50-8" disabled />
+                </div>
+              </div>
 
-                        <!-- Komunitas -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Komunitas</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Atas Nama</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" value="SMK KRISTEN 2 MAGELANG" disabled />
+                </div>
+              </div>
 
-                        <!-- Bulan -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Bulan</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Kuitansi</label>
+                <div class="col-sm-8 d-flex gap-2">
+                  <input type="file" class="form-control form-control-sm" />
+                </div>
+                <small class="text-muted fst-italic ps-4 ft-10">
+                  *Format file <em>hanya .jpg, .png, .pdf</em> dengan ukuran maksimal <strong>500 kb</strong>
+                </small>
+              </div>
 
-                        <!-- Tanggal Transfer -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Tanggal Transfer</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Kode Transfer -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Kode Transfer</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Jumlah Transfer -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Jumlah Transfer</label>
-                            </div>
-                            <div class="col-md-8">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                placeholder="*Terisi otomatis sesuai ID"
-                                readonly
-                              />
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Alasan Pengembalian -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Alasan Pengembalian</label>
-                            </div>
-                            <div class="col-md-8">
-                              <div class="d-flex flex-column">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="alasan" id="alasan1" />
-                                  <label class="form-check-label" for="alasan1">Ada Anak Asuh Keluar</label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="alasan" id="alasan2" />
-                                  <label class="form-check-label" for="alasan2">Kelebihan Transfer oleh Yayasan</label>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- Jumlah yang Dikembalikan -->
-                        <div class="col-12">
-                          <div class="row">
-                            <div class="col-md-4">
-                              <label class="form-label fw-semibold">Jumlah yang Dikembalikan</label>
-                            </div>
-                            <div class="col-md-8">
-                              <div class="input-group input-group-sm">
-                                <span class="input-group-text">Rp</span>
-                                <input type="number" class="form-control" placeholder="Masukkan nominal" />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4 text-center">
-                      <span class="text-muted mb-2">Upload Bukti Transfer</span>
-                      <div
-                        class="border rounded-4 p-3 d-flex flex-column justify-content-center align-items-center"
-                      >
-                        <div class="upload-box">
-                          <input type="file" accept="image/*" id="foto" onchange="previewFoto(this)" required />
-                          <div class="placeholder">
-                            <div><em>Foto Profil</em></div>
-                            <span>+</span>
-                          </div>
-                        </div>
-                      </div>
-                      <small class="text-muted d-block mt-1" style="font-size: 0.8rem">
-                        *) Foto wajib ada<br />
-                        *) Format: <strong>.jpg, .png</strong><br />
-                        *) Max: <strong>200Kb</strong>
-                      </small>
-                    </div>
-                  </div>
-
-                  <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-info text-white px-4 rounded-pill fw-semibold">
-                      Kirim ke Admin
-                    </button>
-                    <div class="mt-2">
-                      <a href="#" class="text-danger text-decoration-none fw-semibold">Batalkan</a>
-                    </div>
-                  </div>
-                </form>
+              <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Lampiran Kuitansi</label>
+                <div class="col-sm-8 d-flex gap-2">
+                  <input type="file" class="form-control form-control-sm" />
+                </div>
+                <small class="text-muted fst-italic ps-4 ft-10">
+                  *Format file <em>hanya .jpg, .png, .pdf</em> dengan ukuran maksimal <strong>500 kb</strong>
+                </small>
               </div>
             </div>
+
+            <!-- Kanan -->
+            <div class="col-md-5">
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Tahun Ajaran</label>
+                <div class="col-sm-8 d-flex align-items-center">
+                  <input type="text" class="form-control form-control-sm" value="2025/2026" disabled />
+                </div>
+              </div>
+
+              <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Bulan</label>
+                <div class="col-sm-8">
+                  <div class="d-flex flex-wrap gap-3">
+                    <label><input type="radio" name="bulan" /> Jul</label>
+                    <label><input type="radio" name="bulan" /> Ags</label>
+                    <label><input type="radio" name="bulan" /> Sep</label>
+                    <label><input type="radio" name="bulan" /> Okt</label>
+                    <label><input type="radio" name="bulan" /> Nov</label>
+                    <label><input type="radio" name="bulan" /> Des</label>
+                    <label><input type="radio" name="bulan" /> Jan</label>
+                    <label><input type="radio" name="bulan" /> Feb</label>
+                    <label><input type="radio" name="bulan" /> Mar</label>
+                    <label><input type="radio" name="bulan" /> Apr</label>
+                    <label><input type="radio" name="bulan" /> Mei</label>
+                    <label><input type="radio" name="bulan" /> Jun</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label class="col-sm-4 col-form-label form-label">Uraian</label>
+                <div class="col-sm-8">
+                  <textarea class="form-control form-control-sm" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="text-start mt-3">
+              <button type="submit" class="btn btn-success">Simpan</button>
+              <button type="reset" class="btn btn-danger">Kembali</button>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
     </main>
     <!-- Footer Desktop (sticky di bawah halaman) -->
