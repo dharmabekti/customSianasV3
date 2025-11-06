@@ -328,6 +328,19 @@
                   <label class="form-check-label" for="sma">SMA</label>
                 </div>
               </div>
+
+              <!-- Cart Section -->
+              <div class="cart-section shadow-sm mt-3" onclick="window.location.href='konfirmasi_donasi_spp.html'">
+                <div class="card shadow-sm text-center position-relative">
+                  <div class="card-body" style="padding: 0.5rem;">
+                    <strong class="font-title-menu" style="font-size: 12px;">Anak Asuh Dipilih</strong>
+                    <div class="position-relative d-inline-block">
+                      <img src="../assets/img/anakasuh.png" alt="Anak Asuh" style="width: 50px; height: 50px;" />
+                    </div>
+                    <small class="font-subtitle-menu" style="font-size: 10px;">2 anak</small>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -663,9 +676,8 @@
 
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-            <a href="konfirmasi_donasi_spp.html" type="button" class="btn btn-primary btn-sm"
-              ><i class="bi bi-check"></i>Pilih</a
-            >
+            <button type="button" class="btn btn-primary btn-sm" onclick="alert('Anak asuh telah dipilih!')"
+              ><i class="bi bi-check"></i>Pilih</button>
           </div>
         </div>
       </div>
@@ -765,7 +777,7 @@
               <p class="text-muted">${a.pendidikan}</p>
               <div class="hover-btns">
                 <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
-                <button class="btn btn-sm btn-primary" onclick="window.location.href='konfirmasi_donasi_spp.html'">Pilih</button>
+                <button class="btn btn-sm btn-primary" onclick="alert('Anak asuh telah dipilih!')">Pilih</button>
               </div>
             </div>
           </div>`
