@@ -371,7 +371,7 @@
                 <div id="filterStatusSPP">
                   <div class="form-check">
                     <input class="form-check-input statusSPP" type="checkbox" value="Aktif" id="spp_aktif" />
-                    <label class="form-check-label" for="spp_aktif">Aktif</label>
+                    <label class="form-check-label badge bg-success spp-badge" for="spp_aktif">Aktif</label>
                   </div>
                   <div class="form-check">
                     <input
@@ -380,11 +380,11 @@
                       value="Tidak Aktif"
                       id="spp_tidak_aktif"
                     />
-                    <label class="form-check-label" for="spp_tidak_aktif">Tidak Aktif</label>
+                    <label class="form-check-label badge bg-danger spp-badge" for="spp_tidak_aktif">Tidak Aktif</label>
                   </div>
                   <div class="form-check">
                     <input class="form-check-input statusSPP" type="checkbox" value="Pending" id="spp_pending" />
-                    <label class="form-check-label" for="spp_pending">Pending</label>
+                    <label class="form-check-label badge bg-warning spp-badge" for="spp_pending">Pending</label>
                   </div>
                   <div class="form-check mb-3">
                     <input
@@ -393,7 +393,7 @@
                       value="Belum Diset"
                       id="spp_belum_diset"
                     />
-                    <label class="form-check-label" for="spp_belum_diset">Belum Diset</label>
+                    <label class="form-check-label badge bg-secondary spp-badge" for="spp_belum_diset">Belum Diset</label>
                   </div>
                 </div>
 
@@ -843,6 +843,16 @@
       // ✅ Default: statusSPP "aktif" dicentang
       document.getElementById('spp_aktif').checked = true; // Pastikan ID checkbox untuk status SPP aktif adalah 'aktifSPP'
 
+      function getBadgeClass(statusSPP) {
+        switch (statusSPP) {
+          case 'Aktif': return 'bg-success';
+          case 'Tidak Aktif': return 'bg-danger';
+          case 'Pending': return 'bg-warning';
+          case 'Belum Diset': return 'bg-secondary';
+          default: return 'bg-secondary';
+        }
+      }
+
       function updatePerPageDynamically() {
         const screenHeight = window.innerHeight;
         const cardHeight = 200;
@@ -890,7 +900,7 @@
                   <img src="${a.foto}" alt="${a.nama}" />
                   <h6>${a.nama}</h6>
                   <p>${a.namaSekolah} Kelas ${a.kelas}</p>
-                  <span class="badge bg-success">Rp${a.spp.toLocaleString()}</span>
+                  <span class="badge ${getBadgeClass(a.statusSPP)}">Rp${a.spp.toLocaleString()}</span>
                   <div class="hover-btns">
                     <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
                     <button class="btn btn-sm btn-warning" onclick="window.location.href='input_anak_asuh.html'">Edit</button>
