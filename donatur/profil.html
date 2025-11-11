@@ -280,11 +280,8 @@
                   src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
                   alt="Foto Profil"
                   class="rounded-circle img-fluid shadow-sm"
-                  style="height: 150px; width: 150px"
+                  style="height: 200px; width: 200px"
                 />
-                <h5 class="mt-2">Master Admin</h5>
-                <p class="text-muted mb-1">Super Administrator</p>
-                <span class="badge bg-success">Aktif</span>
               </div>
 
               <!-- Info Singkat -->
@@ -297,19 +294,43 @@
                     <tbody>
                       <tr class="border-bottom align-middle">
                         <th class="text-muted fw-normal" style="width: 180px">
+                          <i class="bi bi-person-fill me-2 text-secondary"></i> ID
+                        </th>
+                        <td class="text-dark">D-XX-XXXX</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal" style="width: 180px">
                           <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
                         </th>
-                        <td class="text-dark">Master Admin AAT</td>
+                        <td class="text-dark">Ki Anom Dharma Bekti</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal" style="width: 180px">
+                          <i class="bi bi-gender-male me-2 text-secondary"></i> Jenis Kelamin
+                        </th>
+                        <td class="text-dark">Laki-Laki</td>
                       </tr>
                       <tr class="border-bottom align-middle">
                         <th class="text-muted fw-normal">
                           <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
                         </th>
-                        <td class="text-dark">masteradmin@aat.or.id</td>
+                        <td class="text-dark">donatur@aat.or.id</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-telephone-fill me-2 text-secondary"></i> No HP
+                        </th>
+                        <td class="text-dark">08515512345</td>
                       </tr>
                       <tr class="align-middle">
                         <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
-                        <td class="text-dark">Super Administrator</td>
+                        <td class="text-dark">Orangtua Asuh</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-person-heart me-2 text-secondary"></i> Status
+                        </th>
+                        <td class="text-dark"><span class="badge bg-success">Aktif</span></td>
                       </tr>
                       <tr class="align-middle">
                         <th class="text-muted fw-normal">
@@ -333,99 +354,60 @@
         <!-- Navigasi Tab (Desktop) -->
         <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
           <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">Data Pribadi</button>
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#alamat">Alamat Rumah</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#orangtua">Orang Tua</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan">Pendidikan</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skill">Skill</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pekerjaan">Data Pekerjaan</button>
           </li>
         </ul>
 
         <!-- Isi Tab (Satu Sumber Data) -->
         <div class="tab-content" id="profileContent">
-          <div class="tab-pane fade show active" id="data-pribadi">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pribadi</h5>
-                  <div class="table-responsive">
-                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                      <tbody>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-credit-card-2-front me-2 text-secondary"></i> NIK
-                          </th>
-                          <td class="text-dark">1234567890123456</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-calendar-date me-2 text-secondary"></i> Tanggal Lahir
-                          </th>
-                          <td class="text-dark">01 Januari 1990</td>
-                        </tr>
-                        <tr>
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-gender-male me-2 text-secondary"></i> Jenis Kelamin
-                          </th>
-                          <td class="text-dark">Laki-Laki</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="alamat">
+          <div class="tab-pane fade show active" id="alamat">
             <div class="card">
               <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body content-section px-4 py-3 text-start">
                   <!-- Heading muncul hanya di mobile -->
                   <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
 
-                  <!-- Alamat dengan icon di kiri -->
-                  <div class="d-flex align-items-start">
-                    <p>Jl. Merpati No. 123, Sleman, Yogyakarta</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade show" id="orangtua">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Data Orangtua</h5>
                   <div class="table-responsive">
                     <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
                       <tbody>
-                        <tr class="border-bottom align-middle">
+                        <tr class="border-bottom">
                           <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Ayah
-                          </th>
-                          <td class="text-dark">Ayah Admin</td>
-                        </tr>
-                        <tr class="border-bottom align-middle">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-person-heart me-2 text-secondary"></i> Nama Ibu
-                          </th>
-                          <td class="text-dark">Ibu Admin</td>
-                        </tr>
-                        <tr class="align-middle">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-house-door-fill me-2 text-secondary"></i> Alamat Orangtua
+                            <i class="bi bi-house-door me-2 text-secondary"></i> Alamat
                           </th>
                           <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-building me-2 text-secondary"></i> Kabupaten / Kota
+                          </th>
+                          <td class="text-dark">Sleman</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-geo-alt me-2 text-secondary"></i> Provinsi
+                          </th>
+                          <td class="text-dark">D.I. Yogyakarta</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-globe me-2 text-secondary"></i> Negara
+                          </th>
+                          <td class="text-dark">Indonesia</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-mailbox me-2 text-secondary"></i>Kode Pos
+                          </th>
+                          <td class="text-dark">55555</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-telephone me-2 text-secondary"></i>Telp. Rumah
+                          </th>
+                          <td class="text-dark">021-123456</td>
                         </tr>
                       </tbody>
                     </table>
@@ -435,26 +417,44 @@
             </div>
           </div>
 
-          <div class="tab-pane fade" id="pendidikan">
+          <div class="tab-pane fade" id="pekerjaan">
             <div class="card">
-              <div class="card-body content-section text-start">
-                <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan</h5>
-                <ul class="text-start">
-                  <li>S1 Informatika - Universitas AAT (2010-2014)</li>
-                  <li>S2 Teknologi Informasi - Universitas AAT (2015-2017)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="skill">
-            <div class="card">
-              <div class="card-body content-section text-start">
-                <h5 class="fw-semibold mb-3 d-block d-md-none">Skill</h5>
-                <span class="badge bg-primary me-1">PHP</span>
-                <span class="badge bg-success me-1">CodeIgniter</span>
-                <span class="badge bg-info me-1">MySQL</span>
-                <span class="badge bg-warning text-dark me-1">Project Management</span>
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pekerjaan</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
+                          </th>
+                          <td class="text-dark">Karyawan Swasta</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-building me-2 text-secondary"></i> Instansi
+                          </th>
+                          <td class="text-dark">CV Mandhira Inovasi Teknologi</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-house-door me-2 text-secondary"></i> Alamat Kantor
+                          </th>
+                          <td class="text-dark">
+                            <p>Jl. Merpati No. 123, Sleman, Yogyakarta</p>
+                          </td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-telephone me-2 text-secondary"></i> Telp./Fax Kantor
+                          </th>
+                          <td class="text-dark">0274-123456 / 0274-123456</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -282,30 +282,38 @@
           <div class="row">
             <!-- Kolom Kiri -->
             <div class="col-lg-5 col-md-6">
+              <h5>Data Pribadi</h5>
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Nama Lengkap</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_lengkap" value="Master Admin AAT" required>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="nama_lengkap"
+                    value="Ki Anom Dharma Bekti"
+                    required
+                  />
                 </div>
               </div>
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Email</label>
                 <div class="col-sm-7">
-                  <input type="email" class="form-control form-control-sm" id="email" value="masteradmin@aat.or.id" required>
+                  <input
+                    type="email"
+                    class="form-control form-control-sm"
+                    id="email"
+                    value="donatur@aat.or.id"
+                    required
+                  />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">NIK</label>
+                <label class="col-sm-5 col-form-label form-label">No HP</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nik" value="1234567890123456" required>
+                  <input type="text" class="form-control form-control-sm" id="no_hp" value="08515512345" required />
                 </div>
               </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Tanggal Lahir</label>
-                <div class="col-sm-7">
-                  <input type="date" class="form-control form-control-sm" id="tanggal_lahir" value="1990-01-01" required>
-                </div>
-              </div>
+
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Jenis Kelamin</label>
                 <div class="col-sm-7">
@@ -318,13 +326,51 @@
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Alamat</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="alamat" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+                  <textarea class="form-control form-control-sm" id="alamat" rows="2">
+Jl. Merpati No. 123, Sleman, Yogyakarta</textarea
+                  >
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Kabupaten / Kota</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="kabupaten_kota" value="Sleman" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Provinsi</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="provinsi"
+                    value="D.I. Yogyakarta"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Negara</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="negara" value="Indonesia" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Kode Pos</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="kode_pos" value="55555" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Telp. Rumah</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="telp_rumah" value="021-123456" required />
                 </div>
               </div>
             </div>
 
             <!-- Kolom Tengah (Foto) -->
-            <div class="col-lg-2 col-md-12 text-center">
+            <div class="col-lg-2 col-md-12 text-center mb-3">
               <div class="upload-box">
                 <input type="file" accept="image/*" onchange="previewFoto(this)" id="foto_profil" />
                 <div class="placeholder">
@@ -332,7 +378,7 @@
                   <span>+</span>
                 </div>
               </div>
-              <small class="d-block mt-2 text-muted" style="font-size: 0.8rem">
+              <small class="d-block mt-2 text-muted text-start" style="font-size: 0.8rem">
                 *) Foto wajib diisi, format JPG/PNG, max 200Kb<br />
                 *) Cara resize foto ada di Panduan
               </small>
@@ -340,35 +386,72 @@
 
             <!-- Kolom Kanan -->
             <div class="col-lg-5 col-md-6">
+              <h5>Data Pekerjaan</h5>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ayah</label>
+                <label class="col-sm-5 col-form-label form-label">Pekerjaan</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_ayah" value="Ayah Admin">
+                  <input type="text" class="form-control form-control-sm" id="pekerjaan" value="Wiraswasta" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ibu</label>
+                <label class="col-sm-5 col-form-label form-label">Jabatan</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="nama_ibu" value="Ibu Admin">
+                  <input type="text" class="form-control form-control-sm" id="jabatan" value="Direktur" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Alamat Orang Tua</label>
+                <label class="col-sm-5 col-form-label form-label">Nama Perusahaan</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="alamat_orangtua" rows="2">Jl. Merpati No. 123, Sleman, Yogyakarta</textarea>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="nama_perusahaan"
+                    value="PT. Dharma Bekti"
+                  />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Pendidikan</label>
+                <label class="col-sm-5 col-form-label form-label">Alamat Perusahaan</label>
                 <div class="col-sm-7">
-                  <textarea class="form-control form-control-sm" id="pendidikan" rows="3">S1 Informatika - Universitas AAT (2010-2014)
-S2 Teknologi Informasi - Universitas AAT (2015-2017)</textarea>
+                  <textarea class="form-control form-control-sm" id="alamat_perusahaan" rows="2">
+Jl. Sudirman No. 45, Jakarta Pusat</textarea
+                  >
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Skill</label>
+                <label class="col-sm-5 col-form-label form-label">Kabupaten / Kota</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" id="skill" value="PHP, CodeIgniter, MySQL, Project Management">
+                  <input type="text" class="form-control form-control-sm" id="kabupaten_kota" value="Sleman" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Provinsi</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="provinsi"
+                    value="D.I. Yogyakarta"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Negara</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="negara" value="Indonesia" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Kode Pos</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="kode_pos" value="55555" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Telp. Kantor</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" id="telp_kantor" value="021-987654" />
                 </div>
               </div>
             </div>
@@ -552,16 +635,6 @@ S2 Teknologi Informasi - Universitas AAT (2015-2017)</textarea>
         </div>
       </div>
     </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a
-      href="https://wa.me/628172347447?text=Hai%2C%20Admin%2E%0ASaya%20butuh%20bantuan"
-      class="btn-float"
-      target="_blank"
-    >
-      <img src="../assets/img/wa_icon.png" alt="WhatsApp" />
-    </a>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
     <script>
