@@ -163,7 +163,13 @@
         </button>
         <span class="navbar-brand mx-auto">Detail Komunitas</span>
         <div class="dropdown">
-          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
@@ -226,8 +232,12 @@
           </a>
           <div class="collapse" id="anakasuh">
             <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengajuan Naik Jenjang</a>
-            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Raport, SKL, & Ijazah</a>
+            <a href="naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengajuan Naik Jenjang</a
+            >
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Raport, SKL, & Ijazah</a
+            >
           </div>
           <a
             href="#"
@@ -238,8 +248,12 @@
             <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
           </a>
           <div class="collapse" id="komunitas">
-            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Detail Komunitas</a>
-            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Penanggungjawab</a>
+            <a href="detail_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Detail Komunitas</a
+            >
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Penanggungjawab</a
+            >
           </div>
           <a
             href="#"
@@ -250,8 +264,12 @@
             <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
           </a>
           <div class="collapse" id="transferbeasiswa">
-            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data Transfer</a>
-            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengembalian Dana Berlebih</a>
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Transfer</a
+            >
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengembalian Dana Berlebih</a
+            >
           </div>
           <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
             <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
@@ -305,7 +323,6 @@
                   style="height: 150px; width: 150px"
                 />
                 <h5 class="mt-2">SMA Dharma Bakti</h5>
-                <p class="text-muted mb-1">Sekolah Menengah Atas</p>
                 <span class="badge bg-success">Aktif</span>
               </div>
 
@@ -335,23 +352,17 @@
                         </th>
                         <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
                       </tr>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal">
-                          <i class="bi bi-telephone-fill me-2 text-secondary"></i> No Telp
+                      <tr class="border-bottom">
+                        <th class="text-muted fw-normal" style="width: 180px">
+                          <i class="bi bi-building me-2 text-secondary"></i> Jenis Komunitas
                         </th>
-                        <td class="text-dark">(0274) 123456</td>
+                        <td class="text-dark">Sekolah</td>
                       </tr>
-                      <tr class="border-bottom align-middle">
+                      <tr class="border-bottom">
                         <th class="text-muted fw-normal">
-                          <i class="bi bi-printer-fill me-2 text-secondary"></i> Fax
+                          <i class="bi bi-mortarboard me-2 text-secondary"></i> Tingkat Pendidikan
                         </th>
-                        <td class="text-dark">(0274) 123457</td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal">
-                          <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
-                        </th>
-                        <td class="text-dark">info@sma-dharmabakti.sch.id</td>
+                        <td class="text-dark">SMA (Sekolah Menengah Atas)</td>
                       </tr>
                     </tbody>
                   </table>
@@ -364,53 +375,25 @@
         <!-- Navigasi Tab (Desktop) -->
         <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="komunitasTab" role="tablist">
           <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#informasi-umum">Informasi Umum</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak">Kontak</button>
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kontak">Kontak</button>
           </li>
           <li class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rekening">Rekening</button>
           </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#penanggungjawab">Penanggungjawab</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bpt">BPT</button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maps">MAPS</button>
+          </li>
         </ul>
 
         <!-- Isi Tab -->
-        <div class="tab-content" id="tabContent">
-          <div class="tab-pane fade show active" id="informasi-umum">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Informasi Umum</h5>
-                  <div class="table-responsive">
-                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                      <tbody>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-building me-2 text-secondary"></i> Jenis Komunitas
-                          </th>
-                          <td class="text-dark">Sekolah</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-mortarboard me-2 text-secondary"></i> Tingkat Pendidikan
-                          </th>
-                          <td class="text-dark">SMA (Sekolah Menengah Atas)</td>
-                        </tr>
-                        <tr>
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-calendar me-2 text-secondary"></i> Tahun Berdiri
-                          </th>
-                          <td class="text-dark">2005</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="kontak">
+        <div class="tab-content d-none d-md-block" id="tabContent">
+          <div class="tab-pane fade show active" id="kontak">
             <div class="card">
               <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body content-section px-4 py-3 text-start">
@@ -425,15 +408,11 @@
                           <td class="text-dark">(0274) 123456</td>
                         </tr>
                         <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-printer me-2 text-secondary"></i> Fax
-                          </th>
+                          <th class="text-muted fw-normal"><i class="bi bi-printer me-2 text-secondary"></i> Fax</th>
                           <td class="text-dark">(0274) 123457</td>
                         </tr>
                         <tr>
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-envelope me-2 text-secondary"></i> Email
-                          </th>
+                          <th class="text-muted fw-normal"><i class="bi bi-envelope me-2 text-secondary"></i> Email</th>
                           <td class="text-dark">info@sma-dharmabakti.sch.id</td>
                         </tr>
                       </tbody>
@@ -477,12 +456,82 @@
               </div>
             </div>
           </div>
+
+          <div class="tab-pane fade" id="penanggungjawab">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Penanggungjawab</h5>
+                  <div id="childGrid" class="row g-2">
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>Penanggungjawab 1</h6>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>Penanggungjawab 2</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="bpt">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">BPT</h5>
+                  <div id="childGrid" class="row g-2">
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>BPT 1</h6>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>BPT 2</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="maps">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">MAPS</h5>
+                  <div class="ratio ratio-16x9">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.098!2d110.365!3d-7.795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787e0e0e0e0%3A0x0!2zN8KwNDcnMzAuMCJTIDExMMKwMjEnNTQuMCJF!5e0!3m2!1sen!2sid!4v1234567890!5m2!1sen!2sid"
+                      width="100%"
+                      height="400"
+                      style="border: 0"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                      title="Lokasi SMA Dharma Bakti"
+                    >
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Mobile Cards -->
         <div id="listCardMobile" class="d-md-none"></div>
       </div>
-
       <br />
     </main>
 
@@ -498,6 +547,391 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
+
+    <!-- Modal Detail BPT -->
+    <div
+      class="modal fade"
+      id="detailBptModal"
+      tabindex="-1"
+      aria-labelledby="detailBptLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title fw-bold" id="detailBptLabel">Detail BPT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- Foto Profil -->
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        alt="Foto Profil"
+                        class="img-fluid shadow-sm"
+                        style="height: 75%; width: 75%"
+                      />
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 40%">
+                                <i class="bi bi-person me-2 text-secondary"></i> Nama Lengkap
+                              </th>
+                              <td class="text-dark">Ahmad Rahman Dani</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-gender-ambiguous me-2 text-secondary"></i> Jenis Kelamin
+                              </th>
+                              <td class="text-dark">Laki - Laki</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-star me-2 text-secondary"></i> Agama
+                              </th>
+                              <td class="text-dark">Islam</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-calendar-date me-2 text-secondary"></i> Tempat, Tanggal Lahir
+                              </th>
+                              <td class="text-dark">Kebumen, 26 September 2008</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-geo-alt me-2 text-secondary"></i> Sekretariat
+                              </th>
+                              <td class="text-dark">Yogyakarta</td>
+                            </tr>
+                            <tr class="align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-calendar-check me-2 text-secondary"></i> Tanggal Gabung
+                              </th>
+                              <td class="text-dark">01 Januari 2023</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pendidikan_bpt">
+                    Pendidikan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak_bpt">Kontak</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="pendidikan_bpt">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-building me-2 text-secondary"></i> Universitas
+                                </th>
+                                <td class="text-dark">Universitas Gadjah Mada</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat Universitas
+                                </th>
+                                <td class="text-dark">Jl. Bulaksumur, Yogyakarta</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-book me-2 text-secondary"></i> Jurusan
+                                </th>
+                                <td class="text-dark">Teknik Informatika</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-calendar me-2 text-secondary"></i> Angkatan
+                                </th>
+                                <td class="text-dark">2021</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade show" id="kontak_bpt">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP/WhatsApp
+                                </th>
+                                <td class="text-dark">0855123456</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-envelope me-2 text-secondary"></i> Email
+                                </th>
+                                <td class="text-dark">ahmad.rahman@example.com</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-instagram me-2 text-secondary"></i> Instagram
+                                </th>
+                                <td class="text-dark">@ahmadrahman</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-twitter me-2 text-secondary"></i> X
+                                </th>
+                                <td class="text-dark">@ahmadrahman</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail BPT -->
+
+    <!-- Modal Detail PJ -->
+    <div
+      class="modal fade"
+      id="detailPJModal"
+      tabindex="-1"
+      aria-labelledby="detailPJLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title fw-bold" id="detailPJLabel">Detail Penanggungjawab</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- Foto Profil -->
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        alt="Foto Profil"
+                        class="img-fluid shadow-sm"
+                        style="height: 75%; width: 75%"
+                      />
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 40%">
+                                <i class="bi bi-person me-2 text-secondary"></i> Nama Lengkap
+                              </th>
+                              <td class="text-dark">Ahmad Rahman Dani</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-gender-ambiguous me-2 text-secondary"></i> Jenis Kelamin
+                              </th>
+                              <td class="text-dark">Laki - Laki</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-star me-2 text-secondary"></i> Agama
+                              </th>
+                              <td class="text-dark">Islam</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-calendar-date me-2 text-secondary"></i> Tempat, Tanggal Lahir
+                              </th>
+                              <td class="text-dark">Kebumen, 26 September 2008</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-geo-alt me-2 text-secondary"></i> Sekretariat
+                              </th>
+                              <td class="text-dark">Yogyakarta</td>
+                            </tr>
+                            <tr class="align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-calendar-check me-2 text-secondary"></i> Tanggal Gabung
+                              </th>
+                              <td class="text-dark">01 Januari 2023</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pendidikan_bpt">
+                    Pendidikan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak_bpt">Kontak</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="pendidikan_bpt">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-building me-2 text-secondary"></i> Universitas
+                                </th>
+                                <td class="text-dark">Universitas Gadjah Mada</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat Universitas
+                                </th>
+                                <td class="text-dark">Jl. Bulaksumur, Yogyakarta</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-book me-2 text-secondary"></i> Jurusan
+                                </th>
+                                <td class="text-dark">Teknik Informatika</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-calendar me-2 text-secondary"></i> Angkatan
+                                </th>
+                                <td class="text-dark">2021</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade show" id="kontak_bpt">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP/WhatsApp
+                                </th>
+                                <td class="text-dark">0855123456</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-envelope me-2 text-secondary"></i> Email
+                                </th>
+                                <td class="text-dark">ahmad.rahman@example.com</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-instagram me-2 text-secondary"></i> Instagram
+                                </th>
+                                <td class="text-dark">@ahmadrahman</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-twitter me-2 text-secondary"></i> X
+                                </th>
+                                <td class="text-dark">@ahmadrahman</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail PJ -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
   </body>
