@@ -50,8 +50,7 @@
                     <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
                   </ul>
                 </li>
-                <li><a class="dropdown-item" href="naik_jenjang.html">Pengajuan Naik Jenjang</a></li>
-                <li><a class="dropdown-item" href="raport.html">Raport, SKL, & Ijazah</a></li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKL, & Ijazah</a></li>
               </ul>
             </li>
 
@@ -174,23 +173,48 @@
       <h3 class="text-center page-title d-none d-lg-block">Form Input Anak Asuh Baru</h3>
       <div class="container form-wrapper">
         <form>
+          <span class="text-important">*) Wajib Diisi</span>
+          <div class="row">
+            <div class="col-lg-5 col-md-6">
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">ID SIANAS/NISN</label>
+                <div class="col-sm-7">
+                  <div class="col-sm-12 d-flex gap-2">
+                    <input type="text" class="form-control form-control-sm" />
+                    <button type="button" class="btn btn-primary btn-sm">Cari</button>
+                  </div>
+                  <small class="text-muted fst-italic ft-10">*) ID SIANAS bisa ditanyakan kepada BPT Sekre</small>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row">
             <!-- Kolom Kiri -->
             <div class="col-lg-5 col-md-6">
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Nama Komunitas/Sekolah</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" placeholder="(Terisi Otomatis)" />
+                  <input type="text" class="form-control form-control-sm" placeholder="(Terisi Otomatis)" readonly />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Lengkap</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Nama Lengkap <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <input type="text" class="form-control form-control-sm" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Jenis Kelamin</label>
+                <label class="col-sm-5 col-form-label form-label">NISN <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label"
+                  >Jenis Kelamin <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
                     <option>Laki-laki</option>
@@ -199,7 +223,7 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Agama</label>
+                <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
                     <option>Islam</option>
@@ -211,19 +235,25 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Tempat Lahir</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Tempat Lahir <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <input type="text" class="form-control form-control-sm" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Tanggal Lahir</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Tanggal Lahir <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <input type="date" class="form-control form-control-sm" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Kelas Saat Beasiswa Aktif</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Kelas Saat Beasiswa Aktif <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
                     <option>== Pilih Kelas ==</option>
@@ -290,6 +320,13 @@
                   <textarea class="form-control form-control-sm" rows="3"></textarea>
                 </div>
               </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Surat Naik Jenjang <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7">
+                  <input type="file" class="form-control form-control-sm" />
+                </div>
+                <span class="text-important"><i>Format file adalah PDF, JPED, JPG, PNG</i></span>
+              </div>
             </div>
 
             <!-- Kolom Tengah (Foto) -->
@@ -301,9 +338,8 @@
                   <span>+</span>
                 </div>
               </div>
-              <small class="d-block mt-2 text-muted" style="font-size: 0.8rem">
-                *) Foto wajib diisi, format JPG/PNG, max 200Kb<br />
-                *) Cara resize foto ada di Panduan
+              <small class="d-block mt-2 text-muted text-start text-important">
+                *) Foto wajib diisi, format JPEG, JPG, PNG, max 200Kb<br />
               </small>
 
               <div class="mt-5">
@@ -322,22 +358,26 @@
             <!-- Kolom Kanan -->
             <div class="col-lg-5 col-md-6">
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Anak ke-</label>
+                <label class="col-sm-5 col-form-label form-label">Anak ke- <sup class="text-important">*)</sup></label>
                 <div class="col-sm-3"><input type="number" class="form-control form-control-sm" /></div>
                 <div class="col-sm-4">
                   <input type="number" class="form-control form-control-sm" placeholder="bersaudara" />
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ayah</label>
+                <label class="col-sm-5 col-form-label form-label">Nama Ayah <sup class="text-important">*)</sup></label>
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Pekerjaan Ayah</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Pekerjaan Ayah <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Penghasilan Ayah</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Penghasilan Ayah <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
                     <option>Tidak Berpenghasilan</option>
@@ -349,15 +389,19 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ibu</label>
+                <label class="col-sm-5 col-form-label form-label">Nama Ibu <sup class="text-important">*)</sup></label>
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Pekerjaan Ibu</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Pekerjaan Ibu <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Penghasilan Ibu</label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Penghasilan Ibu <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
                     <option>Tidak Berpenghasilan</option>
@@ -379,30 +423,19 @@
                 <div class="col-sm-7 d-flex flex-column gap-2">
                   <div class="d-flex align-items-center gap-2">
                     <label for="mobil" class="form-label mb-0" style="width: 60px">Mobil</label>
-                    <input
-                      type="number"
-                      id="mobil"
-                      class="form-control form-control-sm"
-                      min="0"
-                      placeholder="0"
-                    />
+                    <input type="number" id="mobil" class="form-control form-control-sm" min="0" placeholder="0" />
                   </div>
                   <div class="d-flex align-items-center gap-2">
                     <label for="motor" class="form-label mb-0" style="width: 60px">Motor</label>
-                    <input
-                      type="number"
-                      id="motor"
-                      class="form-control form-control-sm"
-                      min="0"
-                      placeholder="0"
-                    />
+                    <input type="number" id="motor" class="form-control form-control-sm" min="0" placeholder="0" />
                   </div>
                 </div>
               </div>
 
               <div class="mb-2">
-                <label class="form-label">Kondisi Keluarga</label>
-                <textarea class="form-control form-control-sm" rows="3"></textarea>
+                <label class="form-label">Kondisi Keluarga <sup class="text-important">*)</sup></label>
+                <textarea class="form-control form-control-sm" rows="5"></textarea>
+                <span class="text-important"><i>Minimal 100 karakter</i></span>
               </div>
             </div>
 
@@ -429,7 +462,25 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
+      $(document).ready(function () {
+        Swal.fire({
+          title: 'Perhatian!',
+          text: 'Silahkan cek data anak asuh terlebih dahulu menggunakan ID Sianas/NISN untuk mengetahui apakah anak asuh pernah terdaftar di Sianas untuk menghindari duplikasi data!',
+          icon: 'warning',
+          allowOutsideClick: false, // Prevents closing on outside click
+        });
+      });
+      /*************  ✨ Windsurf Command ⭐  *************/
+      /**
+       * Preview foto dari input type file
+       * Menghapus placeholder jika ada dan menghapus gambar lama jika ada
+       * Lalu menambahkan gambar baru dari file yang diinput
+       * @param {HTMLInputElement} input - Input type file yang akan di preview
+       */
+      /*******  6671d9d4-df89-4486-a236-43ea65a1e16a  *******/
       function previewFoto(input) {
         const box = input.closest('.upload-box');
         const file = input.files[0];
