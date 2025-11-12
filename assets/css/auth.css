@@ -238,7 +238,7 @@ h2 {
   color: #333;
 }
 
-input[type='text'],
+input[type='text'],input[type='date'],
 input[type='password'],
 input[type='email'], select {
   width: 100%;
@@ -332,4 +332,10 @@ input[type='email'], select {
   footer {
     margin-top: 20px;
   }
+}
+
+.text-important {
+  color: red !important;
+  /* font-style: italic; */
+  font-size: 11px;
 }

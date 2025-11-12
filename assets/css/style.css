@@ -108,6 +108,12 @@ main {
   z-index: 2000;
 }
 
+.text-important {
+  color: red !important;
+  /* font-style: italic; */
+  font-size: 11px;
+}
+
 /* =========================================================
 💚 Warna Khusus AAT
 ========================================================= */

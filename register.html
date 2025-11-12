@@ -19,31 +19,35 @@
     <main class="container container-fluid">
       <div class="rounded-card">
         <h2>Formulir Pendaftaran</h2>
-
         <form>
           <div class="form-group">
-            <label for="nama">Nama Lengkap</label>
+            <label for="nama">Nama Lengkap <sup class="text-important">*)</sup></label>
             <input type="text" id="nama" placeholder="Masukkan nama lengkap" required />
           </div>
 
           <div class="form-group">
-            <label for="email">Alamat Email</label>
+            <label for="email">Alamat Email <sup class="text-important">*)</sup></label>
             <input type="email" id="email" placeholder="Masukkan email" required />
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="kodeNegara">Kode Negara</label>
+              <label for="kodeNegara">Kode Negara <sup class="text-important">*)</sup></label>
               <input type="text" id="kodeNegara" placeholder="+62" required />
             </div>
             <div class="form-group">
-              <label for="whatsapp">Nomor WhatsApp</label>
+              <label for="whatsapp">Nomor WhatsApp <sup class="text-important">*)</sup></label>
               <input type="text" id="whatsapp" placeholder="81234567890" required />
             </div>
           </div>
 
           <div class="form-group">
-            <label>Kenal Yayasan AAT Indonesia dari mana?</label>
+            <label for="tgl_lahir">Tanggal Lahir <sup class="text-important">*)</sup></label>
+            <input type="date" id="tgl_lahir" required />
+          </div>
+
+          <div class="form-group">
+            <label>Kenal Yayasan AAT Indonesia dari mana? <sup class="text-important">*)</sup></label>
             <div class="checkbox-group">
               <label
                 ><input type="checkbox" name="sumber" value="sosial-media" /> Sosial Media (Facebook / Instagram /
@@ -54,6 +58,7 @@
               <label><input type="checkbox" name="sumber" value="lainnya" /> Lainnya</label>
             </div>
           </div>
+        <span class="text-important">*) Wajib diisi</span>
 
           <button type="submit" class="btn-register">Daftar</button>
             <a href="login.html" class="forgot-link green">Sudah punya akun?</a>
