@@ -390,7 +390,7 @@
       class="modal fade"
       id="detailPJModal"
       tabindex="-1"
-      aria-labelledby="detailAnakLabel"
+      aria-labelledby="detailPJLabel"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -398,154 +398,146 @@
     >
       <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-          <div class="modal-header bg-light">
-            <h5 class="modal-title fw-bold" id="detailAnakLabel">Detail Penanggungjawab</h5>
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title fw-bold" id="detailPJLabel">Detail Penanggungjawab</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
             <div class="container my-4">
-        <!-- Card Profil Utama -->
-        <div class="card shadow-sm mb-4">
-          <div class="card-body">
-            <div class="row align-items-center">
-              <!-- Foto Profil -->
-              <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
-                <img
-                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-                  alt="Foto Profil"
-                  class="rounded-circle img-fluid shadow-sm"
-                  style="height: 150px; width: 150px"
-                />
-                <h5 class="mt-2">Master Admin</h5>
-                <p class="text-muted mb-1">Super Administrator</p>
-                <span class="badge bg-success">Aktif</span>
-              </div>
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <!-- Foto Profil -->
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                        alt="Foto Profil"
+                        class="img-fluid shadow-sm"
+                        style="height: 75%; width: 75%"
+                      />
+                    </div>
 
-              <!-- Info Singkat -->
-              <div class="col-12 col-md-8">
-                <div class="table-responsive">
-                  <table
-                    class="table table-borderless mb-0 list-table no-mobile-hide"
-                    style="width: 100%; text-align: left"
-                  >
-                    <tbody>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal" style="width: 180px">
-                          <i class="bi bi-hash me-2 text-secondary"></i> ID
-                        </th>
-                        <td class="text-dark">PJ-001</td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal">
-                          <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
-                        </th>
-                        <td class="text-dark">PJ Full Name</td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal">
-                          <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
-                        </th>
-                        <td class="text-dark">pj@example.com</td>
-                      </tr>
-                      <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
-                        <td class="text-dark">Penanggung Jawab</td>
-                      </tr>
-                      <tr class="align-middle">
-                        <th class="text-muted fw-normal">
-                          <i class="bi bi-key me-2 text-secondary"></i> Terakhir Login
-                        </th>
-                        <td class="text-dark">12 September 2025, 09:30 WIB</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div class="mt-3 text-start">
-                    <a href="form_profil.html" class="btn btn-primary btn-sm me-2">
-                      <i class="bi bi-pencil-square"></i> Edit Profil
-                    </a>
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-borderless mb-0 list-table no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-hash me-2 text-secondary"></i> ID
+                              </th>
+                              <td class="text-dark">PJ-001</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
+                              </th>
+                              <td class="text-dark">PJ Full Name</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
+                              </th>
+                              <td class="text-dark">pj@example.com</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
+                              <td class="text-dark">Penanggung Jawab</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Status</th>
+                              <td class="text-dark"><span class="badge bg-success">Aktif</span></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Navigasi Tab (Desktop) -->
-        <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
-          <li class="nav-item">
-            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">Data Pribadi</button>
-          </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
-          </li>
-        </ul>
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">
+                    Data Pribadi
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
+                </li>
+              </ul>
 
-        <!-- Isi Tab (Satu Sumber Data) -->
-        <div class="tab-content" id="profileContent">
-          <div class="tab-pane fade show active" id="data-pribadi">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pribadi</h5>
-                  <div class="table-responsive">
-                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                      <tbody>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-heart me-2 text-secondary"></i> Agama
-                          </th>
-                          <td class="text-dark">Islam</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
-                          </th>
-                          <td class="text-dark">Pegawai Swasta</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-award me-2 text-secondary"></i> Jabatan
-                          </th>
-                          <td class="text-dark">Manager</td>
-                        </tr>
-                        <tr>
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-telephone me-2 text-secondary"></i> No HP
-                          </th>
-                          <td class="text-dark">081234567890</td>
-                        </tr>
-                      </tbody>
-                    </table>
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="data-pribadi">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pribadi</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-heart me-2 text-secondary"></i> Agama
+                                </th>
+                                <td class="text-dark">Islam</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
+                                </th>
+                                <td class="text-dark">Pegawai Swasta</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-award me-2 text-secondary"></i> Jabatan
+                                </th>
+                                <td class="text-dark">Manager</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP
+                                </th>
+                                <td class="text-dark">081234567890</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="alamat">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3 text-start">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
+
+                        <!-- Alamat dengan icon di kiri -->
+                        <div class="d-flex align-items-start">
+                          <p>Jl. Merpati No. 123, Sleman, Yogyakarta, 55281, Indonesia</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
             </div>
           </div>
 
-          <div class="tab-pane fade" id="alamat">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3 text-start">
-                  <!-- Heading muncul hanya di mobile -->
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
-
-                  <!-- Alamat dengan icon di kiri -->
-                  <div class="d-flex align-items-start">
-                    <p>Jl. Merpati No. 123, Sleman, Yogyakarta, 55281, Indonesia</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-        <div id="mobileProfile" class="d-md-none"></div>
-      </div>
-          </div>
-
-          <div class="modal-footer justify-content-between">
+          <div class="modal-footer justify-content-end">
             <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
           </div>
         </div>

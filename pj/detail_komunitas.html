@@ -600,9 +600,7 @@
                               <td class="text-dark">Laki - Laki</td>
                             </tr>
                             <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-star me-2 text-secondary"></i> Agama
-                              </th>
+                              <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Agama</th>
                               <td class="text-dark">Islam</td>
                             </tr>
                             <tr class="border-bottom align-middle">
@@ -763,11 +761,11 @@
               <!-- Card Profil Utama -->
               <div class="card shadow-sm mb-4">
                 <div class="card-body">
-                  <div class="row">
+                  <div class="row align-items-center">
                     <!-- Foto Profil -->
                     <div class="col-md-3 text-center mb-3 mb-md-0">
                       <img
-                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
                         alt="Foto Profil"
                         class="img-fluid shadow-sm"
                         style="height: 75%; width: 75%"
@@ -777,43 +775,36 @@
                     <!-- Info Singkat -->
                     <div class="col-12 col-md-8">
                       <div class="table-responsive">
-                        <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                        <table
+                          class="table table-borderless mb-0 list-table no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
                           <tbody>
                             <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 40%">
-                                <i class="bi bi-person me-2 text-secondary"></i> Nama Lengkap
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-hash me-2 text-secondary"></i> ID
                               </th>
-                              <td class="text-dark">Ahmad Rahman Dani</td>
+                              <td class="text-dark">PJ-001</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
-                                <i class="bi bi-gender-ambiguous me-2 text-secondary"></i> Jenis Kelamin
+                                <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
                               </th>
-                              <td class="text-dark">Laki - Laki</td>
+                              <td class="text-dark">PJ Full Name</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
-                                <i class="bi bi-star me-2 text-secondary"></i> Agama
+                                <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
                               </th>
-                              <td class="text-dark">Islam</td>
+                              <td class="text-dark">pj@example.com</td>
                             </tr>
                             <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-calendar-date me-2 text-secondary"></i> Tempat, Tanggal Lahir
-                              </th>
-                              <td class="text-dark">Kebumen, 26 September 2008</td>
+                              <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
+                              <td class="text-dark">Penanggung Jawab</td>
                             </tr>
                             <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-geo-alt me-2 text-secondary"></i> Sekretariat
-                              </th>
-                              <td class="text-dark">Yogyakarta</td>
-                            </tr>
-                            <tr class="align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-calendar-check me-2 text-secondary"></i> Tanggal Gabung
-                              </th>
-                              <td class="text-dark">01 Januari 2023</td>
+                              <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Status</th>
+                              <td class="text-dark"><span class="badge bg-success">Aktif</span></td>
                             </tr>
                           </tbody>
                         </table>
@@ -824,51 +815,50 @@
               </div>
 
               <!-- Navigasi Tab (Desktop) -->
-              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pendidikan_bpt">
-                    Pendidikan
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">
+                    Data Pribadi
                   </button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak_bpt">Kontak</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
                 </li>
               </ul>
 
               <!-- Isi Tab (Satu Sumber Data) -->
               <div class="tab-content" id="profileContent">
-                <div class="tab-pane fade show active" id="pendidikan_bpt">
+                <div class="tab-pane fade show active" id="data-pribadi">
                   <div class="card">
                     <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section">
-                        <!-- Heading muncul hanya di mobile -->
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan</h5>
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pribadi</h5>
                         <div class="table-responsive">
                           <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
                             <tbody>
                               <tr class="border-bottom">
                                 <th class="text-muted fw-normal" style="width: 180px">
-                                  <i class="bi bi-building me-2 text-secondary"></i> Universitas
+                                  <i class="bi bi-heart me-2 text-secondary"></i> Agama
                                 </th>
-                                <td class="text-dark">Universitas Gadjah Mada</td>
+                                <td class="text-dark">Islam</td>
                               </tr>
                               <tr class="border-bottom">
                                 <th class="text-muted fw-normal">
-                                  <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat Universitas
+                                  <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
                                 </th>
-                                <td class="text-dark">Jl. Bulaksumur, Yogyakarta</td>
+                                <td class="text-dark">Pegawai Swasta</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-award me-2 text-secondary"></i> Jabatan
+                                </th>
+                                <td class="text-dark">Manager</td>
                               </tr>
                               <tr>
                                 <th class="text-muted fw-normal">
-                                  <i class="bi bi-book me-2 text-secondary"></i> Jurusan
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP
                                 </th>
-                                <td class="text-dark">Teknik Informatika</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-calendar me-2 text-secondary"></i> Angkatan
-                                </th>
-                                <td class="text-dark">2021</td>
+                                <td class="text-dark">081234567890</td>
                               </tr>
                             </tbody>
                           </table>
@@ -878,40 +868,16 @@
                   </div>
                 </div>
 
-                <div class="tab-pane fade show" id="kontak_bpt">
+                <div class="tab-pane fade" id="alamat">
                   <div class="card">
                     <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section text-start">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
-                        <div class="table-responsive">
-                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                            <tbody>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal" style="width: 180px">
-                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP/WhatsApp
-                                </th>
-                                <td class="text-dark">0855123456</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-envelope me-2 text-secondary"></i> Email
-                                </th>
-                                <td class="text-dark">ahmad.rahman@example.com</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-instagram me-2 text-secondary"></i> Instagram
-                                </th>
-                                <td class="text-dark">@ahmadrahman</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-twitter me-2 text-secondary"></i> X
-                                </th>
-                                <td class="text-dark">@ahmadrahman</td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <div class="card-body content-section px-4 py-3 text-start">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
+
+                        <!-- Alamat dengan icon di kiri -->
+                        <div class="d-flex align-items-start">
+                          <p>Jl. Merpati No. 123, Sleman, Yogyakarta, 55281, Indonesia</p>
                         </div>
                       </div>
                     </div>
