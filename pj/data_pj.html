@@ -606,7 +606,7 @@
         childGrid.innerHTML = paginated
           .map(
             a => `
-    <div class="col-6 col-md-2">
+    <div class="col-6 col-md-2" data-bs-toggle="modal" data-bs-target="#detailPJModal">
       <div class="child-card">
         <img src="${a.foto}" alt="${a.nama}" />
         <h6>${a.nama}</h6>
@@ -615,10 +615,6 @@
         <span class="badge bg-${
           a.status === 'Aktif' ? 'success' : a.status === 'Tidak Aktif' ? 'secondary' : 'warning'
         }">${a.status}</span>
-        <div class="hover-btns">
-          <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailPJModal">Detail</button>
-          <button class="btn btn-sm btn-warning" onclick="window.location.href='input_pj.html'">Edit</button>
-        </div>
       </div>
     </div>`
           )
