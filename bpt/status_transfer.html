@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Admin Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <span>Sistem Informasi Anak Asuh</span>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="input_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKL, & Ijazah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Komunitas/Sekolah
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
+                <li><a class="dropdown-item" href="data_pj.html">Data Penanggungjawab</a></li>
+                <li><a class="dropdown-item" href="input_pj.html">Input Penanggungjawab Baru</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Laporan
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="report_anakasuh.html">Laporan Anak Asuh</a></li>
+                <li><a class="dropdown-item" href="report_sekolah.html">Laporan Komunitas/Sekolah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">BPT-XX-XXXX</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Beranda</span>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
+            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <!-- Profil User -->
+      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
+        <img
+          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mt-1">Ki Anom</h6>
+        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">Sekretariat Yogyakarta</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-house me-2"></i> Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#anakasuh"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="anakasuh">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Raport, SKL, & Ijazah</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="komunitas">
+            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Komunitas/Sekolah</a
+            >
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Penanggungjawab</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="transferbeasiswa">
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Transfer</a
+            >
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengembalian Dana Berlebih</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#laporan"
+          >
+            <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="laporan">
+            <a href="report_anakasuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Anak Asuh</a
+            >
+            <a href="report_sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Komunitas/Sekolah</a
+            >
+          </div>
+          <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
+          </a>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia <br />
+          Developed by <span class="fw-bold">Omah IT</span> <br />
+          Maintained by <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Beranda</small>
+      </a>
+      <a href="data_sekolah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Sekolah</small>
+      </a>
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-receipt fs-4"></i><br />
+        <small>Data Transfer</small>
+      </a>
+      <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-journal fs-4"></i><br />
+        <small>Raport</small>
+      </a>
+    </div>
+
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <h3 class="text-center page-title d-none d-lg-block">Status Transfer Beasiswa</h3>
+      <div class="container-fluid form-wrapper">
+
+        <!-- ✅ FILTER BAR UNTUK DESKTOP -->
+        <div class="table-responsive table-desktop">
+          <div class="filter-bar d-none d-lg-flex">
+            <label for="tahunFilter">Tahun:</label>
+            <select id="tahunFilter" class="form-select form-select-sm">
+              <option value="">Semua</option>
+              <option>2025</option>
+              <option>2024</option>
+              <option>2023</option>
+            </select>
+
+            <label for="bulanFilter">Bulan:</label>
+            <select id="bulanFilter" class="form-select form-select-sm">
+              <option value="">Semua</option>
+              <option>Januari</option>
+              <option>Februari</option>
+              <option>Maret</option>
+              <option>April</option>
+              <option>Mei</option>
+              <option>Juni</option>
+              <option>Juli</option>
+              <option>Agustus</option>
+              <option>September</option>
+              <option>Oktober</option>
+              <option>November</option>
+              <option>Desember</option>
+            </select>
+          </div>
+
+          <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
+            <thead class="table-light">
+              <tr>
+                <th>ID</th>
+                <th>Tahun</th>
+                <th>Sekolah</th>
+                <th>Bulan</th>
+                <th>Jumlah</th>
+                <th>Kuitansi</th>
+                <th>Lampiran Kuitansi</th>
+                <th>Status</th>
+                <th>Last Update</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- ✅ CARD LIST UNTUK MOBILE -->
+        <div class="card-mobile d-lg-none">
+          <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
+          <div class="filter-mobile mb-3">
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun & Bulan</button>
+            <div class="filter-content" id="filterContentMobile">
+              <label for="tahunFilterMobile">Tahun:</label>
+              <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
+                <option value="">Semua</option>
+                <option>2025</option>
+                <option>2024</option>
+                <option>2023</option>
+              </select>
+
+              <label for="bulanFilterMobile">Bulan:</label>
+              <select id="bulanFilterMobile" class="form-select form-select-sm">
+                <option value="">Semua</option>
+                <option>Januari</option>
+                <option>Februari</option>
+                <option>Maret</option>
+                <option>April</option>
+                <option>Mei</option>
+                <option>Juni</option>
+                <option>Juli</option>
+                <option>Agustus</option>
+                <option>September</option>
+                <option>Oktober</option>
+                <option>November</option>
+                <option>Desember</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 🔍 PENCARIAN MOBILE -->
+          <div class="input-group mb-3 shadow-sm">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+            <input
+              type="text"
+              id="searchCard"
+              class="form-control border-start-0"
+              placeholder="Cari data transfer..."
+            />
+          </div>
+
+          <!-- LIST CARD -->
+          <div id="cardList" class="row g-2"></div>
+
+          <!-- PAGINATION MOBILE -->
+          <div class="d-flex justify-content-center mt-3">
+            <nav><ul class="pagination" id="paginationMobile"></ul></nav>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+
+    <!-- Modal Detail Data Transfer -->
+    <div
+      class="modal fade"
+      id="detailTransferModal"
+      tabindex="-1"
+      aria-labelledby="detailTransferLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Detail Data Transfer Beasiswa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">ID SPP</span>
+                    <span class="info-value">20xxx</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Bulan</span>
+                    <span class="info-value">Desember</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Uraian</span>
+                    <span class="info-value">—</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kuitansi</span>
+                    <a href="#" class="info-value text-primary text-decoration-none"> kuitansi_K-14-0209_20704.pdf </a>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Lampiran Kuitansi</span>
+                    <a href="#" class="info-value text-primary text-decoration-none">
+                      lamp_kuitansi_K-14-0209_20704.pdf
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Kolom kanan -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Tanggal Transfer</span>
+                    <span class="info-value">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kode Transfer</span>
+                    <span class="info-value">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Bank Tujuan</span>
+                    <span class="info-value">BRI</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Rek Tujuan</span>
+                    <span class="info-value">0048-01-027309-50-8</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Atas Nama</span>
+                    <span class="info-value">SMK KRISTEN 2 MAGELANG</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Jumlah Transfer</span>
+                    <span class="info-value">Rp1.000.000</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <div class="info-value">
+                      <span class="badge bg-danger px-3 py-2">Reject by Admin</span>
+                      <p class="text-danger small mt-1 mb-0">
+                        Kesalahan Penulisan, seharusnya <span class="fw-semibold">SPP/Bulan</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <a href="transfer_beasiswa.html" type="button" class="btn btn-warning text-white px-4 fw-bold">
+              <i class="bi bi-pencil-square me-1"></i> Edit
+            </a>
+            <button type="button" class="btn btn-primary px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-arrow-left me-1"></i> Kembali
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
+    <!-- jQuery (dibutuhkan oleh DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+      // ✅ Toggle filter dropdown di mobile
+      function toggleFilterMobile() {
+        const content = document.getElementById('filterContentMobile');
+        content.classList.toggle('show');
+      }
+
+      // ===============================
+      // Daftar Bulan & Tahun
+      // ===============================
+      const bulanList = [
+        'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember',
+      ];
+
+      const tahunList = [2021, 2022, 2023, 2024, 2025];
+      const statusList = ['Auto Reject', 'Reject by Admin', 'Waiting', 'Approved', 'Done'];
+      const fileStatusList = ['Ada', 'Belum Ada'];
+
+      // ===============================
+// Generate Data Sekolah
+// ===============================
+const sekolahData = Array.from({ length: 30 }, (_, i) => {
+  const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
+  const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
+  const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+
+  // Generate random last update date/time
+  const now = new Date();
+  const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
+  const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
+  const randomHours = Math.floor(Math.random() * 24);
+  const randomMinutes = Math.floor(Math.random() * 60);
+  const randomSeconds = Math.floor(Math.random() * 60);
+  randomDate.setHours(randomHours, randomMinutes, randomSeconds);
+  const lastUpdate = randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + randomDate.toLocaleTimeString('id-ID');
+
+  return {
+    id: i + 1,
+    tahun,
+    sekolah: `Sekolah ${i + 1}`,
+    bulan,
+    jumlah,
+    kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    status: statusList[Math.floor(Math.random() * statusList.length)],
+    lastUpdate,
+  };
+});
+
+      const tableBody = document.querySelector('#datatable tbody');
+      const cardList = document.getElementById('cardList');
+      const searchCard = document.getElementById('searchCard');
+      const paginationMobile = document.getElementById('paginationMobile');
+
+      // Filter elements
+      const tahunFilter = document.getElementById('tahunFilter');
+      const bulanFilter = document.getElementById('bulanFilter');
+      const tahunFilterMobile = document.getElementById('tahunFilterMobile');
+      const bulanFilterMobile = document.getElementById('bulanFilterMobile');
+
+      let currentPageMobile = 1;
+      const perPageMobile = 6;
+
+      // ===============================
+      // Helper: Warna badge status
+      // ===============================
+      function getStatusBadgeClass(status) {
+        switch (status) {
+          case 'Approved':
+            return 'success';
+          case 'Done':
+            return 'primary';
+          case 'Waiting':
+            return 'warning';
+          case 'Reject by Admin':
+            return 'danger';
+          case 'Auto Reject':
+            return 'secondary';
+          default:
+            return 'light';
+        }
+      }
+
+      // ===============================
+      // Helper: Warna badge file
+      // ===============================
+      function getFileBadgeClass(fileStatus) {
+        return fileStatus === 'Ada' ? 'success' : 'secondary';
+      }
+
+      // ===============================
+      // Render Tabel (Desktop)
+      // ===============================
+      function renderTable() {
+        const tahunVal = tahunFilter.value;
+        const bulanVal = bulanFilter.value;
+
+        const filtered = sekolahData.filter(
+          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal)
+        );
+
+        tableBody.innerHTML = filtered
+          .map(
+            s => `
+      <tr data-bs-toggle="modal" data-bs-target="#detailTransferModal">
+        <td>${s.id}</td>
+        <td>${s.tahun}</td>
+        <td>${s.sekolah}</td>
+        <td>${s.bulan}</td>
+        <td>${s.jumlah.toLocaleString('id-ID')}</td>
+        <td><span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${s.kuitansi}</span></td>
+        <td><span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${s.lampiranKuitansi}</span></td>
+        <td><span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span></td>
+        <td>${s.lastUpdate}</td>
+      </tr>
+    `
+          )
+          .join('');
+      }
+
+      // ===============================
+      // Render Cards (Mobile)
+      // ===============================
+      function renderCards() {
+        const searchTerm = searchCard.value.toLowerCase();
+        const tahunVal = tahunFilterMobile.value;
+        const bulanVal = bulanFilterMobile.value;
+
+        const filtered = sekolahData.filter(
+          s =>
+            (tahunVal === '' || s.tahun == tahunVal) &&
+            (bulanVal === '' || s.bulan === bulanVal) &&
+            (s.sekolah.toLowerCase().includes(searchTerm) ||
+              s.tahun.toString().includes(searchTerm) ||
+              s.bulan.toLowerCase().includes(searchTerm) ||
+              s.status.toLowerCase().includes(searchTerm))
+        );
+
+        const totalPages = Math.ceil(filtered.length / perPageMobile);
+        if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
+
+        const start = (currentPageMobile - 1) * perPageMobile;
+        const paginated = filtered.slice(start, start + perPageMobile);
+
+        cardList.innerHTML = paginated
+          .map(
+            s => `
+      <div class="col-12"  data-bs-toggle="modal" data-bs-target="#detailTransferModal">
+        <div class="card shadow-sm p-3 mb-2">
+          <h5 class="card-title">${s.sekolah}</h5>
+          <p class="mb-1"><strong>Tahun:</strong> ${s.tahun}</p>
+          <p class="mb-1"><strong>Bulan:</strong> ${s.bulan}</p>
+          <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
+          <p class="mb-1"><strong>Kuitansi:</strong> <span class="badge bg-${getFileBadgeClass(s.kuitansi)}">${
+              s.kuitansi
+            }</span></p>
+          <p class="mb-1"><strong>Lampiran:</strong> <span class="badge bg-${getFileBadgeClass(s.lampiranKuitansi)}">${
+              s.lampiranKuitansi
+            }</span></p>
+          <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
+              s.status
+            }</span></p>
+          <p class="mb-1"><strong>Last Update:</strong> ${s.lastUpdate}</p>
+        </div>
+      </div>
+    `
+          )
+          .join('');
+
+        // Pagination
+        paginationMobile.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
+            <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
+              <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+            </li>
+          `
+              ).join('')
+            : '';
+
+        paginationMobile.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const page = parseInt(e.target.dataset.page);
+            if (page && page !== currentPageMobile) {
+              currentPageMobile = page;
+              renderCards();
+            }
+          });
+        });
+      }
+
+      // ===============================
+      // Event Listener
+      // ===============================
+      searchCard.addEventListener('input', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      tahunFilter.addEventListener('change', renderTable);
+      bulanFilter.addEventListener('change', renderTable);
+
+      tahunFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+      bulanFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      // ===============================
+      // Inisialisasi Awal
+      // ===============================
+      renderTable();
+      renderCards();
+
+      // ===============================
+      // DataTable (Desktop)
+      // ===============================
+      $(document).ready(function () {
+        if (window.innerWidth >= 992) {
+          $('#datatable').DataTable({
+            destroy: true,
+            language: {
+              url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
+            },
+            pageLength: 10,
+            lengthMenu: [
+              [10, 15, 20, -1],
+              [10, 15, 20, 'Semua'],
+            ],
+            ordering: true,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
