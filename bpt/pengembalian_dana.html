@@ -224,7 +224,7 @@
           height="80"
         />
         <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">BPT-XX-XXXX</small><br />
         <small class="mb-0">Sekretariat Yogyakarta</small>
       </div>
 
@@ -347,7 +347,7 @@
               <div class="bg-light p-4 rounded-3 mt-3">
                 <img src="../assets/img/bri.png" width="150" alt="BRI" />
                 <h6 class="mt-3 mb-0 fw-bold"><span class="badge bg-primary mt-2">IDR</span></h6>
-                <p class="mt-3 mb-1 fw-semibold">No. Rek. 0376-01-000376-56-1</p>
+                <p class="mt-3 mb-1">No. Rek. 0376-01-000376-56-1</p>
                 <p class="mb-0 text-secondary">Yayasan AAT Indonesia<br />Bank BRI</p>
                 <button type="button" class="btn btn-sm btn-outline-primary mt-3">Copy No Rek</button>
               </div>
@@ -370,7 +370,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">ID SPP</label>
+                              <label class="form-label">ID SPP</label>
                             </div>
                             <div class="col-md-8">
                               <div class="input-group input-group-sm">
@@ -388,7 +388,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Tahun Ajaran</label>
+                              <label class="form-label">Tahun Ajaran</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -405,7 +405,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Komunitas</label>
+                              <label class="form-label">Komunitas</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -422,7 +422,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Bulan</label>
+                              <label class="form-label">Bulan</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -439,7 +439,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Tanggal Transfer</label>
+                              <label class="form-label">Tanggal Transfer</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -456,7 +456,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Kode Transfer</label>
+                              <label class="form-label">Kode Transfer</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -473,7 +473,7 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Jumlah Transfer</label>
+                              <label class="form-label">Jumlah Transfer</label>
                             </div>
                             <div class="col-md-8">
                               <input
@@ -490,7 +490,9 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Alasan Pengembalian</label>
+                              <label class="form-label"
+                                >Alasan<br />Pengembalian <sup class="text-important">*)</sup></label
+                              >
                             </div>
                             <div class="col-md-8">
                               <div class="d-flex flex-column">
@@ -511,7 +513,9 @@
                         <div class="col-12">
                           <div class="row">
                             <div class="col-md-4">
-                              <label class="form-label fw-semibold">Jumlah yang Dikembalikan</label>
+                              <label class="form-label"
+                                >Jumlah yang Dikembalikan <sup class="text-important">*)</sup></label
+                              >
                             </div>
                             <div class="col-md-8">
                               <div class="input-group input-group-sm">
@@ -526,9 +530,7 @@
 
                     <div class="col-md-4 text-center">
                       <span class="text-muted mb-2">Upload Bukti Transfer</span>
-                      <div
-                        class="border rounded-4 p-3 d-flex flex-column justify-content-center align-items-center"
-                      >
+                      <div class="border rounded-4 p-3 d-flex flex-column justify-content-center align-items-center">
                         <div class="upload-box">
                           <input type="file" accept="image/*" id="foto" onchange="previewFoto(this)" required />
                           <div class="placeholder">
@@ -537,21 +539,17 @@
                           </div>
                         </div>
                       </div>
-                      <small class="text-muted d-block mt-1" style="font-size: 0.8rem">
-                        *) Foto wajib ada<br />
-                        *) Format: <strong>.jpg, .png</strong><br />
-                        *) Max: <strong>200Kb</strong>
+                      <small class="text-muted d-block mt-1 text-important">
+                        *) Bukti wajib diisi,<br />Format: <strong>JPEG, JPG, atau PNG</strong>
                       </small>
                     </div>
                   </div>
+                  <small class="text-important">*) Wajib diisi</small>
 
-                  <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-info text-white px-4 rounded-pill fw-semibold">
-                      Kirim ke Admin
-                    </button>
-                    <div class="mt-2">
-                      <a href="#" class="text-danger text-decoration-none fw-semibold">Batalkan</a>
-                    </div>
+                  <!-- Button Action -->
+                  <div class="mt-4 d-flex flex-wrap gap-2">
+                    <button class="btn btn-success btn-sm rounded-pill px-3">Kirim ke Admin</button>
+                    <button class="btn btn-danger btn-sm rounded-pill px-3">Batal</button>
                   </div>
                 </form>
               </div>
