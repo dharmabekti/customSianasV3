@@ -83,7 +83,6 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
                 <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
-                <li><a class="dropdown-item" href="upload_kuitansi.html">Upload Kuitansi</a></li>
                 <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
                 <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
                 <li>
@@ -309,7 +308,6 @@
           <div class="filter-bar d-none d-lg-flex">
             <label for="tahunFilter">Tahun Akademik:</label>
             <select id="tahunFilter" class="form-select form-select-sm">
-              <option value="">Semua</option>
               <option>2025</option>
               <option>2024</option>
               <option>2023</option>
@@ -416,6 +414,11 @@
       </small>
     </footer>
 
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" onclick="window.location.href='upload_kuitansi.html'">
+      <i class="bi bi-upload text-center"></i>
+    </button>
+
     <!-- Modal Detail Data Transfer -->
     <div
       class="modal fade"
@@ -512,7 +515,7 @@
           </div>
 
           <div class="modal-footer justify-content-center">
-            <a href="transfer_beasiswa.html" type="button" class="btn btn-warning text-white px-4 fw-bold">
+            <a href="upload_kuitansi.html" type="button" class="btn btn-warning text-white px-4 fw-bold">
               <i class="bi bi-pencil-square me-1"></i> Edit
             </a>
             <button type="button" class="btn btn-primary px-4 fw-bold" data-bs-dismiss="modal">
@@ -614,7 +617,7 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
           case 'Sudah Transfer':
             return 'success';
           case 'Belum Ditransfer':
-            return 'danger';
+            return 'secondary';
           case 'Menunggu':
             return 'warning';
           default:
