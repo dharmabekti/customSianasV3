@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Admin Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <span>Sistem Informasi Anak Asuh</span>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="input_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKL, & Ijazah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Komunitas/Sekolah
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
+                <li><a class="dropdown-item" href="data_pj.html">Data Penanggungjawab</a></li>
+                <li><a class="dropdown-item" href="input_pj.html">Input Penanggungjawab Baru</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Laporan
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="report_anakasuh.html">Laporan Anak Asuh</a></li>
+                <li><a class="dropdown-item" href="report_sekolah.html">Laporan Komunitas/Sekolah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">BPT-XX-XXXX</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Beranda</span>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
+            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <!-- Profil User -->
+      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
+        <img
+          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mt-1">Ki Anom</h6>
+        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">Sekretariat Yogyakarta</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-house me-2"></i> Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#anakasuh"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="anakasuh">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Raport, SKL, & Ijazah</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="komunitas">
+            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Komunitas/Sekolah</a
+            >
+            <a href="data_pj.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Penanggungjawab</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="transferbeasiswa">
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Transfer</a
+            >
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengembalian Dana Berlebih</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#laporan"
+          >
+            <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="laporan">
+            <a href="report_anakasuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Anak Asuh</a
+            >
+            <a href="report_sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Komunitas/Sekolah</a
+            >
+          </div>
+          <a href="rekening-yayasan.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-wallet2 me-2"></i> Rekening Yayasan
+          </a>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia <br />
+          Developed by <span class="fw-bold">Omah IT</span> <br />
+          Maintained by <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Beranda</small>
+      </a>
+      <a href="data_sekolah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Sekolah</small>
+      </a>
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-receipt fs-4"></i><br />
+        <small>Data Transfer</small>
+      </a>
+      <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-journal fs-4"></i><br />
+        <small>Raport</small>
+      </a>
+    </div>
+
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <h3 class="text-center page-title d-none d-lg-block">List Anak Asuh</h3>
+      <div class="container-fluid mb-5 container-wrapper">
+        <!-- ✅ Tombol Toggle Filter (Mobile) -->
+        <div class="d-md-none mb-2">
+          <button
+            class="btn btn-outline-primary w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#filterCollapse"
+            aria-expanded="false"
+            aria-controls="filterCollapse"
+          >
+            <i class="bi bi-funnel"></i> Tampilkan Filter
+          </button>
+        </div>
+
+        <div class="row">
+          <!-- ✅ FILTER -->
+          <div class="col-md-2 mb-3">
+            <div id="filterCollapse" class="collapse d-md-block">
+              <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label class="form-label fw-bold">Status</label>
+                <div id="filterStatus">
+                  <div class="form-check">
+                    <input class="form-check-input status" type="checkbox" value="Naik Kelas" id="naik_kelas" />
+                    <label class="form-check-label" for="naik_kelas">Naik Kelas</label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input status"
+                      type="checkbox"
+                      value="Tidak Naik Kelas"
+                      id="tidak_naik_kelas"
+                    />
+                    <label class="form-check-label" for="tidak_naik_kelas">Tidak Naik Kelas</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input status" type="checkbox" value="Lulus" id="lulus" />
+                    <label class="form-check-label" for="lulus">Lulus</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input status" type="checkbox" value="Stop" id="stop" />
+                    <label class="form-check-label" for="stop">Stop</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
+                    <label class="form-check-label" for="pending">Pending</label>
+                  </div>
+                </div>
+
+                <label class="form-label fw-bold">Tingkat Sekolah</label>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
+                  <label class="form-check-label" for="sd">SD</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
+                  <label class="form-check-label" for="smp">SMP</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
+                  <label class="form-check-label" for="sma">SMA</label>
+                </div>
+
+                <label class="form-label fw-bold">Status SPP</label>
+                <div id="filterStatusSPP">
+                  <div class="form-check">
+                    <input class="form-check-input statusSPP" type="checkbox" value="Aktif" id="spp_aktif" />
+                    <label class="form-check-label badge bg-success spp-badge" for="spp_aktif">Aktif</label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input statusSPP"
+                      type="checkbox"
+                      value="Tidak Aktif"
+                      id="spp_tidak_aktif"
+                    />
+                    <label class="form-check-label badge bg-danger spp-badge" for="spp_tidak_aktif">Tidak Aktif</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input statusSPP" type="checkbox" value="Pending" id="spp_pending" />
+                    <label class="form-check-label badge bg-warning spp-badge" for="spp_pending">Pending</label>
+                  </div>
+                  <div class="form-check mb-3">
+                    <input
+                      class="form-check-input statusSPP"
+                      type="checkbox"
+                      value="Belum Diset"
+                      id="spp_belum_diset"
+                    />
+                    <label class="form-check-label badge bg-secondary spp-badge" for="spp_belum_diset">Belum Diset</label>
+                  </div>
+                </div>
+
+                <!-- ✅ Tambahan teks donasi -->
+                <div class="mt-3 p-2 text-center rounded bg-light border card-total">
+                  <small class="text-muted fw-semibold d-block text-wrap">
+                    Total Donasi SPP <br />
+                    <span class="text-aat fw-bold d-block">Rp150.000/bulan</span>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ GRID ANAK ASUH -->
+          <div class="col-md-10">
+            <!-- Sort & Search -->
+            <div class="row g-2 align-items-center mb-3">
+              <div class="col-6 col-md-auto d-flex align-items-center gap-2">
+                <label class="fw-bold mb-0">Sort:</label>
+                <select id="sortSelect" class="form-select form-select-sm w-100 w-md-auto">
+                  <option value="nama">Nama</option>
+                  <option value="kelas">Kelas</option>
+                </select>
+              </div>
+              <div class="col-6 col-md">
+                <input
+                  type="text"
+                  id="searchInput"
+                  class="form-control form-control-sm w-100"
+                  placeholder="Cari anak..."
+                />
+              </div>
+            </div>
+
+            <div id="childGrid" class="row g-2"></div>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-3">
+              <nav><ul class="pagination" id="pagination"></ul></nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal Detail Anak -->
+    <div
+      class="modal fade"
+      id="detailAnakModal"
+      tabindex="-1"
+      aria-labelledby="detailAnakLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-light">
+            <h5 class="modal-title fw-bold" id="detailAnakLabel">Detail Anak Asuh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- Foto Profil -->
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        alt="Foto Profil"
+                        class="img-fluid shadow-sm"
+                        style="height: 75%; width: 75%"
+                      />
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <td class="fw-semibold" width="40%">Nama Lengkap</td>
+                              <td>Ahmad Rahman Dani</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Jenis Kelamin</td>
+                              <td>Laki - Laki</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Agama</td>
+                              <td>Islam</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Tempat, Tanggal Lahir</td>
+                              <td>Kebumen, 26 September 2008</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Komunitas</td>
+                              <td><span class="text-success fw-semibold">SMK Wiyata Dharma Walikukun</span></td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Pendidikan / Saat ini</td>
+                              <td>SMA/SMK Kelas 12</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <td>Status</td>
+                              <td>Naik Kelas</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
+                    Kondisi Keluarga
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat_pendidikan">
+                    Riwayat Pendidikan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_akademik">
+                    Prestasi Akademik
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_kegiatan">
+                    Prestasi Kegiatan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan_tambahan">
+                    Pendidikan Tambahan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kegiatan_organisasi">
+                    Kegiatan & Organisasi
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bahasa">Kemampuan Bahasa</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="kondisi_keluarga">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kondisi Keluarga</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody class="border-bottom align-middle">
+                              <tr>
+                                <td width="30%">Anak ke</td>
+                                <td>1 dari 2 bersaudara</td>
+                              </tr>
+                              <tr>
+                                <td>Nama Ayah</td>
+                                <td>Moh. Turisno</td>
+                              </tr>
+                              <tr>
+                                <td>Pekerjaan Ayah</td>
+                                <td>Buruh Tani</td>
+                              </tr>
+                              <tr>
+                                <td>Penghasilan Ayah</td>
+                                <td>Tidak Berpenghasilan per bulan</td>
+                              </tr>
+                              <tr>
+                                <td>Nama Ibu</td>
+                                <td>Sudarmi</td>
+                              </tr>
+                              <tr>
+                                <td>Pekerjaan Ibu</td>
+                                <td>Ibu Rumah Tangga</td>
+                              </tr>
+                              <tr>
+                                <td>Penghasilan Ibu</td>
+                                <td>Tidak Berpenghasilan per bulan</td>
+                              </tr>
+                              <tr>
+                                <td>Status Tempat Tinggal</td>
+                                <td>Rumah Sendiri</td>
+                              </tr>
+                              <tr>
+                                <td>Kendaraan Dimiliki</td>
+                                <td>0 mobil, 1 motor, 0 sepeda</td>
+                              </tr>
+                              <tr>
+                                <td>Kondisi Keluarga</td>
+                                <td>Tinggal bersama dengan kedua orang tua serta seorang adik...</td>
+                              </tr>
+                              <tr>
+                                <td>Mulai Dibantu</td>
+                                <td>01 Juli 2025</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="riwayat_pendidikan">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Riwayat Pendidikan</h5>
+                        <div class="table-responsive text-start">
+                          <table class="table table-borderless mb-0" style="width: 100%; text-align: left !important">
+                            <thead>
+                              <tr>
+                                <th>Sekolah</th>
+                                <th class="d-none d-md-block">Tahun Akademik</th>
+                                <th>Kelas</th>
+                                <th>Semester</th>
+                                <th>Rangking</th>
+                                <th>File</th>
+                                <th>Keterangan</th>
+                                <th>Tgl Kirim</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>SMK Wiyata Dharma Walikukun</td>
+                                <td class="d-none d-md-block">2025</td>
+                                <td>Kelas 12</td>
+                                <td>Gasal</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Naik Kelas</td>
+                                <td>20-06-2025</td>
+                                <td>
+                                  <button class="accordion-btn d-md-none" type="button">+</button>
+                                </td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="9" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2025<br />
+                                    <strong>Kelas:</strong> Kelas 12<br />
+                                    <strong>Semester:</strong> Gasal<br />
+                                    <strong>Rangking:</strong> -<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Naik Kelas<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2025
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade show" id="prestasi_akademik">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Akademik</h5>
+                        <span>Belum ada data!</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="prestasi_kegiatan">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Kegiatan</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pendidikan_tambahan">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan Tambahan</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="kegiatan_organisasi">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kegiatan & Organisasi</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="bahasa">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kemampuan Bahasa</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail Anak -->
+
+    <!-- Modal Input Anak Asuh -->
+    <div
+      class="modal fade"
+      id="inputModal"
+      tabindex="-1"
+      aria-labelledby="inputModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="card p-3">
+                <h6 class="fw-bold mb-3">Import dari Excel</h6>
+                <form id="importForm">
+                  <div class="mb-3">
+                    <label for="excelFile" class="form-label">Pilih File Excel</label>
+                    <input type="file" class="form-control mb-3" id="excelFile" accept=".xlsx,.xls" required />
+                    <a href="https://example.com/template.xlsx" download>
+                      <i class="bi bi-download me-2"></i> Download Template Excel
+                    </a>
+                  </div>
+                  <div class="d-flex gap-2 align-items-center">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-upload me-2"></i> Import</button>
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary"
+                      onclick="window.location.href='input_anak_asuh.html'"
+                    >
+                      <i class="bi bi-pencil-square me-2"></i> Input Manual
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Input Anak Asuh -->
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#inputModal">
+      <i class="bi bi-plus-lg text-center"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
+
+    <script>
+      const childAsuh = Array.from({ length: 30 }, (_, i) => {
+        const pendidikan = ['SD', 'SMP', 'SMA'][i % 3];
+        const spp = pendidikan === 'SD' ? 50000 : pendidikan === 'SMP' ? 75000 : 100000;
+
+        const statusOptions = ['Naik Kelas', 'Tidak Naik Kelas', 'Lulus', 'Stop', 'Pending'];
+        const statusSPPOptions = ['Aktif', 'Tidak Aktif', 'Pending', 'Belum Diset'];
+
+        // Tentukan kelas sesuai pendidikan
+        let kelas;
+        if (pendidikan === 'SD') {
+          kelas = (i % 6) + 1; // 1–6
+        } else if (pendidikan === 'SMP') {
+          kelas = (i % 3) + 7; // 7–9
+        } else {
+          kelas = (i % 3) + 10; // 10–12
+        }
+
+        return {
+          nama: 'Anak ' + (i + 1),
+          namaSekolah: `${pendidikan} ${i + 1}`,
+          spp: spp,
+          pendidikan: pendidikan,
+          kelas: kelas,
+          status: statusOptions[i % 5],
+          statusSPP: statusSPPOptions[i % 4],
+          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
+        };
+      });
+
+      const childGrid = document.getElementById('childGrid');
+      const sortSelect = document.getElementById('sortSelect');
+      const searchInput = document.getElementById('searchInput');
+      const pagination = document.getElementById('pagination');
+      const tingkatCheckbox = document.querySelectorAll('.tingkat');
+      const statusCheckbox = document.querySelectorAll('.status');
+      const statusSPPCheckbox = document.querySelectorAll('.statusSPP');
+
+      let perPage = 12;
+      let currentPage = 1;
+
+      // ✅ Default: statusSPP "aktif" dicentang
+      document.getElementById('spp_aktif').checked = true; // Pastikan ID checkbox untuk status SPP aktif adalah 'aktifSPP'
+
+      function getBadgeClass(statusSPP) {
+        switch (statusSPP) {
+          case 'Aktif': return 'bg-success';
+          case 'Tidak Aktif': return 'bg-danger';
+          case 'Pending': return 'bg-warning';
+          case 'Belum Diset': return 'bg-secondary';
+          default: return 'bg-secondary';
+        }
+      }
+
+      function updatePerPageDynamically() {
+        const screenHeight = window.innerHeight;
+        const cardHeight = 200;
+        const rows = Math.floor((screenHeight - 250) / cardHeight);
+        perPage = rows * 6 || 6;
+      }
+
+      function renderChild() {
+        updatePerPageDynamically();
+
+        const selectedStatus = Array.from(statusCheckbox)
+          .filter(c => c.checked)
+          .map(c => c.value);
+        const selectedTingkat = Array.from(tingkatCheckbox)
+          .filter(c => c.checked)
+          .map(c => c.value);
+        const selectedStatusSPP = Array.from(statusSPPCheckbox)
+          .filter(c => c.checked)
+          .map(c => c.value);
+        const searchTerm = searchInput.value.toLowerCase();
+        const sortBy = sortSelect.value;
+
+        let filtered = childAsuh.filter(
+          a =>
+            (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
+            (selectedStatusSPP.length === 0 || selectedStatusSPP.includes(a.statusSPP)) &&
+            (selectedTingkat.length === 0 || selectedTingkat.includes(a.pendidikan)) &&
+            a.nama.toLowerCase().includes(searchTerm)
+        );
+
+        if (sortBy === 'nama') filtered.sort((a, b) => a.nama.localeCompare(b.nama));
+        if (sortBy === 'kelas') filtered.sort((a, b) => a.spkelasp - b.kelas);
+
+        const totalPages = Math.ceil(filtered.length / perPage);
+        if (currentPage > totalPages) currentPage = totalPages || 1;
+
+        const start = (currentPage - 1) * perPage;
+        const paginated = filtered.slice(start, start + perPage);
+
+        childGrid.innerHTML = paginated
+          .map(a => {
+            return `
+              <div class="col-6 col-md-2">
+                <div class="child-card">
+                  <img src="${a.foto}" alt="${a.nama}" />
+                  <h6>${a.nama}</h6>
+                  <p>${a.namaSekolah} Kelas ${a.kelas}</p>
+                  <span class="badge ${getBadgeClass(a.statusSPP)}">Rp${a.spp.toLocaleString()}</span>
+                  <div class="hover-btns">
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
+                    <button class="btn btn-sm btn-warning" onclick="window.location.href='input_anak_asuh.html'">Edit</button>
+                  </div>
+                </div>
+              </div>`;
+          })
+          .join('');
+
+        pagination.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
+                  <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
+                    <a class="page-link" href="#">${i + 1}</a>
+                  </li>`
+              ).join('')
+            : '';
+
+        document.querySelectorAll('.page-item').forEach((btn, idx) => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            currentPage = idx + 1;
+            renderChild();
+          });
+        });
+      }
+
+      [sortSelect, searchInput, ...tingkatCheckbox, ...statusCheckbox, ...statusSPPCheckbox].forEach(el =>
+        el.addEventListener('input', () => {
+          currentPage = 1;
+          renderChild();
+        })
+      );
+
+      window.addEventListener('resize', renderChild);
+      renderChild(); // ✅ Render awal langsung statusSPP Aktif
+    </script>
+  </body>
+</html>
