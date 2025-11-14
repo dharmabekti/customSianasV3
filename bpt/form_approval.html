@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Admin Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <span>Sistem Informasi Anak Asuh</span>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="input_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKL, & Ijazah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Komunitas/Sekolah
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="detail_komunitas.html">Detail Komunitas</a></li>
+                <li><a class="dropdown-item" href="data_pj.html">Data Penanggungjawab</a></li>
+                <li><a class="dropdown-item" href="input_pj.html">Input Penanggungjawab Baru</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">PJ-XX-XXXX</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" onclick="history.back()">
+          <i class="bi bi-arrow-left"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Form Approval</span>
+      </div>
+    </nav>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-hide"></div>
+
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <h3 class="text-center page-title d-none d-lg-block">Form Approval Raport, SKL, dan Ijasah</h3>
+      <div class="container form-wrapper">
+        <form id="formKomunitas">
+          <div class="row">
+            <!-- Kolom Kiri -->
+            <div class="col-lg-6 col-md-6">
+              <div class="info-item">
+                <span class="info-label">ID SIANAS</span>
+                <span class="info-value">24-00071</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Nama Lengkap</span>
+                <span class="info-value">Antonio Veejay Alhdhir</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Komunitas</span>
+                <span class="info-value">SMK Kristen 2 Magelang</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Kelas</span>
+                <span class="info-value">SMA/SMK Kelas 12</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Semester</span>
+                <span class="info-value">Ganjil</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Tahun Ajaran</span>
+                <span class="info-value">2025/2026</span>
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-md-4">
+                    <label class="form-label info-label">Indikator Pengecekan File <sup class="text-important">*)</sup></label>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="d-flex flex-column">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan1" />
+                        <label class="form-check-label" for="alasan1">Identitas Sesuai</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan2" />
+                        <label class="form-check-label" for="alasan2">Semester Sesuai</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan3" />
+                        <label class="form-check-label" for="alasan3">File Lengkap</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan4" />
+                        <label class="form-check-label" for="alasan4">Posisi File Tegak</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan5" />
+                        <label class="form-check-label" for="alasan5">TTD Kepala Sekolah</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan6" />
+                        <label class="form-check-label" for="alasan6">TTD Wali Kelas</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan7" />
+                        <label class="form-check-label" for="alasan7">Kelas Sesuai</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan8" />
+                        <label class="form-check-label" for="alasan8">TA Sesuai</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan9" />
+                        <label class="form-check-label" for="alasan9">File Terbaca Jelas</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan10" />
+                        <label class="form-check-label" for="alasan10">Urutan Sesuai</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="alasan[]" id="alasan11" />
+                        <label class="form-check-label" for="alasan11">Urutan Sesuai</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label info-label"
+                  >Alasan Reject</label
+                >
+                <div class="col-sm-7">
+                  <textarea class="form-control form-control-sm" rows="3" placeholder="Kosongi Jika File Benar"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom Kanan -->
+            <div class="col-lg-6 col-md-6 text-center">
+              <small>Preview Halaman</small>
+              <div class="border rounded-4 p-3 position-relative" style="min-height: 540px">
+                <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                  <!--  -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <small class="text-important">*) Wajib Diisi</small>
+          <!-- Tombol aksi -->
+          <div class="mt-4 d-flex flex-wrap gap-2">
+            <button class="btn btn-success btn-sm rounded-pill px-3">Setujui & Kirim ke Admin</button>
+            <button class="btn btn-danger btn-sm rounded-pill px-3">Batal</button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
+  </body>
+</html>

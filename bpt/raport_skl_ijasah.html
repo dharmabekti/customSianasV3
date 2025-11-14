@@ -677,7 +677,7 @@
             {
               data: 'aksi',
               render: function (data) {
-                return `<span class="badge bg-${getFileBadgeClass(data)}">${data}</span>`;
+                return `<span class="badge bg-${getFileBadgeClass(data)}" onclick="window.location.href='form_approval.html'">${data}</span>`;
               },
             },
             { data: 'tingkat', visible: false }, // Hidden column for filtering
