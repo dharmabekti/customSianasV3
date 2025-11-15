@@ -11,6 +11,11 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -226,7 +231,7 @@
           height="80"
         />
         <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">BPT-XX-XXXX</small><br />
+        <small class="mb-0">BPT-XX-XXXX</small><br>
         <small class="mb-0">Sekretariat Yogyakarta</small>
       </div>
 
@@ -332,25 +337,73 @@
         <small>Raport</small>
       </a>
     </div>
+
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Data Sekolah</h3>
-      <div class="container-fluid container-wrapper">
-        <!-- ✅ TABEL UNTUK DESKTOP -->
-        <div class="table-responsive table-desktop d-none d-lg-block">
-          <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
-            <thead class="table-light">
-              <tr>
-                <th>No</th>
-                <th>Nama Sekolah</th>
-                <th>Sekretariat</th>
-                <th>Email</th>
-                <th>Telp</th>
-                <th>Status Sekolah</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
+      <h3 class="text-center page-title d-none d-lg-block">Raport, SKL, & Ijazah</h3>
+      <div class="container-fluid mb-5 container-wrapper">
+        <!-- ✅ Tombol Toggle Filter (Mobile) -->
+        <div class="d-md-none mb-2">
+          <button
+            class="btn btn-outline-primary w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#filterCollapse"
+            aria-expanded="false"
+            aria-controls="filterCollapse"
+          >
+            <i class="bi bi-funnel"></i> Tampilkan Filter
+          </button>
+        </div>
+
+        <div class="row">
+          <!-- ✅ FILTER -->
+          <div class="col-md-2 mb-3">
+            <div id="filterCollapse" class="collapse d-md-block">
+              <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label for="tahunAjaranFilter">Tahun Ajaran:</label>
+                <select id="tahunAjaranFilter" class="form-select form-select-sm mb-2">
+                  <option selected="selected">2025/2026</option>
+                  <option>2024/2025</option>
+                  <option>2023/2024</option>
+                </select>
+
+                <label>Tingkat Sekolah:</label>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
+                  <label class="form-check-label" for="sd">SD</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
+                  <label class="form-check-label" for="smp">SMP</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
+                  <label class="form-check-label" for="sma">SMA</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ✅ GRID ANAK ASUH -->
+          <div class="col-md-10">
+            <div class="table-responsive table-desktop">
+              <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
+                <thead class="table-light">
+                  <tr>
+                    <th>No</th>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Komunitas/Sekolah</th>
+                    <th>Tahun Ajaran</th>
+                    <th>Kelas</th>
+                    <th>Keterangan</th>
+                    <th>Aksi</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
         </div>
 
         <!-- ✅ CARD LIST UNTUK MOBILE -->
@@ -358,129 +411,19 @@
           <!-- 🔍 PENCARIAN MOBILE -->
           <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-            <input
-              type="text"
-              id="searchCard"
-              class="form-control border-start-0"
-              placeholder="Cari sekolah, sekretariat, email..."
-            />
+            <input type="text" id="searchCard" class="form-control border-start-0" placeholder="Cari anak asuh..." />
           </div>
 
           <!-- LIST CARD -->
           <div id="cardList" class="row g-2"></div>
 
           <!-- PAGINATION MOBILE -->
-          <div class="d-flex justify-content-center mt-3">
+          <div class="pagination-mobile-container d-flex justify-content-center mt-3">
             <nav><ul class="pagination" id="paginationMobile"></ul></nav>
           </div>
         </div>
       </div>
     </main>
-
-    <!-- Modal Detail -->
-    <div
-      class="modal fade"
-      id="detailSekolah"
-      tabindex="-1"
-      aria-labelledby="detailSekolah"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Detail Sekolah</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="info-section">
-              <div class="row g-3">
-                <!-- Kolom kiri -->
-                <div class="col-12 col-md-6 info-column">
-                  <div class="info-item">
-                    <span class="info-label">Nama Sekolah</span>
-                    <span class="info-value">SMA Pius Bakti Utama Bayan</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Alamat</span>
-                    <span class="info-value">Jalan Gajah Mada, Bandungrejo</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kabupaten</span>
-                    <span class="info-value">Purworejo</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Povinsi</span>
-                    <span class="info-value">Jawa Tengah</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kode Pos</span>
-                    <span class="info-value">54224</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Negara</span>
-                    <span class="info-value">Indonesia</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Telp</span>
-                    <span class="info-value">+62812345678</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Fax</span>
-                    <span class="info-value">0274XXX</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Status</span>
-                    <span class="info-value">Aktif</span>
-                  </div>
-                </div>
-
-                <!-- Kolom kanan -->
-                <div class="col-12 col-md-6 info-column">
-                  <div class="info-item">
-                    <span class="info-label">Bank</span>
-                    <span class="info-value">BRI</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Nomor Rekening</span>
-                    <span class="info-value">0048-01-027309-50-8</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Atas Nama</span>
-                    <span class="info-value">SMA Pius Bakti Utama Bayan</span>
-                  </div>
-                  <div class="info-item">
-                    <br />
-                    <span class="info-label">Sekretariat</span>
-                    <span class="info-value">Yogyakarta</span>
-                  </div>
-                  <div class="info-item">
-                    <br />
-                    <span class="info-label">Penanggungjawab</span>
-                    <span class="info-value">Pramita Rahayu Suryaningtias S.Pd</span>
-                  </div>
-                  <div class="info-item">
-                    <br />
-                    <span class="info-label">Pendamping</span>
-                    <span class="info-value">Yohanes Richo Saputro</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-secondary px-4 fw-bold" data-bs-dismiss="modal">
-              <i class="bi bi-close me-1"></i> Tutup
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Detail -->
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -494,61 +437,296 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
+
+    <!-- Modal Detail Raport -->
+    <div
+      class="modal fade"
+      id="detailRaportModal"
+      tabindex="-1"
+      aria-labelledby="detailRaportLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Raport Semester Ganjil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-12 info-column">
+                  <div class="info-item">
+                    <span class="info-label">ID</span>
+                    <span class="info-value">24-00071</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Lengkap</span>
+                    <span class="info-value">Antonio Veejay Alhdhir</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kelas</span>
+                    <span class="info-value">SMA/SMK Kelas 12</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Semester</span>
+                    <span class="info-value">Gasal</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">File</span>
+                    <span class="info-value"><a href="#">24-00071.pdf</a></span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="badge bg-danger">Rejected</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Catatan</span>
+                    <span class="info-value">File tidak lengkap, ada halaman yang blur</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-warning px-4 fw-bold text-white" data-bs-dismiss="modal">
+              <i class="bi bi-pen me-1"></i> Revisi
+            </button>
+            <button type="button" class="btn btn-primary px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-arrow-left me-1"></i> Kembali
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
-    <script src="../assets/js/datatable.init.js"></script>
-    <!-- jQuery (dibutuhkan oleh DataTables) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-      const sekolahData = Array.from({ length: 30 }, (_, i) => ({
-        id: i + 1,
-        nama: 'Sekolah ' + (i + 1),
-        sekretariat: 'Jl. Contoh No. ' + (i + 1),
-        email: 'sekolah' + (i + 1) + '@example.com',
-        telp: '0812-3456-' + String(i + 1).padStart(4, '0'),
-        status: 'Aktif',
-      }));
+      // ===============================
+      // Daftar Nama Anak Asuh
+      // ===============================
+      const namaList = [
+        'Ahmad Fauzi',
+        'Budi Santoso',
+        'Citra Dewi',
+        'Dedi Rahman',
+        'Eka Sari',
+        'Fajar Nugroho',
+        'Gita Permata',
+        'Hadi Wijaya',
+        'Indah Lestari',
+        'Joko Susilo',
+        'Kartika Sari',
+        'Lutfi Hakim',
+        'Maya Sari',
+        'Nanda Putra',
+        'Oka Wibowo',
+        'Putri Ayu',
+        'Rudi Hartono',
+        'Sari Indah',
+        'Taufik Rahman',
+        'Umi Kalsum',
+        'Vina Sari',
+        'Wahyu Nugroho',
+        'Yuniarti',
+        'Zainal Abidin',
+        'Ani Suryani',
+        'Bambang Setiawan',
+        'Cici Handayani',
+        'Dian Purnama',
+        'Eko Prasetyo',
+        'Fina Sari',
+      ];
 
-      const tableBody = document.querySelector('#datatable tbody');
+      const sekolahList = [
+        'SD Dharma Bakti 1',
+        'SD Dharma Bakti 2',
+        'SMP Dharma Bakti',
+        'SMA Dharma Bakti',
+        'SD Islam Terpadu',
+        'SMP Islam Terpadu',
+        'SMA Islam Terpadu',
+        'SD Negeri 1',
+        'SMP Negeri 1',
+        'SMA Negeri 1',
+      ];
+
+      const tahunAjaranList = ['2023/2024', '2024/2025', '2025/2026'];
+      const tingkatList = ['SD', 'SMP', 'SMA'];
+      const aksiList = ['Waiting', 'Need Approval', 'Approved'];
+      const keteranganList = ['Raport Ganjil', 'Raport Genap', 'SKL', 'Ijazah'];
+
+      // ===============================
+      // Generate Data Anak Asuh
+      // ===============================
+      const anakAsuhData = [];
+      let no = 1;
+      for (let i = 0; i < 50; i++) {
+        const nama = namaList[Math.floor(Math.random() * namaList.length)];
+        const sekolah = sekolahList[Math.floor(Math.random() * sekolahList.length)];
+        const tahunAjaran = tahunAjaranList[Math.floor(Math.random() * tahunAjaranList.length)];
+        const tingkat = tingkatList[Math.floor(Math.random() * tingkatList.length)];
+        let kelas;
+        if (tingkat === 'SD') kelas = Math.floor(Math.random() * 6) + 1;
+        else if (tingkat === 'SMP') kelas = Math.floor(Math.random() * 3) + 7;
+        else kelas = Math.floor(Math.random() * 3) + 10;
+
+        const id = `AA-${String(i + 1).padStart(4, '0')}`;
+
+        // Create 4 rows per student
+        keteranganList.forEach(keterangan => {
+          anakAsuhData.push({
+            no: no++,
+            id,
+            nama,
+            sekolah,
+            tahunAjaran,
+            tingkat,
+            kelas,
+            keterangan,
+            aksi: aksiList[Math.floor(Math.random() * aksiList.length)],
+          });
+        });
+      }
+
       const cardList = document.getElementById('cardList');
       const searchCard = document.getElementById('searchCard');
       const paginationMobile = document.getElementById('paginationMobile');
 
+      // Filter elements
+      const tahunAjaranFilter = document.getElementById('tahunAjaranFilter');
+      const tingkatCheckboxes = document.querySelectorAll('.tingkat');
+
       let currentPageMobile = 1;
       const perPageMobile = 6;
 
-      // Render tabel desktop
-      function renderTable() {
-        tableBody.innerHTML = sekolahData
-          .map(
-            s => `
-              <tr data-bs-toggle="modal" data-bs-target="#detailSekolah">
-                <td>${s.id}</td>
-                <td>${s.nama}</td>
-                <td>${s.sekretariat}</td>
-                <td>${s.email}</td>
-                <td>${s.telp}</td>
-                <td><span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">${s.status}</span></td>
-              </tr>
-            `
-          )
-          .join('');
+      // ===============================
+      // Helper: Warna badge file
+      // ===============================
+      function getFileBadgeClass(fileStatus) {
+        const status = fileStatus.toLowerCase();
+        if (status === 'done') return 'success';
+        if (status === 'approved') return 'info';
+        if (status === 'waiting') return 'warning';
+        if (status === 'rejected') return 'danger';
+        return 'secondary'; // for 'belum upload', 'belum upload'
       }
 
-      // Render card mobile dengan pagination
+      // ===============================
+      // Get selected tingkat
+      // ===============================
+      function getSelectedTingkat(checkboxes) {
+        return Array.from(checkboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+      }
+
+      // ===============================
+      // Filter data
+      // ===============================
+      function filterData(data, tahunAjaran, selectedTingkat) {
+        return data.filter(item => {
+          const tahunMatch = tahunAjaran === '' || item.tahunAjaran === tahunAjaran;
+          const tingkatMatch = selectedTingkat.length === 0 || selectedTingkat.includes(item.tingkat);
+          return tahunMatch && tingkatMatch;
+        });
+      }
+
+      // ===============================
+      // Initialize DataTable (Desktop) - once only
+      // ===============================
+      let dataTable; // Global variable to hold DataTable instance
+
+      function initDataTable() {
+        dataTable = $('#datatable').DataTable({
+          data: anakAsuhData,
+          columns: [
+            { data: 'no' },
+            { data: 'id' },
+            { data: 'nama' },
+            { data: 'sekolah' },
+            { data: 'tahunAjaran' },
+            { data: 'kelas' },
+            { data: 'keterangan' },
+            {
+              data: 'aksi',
+              render: function (data) {
+                return `<span class="badge bg-${getFileBadgeClass(data)}" onclick="window.location.href='form_approval.html'">${data}</span>`;
+              },
+            },
+            { data: 'tingkat', visible: false }, // Hidden column for filtering
+          ],
+          language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
+          },
+          pageLength: 10,
+          lengthMenu: [
+            [10, 15, 20, -1],
+            [10, 15, 20, 'Semua'],
+          ],
+          ordering: true,
+        });
+      }
+
+      // ===============================
+      // Filter DataTable using API (no destroy/recreate)
+      // ===============================
+      function filterTable() {
+        const tahunAjaran = tahunAjaranFilter.value;
+        const selectedTingkat = getSelectedTingkat(tingkatCheckboxes);
+
+        // Filter by tahun ajaran
+        dataTable.column(4).search(tahunAjaran).draw();
+
+        // Filter by tingkat using custom filter
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+          if (selectedTingkat.length === 0) return true;
+          return selectedTingkat.includes(data[8]); // Index 8 is the hidden tingkat column
+        });
+        dataTable.draw();
+        $.fn.dataTable.ext.search.pop(); // Remove the custom filter after draw
+      }
+
+      // ===============================
+      // Render Cards (Mobile)
+      // ===============================
       function renderCards() {
         const searchTerm = searchCard.value.toLowerCase();
-        const filtered = sekolahData.filter(
-          s =>
-            s.nama.toLowerCase().includes(searchTerm) ||
-            s.sekretariat.toLowerCase().includes(searchTerm) ||
-            s.email.toLowerCase().includes(searchTerm)
-        );
+        const isMobile = window.innerWidth < 992;
+        const tahunAjaran = isMobile ? document.getElementById('tahunAjaranFilter').value : tahunAjaranFilter.value;
+        const selectedTingkat = getSelectedTingkat(tingkatCheckboxes);
+
+        let filtered = filterData(anakAsuhData, tahunAjaran, selectedTingkat);
+
+        // Apply search
+        if (searchTerm) {
+          filtered = filtered.filter(
+            item =>
+              item.nama.toLowerCase().includes(searchTerm) ||
+              item.sekolah.toLowerCase().includes(searchTerm) ||
+              item.id.toLowerCase().includes(searchTerm)
+          );
+        }
 
         const totalPages = Math.ceil(filtered.length / perPageMobile);
         if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
@@ -556,36 +734,43 @@
         const start = (currentPageMobile - 1) * perPageMobile;
         const paginated = filtered.slice(start, start + perPageMobile);
 
-        // Render card list
         cardList.innerHTML = paginated
           .map(
-            s => `
-      <div class="col-12" data-bs-toggle="modal" data-bs-target="#detailSekolah">
+            item => `
+      <div class="col-12">
         <div class="card shadow-sm p-3 mb-2">
-          <h5 class="card-title">${s.nama}</h5>
-          <p class="mb-1"><strong>Sekretariat:</strong> ${s.sekretariat}</p>
-          <p class="mb-1"><strong>Email:</strong> ${s.email}</p>
-          <p class="mb-1"><strong>Telp:</strong> ${s.telp}</p>
-          <span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">${s.status}</span>
+          <h5 class="card-title">${item.nama}</h5>
+          <p class="mb-1"><strong>ID:</strong> ${item.id}</p>
+          <p class="mb-1"><strong>Sekolah:</strong> ${item.sekolah}</p>
+          <p class="mb-1"><strong>Tahun Ajaran:</strong> ${item.tahunAjaran}</p>
+          <p class="mb-1"><strong>Kelas:</strong> ${item.kelas}</p>
+          <p class="mb-1"><strong>Keterangan:</strong> ${item.keterangan}</p>
+          <p class="mb-1"><strong>Aksi:</strong> <span class="badge bg-${getFileBadgeClass(item.aksi)}">${
+              item.aksi
+            }</span></p>
         </div>
-      </div>`
+      </div>
+    `
           )
           .join('');
 
-        // Render pagination
-        paginationMobile.innerHTML =
-          totalPages > 1
-            ? Array.from(
-                { length: totalPages },
-                (_, i) => `
-          <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
-            <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
-          </li>
-        `
-              ).join('')
-            : '';
+        // Pagination
+        function generatePagination(totalPages, currentPage) {
+          let html = '';
+          // Previous button
+          html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+          // Page numbers: show current -1, current, current +1, clamped
+          const start = Math.max(1, currentPage - 1);
+          const end = Math.min(totalPages, currentPage + 1);
+          for (let i = start; i <= end; i++) {
+            html += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+          }
+          // Next button
+          html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+          return html;
+        }
+        paginationMobile.innerHTML = totalPages > 1 ? generatePagination(totalPages, currentPageMobile) : '';
 
-        // Event delegation untuk pagination
         paginationMobile.querySelectorAll('.page-link').forEach(link => {
           link.addEventListener('click', e => {
             e.preventDefault();
@@ -598,14 +783,68 @@
         });
       }
 
-      // Event search mobile
+      // ===============================
+      // Event Listener
+      // ===============================
       searchCard.addEventListener('input', () => {
         currentPageMobile = 1;
         renderCards();
       });
 
-      renderTable();
+      tahunAjaranFilter.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      tingkatCheckboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+          currentPageMobile = 1;
+          renderCards();
+        });
+      });
+
+      // ===============================
+      // Inisialisasi Awal
+      // ===============================
       renderCards();
+
+      // ===============================
+      // DataTable (Desktop) - Initialize once, filter dynamically
+      // ===============================
+      $(document).ready(function () {
+        if (window.innerWidth >= 992) {
+          initDataTable();
+        }
+      });
+
+      // ===============================
+      // Event Listener for Desktop Filters - Use filterTable to avoid flickering
+      // ===============================
+      tahunAjaranFilter.addEventListener('change', filterTable);
+      tingkatCheckboxes.forEach(cb => cb.addEventListener('change', filterTable));
+
+      // ===============================
+      // Handle Window Resize for Responsive Mode Switching
+      // ===============================
+      let currentMode = window.innerWidth >= 992 ? 'desktop' : 'mobile';
+
+      window.addEventListener('resize', () => {
+        const newMode = window.innerWidth >= 992 ? 'desktop' : 'mobile';
+        if (newMode !== currentMode) {
+          currentMode = newMode;
+          if (newMode === 'desktop') {
+            // Switching to desktop: Initialize DataTable if not already done
+            if (!dataTable) {
+              initDataTable();
+            }
+            // Apply current filters
+            filterTable();
+          } else {
+            // Switching to mobile: Re-render cards
+            renderCards();
+          }
+        }
+      });
     </script>
   </body>
 </html>
