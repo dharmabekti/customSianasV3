@@ -617,6 +617,12 @@ main {
     color: black !important;
   }
 
+  #unifiedFilters {
+    display: block !important;
+    height: auto !important;
+    visibility: visible !important;
+  }
+
   /* Untuk layar kecil: submenu tampil di bawah */
   @media (max-width: 991px) {
     .navbar .dropdown-submenu > .dropdown-menu {

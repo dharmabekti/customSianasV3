@@ -226,7 +226,7 @@
           height="80"
         />
         <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">BPT-XX-XXXX</small><br />
         <small class="mb-0">Sekretariat Yogyakarta</small>
       </div>
 
@@ -416,7 +416,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('transfer_beasiswa')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('status_transfer')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Status Transfer Beasiswa</strong>
@@ -609,6 +609,9 @@
         if (page === 'donasi_langsung') {
           // Buka modal QRIS langsung
           $('#rekeningYayasanModal').modal('show');
+        }
+        if (page === 'berkas_pendukung') {
+          window.open('https://drive.google.com/drive/folders/1mq6w54qD383kHMC-9iOmKF4z3-zCKejC', '_blank');
         } else {
           // Pindah ke halaman lain
           window.location.href = page + '.html';
