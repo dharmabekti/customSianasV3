@@ -430,29 +430,27 @@
                               <th class="text-muted fw-normal" style="width: 180px">
                                 <i class="bi bi-hash me-2 text-secondary"></i> ID
                               </th>
-                              <td class="text-dark">PJ-001</td>
+                              <td class="text-dark" data-label="ID">PJ-001</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
                               </th>
-                              <td class="text-dark">PJ Full Name</td>
+                              <td class="text-dark" data-label="Nama Lengkap">PJ Full Name</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
                               </th>
-                              <td class="text-dark">pj@example.com</td>
+                              <td class="text-dark" data-label="Email">pj@example.com</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
-                              <td class="text-dark">Penanggung Jawab</td>
+                              <td class="text-dark" data-label="Role">Penanggung Jawab</td>
                             </tr>
                             <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-star me-2 text-secondary"></i> Status
-                              </th>
-                              <td class="text-dark"><span class="badge bg-success">Aktif</span></td>
+                              <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Status</th>
+                              <td class="text-dark" data-label="Status"><span class="badge bg-success">Aktif</span></td>
                             </tr>
                           </tbody>
                         </table>
@@ -463,7 +461,7 @@
               </div>
 
               <!-- Navigasi Tab (Desktop) -->
-              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTabPj" role="tablist">
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">
                     Data Pribadi
@@ -475,7 +473,7 @@
               </ul>
 
               <!-- Isi Tab (Satu Sumber Data) -->
-              <div class="tab-content" id="profileContent">
+              <div class="tab-content" id="tabContent3">
                 <div class="tab-pane fade show active" id="data-pribadi">
                   <div class="card">
                     <div class="card border-0 shadow-sm rounded-4">
@@ -488,25 +486,25 @@
                                 <th class="text-muted fw-normal" style="width: 180px">
                                   <i class="bi bi-heart me-2 text-secondary"></i> Agama
                                 </th>
-                                <td class="text-dark">Islam</td>
+                                <td class="text-dark" data-label="Agama">Islam</td>
                               </tr>
                               <tr class="border-bottom">
                                 <th class="text-muted fw-normal">
                                   <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
                                 </th>
-                                <td class="text-dark">Pegawai Swasta</td>
+                                <td class="text-dark" data-label="Pekerjaan">Pegawai Swasta</td>
                               </tr>
                               <tr class="border-bottom">
                                 <th class="text-muted fw-normal">
                                   <i class="bi bi-award me-2 text-secondary"></i> Jabatan
                                 </th>
-                                <td class="text-dark">Manager</td>
+                                <td class="text-dark" data-label="Jabatan">Manager</td>
                               </tr>
                               <tr>
                                 <th class="text-muted fw-normal">
                                   <i class="bi bi-telephone me-2 text-secondary"></i> No HP
                                 </th>
-                                <td class="text-dark">081234567890</td>
+                                <td class="text-dark" data-label="No HP">081234567890</td>
                               </tr>
                             </tbody>
                           </table>
@@ -534,7 +532,7 @@
               </div>
 
               <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-              <div id="mobileProfile" class="d-md-none"></div>
+              <div id="listCardMobile3" class="d-md-none"></div>
             </div>
           </div>
 
