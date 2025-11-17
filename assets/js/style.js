@@ -118,3 +118,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// JavaScript for collapsible education table
+document.addEventListener('DOMContentLoaded', function () {
+  const schoolNames = document.querySelectorAll('.school-name');
+  schoolNames.forEach(name => {
+    name.addEventListener('click', function () {
+      const nextRow = this.closest('tr').nextElementSibling;
+      if (nextRow && nextRow.classList.contains('accordion-details')) {
+        nextRow.classList.toggle('show');
+      }
+    });
+  });
+});

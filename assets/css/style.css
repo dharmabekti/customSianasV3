@@ -416,6 +416,7 @@ main {
   background-color: #f8f9fa;
   border-top: 1px solid #dee2e6;
   border-radius: 0 0 6px 6px;
+  text-align: left;
 }
 
 .accordion-detail p {
@@ -757,7 +758,7 @@ main {
   .table tbody td {
     display: flex;
     justify-content: space-between;
-    padding: 0.4rem 0;
+    padding: 0.1rem 0;
     border: none;
     text-align: right;
   }
@@ -1411,6 +1412,19 @@ div.dataTables_wrapper .dataTables_filter input {
   }
 }
 
+/* Modal Detail Anak Asuh - Tombol Tutup di kanan bawah */
+@media (max-width: 576px) {
+  #detailAnakModal .modal-footer {
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+  }
+
+  #detailAnakModal .modal-footer button {
+    width: auto !important;
+    margin-left: auto;
+  }
+}
+
 .mb-6 {
   margin-bottom: 6rem;
 }
@@ -1667,11 +1681,11 @@ h3.page-title {
 .accordion-button::after {
   display: none;
 }
-.accordion-button.collapsed .text-primary::after {
+.accordion-button.collapsed .text-primary::before {
   content: ' ▼';
   font-size: 0.8rem;
 }
-.accordion-button:not(.collapsed) .text-primary::after {
+.accordion-button:not(.collapsed) .text-primary::before {
   content: ' ▲';
   font-size: 0.8rem;
 }
@@ -1692,9 +1706,10 @@ h3.page-title {
     width: 100%;
   }
 
-  /* Sembunyikan header */
-  .list-table thead {
-    display: none;
+  /* Sembunyikan header dan th */
+  .list-table thead,
+  .list-table th {
+    display: none !important;
   }
 
   /* Setiap baris jadi card */
@@ -1711,7 +1726,7 @@ h3.page-title {
   .list-table td {
     border: none !important;
     text-align: left !important;
-    padding: 0.5rem 0 !important;
+    /* padding: 0.5rem 0 !important; */
     display: flex;
     flex-direction: column;
   }
@@ -2042,3 +2057,68 @@ h3.page-title {
     font-size: 20px;
   }
 }
+
+/* Education table collapsible */
+.school-name {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.school-name:hover {
+  background-color: #f8f9fa;
+}
+
+.accordion-details {
+  display: none;
+}
+
+.accordion-details.show {
+  display: table-row;
+}
+
+.accordion-detail {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+/* Pastikan detail accordion rata kiri & tidak terdorong */
+.accordion-detail-wrapper {
+  padding: 0 !important;
+}
+
+.accordion-detail {
+  padding: 10px 12px;
+  text-align: left !important;
+}
+
+/* Hapus indent bawaan table-responsive di mobile */
+.table-responsive {
+  overflow-x: visible !important;
+}
+
+@media (max-width: 767.98px) {
+  .education-table td[colspan] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Matikan flex/table auto-alignment khusus di baris accordion */
+.accordion-detail-wrapper,
+.accordion-detail {
+  text-align: left !important;
+  display: block !important;
+}
+
+/* Bersihkan padding bawaan table responsive */
+.accordion-detail-wrapper {
+  padding: 0 !important;
+}
+
+/* Atur ulang padding isi agar rapi */
+.accordion-detail {
+  padding: 10px 14px !important;
+}
+

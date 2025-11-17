@@ -350,41 +350,54 @@
                     <!-- Info Singkat -->
                     <div class="col-12 col-md-8">
                       <div class="table-responsive">
-                        <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                        <table
+                          class="table table-borderless list-table mb-0 no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
                           <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Nama Lengkap</th>
+                              <td class="text-dark" data-label="Nama Lengkap">Ki Anom Dharma Bekti</td>
+                            </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal" style="width: 40%">
                                 <i class="bi bi-person me-2 text-secondary"></i> Nama Lengkap
                               </th>
-                              <td class="text-dark">Ahmad Rahman Dani</td>
+                              <td class="text-dark" data-label="Nama Lengkap">Ahmad Rahman Dani</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-gender-ambiguous me-2 text-secondary"></i> Jenis Kelamin
                               </th>
-                              <td class="text-dark">Laki - Laki</td>
+                              <td class="text-dark" data-label="Jenis Kelamin">Laki - Laki</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Agama</th>
-                              <td class="text-dark">Islam</td>
+                              <td class="text-dark" data-label="Agama">Islam</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-calendar-date me-2 text-secondary"></i> Tempat, Tanggal Lahir
                               </th>
-                              <td class="text-dark">Kebumen, 26 September 2008</td>
+                              <td class="text-dark" data-label="Tempat, Tanggal Lahir">Kebumen, 26 September 2008</td>
                             </tr>
                             <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-geo-alt me-2 text-secondary"></i> Sekretariat
                               </th>
-                              <td class="text-dark">Yogyakarta</td>
+                              <td class="text-dark" data-label="Sekretariat">Yogyakarta</td>
+                            </tr>
+                            <tr class="border-bottom">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-building me-2 text-secondary"></i> Universitas
+                              </th>
+                              <td class="text-dark" data-label="Universitas">Universitas Gadjah Mada</td>
                             </tr>
                             <tr class="align-middle">
                               <th class="text-muted fw-normal">
                                 <i class="bi bi-calendar-check me-2 text-secondary"></i> Tanggal Gabung
                               </th>
-                              <td class="text-dark">01 Januari 2023</td>
+                              <td class="text-dark" data-label="Tanggal Gabung">01 Januari 2023</td>
                             </tr>
                           </tbody>
                         </table>
@@ -494,10 +507,9 @@
               <div id="mobileProfile" class="d-md-none"></div>
             </div>
           </div>
-
           <div class="modal-footer justify-content-end">
-            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
+              <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+            </div>
         </div>
       </div>
     </div>
@@ -610,6 +622,29 @@
 
       window.addEventListener('resize', renderChild);
       renderChild();
+
+      // Handle mobile close button for modal
+      const detailBptModal = document.getElementById('detailBptModal');
+      const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+
+      detailBptModal.addEventListener('show.bs.modal', function () {
+        if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+          mobileCloseBtn.style.display = 'block';
+        }
+      });
+
+      detailBptModal.addEventListener('hide.bs.modal', function () {
+        mobileCloseBtn.style.display = 'none';
+      });
+
+      // Also handle window resize to show/hide button dynamically
+      window.addEventListener('resize', function () {
+        if (window.innerWidth < 992 && detailBptModal.classList.contains('show')) {
+          mobileCloseBtn.style.display = 'block';
+        } else {
+          mobileCloseBtn.style.display = 'none';
+        }
+      });
     </script>
   </body>
 </html>
