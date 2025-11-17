@@ -41,38 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // === Profil (mobile view) ===
-  const profileContent = document.querySelectorAll('#profileContent .content-section');
-  const mobileContainer = document.getElementById('mobileProfile');
-  if (mobileContainer && profileContent.length > 0) {
-    mobileContainer.innerHTML = ''; // Clear existing content
-    profileContent.forEach(section => {
-      const card = document.createElement('div');
-      card.className = 'card shadow-sm mb-3';
-      const body = document.createElement('div');
-      body.className = 'card-body';
-      body.innerHTML = section.innerHTML;
-
-      // Add data-label to table cells for mobile list display
-      const table = body.querySelector('.list-table');
-      if (table) {
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(row => {
-          const th = row.querySelector('th');
-          const td = row.querySelector('td');
-          if (th && td) {
-            td.setAttribute('data-label', th.textContent.trim());
-          }
-        });
-      }
-
-      card.appendChild(body);
-      mobileContainer.appendChild(card);
-    });
-  }
-
-  // === Mobile List Card (mobile view) ===
-  if (window.innerWidth <= 768) {
+  // === Fungsi untuk populate mobile cards ===
+  function populateMobileCards() {
     const komunitasContent = document.querySelectorAll('#tabContent .content-section');
     const listCardMobileContainer = document.getElementById('listCardMobile');
     if (listCardMobileContainer && komunitasContent.length > 0) {
@@ -102,6 +72,84 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  // === Profil (mobile view) for PJ Modal ===
+  const profileContentPj = document.querySelectorAll('#tabContent2 .content-section');
+  const mobileContainerPj = document.getElementById('listCardMobile2');
+  if (mobileContainerPj && profileContentPj.length > 0) {
+    mobileContainerPj.innerHTML = ''; // Clear existing content
+    profileContentPj.forEach(section => {
+      const card = document.createElement('div');
+      card.className = 'card shadow-sm mb-3';
+      const body = document.createElement('div');
+      body.className = 'card-body';
+      body.innerHTML = section.innerHTML;
+
+      // Add data-label to table cells for mobile list display
+      const table = body.querySelector('.list-table');
+      if (table) {
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const th = row.querySelector('th');
+          const td = row.querySelector('td');
+          if (th && td) {
+            td.setAttribute('data-label', th.textContent.trim());
+          }
+        });
+      }
+
+      card.appendChild(body);
+      mobileContainerPj.appendChild(card);
+    });
+  }
+
+  // === Profil (mobile view) for BPT Modal ===
+  const profileContentBpt = document.querySelectorAll('#tabContent3 .content-section');
+  const mobileContainerBpt = document.getElementById('listCardMobile3');
+  if (mobileContainerBpt && profileContentBpt.length > 0) {
+    mobileContainerBpt.innerHTML = ''; // Clear existing content
+    profileContentBpt.forEach(section => {
+      const card = document.createElement('div');
+      card.className = 'card shadow-sm mb-3';
+      const body = document.createElement('div');
+      body.className = 'card-body';
+      body.innerHTML = section.innerHTML;
+
+      // Add data-label to table cells for mobile list display
+      const table = body.querySelector('.list-table');
+      if (table) {
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const th = row.querySelector('th');
+          const td = row.querySelector('td');
+          if (th && td) {
+            td.setAttribute('data-label', th.textContent.trim());
+          }
+        });
+      }
+
+      card.appendChild(body);
+      mobileContainerBpt.appendChild(card);
+    });
+  }
+
+  // === Mobile List Card (mobile view) ===
+  if (window.innerWidth <= 768) {
+    populateMobileCards();
+  }
+
+  // === Event listener untuk resize window ===
+  window.addEventListener('resize', function () {
+    if (window.innerWidth <= 768) {
+      populateMobileCards();
+    } else {
+      // Jika kembali ke desktop, kosongkan mobile container
+      const listCardMobileContainer = document.getElementById('listCardMobile');
+      if (listCardMobileContainer) {
+        listCardMobileContainer.innerHTML = '';
+      }
+    }
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
