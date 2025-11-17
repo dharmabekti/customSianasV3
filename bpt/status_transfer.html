@@ -365,6 +365,16 @@
               <option>November</option>
               <option>Desember</option>
             </select>
+
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter" class="form-select form-select-sm">
+              <option value="">Semua</option>
+              <option>Auto Reject</option>
+              <option>Reject by Admin</option>
+              <option>Waiting</option>
+              <option>Approved</option>
+              <option>Done</option>
+            </select>
           </div>
 
           <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
@@ -388,7 +398,7 @@
         <div class="card-mobile d-lg-none">
           <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
           <div class="filter-mobile mb-3">
-            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun & Bulan</button>
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun, Bulan & Status</button>
             <div class="filter-content" id="filterContentMobile">
               <label for="tahunFilterMobile">Tahun:</label>
               <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
@@ -399,7 +409,7 @@
               </select>
 
               <label for="bulanFilterMobile">Bulan:</label>
-              <select id="bulanFilterMobile" class="form-select form-select-sm">
+              <select id="bulanFilterMobile" class="form-select form-select-sm mb-2">
                 <option value="">Semua</option>
                 <option>Januari</option>
                 <option>Februari</option>
@@ -413,6 +423,16 @@
                 <option>Oktober</option>
                 <option>November</option>
                 <option>Desember</option>
+              </select>
+
+              <label for="statusFilterMobile">Status:</label>
+              <select id="statusFilterMobile" class="form-select form-select-sm">
+                <option value="">Semua</option>
+                <option>Auto Reject</option>
+                <option>Reject by Admin</option>
+                <option>Waiting</option>
+                <option>Approved</option>
+                <option>Done</option>
               </select>
             </div>
           </div>
@@ -625,8 +645,10 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
       // Filter elements
       const tahunFilter = document.getElementById('tahunFilter');
       const bulanFilter = document.getElementById('bulanFilter');
+      const statusFilter = document.getElementById('statusFilter');
       const tahunFilterMobile = document.getElementById('tahunFilterMobile');
       const bulanFilterMobile = document.getElementById('bulanFilterMobile');
+      const statusFilterMobile = document.getElementById('statusFilterMobile');
 
       let currentPageMobile = 1;
       const perPageMobile = 6;
@@ -664,9 +686,10 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
       function renderTable() {
         const tahunVal = tahunFilter.value;
         const bulanVal = bulanFilter.value;
+        const statusVal = statusFilter.value;
 
         const filtered = sekolahData.filter(
-          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal)
+          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal) && (statusVal === '' || s.status === statusVal)
         );
 
         tableBody.innerHTML = filtered
@@ -694,11 +717,13 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
         const searchTerm = searchCard.value.toLowerCase();
         const tahunVal = tahunFilterMobile.value;
         const bulanVal = bulanFilterMobile.value;
+        const statusVal = statusFilterMobile.value;
 
         const filtered = sekolahData.filter(
           s =>
             (tahunVal === '' || s.tahun == tahunVal) &&
             (bulanVal === '' || s.bulan === bulanVal) &&
+            (statusVal === '' || s.status === statusVal) &&
             (s.sekolah.toLowerCase().includes(searchTerm) ||
               s.tahun.toString().includes(searchTerm) ||
               s.bulan.toLowerCase().includes(searchTerm) ||
@@ -770,12 +795,17 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
 
       tahunFilter.addEventListener('change', renderTable);
       bulanFilter.addEventListener('change', renderTable);
+      statusFilter.addEventListener('change', renderTable);
 
       tahunFilterMobile.addEventListener('change', () => {
         currentPageMobile = 1;
         renderCards();
       });
       bulanFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+      statusFilterMobile.addEventListener('change', () => {
         currentPageMobile = 1;
         renderCards();
       });

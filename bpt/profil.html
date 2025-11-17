@@ -226,7 +226,7 @@
           height="80"
         />
         <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">BPT-XX-XXXX</small><br />
         <small class="mb-0">Sekretariat Yogyakarta</small>
       </div>
 
@@ -405,20 +405,17 @@
         </div>
 
         <!-- Navigasi Tab (Desktop) -->
-        <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+        <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTabBpt" role="tablist" style="font-size: 12px">
           <li class="nav-item">
             <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pendidikan_bpt">Pendidikan</button>
           </li>
           <li class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kontak_bpt">Kontak</button>
           </li>
-          <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#khs">KHS</button>
-          </li>
         </ul>
 
         <!-- Isi Tab (Satu Sumber Data) -->
-        <div class="tab-content" id="profileContent">
+        <div class="tab-content d-none d-md-block" id="tabContent">
           <div class="tab-pane fade show active" id="pendidikan_bpt">
             <div class="card">
               <div class="card border-0 shadow-sm rounded-4">
@@ -432,23 +429,23 @@
                           <th class="text-muted fw-normal" style="width: 180px">
                             <i class="bi bi-building me-2 text-secondary"></i> Universitas
                           </th>
-                          <td class="text-dark">Universitas Gadjah Mada</td>
+                          <td class="text-dark" data-label="Universitas">Universitas Gadjah Mada</td>
                         </tr>
                         <tr class="border-bottom">
                           <th class="text-muted fw-normal">
                             <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat Universitas
                           </th>
-                          <td class="text-dark">Jl. Bulaksumur, Yogyakarta</td>
+                          <td class="text-dark" data-label="Alamat Universitas">Jl. Bulaksumur, Yogyakarta</td>
                         </tr>
                         <tr>
                           <th class="text-muted fw-normal"><i class="bi bi-book me-2 text-secondary"></i> Jurusan</th>
-                          <td class="text-dark">Teknik Informatika</td>
+                          <td class="text-dark" data-label="Jurusan">Teknik Informatika</td>
                         </tr>
                         <tr>
                           <th class="text-muted fw-normal">
                             <i class="bi bi-calendar me-2 text-secondary"></i> Angkatan
                           </th>
-                          <td class="text-dark">2021</td>
+                          <td class="text-dark" data-label="Angkatan">2021</td>
                         </tr>
                       </tbody>
                     </table>
@@ -470,21 +467,21 @@
                           <th class="text-muted fw-normal" style="width: 180px">
                             <i class="bi bi-telephone me-2 text-secondary"></i> No HP/WhatsApp
                           </th>
-                          <td class="text-dark">0855123456</td>
+                          <td class="text-dark" data-label="No HP/WhatsApp">0855123456</td>
                         </tr>
                         <tr class="border-bottom">
                           <th class="text-muted fw-normal"><i class="bi bi-envelope me-2 text-secondary"></i> Email</th>
-                          <td class="text-dark">ahmad.rahman@example.com</td>
+                          <td class="text-dark" data-label="Email">ahmad.rahman@example.com</td>
                         </tr>
                         <tr>
                           <th class="text-muted fw-normal">
                             <i class="bi bi-instagram me-2 text-secondary"></i> Instagram
                           </th>
-                          <td class="text-dark">@ahmadrahman</td>
+                          <td class="text-dark" data-label="Instagram">@ahmadrahman</td>
                         </tr>
                         <tr>
                           <th class="text-muted fw-normal"><i class="bi bi-twitter me-2 text-secondary"></i> X</th>
-                          <td class="text-dark">@ahmadrahman</td>
+                          <td class="text-dark" data-label="X">@ahmadrahman</td>
                         </tr>
                       </tbody>
                     </table>
@@ -493,40 +490,10 @@
               </div>
             </div>
           </div>
-
-          <div class="tab-pane fade show" id="khs">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section text-start">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Kartu Hasil Studi</h5>
-                  <div id="childGrid" class="row g-2">
-                    <div class="col-6 col-md-2">
-                      <div class="child-card">
-                        <img src="../assets/img/file.png" alt="Nama" />
-                        <h6>Semester 1</h6>
-                      </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                      <div class="child-card">
-                        <img src="../assets/img/file.png" alt="Nama" />
-                        <h6>Semester 2</h6>
-                      </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                      <div class="child-card">
-                        <img src="../assets/img/file.png" alt="Nama" />
-                        <h6>Semester 3</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-        <div id="mobileProfile" class="d-md-none"></div>
+        <div id="listCardMobile" class="d-md-none"></div>
       </div>
 
       <br />

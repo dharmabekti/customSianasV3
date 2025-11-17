@@ -341,6 +341,7 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Data Transfer Beasiswa</h3>
       <div class="container-fluid form-wrapper">
+
         <!-- ✅ FILTER BAR UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
           <div class="filter-bar d-none d-lg-flex">
@@ -367,30 +368,36 @@
               <option>November</option>
               <option>Desember</option>
             </select>
+
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter" class="form-select form-select-sm">
+              <option value="">Semua</option>
+              <option>Sudah Transfer</option>
+              <option>Belum Ditransfer</option>
+              <option>Menunggu</option>
+            </select>
           </div>
 
-          <div class="table-responsive">
-            <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
-              <thead class="table-light">
-                <tr>
-                  <th>Tahun Akademik</th>
-                  <th>Tanggal Transfer</th>
-                  <th>Kode</th>
-                  <th>SPP Bulan</th>
-                  <th>Jumlah</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+          <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
+            <thead class="table-light">
+              <tr>
+                <th>Tahun Akademik</th>
+                <th>Tanggal Transfer</th>
+                <th>Kode</th>
+                <th>SPP Bulan</th>
+                <th>Jumlah</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
 
         <!-- ✅ CARD LIST UNTUK MOBILE -->
         <div class="card-mobile d-lg-none">
           <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
           <div class="filter-mobile mb-3">
-            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun & Bulan</button>
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun, Bulan & Status</button>
             <div class="filter-content" id="filterContentMobile">
               <label for="tahunFilterMobile">Tahun:</label>
               <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
@@ -401,7 +408,7 @@
               </select>
 
               <label for="bulanFilterMobile">Bulan:</label>
-              <select id="bulanFilterMobile" class="form-select form-select-sm">
+              <select id="bulanFilterMobile" class="form-select form-select-sm mb-2">
                 <option value="">Semua</option>
                 <option>Januari</option>
                 <option>Februari</option>
@@ -415,6 +422,14 @@
                 <option>Oktober</option>
                 <option>November</option>
                 <option>Desember</option>
+              </select>
+
+              <label for="statusFilterMobile">Status:</label>
+              <select id="statusFilterMobile" class="form-select form-select-sm">
+                <option value="">Semua</option>
+                <option>Sudah Transfer</option>
+                <option>Belum Ditransfer</option>
+                <option>Menunggu</option>
               </select>
             </div>
           </div>
@@ -606,38 +621,35 @@
       const fileStatusList = ['Ada', 'Belum Ada'];
 
       // ===============================
-      // Generate Data Sekolah
-      // ===============================
-      const sekolahData = Array.from({ length: 30 }, (_, i) => {
-        const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
-        const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
-        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+// Generate Data Sekolah
+// ===============================
+const sekolahData = Array.from({ length: 30 }, (_, i) => {
+  const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
+  const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
+  const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
-        // Generate random last update date/time
-        const now = new Date();
-        const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
-        const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
-        const randomHours = Math.floor(Math.random() * 24);
-        const randomMinutes = Math.floor(Math.random() * 60);
-        const randomSeconds = Math.floor(Math.random() * 60);
-        randomDate.setHours(randomHours, randomMinutes, randomSeconds);
-        const tglTransfer =
-          randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) +
-          ' ' +
-          randomDate.toLocaleTimeString('id-ID');
+  // Generate random last update date/time
+  const now = new Date();
+  const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
+  const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
+  const randomHours = Math.floor(Math.random() * 24);
+  const randomMinutes = Math.floor(Math.random() * 60);
+  const randomSeconds = Math.floor(Math.random() * 60);
+  randomDate.setHours(randomHours, randomMinutes, randomSeconds);
+  const tglTransfer = randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + randomDate.toLocaleTimeString('id-ID');
 
-        return {
-          id: i + 1,
-          tahun,
-          sekolah: `Sekolah ${i + 1}`,
-          bulan,
-          jumlah,
-          kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-          lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-          status: statusList[Math.floor(Math.random() * statusList.length)],
-          tglTransfer,
-        };
-      });
+  return {
+    id: i + 1,
+    tahun,
+    sekolah: `Sekolah ${i + 1}`,
+    bulan,
+    jumlah,
+    kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+    status: statusList[Math.floor(Math.random() * statusList.length)],
+    tglTransfer,
+  };
+});
 
       const tableBody = document.querySelector('#datatable tbody');
       const cardList = document.getElementById('cardList');
@@ -647,8 +659,10 @@
       // Filter elements
       const tahunFilter = document.getElementById('tahunFilter');
       const bulanFilter = document.getElementById('bulanFilter');
+      const statusFilter = document.getElementById('statusFilter');
       const tahunFilterMobile = document.getElementById('tahunFilterMobile');
       const bulanFilterMobile = document.getElementById('bulanFilterMobile');
+      const statusFilterMobile = document.getElementById('statusFilterMobile');
 
       let currentPageMobile = 1;
       const perPageMobile = 6;
@@ -673,18 +687,18 @@
       // Helper: Generate Kode Transfer
       // ===============================
       const monthAbbrev = {
-        Januari: 'JAN',
-        Februari: 'FEB',
-        Maret: 'MAR',
-        April: 'APR',
-        Mei: 'MEI',
-        Juni: 'JUN',
-        Juli: 'JUL',
-        Agustus: 'AGS',
-        September: 'SEP',
-        Oktober: 'OKT',
-        November: 'NOV',
-        Desember: 'DES',
+        'Januari': 'JAN',
+        'Februari': 'FEB',
+        'Maret': 'MAR',
+        'April': 'APR',
+        'Mei': 'MEI',
+        'Juni': 'JUN',
+        'Juli': 'JUL',
+        'Agustus': 'AGS',
+        'September': 'SEP',
+        'Oktober': 'OKT',
+        'November': 'NOV',
+        'Desember': 'DES'
       };
 
       function generateKode(bulan, tahun) {
@@ -706,9 +720,10 @@
       function renderTable() {
         const tahunVal = tahunFilter.value;
         const bulanVal = bulanFilter.value;
+        const statusVal = statusFilter.value;
 
         const filtered = sekolahData.filter(
-          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal)
+          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal) && (statusVal === '' || s.status === statusVal)
         );
 
         tableBody.innerHTML = filtered
@@ -734,11 +749,13 @@
         const searchTerm = searchCard.value.toLowerCase();
         const tahunVal = tahunFilterMobile.value;
         const bulanVal = bulanFilterMobile.value;
+        const statusVal = statusFilterMobile.value;
 
         const filtered = sekolahData.filter(
           s =>
             (tahunVal === '' || s.tahun == tahunVal) &&
             (bulanVal === '' || s.bulan === bulanVal) &&
+            (statusVal === '' || s.status === statusVal) &&
             (s.sekolah.toLowerCase().includes(searchTerm) ||
               s.tahun.toString().includes(searchTerm) ||
               s.bulan.toLowerCase().includes(searchTerm) ||
@@ -759,9 +776,7 @@
           <h5 class="card-title">${s.bulan}</h5>
           <p class="mb-1"><strong>Tahun Akademik:</strong> ${s.tahun}</p>
           <p class="mb-1"><strong>Tgl Transfer:</strong> ${s.tglTransfer}</p>
-          <p class="mb-1"><strong>Kode:</strong> ${
-            s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''
-          }</p>
+          <p class="mb-1"><strong>Kode:</strong> ${s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''}</p>
           <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
           <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status
@@ -807,12 +822,17 @@
 
       tahunFilter.addEventListener('change', renderTable);
       bulanFilter.addEventListener('change', renderTable);
+      statusFilter.addEventListener('change', renderTable);
 
       tahunFilterMobile.addEventListener('change', () => {
         currentPageMobile = 1;
         renderCards();
       });
       bulanFilterMobile.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+      statusFilterMobile.addEventListener('change', () => {
         currentPageMobile = 1;
         renderCards();
       });
