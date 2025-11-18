@@ -512,6 +512,7 @@ main {
   object-position: center; /* fokus ke tengah */
   border-radius: 10px;
 }
+
 .status-box {
   background-color: yellow;
   color: #000;
