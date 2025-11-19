@@ -352,26 +352,22 @@
           <!-- Elemen collapse TIDAK boleh memakai d-flex -->
           <div class="collapse mt-2 mt-lg-0" id="unifiedFilters">
             <!-- Layout wrapper baru -->
-            <div class="filter-bar d-flex flex-column flex-lg-row gap-2 gap-lg-3">
-              <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-2 gap-lg-3 w-100">
+            <div class="filter-bar d-flex flex-column flex-lg-row gap-1 gap-lg-0">
+              <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-1 gap-lg-2 w-100">
                 <label for="sekolahFilter" class="form-label mb-0 fw-semibold">Komunitas:</label>
-                <select id="sekolahFilter" class="form-select form-select-sm flex-grow-1 w-100">
+                <select id="sekolahFilter" class="form-select form-select-sm" style="width: 180px;">
                   <option value="">Semua Komunitas</option>
                 </select>
-              </div>
 
-              <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-2 gap-lg-3 w-100">
                 <label for="statusFilter" class="form-label mb-0 fw-semibold">Status:</label>
-                <select id="statusFilter" class="form-select form-select-sm flex-grow-1 w-100">
+                <select id="statusFilter" class="form-select form-select-sm" style="width: 180px;">
                   <option value="">Semua Status</option>
                   <option>Naik Kelas</option>
                   <option>Tidak Naik Kelas</option>
                 </select>
-              </div>
 
-              <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-2 gap-lg-3 w-100">
                 <label for="tingkatFilter" class="form-label mb-0 fw-semibold">Pendidikan:</label>
-                <select id="tingkatFilter" class="form-select form-select-sm flex-grow-1 w-100">
+                <select id="tingkatFilter" class="form-select form-select-sm" style="width: 180px;">
                   <option value="">Semua Tingkat</option>
                   <option>SD</option>
                   <option>SMP</option>
@@ -636,7 +632,7 @@
         tableBody.innerHTML = filteredData
           .map(
             s => `
-      <tr>
+      <tr onclick="window.location.href='lap_detail_anakasuh.html'">
         <td>${s.no}</td>
         <td>${s.id}</td>
         <td>${s.nama}</td>
