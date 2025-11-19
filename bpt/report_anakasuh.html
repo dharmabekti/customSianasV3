@@ -355,19 +355,19 @@
             <div class="filter-bar d-flex flex-column flex-lg-row gap-1 gap-lg-0">
               <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-1 gap-lg-2 w-100">
                 <label for="sekolahFilter" class="form-label mb-0 fw-semibold">Komunitas:</label>
-                <select id="sekolahFilter" class="form-select form-select-sm" style="width: 180px;">
+                <select id="sekolahFilter" class="form-select form-select-sm" style="width: 180px">
                   <option value="">Semua Komunitas</option>
                 </select>
 
                 <label for="statusFilter" class="form-label mb-0 fw-semibold">Status:</label>
-                <select id="statusFilter" class="form-select form-select-sm" style="width: 180px;">
+                <select id="statusFilter" class="form-select form-select-sm" style="width: 180px">
                   <option value="">Semua Status</option>
                   <option>Naik Kelas</option>
                   <option>Tidak Naik Kelas</option>
                 </select>
 
                 <label for="tingkatFilter" class="form-label mb-0 fw-semibold">Pendidikan:</label>
-                <select id="tingkatFilter" class="form-select form-select-sm" style="width: 180px;">
+                <select id="tingkatFilter" class="form-select form-select-sm" style="width: 180px">
                   <option value="">Semua Tingkat</option>
                   <option>SD</option>
                   <option>SMP</option>
@@ -416,6 +416,664 @@
         </div>
       </div>
     </main>
+
+    <div
+      class="modal fade"
+      id="riwayatAnakasuh"
+      tabindex="-1"
+      aria-labelledby="detailRiwayatLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Laporan Anak Asuh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <!-- Foto Profil -->
+                    <div class="col-md-3 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://randomuser.me/api/portraits/men/10.jpg"
+                        alt="Foto Profil"
+                        class="rounded-circle img-fluid shadow-sm"
+                        style="height: 75%; width: 75%"
+                      />
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-borderless list-table mb-0 no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Nama Lengkap</th>
+                              <td class="text-dark" data-label="Nama Lengkap">Ki Anom Dharma Bekti</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Jenis Kelamin</th>
+                              <td data-label="Jenis Kelamin">Laki - Laki</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Agama</th>
+                              <td data-label="Agama">Islam</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Tempat, Tanggal Lahir</th>
+                              <td data-label="Tempat, Tanggal Lahir">Kebumen, 26 September 2008</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Komunitas</th>
+                              <td data-label="Komunitas">
+                                <span class="text-success fw-semibold">SMK Wiyata Dharma Walikukun</span>
+                              </td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Pendidikan / Saat ini</th>
+                              <td data-label="Pendidikan / Saat ini">SMA/SMK Kelas 12</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">Status</th>
+                              <td data-label="Status">Naik Kelas</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Mulai Dibantu</th>
+                              <td data-label="Mulai Dibantu">01 Juli 2025</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
+                    Kondisi Keluarga
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#dataSPP">Data SPP</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat_pendidikan">
+                    Riwayat Pendidikan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_akademik">
+                    Prestasi Akademik
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_kegiatan">
+                    Prestasi Kegiatan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan_tambahan">
+                    Pendidikan Tambahan
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kegiatan_organisasi">
+                    Kegiatan & Organisasi
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bahasa">Kemampuan Bahasa</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="kondisi_keluarga">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kondisi Keluarga</h5>
+                        <div class="table-responsive">
+                          <table
+                            class="table table-borderless list-table mb-0 no-mobile-hide"
+                            style="width: 100%; text-align: left"
+                          >
+                            <tbody class="border-bottom align-middle">
+                              <tr>
+                                <th class="text-muted fw-normal">Anak ke</th>
+                                <td data-label="Anak ke">1 dari 2 bersaudara</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Nama Ayah</th>
+                                <td data-label="Nama Ayah">Moh. Turisno</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Pekerjaan Ayah</th>
+                                <td data-label="Pekerjaan Ayah">Buruh Tani</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Penghasilan Ayah</th>
+                                <td data-label="Penghasilan Ayah">Tidak Berpenghasilan per bulan</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Nama Ibu</th>
+                                <td data-label="Nama Ibu">Sudarmi</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Pekerjaan Ibu</th>
+                                <td data-label="Pekerjaan Ibu">Ibu Rumah Tangga</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Penghasilan Ibu</th>
+                                <td data-label="Penghasilan Ibu">Tidak Berpenghasilan per bulan</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Status Tempat Tinggal</th>
+                                <td data-label="Status Tempat Tinggal">Rumah Sendiri</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Kendaraan Dimiliki</th>
+                                <td data-label="Kendaraan Dimiliki">0 mobil, 1 motor, 0 sepeda</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">Kondisi Keluarga</th>
+                                <td data-label="Kondisi Keluarga">
+                                  Tinggal bersama dengan kedua orang tua serta seorang adik...
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="dataSPP">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data SPP</h5>
+                        <div class="table-responsive text-start">
+                          <table
+                            class="table table-borderless education-table mb-0"
+                            style="width: 100%; text-align: left !important"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Tahun Akademik</th>
+                                <th class="d-none d-md-table-cell">Sekolah</th>
+                                <th class="d-none d-md-table-cell">Kelas</th>
+                                <th class="d-none d-md-table-cell">SPP Bulanan</th>
+                                <th class="d-none d-md-table-cell">Tgl Berlaku</th>
+                                <th class="d-none d-md-table-cell">Tgl Berakhir</th>
+                                <th class="d-none d-md-table-cell">Status</th>
+                                <th class="d-none d-md-table-cell">Donatur</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  2023/2024
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Sekolah">SD Negeri 1 Kebumen</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
+                                <td class="d-none d-md-table-cell" data-label="SPP Bulanan">Rp 50.000</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-07-2023</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">30-06-2024</td>
+                                <td class="d-none d-md-table-cell" data-label="Status">Aktif</td>
+                                <td class="d-none d-md-table-cell" data-label="Donatur">Donatur A</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Sekolah:</strong> SD Negeri 1 Kebumen<br />
+                                    <strong>Kelas:</strong> Kelas 6<br />
+                                    <strong>SPP Bulanan:</strong> Rp 50.000<br />
+                                    <strong>Tgl Berlaku:</strong> 01-07-2023<br />
+                                    <strong>Tgl Berakhir:</strong> 30-06-2024<br />
+                                    <strong>Status:</strong> Aktif<br />
+                                    <strong>Donatur:</strong> Donatur A
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  2024/2025
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Komunitas/Sekolah">
+                                  SMP Negeri 1 Kebumen
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 9</td>
+                                <td class="d-none d-md-table-cell" data-label="SPP Bulanan">Rp 75.000</td>
+                                <td class="d-none d-md-table-cell" data-label="Tanggal Berlaku">01-07-2024</td>
+                                <td class="d-none d-md-table-cell" data-label="Tanggal Selesai">30-06-2025</td>
+                                <td class="d-none d-md-table-cell" data-label="Status">Aktif</td>
+                                <td class="d-none d-md-table-cell" data-label="Nama Donatur">Donatur B</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Komunitas/Sekolah:</strong> SMP Negeri 1 Kebumen<br />
+                                    <strong>Kelas:</strong> Kelas 9<br />
+                                    <strong>SPP Bulanan:</strong> Rp 75.000<br />
+                                    <strong>Tanggal Berlaku:</strong> 01-07-2024<br />
+                                    <strong>Tanggal Selesai:</strong> 30-06-2025<br />
+                                    <strong>Status:</strong> Aktif<br />
+                                    <strong>Nama Donatur:</strong> Donatur B
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  2025/2026
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Komunitas/Sekolah">
+                                  SMK Wiyata Dharma Walikukun
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
+                                <td class="d-none d-md-table-cell" data-label="SPP Bulanan">Rp 100.000</td>
+                                <td class="d-none d-md-table-cell" data-label="Tanggal Berlaku">01-07-2025</td>
+                                <td class="d-none d-md-table-cell" data-label="Tanggal Selesai">30-06-2026</td>
+                                <td class="d-none d-md-table-cell" data-label="Status">Aktif</td>
+                                <td class="d-none d-md-table-cell" data-label="Nama Donatur">Donatur C</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Komunitas/Sekolah:</strong> SMK Wiyata Dharma Walikukun<br />
+                                    <strong>Kelas:</strong> Kelas 12<br />
+                                    <strong>SPP Bulanan:</strong> Rp 100.000<br />
+                                    <strong>Tanggal Berlaku:</strong> 01-07-2025<br />
+                                    <strong>Tanggal Selesai:</strong> 30-06-2026<br />
+                                    <strong>Status:</strong> Aktif<br />
+                                    <strong>Nama Donatur:</strong> Donatur C
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="riwayat_pendidikan">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Riwayat Pendidikan</h5>
+                        <div class="table-responsive text-start">
+                          <table
+                            class="table table-borderless education-table mb-0"
+                            style="width: 100%; text-align: left !important"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Sekolah</th>
+                                <th class="d-none d-md-table-cell">Tahun Akademik</th>
+                                <th class="d-none d-md-table-cell">Kelas</th>
+                                <th class="d-none d-md-table-cell">Semester</th>
+                                <th class="d-none d-md-table-cell">Rangking</th>
+                                <th class="d-none d-md-table-cell">File</th>
+                                <th class="d-none d-md-table-cell">Keterangan</th>
+                                <th class="d-none d-md-table-cell">Tgl Kirim</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SD Negeri 1 Kebumen
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2019</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2019<br />
+                                    <strong>Kelas:</strong> Kelas 6<br />
+                                    <strong>Semester:</strong> Genap<br />
+                                    <strong>Rangking:</strong> 5<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Lulus<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2019
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SMP Negeri 1 Kebumen
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2022</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2022<br />
+                                    <strong>Kelas:</strong> Kelas 3<br />
+                                    <strong>Semester:</strong> Genap<br />
+                                    <strong>Rangking:</strong> -<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Lulus<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2022
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SMK Wiyata Dharma Walikukun
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2025</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2025<br />
+                                    <strong>Kelas:</strong> Kelas 12<br />
+                                    <strong>Semester:</strong> Gasal<br />
+                                    <strong>Rangking:</strong> -<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Naik Kelas<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2025
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade show" id="prestasi_akademik">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Akademik</h5>
+                        <div class="table-responsive text-start">
+                          <table
+                            class="table table-borderless education-table mb-0"
+                            style="width: 100%; text-align: left !important"
+                          >
+                            <thead>
+                              <tr>
+                                <th>Sekolah</th>
+                                <th class="d-none d-md-table-cell">Tahun Akademik</th>
+                                <th class="d-none d-md-table-cell">Kelas</th>
+                                <th class="d-none d-md-table-cell">Semester</th>
+                                <th class="d-none d-md-table-cell">Rangking</th>
+                                <th class="d-none d-md-table-cell">File</th>
+                                <th class="d-none d-md-table-cell">Keterangan</th>
+                                <th class="d-none d-md-table-cell">Tgl Kirim</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SD Negeri 1 Kebumen
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2019</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2019<br />
+                                    <strong>Kelas:</strong> Kelas 6<br />
+                                    <strong>Semester:</strong> Genap<br />
+                                    <strong>Rangking:</strong> 5<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Lulus<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2019
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SMP Negeri 1 Kebumen
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2022</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2022<br />
+                                    <strong>Kelas:</strong> Kelas 3<br />
+                                    <strong>Semester:</strong> Genap<br />
+                                    <strong>Rangking:</strong> -<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Lulus<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2022
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td class="school-name" data-label="">
+                                  SMK Wiyata Dharma Walikukun
+                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                                </td>
+                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2025</td>
+                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
+                                <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
+                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                                <td class="d-none d-md-table-cell" data-label="File">-</td>
+                                <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
+                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
+                              </tr>
+                              <tr class="accordion-details">
+                                <td colspan="8" class="accordion-detail-wrapper">
+                                  <div class="accordion-detail">
+                                    <strong>Tahun Akademik:</strong> 2025<br />
+                                    <strong>Kelas:</strong> Kelas 12<br />
+                                    <strong>Semester:</strong> Gasal<br />
+                                    <strong>Rangking:</strong> -<br />
+                                    <strong>File:</strong> -<br />
+                                    <strong>Keterangan:</strong> Naik Kelas<br />
+                                    <strong>Tgl Kirim:</strong> 20-06-2025
+                                  </div>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="prestasi_kegiatan">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Kegiatan</h5>
+                      <div class="table-responsive text-start">
+                        <table
+                          class="table table-borderless education-table mb-0"
+                          style="width: 100%; text-align: left !important"
+                        >
+                          <thead>
+                            <tr>
+                              <th>Nama Kegiatan/Perlombaan</th>
+                              <th class="d-none d-md-table-cell">Tahun</th>
+                              <th class="d-none d-md-table-cell">Jenis Kegiatan/Perlombaan</th>
+                              <th class="d-none d-md-table-cell">Tingkat</th>
+                              <th class="d-none d-md-table-cell">Prestasi</th>
+                              <th class="d-none d-md-table-cell">File Pendukung</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="school-name" data-label="">
+                                Lomba Cerdas Cermat Matematika
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun">2023</td>
+                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Akademik</td>
+                              <td class="d-none d-md-table-cell" data-label="Tingkat">Kabupaten</td>
+                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 2</td>
+                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="6" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Tahun:</strong> 2023<br />
+                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Akademik<br />
+                                  <strong>Tingkat:</strong> Kabupaten<br />
+                                  <strong>Prestasi:</strong> Juara 2<br />
+                                  <strong>File Pendukung:</strong> -
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="school-name" data-label="">
+                                Lomba Pidato Bahasa Indonesia
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun">2024</td>
+                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">
+                                Non-Akademik
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Tingkat">Provinsi</td>
+                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 1</td>
+                              <td class="d-none d-md-table-cell" data-label="File Pendukung">
+                                <i class="bi bi-file-earmark"></i>
+                              </td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="6" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Tahun:</strong> 2024<br />
+                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Non-Akademik<br />
+                                  <strong>Tingkat:</strong> Provinsi<br />
+                                  <strong>Prestasi:</strong> Juara 1<br />
+                                  <strong>File Pendukung:</strong> <i class="bi bi-file-earmark"></i>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="school-name" data-label="">
+                                Lomba Olahraga Atletik
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun">2022</td>
+                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Olahraga</td>
+                              <td class="d-none d-md-table-cell" data-label="Tingkat">Sekolah</td>
+                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 3</td>
+                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="6" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Tahun:</strong> 2022<br />
+                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Olahraga<br />
+                                  <strong>Tingkat:</strong> Sekolah<br />
+                                  <strong>Prestasi:</strong> Juara 3<br />
+                                  <strong>File Pendukung:</strong> -
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pendidikan_tambahan">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan Tambahan</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="kegiatan_organisasi">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kegiatan & Organisasi</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="bahasa">
+                  <div class="card">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kemampuan Bahasa</h5>
+                      <span>Belum ada data!</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button  type="button" class="btn btn-primary text-white px-4 fw-bold">
+              <i class="bi bi-download me-1"></i> Download Laporan
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -632,7 +1290,7 @@
         tableBody.innerHTML = filteredData
           .map(
             s => `
-      <tr onclick="window.location.href='lap_detail_anakasuh.html'">
+      <tr data-bs-toggle="modal" data-bs-target="#riwayatAnakasuh">
         <td>${s.no}</td>
         <td>${s.id}</td>
         <td>${s.nama}</td>
@@ -681,7 +1339,7 @@
         cardList.innerHTML = paginated
           .map(
             s => `
-      <div class="col-12">
+      <div class="col-12" data-bs-toggle="modal" data-bs-target="#riwayatAnakasuh">
         <div class="card shadow-sm p-3 mb-2">
           <h5 class="card-title">${s.nama}</h5>
           <p class="mb-1"><strong>ID:</strong> ${s.id}</p>
