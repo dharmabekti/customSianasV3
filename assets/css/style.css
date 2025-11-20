@@ -2076,6 +2076,15 @@ h3.page-title {
 }
 
 /* Education table collapsible */
+.label-name {
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.label-name:hover {
+  background-color: #f8f9fa;
+}
+
 .school-name {
   cursor: pointer;
   transition: background-color 0.2s;
@@ -2117,6 +2126,10 @@ h3.page-title {
 
 @media (max-width: 767.98px) {
   .education-table td[colspan] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .cardlist-table td[colspan] {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
