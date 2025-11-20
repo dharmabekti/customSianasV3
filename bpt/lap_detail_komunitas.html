@@ -420,11 +420,12 @@
         <div class="accordion d-md-none mb-3" id="mobileAccordion">
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingKontak">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKontak" aria-expanded="true" aria-controls="collapseKontak">
-                Kontak
+              <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseKontak" aria-expanded="false" aria-controls="collapseKontak">
+                <span class="flex-grow-1 text-center">Kontak</span>
+                <i class="bi bi-chevron-right"></i>
               </button>
             </h2>
-            <div id="collapseKontak" class="accordion-collapse collapse show" aria-labelledby="headingKontak" data-bs-parent="#mobileAccordion">
+            <div id="collapseKontak" class="accordion-collapse collapse" aria-labelledby="headingKontak" data-bs-parent="#mobileAccordion">
               <div class="accordion-body">
                 <!-- Konten akan disalin dari #kontak -->
               </div>
@@ -432,8 +433,9 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingRekening">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRekening" aria-expanded="false" aria-controls="collapseRekening">
-                Rekening
+              <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRekening" aria-expanded="false" aria-controls="collapseRekening">
+                <span class="flex-grow-1 text-center">Rekening</span>
+                <i class="bi bi-chevron-right"></i>
               </button>
             </h2>
             <div id="collapseRekening" class="accordion-collapse collapse" aria-labelledby="headingRekening" data-bs-parent="#mobileAccordion">
@@ -444,8 +446,9 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingPenanggungjawab">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePenanggungjawab" aria-expanded="false" aria-controls="collapsePenanggungjawab">
-                Penanggungjawab
+              <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePenanggungjawab" aria-expanded="false" aria-controls="collapsePenanggungjawab">
+                <span class="flex-grow-1 text-center">Penanggungjawab</span>
+                <i class="bi bi-chevron-right"></i>
               </button>
             </h2>
             <div id="collapsePenanggungjawab" class="accordion-collapse collapse" aria-labelledby="headingPenanggungjawab" data-bs-parent="#mobileAccordion">
@@ -456,8 +459,9 @@
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="headingPendamping">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePendamping" aria-expanded="false" aria-controls="collapsePendamping">
-                Pendamping
+              <button class="accordion-button collapsed d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePendamping" aria-expanded="false" aria-controls="collapsePendamping">
+                <span class="flex-grow-1 text-center">Pendamping</span>
+                <i class="bi bi-chevron-right"></i>
               </button>
             </h2>
             <div id="collapsePendamping" class="accordion-collapse collapse" aria-labelledby="headingPendamping" data-bs-parent="#mobileAccordion">
@@ -619,6 +623,15 @@
           const tabContentSelector = mappings[accordionSelector];
           const tabContent = $(tabContentSelector).html();
           $(accordionSelector + ' .accordion-body').html(tabContent);
+        });
+
+        // Toggle icon pada accordion
+        $('#mobileAccordion .accordion-collapse').on('show.bs.collapse', function () {
+          $(this).prev().find('i').removeClass('bi-chevron-right').addClass('bi-chevron-down');
+        });
+
+        $('#mobileAccordion .accordion-collapse').on('hide.bs.collapse', function () {
+          $(this).prev().find('i').removeClass('bi-chevron-down').addClass('bi-chevron-right');
         });
       });
     </script>
