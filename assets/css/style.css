@@ -1235,7 +1235,6 @@ div.dataTables_wrapper .dataTables_filter {
   margin-left: 4px; /* opsional */
 }
 
-
 /* 📱 MOBILE FILTER STYLE */
 .filter-mobile .filter-toggle {
   width: 100%;
@@ -1274,6 +1273,8 @@ div.dataTables_wrapper .dataTables_filter {
   font-size: 0.9rem;
 }
 
+/* Data Table */
+
 /* ✅ Pastikan filter bar tidak mempengaruhi DataTable bawaan */
 div.dataTables_wrapper .dataTables_filter {
   float: right;
@@ -1296,7 +1297,67 @@ div.dataTables_wrapper .dataTables_filter input {
   text-align: right !important;
   justify-content: flex-end !important;
   display: flex !important;
+  flex-wrap: wrap;
 }
+
+/* Pastikan pagination tidak keluar container */
+.dataTables_wrapper .dataTables_paginate {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 10px;
+}
+
+/* Hilangkan margin yang membuat pagination melebar */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  margin: 0 !important;
+}
+
+/* Rapikan angka pagination */
+.dataTables_wrapper .pagination {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Default: desktop tetap inline */
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Mobile mode */
+@media (max-width: 576px) {
+  .dataTables_wrapper .dataTables_length {
+    display: none !important;
+  }
+  
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_filter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Jadikan mereka dua baris */
+  .dataTables_wrapper .dt-top {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* Filter input full width */
+  .dataTables_wrapper .dataTables_filter input {
+    width: 100% !important;
+  }
+}
+
+/* Data Table */
 
 /* Grid Layout Anak Asuh */
 #childGrid .col-6.col-md-2 {
@@ -2151,4 +2212,3 @@ h3.page-title {
 .accordion-detail {
   padding: 10px 14px !important;
 }
-
