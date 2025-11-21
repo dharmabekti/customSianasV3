@@ -1274,6 +1274,10 @@ div.dataTables_wrapper .dataTables_filter {
 }
 
 /* Data Table */
+#datatable thead th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
 
 /* ✅ Pastikan filter bar tidak mempengaruhi DataTable bawaan */
 div.dataTables_wrapper .dataTables_filter {
