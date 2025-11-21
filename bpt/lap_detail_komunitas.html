@@ -178,7 +178,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Laporan Komunitas</span>
+        <span class="navbar-brand mx-auto">Laporan Anak Asuh</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -333,10 +333,9 @@
       </a>
     </div>
 
-    <!-- Konten Utama -->
-    <main class="container pt-3 pt-lg-5 pb-5 mt-5">
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Laporan Detail Komunitas</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Laporan Detail Komunitas/Sekolah</h3>
       <div class="container my-4">
         <!-- Card Profil Utama -->
         <div class="card shadow-sm mb-4">
@@ -363,7 +362,7 @@
                   >
                     <tbody>
                       <tr class="border-bottom align-middle">
-                        <th class="text-muted fw-normal" style="width: 30%">
+                        <th class="text-muted fw-normal" style="width: 40%">
                           <i class="bi bi-hash me-2 text-secondary"></i> Kode Komunitas
                         </th>
                         <td class="text-dark" data-label="Kode Komunitas">KOM-001</td>
@@ -415,13 +414,285 @@
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendamping">Pendamping</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#anakasuh">Anak Asuh</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#list_anakasuh">Anak Asuh</button>
           </li>
           <li class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#transferbeasiswa">Transfer Beasiswa</button>
           </li>
         </ul>
 
+        <!-- Isi Tab (Satu Sumber Data) -->
+        <div class="tab-content" id="profileContent">
+          <div class="tab-pane fade show active" id="kontak">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3 text-start">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-telephone me-2 text-secondary"></i> No Telp
+                          </th>
+                          <td class="text-dark" data-label="No Telp">(0274) 123456</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal"><i class="bi bi-printer me-2 text-secondary"></i> Fax</th>
+                          <td class="text-dark" data-label="Fax">(0274) 123457</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal"><i class="bi bi-envelope me-2 text-secondary"></i> Email</th>
+                          <td class="text-dark" data-label="Email">info@sma-dharmabakti.sch.id</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="rekening">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Rekening</h5>
+                  <div class="table-responsive">
+                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                      <tbody>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal" style="width: 180px">
+                            <i class="bi bi-bank me-2 text-secondary"></i> Nama Bank
+                          </th>
+                          <td class="text-dark" data-label="Nama Bank">Bank Mandiri</td>
+                        </tr>
+                        <tr class="border-bottom">
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-credit-card me-2 text-secondary"></i> No Rekening
+                          </th>
+                          <td class="text-dark" data-label="No Rekening">1234567890</td>
+                        </tr>
+                        <tr>
+                          <th class="text-muted fw-normal">
+                            <i class="bi bi-person me-2 text-secondary"></i> Atas Nama
+                          </th>
+                          <td class="text-dark" data-label="Atas Nama">SMA Dharma Bakti</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="penanggungjawab">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <div id="childGrid" class="row g-2">
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>Penanggungjawab 1</h6>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>Penanggungjawab 2</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pendamping">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section px-4 py-3">
+                  <div id="childGrid" class="row g-2">
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>BPT 1</h6>
+                      </div>
+                    </div>
+                    <div class="col-6 col-md-2">
+                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
+                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                        <h6>BPT 2</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="list_anakasuh">
+            <div class="card">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body content-section">
+                  <!-- Heading muncul hanya di mobile -->
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Anak Asuh</h5>
+                  <div class="table-responsive text-start">
+                    <table
+                      class="table table-borderless education-table mb-0"
+                      style="width: 100%; text-align: left !important"
+                    >
+                      <thead>
+                        <tr>
+                          <th>Nomor</th>
+                          <th class="d-none d-md-table-cell">Nama</th>
+                          <th class="d-none d-md-table-cell">ID</th>
+                          <th class="d-none d-md-table-cell">Kelas</th>
+                          <th class="d-none d-md-table-cell">SPP/Bulan</th>
+                          <th class="d-none d-md-table-cell">Tgl Berlaku</th>
+                          <th class="d-none d-md-table-cell">Tgl Berakhir</th>
+                          <th class="d-none d-md-table-cell">Donatur</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="label-name d-none d-md-block" data-label="">1</td>
+                          <td class="label-name" data-label="">
+                            Ahmad Surya
+                            <i class="bi bi-chevron-right ms-2 d-md-none"></i>
+                          </td>
+                          <td class="d-none d-md-table-cell" data-label="ID">AA-001</td>
+                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 10</td>
+                          <td class="d-none d-md-table-cell" data-label="SPP/Bulan">Rp 500.000</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-01-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">31-12-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Donatur">Donatur A</td>
+                        </tr>
+                        <tr class="accordion-details">
+                          <td colspan="8" class="accordion-detail-wrapper">
+                            <div class="accordion-detail">
+                              <strong>ID:</strong> AA-001<br />
+                              <strong>Kelas:</strong> Kelas 10<br />
+                              <strong>Spp/bln:</strong> Rp 500.000<br />
+                              <strong>Tgl Berlaku:</strong> 01-01-2023<br />
+                              <strong>Tgl Berakhir:</strong> 31-12-2023<br />
+                              <strong>Donatur:</strong> Donatur A<br />
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label-name d-none d-md-block" data-label="">2</td>
+                          <td class="label-name" data-label="">
+                            Budi Santoso
+                            <i class="bi bi-chevron-right ms-2 d-md-none"></i>
+                          </td>
+                          <td class="d-none d-md-table-cell" data-label="ID">AA-002</td>
+                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 11</td>
+                          <td class="d-none d-md-table-cell" data-label="SPP/Bulan">Rp 550.000</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-02-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">31-01-2024</td>
+                          <td class="d-none d-md-table-cell" data-label="Donatur">Donatur B</td>
+                        </tr>
+                        <tr class="accordion-details">
+                          <td colspan="8" class="accordion-detail-wrapper">
+                            <div class="accordion-detail">
+                              <strong>ID:</strong> AA-002<br />
+                              <strong>Kelas:</strong> Kelas 11<br />
+                              <strong>Spp/bln:</strong> Rp 550.000<br />
+                              <strong>Tgl Berlaku:</strong> 01-02-2023<br />
+                              <strong>Tgl Berakhir:</strong> 31-01-2024<br />
+                              <strong>Donatur:</strong> Donatur B<br />
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label-name d-none d-md-block" data-label="">3</td>
+                          <td class="label-name" data-label="">
+                            Citra Dewi
+                            <i class="bi bi-chevron-right ms-2 d-md-none"></i>
+                          </td>
+                          <td class="d-none d-md-table-cell" data-label="ID">AA-003</td>
+                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
+                          <td class="d-none d-md-table-cell" data-label="SPP/Bulan">Rp 600.000</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-03-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">28-02-2024</td>
+                          <td class="d-none d-md-table-cell" data-label="Donatur">Donatur C</td>
+                        </tr>
+                        <tr class="accordion-details">
+                          <td colspan="8" class="accordion-detail-wrapper">
+                            <div class="accordion-detail">
+                              <strong>ID:</strong> AA-003<br />
+                              <strong>Kelas:</strong> Kelas 12<br />
+                              <strong>Spp/bln:</strong> Rp 600.000<br />
+                              <strong>Tgl Berlaku:</strong> 01-03-2023<br />
+                              <strong>Tgl Berakhir:</strong> 28-02-2024<br />
+                              <strong>Donatur:</strong> Donatur C<br />
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label-name d-none d-md-block" data-label="">4</td>
+                          <td class="label-name" data-label="">
+                            Dedi Rahman
+                            <i class="bi bi-chevron-right ms-2 d-md-none"></i>
+                          </td>
+                          <td class="d-none d-md-table-cell" data-label="ID">AA-004</td>
+                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 10</td>
+                          <td class="d-none d-md-table-cell" data-label="SPP/Bulan">Rp 500.000</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-04-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">31-03-2024</td>
+                          <td class="d-none d-md-table-cell" data-label="Donatur">Donatur D</td>
+                        </tr>
+                        <tr class="accordion-details">
+                          <td colspan="8" class="accordion-detail-wrapper">
+                            <div class="accordion-detail">
+                              <strong>ID:</strong> AA-004<br />
+                              <strong>Kelas:</strong> Kelas 10<br />
+                              <strong>Spp/bln:</strong> Rp 500.000<br />
+                              <strong>Tgl Berlaku:</strong> 01-04-2023<br />
+                              <strong>Tgl Berakhir:</strong> 31-03-2024<br />
+                              <strong>Donatur:</strong> Donatur D<br />
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="label-name d-none d-md-block" data-label="">5</td>
+                          <td class="label-name" data-label="">
+                            Eka Putri
+                            <i class="bi bi-chevron-right ms-2 d-md-none"></i>
+                          </td>
+                          <td class="d-none d-md-table-cell" data-label="ID">AA-005</td>
+                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 11</td>
+                          <td class="d-none d-md-table-cell" data-label="SPP/Bulan">Rp 550.000</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berlaku">01-05-2023</td>
+                          <td class="d-none d-md-table-cell" data-label="Tgl Berakhir">30-04-2024</td>
+                          <td class="d-none d-md-table-cell" data-label="Donatur">Donatur E</td>
+                        </tr>
+                        <tr class="accordion-details">
+                          <td colspan="8" class="accordion-detail-wrapper">
+                            <div class="accordion-detail">
+                              <strong>ID:</strong> AA-005<br />
+                              <strong>Kelas:</strong> Kelas 11<br />
+                              <strong>Spp/bln:</strong> Rp 550.000<br />
+                              <strong>Tgl Berlaku:</strong> 01-05-2023<br />
+                              <strong>Tgl Berakhir:</strong> 30-04-2024<br />
+                              <strong>Donatur:</strong> Donatur E<br />
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+        <!-- <div id="mobileProfile" class="d-md-none"></div> -->
         <!-- Navigasi Mobile (Accordion) -->
         <div class="accordion d-md-none mb-3" id="mobileAccordion">
           <div class="accordion-item">
@@ -525,7 +796,7 @@
             </div>
           </div>
           <div class="accordion-item">
-            <h2 class="accordion-header" id="anakasuh">
+            <h2 class="accordion-header" id="headingAnakAsuh">
               <button
                 class="accordion-button collapsed d-flex align-items-center"
                 type="button"
@@ -545,250 +816,15 @@
               data-bs-parent="#mobileAccordion"
             >
               <div class="accordion-body">
-                <!-- Konten akan disalin dari #AnakAsuh -->
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Isi Tab -->
-        <div class="tab-content d-none d-md-block" id="tabContent">
-          <div class="tab-pane fade show active" id="kontak">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3 text-start">
-                  <div class="table-responsive">
-                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                      <tbody>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-telephone me-2 text-secondary"></i> No Telp
-                          </th>
-                          <td class="text-dark" data-label="No Telp">(0274) 123456</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal"><i class="bi bi-printer me-2 text-secondary"></i> Fax</th>
-                          <td class="text-dark" data-label="Fax">(0274) 123457</td>
-                        </tr>
-                        <tr>
-                          <th class="text-muted fw-normal"><i class="bi bi-envelope me-2 text-secondary"></i> Email</th>
-                          <td class="text-dark" data-label="Email">info@sma-dharmabakti.sch.id</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="rekening">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <div class="table-responsive">
-                    <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                      <tbody>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal" style="width: 180px">
-                            <i class="bi bi-bank me-2 text-secondary"></i> Nama Bank
-                          </th>
-                          <td class="text-dark" data-label="Nama Bank">Bank Mandiri</td>
-                        </tr>
-                        <tr class="border-bottom">
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-credit-card me-2 text-secondary"></i> No Rekening
-                          </th>
-                          <td class="text-dark" data-label="No Rekening">1234567890</td>
-                        </tr>
-                        <tr>
-                          <th class="text-muted fw-normal">
-                            <i class="bi bi-person me-2 text-secondary"></i> Atas Nama
-                          </th>
-                          <td class="text-dark" data-label="Atas Nama">SMA Dharma Bakti</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="penanggungjawab">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <div id="childGrid" class="row g-2">
-                    <div class="col-6 col-md-2">
-                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
-                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
-                        <h6>Penanggungjawab 1</h6>
-                      </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailPJModal">
-                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
-                        <h6>Penanggungjawab 2</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tab-pane fade" id="pendamping">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <div id="childGrid" class="row g-2">
-                    <div class="col-6 col-md-2">
-                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
-                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
-                        <h6>BPT 1</h6>
-                      </div>
-                    </div>
-                    <div class="col-6 col-md-2">
-                      <div class="child-card" data-bs-toggle="modal" data-bs-target="#detailBptModal">
-                        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
-                        <h6>BPT 2</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-pane fade" id="anakasuh">
-            <div class="card">
-              <div class="card border-0 shadow-sm rounded-4">
-                <div class="card-body content-section px-4 py-3">
-                  <div class="table-responsive text-start">
-                          <table
-                            class="table table-borderless education-table mb-0"
-                            style="width: 100%; text-align: left !important"
-                          >
-                            <thead>
-                              <tr>
-                                <th>Sekolah</th>
-                                <th class="d-none d-md-table-cell">Tahun Akademik</th>
-                                <th class="d-none d-md-table-cell">Kelas</th>
-                                <th class="d-none d-md-table-cell">Semester</th>
-                                <th class="d-none d-md-table-cell">Rangking</th>
-                                <th class="d-none d-md-table-cell">File</th>
-                                <th class="d-none d-md-table-cell">Keterangan</th>
-                                <th class="d-none d-md-table-cell">Tgl Kirim</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SD Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2019</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2019<br />
-                                    <strong>Kelas:</strong> Kelas 6<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> 5<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2019
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SMP Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2022</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2022<br />
-                                    <strong>Kelas:</strong> Kelas 3<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2022
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SMK Wiyata Dharma Walikukun
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2025</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2025<br />
-                                    <strong>Kelas:</strong> Kelas 12<br />
-                                    <strong>Semester:</strong> Gasal<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Naik Kelas<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2025
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                </div>
+                <!-- Konten akan disalin dari #list_anakasuh -->
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Tombol Download -->
-      <button
-        class="btn btn-primary d-flex align-items-center justify-content-center position-fixed ft-12"
-        id="downloadBtn"
-        title="Download Laporan"
-        style="
-          bottom: 70px;
-          left: 50%;
-          transform: translateX(-50%);
-          z-index: 1050;
-          padding: 0.5rem 2rem;
-          white-space: nowrap;
-        "
-      >
-        <i class="bi bi-download me-1"></i> Download Laporan
-      </button>
-      <br />
     </main>
 
-    <!-- Footer Desktop -->
+    <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
         Copyright © Yayasan AAT Indonesia | Developed by
@@ -801,6 +837,11 @@
       </small>
     </footer>
 
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#inputModal">
+      <i class="bi bi-plus-lg text-center"></i>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
     <script>
@@ -811,6 +852,7 @@
           '#collapseRekening': '#rekening .table-responsive',
           '#collapsePenanggungjawab': '#penanggungjawab #childGrid',
           '#collapsePendamping': '#pendamping #childGrid',
+          '#collapseAnakAsuh': '#list_anakasuh .table-responsive',
         };
 
         // Salin konten dari tabContent ke accordion saat halaman dimuat
@@ -818,6 +860,18 @@
           const tabContentSelector = mappings[accordionSelector];
           const tabContent = $(tabContentSelector).html();
           $(accordionSelector + ' .accordion-body').html(tabContent);
+        });
+
+        // Attach event listeners for collapsible rows in accordion
+        $('#mobileAccordion .label-name').on('click', function () {
+          const nextRow = $(this).closest('tr').next('tr');
+          if (nextRow.hasClass('accordion-details')) {
+            nextRow.toggleClass('show');
+            const icon = $(this).find('i');
+            if (icon.length) {
+              icon.toggleClass('bi-chevron-down bi-chevron-up');
+            }
+          }
         });
 
         // Toggle icon pada accordion

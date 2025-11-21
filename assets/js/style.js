@@ -209,3 +209,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const labelNames = document.querySelectorAll('.label-name');
+  labelNames.forEach(name => {
+    name.addEventListener('click', function () {
+      const nextRow = this.closest('tr').nextElementSibling;
+      if (nextRow && nextRow.classList.contains('accordion-details')) {
+        nextRow.classList.toggle('show');
+      }
+    });
+  });
+});
+
+const labelNames = document.querySelectorAll('.label-name');
+labelNames.forEach(name => {
+  name.addEventListener('click', function () {
+    const nextRow = this.closest('tr').nextElementSibling;
+    if (nextRow && nextRow.classList.contains('accordion-details')) {
+      nextRow.classList.toggle('show');
+      // Toggle icon
+      const icon = this.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('bi-chevron-down');
+        icon.classList.toggle('bi-chevron-up');
+      }
+    }
+  });
+});
