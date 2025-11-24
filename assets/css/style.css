@@ -60,6 +60,9 @@
 .ft-32 {
   font-size: var(--ft-32) !important;
 }
+.fw-italic{
+  font-style: italic;
+}
 
 /* =========================================================
 🧭 Navbar Desktop
@@ -1523,6 +1526,11 @@ div.dataTables_wrapper .dataTables_filter input {
   #detailAnakModal .modal-footer button {
     width: auto !important;
     margin-left: auto;
+  }
+
+  .btn {
+    padding: 0.25rem 0.5rem;  /* lebih kecil */
+    font-size: 0.75rem;       /* perkecil teks */
   }
 }
 
