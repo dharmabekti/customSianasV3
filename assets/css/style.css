@@ -693,6 +693,23 @@ main {
     display: none;
   }
 
+  /* Fix for filter tahun akademik and export button container on mobile */
+  .d-flex.align-items-center.justify-content-between.mb-3 {
+    flex-wrap: wrap !important;
+    gap: 0.5rem;
+  }
+
+  .d-flex.align-items-center.justify-content-between.mb-3 > .form-group,
+  .d-flex.align-items-center.justify-content-between.mb-3 > .btn-group {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+  }
+
+  .d-flex.align-items-center.justify-content-between.mb-3 > .btn-group {
+    margin-top: 0.5rem;
+    justify-content: flex-start !important;
+  }
+
   .mobile-bottom-nav {
     display: flex;
     position: fixed;
