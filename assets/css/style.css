@@ -165,6 +165,32 @@ main {
 }
 
 /* =========================================================
+🖼 Container
+========================================================= */
+
+
+.container-wrapper {
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 25px;
+  background-color: #fff;
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 1400px) {  /* lebih besar dari container-xxl */
+  .container-wide {
+    max-width: 1600px;
+  }
+}
+
+
+/* =========================================================
 🖼 Profil
 ========================================================= */
 .profile-img {
@@ -1038,13 +1064,6 @@ main {
   .payment-row .index {
     display: none;
   }
-}
-
-.container-wrapper {
-  border: 2px solid #ccc;
-  border-radius: 12px;
-  padding: 25px;
-  background-color: #fff;
 }
 
 /* =========================================================
