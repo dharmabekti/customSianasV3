@@ -161,15 +161,9 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Penanggungjawab</span>
+        <span class="navbar-brand mx-auto">Naik Jenjang</span>
         <div class="dropdown">
-          <button
-            class="btn btn-outline-light"
-            type="button"
-            id="mobileProfileDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
@@ -307,71 +301,112 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">List Penanggungjawab</h3>
-      <div class="container-fluid mb-5 container-wrapper">
-        <!-- ✅ Tombol Toggle Filter (Mobile) -->
-        <div class="d-md-none mb-2">
-          <button
-            class="btn btn-outline-primary w-100"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#filterCollapse"
-            aria-expanded="false"
-            aria-controls="filterCollapse"
-          >
-            <i class="bi bi-funnel"></i> Tampilkan Filter
-          </button>
-        </div>
+      <h3 class="text-center page-title d-none d-lg-block">Form Pengajuan Naik Jenjang</h3>
+      <div class="container form-wrapper">
+        <form class="form-naik-jenjang">
+          <div class="row">
+            <!-- Kiri -->
+            <div class="col-md-7">
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">ID SIANAS</label>
+                <div class="col-sm-8 d-flex gap-2">
+                  <input type="text" class="form-control form-control-sm" />
+                  <button type="button" class="btn btn-primary btn-sm">Cari</button>
+                </div>
+                <small class="text-muted fst-italic ps-4 ft-10">*) ID SIANAS bisa ditanyakan kepada BPT Sekre</small>
+              </div>
 
-        <div class="row">
-          <!-- ✅ FILTER -->
-          <div class="col-md-2 mb-3">
-            <div id="filterCollapse" class="collapse d-md-block">
-              <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
-                <label class="form-label fw-bold">Status</label>
-                <div id="filterStatus">
-                  <div class="form-check">
-                    <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" />
-                    <label class="form-check-label" for="aktif">Aktif</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="tidak_aktif" />
-                    <label class="form-check-label" for="tidak_aktif">Tidak Aktif</label>
-                  </div>
-                  <div class="form-check mb-3">
-                    <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                    <label class="form-check-label" for="pending">Pending</label>
-                  </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Nama Lengkap</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="*Terisi otomatis sesuai id"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Sekolah Asal</label>
+                <div class="col-sm-8">
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    placeholder="*Terisi otomatis sesuai id"
+                    disabled
+                  />
+                </div>
+              </div>
+
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Sekolah Baru</label>
+                <div class="col-sm-8">
+                  <select class="form-select form-select-sm">
+                    <option selected disabled>Pilih Sekolah</option>
+                    <option>SD</option>
+                    <option>SMP</option>
+                    <option>SMA</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Kelas Sekolah Baru</label>
+                <div class="col-sm-8">
+                  <select class="form-select form-select-sm">
+                    <option selected disabled>Pilih Kelas</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label">Update Kondisi Keluarga</label>
+                <div class="col-sm-8">
+                  <textarea
+                    class="form-control form-control-sm"
+                    rows="4"
+                    placeholder="*) minimal 100 karakter"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="mb-3 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Surat Naik Jenjang</label>
+                <div class="col-sm-8 d-flex gap-2">
+                  <input type="file" class="form-control form-control-sm" />
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- ✅ GRID PJ -->
-          <div class="col-md-10">
-            <!-- Search -->
-            <div class="row g-2 align-items-center mb-3">
-              <div class="col-12 col-md">
-                <input
-                  type="text"
-                  id="searchInput"
-                  class="form-control form-control-sm w-100"
-                  placeholder="Cari Penanggungjawab..."
-                />
+            <!-- Kanan -->
+            <div class="col-md-5 text-center">
+              <div class="upload-box">
+                <input type="file" accept="image/*" onchange="previewFoto(this)" />
+                <div class="placeholder">
+                  <em>Update Foto Profile</em>
+                  <span>+</span>
+                </div>
               </div>
+              <small class="text-muted d-block mt-2 text-start">
+                *) Foto wajib ada<br />
+                *) Format file yang diterima: *.jpg, *.png<br />
+                *) Ukuran Max 200Kb
+              </small>
             </div>
 
-            <div id="childGrid" class="row g-2"></div>
-
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-3">
-              <nav><ul class="pagination" id="pagination"></ul></nav>
+            <div class="text-start mt-3">
+              <button type="submit" class="btn btn-success">Kirim ke Admin</button>
+              <button type="reset" class="btn btn-danger">Batalkan</button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </main>
-
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -385,268 +420,31 @@
       </small>
     </footer>
 
-    <!-- Modal Detail -->
-    <div
-      class="modal fade"
-      id="detailPJModal"
-      tabindex="-1"
-      aria-labelledby="detailPJLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title fw-bold" id="detailPJLabel">Detail Penanggungjawab</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="container my-4">
-              <!-- Card Profil Utama -->
-              <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <!-- Foto Profil -->
-                    <div class="col-md-3 text-center mb-3 mb-md-0">
-                      <img
-                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-                        alt="Foto Profil"
-                        class="img-fluid shadow-sm"
-                        style="height: 75%; width: 75%"
-                      />
-                    </div>
-
-                    <!-- Info Singkat -->
-                    <div class="col-12 col-md-8">
-                      <div class="table-responsive">
-                        <table
-                          class="table table-borderless mb-0 list-table no-mobile-hide"
-                          style="width: 100%; text-align: left"
-                        >
-                          <tbody>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 180px">
-                                <i class="bi bi-hash me-2 text-secondary"></i> ID
-                              </th>
-                              <td class="text-dark" data-label="ID">PJ-001</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
-                              </th>
-                              <td class="text-dark" data-label="Nama Lengkap">PJ Full Name</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
-                              </th>
-                              <td class="text-dark" data-label="Email">pj@example.com</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
-                              <td class="text-dark" data-label="Role">Penanggung Jawab</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal"><i class="bi bi-star me-2 text-secondary"></i> Status</th>
-                              <td class="text-dark" data-label="Status"><span class="badge bg-success">Aktif</span></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Navigasi Tab (Desktop) -->
-              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTabPj" role="tablist">
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#data-pribadi">
-                    Data Pribadi
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
-                </li>
-              </ul>
-
-              <!-- Isi Tab (Satu Sumber Data) -->
-              <div class="tab-content" id="tabContent3">
-                <div class="tab-pane fade show active" id="data-pribadi">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section px-4 py-3">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pribadi</h5>
-                        <div class="table-responsive">
-                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                            <tbody>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal" style="width: 180px">
-                                  <i class="bi bi-heart me-2 text-secondary"></i> Agama
-                                </th>
-                                <td class="text-dark" data-label="Agama">Islam</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
-                                </th>
-                                <td class="text-dark" data-label="Pekerjaan">Pegawai Swasta</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-award me-2 text-secondary"></i> Jabatan
-                                </th>
-                                <td class="text-dark" data-label="Jabatan">Manager</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-telephone me-2 text-secondary"></i> No HP
-                                </th>
-                                <td class="text-dark" data-label="No HP">081234567890</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="alamat">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section px-4 py-3 text-start">
-                        <!-- Heading muncul hanya di mobile -->
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
-
-                        <!-- Alamat dengan icon di kiri -->
-                        <div class="d-flex align-items-start">
-                          <p>Jl. Merpati No. 123, Sleman, Yogyakarta, 55281, Indonesia</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-              <div id="listCardMobile3" class="d-md-none"></div>
-            </div>
-          </div>
-
-          <div class="modal-footer justify-content-end">
-            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Detail -->
-
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" onclick="window.location.href='input_pj.html'">
-      <i class="bi bi-plus-lg text-center"></i>
-    </button>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
-
     <script>
-      const childAsuh = Array.from({ length: 30 }, (_, i) => ({
-        nama: 'Anak ' + (i + 1),
-        noWA: '0812' + String(10000000 + i).padStart(8, '0'), // Contoh nomor WA acak
-        namaSekolah: 'S' + ['D', 'MP', 'MA'][i % 3] + ' ' + (i + 1),
-        status: ['Aktif', 'Tidak Aktif', 'Pending'][i % 3], // Distribusi status: Aktif, Tidak Aktif, Pending
-        foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
-      }));
+      function previewFoto(input) {
+        const box = input.closest('.upload-box');
+        const file = input.files[0];
+        if (!file) return;
 
-      const childGrid = document.getElementById('childGrid');
-      const searchInput = document.getElementById('searchInput');
-      const pagination = document.getElementById('pagination');
-      const statusCheckbox = document.querySelectorAll('.status');
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          // Hapus placeholder
+          const placeholder = box.querySelector('.placeholder');
+          if (placeholder) placeholder.remove();
 
-      let perPage = 12;
-      let currentPage = 1;
+          // Hapus gambar lama jika ada
+          const existingImg = box.querySelector('img');
+          if (existingImg) existingImg.remove();
 
-      // ✅ Default: status "Aktif" dicentang
-      document.getElementById('aktif').checked = true;
-
-      function updatePerPageDynamically() {
-        const screenHeight = window.innerHeight;
-        const cardHeight = 200;
-        const rows = Math.floor((screenHeight - 250) / cardHeight);
-        perPage = rows * 6 || 6;
+          // Tambahkan gambar baru
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          box.appendChild(img);
+        };
+        reader.readAsDataURL(file);
       }
-
-      function renderChild() {
-        updatePerPageDynamically();
-
-        const selectedStatus = Array.from(statusCheckbox)
-          .filter(c => c.checked)
-          .map(c => c.value);
-
-        const searchTerm = searchInput.value.toLowerCase();
-
-        let filtered = childAsuh.filter(
-          a =>
-            (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
-            (a.nama.toLowerCase().includes(searchTerm) || a.namaSekolah.toLowerCase().includes(searchTerm))
-        );
-
-        const totalPages = Math.ceil(filtered.length / perPage);
-        if (currentPage > totalPages) currentPage = totalPages || 1;
-
-        const start = (currentPage - 1) * perPage;
-        const paginated = filtered.slice(start, start + perPage);
-
-        childGrid.innerHTML = paginated
-          .map(
-            a => `
-    <div class="col-6 col-md-2" data-bs-toggle="modal" data-bs-target="#detailPJModal">
-      <div class="child-card">
-        <img src="${a.foto}" alt="${a.nama}" />
-        <h6>${a.nama}</h6>
-        <p>${a.noWA}</p>
-        <p>${a.namaSekolah}</p>
-        <span class="badge bg-${
-          a.status === 'Aktif' ? 'success' : a.status === 'Tidak Aktif' ? 'secondary' : 'warning'
-        }">${a.status}</span>
-      </div>
-    </div>`
-          )
-          .join('');
-
-        pagination.innerHTML =
-          totalPages > 1
-            ? Array.from(
-                { length: totalPages },
-                (_, i) => `
-      <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
-        <a class="page-link" href="#">${i + 1}</a>
-      </li>`
-              ).join('')
-            : '';
-
-        document.querySelectorAll('.page-item').forEach((btn, idx) => {
-          btn.addEventListener('click', e => {
-            e.preventDefault();
-            currentPage = idx + 1;
-            renderChild();
-          });
-        });
-      }
-
-      [searchInput, ...statusCheckbox].forEach(el =>
-        el.addEventListener('input', () => {
-          currentPage = 1;
-          renderChild();
-        })
-      );
-
-      window.addEventListener('resize', renderChild);
-      renderChild(); // ✅ Render awal langsung status Aktif
     </script>
   </body>
 </html>

@@ -50,6 +50,7 @@
                     <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
                   </ul>
                 </li>
+                <li><a class="dropdown-item" href="naik_jenjang.html">Pengajuan Naik Jenjang</a></li>
                 <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKL, & Ijazah</a></li>
               </ul>
             </li>
@@ -173,20 +174,6 @@
         <form>
           <span class="text-important">*) Wajib Diisi</span>
           <div class="row">
-            <div class="col-lg-5 col-md-6">
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">ID SIANAS/NISN</label>
-                <div class="col-sm-7">
-                  <div class="col-sm-12 d-flex gap-2">
-                    <input type="text" class="form-control form-control-sm" />
-                    <button type="button" class="btn btn-primary btn-sm">Cari</button>
-                  </div>
-                  <small class="text-muted fst-italic ft-10">*) ID SIANAS bisa ditanyakan kepada BPT Sekre</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <!-- Kolom Kiri -->
             <div class="col-lg-5 col-md-6">
               <div class="mb-2 row">
@@ -196,17 +183,17 @@
                 </div>
               </div>
               <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">NISN <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label"
                   >Nama Lengkap <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7">
                   <input type="text" class="form-control form-control-sm" />
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">NISN <sup class="text-important">*)</sup></label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" required />
                 </div>
               </div>
               <div class="mb-2 row">
@@ -318,13 +305,6 @@
                   <textarea class="form-control form-control-sm" rows="3"></textarea>
                 </div>
               </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Surat Naik Jenjang <sup class="text-important">*)</sup></label>
-                <div class="col-sm-7">
-                  <input type="file" class="form-control form-control-sm" />
-                </div>
-                <span class="text-important"><i>Format file adalah PDF, JPED, JPG, PNG</i></span>
-              </div>
             </div>
 
             <!-- Kolom Tengah (Foto) -->
@@ -355,25 +335,29 @@
 
             <!-- Kolom Kanan -->
             <div class="col-lg-5 col-md-6">
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Anak ke- <sup class="text-important">*)</sup></label>
-                <div class="col-sm-3"><input type="number" class="form-control form-control-sm" /></div>
-                <div class="col-sm-4">
-                  <input type="number" class="form-control form-control-sm" placeholder="bersaudara" />
+              <div class="mb-2 row g-2 align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Anak ke- <sup class="text-important">*)</sup></label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control form-control-sm" />
                 </div>
+                <label class="col-sm-1 col-form-label form-label">dari</label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control form-control-sm" />
+                </div>
+                <label class="col-sm-3 col-form-label form-label">bersaudara</label>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ayah <sup class="text-important">*)</sup></label>
+                <label class="col-sm-4 col-form-label form-label">Nama Ayah <sup class="text-important">*)</sup></label>
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
+                <label class="col-sm-4 col-form-label form-label"
                   >Pekerjaan Ayah <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
+                <label class="col-sm-4 col-form-label form-label"
                   >Penghasilan Ayah <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7">
@@ -387,17 +371,17 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Nama Ibu <sup class="text-important">*)</sup></label>
+                <label class="col-sm-4 col-form-label form-label">Nama Ibu <sup class="text-important">*)</sup></label>
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
+                <label class="col-sm-4 col-form-label form-label"
                   >Pekerjaan Ibu <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
+                <label class="col-sm-4 col-form-label form-label"
                   >Penghasilan Ibu <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7">
@@ -411,13 +395,13 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">No HP / WA</label>
+                <label class="col-sm-4 col-form-label form-label">No HP / WA</label>
                 <div class="col-sm-7">
                   <input type="text" class="form-control form-control-sm" placeholder="(Salah satu Ortu)" />
                 </div>
               </div>
               <div class="mb-2 row align-items-start">
-                <label class="col-sm-5 col-form-label form-label">Kendaraan yang Dimiliki</label>
+                <label class="col-sm-4 col-form-label form-label">Kendaraan yang Dimiliki</label>
                 <div class="col-sm-7 d-flex flex-column gap-2">
                   <div class="d-flex align-items-center gap-2">
                     <label for="mobil" class="form-label mb-0" style="width: 60px">Mobil</label>
@@ -432,14 +416,16 @@
 
               <div class="mb-2">
                 <label class="form-label">Kondisi Keluarga <sup class="text-important">*)</sup></label>
+                 <div class="col-sm-11">
                 <textarea class="form-control form-control-sm" rows="5"></textarea>
                 <span class="text-important"><i>Minimal 100 karakter</i></span>
+                </div>
               </div>
             </div>
 
             <div class="mt-3">
-              <button class="btn btn-success btn-sm me-2">Simpan</button>
-              <button class="btn btn-danger btn-sm">Batal</button>
+              <button class="btn btn-success btn-sm me-2"><i class="bi bi-check"></i> Simpan</button>
+              <button class="btn btn-danger btn-sm"><i class="bi bi-x-lg"></i> Batal</button>
             </div>
           </div>
         </form>
@@ -466,19 +452,13 @@
       $(document).ready(function () {
         Swal.fire({
           title: 'Perhatian!',
-          text: 'Silahkan cek data anak asuh terlebih dahulu menggunakan ID Sianas/NISN untuk mengetahui apakah anak asuh pernah terdaftar di Sianas untuk menghindari duplikasi data!',
+          text: 'Silahkan masukkan NISN terlebih dahulu untuk menghindari duplikasi input data anak asuh!',
           icon: 'warning',
           allowOutsideClick: false, // Prevents closing on outside click
+          confirmButtonText:"Mengerti"
         });
       });
-      /*************  ✨ Windsurf Command ⭐  *************/
-      /**
-       * Preview foto dari input type file
-       * Menghapus placeholder jika ada dan menghapus gambar lama jika ada
-       * Lalu menambahkan gambar baru dari file yang diinput
-       * @param {HTMLInputElement} input - Input type file yang akan di preview
-       */
-      /*******  6671d9d4-df89-4486-a236-43ea65a1e16a  *******/
+      
       function previewFoto(input) {
         const box = input.closest('.upload-box');
         const file = input.files[0];
