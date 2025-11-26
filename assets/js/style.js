@@ -237,3 +237,14 @@ labelNames.forEach(name => {
     }
   });
 });
+
+// Toggle icon pada mobileAccordion
+document.addEventListener('DOMContentLoaded', function () {
+  const accordion = document.getElementById('collapseAccordion');
+  const headerBtn = document.querySelector('#headingAccordion .accordion-button i');
+
+  accordion.addEventListener('show.bs.collapse', function () {
+    headerBtn.classList.remove('bi-chevron-right');
+    headerBtn.classList.add('bi-chevron-down');
+  });
+});
