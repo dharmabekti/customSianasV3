@@ -731,6 +731,17 @@
         });
       }
 
+      function getStatusBadgeClass(status) {
+        switch (status) {
+          case 'Aktif':
+            return 'success';
+          case 'Tidak Aktif':
+            return 'danger';
+          default:
+            return 'secondary';
+        }
+      }
+
       // Render tabel desktop
       function renderTable() {
         const filteredData = getFilteredData();
@@ -744,7 +755,7 @@
                 <td data-label="Sekretariat">${s.sekretariat}</td>
                 <td data-label="Email">${s.email}</td>
                 <td data-label="Telp">${s.telp}</td>
-                <td data-label="Status"><span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">${
+                <td data-label="Status"><span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status
             }</span></td>
               </tr>
