@@ -163,7 +163,13 @@
         </button>
         <span class="navbar-brand mx-auto">Transfer Beasiswa</span>
         <div class="dropdown">
-          <button class="btn btn-outline-light" type="button" id="mobileProfileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             <i class="bi bi-three-dots-vertical"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
@@ -292,7 +298,7 @@
       <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-receipt fs-4"></i><br />
         <small>Data Transfer</small>
-      </a>  
+      </a>
       <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
         <i class="bi bi-journal fs-4"></i><br />
         <small>Raport</small>
@@ -303,7 +309,6 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Data Transfer Beasiswa</h3>
       <div class="container-fluid form-wrapper">
-
         <!-- ✅ FILTER BAR UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
           <div class="filter-bar d-none d-lg-flex">
@@ -359,7 +364,9 @@
         <div class="card-mobile d-lg-none">
           <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
           <div class="filter-mobile mb-3">
-            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun, Bulan & Status</button>
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">
+              Filter Tahun, Bulan & Status
+            </button>
             <div class="filter-content" id="filterContentMobile">
               <label for="tahunFilterMobile">Tahun:</label>
               <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
@@ -582,35 +589,38 @@
       const fileStatusList = ['Ada', 'Belum Ada'];
 
       // ===============================
-// Generate Data Sekolah
-// ===============================
-const sekolahData = Array.from({ length: 30 }, (_, i) => {
-  const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
-  const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
-  const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+      // Generate Data Sekolah
+      // ===============================
+      const sekolahData = Array.from({ length: 30 }, (_, i) => {
+        const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
+        const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
+        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
-  // Generate random last update date/time
-  const now = new Date();
-  const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
-  const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
-  const randomHours = Math.floor(Math.random() * 24);
-  const randomMinutes = Math.floor(Math.random() * 60);
-  const randomSeconds = Math.floor(Math.random() * 60);
-  randomDate.setHours(randomHours, randomMinutes, randomSeconds);
-  const tglTransfer = randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + randomDate.toLocaleTimeString('id-ID');
+        // Generate random last update date/time
+        const now = new Date();
+        const randomDays = Math.floor(Math.random() * 365); // Random days in the past year
+        const randomDate = new Date(now.getTime() - randomDays * 24 * 60 * 60 * 1000);
+        const randomHours = Math.floor(Math.random() * 24);
+        const randomMinutes = Math.floor(Math.random() * 60);
+        const randomSeconds = Math.floor(Math.random() * 60);
+        randomDate.setHours(randomHours, randomMinutes, randomSeconds);
+        const tglTransfer =
+          randomDate.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) +
+          ' ' +
+          randomDate.toLocaleTimeString('id-ID');
 
-  return {
-    id: i + 1,
-    tahun,
-    sekolah: `Sekolah ${i + 1}`,
-    bulan,
-    jumlah,
-    kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-    lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-    status: statusList[Math.floor(Math.random() * statusList.length)],
-    tglTransfer,
-  };
-});
+        return {
+          id: i + 1,
+          tahun,
+          sekolah: `Sekolah ${i + 1}`,
+          bulan,
+          jumlah,
+          kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+          lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+          status: statusList[Math.floor(Math.random() * statusList.length)],
+          tglTransfer,
+        };
+      });
 
       const tableBody = document.querySelector('#datatable tbody');
       const cardList = document.getElementById('cardList');
@@ -648,18 +658,18 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
       // Helper: Generate Kode Transfer
       // ===============================
       const monthAbbrev = {
-        'Januari': 'JAN',
-        'Februari': 'FEB',
-        'Maret': 'MAR',
-        'April': 'APR',
-        'Mei': 'MEI',
-        'Juni': 'JUN',
-        'Juli': 'JUL',
-        'Agustus': 'AGS',
-        'September': 'SEP',
-        'Oktober': 'OKT',
-        'November': 'NOV',
-        'Desember': 'DES'
+        Januari: 'JAN',
+        Februari: 'FEB',
+        Maret: 'MAR',
+        April: 'APR',
+        Mei: 'MEI',
+        Juni: 'JUN',
+        Juli: 'JUL',
+        Agustus: 'AGS',
+        September: 'SEP',
+        Oktober: 'OKT',
+        November: 'NOV',
+        Desember: 'DES',
       };
 
       function generateKode(bulan, tahun) {
@@ -684,7 +694,10 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
         const statusVal = statusFilter.value;
 
         const filtered = sekolahData.filter(
-          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal) && (statusVal === '' || s.status === statusVal)
+          s =>
+            (tahunVal === '' || s.tahun == tahunVal) &&
+            (bulanVal === '' || s.bulan === bulanVal) &&
+            (statusVal === '' || s.status === statusVal)
         );
 
         tableBody.innerHTML = filtered
@@ -737,7 +750,9 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
           <h5 class="card-title">${s.bulan}</h5>
           <p class="mb-1"><strong>Tahun Akademik:</strong> ${s.tahun}</p>
           <p class="mb-1"><strong>Tgl Transfer:</strong> ${s.tglTransfer}</p>
-          <p class="mb-1"><strong>Kode:</strong> ${s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''}</p>
+          <p class="mb-1"><strong>Kode:</strong> ${
+            s.status === 'Sudah Transfer' ? generateKode(s.bulan, s.tahun) : ''
+          }</p>
           <p class="mb-1"><strong>Jumlah:</strong> Rp${s.jumlah.toLocaleString('id-ID')}</p>
           <p class="mb-1"><strong>Status:</strong> <span class="badge bg-${getStatusBadgeClass(s.status)}">${
               s.status

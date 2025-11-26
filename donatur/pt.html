@@ -8,12 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-    <link href="../assets/css/style.css" rel="stylesheet" />
-    <!-- Datatables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
 
-    <!-- Sweet Alerts css -->
-    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/style.css" rel="stylesheet" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -151,7 +147,10 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">List Pendidikan Tinggi</span>
+        <span class="navbar-brand mx-auto">Data Pendidikan Tinggi</span>
+        <button class="btn btn-outline-light">
+          <i class="bi bi-search"></i>
+        </button>
       </div>
     </nav>
 
@@ -268,90 +267,295 @@
     </div>
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">List Pendidikan Tinggi</h3>
-      <div class="container-fluid mb-5 container-wrapper">
-        <div class="container-fluid my-4">
-          <!-- TOTAL DONASI -->
-          <div class="table-responsive mb-4">
-            <table id="datatable" class="table no-mobile-hide table-bordered align-middle text-center mb-0">
-              <thead class="table-light">
-                <tr>
-                  <th>No</th>
-                  <th>Pendidikan Tinggi</th>
-                  <th>Alamat</th>
-                  <th>Email</th>
-                  <th>Telp</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+      <h3 class="text-center page-title d-none d-lg-block">Data Pendidikan Tinggi</h3>
+      <div class="container-fluid container-wrapper">
+        <!-- ✅ TABEL UNTUK DESKTOP -->
+        <div class="table-responsive table-desktop">
+          <table id="datatable" class="table no-mobile-hide table-bordered align-middle text-center mb-0">
+            <thead class="table-light">
+              <tr>
+                <th>No</th>
+                <th>Pendidikan Tinggi</th>
+                <th>Alamat</th>
+                <th>Email</th>
+                <th>Telp</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <!-- ✅ CARD LIST UNTUK MOBILE -->
+        <div class="card-mobile d-lg-none">
+          <!-- 🔍 PENCARIAN MOBILE -->
+          <div class="input-group mb-3 shadow-sm">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+            <input
+              type="text"
+              id="searchCard"
+              class="form-control border-start-0"
+              placeholder="Cari sekolah, alamat, email..."
+            />
+          </div>
+
+          <!-- LIST CARD -->
+          <div id="cardList" class="row g-2"></div>
+
+          <!-- PAGINATION MOBILE -->
+          <div class="d-flex justify-content-center mt-3">
+            <nav><ul class="pagination" id="paginationMobile"></ul></nav>
           </div>
         </div>
       </div>
     </main>
 
     <!-- Modal Detail -->
-     <div
+    <div
       class="modal fade"
-      id="detailPT"
+      id="detailSekolah"
       tabindex="-1"
-      aria-labelledby="detailPT"
+      aria-labelledby="detailSekolah"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabindex="-1"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Detail Pendidikan Tinggi</h5>
+            <h5 class="modal-title">Detail Sekolah</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
-            <div class="info-section">
-              <div class="row g-3">
-                <!-- Kolom kiri -->
-                <div class="col-12 col-md-12 info-column">
-                  <div class="info-item">
-                    <span class="info-label">Nama PT</span>
-                    <span class="info-value">Universitas Atma Jaya Yogyakarta</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Alamat</span>
-                    <span class="info-value">Jalan Gajah Mada, Bandungrejo</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kabupaten</span>
-                    <span class="info-value">Purworejo</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Povinsi</span>
-                    <span class="info-value">Jawa Tengah</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kode Pos</span>
-                    <span class="info-value">54224</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Negara</span>
-                    <span class="info-value">Indonesia</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Telp</span>
-                    <span class="info-value">+62812345678</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Fax</span>
-                    <span class="info-value">0274XXX</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Status</span>
-                    <span class="info-value">Aktif</span>
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <!-- Logo Komunitas -->
+                    <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                        alt="Logo Komunitas"
+                        class="rounded-circle img-fluid shadow-sm"
+                        style="height: 150px; width: 150px"
+                      />
+                      <h5 class="mt-2">SMA Dharma Bakti</h5>
+                      <span class="badge bg-success">Aktif</span>
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-borderless mb-0 list-table no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 30%">
+                                <i class="bi bi-hash me-2 text-secondary"></i> Kode Komunitas
+                              </th>
+                              <td class="text-dark" data-label="Kode Komunitas">KOM-001</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-building me-2 text-secondary"></i> Nama Sekolah/Komunitas
+                              </th>
+                              <td class="text-dark" data-label="Nama Sekolah/Komunitas">SMA Dharma Bakti</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat
+                              </th>
+                              <td class="text-dark" data-label="Alamat">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                            </tr>
+                            <tr class="border-bottom">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-building me-2 text-secondary"></i> Jenis Komunitas
+                              </th>
+                              <td class="text-dark" data-label="Jenis Komunitas">Sekolah</td>
+                            </tr>
+                            <tr class="border-bottom">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-mortarboard me-2 text-secondary"></i> Tingkat Pendidikan
+                              </th>
+                              <td class="text-dark" data-label="Tingkat Pendidikan">SMA (Sekolah Menengah Atas)</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="komunitasTab" role="tablist">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kontak">Kontak</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rekening">Rekening</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#penanggungjawab">
+                    Penanggungjawab
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendamping">Pendamping</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#maps">MAPS</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab -->
+              <div class="tab-content d-none d-md-block" id="tabContent">
+                <div class="tab-pane fade show active" id="kontak">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3 text-start">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kontak</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> No Telp
+                                </th>
+                                <td class="text-dark" data-label="No Telp">(0274) 123456</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-printer me-2 text-secondary"></i> Fax
+                                </th>
+                                <td class="text-dark" data-label="Fax">(0274) 123457</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-envelope me-2 text-secondary"></i> Email
+                                </th>
+                                <td class="text-dark" data-label="Email">info@sma-dharmabakti.sch.id</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="rekening">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Rekening</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-bank me-2 text-secondary"></i> Nama Bank
+                                </th>
+                                <td class="text-dark" data-label="Nama Bank">Bank Mandiri</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-credit-card me-2 text-secondary"></i> No Rekening
+                                </th>
+                                <td class="text-dark" data-label="No Rekening">1234567890</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-person me-2 text-secondary"></i> Atas Nama
+                                </th>
+                                <td class="text-dark" data-label="Atas Nama">SMA Dharma Bakti</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="penanggungjawab">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Penanggungjawab</h5>
+                        <div id="childGrid" class="row g-2">
+                          <div class="col-6 col-md-2">
+                            <div class="child-card">
+                              <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                              <h6>Penanggungjawab Sekolah 1</h6>
+                            </div>
+                          </div>
+                          <div class="col-6 col-md-2">
+                            <div class="child-card">
+                              <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                              <h6>Penanggungjawab Sekolah 2</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pendamping">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Pendamping</h5>
+                        <div id="childGrid" class="row g-2">
+                          <div class="col-6 col-md-2">
+                            <div class="child-card">
+                              <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                              <h6>BPT 1</h6>
+                            </div>
+                          </div>
+                          <div class="col-6 col-md-2">
+                            <div class="child-card">
+                              <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Nama" />
+                              <h6>BPT 2</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="maps">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">MAPS</h5>
+                        <div class="ratio ratio-16x9">
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3953.098!2d110.365!3d-7.795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a5787e0e0e0e0%3A0x0!2zN8KwNDcnMzAuMCJTIDExMMKwMjEnNTQuMCJF!5e0!3m2!1sen!2sid!4v1234567890!5m2!1sen!2sid"
+                            width="100%"
+                            height="400"
+                            style="border: 0"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Lokasi SMA Dharma Bakti"
+                          >
+                          </iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards -->
+              <div id="listCardMobile" class="d-md-none"></div>
             </div>
           </div>
 
@@ -377,9 +581,8 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
-
-    <!-- Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/style.js"></script>
     <!-- jQuery (dibutuhkan oleh DataTables) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -387,42 +590,116 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <script src="../assets/js/datatable.init.js"></script>
-    <!-- Sweet Alerts Js-->
-    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+
     <script>
-      const univData = Array.from({ length: 30 }, (_, i) => ({
+      const sekolahData = Array.from({ length: 30 }, (_, i) => ({
         id: i + 1,
         nama: 'Universitas ' + (i + 1),
         alamat: 'Jl. Contoh No. ' + (i + 1),
-        email: 'sekolah' + (i + 1) + '@example.com',
+        email: 'universitas' + (i + 1) + '@example.com',
         telp: '0812-3456-' + String(i + 1).padStart(4, '0'),
-        status: 'Aktif',
       }));
 
       const tableBody = document.querySelector('#datatable tbody');
+      const cardList = document.getElementById('cardList');
+      const searchCard = document.getElementById('searchCard');
+      const paginationMobile = document.getElementById('paginationMobile');
+
+      let currentPageMobile = 1;
+      const perPageMobile = 6;
 
       // Render tabel desktop
       function renderTable() {
-        tableBody.innerHTML = univData
+        tableBody.innerHTML = sekolahData
           .map(
             s => `
-              <tr data-bs-toggle="modal" data-bs-target="#detailPT">
-                <td data-label="No"><strong>${s.id}</strong></td>
-                <td data-label="Nama">${s.nama}</td>
-                <td data-label="Alamat">${s.alamat}</td>
+              <tr data-bs-toggle="modal" data-bs-target="#detailSekolah">
+                <td data-label="ID"><strong>${s.id}</strong></td>
+                <td data-label="Nama Komunitas">${s.nama}</td>
+                <td data-label="alamat">${s.alamat}</td>
                 <td data-label="Email">${s.email}</td>
                 <td data-label="Telp">${s.telp}</td>
-                <td data-label="Status"><span class="badge bg-${
-                  s.status === 'Aktif' ? 'success' : 'secondary'
-                }">${s.status}</span></td>
               </tr>
             `
           )
           .join('');
       }
 
+      // Render card mobile dengan pagination
+      function renderCards() {
+        const searchTerm = searchCard.value.toLowerCase();
+        const filtered = sekolahData.filter(
+          s =>
+            s.nama.toLowerCase().includes(searchTerm) ||
+            s.alamat.toLowerCase().includes(searchTerm) ||
+            s.email.toLowerCase().includes(searchTerm)
+        );
+
+        const totalPages = Math.ceil(filtered.length / perPageMobile);
+        if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
+
+        const start = (currentPageMobile - 1) * perPageMobile;
+        const paginated = filtered.slice(start, start + perPageMobile);
+
+        // Render card list
+        cardList.innerHTML = paginated
+          .map(
+            s => `
+              <div class="col-12" data-bs-toggle="modal" data-bs-target="#detailSekolah">
+                <div class="card shadow-sm p-3 mb-2">
+                  <h5 class="card-title fw-bold">${s.nama}</h5>
+                  <div class="divider-1"></div>
+                  <div class="row mb-1">
+                    <div class="col-4 fw-bold">alamat</div>
+                    <div class="col-8">${s.alamat}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-4 fw-bold">Email</div>
+                    <div class="col-8">${s.email}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-4 fw-bold">Telp</div>
+                    <div class="col-8">${s.telp}</div>
+                  </div>
+                </div>
+              </div>`
+          )
+          .join('');
+
+        // Render pagination
+        paginationMobile.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
+          <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
+            <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+          </li>
+        `
+              ).join('')
+            : '';
+
+        // Event delegation untuk pagination
+        paginationMobile.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const page = parseInt(e.target.dataset.page);
+            if (page && page !== currentPageMobile) {
+              currentPageMobile = page;
+              renderCards();
+            }
+          });
+        });
+      }
+
+      // Event search mobile
+      searchCard.addEventListener('input', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
       renderTable();
+      renderCards();
     </script>
   </body>
 </html>
