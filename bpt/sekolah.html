@@ -347,11 +347,62 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Data Komunitas/Sekolah</h3>
       <div class="container-fluid container-wrapper">
+        <!-- ✅ FILTER ACCORDION UNTUK MOBILE -->
+        <div class="accordion d-lg-none mb-3" id="filterAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#filterCollapse"
+                aria-expanded="false"
+                aria-controls="filterCollapse"
+              >
+                <i class="bi bi-funnel me-2"></i>Filter Sekolah
+              </button>
+            </h2>
+            <div id="filterCollapse" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
+              <div class="accordion-body">
+                <div class="filter-bar d-flex flex-column gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <label for="sekretariatFilterMobile" class="flex-shrink-0">Sekretariat:</label>
+                    <select
+                      id="sekretariatFilterMobile"
+                      class="form-select form-select-sm flex-grow-1"
+                      onchange="filterData()"
+                    >
+                      <option>Semua</option>
+                      <option>Yogyakarta</option>
+                      <option>Bandung</option>
+                      <option>Madiun</option>
+                      <option>Malang</option>
+                      <option>Purwokerto</option>
+                    </select>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <label for="statusFilterMobile" class="flex-shrink-0">Status:</label>
+                    <select
+                      id="statusFilterMobile"
+                      class="form-select form-select-sm flex-grow-1"
+                      onchange="filterData()"
+                    >
+                      <option value="">Semua</option>
+                      <option>Menunggu Konfirmasi</option>
+                      <option>Aktif</option>
+                      <option>Tidak Aktif</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- ✅ TABEL UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
           <div class="filter-bar d-none d-lg-flex">
-            <label for="tahunFilter">Sekretariat:</label>
-            <select id="tahunFilter" class="form-select form-select-sm">
+            <label for="sekretariatFilter">Sekretariat:</label>
+            <select id="sekretariatFilter" class="form-select form-select-sm" onchange="filterData()">
               <option>Semua</option>
               <option>Yogyakarta</option>
               <option>Bandung</option>
@@ -360,8 +411,8 @@
               <option>Purwokerto</option>
             </select>
 
-            <label for="bulanFilter">Status:</label>
-            <select id="bulanFilter" class="form-select form-select-sm">
+            <label for="statusFilter">Status:</label>
+            <select id="statusFilter" class="form-select form-select-sm" onchange="filterData()">
               <option value="">Semua</option>
               <option>Menunggu Konfirmasi</option>
               <option>Aktif</option>
@@ -693,7 +744,6 @@
 
     <script>
       const kotaList = ['Yogyakarta', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
-
       const statusList = ['Menunggu Konfirmasi', 'Aktif', 'Tidak Aktif'];
 
       const sekolahData = Array.from({ length: 30 }, (_, i) => {
@@ -711,7 +761,6 @@
         };
       });
 
-      const tableBody = document.querySelector('#datatable tbody');
       const cardList = document.getElementById('cardList');
       const searchCard = document.getElementById('searchCard');
       const paginationMobile = document.getElementById('paginationMobile');
@@ -721,8 +770,9 @@
 
       // Get filtered data based on selects
       function getFilteredData() {
-        const sekretariatFilter = document.getElementById('tahunFilter').value;
-        const statusFilter = document.getElementById('bulanFilter').value;
+        const isDesktop = window.innerWidth >= 992;
+        const sekretariatFilter = isDesktop ? document.getElementById('sekretariatFilter').value : document.getElementById('sekretariatFilterMobile').value;
+        const statusFilter = isDesktop ? document.getElementById('statusFilter').value : document.getElementById('statusFilterMobile').value;
 
         return sekolahData.filter(s => {
           const matchSekretariat = sekretariatFilter === 'Semua' || s.sekretariat === sekretariatFilter;
@@ -742,26 +792,23 @@
         }
       }
 
-      // Render tabel desktop
+      // Render tabel desktop dengan DataTables
       function renderTable() {
-        const filteredData = getFilteredData();
-        tableBody.innerHTML = filteredData
-          .map(
-            s => `
-              <tr data-bs-toggle="modal" data-bs-target="#detailSekolah">
-                <td data-label="ID"><strong>${s.id}</strong></td>
-                <td data-label="Kode">${s.kode}</td>
-                <td data-label="Nama Komunitas">${s.nama}</td>
-                <td data-label="Sekretariat">${s.sekretariat}</td>
-                <td data-label="Email">${s.email}</td>
-                <td data-label="Telp">${s.telp}</td>
-                <td data-label="Status"><span class="badge bg-${getStatusBadgeClass(s.status)}">${
-              s.status
-            }</span></td>
-              </tr>
-            `
-          )
-          .join('');
+        const table = $('#datatable').DataTable();
+        table.clear();
+        let filtered = getFilteredData();
+        filtered.forEach(s => {
+          table.row.add([
+            '<strong>' + s.id + '</strong>',
+            s.kode,
+            s.nama,
+            s.sekretariat,
+            s.email,
+            s.telp,
+            '<span class="badge bg-' + getStatusBadgeClass(s.status) + '">' + s.status + '</span>'
+          ]);
+        });
+        table.draw();
       }
 
       // Render card mobile dengan pagination
@@ -845,17 +892,11 @@
       }
 
       // Event listeners for filters
-      document.getElementById('tahunFilter').addEventListener('change', () => {
+      function filterData() {
         renderTable();
         currentPageMobile = 1;
         renderCards();
-      });
-
-      document.getElementById('bulanFilter').addEventListener('change', () => {
-        renderTable();
-        currentPageMobile = 1;
-        renderCards();
-      });
+      }
 
       // Event search mobile
       searchCard.addEventListener('input', () => {
