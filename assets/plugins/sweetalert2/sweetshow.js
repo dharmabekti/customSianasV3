@@ -11,14 +11,17 @@ const Toast = Swal.mixin({
 });
 
 function swal_confirm(title, msg, icon) {
-  swal({
+  return Swal.fire({
     title: title,
     text: msg,
-    button: "OK",
-    dangerMode: false,
     icon: icon,
+    allowOutsideClick: false, // Prevents closing on outside click
+    showCancelButton: true,
+    confirmButtonText: 'OK',
+    cancelButtonText: 'Batal',
   });
 }
+
 
 function swal_alert(title, msg, icon) {
   Toast.fire({

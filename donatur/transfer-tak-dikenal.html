@@ -7,9 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-
     <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <!-- Sweet Alerts2 -->
+    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -267,19 +269,19 @@
     </div>
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Konfirmasi Pembayaran</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Transfer Tak Dikenal</h3>
       <div class="container-fluid container-wrapper">
         <!-- ✅ TABEL UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
-          <table id="datatable" class="table table-bordered align-middle text-center bg-white shadow-sm">
+          <table id="datatable" class="table no-mobile-hide table-bordered align-middle text-center mb-0">
             <thead class="table-light">
               <tr>
                 <th>No</th>
-                <th>Nama Donatur</th>
+                <th>Tanggal</th>
+                <th>Keterangan</th>
+                <th>Rekening Asal</th>
+                <th>Rekening Tujuan</th>
                 <th>Nominal</th>
-                <th>Tanggal Transfer</th>
-                <th>Bank Tujuan</th>
-                <th>Status</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -288,7 +290,7 @@
         </div>
 
         <!-- ✅ CARD LIST UNTUK MOBILE -->
-        <div class="card-mobile">
+        <div class="card-mobile d-lg-none">
           <!-- 🔍 PENCARIAN MOBILE -->
           <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
@@ -296,12 +298,17 @@
               type="text"
               id="searchCard"
               class="form-control border-start-0"
-              placeholder="Cari donatur, bank, atau status..."
+              placeholder="Cari sekolah, sekretariat, email..."
             />
           </div>
 
           <!-- LIST CARD -->
-          <div id="cardList"></div>
+          <div id="cardList" class="row g-2"></div>
+
+          <!-- PAGINATION MOBILE -->
+          <div class="d-flex justify-content-center mt-3">
+            <nav><ul class="pagination" id="paginationMobile"></ul></nav>
+          </div>
         </div>
       </div>
     </main>
@@ -318,87 +325,6 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
-
-    <!-- Modal Klaim Transfer -->
-    <div
-      class="modal fade"
-      id="klaimModal"
-      tabindex="-1"
-      aria-labelledby="klaimLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Klaim Transfer</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="info-section">
-              <div class="row g-3">
-                <!-- Kolom kiri -->
-                <div class="col-12 col-md-12 info-column">
-                  <div class="info-item">
-                    <span class="info-label">ID</span>
-                    <span class="info-value">D-XX-XXXX</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Nama Lengkap</span>
-                    <span class="info-value">Antonio Veejay Alhdhir</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tujuan Transfer</span>
-                    <span class="info-value">BCA a.n. Yayasan AAT Indonesia</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Dari Rekening</span>
-                    <span class="info-value">BCA</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Atasnama Pengirim</span>
-                    <input type="text" class="form-control form-control-sm" value="Antonio Veejay Alhdhir" required />
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tahun Ajaran</span>
-                    <select type="text" class="form-control form-control-sm" required>
-                      <option value="">2025/2026</option>
-                      <option value="">2024/2025</option>
-                      <option value="">2023/2024</option>
-                    </select>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Jumlah Transfer</span>
-                    <span class="info-value">Rp 800.000,00</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tanggal Transfer</span>
-                    <span class="info-value">10 Oktober 2025</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Uraian</span>
-                    <textarea class="form-control form-control-sm"></textarea>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-success px-4 fw-bold" data-bs-dismiss="modal">
-              <i class="bi bi-check me-1"></i> Klaim
-            </button>
-            <button type="button" class="btn btn-primary px-4 fw-bold" data-bs-dismiss="modal">
-              <i class="bi bi-arrow-left me-1"></i> Kembali
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
     <!-- jQuery (dibutuhkan oleh DataTables) -->
@@ -407,115 +333,300 @@
     <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../assets/js/datatable.init.js"></script>
+
+    <!-- Sweet Alerts2 -->
+    <script src="../assets/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
-      // ✅ 1. Data hanya didefinisikan SEKALI
-      const dataPembayaran = [
+      // Transfer Tak Dikenal data
+      const transferData = [
         {
-          nama: 'Budi Santoso',
-          nominal: 'Rp500.000',
-          tanggal: '12 Okt 2025',
-          bank: 'BCA',
-          status: 'Menunggu',
-          badge: 'bg-warning text-dark',
-          button:
-            '<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#klaimModal">Konfirmasi</button>',
+          id: 1,
+          tanggal: '2024-06-01',
+          keterangan: 'MCM InhouseTrf DARI ANARISTI 99101',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 1000000,
         },
         {
-          nama: 'Sinta Wulandari',
-          nominal: 'Rp250.000',
-          tanggal: '13 Okt 2025',
-          bank: 'Mandiri',
-          status: 'Terkonfirmasi',
-          badge: 'bg-success',
-          button: '<button class="btn btn-sm btn-outline-secondary" disabled>Selesai</button>',
+          id: 2,
+          tanggal: '2024-06-02',
+          keterangan: 'TRSF E-BANKING CR 0509/FTSCY/WS95271 ',
+          rekeningAsal: 'BCA a.n. PANDHA SETIADI NUG',
+          rekeningTujuan: 'BCA a.n. Yayasan AAT Indonesia',
+          nominal: 2000000,
         },
         {
-          nama: 'Rudi Hartono',
-          nominal: 'Rp300.000',
-          tanggal: '10 Okt 2025',
-          bank: 'BCA',
-          status: 'Menunggu',
-          badge: 'bg-warning text-dark',
-          button:
-            '<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#klaimModal">Konfirmasi</button>',
+          id: 3,
+          tanggal: '2024-06-03',
+          keterangan: 'MCM InhouseTrf DARI VICTORIA DIAN GINTING 99101',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 1500000,
+        },
+        {
+          id: 4,
+          tanggal: '2024-06-04',
+          keterangan: 'TRSF E-BANKING CR 0510/FTSCY/WS95272 ',
+          rekeningAsal: 'BRI a.n. JOHN DOE',
+          rekeningTujuan: 'BRI a.n. Yayasan AAT Indonesia',
+          nominal: 500000,
+        },
+        {
+          id: 5,
+          tanggal: '2024-06-05',
+          keterangan: 'MCM InhouseTrf DARI BUDI SANTOSO 99102',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 2500000,
+        },
+        {
+          id: 6,
+          tanggal: '2024-06-06',
+          keterangan: 'TRSF E-BANKING CR 0511/FTSCY/WS95273 ',
+          rekeningAsal: 'BCA a.n. SITI NURHALIZA',
+          rekeningTujuan: 'BCA a.n. Yayasan AAT Indonesia',
+          nominal: 1800000,
+        },
+        {
+          id: 7,
+          tanggal: '2024-06-07',
+          keterangan: 'MCM InhouseTrf DARI AHMAD FAUZI 99103',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 1200000,
+        },
+        {
+          id: 8,
+          tanggal: '2024-06-08',
+          keterangan: 'TRSF E-BANKING CR 0512/FTSCY/WS95274 ',
+          rekeningAsal: 'BRI a.n. RATNA DEWI',
+          rekeningTujuan: 'BRI a.n. Yayasan AAT Indonesia',
+          nominal: 3000000,
+        },
+        {
+          id: 9,
+          tanggal: '2024-06-09',
+          keterangan: 'MCM InhouseTrf DARI EKO PRASETYO 99104',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 800000,
+        },
+        {
+          id: 10,
+          tanggal: '2024-06-10',
+          keterangan: 'TRSF E-BANKING CR 0513/FTSCY/WS95275 ',
+          rekeningAsal: 'BCA a.n. LINA MARIA',
+          rekeningTujuan: 'BCA a.n. Yayasan AAT Indonesia',
+          nominal: 2200000,
+        },
+        {
+          id: 11,
+          tanggal: '2024-06-11',
+          keterangan: 'MCM InhouseTrf DARI SUSANTO WIBOWO 99105',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 1600000,
+        },
+        {
+          id: 12,
+          tanggal: '2024-06-12',
+          keterangan: 'TRSF E-BANKING CR 0514/FTSCY/WS95276 ',
+          rekeningAsal: 'BRI a.n. AGUS SETIAWAN',
+          rekeningTujuan: 'BRI a.n. Yayasan AAT Indonesia',
+          nominal: 900000,
+        },
+        {
+          id: 13,
+          tanggal: '2024-06-13',
+          keterangan: 'MCM InhouseTrf DARI NINA KUSUMA 99106',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 2700000,
+        },
+        {
+          id: 14,
+          tanggal: '2024-06-14',
+          keterangan: 'TRSF E-BANKING CR 0515/FTSCY/WS95277 ',
+          rekeningAsal: 'BCA a.n. HENDRA GUNAWAN',
+          rekeningTujuan: 'BCA a.n. Yayasan AAT Indonesia',
+          nominal: 1400000,
+        },
+        {
+          id: 15,
+          tanggal: '2024-06-15',
+          keterangan: 'MCM InhouseTrf DARI SRI MULYANI 99107',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 1900000,
+        },
+        {
+          id: 16,
+          tanggal: '2024-06-16',
+          keterangan: 'TRSF E-BANKING CR 0516/FTSCY/WS95278 ',
+          rekeningAsal: 'BRI a.n. DWI PUTRA',
+          rekeningTujuan: 'BRI a.n. Yayasan AAT Indonesia',
+          nominal: 1100000,
+        },
+        {
+          id: 17,
+          tanggal: '2024-06-17',
+          keterangan: 'MCM InhouseTrf DARI YUNI ARTIKA 99108',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 2300000,
+        },
+        {
+          id: 18,
+          tanggal: '2024-06-18',
+          keterangan: 'TRSF E-BANKING CR 0517/FTSCY/WS95279 ',
+          rekeningAsal: 'BCA a.n. RIZKI RAMADHAN',
+          rekeningTujuan: 'BCA a.n. Yayasan AAT Indonesia',
+          nominal: 1700000,
+        },
+        {
+          id: 19,
+          tanggal: '2024-06-19',
+          keterangan: 'MCM InhouseTrf DARI FITRIANI SARI 99109',
+          rekeningAsal: 'Mandiri a.n. " MCM',
+          rekeningTujuan: 'Mandiri a.n. Yayasan AAT Indonesia',
+          nominal: 2100000,
+        },
+        {
+          id: 20,
+          tanggal: '2024-06-20',
+          keterangan: 'TRSF E-BANKING CR 0518/FTSCY/WS95280 ',
+          rekeningAsal: 'BRI a.n. ARIF BUDIMAN',
+          rekeningTujuan: 'BRI a.n. Yayasan AAT Indonesia',
+          nominal: 1300000,
         },
       ];
 
-      // ✅ 2. Render ke tabel (desktop)
-      const tbody = document.querySelector('#datatable tbody');
-      dataPembayaran.forEach((d, i) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${i + 1}</td>
-          <td>${d.nama}</td>
-          <td>${d.nominal}</td>
-          <td>${d.tanggal}</td>
-          <td>${d.bank}</td>
-          <td><span class="badge ${d.badge}">${d.status}</span></td>
-          <td>${d.button}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+      const tableBody = document.querySelector('#datatable tbody');
+      const cardList = document.getElementById('cardList');
+      const searchCard = document.getElementById('searchCard');
+      const paginationMobile = document.getElementById('paginationMobile');
 
-      // ✅ 3. Fungsi render card list (mobile)
-      function renderCards(filterText = '') {
-        const cardList = document.getElementById('cardList');
-        cardList.innerHTML = '';
+      let currentPageMobile = 1;
+      const perPageMobile = 6;
 
-        const filteredData = dataPembayaran.filter(d => {
-          const text = `${d.nama} ${d.bank} ${d.status}`.toLowerCase();
-          return text.includes(filterText.toLowerCase());
-        });
+      function formatNominal(nominal) {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(nominal);
+      }
 
-        if (filteredData.length === 0) {
-          cardList.innerHTML = `<p class="text-center text-muted mt-3">Tidak ada hasil.</p>`;
-          return;
-        }
+      // Render tabel desktop
+      function renderTable() {
+        tableBody.innerHTML = transferData
+          .map(
+            t => `
+              <tr>
+                <td data-label="No"><strong>${t.id}</strong></td>
+                <td data-label="Tanggal">${t.tanggal}</td>
+                <td data-label="Keterangan">${t.keterangan}</td>
+                <td data-label="Rekening Asal">${t.rekeningAsal}</td>
+                <td data-label="Rekening Tujuan">${t.rekeningTujuan}</td>
+                <td data-label="Nominal">${formatNominal(t.nominal)}</td>
+                <td data-label="Aksi">
+                  <button class="btn btn-sm btn-primary" onclick="showKlaimModal(${t.id})">Klaim</button>
+                </td>
+              </tr>`
+          )
+          .join('');
+      }
 
-        filteredData.forEach(d => {
-          const card = document.createElement('div');
-          card.className = 'card mb-3 shadow-sm';
-          card.innerHTML = `
-            <div class="card-body">
-              <h6 class="card-title mb-2 fw-bold">${d.nama}</h6>
-              <p class="mb-1"><strong>Nominal:</strong> ${d.nominal}</p>
-              <p class="mb-1"><strong>Tanggal Transfer:</strong> ${d.tanggal}</p>
-              <p class="mb-1"><strong>Bank Tujuan:</strong> ${d.bank}</p>
-              <p class="mb-2"><strong>Status:</strong> <span class="badge ${d.badge}">${d.status}</span></p>
-              ${d.button.replace('btn-sm', 'btn-sm w-100')}
-            </div>
-          `;
-          cardList.appendChild(card);
+      // Render card mobile dengan pagination dan pencarian
+      function renderCards() {
+        const searchTerm = searchCard.value.toLowerCase();
+        const filtered = transferData.filter(
+          t =>
+            t.keterangan.toLowerCase().includes(searchTerm) ||
+            t.rekeningAsal.toLowerCase().includes(searchTerm) ||
+            t.rekeningTujuan.toLowerCase().includes(searchTerm)
+        );
+
+        const totalPages = Math.ceil(filtered.length / perPageMobile);
+        if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
+
+        const start = (currentPageMobile - 1) * perPageMobile;
+        const paginated = filtered.slice(start, start + perPageMobile);
+
+        // Render card list
+        cardList.innerHTML = paginated
+          .map(
+            t => `
+              <div class="col-12">
+                <div class="card shadow-sm p-3 mb-2">
+                  <h5 class="card-title fw-bold ft-18">Dari ${t.rekeningAsal}</h5>
+                  <div class="divider-1"></div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Tanggal</div>
+                    <div class="col-7">${t.tanggal}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Rek. Tujuan</div>
+                    <div class="col-7">${t.rekeningTujuan}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Nominal</div>
+                    <div class="col-7">${formatNominal(t.nominal)}</div>
+                  </div>
+                  <p><strong>Keterangan</strong><br>${t.keterangan}</p>
+                  
+                  <div class="d-grid mt-2">
+                    <button 
+                      class="btn btn-primary btn-sm"
+                      onclick="showKlaimModal('${t.id}')">
+                      Klaim
+                    </button>
+                  </div>
+                </div>
+              </div>`
+          )
+          .join('');
+
+        // Render pagination
+        paginationMobile.innerHTML =
+          totalPages > 1
+            ? Array.from(
+                { length: totalPages },
+                (_, i) => `
+                <li class="page-item ${i + 1 === currentPageMobile ? 'active' : ''}">
+                  <a class="page-link" href="#" data-page="${i + 1}">${i + 1}</a>
+                </li>
+              `
+              ).join('')
+            : '';
+
+        // Event delegation untuk pagination
+        paginationMobile.querySelectorAll('.page-link').forEach(link => {
+          link.addEventListener('click', e => {
+            e.preventDefault();
+            const page = parseInt(e.target.dataset.page);
+            if (page && page !== currentPageMobile) {
+              currentPageMobile = page;
+              renderCards();
+            }
+          });
         });
       }
 
-      renderCards(); // render awal
-
-      // ✅ 4. Event pencarian mobile
-      document.getElementById('searchCard').addEventListener('input', e => renderCards(e.target.value));
-
-      $(document).ready(function () {
-        if (window.innerWidth >= 992) {
-          $('#datatable').DataTable({
-            destroy: true, // aman jika di-reload
-            language: {
-              url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
-            },
-            pageLength: 10, // default rows per page
-            lengthMenu: [
-              [10, 15, 20, -1], // opsi value
-              [10, 15, 20, 'Semua'], // label
-            ],
-            lengthChange: true, // menampilkan dropdown untuk ubah jumlah baris
-            ordering: true,
-            columnDefs: [
-              // jika ingin kolom tertentu tidak bisa diurutkan
-              // { orderable: false, targets: [5] }
-            ],
-          });
-        }
+      // Event search mobile
+      searchCard.addEventListener('input', () => {
+        currentPageMobile = 1;
+        renderCards();
       });
+
+      renderTable();
+      renderCards();
+
+      function showKlaimModal(id) {
+        swal_confirm('Konfirmasi', 'Apakah anda yakin ingin mengklaim transfer ini?', 'warning');
+      }
     </script>
   </body>
 </html>
