@@ -694,8 +694,11 @@
     <script>
       const kotaList = ['Yogyakarta', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
 
+      const statusList = ['Menunggu Konfirmasi', 'Aktif', 'Tidak Aktif'];
+
       const sekolahData = Array.from({ length: 30 }, (_, i) => {
         const randomKota = kotaList[Math.floor(Math.random() * kotaList.length)];
+        const randomStatus = statusList[Math.floor(Math.random() * statusList.length)];
 
         return {
           id: i + 1,
@@ -704,7 +707,7 @@
           sekretariat: randomKota, // 🔥 Sekretariat random
           email: 'sekolah' + (i + 1) + '@example.com',
           telp: '0812-3456-' + String(i + 1).padStart(4, '0'),
-          status: 'Aktif',
+          status: randomStatus,
         };
       });
 
@@ -716,9 +719,22 @@
       let currentPageMobile = 1;
       const perPageMobile = 6;
 
+      // Get filtered data based on selects
+      function getFilteredData() {
+        const sekretariatFilter = document.getElementById('tahunFilter').value;
+        const statusFilter = document.getElementById('bulanFilter').value;
+
+        return sekolahData.filter(s => {
+          const matchSekretariat = sekretariatFilter === 'Semua' || s.sekretariat === sekretariatFilter;
+          const matchStatus = statusFilter === '' || s.status === statusFilter;
+          return matchSekretariat && matchStatus;
+        });
+      }
+
       // Render tabel desktop
       function renderTable() {
-        tableBody.innerHTML = sekolahData
+        const filteredData = getFilteredData();
+        tableBody.innerHTML = filteredData
           .map(
             s => `
               <tr data-bs-toggle="modal" data-bs-target="#detailSekolah">
@@ -740,12 +756,17 @@
       // Render card mobile dengan pagination
       function renderCards() {
         const searchTerm = searchCard.value.toLowerCase();
-        const filtered = sekolahData.filter(
-          s =>
-            s.nama.toLowerCase().includes(searchTerm) ||
-            s.sekretariat.toLowerCase().includes(searchTerm) ||
-            s.email.toLowerCase().includes(searchTerm)
-        );
+        let filtered = getFilteredData();
+
+        // Apply search filter on top of desktop filters
+        if (searchTerm) {
+          filtered = filtered.filter(
+            s =>
+              s.nama.toLowerCase().includes(searchTerm) ||
+              s.sekretariat.toLowerCase().includes(searchTerm) ||
+              s.email.toLowerCase().includes(searchTerm)
+          );
+        }
 
         const totalPages = Math.ceil(filtered.length / perPageMobile);
         if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
@@ -811,6 +832,19 @@
           });
         });
       }
+
+      // Event listeners for filters
+      document.getElementById('tahunFilter').addEventListener('change', () => {
+        renderTable();
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      document.getElementById('bulanFilter').addEventListener('change', () => {
+        renderTable();
+        currentPageMobile = 1;
+        renderCards();
+      });
 
       // Event search mobile
       searchCard.addEventListener('input', () => {
