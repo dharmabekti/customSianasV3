@@ -16,9 +16,16 @@
     <!-- Header fixed -->
     <header class="fixed-top shadow-sm">
       <!-- Branding Panel (Desktop) -->
-      <div class="branding d-none d-lg-flex panel-header">
+      <div class="branding d-none d-lg-flex panel-header align-items-center">
         <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
-        <span>Sistem Informasi Anak Asuh</span>
+        <div class="ms-2 me-auto">
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <!-- Tahun Akademik + Datetime -->
+        <div class="text-center me-3">
+          <h4 class="mb-0">TA. 2025/2026</h3>
+          <div class="datetime" id="currentDateTime"></div>
+        </div>
       </div>
 
       <!-- Navbar Desktop -->

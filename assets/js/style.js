@@ -248,3 +248,21 @@ document.addEventListener('DOMContentLoaded', function () {
     headerBtn.classList.add('bi-chevron-down');
   });
 });
+
+// Set Date and Time
+function updateDateTime() {
+  const now = new Date();
+  const options = {
+    weekday: 'long', // hari
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit', // detik
+  };
+  document.getElementById('currentDateTime').textContent = now.toLocaleDateString('id-ID', options);
+}
+
+updateDateTime();
+setInterval(updateDateTime, 1000);
