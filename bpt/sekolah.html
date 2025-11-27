@@ -847,7 +847,7 @@
                   <div class="row mb-1">
                     <div class="col-4 fw-bold">Status</div>
                     <div class="col-8">
-                      <span class="badge bg-${s.status === 'Aktif' ? 'success' : 'secondary'}">
+                      <span class="badge bg-${getStatusBadgeClass(s.status)}">
                         ${s.status}
                       </span>
                     </div>
