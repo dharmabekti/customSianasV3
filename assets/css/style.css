@@ -751,6 +751,18 @@ main {
 }
 
 @media (max-width: 576px) {
+  .hero-text {
+    font-size: 10px !important;
+  }
+
+  .hero-text h4 {
+    font-size: 14px !important;
+  }
+
+  .hero-text p {
+    font-size: 11px !important;
+  }
+
   .round-modal .modal-body {
     padding: 1.5rem 1rem;
   }
@@ -1194,9 +1206,9 @@ main {
 .child-card h6 {
   font-size: 0.8rem;
   margin-top: 5px;
-  white-space: normal;      /* Izinkan wrapping */
-  word-wrap: break-word;    /* Pecah kata panjang */
-  word-break: break-word;   /* Jika sangat panjang */
+  white-space: normal; /* Izinkan wrapping */
+  word-wrap: break-word; /* Pecah kata panjang */
+  word-break: break-word; /* Jika sangat panjang */
   overflow: hidden;
   text-overflow: ellipsis;
 }
