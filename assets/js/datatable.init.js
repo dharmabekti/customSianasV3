@@ -1,50 +1,54 @@
-  // ===============================
-  $(document).ready(function () {
-    const dataTableOptions = {
-      destroy: true,
-      responsive: true,
-      language: {
-        url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
-        paginate: {
-          previous: '<<',
-          next: '>>',
-        },
-        info: 'Menampilkan _START_ sampai _END_ dari _TOTAL_ data',
+// ===============================
+$(document).ready(function () {
+  const dataTableOptions = {
+    destroy: true,
+    responsive: true,
+    language: {
+      url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
+      paginate: {
+        previous: '<<',
+        next: '>>',
       },
-      pageLength: 10,
-      lengthMenu: [
-        [10, 20, 25, 50, 100, -1],
-        [10, 20, 25, 50, 100, 'Semua'],
-      ],
-      ordering: true,
-      initComplete: function () {
-        // $('.dataTables_length, .dataTables_filter').wrapAll('<div class="dt-top"></div>');
-      },
-    };
+      info: 'Menampilkan _START_ sampai _END_ dari _TOTAL_ data',
+    },
+    pageLength: 10,
+    lengthMenu: [
+      [10, 20, 25, 50, 100, -1],
+      [10, 20, 25, 50, 100, 'Semua'],
+    ],
+    ordering: true,
+  };
 
-    let dataTableInstance;
+  // Daftar ID datatable yang ingin diinit
+  const tableIDs = ['#datatable', '#datatable2', '#datatable3'];
 
-    function initDataTable() {
-      if (dataTableInstance) {
-        dataTableInstance.destroy();
+  // Simpan instance masing-masing tabel
+  const tableInstances = {};
+
+  function initAllDataTables() {
+    tableIDs.forEach(id => {
+      if ($.fn.DataTable.isDataTable(id)) {
+        $(id).DataTable().destroy();
       }
-      dataTableInstance = $('#datatable').DataTable(dataTableOptions);
-      // Fix column widths for full width
-      dataTableInstance.columns.adjust().draw();
-      // Force full-width after responsive mode
-      $('#datatable').css('width', '100%');
-      $('#datatable').parent().css('width', '100%');
-      $('.dataTables_wrapper').css('width', '100%');
-    }
 
-    // Initialize on document ready
-    initDataTable();
+      const dt = $(id).DataTable(dataTableOptions);
 
-    // Listen to window resize and orientation change and redraw the datatable to ensure responsiveness.
-    $(window).on('resize orientationchange', function () {
-      if (dataTableInstance) {
-        dataTableInstance.responsive.recalc();
-        dataTableInstance.columns.adjust().draw(false);
-      }
+      // Full width fix
+      $(id).css('width', '100%');
+      $(id).parent().css('width', '100%');
+
+      tableInstances[id] = dt;
+    });
+  }
+
+  // Init saat halaman siap
+  initAllDataTables();
+
+  // Update responsif jika layar berubah
+  $(window).on('resize orientationchange', function () {
+    Object.values(tableInstances).forEach(dt => {
+      dt.responsive.recalc();
+      dt.columns.adjust().draw(false);
     });
   });
+});
