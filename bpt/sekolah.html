@@ -348,56 +348,54 @@
       <h3 class="text-center page-title d-none d-lg-block">Data Komunitas/Sekolah</h3>
       <div class="container-fluid container-wrapper">
         <!-- ✅ FILTER ACCORDION UNTUK MOBILE -->
-        <div class="accordion d-lg-none mb-3" id="filterAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#filterCollapse"
-                aria-expanded="false"
-                aria-controls="filterCollapse"
-              >
-                <i class="bi bi-funnel me-2"></i>Filter Sekolah
-              </button>
-            </h2>
-            <div id="filterCollapse" class="accordion-collapse collapse" data-bs-parent="#filterAccordion">
-              <div class="accordion-body">
-                <div class="filter-bar d-flex flex-column gap-2">
-                  <div class="d-flex align-items-center gap-2">
-                    <label for="sekretariatFilterMobile" class="flex-shrink-0">Sekretariat:</label>
-                    <select
-                      id="sekretariatFilterMobile"
-                      class="form-select form-select-sm flex-grow-1"
-                      onchange="filterData()"
-                    >
-                      <option>Semua</option>
-                      <option>Yogyakarta</option>
-                      <option>Bandung</option>
-                      <option>Madiun</option>
-                      <option>Malang</option>
-                      <option>Purwokerto</option>
-                    </select>
-                  </div>
-                  <div class="d-flex align-items-center gap-2">
-                    <label for="statusFilterMobile" class="flex-shrink-0">Status:</label>
-                    <select
-                      id="statusFilterMobile"
-                      class="form-select form-select-sm flex-grow-1"
-                      onchange="filterData()"
-                    >
-                      <option value="">Semua</option>
-                      <option>Menunggu Konfirmasi</option>
-                      <option>Aktif</option>
-                      <option>Tidak Aktif</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="card-mobile d-lg-none">
+  <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
+  <div class="filter-mobile mb-3">
+    <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">
+      <i class="bi bi-funnel me-2"></i> Filter Sekolah
+    </button>
+
+    <div class="filter-content" id="filterContentMobile" style="display: none;">
+      
+      <!-- Sekretariat -->
+      <label for="sekretariatFilterMobile">Sekretariat:</label>
+      <select
+        id="sekretariatFilterMobile"
+        class="form-select form-select-sm mb-2"
+        onchange="filterData()"
+      >
+        <option>Semua</option>
+        <option>Yogyakarta</option>
+        <option>Bandung</option>
+        <option>Madiun</option>
+        <option>Malang</option>
+        <option>Purwokerto</option>
+      </select>
+
+      <!-- Status -->
+      <label for="statusFilterMobile">Status:</label>
+      <select
+        id="statusFilterMobile"
+        class="form-select form-select-sm"
+        onchange="filterData()"
+      >
+        <option value="">Semua</option>
+        <option>Menunggu Konfirmasi</option>
+        <option>Aktif</option>
+        <option>Tidak Aktif</option>
+      </select>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleFilterMobile() {
+  const box = document.getElementById("filterContentMobile");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+</script>
+
         <!-- ✅ TABEL UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
           <div class="filter-bar d-none d-lg-flex">
