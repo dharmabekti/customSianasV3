@@ -349,52 +349,42 @@
       <div class="container-fluid container-wrapper">
         <!-- ✅ FILTER ACCORDION UNTUK MOBILE -->
         <div class="card-mobile d-lg-none">
-  <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
-  <div class="filter-mobile mb-3">
-    <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">
-      <i class="bi bi-funnel me-2"></i> Filter Sekolah
-    </button>
+          <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
+          <div class="filter-mobile mb-3">
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">
+              <i class="bi bi-funnel me-2"></i> Filter Sekolah
+            </button>
 
-    <div class="filter-content" id="filterContentMobile" style="display: none;">
-      
-      <!-- Sekretariat -->
-      <label for="sekretariatFilterMobile">Sekretariat:</label>
-      <select
-        id="sekretariatFilterMobile"
-        class="form-select form-select-sm mb-2"
-        onchange="filterData()"
-      >
-        <option>Semua</option>
-        <option>Yogyakarta</option>
-        <option>Bandung</option>
-        <option>Madiun</option>
-        <option>Malang</option>
-        <option>Purwokerto</option>
-      </select>
+            <div class="filter-content" id="filterContentMobile" style="display: none">
+              <!-- Sekretariat -->
+              <label for="sekretariatFilterMobile">Sekretariat:</label>
+              <select id="sekretariatFilterMobile" class="form-select form-select-sm mb-2" onchange="filterData()">
+                <option>Semua</option>
+                <option>Yogyakarta</option>
+                <option>Bandung</option>
+                <option>Madiun</option>
+                <option>Malang</option>
+                <option>Purwokerto</option>
+              </select>
 
-      <!-- Status -->
-      <label for="statusFilterMobile">Status:</label>
-      <select
-        id="statusFilterMobile"
-        class="form-select form-select-sm"
-        onchange="filterData()"
-      >
-        <option value="">Semua</option>
-        <option>Menunggu Konfirmasi</option>
-        <option>Aktif</option>
-        <option>Tidak Aktif</option>
-      </select>
+              <!-- Status -->
+              <label for="statusFilterMobile">Status:</label>
+              <select id="statusFilterMobile" class="form-select form-select-sm" onchange="filterData()">
+                <option value="">Semua</option>
+                <option>Menunggu Konfirmasi</option>
+                <option>Aktif</option>
+                <option>Tidak Aktif</option>
+              </select>
+            </div>
+          </div>
+        </div>
 
-    </div>
-  </div>
-</div>
-
-<script>
-function toggleFilterMobile() {
-  const box = document.getElementById("filterContentMobile");
-  box.style.display = box.style.display === "none" ? "block" : "none";
-}
-</script>
+        <script>
+          function toggleFilterMobile() {
+            const box = document.getElementById('filterContentMobile');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+          }
+        </script>
 
         <!-- ✅ TABEL UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
@@ -741,11 +731,11 @@ function toggleFilterMobile() {
     <script src="../assets/js/datatable.init.js"></script>
 
     <script>
-      const kotaList = ['Yogyakarta', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
+      const sekretariat = ['Yogyakarta', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
       const statusList = ['Menunggu Konfirmasi', 'Aktif', 'Tidak Aktif'];
 
       const sekolahData = Array.from({ length: 30 }, (_, i) => {
-        const randomKota = kotaList[Math.floor(Math.random() * kotaList.length)];
+        const randomKota = sekretariat[Math.floor(Math.random() * sekretariat.length)];
         const randomStatus = statusList[Math.floor(Math.random() * statusList.length)];
 
         return {
@@ -769,8 +759,12 @@ function toggleFilterMobile() {
       // Get filtered data based on selects
       function getFilteredData() {
         const isDesktop = window.innerWidth >= 992;
-        const sekretariatFilter = isDesktop ? document.getElementById('sekretariatFilter').value : document.getElementById('sekretariatFilterMobile').value;
-        const statusFilter = isDesktop ? document.getElementById('statusFilter').value : document.getElementById('statusFilterMobile').value;
+        const sekretariatFilter = isDesktop
+          ? document.getElementById('sekretariatFilter').value
+          : document.getElementById('sekretariatFilterMobile').value;
+        const statusFilter = isDesktop
+          ? document.getElementById('statusFilter').value
+          : document.getElementById('statusFilterMobile').value;
 
         return sekolahData.filter(s => {
           const matchSekretariat = sekretariatFilter === 'Semua' || s.sekretariat === sekretariatFilter;
@@ -803,7 +797,7 @@ function toggleFilterMobile() {
             s.sekretariat,
             s.email,
             s.telp,
-            '<span class="badge bg-' + getStatusBadgeClass(s.status) + '">' + s.status + '</span>'
+            '<span class="badge bg-' + getStatusBadgeClass(s.status) + '">' + s.status + '</span>',
           ]);
         });
         table.draw();
