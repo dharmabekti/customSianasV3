@@ -178,7 +178,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Beranda</span>
+        <span class="navbar-brand mx-auto">Penanggungjawab</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -356,6 +356,16 @@
           <div class="col-md-2 mb-3">
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label for="sekretariatFilter">Sekretariat:</label>
+                <select id="sekretariatFilter" class="form-select form-select-sm mb-2" onchange="currentPage = 1; renderChild();">
+                  <option>Semua</option>
+                  <option>Yogyakarta</option>
+                  <option>Bandung</option>
+                  <option>Madiun</option>
+                  <option>Malang</option>
+                  <option>Purwokerto</option>
+                </select>
+
                 <label class="form-label fw-bold">Status</label>
                 <div id="filterStatus">
                   <div class="form-check">
@@ -474,6 +484,12 @@
                               <td class="text-dark" data-label="Email">pj@example.com</td>
                             </tr>
                             <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-house me-2 text-secondary"></i> Komunitas/Sekolah
+                              </th>
+                              <td class="text-dark" data-label="Role">Sekolah XYZ</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
                               <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
                               <td class="text-dark" data-label="Role">Penanggung Jawab</td>
                             </tr>
@@ -584,13 +600,33 @@
     <script src="../assets/js/style.js"></script>
 
     <script>
-      const childAsuh = Array.from({ length: 30 }, (_, i) => ({
-        nama: 'Anak ' + (i + 1),
-        noWA: '0812' + String(10000000 + i).padStart(8, '0'), // Contoh nomor WA acak
-        namaSekolah: 'S' + ['D', 'MP', 'MA'][i % 3] + ' ' + (i + 1),
-        status: ['Aktif', 'Tidak Aktif', 'Pending'][i % 3], // Distribusi status: Aktif, Tidak Aktif, Pending
-        foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
-      }));
+      const sekretariat = ['Yogyakarta', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
+      const statusList = ['Menunggu Konfirmasi', 'Aktif', 'Tidak Aktif'];
+
+      const childAsuh = Array.from({ length: 30 }, (_, i) => {
+        const randomSekretariat = sekretariat[Math.floor(Math.random() * sekretariat.length)];
+        const randomStatus = statusList[Math.floor(Math.random() * statusList.length)];
+
+        return {
+          nama: 'PJ Sekolah ' + (i + 1),
+          sekretariat: randomSekretariat, // 🔥 Sekretariat random
+          noWA: '0812' + String(10000000 + i).padStart(8, '0'), // Contoh nomor WA acak
+          namaSekolah: 'S' + ['D', 'MP', 'MA'][i % 3] + ' ' + (i + 1),
+          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
+          status: randomStatus,
+        };
+      });
+
+      function getStatusBadgeClass(status) {
+        switch (status) {
+          case 'Aktif':
+            return 'success';
+          case 'Tidak Aktif':
+            return 'danger';
+          default:
+            return 'secondary';
+        }
+      }
 
       const childGrid = document.getElementById('childGrid');
       const searchInput = document.getElementById('searchInput');
@@ -613,6 +649,7 @@
       function renderChild() {
         updatePerPageDynamically();
 
+        const selectedSekretariat = document.getElementById('sekretariatFilter').value;
         const selectedStatus = Array.from(statusCheckbox)
           .filter(c => c.checked)
           .map(c => c.value);
@@ -621,6 +658,7 @@
 
         let filtered = childAsuh.filter(
           a =>
+            (selectedSekretariat === 'Semua' || a.sekretariat === selectedSekretariat) &&
             (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
             (a.nama.toLowerCase().includes(searchTerm) || a.namaSekolah.toLowerCase().includes(searchTerm))
         );
@@ -634,17 +672,15 @@
         childGrid.innerHTML = paginated
           .map(
             a => `
-    <div class="col-6 col-md-2" data-bs-toggle="modal" data-bs-target="#detailPJModal">
-      <div class="child-card">
-        <img src="${a.foto}" alt="${a.nama}" />
-        <h6>${a.nama}</h6>
-        <p>${a.noWA}</p>
-        <p>${a.namaSekolah}</p>
-        <span class="badge bg-${
-          a.status === 'Aktif' ? 'success' : a.status === 'Tidak Aktif' ? 'secondary' : 'warning'
-        }">${a.status}</span>
-      </div>
-    </div>`
+              <div class="col-6 col-md-2" data-bs-toggle="modal" data-bs-target="#detailPJModal">
+                <div class="child-card">
+                  <img src="${a.foto}" alt="${a.nama}" />
+                  <h6>${a.nama}</h6>
+                  <p>${a.noWA}</p>
+                  <p>${a.namaSekolah}</p>
+                  <span class="badge bg-${getStatusBadgeClass(a.status)}">${a.status}</span>
+                </div>
+              </div>`
           )
           .join('');
 
@@ -653,9 +689,9 @@
             ? Array.from(
                 { length: totalPages },
                 (_, i) => `
-      <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
-        <a class="page-link" href="#">${i + 1}</a>
-      </li>`
+                <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
+                  <a class="page-link" href="#">${i + 1}</a>
+                </li>`
               ).join('')
             : '';
 

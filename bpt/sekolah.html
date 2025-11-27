@@ -788,18 +788,29 @@
       function renderTable() {
         const table = $('#datatable').DataTable();
         table.clear();
+
         let filtered = getFilteredData();
+
         filtered.forEach(s => {
-          table.row.add([
-            '<strong>' + s.id + '</strong>',
-            s.kode,
-            s.nama,
-            s.sekretariat,
-            s.email,
-            s.telp,
-            '<span class="badge bg-' + getStatusBadgeClass(s.status) + '">' + s.status + '</span>',
-          ]);
+          table.row
+            .add([
+              `<strong>${s.id}</strong>`,
+              s.kode,
+              s.nama,
+              s.sekretariat,
+              s.email,
+              s.telp,
+              `<span class="badge bg-${getStatusBadgeClass(s.status)}">${s.status}</span>`,
+            ])
+            .node()
+            .setAttribute('data-bs-toggle', 'modal');
         });
+
+        table.rows().every(function () {
+          this.node().setAttribute('data-bs-toggle', 'modal');
+          this.node().setAttribute('data-bs-target', '#detailSekolah');
+        });
+
         table.draw();
       }
 
