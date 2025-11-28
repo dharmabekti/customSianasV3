@@ -180,6 +180,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
+
+  // === Load shortcut settings ===
+  loadShortcutSettings();
 });
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -266,3 +269,91 @@ function updateDateTime() {
 
 updateDateTime();
 setInterval(updateDateTime, 1000);
+
+const popup = document.getElementById('shortcutPopup');
+const button = document.getElementById('btnShortcut');
+
+// Tampilkan / sembunyikan popup
+button.addEventListener('click', () => {
+  popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+});
+
+// Tutup jika klik di luar
+document.addEventListener('click', function (e) {
+  if (!button.contains(e.target) && !popup.contains(e.target)) {
+    popup.style.display = 'none';
+  }
+});
+
+// Fungsi untuk menyimpan pengaturan shortcut
+function saveShortcutSettings() {
+  const selectedShortcuts = [];
+  for (let i = 1; i <= 12; i++) {
+    const checkbox = document.getElementById(`shortcut${i}`);
+    if (checkbox && checkbox.checked) {
+      selectedShortcuts.push(i);
+    }
+  }
+  localStorage.setItem('selectedShortcuts', JSON.stringify(selectedShortcuts));
+  applyShortcutVisibility(selectedShortcuts);
+  alert('Pengaturan shortcut berhasil disimpan!');
+  $('#settingShortcutModal').modal('hide');
+}
+
+// Fungsi untuk menerapkan visibilitas shortcut berdasarkan array
+function applyShortcutVisibility(selected) {
+  const cards = document.querySelectorAll('.card-menu');
+  cards.forEach((card, index) => {
+    const cardIndex = index + 1; // 1-based
+    if (selected.includes(cardIndex)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Fungsi untuk memuat pengaturan shortcut saat halaman dimuat
+function loadShortcutSettings() {
+  const saved = localStorage.getItem('selectedShortcuts');
+  if (saved) {
+    const selectedShortcuts = JSON.parse(saved);
+    applyShortcutVisibility(selectedShortcuts);
+    // Set checkbox sesuai saved
+    for (let i = 1; i <= 12; i++) {
+      const checkbox = document.getElementById(`shortcut${i}`);
+      if (checkbox) {
+        checkbox.checked = selectedShortcuts.includes(i);
+      }
+    }
+  } else {
+    // Default: semua aktif
+    const all = Array.from({length: 12}, (_, i) => i + 1);
+    applyShortcutVisibility(all);
+    // Set semua checkbox checked
+    for (let i = 1; i <= 12; i++) {
+      const checkbox = document.getElementById(`shortcut${i}`);
+      if (checkbox) {
+        checkbox.checked = true;
+      }
+    }
+  }
+}
+
+// Tombol APPLY (untuk popup lama jika ada)
+function applyShortcut() {
+  let selected = [];
+  document.querySelectorAll('.shortcut-popup input:checked').forEach(c => {
+    selected.push(c.value);
+  });
+
+  console.log('Shortcut dipilih:', selected);
+
+  alert('Shortcut berhasil disimpan!');
+  popup.style.display = 'none';
+}
+
+// Tombol BATALKAN
+function closeShortcut() {
+  popup.style.display = 'none';
+}

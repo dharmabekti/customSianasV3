@@ -539,7 +539,7 @@
             </div>
 
             <!-- TOMBOL SETTING SHORTCUT DI KANAN -->
-            <button class="btn btn-outline-dark btn-xs ms-auto" title="Pengaturan Shortcut">
+            <button class="btn btn-outline-dark btn-xs ms-auto" title="Pengaturan Shortcut" data-bs-toggle="modal" data-bs-target="#settingShortcutModal">
               Setting Shortcut <i class="bi bi-gear"></i>
             </button>
           </div>
@@ -844,6 +844,133 @@
           </div>
           <div class="modal-footer justify-content-end">
             <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Setting Shortcut -->
+    <div
+      class="modal fade"
+      id="settingShortcutModal"
+      tabindex="-1"
+      aria-labelledby="settingShortcutModalLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title fw-semibold" id="settingShortcutModalLabel">Pengaturan Shortcut</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container my-3">
+              <p class="text-muted mb-4">Pilih shortcut menu yang ingin diaktifkan di halaman utama:</p>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut1" checked>
+                    <label class="form-check-label" for="shortcut1">
+                      Anak Asuh Baru
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut2" checked>
+                    <label class="form-check-label" for="shortcut2">
+                      Pengajuan Naik Jenjang
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut3" checked>
+                    <label class="form-check-label" for="shortcut3">
+                      Pemilihan Anak Asuh oleh Donatur
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut4" checked>
+                    <label class="form-check-label" for="shortcut4">
+                      Input Donatur Baru
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut5" checked>
+                    <label class="form-check-label" for="shortcut5">
+                      List Anak Asuh
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut6" checked>
+                    <label class="form-check-label" for="shortcut6">
+                      Penanggungjawab Sekolah
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut7" checked>
+                    <label class="form-check-label" for="shortcut7">
+                      List Sekolah
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut8" checked>
+                    <label class="form-check-label" for="shortcut8">
+                      Status Transfer Beasiswa
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut9" checked>
+                    <label class="form-check-label" for="shortcut9">
+                      Laporan Transfer Beasiswa
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut10" checked>
+                    <label class="form-check-label" for="shortcut10">
+                      Raport, SKL & Ijazah
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut11" checked>
+                    <label class="form-check-label" for="shortcut11">
+                      Laporan Raport, SKL, dan Ijasah
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut12" checked>
+                    <label class="form-check-label" for="shortcut12">
+                      Berkas Pendukung
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+            <button type="button" class="btn btn-success btn-sm" onclick="saveShortcutSettings()">Simpan</button>
           </div>
         </div>
       </div>
