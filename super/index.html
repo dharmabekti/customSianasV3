@@ -23,7 +23,7 @@
         </div>
         <!-- Tahun Akademik + Datetime -->
         <div class="text-center me-3">
-          <h4 class="mb-0">TA. 2025/2026</h3>
+          <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
         </div>
       </div>
@@ -521,56 +521,41 @@
       <div class="d-none d-lg-block mb-4"></div>
       <!-- Hanya muncul di layar besar -->
       <div class="card p-3">
-  <div class="container-fluid">
-    <div class="d-flex align-items-center">
-      
-      <!-- FOTO PROFIL / LOGO -->
-      <img
-        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-        class="rounded-circle me-3 profile-img"
-        alt="Logo"
-        width="65"
-        height="65"
-      />
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <!-- FOTO PROFIL / LOGO -->
+            <img
+              src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+              class="rounded-circle me-3 profile-img"
+              alt="Logo"
+              width="65"
+              height="65"
+            />
 
-      <!-- TEKS DI SEBELAH KANAN -->
-      <div class="hero-text">
-        <h4 class="mb-1">Selamat Datang di SIANAS</h4>
-        <p class="text-muted mb-0">Ki Anom - Admin</p>
+            <!-- TEKS DI SEBELAH KANAN -->
+            <div class="hero-text">
+              <h4 class="mb-1">Selamat Datang di SIANAS</h4>
+              <p class="text-muted mb-0">Ki Anom - Admin</p>
+            </div>
+
+            <!-- TOMBOL SETTING SHORTCUT DI KANAN -->
+            <button class="btn btn-outline-dark btn-xs ms-auto" title="Pengaturan Shortcut">
+              Setting Shortcut <i class="bi bi-gear"></i>
+            </button>
+          </div>
+        </div>
       </div>
-
-      <!-- TOMBOL SETTING SHORTCUT DI KANAN -->
-      <button class="btn btn-outline-dark btn-xs ms-auto" title="Pengaturan Shortcut">
-        Setting Shortcut <i class="bi bi-gear"></i>
-      </button>
-
-    </div>
-  </div>
-</div>
-
 
       <div class="container-fluid my-4">
         <div class="row g-3">
           <div class="col-6 col-md-2 card-menu" onclick="openPage('anak_asuh')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
-                <strong class="font-title-menu">Anak Asuh Aktif</strong>
+                <strong class="font-title-menu">Anak Asuh Baru</strong>
                 <div class="position-relative d-inline-block">
-                  <img src="../assets/img/anakasuh.png" alt="Anak Asuh" />
+                  <img src="../assets/img/anakasuh2.png" alt="Anak Asuh" />
                 </div>
-                <small class="font-subtitle-menu">2 anak aktif</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('input_anak_asuh')">
-            <div class="card shadow-sm text-center position-relative">
-              <div class="card-body">
-                <strong class="font-title-menu">Input Anak Asuh</strong>
-                <div class="position-relative d-inline-block">
-                  <img src="../assets/img/form.png" alt="Anak Asuh" />
-                </div>
-                <small class="font-subtitle-menu">0 Anak Asuh Pending</small>
+                <small class="font-subtitle-menu">2 perlu dikonfrimasi</small>
               </div>
             </div>
           </div>
@@ -582,6 +567,7 @@
                 <div class="position-relative d-inline-block">
                   <img src="../assets/img/jenjang.png" alt="Anak Asuh" />
                 </div>
+                <small class="font-subtitle-menu">2 perlu dikonfrimasi</small>
               </div>
             </div>
           </div>
@@ -598,14 +584,37 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('raport_skl_ijasah')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('form_donatur')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
-                <strong class="font-title-menu">Raport, SKL & Ijazah</strong>
+                <strong class="font-title-menu">Input Donatur Baru</strong>
                 <div class="position-relative d-inline-block">
-                  <img src="../assets/img/list.png" alt="Anak Asuh" />
+                  <img src="../assets/img/donatur2.png" alt="Anak Asuh" />
                 </div>
-                <small class="font-subtitle-menu">10 membutuhkan persetujuan</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('anak_asuh')">
+            <div class="card shadow-sm text-center position-relative">
+              <div class="card-body">
+                <strong class="font-title-menu">List Anak Asuh</strong>
+                <div class="position-relative d-inline-block">
+                  <img src="../assets/img/anakasuh.png" alt="Anak Asuh" />
+                </div>
+                <small class="font-subtitle-menu">XX Anak Asuh Aktif</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('data_pj')">
+            <div class="card shadow-sm text-center position-relative">
+              <div class="card-body">
+                <strong class="font-title-menu">Penanggungjawab Sekolah</strong>
+                <div class="position-relative d-inline-block">
+                  <img src="../assets/img/jenjang.png" alt="Anak Asuh" />
+                </div>
+                <small class="font-subtitle-menu">Xx perlu dikonfrimasi</small>
               </div>
             </div>
           </div>
@@ -617,7 +626,7 @@
                 <div class="position-relative d-inline-block">
                   <img src="../assets/img/sekolah.png" alt="Anak Asuh" />
                 </div>
-                <small class="font-subtitle-menu">XX sekolah aktif</small>
+                <small class="font-subtitle-menu">XX Sekolah Aktif</small>
               </div>
             </div>
           </div>
@@ -645,13 +654,14 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('berkas_pendukung')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('raport_skl_ijasah')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
-                <strong class="font-title-menu">Berkas Pendukung</strong>
+                <strong class="font-title-menu">Raport, SKL & Ijazah</strong>
                 <div class="position-relative d-inline-block">
-                  <img src="../assets/img/folder.png" alt="Anak Asuh" />
+                  <img src="../assets/img/list.png" alt="Anak Asuh" />
                 </div>
+                <small class="font-subtitle-menu">10 membutuhkan persetujuan</small>
               </div>
             </div>
           </div>
@@ -661,7 +671,18 @@
               <div class="card-body">
                 <strong class="font-title-menu">Laporan Raport, SKL, dan Ijasah</strong>
                 <div class="position-relative d-inline-block">
-                  <img src="../assets/img/report_raport.png" alt="Anak Asuh" />
+                  <img src="../assets/img/report_raport.png" alt="Anak Asuh" width="100px" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('berkas_pendukung')">
+            <div class="card shadow-sm text-center position-relative">
+              <div class="card-body">
+                <strong class="font-title-menu">Berkas Pendukung</strong>
+                <div class="position-relative d-inline-block">
+                  <img src="../assets/img/folder.png" alt="Anak Asuh" />
                 </div>
               </div>
             </div>
