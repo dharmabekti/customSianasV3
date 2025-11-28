@@ -1345,6 +1345,16 @@ div.dataTables_wrapper .dataTables_filter {
   vertical-align: middle !important;
 }
 
+/* Cursor pointer untuk baris tabel datatable (desktop) */
+#datatable tbody tr:hover {
+  cursor: pointer;
+}
+
+/* Cursor pointer untuk kartu mobile */
+#cardList .col-12:hover {
+  cursor: pointer;
+}
+
 /* ✅ Pastikan filter bar tidak mempengaruhi DataTable bawaan */
 div.dataTables_wrapper .dataTables_filter {
   float: right;
