@@ -600,13 +600,11 @@
                     <th>No</th>
                     <th>ID</th>
                     <th>Nama</th>
-                    <th>Email</th>
-                    <th>No. HP/WA</th>
                     <th>Status</th>
                     <th>Total Komitmen</th>
                     <th>Total Transfer</th>
                     <th>Status Donasi</th>
-                    <th>Email/WA Lanjut Donasi</th>
+                    <th>Email/WA<br>Lanjut Donasi</th>
                     <th>Lanjut Donasi</th>
                   </tr>
                 </thead>
@@ -701,72 +699,6 @@
         'Fina Sari',
       ];
 
-      const emailList = [
-        'ahmad.fauzi@example.com',
-        'budi.santoso@example.com',
-        'citra.dewi@example.com',
-        'dedi.rahman@example.com',
-        'eka.sari@example.com',
-        'fajar.nugroho@example.com',
-        'gita.permata@example.com',
-        'hadi.wijaya@example.com',
-        'indah.lestari@example.com',
-        'joko.susilo@example.com',
-        'kartika.sari@example.com',
-        'lutfi.hakim@example.com',
-        'maya.sari@example.com',
-        'nanda.putra@example.com',
-        'oka.wibowo@example.com',
-        'putri.ayu@example.com',
-        'rudi.hartono@example.com',
-        'sari.indah@example.com',
-        'taufik.rahman@example.com',
-        'umi.kalsum@example.com',
-        'vina.sari@example.com',
-        'wahyu.nugroho@example.com',
-        'yuniarti@example.com',
-        'zainal.abidin@example.com',
-        'ani.suryani@example.com',
-        'bambang.setiawan@example.com',
-        'cici.handayani@example.com',
-        'dian.purnama@example.com',
-        'eko.prasetyo@example.com',
-        'fina.sari@example.com',
-      ];
-
-      const phoneList = [
-        '081234567890',
-        '081234567891',
-        '081234567892',
-        '081234567893',
-        '081234567894',
-        '081234567895',
-        '081234567896',
-        '081234567897',
-        '081234567898',
-        '081234567899',
-        '081234567800',
-        '081234567801',
-        '081234567802',
-        '081234567803',
-        '081234567804',
-        '081234567805',
-        '081234567806',
-        '081234567807',
-        '081234567808',
-        '081234567809',
-        '081234567810',
-        '081234567811',
-        '081234567812',
-        '081234567813',
-        '081234567814',
-        '081234567815',
-        '081234567816',
-        '081234567817',
-        '081234567818',
-        '081234567819',
-      ];
-
       const statusList = ['Aktif', 'Pending', 'Stop', 'Tidak Aktif'];
       const statusDonasiList = ['Lunas', 'Lunas Berlebih', 'Belum Lunas', 'Tidak Aktif'];
       const lanjutDonasiList = ['Belum', 'belum Dikirim'];
@@ -801,11 +733,11 @@
       let no = 1;
       for (let i = 0; i < 50; i++) {
         const nama = namaList[Math.floor(Math.random() * namaList.length)];
-        const email = emailList[Math.floor(Math.random() * emailList.length)];
-        const no_hp = phoneList[Math.floor(Math.random() * phoneList.length)];
         const status = statusList[Math.floor(Math.random() * statusList.length)];
-        const total_komitmen = `Rp${Math.floor(Math.random() * 10000000) + 1000000}`;
-        const total_transfer = `Rp${Math.floor(Math.random() * 8000000) + 500000}`;
+        const komitmenValue = Math.floor(Math.random() * 10000000) + 1000000;
+        const transferValue = Math.floor(Math.random() * 8000000) + 500000;
+        const total_komitmen = `Rp ${komitmenValue.toLocaleString('id-ID')}`;
+        const total_transfer = `Rp ${transferValue.toLocaleString('id-ID')}`;
         const status_donasi = statusDonasiList[Math.floor(Math.random() * statusDonasiList.length)];
         const email_wa_lanjut = 'Belum';
         const lanjut_donasi = 'Belum Dikirim';
@@ -815,8 +747,6 @@
           no: no++,
           id,
           nama,
-          email,
-          no_hp,
           status,
           total_komitmen,
           total_transfer,
@@ -872,8 +802,6 @@
           <td data-label="No"><strong>${d.no}</strong></td>
           <td data-label="ID">${d.id}</td>
           <td data-label="Nama">${d.nama}</td>
-          <td data-label="Email">${d.email}</td>
-          <td data-label="No HP">${d.no_hp}</td>
           <td data-label="Status"><span class="badge bg-${getStatusClass(d.status)}">${d.status}</span></td>
           <td data-label="Total Komitmen">${d.total_komitmen}</td>
           <td data-label="Total Transfer">${d.total_transfer}</td>
@@ -942,8 +870,6 @@
           filtered = filtered.filter(
             item =>
               item.nama.toLowerCase().includes(searchTerm) ||
-              item.email.toLowerCase().includes(searchTerm) ||
-              item.no_hp.includes(searchTerm) ||
               item.id.toLowerCase().includes(searchTerm)
           );
         }
