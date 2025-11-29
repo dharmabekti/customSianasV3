@@ -368,22 +368,21 @@ function closeShortcut() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // Tutup contextmenu saat resize (desktop → mobile atau sebaliknya)
+  // Tutup contextmenu saat resize
   window.addEventListener('resize', function () {
     const cm = document.getElementById('contextMenu');
     if (cm) cm.style.display = 'none';
   });
-  
+
   // toggle context menu
   document.addEventListener('click', function (e) {
-    // klik ikon
-    if (e.target.classList.contains('bi-three-dots-vertical')) {
+    // ======== Hanya ikon card-menu yg boleh buka contextMenu ========
+    if (e.target.classList.contains('card-menu')) {
       e.preventDefault();
       e.stopPropagation();
 
       const icon = e.target;
       const cm = document.getElementById('contextMenu');
-
       if (!cm) return;
 
       cm.style.opacity = '0';
@@ -400,15 +399,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
       return;
     }
+    // ===============================================================
 
-    // klik luar → tutup
+    // Klik luar → tutup
     const cm = document.getElementById('contextMenu');
     if (cm && !cm.contains(e.target)) {
       cm.style.display = 'none';
     }
   });
 
-  // klik pada contextMenu tidak menutup
+  // Klik pada contextMenu tidak menutup
   const cm = document.getElementById('contextMenu');
   if (cm) {
     cm.addEventListener('click', e => e.stopPropagation());
@@ -420,4 +420,5 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cm) cm.style.display = 'none';
   });
 });
+
 
