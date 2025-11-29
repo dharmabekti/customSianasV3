@@ -1345,10 +1345,14 @@ div.dataTables_wrapper .dataTables_filter {
   vertical-align: middle !important;
 }
 
-/* Cursor pointer untuk baris tabel datatable (desktop) */
-#datatable tbody tr:hover {
+/* Hover effect DataTables */
+#datatable tbody tr:hover,
+#datatable tbody tr:hover td {
+  background-color: var(--aat-grey) !important;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
 
 /* Cursor pointer untuk kartu mobile */
 #cardList .col-12:hover {
