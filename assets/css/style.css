@@ -342,6 +342,24 @@ main {
   width: 95%;
 }
 
+@media (max-width: 576px) {
+  .modal-dialog {
+    margin: 20px auto !important;
+    max-width: 95% !important;
+    width: auto !important;
+  }
+
+  .modal-content {
+    border-radius: 12px !important;
+  }
+
+  .modal-body {
+    overflow-y: auto !important;
+    max-height: calc(100vh - 180px) !important;
+  }
+}
+
+
 /* Untuk tampilan mobile */
 @media (max-width: 768px) {
   .modal-dialog {
@@ -748,6 +766,7 @@ main {
   .custom-font-menu {
     font-size: 9px;
   }
+
 }
 
 @media (max-width: 576px) {
@@ -1340,10 +1359,9 @@ div.dataTables_wrapper .dataTables_filter {
 }
 
 #contextMenu {
+  z-index: 1040 !important;
   position: absolute;
-  z-index: 9999;
-  right: auto !important;
-  left: 0; /* nilai akan di-override oleh JS */
+  display: none;
 }
 
 /* Data Table */
@@ -2324,4 +2342,26 @@ h3.page-title {
 /* Atur ulang padding isi agar rapi */
 .accordion-detail {
   padding: 10px 14px !important;
+}
+
+/* Modal Detail Donatur - Fullscreen pada Mobile */
+@media (max-width: 768px) {
+  #detailDonaturModal .modal-dialog {
+    max-width: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+  #detailDonaturModal .modal-content {
+    height: 100%;
+    border-radius: 0;
+  }
+  #detailDonaturModal .modal-body {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+  #detailDonaturModal .modal-body img {
+    height: 120px !important;
+    width: 120px !important;
+  }
 }

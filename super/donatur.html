@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>Responsive Admin Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
@@ -630,23 +630,12 @@
           <div id="cardList" class="row g-2"></div>
 
           <!-- PAGINATION MOBILE -->
-          <div id="paginationMobile" class="mt-3"></div>
+          <div class="pagination-mobile-container d-flex justify-content-center mt-3">
+            <nav><ul class="pagination" id="paginationMobile"></ul></nav>
+          </div>
         </div>
       </div>
     </main>
-
-    <!-- Context Menu for Right-Click Actions -->
-    <div id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
-      <li>
-        <a class="dropdown-item" href="#" id="viewAction"><i class="bi bi-eye"></i> Lihat</a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#" id="editAction"><i class="bi bi-pencil"></i> Edit</a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#" id="deleteAction"><i class="bi bi-trash"></i> Hapus</a>
-      </li>
-    </div>
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -660,6 +649,247 @@
         <div class="d-none d-lg-block mb-5"></div>
       </small>
     </footer>
+
+    <!-- Context Menu for Right-Click Actions -->
+    <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
+      <li>
+        <a class="dropdown-item" href="#" id="viewAction" data-bs-toggle="modal" data-bs-target="#detailDonaturModal">
+          <i class="bi bi-info"></i> Detail
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-item" href="#" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
+      </li>
+
+      <li>
+        <a class="dropdown-item" href="#" id="riwayatAction"> <i class="bi bi-receipt"></i> Riwayat Donasi </a>
+      </li>
+
+      <li>
+        <a class="dropdown-item" href="#" id="lanjutDonasiAction">
+          <i class="bi bi-check"></i> Konfirmasi Lanjut Donasi
+        </a>
+      </li>
+
+      <li>
+        <a class="dropdown-item" href="#" id="deleteAction"> <i class="bi bi-trash"></i> Hapus </a>
+      </li>
+    </ul>
+
+    <!-- Modal Detail -->
+    <div
+      class="modal fade"
+      id="detailDonaturModal"
+      tabindex="-1"
+      aria-labelledby="detailDonaturLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title fw-bold" id="detailDonaturLabel">Detail Donatur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-4">
+              <!-- Card Profil Utama -->
+              <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                  <div class="row align-items-center">
+                    <!-- Foto Profil -->
+                    <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                      <img
+                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                        alt="Foto Profil"
+                        class="rounded-circle img-fluid shadow-sm"
+                        style="height: 200px; width: 200px"
+                      />
+                      <h5 class="mt-2">Ki Anom Dharma Bekti</h5>
+                      <span class="badge bg-success">Aktif</span>
+                    </div>
+
+                    <!-- Info Singkat -->
+                    <div class="col-12 col-md-8">
+                      <div class="table-responsive">
+                        <table
+                          class="table table-borderless mb-0 list-table no-mobile-hide"
+                          style="width: 100%; text-align: left"
+                        >
+                          <tbody>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-person-fill me-2 text-secondary"></i> ID
+                              </th>
+                              <td class="text-dark" data-label="ID">D-XX-XXXX</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-gender-male me-2 text-secondary"></i> Jenis Kelamin
+                              </th>
+                              <td class="text-dark" data-label="Jenis Kelamin">Laki-Laki</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal" style="width: 180px">
+                                <i class="bi bi-calendar-date me-2 text-secondary"></i> Tanggal Lahir
+                              </th>
+                              <td class="text-dark" data-label="Tanggal Lahir">01 Januari 1953</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
+                              </th>
+                              <td class="text-dark" data-label="Email">donatur@aat.or.id</td>
+                            </tr>
+                            <tr class="border-bottom align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-telephone-fill me-2 text-secondary"></i> No HP
+                              </th>
+                              <td class="text-dark" data-label="No HP">08515512345</td>
+                            </tr>
+                            <tr class="align-middle">
+                              <th class="text-muted fw-normal"><i class="bi bi-flag me-2 text-secondary"></i> Role</th>
+                              <td class="text-dark" data-label="Role">Orangtua Asuh</td>
+                            </tr>
+                            <tr class="align-middle">
+                              <th class="text-muted fw-normal">
+                                <i class="bi bi-key me-2 text-secondary"></i> Terakhir Login
+                              </th>
+                              <td class="text-dark" data-label="Terakhir Login">12 September 2025, 09:30 WIB</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Navigasi Tab (Desktop) -->
+              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#alamat">Alamat Rumah</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pekerjaan">Data Pekerjaan</button>
+                </li>
+              </ul>
+
+              <!-- Isi Tab (Satu Sumber Data) -->
+              <div class="tab-content" id="profileContent">
+                <div class="tab-pane fade show active" id="alamat">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3 text-start">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
+
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-house-door me-2 text-secondary"></i> Alamat
+                                </th>
+                                <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-building me-2 text-secondary"></i> Kabupaten / Kota
+                                </th>
+                                <td class="text-dark">Sleman</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-geo-alt me-2 text-secondary"></i> Provinsi
+                                </th>
+                                <td class="text-dark">D.I. Yogyakarta</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-globe me-2 text-secondary"></i> Negara
+                                </th>
+                                <td class="text-dark">Indonesia</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-mailbox me-2 text-secondary"></i>Kode Pos
+                                </th>
+                                <td class="text-dark">55555</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i>Telp. Rumah
+                                </th>
+                                <td class="text-dark">021-123456</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pekerjaan">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3">
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pekerjaan</h5>
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
+                                </th>
+                                <td class="text-dark">Karyawan Swasta</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-building me-2 text-secondary"></i> Instansi
+                                </th>
+                                <td class="text-dark">CV Mandhira Inovasi Teknologi</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-house-door me-2 text-secondary"></i> Alamat Kantor
+                                </th>
+                                <td class="text-dark">
+                                  <p>Jl. Merpati No. 123, Sleman, Yogyakarta</p>
+                                </td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i> Telp./Fax Kantor
+                                </th>
+                                <td class="text-dark">0274-123456 / 0274-123456</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+              <div id="mobileProfile" class="d-md-none"></div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -857,8 +1087,8 @@
       }
 
       // ===============================
-// Filter DataTable using API (no destroy/recreate)
-// ===============================
+      // Filter DataTable using API (no destroy/recreate)
+      // ===============================
       function filterTable() {
         const selectedStatus = getSelectedStatus(statusCheckboxes);
         const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
@@ -1009,25 +1239,12 @@
       });
 
       // ===============================
-      // Context Menu Functionality
-      // ===============================
-      // Hide context menu on click outside
-      document.addEventListener('click', function () {
-        const contextMenu = document.getElementById('contextMenu');
-        contextMenu.style.display = 'none';
-      });
-
-      // Prevent context menu from hiding when clicking on it
-      document.getElementById('contextMenu').addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
-
-      // ===============================
       // Inisialisasi Awal
       // ===============================
       renderTable();
       filterTable();
       renderCards();
     </script>
+    
   </body>
 </html>

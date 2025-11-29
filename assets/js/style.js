@@ -368,52 +368,56 @@ function closeShortcut() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  // Tutup contextmenu saat resize (desktop → mobile atau sebaliknya)
+  window.addEventListener('resize', function () {
+    const cm = document.getElementById('contextMenu');
+    if (cm) cm.style.display = 'none';
+  });
+  
+  // toggle context menu
   document.addEventListener('click', function (e) {
-    // DETEKSI klik ikon
+    // klik ikon
     if (e.target.classList.contains('bi-three-dots-vertical')) {
-      console.log('IKON KLIK TERDETEKSI!');
-
       e.preventDefault();
       e.stopPropagation();
 
       const icon = e.target;
-      const contextMenu = document.getElementById('contextMenu');
+      const cm = document.getElementById('contextMenu');
 
-      if (!contextMenu) {
-        console.error('❌ contextMenu TIDAK DITEMUKAN');
-        return;
-      }
+      if (!cm) return;
 
-      // Tampilkan dulu supaya bisa hitung lebar
-      contextMenu.style.display = 'block';
-      contextMenu.style.visibility = 'hidden'; // sementara
+      cm.style.opacity = '0';
+      cm.style.display = 'block';
 
-      // Ambil posisi ikon
-      const rect = icon.getBoundingClientRect();
-      const menuWidth = contextMenu.offsetWidth;
+      requestAnimationFrame(() => {
+        const rect = icon.getBoundingClientRect();
+        const w = cm.offsetWidth;
 
-      // Hitung posisi kiri
-      const posX = rect.left - menuWidth - 10;
-      const posY = rect.top + window.scrollY;
-
-      // Set posisi final
-      contextMenu.style.left = posX + 'px';
-      contextMenu.style.top = posY + 'px';
-
-      contextMenu.style.visibility = 'visible'; // munculkan
-
-      // Set data
-      const card = icon.closest('.card');
-      contextMenu.dataset.rowId = card?.dataset.id || '';
-      contextMenu.dataset.rowNama = card?.dataset.nama || '';
+        cm.style.left = rect.left - w - 10 + 'px';
+        cm.style.top = rect.top + window.scrollY + 'px';
+        cm.style.opacity = '1';
+      });
 
       return;
     }
 
-    // KLIK DI LUAR = TUTUP MENU
-    const contextMenu = document.getElementById('contextMenu');
-    if (contextMenu && !contextMenu.contains(e.target)) {
-      contextMenu.style.display = 'none';
+    // klik luar → tutup
+    const cm = document.getElementById('contextMenu');
+    if (cm && !cm.contains(e.target)) {
+      cm.style.display = 'none';
     }
   });
+
+  // klik pada contextMenu tidak menutup
+  const cm = document.getElementById('contextMenu');
+  if (cm) {
+    cm.addEventListener('click', e => e.stopPropagation());
+  }
+
+  // modal dibuka → tutup contextMenu
+  document.addEventListener('show.bs.modal', function () {
+    const cm = document.getElementById('contextMenu');
+    if (cm) cm.style.display = 'none';
+  });
 });
+
