@@ -246,10 +246,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const accordion = document.getElementById('collapseAccordion');
   const headerBtn = document.querySelector('#headingAccordion .accordion-button i');
 
-  accordion.addEventListener('show.bs.collapse', function () {
-    headerBtn.classList.remove('bi-chevron-right');
-    headerBtn.classList.add('bi-chevron-down');
-  });
+  if (accordion && headerBtn) {
+    accordion.addEventListener('show.bs.collapse', function () {
+      headerBtn.classList.remove('bi-chevron-right');
+      headerBtn.classList.add('bi-chevron-down');
+    });
+  }
 });
 
 // Set Date and Time
@@ -274,15 +276,22 @@ const popup = document.getElementById('shortcutPopup');
 const button = document.getElementById('btnShortcut');
 
 // Tampilkan / sembunyikan popup
-button.addEventListener('click', () => {
-  popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
-});
-
-// Tutup jika klik di luar
-document.addEventListener('click', function (e) {
-  if (!button.contains(e.target) && !popup.contains(e.target)) {
-    popup.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function () {
+  // Cegah error jika elemen tidak ditemukan
+  if (!button || !popup) {
+    return;
   }
+
+  button.addEventListener('click', () => {
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Tutup jika klik di luar
+  document.addEventListener('click', function (e) {
+    if (!button.contains(e.target) && !popup.contains(e.target)) {
+      popup.style.display = 'none';
+    }
+  });
 });
 
 // Fungsi untuk menyimpan pengaturan shortcut
@@ -328,7 +337,7 @@ function loadShortcutSettings() {
     }
   } else {
     // Default: semua aktif
-    const all = Array.from({length: 12}, (_, i) => i + 1);
+    const all = Array.from({ length: 12 }, (_, i) => i + 1);
     applyShortcutVisibility(all);
     // Set semua checkbox checked
     for (let i = 1; i <= 12; i++) {
@@ -357,3 +366,54 @@ function applyShortcut() {
 function closeShortcut() {
   popup.style.display = 'none';
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('click', function (e) {
+    // DETEKSI klik ikon
+    if (e.target.classList.contains('bi-three-dots-vertical')) {
+      console.log('IKON KLIK TERDETEKSI!');
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const icon = e.target;
+      const contextMenu = document.getElementById('contextMenu');
+
+      if (!contextMenu) {
+        console.error('❌ contextMenu TIDAK DITEMUKAN');
+        return;
+      }
+
+      // Tampilkan dulu supaya bisa hitung lebar
+      contextMenu.style.display = 'block';
+      contextMenu.style.visibility = 'hidden'; // sementara
+
+      // Ambil posisi ikon
+      const rect = icon.getBoundingClientRect();
+      const menuWidth = contextMenu.offsetWidth;
+
+      // Hitung posisi kiri
+      const posX = rect.left - menuWidth - 10;
+      const posY = rect.top + window.scrollY;
+
+      // Set posisi final
+      contextMenu.style.left = posX + 'px';
+      contextMenu.style.top = posY + 'px';
+
+      contextMenu.style.visibility = 'visible'; // munculkan
+
+      // Set data
+      const card = icon.closest('.card');
+      contextMenu.dataset.rowId = card?.dataset.id || '';
+      contextMenu.dataset.rowNama = card?.dataset.nama || '';
+
+      return;
+    }
+
+    // KLIK DI LUAR = TUTUP MENU
+    const contextMenu = document.getElementById('contextMenu');
+    if (contextMenu && !contextMenu.contains(e.target)) {
+      contextMenu.style.display = 'none';
+    }
+  });
+});

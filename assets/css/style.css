@@ -1339,6 +1339,13 @@ div.dataTables_wrapper .dataTables_filter {
   font-size: 0.9rem;
 }
 
+#contextMenu {
+  position: absolute;
+  z-index: 9999;
+  right: auto !important;
+  left: 0; /* nilai akan di-override oleh JS */
+}
+
 /* Data Table */
 #datatable thead th {
   text-align: center !important;
