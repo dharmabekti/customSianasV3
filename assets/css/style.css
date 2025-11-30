@@ -1895,8 +1895,8 @@ h3.page-title {
 }
 
 .accordion-button:not(.collapsed) {
-  background-color: var(--aat-primary);
-  color: white;
+  background-color: white;
+  color: black;
 }
 /* Default: tampil tabel normal di desktop */
 .list-table {
