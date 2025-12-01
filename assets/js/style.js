@@ -254,6 +254,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
+// Toggle icon untuk accordion di riwayat_donasi.html
+document.addEventListener('DOMContentLoaded', function () {
+  // Ambil semua ACCORDION COLLAPSE
+  const allAccordions = document.querySelectorAll('.accordion-collapse');
+
+  allAccordions.forEach(acc => {
+    // Cari tombol yang mengarah ke collapse ini
+    const button = document.querySelector(`[data-bs-target="#${acc.id}"] i`);
+
+    if (!button) return;
+
+    // Saat accordion dibuka
+    acc.addEventListener('show.bs.collapse', function () {
+      button.classList.remove('bi-chevron-right');
+      button.classList.add('bi-chevron-down');
+    });
+
+    // Saat accordion ditutup
+    acc.addEventListener('hide.bs.collapse', function () {
+      button.classList.remove('bi-chevron-down');
+      button.classList.add('bi-chevron-right');
+    });
+  });
+});
+
+
 // Set Date and Time
 function updateDateTime() {
   const now = new Date();

@@ -11,6 +11,9 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Sweet Alerts css -->
+    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  </head>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -595,7 +598,7 @@
                         <div class="accordion" id="mobileAccordion">
                           <!-- Accordion Item for Anak Asuh -->
                           <div class="accordion-item">
-                            <h6 class="accordion-header" id="headingAccordion">
+                            <h6 class="accordion-header" id="headingSpp">
                               <button
                                 class="accordion-button"
                                 type="button"
@@ -612,7 +615,7 @@
                             <div
                               id="donasiSppAccordion"
                               class="accordion-collapse collapse"
-                              aria-labelledby="headingAccordion"
+                              aria-labelledby="headingSpp"
                               data-bs-parent="#mobileAccordion"
                             >
                               <div class="accordion-body">
@@ -682,8 +685,9 @@
                             </div>
                           </div>
 
+                          <!-- Accordion Item for BPT -->
                           <div class="accordion-item mt-3">
-                            <h6 class="accordion-header" id="headingAccordion">
+                            <h6 class="accordion-header" id="headingBpt">
                               <button
                                 class="accordion-button"
                                 type="button"
@@ -700,7 +704,7 @@
                             <div
                               id="bptAccordion"
                               class="accordion-collapse collapse"
-                              aria-labelledby="headingAccordion"
+                              aria-labelledby="headingBpt"
                               data-bs-parent="#mobileAccordion"
                             >
                               <div class="accordion-body">
@@ -710,34 +714,77 @@
                                     <thead class="table-light">
                                       <tr>
                                         <th class="text-center">No</th>
-                                        <th>Nama Anak Asuh</th>
-                                        <th>Donasi/bulan (Rp)</th>
+                                        <th colspan="3">Mulai Donasi</th>
+                                        <th>Donasi / Bulan</th>
                                         <th>Jml. Bulan</th>
-                                        <th>Subtotal (Rp)</th>
+                                        <th>Sub Total</th>
                                       </tr>
                                     </thead>
-                                    <!-- DATA ANAK ASUH -->
                                     <tbody>
                                       <tr>
                                         <td class="text-center d-none d-md-block">1</td>
-                                        <td data-label="Anak Asuh">
-                                          Agata Cahaya Angel Fradista <br />SD Katolik Santa Maria Ponorogo <br />SD
-                                          Kelas 3
-                                        </td>
-                                        <td class="text-end" data-label="Donasi/bln (Rp)">50.000,00</td>
-                                        <td class="text-center" data-label="Jml. Bulan">12</td>
-                                        <td class="text-end" data-label="Subtotal (Rp)">600.000,00</td>
+                                        <td colspan="3" data-label="Mulai Donasi">04 September 2025</td>
+                                        <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                                        <td class="text-center" data-label="Jml. Bulan">10</td>
+                                        <td class="text-end" data-label="Subtotal (Rp)">1.000.000,00</td>
                                       </tr>
 
                                       <tr>
                                         <td class="text-center d-none d-md-block">2</td>
-                                        <td data-label="Anak Asuh">
-                                          Adinda Dewi Puspita Sari <br />SMK 17 Agustus 1945 Semarang <br />SMA/SMK
-                                          Kelas 11
-                                        </td>
+                                        <td colspan="3" data-label="Mulai Donasi">18 November 2025</td>
                                         <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                                        <td class="text-center" data-label="Jml. Bulan">12</td>
-                                        <td class="text-end" data-label="Subtotal (Rp)">1.200.000,00</td>
+                                        <td class="text-center" data-label="Jml. Bulan">8</td>
+                                        <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Accordion Item for Donasi Oprasional -->
+                          <div class="accordion-item mt-3">
+                            <h6 class="accordion-header" id="headingOpr">
+                              <button
+                                class="accordion-button"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#oprAccordion"
+                                aria-expanded="false"
+                                aria-controls="oprAccordion"
+                              >
+                                <span class="flex-grow-1">Donasi Operasional</span>
+                                <span class="text-black ms-2">Rp 800.000,00</span>
+                                <i class="bi bi-chevron-right"></i>
+                              </button>
+                            </h6>
+                            <div
+                              id="oprAccordion"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="headingOpr"
+                              data-bs-parent="#mobileAccordion"
+                            >
+                              <div class="accordion-body">
+                                <div class="table-responsive">
+                                  <table class="table table-bordered align-middle mb-0">
+                                    <!-- HEADER UTAMA -->
+                                    <thead class="table-light">
+                                      <tr>
+                                        <th class="text-center">No</th>
+                                        <th colspan="3">Mulai Donasi</th>
+                                        <th>Donasi / Bulan</th>
+                                        <th>Jml. Bulan</th>
+                                        <th>Sub Total</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td class="text-center d-none d-md-block">1</td>
+                                        <td colspan="3" data-label="Mulai Donasi">24 November 2025</td>
+                                        <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                                        <td class="text-center" data-label="Jml. Bulan">8</td>
+                                        <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -767,16 +814,12 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <td data-label="Total Transfer">Rp 300.000</td>
-                                <td data-label="Total Donasi">Rp 4.500.000</td>
-                                <td data-label="Sisa Donasi" class="text-danger">- Rp 4.200.000</td>
+                                <td data-label="Total Transfer">Rp 600.000</td>
+                                <td data-label="Total Donasi">Rp 4.400.000</td>
+                                <td data-label="Sisa Donasi" class="text-danger">- Rp 3.800.000</td>
                               </tr>
                             </tbody>
                           </table>
-                        </div>
-                        <!-- Tombol Bayar Donasi -->
-                        <div class="text-end mt-3">
-                          <a class="btn btn-primary fw-bold px-4 py-2" href="pembayaran.html"> Bayar Donasi </a>
                         </div>
                       </div>
                     </div>
@@ -880,5 +923,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <!-- Sweet Alerts Js-->
+    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
   </body>
 </html>
