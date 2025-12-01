@@ -530,7 +530,7 @@
                 class="rounded-circle img-fluid shadow-sm"
                 style="height: 150px; width: 150px"
               />
-              <h5 class="mt-2">Ki ANom Dharma Bekti</h5>
+              <h5 class="mt-2">Ki Anom Dharma Bekti</h5>
               <p class="mt-2">D-XX-0001</p>
               <span class="badge bg-success">Aktif</span>
             </div>
@@ -544,34 +544,9 @@
                 <div class="filter-bar d-none d-lg-flex">
                   <label for="tahunFilter">Tahun Akademik:</label>
                   <select id="tahunFilter" class="form-select form-select-sm">
-                    <option>2025</option>
-                    <option>2024</option>
-                    <option>2023</option>
-                  </select>
-
-                  <label for="bulanFilter">SPP Bulan:</label>
-                  <select id="bulanFilter" class="form-select form-select-sm">
-                    <option value="">Semua</option>
-                    <option>Januari</option>
-                    <option>Februari</option>
-                    <option>Maret</option>
-                    <option>April</option>
-                    <option>Mei</option>
-                    <option>Juni</option>
-                    <option>Juli</option>
-                    <option>Agustus</option>
-                    <option>September</option>
-                    <option>Oktober</option>
-                    <option>November</option>
-                    <option>Desember</option>
-                  </select>
-
-                  <label for="statusFilter">Status:</label>
-                  <select id="statusFilter" class="form-select form-select-sm">
-                    <option value="">Semua</option>
-                    <option>Sudah Transfer</option>
-                    <option>Belum Ditransfer</option>
-                    <option>Menunggu</option>
+                    <option>2025/2026</option>
+                    <option>2024/2025</option>
+                    <option>2023/2023</option>
                   </select>
                 </div>
 
@@ -618,70 +593,159 @@
                       <!-- Total Komitmen -->
                       <div class="mb-4">
                         <div class="accordion" id="mobileAccordion">
-              <!-- Accordion Item for Anak Asuh -->
-              <div class="accordion-item">
-                <h6 class="accordion-header" id="headingAccordion">
-                  <button
-                    class="accordion-button"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#donasiSppAccordion"
-                    aria-expanded="false"
-                    aria-controls="donasiSppAccordion"
-                  >
-                    <span class="flex-grow-1">Donasi SPP Anak Asuh</span>
-                    <span class="text-black ms-2">Rp 1.800.000,00</span>
-                    <i class="bi bi-chevron-right"></i>
-                  </button>
-                </h6>
-                <div
-                  id="donasiSppAccordion"
-                  class="accordion-collapse collapse"
-                  aria-labelledby="headingAccordion"
-                  data-bs-parent="#mobileAccordion"
-                >
-                  <div class="accordion-body">
-                    <div class="table-responsive">
-                      <table class="table table-bordered align-middle mb-0">
-                        <!-- HEADER UTAMA -->
-                        <thead class="table-light">
-                          <tr>
-                            <th class="text-center">No</th>
-                            <th>Nama Anak Asuh</th>
-                            <th>Donasi/bulan (Rp)</th>
-                            <th>Jml. Bulan</th>
-                            <th>Subtotal (Rp)</th>
-                          </tr>
-                        </thead>
-                        <!-- DATA ANAK ASUH -->
-                        <tr>
-                          <td class="text-center d-none d-md-block">1</td>
-                          <td data-label="Anak Asuh">Agata Cahaya Angel Fradista
-                            <br>SD Katolik Santa Maria Ponorogo
-                            <br>SD Kelas 3
-                          </td>
-                          <td class="text-end" data-label="Donasi/bln (Rp)">50.000,00</td>
-                          <td class="text-center" data-label="Jml. Bulan">12</td>
-                          <td class="text-end" data-label="Subtotal (Rp)">600.000,00</td>
-                        </tr>
+                          <!-- Accordion Item for Anak Asuh -->
+                          <div class="accordion-item">
+                            <h6 class="accordion-header" id="headingAccordion">
+                              <button
+                                class="accordion-button"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#donasiSppAccordion"
+                                aria-expanded="false"
+                                aria-controls="donasiSppAccordion"
+                              >
+                                <span class="flex-grow-1">Donasi SPP Anak Asuh</span>
+                                <span class="text-black ms-2">Rp 1.800.000,00</span>
+                                <i class="bi bi-chevron-right"></i>
+                              </button>
+                            </h6>
+                            <div
+                              id="donasiSppAccordion"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="headingAccordion"
+                              data-bs-parent="#mobileAccordion"
+                            >
+                              <div class="accordion-body">
+                                <div class="container my-3">
+                                  <div class="row g-3">
+                                    <!-- CARD TEMPLATE -->
+                                    <div class="col-12 col-sm-6 col-lg-4">
+                                      <div class="list-card shadow-sm">
+                                        <div class="row g-2">
+                                          <!-- FOTO -->
+                                          <div class="col-4">
+                                            <img
+                                              src="https://randomuser.me/api/portraits/women/10.jpg"
+                                              class="list-img"
+                                              alt=""
+                                            />
+                                          </div>
 
-                        <tr>
-                          <td class="text-center d-none d-md-block">2</td>
-                          <td data-label="Anak Asuh">Adinda Dewi Puspita Sari
-                            <br>SMK 17 Agustus 1945 Semarang
-                            <br>SMA/SMK Kelas 11
-                          </td>
-                          <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                          <td class="text-center" data-label="Jml. Bulan">12</td>
-                          <td class="text-end" data-label="Subtotal (Rp)">1.200.000,00</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                                          <!-- DETAIL -->
+                                          <div class="col-8">
+                                            <div class="list-name"><a href="#">Agata Cahaya Angel Fradista</a></div>
+                                            <div class="list-info">SD Katolik Santa Maria Ponorogo</div>
+                                            <div class="list-info">SD Kelas 3</div>
+                                          </div>
+
+                                          <!-- NOMINAL -->
+                                          <div class="col-12 d-flex justify-content-between">
+                                            <div class="badges-left">Rp 50.000x 12 bulan</div>
+                                            <div class="badges-right">Rp 600.000</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-lg-4">
+                                      <div class="list-card shadow-sm">
+                                        <div class="row g-2">
+                                          <!-- FOTO -->
+                                          <div class="col-4">
+                                            <img
+                                              src="https://randomuser.me/api/portraits/women/11.jpg"
+                                              class="list-img"
+                                              alt=""
+                                            />
+                                          </div>
+
+                                          <!-- DETAIL -->
+                                          <div class="col-8">
+                                            <div class="list-name"><a href="#">Adinda Dewi Puspita Sari</a></div>
+                                            <div class="list-info">SMK 17 Agustus 1945 Semarang</div>
+                                            <div class="list-info">SMA/SMK Kelas 11</div>
+                                          </div>
+
+                                          <!-- NOMINAL -->
+                                          <div class="col-12 d-flex justify-content-between">
+                                            <div class="badges-left">Rp 100.000 x 12 bulan</div>
+                                            <div class="badges-right">Rp 1.200.000</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- COPY BLOCK INI UNTUK CARD BERIKUTNYA -->
+                                    <!-- Isi dengan data dari loop / array -->
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="accordion-item mt-3">
+                            <h6 class="accordion-header" id="headingAccordion">
+                              <button
+                                class="accordion-button"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#bptAccordion"
+                                aria-expanded="false"
+                                aria-controls="bptAccordion"
+                              >
+                                <span class="flex-grow-1">Donasi Pendidikan Tinggi</span>
+                                <span class="text-black ms-2">Rp 1.800.000,00</span>
+                                <i class="bi bi-chevron-right"></i>
+                              </button>
+                            </h6>
+                            <div
+                              id="bptAccordion"
+                              class="accordion-collapse collapse"
+                              aria-labelledby="headingAccordion"
+                              data-bs-parent="#mobileAccordion"
+                            >
+                              <div class="accordion-body">
+                                <div class="table-responsive">
+                                  <table class="table table-bordered align-middle mb-0">
+                                    <!-- HEADER UTAMA -->
+                                    <thead class="table-light">
+                                      <tr>
+                                        <th class="text-center">No</th>
+                                        <th>Nama Anak Asuh</th>
+                                        <th>Donasi/bulan (Rp)</th>
+                                        <th>Jml. Bulan</th>
+                                        <th>Subtotal (Rp)</th>
+                                      </tr>
+                                    </thead>
+                                    <!-- DATA ANAK ASUH -->
+                                    <tbody>
+                                      <tr>
+                                        <td class="text-center d-none d-md-block">1</td>
+                                        <td data-label="Anak Asuh">
+                                          Agata Cahaya Angel Fradista <br />SD Katolik Santa Maria Ponorogo <br />SD
+                                          Kelas 3
+                                        </td>
+                                        <td class="text-end" data-label="Donasi/bln (Rp)">50.000,00</td>
+                                        <td class="text-center" data-label="Jml. Bulan">12</td>
+                                        <td class="text-end" data-label="Subtotal (Rp)">600.000,00</td>
+                                      </tr>
+
+                                      <tr>
+                                        <td class="text-center d-none d-md-block">2</td>
+                                        <td data-label="Anak Asuh">
+                                          Adinda Dewi Puspita Sari <br />SMK 17 Agustus 1945 Semarang <br />SMA/SMK
+                                          Kelas 11
+                                        </td>
+                                        <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                                        <td class="text-center" data-label="Jml. Bulan">12</td>
+                                        <td class="text-end" data-label="Subtotal (Rp)">1.200.000,00</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       <!-- Status Donasi -->
@@ -764,35 +828,9 @@
                   <div class="filter-content" id="filterContentMobile">
                     <label for="tahunFilterMobile">Tahun:</label>
                     <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
-                      <option value="">Semua</option>
-                      <option>2025</option>
-                      <option>2024</option>
-                      <option>2023</option>
-                    </select>
-
-                    <label for="bulanFilterMobile">Bulan:</label>
-                    <select id="bulanFilterMobile" class="form-select form-select-sm mb-2">
-                      <option value="">Semua</option>
-                      <option>Januari</option>
-                      <option>Februari</option>
-                      <option>Maret</option>
-                      <option>April</option>
-                      <option>Mei</option>
-                      <option>Juni</option>
-                      <option>Juli</option>
-                      <option>Agustus</option>
-                      <option>September</option>
-                      <option>Oktober</option>
-                      <option>November</option>
-                      <option>Desember</option>
-                    </select>
-
-                    <label for="statusFilterMobile">Status:</label>
-                    <select id="statusFilterMobile" class="form-select form-select-sm">
-                      <option value="">Semua</option>
-                      <option>Sudah Transfer</option>
-                      <option>Belum Ditransfer</option>
-                      <option>Menunggu</option>
+                      <option>2025/2026</option>
+                      <option>2024/2025</option>
+                      <option>2023/2023</option>
                     </select>
                   </div>
                 </div>
