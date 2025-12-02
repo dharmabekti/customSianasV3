@@ -1574,7 +1574,8 @@ div.dataTables_wrapper .dataTables_filter input {
   }
 
   .modal-footer {
-    flex-direction: column;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
   }
 
   .modal-content {
