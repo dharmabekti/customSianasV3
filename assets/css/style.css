@@ -2224,7 +2224,7 @@ h3.page-title {
 /* Label di kiri */
 .info-label {
   flex: 0 0 160px; /* lebar tetap supaya rapi */
-  font-weight: 600;
+  /* font-weight: 600; */
   color: #222;
 }
 

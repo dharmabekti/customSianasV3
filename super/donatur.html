@@ -653,7 +653,7 @@
     </footer>
 
     <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" onclick="window.location.href='form_donatur.html'">
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#inputDonaturModal">
       <i class="bi bi-plus-lg text-center"></i>
     </button>
 
@@ -692,6 +692,75 @@
         </a>
       </li>
     </ul>
+
+    <!-- Modal Input Donatur -->
+    <div
+      class="modal fade"
+      id="inputDonaturModal"
+      tabindex="-1"
+      aria-labelledby="inputDonaturLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Input Donatur</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <div class="col-12 col-md-12 info-column">
+                  <!-- Nama Donatur -->
+                  <div class="info-item mb-2">
+                    <span class="info-label">Nama Donatur <sup class="text-important">*)</sup></span>
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+
+                  <!-- Email -->
+                  <div class="info-item mb-2">
+                    <span class="info-label">Email <sup class="text-important">*)</sup></span>
+                    <input type="email" class="form-control form-control-sm" required />
+                  </div>
+
+                  <!-- No WA -->
+                  <div class="info-item mb-2">
+                    <span class="info-label">No. HP/WhatsApp <sup class="text-important">*)</sup></span>
+                    <div class="row g-2">
+                      <div class="col-6">
+                        <select class="form-control form-control-sm" required>
+                          <option value="62">(+62) Indonesia</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                        <input type="text" class="form-control form-control-sm" placeholder="812xxxxxxx" required />
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Catatan -->
+                  <small class="text-important">*) Wajib Diisi</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-success px-4" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Simpan
+            </button>
+            <button type="button" class="btn btn-danger px-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Input Donatur -->
 
     <!-- Modal Detail -->
     <div
