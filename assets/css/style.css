@@ -455,6 +455,16 @@ main {
     line-height: 1 !important;
     font-size: 12px;
   }
+
+  /* Set font size for donation accordion to 12px on mobile */
+  .accordion-button {
+    font-size: 12px !important;
+  }
+
+  /* Set font size for tab buttons to 12px on mobile */
+  .nav-tabs .nav-link {
+    font-size: 12px !important;
+  }
 }
 
 /* ======== DESKTOP ONLY ======== */
