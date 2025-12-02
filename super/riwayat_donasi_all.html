@@ -518,7 +518,7 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">List Donatur</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Riwayat Donasi Donatur</h3>
       <div class="container-fluid mb-5 container-wrapper">
         <!-- ✅ Tombol Toggle Filter (Mobile) -->
         <div class="d-md-none mb-2">
@@ -559,26 +559,22 @@
 
                 <label>Status Donasi:</label>
                 <div class="form-check">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas" id="lunas" />
+                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas" id="lunas" checked />
                   <label class="form-check-label badge bg-primary" for="lunas">Lunas</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas Berlebih" id="berlebih" />
-                  <label class="form-check-label badge bg-info" for="berlebih">Lunas Berlebih</label>
+                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas Berlebih" id="lunas_berlebih" />
+                  <label class="form-check-label badge bg-info" for="lunas_berlebih">Lunas Berlebih</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input status_donasi" type="checkbox" value="Belum Lunas" id="belum_lunas" />
                   <label class="form-check-label badge bg-secondary" for="belum_lunas">Belum Lunas</label>
                 </div>
                 <div class="form-check mb-3">
-                  <input
-                    class="form-check-input status_donasi"
-                    type="checkbox"
-                    value="Tidak Aktif"
-                    id="nonaktif_donasi"
-                  />
-                  <label class="form-check-label badge bg-danger" for="nonaktif_donasi">Tidak Aktif</label>
+                  <input class="form-check-input status_donasi" type="checkbox" value="Tidak Aktif" id="tidak_aktif_donasi" />
+                  <label class="form-check-label badge bg-danger" for="tidak_aktif_donasi">Tidak Aktif</label>
                 </div>
+
                 <div class="mt-3 p-2 text-center rounded bg-light border card-total">
                   <strong class="text-muted fw-semibold d-block text-wrap">
                     Total Komitmen <br />
@@ -606,10 +602,14 @@
                     <th>ID</th>
                     <th>Nama</th>
                     <th>Status</th>
+                    <th>SPP/bln</th>
+                    <th>PT/bln</th>
+                    <th>Opr/bln</th>
+                    <th>Donasi/bln</th>
                     <th>Total Komitmen</th>
                     <th>Total Transfer</th>
-                    <th>Status Donasi</th>
-                    <th>Email/WA<br />Lanjut Donasi</th>
+                    <th>Sisa</th>
+                    <th>Last Reminder</th>
                     <th>Lanjut Donasi</th>
                   </tr>
                 </thead>
@@ -664,319 +664,7 @@
           <i class="bi bi-info"></i> Detail
         </a>
       </li>
-
-      <li>
-        <a class="dropdown-item" href="form_donatur.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
-      </li>
-
-      <li>
-        <a class="dropdown-item" href="riwayat_donasi.html" id="riwayatAction">
-          <i class="bi bi-receipt"></i> Riwayat Donasi
-        </a>
-      </li>
-
-      <li>
-        <a class="dropdown-item" href="#" id="lanjutDonasiAction" onclick="lanjutDOnasi()"
-          ><i class="bi bi-check"></i> Konfirmasi Lanjut Donasi</a
-        >
-      </li>
-
-      <li>
-        <a class="dropdown-item" href="#" id="deleteAction" onclick="resetPassword()">
-          <i class="bi bi-lock"></i> Reset Password
-        </a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#" id="deleteAction" onclick="deleteData()">
-          <i class="bi bi-trash"></i> Hapus
-        </a>
-      </li>
     </ul>
-
-    <!-- Modal Input Donatur -->
-    <div
-      class="modal fade"
-      id="inputDonaturModal"
-      tabindex="-1"
-      aria-labelledby="inputDonaturLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Input Donatur</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="info-section">
-              <div class="row g-3">
-                <div class="col-12 col-md-12 info-column">
-                  <!-- Nama Donatur -->
-                  <div class="info-item mb-2">
-                    <span class="info-label">Nama Donatur <sup class="text-important">*)</sup></span>
-                    <input type="text" class="form-control form-control-sm" required />
-                  </div>
-
-                  <!-- Email -->
-                  <div class="info-item mb-2">
-                    <span class="info-label">Email <sup class="text-important">*)</sup></span>
-                    <input type="email" class="form-control form-control-sm" required />
-                  </div>
-
-                  <!-- No WA -->
-                  <div class="info-item mb-2">
-                    <span class="info-label">No. HP/WhatsApp <sup class="text-important">*)</sup></span>
-                    <div class="row g-2">
-                      <div class="col-6">
-                        <select class="form-control form-control-sm" required>
-                          <option value="62">(+62) Indonesia</option>
-                        </select>
-                      </div>
-                      <div class="col-6">
-                        <input type="text" class="form-control form-control-sm" placeholder="812xxxxxxx" required />
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Catatan -->
-                  <small class="text-important">*) Wajib Diisi</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-success px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-check me-1"></i> Simpan
-            </button>
-            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-x me-1"></i> Batal
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Input Donatur -->
-
-    <!-- Modal Detail -->
-    <div
-      class="modal fade"
-      id="detailDonaturModal"
-      tabindex="-1"
-      aria-labelledby="detailDonaturLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title fw-bold" id="detailDonaturLabel">Detail Donatur</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="container my-4">
-              <!-- Card Profil Utama -->
-              <div class="card shadow-sm mb-4">
-                <div class="card-body">
-                  <div class="row align-items-center">
-                    <!-- Foto Profil -->
-                    <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
-                      <img
-                        src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-                        alt="Foto Profil"
-                        class="rounded-circle img-fluid shadow-sm"
-                        style="height: 200px; width: 200px"
-                      />
-                    </div>
-
-                    <!-- Info Singkat -->
-                    <div class="col-12 col-md-8">
-                      <div class="table-responsive">
-                        <table
-                          class="table table-borderless mb-0 list-table no-mobile-hide"
-                          style="width: 100%; text-align: left"
-                        >
-                          <tbody>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 180px">
-                                <i class="bi bi-person-fill me-2 text-secondary"></i> ID
-                              </th>
-                              <td class="text-dark" data-label="ID">D-XX-XXXX</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 180px">
-                                <i class="bi bi-person-fill me-2 text-secondary"></i> Nama Lengkap
-                              </th>
-                              <td class="text-dark" data-label="Nama Lengkap">Ki Anom Dharma Bekti</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 180px">
-                                <i class="bi bi-gender-male me-2 text-secondary"></i> Jenis Kelamin
-                              </th>
-                              <td class="text-dark" data-label="Jenis Kelamin">Laki-Laki</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal" style="width: 180px">
-                                <i class="bi bi-calendar-date me-2 text-secondary"></i> Tanggal Lahir
-                              </th>
-                              <td class="text-dark" data-label="Tanggal Lahir">01 Januari 1953</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-envelope-fill me-2 text-secondary"></i> Email
-                              </th>
-                              <td class="text-dark" data-label="Email">donatur@aat.or.id</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-telephone-fill me-2 text-secondary"></i> No HP
-                              </th>
-                              <td class="text-dark" data-label="No HP">08515512345</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">
-                                <i class="bi bi-flag me-2 text-secondary"></i> Status
-                              </th>
-                              <td class="text-dark" data-label="Status">
-                                <label class="badge bg-success">Aktif</label>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Navigasi Tab (Desktop) -->
-              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist">
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#alamat">Alamat Rumah</button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pekerjaan">Data Pekerjaan</button>
-                </li>
-              </ul>
-
-              <!-- Isi Tab (Satu Sumber Data) -->
-              <div class="tab-content" id="profileContent">
-                <div class="tab-pane fade show active" id="alamat">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section px-4 py-3 text-start">
-                        <!-- Heading muncul hanya di mobile -->
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
-
-                        <div class="table-responsive">
-                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                            <tbody>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal" style="width: 180px">
-                                  <i class="bi bi-house-door me-2 text-secondary"></i> Alamat
-                                </th>
-                                <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-building me-2 text-secondary"></i> Kabupaten / Kota
-                                </th>
-                                <td class="text-dark">Sleman</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-geo-alt me-2 text-secondary"></i> Provinsi
-                                </th>
-                                <td class="text-dark">D.I. Yogyakarta</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-globe me-2 text-secondary"></i> Negara
-                                </th>
-                                <td class="text-dark">Indonesia</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-mailbox me-2 text-secondary"></i>Kode Pos
-                                </th>
-                                <td class="text-dark">55555</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-telephone me-2 text-secondary"></i>Telp. Rumah
-                                </th>
-                                <td class="text-dark">021-123456</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="pekerjaan">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section px-4 py-3">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Data Pekerjaan</h5>
-                        <div class="table-responsive">
-                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
-                            <tbody>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal" style="width: 180px">
-                                  <i class="bi bi-briefcase me-2 text-secondary"></i> Pekerjaan
-                                </th>
-                                <td class="text-dark">Karyawan Swasta</td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-building me-2 text-secondary"></i> Instansi
-                                </th>
-                                <td class="text-dark">CV Mandhira Inovasi Teknologi</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-house-door me-2 text-secondary"></i> Alamat Kantor
-                                </th>
-                                <td class="text-dark">
-                                  <p>Jl. Merpati No. 123, Sleman, Yogyakarta</p>
-                                </td>
-                              </tr>
-                              <tr class="border-bottom">
-                                <th class="text-muted fw-normal">
-                                  <i class="bi bi-telephone me-2 text-secondary"></i> Telp./Fax Kantor
-                                </th>
-                                <td class="text-dark">0274-123456 / 0274-123456</td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-              <div id="mobileProfile" class="d-md-none"></div>
-            </div>
-          </div>
-
-          <div class="modal-footer justify-content-end">
-            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Detail -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -1032,7 +720,6 @@
 
       const statusList = ['Aktif', 'Pending', 'Stop', 'Tidak Aktif'];
       const statusDonasiList = ['Lunas', 'Lunas Berlebih', 'Belum Lunas', 'Tidak Aktif'];
-      const lanjutDonasiList = ['Belum', 'belum Dikirim'];
 
       // ===============================
       // Badge Class Functions
