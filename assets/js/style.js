@@ -279,7 +279,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
 // Set Date and Time
 function updateDateTime() {
   const now = new Date();
@@ -447,4 +446,34 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// Jalankan saat DOM siap
+document.addEventListener('DOMContentLoaded', () => {
+  const contextMenu = document.getElementById('contextMenu');
 
+  // Jika halaman ini tidak punya contextMenu, hentikan
+  if (!contextMenu) return;
+
+  // Event delegation untuk semua tabel DataTable
+  document.addEventListener('contextmenu', function (e) {
+    const row = e.target.closest('tr');
+
+    // Pastikan klik terjadi di dalam tabel DataTable
+    if (!row || !row.closest('.dataTable')) return;
+
+    e.preventDefault();
+
+    // Tampilkan menu
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = e.pageX + 'px';
+    contextMenu.style.top = e.pageY + 'px';
+
+    // Simpan data row (jika ada)
+    contextMenu.dataset.rowId = row.dataset.id || '';
+    contextMenu.dataset.rowNama = row.dataset.nama || '';
+  });
+
+  // Sembunyikan context menu ketika klik di luar
+  document.addEventListener('click', function () {
+    contextMenu.style.display = 'none';
+  });
+});

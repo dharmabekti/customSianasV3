@@ -11,6 +11,7 @@ $(document).ready(function () {
       },
       info: 'Menampilkan _START_ sampai _END_ dari _TOTAL_ data',
     },
+    autowidth: false,
     pageLength: 10,
     lengthMenu: [
       [10, 20, 25, 50, 100, -1],
