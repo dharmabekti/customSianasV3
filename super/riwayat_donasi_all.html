@@ -263,7 +263,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Donatur</span>
+        <span class="navbar-brand mx-auto">Riwayat Donasi Donatur</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -539,6 +539,13 @@
           <div class="col-md-2 mb-3">
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label for="tahunAjaranFilter">Tahun Ajaran:</label>
+                <select id="tahunAjaranFilter" class="form-select form-select-sm mb-2">
+                  <option selected="selected">2025/2026</option>
+                  <option>2024/2025</option>
+                  <option>2023/2024</option>
+                </select>
+
                 <label>Status:</label>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
@@ -556,23 +563,18 @@
                   <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="nonaktif" />
                   <label class="form-check-label badge bg-danger" for="nonaktif">Tidak Aktif</label>
                 </div>
-
                 <label>Status Donasi:</label>
                 <div class="form-check">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas" id="lunas" checked />
+                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas" id="lunas" />
                   <label class="form-check-label badge bg-primary" for="lunas">Lunas</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Lunas Berlebih" id="lunas_berlebih" />
-                  <label class="form-check-label badge bg-info" for="lunas_berlebih">Lunas Berlebih</label>
+                  <input class="form-check-input status_donasi" type="checkbox" value="Kelebihan" id="kelebihan" />
+                  <label class="form-check-label badge bg-info" for="kelebihan">Kelebihan</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Belum Lunas" id="belum_lunas" />
-                  <label class="form-check-label badge bg-secondary" for="belum_lunas">Belum Lunas</label>
-                </div>
-                <div class="form-check mb-3">
-                  <input class="form-check-input status_donasi" type="checkbox" value="Tidak Aktif" id="tidak_aktif_donasi" />
-                  <label class="form-check-label badge bg-danger" for="tidak_aktif_donasi">Tidak Aktif</label>
+                  <input class="form-check-input status_donasi" type="checkbox" value="Kekurangan" id="kekurangan" />
+                  <label class="form-check-label badge bg-secondary" for="kekurangan">Kekurangan</label>
                 </div>
 
                 <div class="mt-3 p-2 text-center rounded bg-light border card-total">
@@ -719,7 +721,10 @@
       ];
 
       const statusList = ['Aktif', 'Pending', 'Stop', 'Tidak Aktif'];
-      const statusDonasiList = ['Lunas', 'Lunas Berlebih', 'Belum Lunas', 'Tidak Aktif'];
+      const lanjutDonasiList = ['Belum Respon', 'Ya', 'Tidak'];
+      const statusDonasiList = ['Lunas', 'Kelebihan', 'Kekurangan'];
+      const tahunAkademikList = ['2025/2026', '2024/2025', '2023/2024'];
+      const currentTahun = '2025/2026';
 
       // ===============================
       // Badge Class Functions
@@ -739,17 +744,23 @@
         }
       }
 
-      function getStatusDonasiClass(status) {
-        switch (status) {
+      function getSisaClass(sisaNumeric) {
+        if (sisaNumeric < 0) {
+          return 'bg-info'; // Lunas Berlebih
+        } else if (sisaNumeric > 0) {
+          return 'bg-secondary'; // Belum Lunas
+        } else {
+          return 'bg-primary'; // Lunas
+        }
+      }
+
+      function getStatusDonasiClass(statusDonasi) {
+        switch (statusDonasi) {
           case 'Lunas':
             return 'primary';
-          case 'Lunas Berlebih':
+          case 'Kelebihan':
             return 'info';
-          case 'Belum Lunas':
-            return 'secondary';
-          case 'Tidak Aktif':
-            return 'danger';
-          default:
+          case 'Kekurangan':
             return 'secondary';
         }
       }
@@ -762,13 +773,25 @@
       for (let i = 0; i < 50; i++) {
         const nama = namaList[Math.floor(Math.random() * namaList.length)];
         const status = statusList[Math.floor(Math.random() * statusList.length)];
-        const komitmenValue = Math.floor(Math.random() * 10000000) + 1000000;
-        const transferValue = Math.floor(Math.random() * 8000000) + 500000;
-        const total_komitmen = `Rp ${komitmenValue.toLocaleString('id-ID')}`;
-        const total_transfer = `Rp ${transferValue.toLocaleString('id-ID')}`;
+        const sppValue = Math.floor(Math.random() * 500000) + 100000;
+        const ptValue = Math.floor(Math.random() * 500000) + 100000;
+        const oprValue = Math.floor(Math.random() * 500000) + 100000;
+        const donasiValue = Math.floor(Math.random() * 500000) + 100000;
+        const komitmenValue = sppValue + ptValue + oprValue + donasiValue;
+        let transferValue;
+        if (Math.random() < 0.2) {
+          // 20% chance for sisa == 0
+          transferValue = komitmenValue;
+        } else {
+          transferValue = Math.floor(Math.random() * komitmenValue) + 500000;
+        }
+        const sisaValue = komitmenValue - transferValue;
+        const lastReminder = new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toLocaleDateString(
+          'id-ID'
+        );
+        const lanjut_donasi = lanjutDonasiList[Math.floor(Math.random() * lanjutDonasiList.length)];
         const status_donasi = statusDonasiList[Math.floor(Math.random() * statusDonasiList.length)];
-        const email_wa_lanjut = 'Belum';
-        const lanjut_donasi = 'Belum Dikirim';
+        const tahun_akademik = tahunAkademikList[Math.floor(Math.random() * tahunAkademikList.length)];
         const id = `DN-${String(i + 1).padStart(4, '0')}`;
 
         donaturData.push({
@@ -776,11 +799,18 @@
           id,
           nama,
           status,
-          total_komitmen,
-          total_transfer,
-          status_donasi,
-          email_wa_lanjut,
+          spp_bln: `Rp ${sppValue.toLocaleString('id-ID')}`,
+          pt_bln: `Rp ${ptValue.toLocaleString('id-ID')}`,
+          opr_bln: `Rp ${oprValue.toLocaleString('id-ID')}`,
+          donasi_bln: `Rp ${donasiValue.toLocaleString('id-ID')}`,
+          total_komitmen: `Rp ${komitmenValue.toLocaleString('id-ID')}`,
+          total_transfer: `Rp ${transferValue.toLocaleString('id-ID')}`,
+          sisa: `Rp ${sisaValue.toLocaleString('id-ID')}`,
+          sisa_numeric: sisaValue,
+          last_reminder: lastReminder,
           lanjut_donasi,
+          status_donasi,
+          tahun_akademik,
         });
       }
 
@@ -793,6 +823,7 @@
       // Filter elements
       const statusCheckboxes = document.querySelectorAll('.status');
       const statusDonasiCheckboxes = document.querySelectorAll('.status_donasi');
+      const tahunAjaranFilter = document.getElementById('tahunAjaranFilter');
 
       // ===============================
       // Get selected status
@@ -806,12 +837,35 @@
       // ===============================
       // Filter data
       // ===============================
-      function filterData(data, selectedStatus, selectedStatusDonasi) {
+      function parseRupiahToNumber(rpString) {
+        if (!rpString) return 0;
+        return Number(rpString.replace(/Rp/g, '').replace(/\./g, '').replace(/,/g, '').replace(/\s/g, ''));
+      }
+
+      function filterData(data, selectedStatus, selectedStatusDonasi, selectedTahun) {
         return data.filter(item => {
+          // Konversi sisa menjadi angka
+          const sisaNumber = parseRupiahToNumber(item.sisa);
+
+          // Filter status biasa
           const statusMatch = selectedStatus.length === 0 || selectedStatus.includes(item.status);
-          const statusDonasiMatch =
-            selectedStatusDonasi.length === 0 || selectedStatusDonasi.includes(item.status_donasi);
-          return statusMatch && statusDonasiMatch;
+
+          // Filter status donasi berdasarkan SISA
+          let statusDonasiMatch = true;
+
+          if (selectedStatusDonasi.length > 0) {
+            statusDonasiMatch = selectedStatusDonasi.some(status => {
+              if (status === 'Lunas') return sisaNumber === 0;
+              if (status === 'Kelebihan') return sisaNumber < 0;
+              if (status === 'Kekurangan') return sisaNumber > 0;
+              return false;
+            });
+          }
+
+          // Filter tahun akademik
+          const tahunMatch = selectedTahun === '' || item.tahun_akademik === selectedTahun;
+
+          return statusMatch && statusDonasiMatch && tahunMatch;
         });
       }
 
@@ -831,12 +885,14 @@
           <td data-label="ID">${d.id}</td>
           <td data-label="Nama">${d.nama}</td>
           <td data-label="Status"><span class="badge bg-${getStatusClass(d.status)}">${d.status}</span></td>
+          <td data-label="SPP/bln">${d.spp_bln}</td>
+          <td data-label="PT/bln">${d.pt_bln}</td>
+          <td data-label="Opr/bln">${d.opr_bln}</td>
+          <td data-label="Donasi/bln">${d.donasi_bln}</td>
           <td data-label="Total Komitmen">${d.total_komitmen}</td>
           <td data-label="Total Transfer">${d.total_transfer}</td>
-          <td data-label="Status Donasi"><span class="badge bg-${getStatusDonasiClass(d.status_donasi)}">${
-              d.status_donasi
-            }</span></td>
-          <td data-label="Email/WA Lanjut">${d.email_wa_lanjut}</td>
+          <td data-label="Sisa"><span class="badge ${getSisaClass(d.sisa_numeric)}">${d.sisa}</span></td>
+          <td data-label="Last Reminder">${d.last_reminder}</td>
           <td data-label="Lanjut Donasi">${d.lanjut_donasi}</td>
         </tr>
       `
@@ -869,15 +925,45 @@
       function filterTable() {
         const selectedStatus = getSelectedStatus(statusCheckboxes);
         const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
+        const selectedTahun = tahunAjaranFilter.value;
 
-        // Filter using custom filter
+        // Clear previous search functions
+        $.fn.dataTable.ext.search = [];
+
+        // Push new search function
         $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          if (selectedStatus.length > 0 && !selectedStatus.includes(data[3])) return false; // status column index 3
-          if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) return false; // status_donasi index 6
+          const rowData = donaturData[dataIndex];
+
+          if (!rowData) return true;
+
+          // --- STATUS umum ---
+          if (selectedStatus.length > 0 && !selectedStatus.includes(rowData.status)) {
+            return false;
+          }
+
+          // --- STATUS DONASI berdasarkan nilai SISA ---
+          const sisaNumber = rowData.sisa_numeric;
+
+          if (selectedStatusDonasi.length > 0) {
+            const statusDonasiMatch = selectedStatusDonasi.some(st => {
+              if (st === 'Lunas') return sisaNumber === 0;
+              if (st === 'Kelebihan') return sisaNumber < 0;
+              if (st === 'Kekurangan') return sisaNumber > 0;
+              return false;
+            });
+
+            if (!statusDonasiMatch) return false;
+          }
+
+          // --- TAHUN AKADEMIK ---
+          if (selectedTahun !== '' && rowData.tahun_akademik !== selectedTahun) {
+            return false;
+          }
+
           return true;
         });
+
         dataTable.draw();
-        $.fn.dataTable.ext.search.pop(); // Remove the custom filter after draw
       }
 
       // ===============================
@@ -892,8 +978,9 @@
         const searchTerm = searchCard.value.toLowerCase();
         const selectedStatus = getSelectedStatus(statusCheckboxes);
         const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
+        const selectedTahun = tahunAjaranFilter.value;
 
-        let filtered = filterData(donaturData, selectedStatus, selectedStatusDonasi);
+        let filtered = filterData(donaturData, selectedStatus, selectedStatusDonasi, selectedTahun);
 
         // Apply search
         if (searchTerm) {
@@ -932,7 +1019,7 @@
                   </div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Total Komitmen</div>
+                    <div class="col-5 fw-bold">Komitmen</div>
                     <div class="col-7">${item.total_komitmen}</div>
                   </div>
 
@@ -940,14 +1027,10 @@
                     <div class="col-5 fw-bold">Total Transfer</div>
                     <div class="col-7">${item.total_transfer}</div>
                   </div>
-
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Status Donasi</div>
-                    <div class="col-7">
-                      <span class="badge bg-${getStatusDonasiClass(item.status_donasi)}">${item.status_donasi}</span>
-                    </div>
+                    <div class="col-5 fw-bold">Sisa</div>
+                    <div class="col-7"><span class="badge ${getSisaClass(item.sisa_numeric)}">${item.sisa}</span></div>
                   </div>
-
                 </div>
               </div>`
           )
@@ -1013,6 +1096,12 @@
           currentPageMobile = 1;
           renderCards();
         });
+      });
+
+      tahunAjaranFilter.addEventListener('change', () => {
+        filterTable();
+        currentPageMobile = 1;
+        renderCards();
       });
 
       // ===============================
