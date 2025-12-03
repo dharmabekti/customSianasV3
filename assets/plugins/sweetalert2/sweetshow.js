@@ -24,17 +24,21 @@ function swal_confirm(title, msg, icon) {
 
 
 function swal_alert(title, msg, icon) {
-  Toast.fire({
+  return Swal.fire({
+    title: title,
+    text: msg,
     icon: icon,
-    title: msg,
+    allowOutsideClick: false, // Prevents closing on outside click
+    showCancelButton: false,
+    showConfirmButton: false,
+    timer: 2000, // Alert hilang dalam 2 detik
+    timerProgressBar: true, // Menampilkan progress bar
   });
 }
 
-function swal_modal(msg, icon) {
-  return Swal.fire({
+function toast_alert(msg, icon) {
+  Toast.fire({
     icon: icon,
     title: msg,
-    showConfirmButton: false,
-    timer: 1500,
   });
 }

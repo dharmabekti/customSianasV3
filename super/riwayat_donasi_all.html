@@ -662,9 +662,16 @@
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="#" id="viewAction" data-bs-toggle="modal" data-bs-target="#detailDonaturModal">
-          <i class="bi bi-info"></i> Detail
-        </a>
+        <a class="dropdown-item" href="#" id="editAction"> <i class="bi bi-pencil"></i> Edit Donasi </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#" id="assignAction"> <i class="bi bi-person-check"></i> Assign DOnasi </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#" id="reminderAction" onclick="reminderAction()"> <i class="bi bi-bell"></i> Kirim Reminder </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#" id="rincianAction" onclick="rincianAction()"> <i class="bi bi-receipt"></i> Kirim Rincian Donasi </a>
       </li>
     </ul>
 
@@ -799,13 +806,13 @@
           id,
           nama,
           status,
-          spp_bln: `Rp ${sppValue.toLocaleString('id-ID')}`,
-          pt_bln: `Rp ${ptValue.toLocaleString('id-ID')}`,
-          opr_bln: `Rp ${oprValue.toLocaleString('id-ID')}`,
-          donasi_bln: `Rp ${donasiValue.toLocaleString('id-ID')}`,
-          total_komitmen: `Rp ${komitmenValue.toLocaleString('id-ID')}`,
-          total_transfer: `Rp ${transferValue.toLocaleString('id-ID')}`,
-          sisa: `Rp ${sisaValue.toLocaleString('id-ID')}`,
+          spp_bln: `${sppValue.toLocaleString('id-ID')}`,
+          pt_bln: `${ptValue.toLocaleString('id-ID')}`,
+          opr_bln: `${oprValue.toLocaleString('id-ID')}`,
+          donasi_bln: `${donasiValue.toLocaleString('id-ID')}`,
+          total_komitmen: `${komitmenValue.toLocaleString('id-ID')}`,
+          total_transfer: `${transferValue.toLocaleString('id-ID')}`,
+          sisa: `${sisaValue.toLocaleString('id-ID')}`,
           sisa_numeric: sisaValue,
           last_reminder: lastReminder,
           lanjut_donasi,
@@ -1111,30 +1118,23 @@
       filterTable();
       renderCards();
 
-      function resetPassword() {
-        swal_confirm('Konfirmasi', 'Kamu yakin akan mereset password akun Donatur tersebut?', 'warning').then(
+      function reminderAction() {
+        swal_confirm('Konfirmasi', 'Kamu yakin akan mengirimkan Email/WA Reminder ke Donatur tersebut?', 'question').then(
           result => {
             if (result.isConfirmed) {
-              swal_alert('Berhasil', 'Data berhasil direset! Password baru dikirim ke WhatsApp/Email', 'success');
+              swal_alert('Berhasil', 'Reminder telah dikirim ke donatur', 'success');
             }
           }
         );
       }
-      function lanjutDOnasi() {
+      function rincianAction() {
         swal_confirm(
           'Konfirmasi',
-          'Kamu akan mengirimkan Email/WA Konfirmasi Lanjut Donasi ke TA Selanjutnya untuk Donatur tersebut?',
+          'Kamu yakin akan mengirimkan Email/WA Rincian Donasi ke Donatur tersebut?',
           'warning'
         ).then(result => {
           if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Berhasil mengirim data!', 'success');
-          }
-        });
-      }
-      function deleteData() {
-        swal_confirm('Konfirmasi', 'Yakin ingin menghapus data donatur?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Data berhasil dihapus!', 'success');
+            swal_alert('Berhasil', 'Rincian Donasi telah dikirim ke donatur!', 'success');
           }
         });
       }
