@@ -446,6 +446,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const cm = document.getElementById('contextMenu');
     if (cm) cm.style.display = 'none';
   });
+
+  window.addEventListener('scroll', () => {
+    contextMenu.style.display = 'none';
+  });
+
 });
 
 // Jalankan saat DOM siap
@@ -467,12 +472,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const rect = icon.getBoundingClientRect();
     const menuWidth = contextMenu.offsetWidth;
 
-    // Muncul di sebelah kiri tanda titik 3
-    const leftPos = rect.left - menuWidth - 5;
-    const topPos = rect.top + rect.height;
+    const leftPos = rect.left - menuWidth - 5 + window.scrollX;
+    const topPos = rect.top + rect.height + window.scrollY;
 
-    contextMenu.style.left = leftPos + 'px';
-    contextMenu.style.top = topPos + 'px';
+    contextMenu.style.left = `${leftPos}px`;
+    contextMenu.style.top = `${topPos}px`;
 
     contextMenu.dataset.rowId = rowData.id || '';
     contextMenu.dataset.rowNama = rowData.nama || '';
@@ -480,22 +484,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Event: Klik ikon titik 3 pada card
   if (cardList) {
-    cardList.querySelectorAll('.card-menu').forEach(icon => {
-      icon.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+    cardList.addEventListener('click', function (e) {
+      if (!e.target.classList.contains('card-menu')) return;
 
-        const card = this.closest('.card');
-        if (!card) return;
+      e.preventDefault();
+      e.stopPropagation();
 
-        const rowData = {
-          id: card.dataset.id,
-          nama: card.dataset.nama,
-        };
+      const icon = e.target;
+      const card = icon.closest('.card');
+      if (!card) return;
 
-        showMenuAtCard(this, rowData);
-      });
+      const rowData = {
+        id: card.dataset.id,
+        nama: card.dataset.nama,
+      };
+
+      showMenuAtCard(icon, rowData);
     });
+
   }
 
   // ==========================================
