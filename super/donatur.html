@@ -1180,18 +1180,34 @@
       // Filter DataTable using API (no destroy/recreate)
       // ===============================
       function filterTable() {
-        const selectedStatus = getSelectedStatus(statusCheckboxes);
-        const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
+  let selectedStatus = getSelectedStatus(statusCheckboxes);
+  const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
 
-        // Filter using custom filter
-        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          if (selectedStatus.length > 0 && !selectedStatus.includes(data[3])) return false; // status column index 3
-          if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) return false; // status_donasi index 6
-          return true;
-        });
-        dataTable.draw();
-        $.fn.dataTable.ext.search.pop(); // Remove the custom filter after draw
-      }
+  // --- Default ke "Aktif" jika tidak ada yang dicentang ---
+  if (selectedStatus.length === 0) {
+    selectedStatus = ['Aktif'];
+  }
+
+  // Clear old filter
+  $.fn.dataTable.ext.search = [];
+
+  // Filter using custom filter
+  $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+    // Kolom status = index 3
+    if (!selectedStatus.includes(data[3])) return false;
+
+    // Kolom status_donasi = index 6
+    if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) {
+      return false;
+    }
+
+    return true;
+  });
+
+  console.log('Status aktif:', selectedStatus);
+  dataTable.draw();
+}
+
 
       // ===============================
       // Render Cards (Mobile)
