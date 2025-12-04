@@ -448,9 +448,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   window.addEventListener('scroll', () => {
-    contextMenu.style.display = 'none';
+    const cm = document.getElementById('contextMenu');
+    if (cm) cm.style.display = 'none';
   });
-
 });
 
 // Jalankan saat DOM siap
@@ -501,7 +501,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       showMenuAtCard(icon, rowData);
     });
-
   }
 
   // ==========================================
@@ -570,4 +569,3 @@ document.addEventListener('DOMContentLoaded', () => {
     isMobile = window.innerWidth <= 768;
   });
 });
-
