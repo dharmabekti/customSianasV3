@@ -450,30 +450,72 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
   const contextMenu = document.getElementById('contextMenu');
 
-  // Jika halaman ini tidak punya contextMenu, hentikan
   if (!contextMenu) return;
 
-  // Event delegation untuk semua tabel DataTable
-  document.addEventListener('contextmenu', function (e) {
-    const row = e.target.closest('tr');
+  let longPressTimer;
+  let isMobile = window.innerWidth <= 768;
 
-    // Pastikan klik terjadi di dalam tabel DataTable
-    if (!row || !row.closest('.dataTable')) return;
-
-    e.preventDefault();
-
-    // Tampilkan menu
+  function showContextMenu(e, row) {
     contextMenu.style.display = 'block';
     contextMenu.style.left = e.pageX + 'px';
     contextMenu.style.top = e.pageY + 'px';
 
-    // Simpan data row (jika ada)
     contextMenu.dataset.rowId = row.dataset.id || '';
     contextMenu.dataset.rowNama = row.dataset.nama || '';
+  }
+
+  // ============================
+  // 1. Desktop (Right Click)
+  // ============================
+  document.addEventListener('contextmenu', function (e) {
+    if (isMobile) {
+      e.preventDefault(); // ⛔STOP context menu bawaan di mobile!
+      return;
+    }
+
+    const row = e.target.closest('tr');
+    if (!row || !row.closest('.dataTable')) return;
+
+    e.preventDefault(); // stop default browser menu di desktop
+    showContextMenu(e, row);
   });
 
-  // Sembunyikan context menu ketika klik di luar
-  document.addEventListener('click', function () {
-    contextMenu.style.display = 'none';
+  // ============================
+  // 2. Mobile (Long Press)
+  // ============================
+  document.addEventListener('touchstart', function (e) {
+    if (!isMobile) return;
+
+    const row = e.target.closest('tr');
+    if (!row || !row.closest('.dataTable')) return;
+
+    longPressTimer = setTimeout(() => {
+      showContextMenu(e.touches[0], row);
+    }, 500); // long press 0.5 second
+  });
+
+  document.addEventListener('touchend', function () {
+    if (isMobile) clearTimeout(longPressTimer);
+  });
+
+  document.addEventListener('touchmove', function () {
+    if (isMobile) clearTimeout(longPressTimer);
+  });
+
+  // ============================
+  // 3. Hide context menu
+  // ============================
+  document.addEventListener('click', function (e) {
+    if (!contextMenu.contains(e.target)) {
+      contextMenu.style.display = 'none';
+    }
+  });
+
+  // ============================
+  // 4. Handle resize
+  // ============================
+  window.addEventListener('resize', function () {
+    isMobile = window.innerWidth <= 768;
   });
 });
+
