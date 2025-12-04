@@ -1962,12 +1962,16 @@ h3.page-title {
 /* Saat accordion dibuka */
 .accordion-item .accordion-button:not(.collapsed) {
   background-color: rgba(13, 110, 253, 0.06);
-  box-shadow: inset 3px 0 0 var(--aat-primary, #0d6efd);
+  border-radius: 8px;
+}
+.accordion-item .accordion-button.collapsed {
+  background-color: rgba(13, 110, 253, 0.06);
+  border-radius: 8px;
 }
 
 /* Hover effect */
 .accordion-item .accordion-button:hover {
-  background-color: rgba(13, 110, 253, 0.1);
+  background-color: var(--aat-grey);
 }
 
 .accordion-button::after {
@@ -1989,14 +1993,15 @@ h3.page-title {
 }
 
 .accordion-button:not(.collapsed) {
-  /* background-color: var(--aat-grey); */
-  background-color: white;
+  background-color: rgba(13, 110, 253, 0.06);
   border-radius: 8px;
   color: black;
 }
 
 .accordion-button.collapsed {
-    border-bottom: 1px solid rgba(0,0,0,.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  background-color: rgba(13, 110, 253, 0.06);
+  border-radius: 8px;
 }
 
 .accordion-item {
