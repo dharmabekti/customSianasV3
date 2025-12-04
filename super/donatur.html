@@ -539,6 +539,12 @@
           <div class="col-md-2 mb-3">
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <div class="mb-3">
+                  <button onclick="window.history.back()" class="btn btn-primary btn-xs w-100">
+                    <i class="bi bi-download"></i> Export
+                  </button>
+                </div>
+
                 <label>Status:</label>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
@@ -1034,7 +1040,7 @@
         'Fina Sari',
       ];
 
-      const statusList = ['Aktif', 'Pending','Dormant', 'Stop', 'Tidak Aktif'];
+      const statusList = ['Aktif', 'Pending', 'Dormant', 'Stop', 'Tidak Aktif'];
       const statusDonasiList = ['Lunas', 'Lunas Berlebih', 'Belum Lunas', 'Tidak Aktif'];
       const lanjutDonasiList = ['Belum', 'belum Dikirim'];
 
@@ -1186,34 +1192,32 @@
       // Filter DataTable using API (no destroy/recreate)
       // ===============================
       function filterTable() {
-  let selectedStatus = getSelectedStatus(statusCheckboxes);
-  const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
+        let selectedStatus = getSelectedStatus(statusCheckboxes);
+        const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
 
-  // Clear old filter
-  $.fn.dataTable.ext.search = [];
+        // Clear old filter
+        $.fn.dataTable.ext.search = [];
 
-  // Filter using custom filter
-  $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+        // Filter using custom filter
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+          // --- Status (jika kosong → ALL) ---
+          // Kolom status = index 3
+          if (selectedStatus.length > 0 && !selectedStatus.includes(data[3])) {
+            return false;
+          }
 
-    // --- Status (jika kosong → ALL) ---
-    // Kolom status = index 3
-    if (selectedStatus.length > 0 && !selectedStatus.includes(data[3])) {
-      return false;
-    }
+          // --- Status Donasi (jika kosong → ALL) ---
+          // Kolom status_donasi = index 6
+          if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) {
+            return false;
+          }
 
-    // --- Status Donasi (jika kosong → ALL) ---
-    // Kolom status_donasi = index 6
-    if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) {
-      return false;
-    }
+          return true;
+        });
 
-    return true;
-  });
-
-  console.log('Status:', selectedStatus.length === 0 ? 'ALL' : selectedStatus);
-  dataTable.draw();
-}
-
+        console.log('Status:', selectedStatus.length === 0 ? 'ALL' : selectedStatus);
+        dataTable.draw();
+      }
 
       // ===============================
       // Render Cards (Mobile)
