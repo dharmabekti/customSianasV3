@@ -546,7 +546,11 @@
                 </div>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                  <label class="form-check-label badge bg-warning" for="pending">Pending</label>
+                  <label class="form-check-label badge bg-yellow" for="pending">Pending</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input status" type="checkbox" value="Dormant" id="dormant" />
+                  <label class="form-check-label badge bg-warning" for="dormant">Dormant</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Stop" id="stop" />
@@ -1030,7 +1034,7 @@
         'Fina Sari',
       ];
 
-      const statusList = ['Aktif', 'Pending', 'Stop', 'Tidak Aktif'];
+      const statusList = ['Aktif', 'Pending','Dormant', 'Stop', 'Tidak Aktif'];
       const statusDonasiList = ['Lunas', 'Lunas Berlebih', 'Belum Lunas', 'Tidak Aktif'];
       const lanjutDonasiList = ['Belum', 'belum Dikirim'];
 
@@ -1042,6 +1046,8 @@
           case 'Aktif':
             return 'success';
           case 'Pending':
+            return 'yellow';
+          case 'Dormant':
             return 'warning';
           case 'Stop':
             return 'secondary';
@@ -1180,33 +1186,34 @@
       // Filter DataTable using API (no destroy/recreate)
       // ===============================
       function filterTable() {
-        let selectedStatus = getSelectedStatus(statusCheckboxes);
-        const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
+  let selectedStatus = getSelectedStatus(statusCheckboxes);
+  const selectedStatusDonasi = getSelectedStatus(statusDonasiCheckboxes);
 
-        // --- Default ke "Aktif" jika tidak ada yang dicentang ---
-        if (selectedStatus.length === 0) {
-          selectedStatus = ['Aktif'];
-        }
+  // Clear old filter
+  $.fn.dataTable.ext.search = [];
 
-        // Clear old filter
-        $.fn.dataTable.ext.search = [];
+  // Filter using custom filter
+  $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
 
-        // Filter using custom filter
-        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          // Kolom status = index 3
-          if (!selectedStatus.includes(data[3])) return false;
+    // --- Status (jika kosong → ALL) ---
+    // Kolom status = index 3
+    if (selectedStatus.length > 0 && !selectedStatus.includes(data[3])) {
+      return false;
+    }
 
-          // Kolom status_donasi = index 6
-          if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) {
-            return false;
-          }
+    // --- Status Donasi (jika kosong → ALL) ---
+    // Kolom status_donasi = index 6
+    if (selectedStatusDonasi.length > 0 && !selectedStatusDonasi.includes(data[6])) {
+      return false;
+    }
 
-          return true;
-        });
+    return true;
+  });
 
-        console.log('Status aktif:', selectedStatus);
-        dataTable.draw();
-      }
+  console.log('Status:', selectedStatus.length === 0 ? 'ALL' : selectedStatus);
+  dataTable.draw();
+}
+
 
       // ===============================
       // Render Cards (Mobile)

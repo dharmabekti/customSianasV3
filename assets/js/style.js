@@ -457,34 +457,41 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', () => {
   const contextMenu = document.getElementById('contextMenu');
   const cardList = document.getElementById('cardList');
-
-  if (!contextMenu) return;
-
   let longPressTimer;
   let isMobile = window.innerWidth <= 768;
 
-  // ===============================
-  // Fungsi Show ContextMenu (Card)
-  // ===============================
-  function showMenuAtCard(icon, rowData) {
+  // ================================
+  // Fungsi: Tampilkan context menu
+  // ================================
+  function showMenuAtIcon(icon, data) {
     contextMenu.style.display = 'block';
-
     const rect = icon.getBoundingClientRect();
     const menuWidth = contextMenu.offsetWidth;
 
-    const leftPos = rect.left - menuWidth - 5 + window.scrollX;
-    const topPos = rect.top + rect.height + window.scrollY;
+    const left = rect.left - menuWidth - 8 + window.scrollX;
+    const top = rect.top + rect.height + window.scrollY;
 
-    contextMenu.style.left = `${leftPos}px`;
-    contextMenu.style.top = `${topPos}px`;
+    contextMenu.style.left = left + 'px';
+    contextMenu.style.top = top + 'px';
 
-    contextMenu.dataset.rowId = rowData.id || '';
-    contextMenu.dataset.rowNama = rowData.nama || '';
+    contextMenu.dataset.rowId = data.id ?? '';
+    contextMenu.dataset.rowNama = data.nama ?? '';
   }
 
-  // Event: Klik ikon titik 3 pada card
+  function showMenuAtEvent(e, row) {
+    contextMenu.style.display = 'block';
+    contextMenu.style.left = e.pageX + 'px';
+    contextMenu.style.top = e.pageY + 'px';
+
+    contextMenu.dataset.rowId = row.dataset.id ?? '';
+    contextMenu.dataset.rowNama = row.dataset.nama ?? '';
+  }
+
+  // ================================
+  // EVENT: Klik titik tiga (card)
+  // ================================
   if (cardList) {
-    cardList.addEventListener('click', function (e) {
+    cardList.addEventListener('click', e => {
       if (!e.target.classList.contains('card-menu')) return;
 
       e.preventDefault();
@@ -494,31 +501,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = icon.closest('.card');
       if (!card) return;
 
-      const rowData = {
+      const data = {
         id: card.dataset.id,
         nama: card.dataset.nama,
       };
 
-      showMenuAtCard(icon, rowData);
+      showMenuAtIcon(icon, data);
+    });
+
+    // Mencegah tap → click ganda di mobile
+    cardList.addEventListener('touchstart', e => {
+      if (e.target.classList.contains('card-menu')) {
+        e.stopPropagation();
+      }
     });
   }
 
-  // ==========================================
-  // Fungsi Show ContextMenu (Table Events)
-  // ==========================================
-  function showContextMenu(e, row) {
-    contextMenu.style.display = 'block';
-    contextMenu.style.left = e.pageX + 'px';
-    contextMenu.style.top = e.pageY + 'px';
-
-    contextMenu.dataset.rowId = row.dataset.id || '';
-    contextMenu.dataset.rowNama = row.dataset.nama || '';
-  }
-
-  // ============================
-  // 1. Desktop (Right Click)
-  // ============================
-  document.addEventListener('contextmenu', function (e) {
+  // ================================
+  // DESKTOP: Right-click pada baris tabel
+  // ================================
+  document.addEventListener('contextmenu', e => {
     if (isMobile) {
       e.preventDefault();
       return;
@@ -528,44 +530,91 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!row || !row.closest('.dataTable')) return;
 
     e.preventDefault();
-    showContextMenu(e, row);
+    showMenuAtEvent(e, row);
   });
 
-  // ============================
-  // 2. Mobile (Long Press)
-  // ============================
-  document.addEventListener('touchstart', function (e) {
+  // ================================
+  // MOBILE: Long press pada baris tabel
+  // ================================
+  // ================================
+  // MOBILE: Long press pada <tr>
+  // ================================
+  document.addEventListener('touchstart', e => {
     if (!isMobile) return;
 
     const row = e.target.closest('tr');
     if (!row || !row.closest('.dataTable')) return;
 
+    // Simpan posisi awal untuk deteksi gerakan
+    const touch = e.touches[0];
+    const startX = touch.clientX;
+    const startY = touch.clientY;
+
     longPressTimer = setTimeout(() => {
-      showContextMenu(e.touches[0], row);
-    }, 500);
+      showMenuAtEvent(touch, row);
+    }, 550); // 550ms long press
+
+    // Simpan data untuk digunakan di move/end
+    row.dataset.touchStartX = startX;
+    row.dataset.touchStartY = startY;
   });
 
-  document.addEventListener('touchend', function () {
+  document.addEventListener('touchmove', e => {
+    if (!isMobile) return;
+
+    const row = e.target.closest('tr');
+    if (!row) {
+      clearTimeout(longPressTimer);
+      return;
+    }
+
+    const touch = e.touches[0];
+    const deltaX = Math.abs(touch.clientX - row.dataset.touchStartX);
+    const deltaY = Math.abs(touch.clientY - row.dataset.touchStartY);
+
+    // Jika jari bergeser lebih dari 10px → anggap scroll → batalkan long press
+    if (deltaX > 10 || deltaY > 10) {
+      clearTimeout(longPressTimer);
+    }
+  });
+
+  document.addEventListener('touchend', e => {
+    if (!isMobile) return;
+    clearTimeout(longPressTimer);
+  });
+
+  document.addEventListener('touchend', () => {
     if (isMobile) clearTimeout(longPressTimer);
   });
 
-  document.addEventListener('touchmove', function () {
+  document.addEventListener('touchmove', () => {
     if (isMobile) clearTimeout(longPressTimer);
   });
 
-  // ============================
-  // 3. Hide context menu
-  // ============================
-  document.addEventListener('click', function (e) {
+  // ================================
+  // Klik luar → tutup menu
+  // ================================
+  document.addEventListener('click', e => {
     if (!contextMenu.contains(e.target)) {
       contextMenu.style.display = 'none';
     }
   });
 
-  // ============================
-  // 4. Handle resize
-  // ============================
-  window.addEventListener('resize', function () {
+  // Contextmenu diklik → jangan tutup
+  contextMenu.addEventListener('click', e => {
+    e.stopPropagation();
+  });
+
+  // ================================
+  // Scroll / Resize / Modal → tutup
+  // ================================
+  window.addEventListener('scroll', () => (contextMenu.style.display = 'none'));
+  window.addEventListener('resize', () => {
     isMobile = window.innerWidth <= 768;
+    contextMenu.style.display = 'none';
+  });
+
+  document.addEventListener('show.bs.modal', () => {
+    contextMenu.style.display = 'none';
   });
 });

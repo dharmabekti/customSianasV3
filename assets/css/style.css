@@ -1701,6 +1701,16 @@ div.dataTables_wrapper .dataTables_filter input {
   padding: 0.5em 0.6em;
 }
 
+.bg-yellow {
+  background-color: #f7e463; /* kuning lembut */
+  color: #000;               /* teks hitam */
+  padding: 4px 10px;
+  /* font-size: 0.75rem; */
+  border-radius: 0.5rem;
+  display: inline-block;
+  font-weight: 600;
+}
+
 .card-body img {
   width: 80px;
   height: 80px;
