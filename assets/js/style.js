@@ -426,6 +426,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     // ===============================================================
 
+    // =================
+
     // Klik luar → tutup
     const cm = document.getElementById('contextMenu');
     if (cm && !cm.contains(e.target)) {
@@ -449,12 +451,56 @@ document.addEventListener('DOMContentLoaded', function () {
 // Jalankan saat DOM siap
 document.addEventListener('DOMContentLoaded', () => {
   const contextMenu = document.getElementById('contextMenu');
+  const cardList = document.getElementById('cardList');
 
   if (!contextMenu) return;
 
   let longPressTimer;
   let isMobile = window.innerWidth <= 768;
 
+  // ===============================
+  // Fungsi Show ContextMenu (Card)
+  // ===============================
+  function showMenuAtCard(icon, rowData) {
+    contextMenu.style.display = 'block';
+
+    const rect = icon.getBoundingClientRect();
+    const menuWidth = contextMenu.offsetWidth;
+
+    // Muncul di sebelah kiri tanda titik 3
+    const leftPos = rect.left - menuWidth - 5;
+    const topPos = rect.top + rect.height;
+
+    contextMenu.style.left = leftPos + 'px';
+    contextMenu.style.top = topPos + 'px';
+
+    contextMenu.dataset.rowId = rowData.id || '';
+    contextMenu.dataset.rowNama = rowData.nama || '';
+  }
+
+  // Event: Klik ikon titik 3 pada card
+  if (cardList) {
+    cardList.querySelectorAll('.card-menu').forEach(icon => {
+      icon.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const card = this.closest('.card');
+        if (!card) return;
+
+        const rowData = {
+          id: card.dataset.id,
+          nama: card.dataset.nama,
+        };
+
+        showMenuAtCard(this, rowData);
+      });
+    });
+  }
+
+  // ==========================================
+  // Fungsi Show ContextMenu (Table Events)
+  // ==========================================
   function showContextMenu(e, row) {
     contextMenu.style.display = 'block';
     contextMenu.style.left = e.pageX + 'px';
@@ -469,14 +515,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================
   document.addEventListener('contextmenu', function (e) {
     if (isMobile) {
-      e.preventDefault(); // ⛔STOP context menu bawaan di mobile!
+      e.preventDefault();
       return;
     }
 
     const row = e.target.closest('tr');
     if (!row || !row.closest('.dataTable')) return;
 
-    e.preventDefault(); // stop default browser menu di desktop
+    e.preventDefault();
     showContextMenu(e, row);
   });
 
@@ -491,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     longPressTimer = setTimeout(() => {
       showContextMenu(e.touches[0], row);
-    }, 500); // long press 0.5 second
+    }, 500);
   });
 
   document.addEventListener('touchend', function () {
