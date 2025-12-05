@@ -539,6 +539,11 @@
           <div class="col-md-2 mb-3">
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <div class="mb-3">
+                  <button class="btn btn-outline-primary btn-sm w-100">
+                    <i class="bi bi-download"></i> Export
+                  </button>
+                </div>
                 <label for="tahunAjaranFilter">Tahun Ajaran:</label>
                 <select id="tahunAjaranFilter" class="form-select form-select-sm mb-2">
                   <option selected="selected">2025/2026</option>
@@ -553,7 +558,11 @@
                 </div>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                  <label class="form-check-label badge bg-warning" for="pending">Pending</label>
+                  <label class="form-check-label badge bg-yellow" for="pending">Pending</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input status" type="checkbox" value="Dormant" id="dormant" />
+                  <label class="form-check-label badge bg-warning" for="dormant">Dormant</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Stop" id="stop" />
@@ -722,7 +731,7 @@
         'Fina Sari',
       ];
 
-      const statusList = ['Aktif', 'Pending', 'Stop', 'Tidak Aktif'];
+      const statusList = ['Aktif', 'Pending', 'Dormant', 'Stop', 'Tidak Aktif'];
       const lanjutDonasiList = ['Belum Respon', 'Ya', 'Tidak'];
       const statusDonasiList = ['Lunas', 'Kelebihan', 'Kekurangan'];
       const tahunAkademikList = ['2025/2026', '2024/2025', '2023/2024'];
@@ -737,6 +746,8 @@
             return 'success';
           case 'Pending':
             return 'warning';
+          case 'Dormant':
+            return 'yellow';
           case 'Stop':
             return 'secondary';
           case 'Tidak Aktif':
