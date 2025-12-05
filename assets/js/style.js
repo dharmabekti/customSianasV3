@@ -493,7 +493,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Klik luar menutup menu
   // ================================
   document.addEventListener('click', e => {
-    if (!contextMenu.contains(e.target)) {
+    if (!contextMenu.contains(e.target) && !e.target.closest('.card-menu')) {
       contextMenu.style.display = 'none';
     }
   });
