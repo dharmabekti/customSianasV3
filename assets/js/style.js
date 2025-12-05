@@ -392,68 +392,7 @@ function closeShortcut() {
   popup.style.display = 'none';
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Tutup contextmenu saat resize
-  window.addEventListener('resize', function () {
-    const cm = document.getElementById('contextMenu');
-    if (cm) cm.style.display = 'none';
-  });
-
-  // toggle context menu
-  document.addEventListener('click', function (e) {
-    // ======== Hanya ikon card-menu yg boleh buka contextMenu ========
-    if (e.target.classList.contains('card-menu')) {
-      e.preventDefault();
-      e.stopPropagation();
-
-      const icon = e.target;
-      const cm = document.getElementById('contextMenu');
-      if (!cm) return;
-
-      cm.style.opacity = '0';
-      cm.style.display = 'block';
-
-      requestAnimationFrame(() => {
-        const rect = icon.getBoundingClientRect();
-        const w = cm.offsetWidth;
-
-        cm.style.left = rect.left - w - 10 + 'px';
-        cm.style.top = rect.top + window.scrollY + 'px';
-        cm.style.opacity = '1';
-      });
-
-      return;
-    }
-    // ===============================================================
-
-    // =================
-
-    // Klik luar → tutup
-    const cm = document.getElementById('contextMenu');
-    if (cm && !cm.contains(e.target)) {
-      cm.style.display = 'none';
-    }
-  });
-
-  // Klik pada contextMenu tidak menutup
-  const cm = document.getElementById('contextMenu');
-  if (cm) {
-    cm.addEventListener('click', e => e.stopPropagation());
-  }
-
-  // modal dibuka → tutup contextMenu
-  document.addEventListener('show.bs.modal', function () {
-    const cm = document.getElementById('contextMenu');
-    if (cm) cm.style.display = 'none';
-  });
-
-  window.addEventListener('scroll', () => {
-    const cm = document.getElementById('contextMenu');
-    if (cm) cm.style.display = 'none';
-  });
-});
-
-// Jalankan saat DOM siap
+// ==================== CONTEXT MENU ===================
 document.addEventListener('DOMContentLoaded', () => {
   const contextMenu = document.getElementById('contextMenu');
   const cardList = document.getElementById('cardList');
@@ -461,83 +400,69 @@ document.addEventListener('DOMContentLoaded', () => {
   let isMobile = window.innerWidth <= 768;
 
   // ================================
-  // Fungsi: Tampilkan context menu
+  // Fungsi: Menu dari ikon titik tiga
   // ================================
-  function showMenuAtIcon(icon, data) {
+  function showMenuAtCard(icon, data) {
     contextMenu.style.display = 'block';
+
     const rect = icon.getBoundingClientRect();
     const menuWidth = contextMenu.offsetWidth;
 
-    const left = rect.left - menuWidth - 8 + window.scrollX;
-    const top = rect.top + rect.height + window.scrollY;
-
-    contextMenu.style.left = left + 'px';
-    contextMenu.style.top = top + 'px';
+    contextMenu.style.left = rect.left - menuWidth - 8 + window.scrollX + 'px';
+    contextMenu.style.top = rect.top + window.scrollY + 'px';
 
     contextMenu.dataset.rowId = data.id ?? '';
     contextMenu.dataset.rowNama = data.nama ?? '';
   }
 
-  function showMenuAtEvent(e, row) {
+  // ================================
+  // Fungsi: Menu dari event mouse / touch
+  // ================================
+  function showMenuAtEventPos(x, y, row) {
     contextMenu.style.display = 'block';
-    contextMenu.style.left = e.pageX + 'px';
-    contextMenu.style.top = e.pageY + 'px';
+    contextMenu.style.left = x + 'px';
+    contextMenu.style.top = y + 'px';
 
     contextMenu.dataset.rowId = row.dataset.id ?? '';
     contextMenu.dataset.rowNama = row.dataset.nama ?? '';
   }
 
   // ================================
-  // EVENT: Klik titik tiga (card)
+  // EVENT: Klik titik tiga kartu
   // ================================
   if (cardList) {
     cardList.addEventListener('click', e => {
-      if (!e.target.classList.contains('card-menu')) return;
+      const icon = e.target.closest('.card-menu');
+      if (!icon) return;
 
       e.preventDefault();
       e.stopPropagation();
 
-      const icon = e.target;
       const card = icon.closest('.card');
-      if (!card) return;
-
       const data = {
         id: card.dataset.id,
         nama: card.dataset.nama,
       };
 
-      showMenuAtIcon(icon, data);
-    });
-
-    // Mencegah tap → click ganda di mobile
-    cardList.addEventListener('touchstart', e => {
-      if (e.target.classList.contains('card-menu')) {
-        e.stopPropagation();
-      }
+      showMenuAtCard(icon, data);
     });
   }
 
   // ================================
-  // DESKTOP: Right-click pada baris tabel
+  // DESKTOP: Right-click <tr>
   // ================================
   document.addEventListener('contextmenu', e => {
-    if (isMobile) {
-      e.preventDefault();
-      return;
-    }
+    if (isMobile) return e.preventDefault();
 
     const row = e.target.closest('tr');
     if (!row || !row.closest('.dataTable')) return;
 
     e.preventDefault();
-    showMenuAtEvent(e, row);
+    showMenuAtEventPos(e.pageX, e.pageY, row);
   });
 
   // ================================
-  // MOBILE: Long press pada baris tabel
-  // ================================
-  // ================================
-  // MOBILE: Long press pada <tr>
+  // MOBILE: Long press <tr>
   // ================================
   document.addEventListener('touchstart', e => {
     if (!isMobile) return;
@@ -545,54 +470,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const row = e.target.closest('tr');
     if (!row || !row.closest('.dataTable')) return;
 
-    // Simpan posisi awal untuk deteksi gerakan
-    const touch = e.touches[0];
-    const startX = touch.clientX;
-    const startY = touch.clientY;
+    const t = e.touches[0];
+    row.dataset.startX = t.clientX;
+    row.dataset.startY = t.clientY;
 
     longPressTimer = setTimeout(() => {
-      showMenuAtEvent(touch, row);
-    }, 550); // 550ms long press
-
-    // Simpan data untuk digunakan di move/end
-    row.dataset.touchStartX = startX;
-    row.dataset.touchStartY = startY;
+      showMenuAtEventPos(t.pageX, t.pageY, row);
+    }, 550); // long press 0.55s
   });
 
   document.addEventListener('touchmove', e => {
-    if (!isMobile) return;
-
-    const row = e.target.closest('tr');
-    if (!row) {
-      clearTimeout(longPressTimer);
-      return;
-    }
-
-    const touch = e.touches[0];
-    const deltaX = Math.abs(touch.clientX - row.dataset.touchStartX);
-    const deltaY = Math.abs(touch.clientY - row.dataset.touchStartY);
-
-    // Jika jari bergeser lebih dari 10px → anggap scroll → batalkan long press
-    if (deltaX > 10 || deltaY > 10) {
-      clearTimeout(longPressTimer);
-    }
-  });
-
-  document.addEventListener('touchend', e => {
     if (!isMobile) return;
     clearTimeout(longPressTimer);
   });
 
   document.addEventListener('touchend', () => {
-    if (isMobile) clearTimeout(longPressTimer);
-  });
-
-  document.addEventListener('touchmove', () => {
-    if (isMobile) clearTimeout(longPressTimer);
+    if (!isMobile) return;
+    clearTimeout(longPressTimer);
   });
 
   // ================================
-  // Klik luar → tutup menu
+  // Klik luar menutup menu
   // ================================
   document.addEventListener('click', e => {
     if (!contextMenu.contains(e.target)) {
@@ -600,13 +498,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Contextmenu diklik → jangan tutup
-  contextMenu.addEventListener('click', e => {
-    e.stopPropagation();
-  });
+  contextMenu.addEventListener('click', e => e.stopPropagation());
 
   // ================================
-  // Scroll / Resize / Modal → tutup
+  // Scroll / Resize tutup menu
   // ================================
   window.addEventListener('scroll', () => (contextMenu.style.display = 'none'));
   window.addEventListener('resize', () => {
@@ -618,3 +513,5 @@ document.addEventListener('DOMContentLoaded', () => {
     contextMenu.style.display = 'none';
   });
 });
+
+// ==================== CONTEXT MENU ===================
