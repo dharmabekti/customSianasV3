@@ -1724,6 +1724,16 @@ div.dataTables_wrapper .dataTables_filter input {
   font-weight: 600;
 }
 
+.bg-info-aat {
+  background-color: var(--aat-grey) !important; /* biru lembut */
+  color: #000;               /* teks hitam */
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 0.5rem;
+  display: inline-block;
+  text-align: center;
+}
+
 .card-body img {
   width: 80px;
   height: 80px;
@@ -1951,6 +1961,19 @@ h3.page-title {
   padding: 0.7rem 1rem;
   text-align: left;
 }
+
+/* Default: desktop rata kiri */
+.detail-card-section {
+  text-align: left;
+}
+
+/* Mobile: rata tengah */
+@media (max-width: 576px) {
+  .detail-card-section {
+    text-align: center;
+  }
+}
+
 
 .round-modal {
   border-radius: 15px;
