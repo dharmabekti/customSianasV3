@@ -439,6 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fungsi: Menu dari ikon titik tiga
   // ================================
   function showMenuAtCard(icon, data) {
+    if (!contextMenu) return;
+
     contextMenu.style.display = 'block';
 
     const rect = icon.getBoundingClientRect();
@@ -455,6 +457,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fungsi: Menu dari event mouse / touch
   // ================================
   function showMenuAtEventPos(x, y, row) {
+    if (!contextMenu) return;
+
     contextMenu.style.display = 'block';
     contextMenu.style.left = x + 'px';
     contextMenu.style.top = y + 'px';
@@ -529,7 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Klik luar menutup menu
   // ================================
   document.addEventListener('click', e => {
-    if (!contextMenu.contains(e.target) && !e.target.closest('.card-menu')) {
+    if (contextMenu && !contextMenu.contains(e.target) && !e.target.closest('.card-menu')) {
       contextMenu.style.display = 'none';
     }
   });
@@ -550,10 +554,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // ================================
   // Scroll / Resize tutup menu
   // ================================
-  window.addEventListener('scroll', () => (contextMenu.style.display = 'none'));
+  window.addEventListener('scroll', () => {
+    if (contextMenu) {
+      contextMenu.style.display = 'none';
+    }
+  });
   window.addEventListener('resize', () => {
     isMobile = window.innerWidth <= 768;
-    contextMenu.style.display = 'none';
+    if (contextMenu) {
+      contextMenu.style.display = 'none';
+    }
   });
 
   document.addEventListener('show.bs.modal', () => {
