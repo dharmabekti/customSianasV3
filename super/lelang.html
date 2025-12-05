@@ -323,15 +323,15 @@
                 <label class="form-label fw-bold">Tingkat Sekolah</label>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
-                  <label class="form-check-label" for="sd">SD</label>
+                  <label class="form-check-label" for="sd">SD <span class="badge bg-primary" id="sd-count">0</span></label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
-                  <label class="form-check-label" for="smp">SMP</label>
+                  <label class="form-check-label" for="smp">SMP <span class="badge bg-primary" id="smp-count">0</span></label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
-                  <label class="form-check-label" for="sma">SMA</label>
+                  <label class="form-check-label" for="sma">SMA <span class="badge bg-primary" id="sma-count">0</span></label>
                 </div>
               </div>
             </div>
@@ -1097,12 +1097,26 @@
           .map(c => c.value);
         const searchTerm = searchInput.value.toLowerCase();
 
-        let filtered = childAsuh.filter(
+        // Filter by sekretariat and search (excluding tingkat for counts)
+        let filteredForCounts = childAsuh.filter(
           a =>
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            (selectedTingkat.length === 0 || selectedTingkat.includes(a.level)) &&
             a.nama.toLowerCase().includes(searchTerm)
         );
+
+        // Update badge counts based on filteredForCounts (total available per level)
+        const sdCount = filteredForCounts.filter(a => a.level === 'SD').length;
+        const smpCount = filteredForCounts.filter(a => a.level === 'SMP').length;
+        const smaCount = filteredForCounts.filter(a => a.level === 'SMA').length;
+        document.getElementById('sd-count').textContent = sdCount;
+        document.getElementById('smp-count').textContent = smpCount;
+        document.getElementById('sma-count').textContent = smaCount;
+
+        // Now apply tingkat filter for display
+        let filtered = filteredForCounts;
+        if (selectedTingkat.length > 0) {
+          filtered = filtered.filter(a => selectedTingkat.includes(a.level));
+        }
 
         // Sorting logic
         if (sortBy === 'nama') {
@@ -1166,8 +1180,20 @@
         });
       });
 
-      [searchInput, ...tingkatCheckbox, ...sekretariatCheckbox].forEach(el =>
-        el.addEventListener('input', () => {
+      searchInput.addEventListener('input', () => {
+        currentPage = 1;
+        renderChild();
+      });
+
+      tingkatCheckbox.forEach(cb =>
+        cb.addEventListener('change', () => {
+          currentPage = 1;
+          renderChild();
+        })
+      );
+
+      sekretariatCheckbox.forEach(cb =>
+        cb.addEventListener('change', () => {
           currentPage = 1;
           renderChild();
         })
