@@ -8,7 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="../assets/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <!-- Datatable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/rowgroup/1.4.1/css/rowGroup.dataTables.min.css" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/rowgroup/1.4.1/js/dataTables.rowGroup.min.js"></script>
+
     <!-- Sweet Alerts css -->
     <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <!-- jQuery CDN -->
@@ -323,15 +330,21 @@
                 <label class="form-label fw-bold">Tingkat Sekolah</label>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
-                  <label class="form-check-label" for="sd">SD <span class="badge bg-primary" id="sd-count">0</span></label>
+                  <label class="form-check-label" for="sd"
+                    >SD <span class="badge bg-primary" id="sd-count">0</span></label
+                  >
                 </div>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
-                  <label class="form-check-label" for="smp">SMP <span class="badge bg-primary" id="smp-count">0</span></label>
+                  <label class="form-check-label" for="smp"
+                    >SMP <span class="badge bg-primary" id="smp-count">0</span></label
+                  >
                 </div>
                 <div class="form-check">
                   <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
-                  <label class="form-check-label" for="sma">SMA <span class="badge bg-primary" id="sma-count">0</span></label>
+                  <label class="form-check-label" for="sma"
+                    >SMA <span class="badge bg-primary" id="sma-count">0</span></label
+                  >
                 </div>
                 <div class="mt-3 p-2 text-center rounded bg-light border card-total">
                   <strong class="text-muted fw-semibold d-block text-wrap">
@@ -348,10 +361,14 @@
             <!-- Navigasi Tab (Desktop) -->
             <ul class="nav nav-tabs mb-3 flex-nowrap" role="tablist" style="font-size: 12px">
               <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#listLelang">List Lelang Anak Asuh</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#listLelang">
+                  List Lelang Anak Asuh
+                </button>
               </li>
               <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatPemilihan">Riwayat Pemilihan Anak Asuh</button>
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatPemilihan">
+                  Riwayat Pemilihan Anak Asuh
+                </button>
               </li>
             </ul>
             <div class="tab-content">
@@ -392,79 +409,75 @@
 
               <div class="tab-pane fade" id="riwayatPemilihan">
                 <div class="p-4 border rounded-4 text-start">
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-8">
-                        <small class="text-muted text-important">*) Wajib Diisi</small>
+                  <table id="datatable" class="display" style="width: 100%; font-size: 14px">
+                    <thead>
+                      <tr>
+                        <th>Tanggal</th>
+                        <th>Isi</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>13 Okt 2025</td>
+                        <td>
+                          <i
+                            >D-xx-12345 (<a href="#">Nama Donatur</a>) telah memilih sejumlah 4 anak asuh.
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#listAnakModal">Detail</a></i
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>13 Okt 2025</td>
+                        <td>
+                          <i
+                            >D-xx-12346 (<a href="#">Nama Donatur</a>) telah memilih sejumlah 10 anak asuh.
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#listAnakModal">Detail</a></i
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>13 Okt 2025</td>
+                        <td>
+                          <i>D-xx-12346 (<a href="#">Nama Donatur</a>) telah Assign Donasi PT selama 9 bulan.</i>
+                        </td>
+                      </tr>
 
-                        <!-- Nominal -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Nominal Donasi <sup class="text-important">*)</sup>
-                          </label>
-                          <div class="col-sm-7">
-                            <div class="input-group input-group-sm">
-                              <input type="text" class="form-control form-control-sm" id="nominal" required />
-                              <span class="input-group-text">/ bulan</span>
-                            </div>
-                          </div>
-                        </div>
+                      <tr>
+                        <td>11 Okt 2025</td>
+                        <td>
+                          <i
+                            >D-xx-yvyv (<a href="#">Nama Donatur</a>) telah memilih sejumlah 1 anak asuh.
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#listAnakModal">Detail</a></i
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>11 Okt 2025</td>
+                        <td>
+                          <i>D-xx-yvyv (<a href="#">Nama Donatur</a>) telah Assign Donasi OPR selama 9 bulan</i>
+                        </td>
+                      </tr>
 
-                        <!-- 🔥 Periode Donasi (Mulai - s.d - Akhir) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Periode Donasi <sup class="text-important">*)</sup>
-                          </label>
-
-                          <div class="col-sm-7">
-                            <div class="row g-2 align-items-center">
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="mulai_donasi" required />
-                              </div>
-
-                              <div class="col-2 text-center">
-                                <span class="fw-semibold small">s.d</span>
-                              </div>
-
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="akhir_donasi" required />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- 🔥 Jumlah Bulan Donasi (field baru) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label"> Jumlah Bulan Donasi </label>
-                          <div class="col-sm-3">
-                            <div class="input-group input-group-sm">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                id="jml_bulan"
-                                value="12"
-                                readonly
-                              />
-                              <span class="input-group-text">bulan</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Tombol -->
-                      <div class="mt-3">
-                        <button type="submit" class="btn btn-success btn-sm me-2" onclick="konfirmasiAssignDonasi()">
-                          <i class="bi bi-check me-1"></i> Konfirmasi
-                        </button>
-                        <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x me-1"></i> Batal</button>
-                      </div>
-                    </div>
-                  </form>
+                      <tr>
+                        <td>10 Okt 2025</td>
+                        <td>
+                          <i>D-xx-yvyv (<a href="#">Nama Donatur</a>) telah Assign Donasi PT selama 9 bulan</i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>10 Okt 2025</td>
+                        <td>
+                          <i
+                            >D-xx-yvyv (<a href="#">Nama Donatur</a>) telah memilih sejumlah 5 anak asuh.
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#listAnakModal">Detail</a></i
+                          >
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
-              
             </div>
-
           </div>
         </div>
       </div>
@@ -1025,39 +1038,132 @@
     </div>
     <!-- Modal Detail Anak -->
 
+    <!-- Modal List Anak Asuh -->
+    <div
+      class="modal fade"
+      id="listAnakModal"
+      tabindex="-1"
+      aria-labelledby="listAnakLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">List Anak Asuh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="container my-3">
+              <div class="row g-3">
+                <!-- CARD TEMPLATE -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="list-card shadow-sm">
+                    <div class="d-flex flex-column flex-md-row">
+                      <!-- FOTO -->
+                      <div class="col-12 col-md-4">
+                        <img src="https://randomuser.me/api/portraits/women/10.jpg" class="list-img" alt="" />
+                      </div>
+
+                      <!-- DETAIL -->
+                      <div class="col-12 col-md-8 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="list-name"><a href="#">Agata Cahaya Angel Fradista</a></div>
+                          <div class="list-info">SD Katolik Santa Maria Ponorogo</div>
+                          <div class="list-info">SD Kelas 3</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-2">
+                          <div class="badges-left">50.000 x 12 bln</div>
+                          <div class="badges-right">600.000</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="list-card shadow-sm">
+                    <div class="d-flex flex-column flex-md-row">
+                      <!-- FOTO -->
+                      <div class="col-12 col-md-4">
+                        <img src="https://randomuser.me/api/portraits/women/11.jpg" class="list-img" alt="" />
+                      </div>
+
+                      <!-- DETAIL -->
+                      <div class="col-12 col-md-8 d-flex flex-column justify-content-between">
+                        <div>
+                          <div class="list-name"><a href="#">Adinda Dewi Puspita Sari</a></div>
+                          <div class="list-info">SMK 17 Agustus 1945 Semarang</div>
+                          <div class="list-info">SMA/SMK Kelas 11</div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-2">
+                          <div class="badges-left">100.000 x 12 bln</div>
+                          <div class="badges-right">1.200.000</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- COPY BLOCK INI UNTUK CARD BERIKUTNYA -->
+                <!-- Isi dengan data dari loop / array -->
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end">
+            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal List Anak Asuh -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script src="../assets/js/datatable.init.js"></script>
     <!-- Sweet Alerts Js-->
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
       const schoolsBySekretariat = {
-        'Yogyakarta': [
+        Yogyakarta: [
           { pendidikan: 'SD Negeri 1 Yogyakarta', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Yogyakarta', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 },
         ],
-        'Semarang': [
+        Semarang: [
           { pendidikan: 'SD Negeri 1 Semarang', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Semarang', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 },
         ],
-        'Madiun': [
+        Madiun: [
           { pendidikan: 'SD Negeri 1 Madiun', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Madiun', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 },
         ],
-        'Purwokerto': [
+        Purwokerto: [
           { pendidikan: 'SD Negeri 1 Purwokerto', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Purwokerto', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 },
         ],
-        'Bandung': [
+        Bandung: [
           { pendidikan: 'SD Negeri 1 Bandung', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Bandung', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 }
-        ]
+          { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 },
+        ],
       };
 
       const childAsuh = Array.from({ length: 30 }, (_, i) => {
@@ -1107,7 +1213,9 @@
         let filteredForCounts = childAsuh.filter(
           a =>
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            (a.nama.toLowerCase().includes(searchTerm)||a.sekretariat.toLowerCase().includes(searchTerm)||a.pendidikan.toLowerCase().includes(searchTerm))
+            (a.nama.toLowerCase().includes(searchTerm) ||
+              a.sekretariat.toLowerCase().includes(searchTerm) ||
+              a.pendidikan.toLowerCase().includes(searchTerm))
         );
 
         // Update badge counts based on filteredForCounts (total available per level)
@@ -1129,9 +1237,11 @@
 
         // Sorting logic
         if (sortBy === 'nama') {
-          filtered.sort((a, b) => sortDir === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama));
+          filtered.sort((a, b) => (sortDir === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)));
         } else if (sortBy === 'sekolah') {
-          filtered.sort((a, b) => sortDir === 'asc' ? a.pendidikan.localeCompare(b.pendidikan) : b.pendidikan.localeCompare(a.pendidikan));
+          filtered.sort((a, b) =>
+            sortDir === 'asc' ? a.pendidikan.localeCompare(b.pendidikan) : b.pendidikan.localeCompare(a.pendidikan)
+          );
         }
 
         const totalPages = Math.ceil(filtered.length / perPage);
@@ -1154,7 +1264,7 @@
           )
           .join('');
 
-        createPagination(pagination, totalPages, currentPage, (newPage) => {
+        createPagination(pagination, totalPages, currentPage, newPage => {
           currentPage = newPage;
           renderChild();
         });
@@ -1207,8 +1317,6 @@
           renderChild();
         })
       );
-
-
 
       window.addEventListener('resize', renderChild);
       renderChild();

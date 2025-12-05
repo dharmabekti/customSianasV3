@@ -17,7 +17,9 @@ $(document).ready(function () {
       [10, 20, 25, 50, 100, -1],
       [10, 20, 25, 50, 100, 'Semua'],
     ],
+
     ordering: true,
+    order: [], // ⬅️ urutan awal mengikuti urutan asli (query)
   };
 
   // Daftar ID datatable yang ingin diinit
@@ -51,5 +53,27 @@ $(document).ready(function () {
       dt.responsive.recalc();
       dt.columns.adjust().draw(false);
     });
+  });
+});
+
+$(document).ready(function () {
+  $('#laporanTable').DataTable({
+    pageLength: 20,
+    paging: true,
+    ordering: false,
+    rowGroup: {
+      dataSrc: 0,
+      startRender: function (rows, groupDate) {
+        // Format tanggal: "13 Okt 2025"
+        const d = new Date(groupDate);
+        const options = { day: 'numeric', month: 'short', year: 'numeric' };
+        const formatted = d.toLocaleDateString('id-ID', options);
+
+        return $('<div/>').addClass('dt-group-header').text(formatted);
+      },
+    },
+    // columnDefs: [
+    //   { targets: 0, visible: false }, // sembunyikan kolom tanggal
+    // ],
   });
 });

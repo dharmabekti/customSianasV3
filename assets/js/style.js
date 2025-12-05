@@ -327,7 +327,10 @@ function updateDateTime() {
     minute: '2-digit',
     second: '2-digit', // detik
   };
-  document.getElementById('currentDateTime').textContent = now.toLocaleDateString('id-ID', options);
+  const element = document.getElementById('currentDateTime');
+  if (element) {
+    element.textContent = now.toLocaleDateString('id-ID', options);
+  }
 }
 
 updateDateTime();

@@ -1366,6 +1366,19 @@ div.dataTables_wrapper .dataTables_filter {
   margin-left: 4px; /* opsional */
 }
 
+/* Group Datatable */
+/* Header Grouping */
+.dt-rowGroup-header {
+  background: none !important;
+  font-weight: bold;
+  color: #1e57d1;
+  font-style: italic;
+  padding-top: 15px !important;
+  margin-bottom: 3px !important;
+}
+
+/* Group Datatable */
+
 /* 📱 MOBILE FILTER STYLE */
 .filter-mobile .filter-toggle {
   width: 100%;
