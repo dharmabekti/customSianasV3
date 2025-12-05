@@ -1,3 +1,26 @@
+// ============ Create Pagination ===========
+function createPagination(paginationElement, totalPages, currentPage, onPageChange) {
+  paginationElement.innerHTML =
+    totalPages > 1
+      ? Array.from(
+          { length: totalPages },
+          (_, i) => `
+        <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
+          <a class="page-link" href="#">${i + 1}</a>
+        </li>`
+        ).join('')
+      : '';
+
+  document.querySelectorAll('.page-item').forEach((btn, idx) => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      onPageChange(idx + 1);
+    });
+  });
+}
+// ============ Create Pagination ===========
+
+
 document.addEventListener('DOMContentLoaded', function () {
   // === Highlight menu aktif di navbar atas ===
   const navbarLinks = document.querySelectorAll('.navbar-nav a');

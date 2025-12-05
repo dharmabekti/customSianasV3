@@ -1131,23 +1131,9 @@
           )
           .join('');
 
-        pagination.innerHTML =
-          totalPages > 1
-            ? Array.from(
-                { length: totalPages },
-                (_, i) => `
-              <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
-                <a class="page-link" href="#">${i + 1}</a>
-              </li>`
-              ).join('')
-            : '';
-
-        document.querySelectorAll('.page-item').forEach((btn, idx) => {
-          btn.addEventListener('click', e => {
-            e.preventDefault();
-            currentPage = idx + 1;
-            renderChild();
-          });
+        createPagination(pagination, totalPages, currentPage, (newPage) => {
+          currentPage = newPage;
+          renderChild();
         });
       }
 
