@@ -2601,3 +2601,35 @@ h3.page-title {
   border-radius: 12px;
   width: fit-content;
 }
+
+.sort-container {
+  background-color: #eee;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+
+.sort-pill {
+  background: white;
+  border: none;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sort-pill .sort-arrow {
+  color: #f18a2a; /* warna panah oranye */
+  font-weight: bold;
+}
+
+/* Tombol aktif */
+.sort-pill.active {
+  font-weight: 600;
+}
+
+.sort-pill:active {
+  transform: scale(0.97);
+}

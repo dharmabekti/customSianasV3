@@ -183,6 +183,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // === Load shortcut settings ===
   loadShortcutSettings();
+
+  // === Clear search button functionality ===
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.value = '';
+        // Trigger input event to update filters and reset pagination
+        searchInput.dispatchEvent(new Event('input'));
+      }
+    });
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
