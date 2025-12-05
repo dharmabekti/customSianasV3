@@ -498,6 +498,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // ================================
+  // Prevent browser context menu on mobile cards
+  // ================================
+  document.addEventListener('contextmenu', e => {
+    if (isMobile && e.target.closest('.card')) {
+      e.preventDefault();
+    }
+  });
+
   contextMenu.addEventListener('click', e => e.stopPropagation());
 
   // ================================
