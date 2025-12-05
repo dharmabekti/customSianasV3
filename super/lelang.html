@@ -333,6 +333,12 @@
                   <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
                   <label class="form-check-label" for="sma">SMA <span class="badge bg-primary" id="sma-count">0</span></label>
                 </div>
+                <div class="mt-3 p-2 text-center rounded bg-light border card-total">
+                  <strong class="text-muted fw-semibold d-block text-wrap">
+                    Jumlah Anak Asuh <br />
+                    <span id="total-anak" class="text-primary fw-bold d-block">X anak</span>
+                  </strong>
+                </div>
               </div>
             </div>
           </div>
@@ -1111,6 +1117,9 @@
         document.getElementById('sd-count').textContent = sdCount;
         document.getElementById('smp-count').textContent = smpCount;
         document.getElementById('sma-count').textContent = smaCount;
+
+        // Update total anak asuh count
+        document.getElementById('total-anak').textContent = filteredForCounts.length + ' anak';
 
         // Now apply tingkat filter for display
         let filtered = filteredForCounts;
