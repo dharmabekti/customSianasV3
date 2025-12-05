@@ -359,14 +359,14 @@
                 <div class="p-4 border rounded-4 text-start">
                   <div class="row g-2 align-items-center mb-3">
                     <!-- Sort -->
-                    <div class="col-6 col-md-auto d-flex align-items-center gap-2">
+                    <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
                       <label class="fw-bold mb-0">Sort:</label>
                       <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
                       <button class="sort-pill" data-sort="sekolah">Sekolah <span class="sort-arrow">↑</span></button>
                     </div>
 
                     <!-- Search -->
-                    <div class="col-6 col-md">
+                    <div class="col-12 col-md">
                       <div class="input-group input-group-sm">
                         <input
                           type="text"
@@ -1107,7 +1107,7 @@
         let filteredForCounts = childAsuh.filter(
           a =>
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            a.nama.toLowerCase().includes(searchTerm)
+            (a.nama.toLowerCase().includes(searchTerm)||a.sekretariat.toLowerCase().includes(searchTerm)||a.pendidikan.toLowerCase().includes(searchTerm))
         );
 
         // Update badge counts based on filteredForCounts (total available per level)
@@ -1147,7 +1147,7 @@
             <div class="child-card position-relative">
               <img src="${a.foto}" alt="${a.nama}" />
               <p class="fw-bold text-dark ft-12 mt-1">${a.nama}</p>
-              <p class="text-muted">${a.pendidikan}</p>
+              <p class="text-muted text-center">${a.pendidikan}</p>
               <p>Rp ${a.spp.toLocaleString()}</p>
             </div>
           </div>`

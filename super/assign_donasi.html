@@ -367,14 +367,14 @@
                 <div class="p-4 border rounded-4 text-start">
                   <div class="row g-2 align-items-center mb-3">
                     <!-- Sort -->
-                    <div class="col-6 col-md-auto d-flex align-items-center gap-2">
+                    <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
                       <label class="fw-bold mb-0">Sort:</label>
                       <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
                       <button class="sort-pill" data-sort="sekolah">Sekolah <span class="sort-arrow">↑</span></button>
                     </div>
 
                     <!-- Search -->
-                    <div class="col-6 col-md">
+                    <div class="col-12 col-md">
                       <div class="input-group input-group-sm">
                         <input
                           type="text"
@@ -1252,7 +1252,18 @@
     <!-- Modal Input Donatur -->
 
     <!-- Context Menu -->
-    <div id="contextMenu" class="context-menu" style="display: none; position: absolute; background: white; border: 1px solid #ccc; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+    <div
+      id="contextMenu"
+      class="context-menu"
+      style="
+        display: none;
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      "
+    >
       <div class="context-menu-item" data-action="detail">Lihat Detail</div>
       <div class="context-menu-item" data-action="edit">Edit</div>
     </div>
@@ -1265,31 +1276,31 @@
 
     <script>
       const schoolsBySekretariat = {
-        'Yogyakarta': [
+        Yogyakarta: [
           { pendidikan: 'SD Negeri 1 Yogyakarta', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Yogyakarta', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 },
         ],
-        'Semarang': [
+        Semarang: [
           { pendidikan: 'SD Negeri 1 Semarang', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Semarang', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 },
         ],
-        'Madiun': [
+        Madiun: [
           { pendidikan: 'SD Negeri 1 Madiun', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Madiun', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 },
         ],
-        'Purwokerto': [
+        Purwokerto: [
           { pendidikan: 'SD Negeri 1 Purwokerto', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Purwokerto', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 }
+          { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 },
         ],
-        'Bandung': [
+        Bandung: [
           { pendidikan: 'SD Negeri 1 Bandung', level: 'SD', spp: 50000 },
           { pendidikan: 'SMP Negeri 3 Bandung', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 }
-        ]
+          { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 },
+        ],
       };
 
       const childAsuh = Array.from({ length: 30 }, (_, i) => {
@@ -1353,13 +1364,19 @@
           a =>
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
             (selectedTingkat.length === 0 || selectedTingkat.includes(a.level)) &&
-            a.nama.toLowerCase().includes(searchTerm)
+            (a.nama.toLowerCase().includes(searchTerm)||a.sekretariat.toLowerCase().includes(searchTerm)||a.pendidikan.toLowerCase().includes(searchTerm))
         );
 
         if (currentSort === 'nama') {
-          filtered.sort((a, b) => sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama));
+          filtered.sort((a, b) =>
+            sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)
+          );
         } else if (currentSort === 'sekolah') {
-          filtered.sort((a, b) => sortDirection === 'asc' ? a.sekretariat.localeCompare(b.sekretariat) : b.sekretariat.localeCompare(a.sekretariat));
+          filtered.sort((a, b) =>
+            sortDirection === 'asc'
+              ? a.sekretariat.localeCompare(b.sekretariat)
+              : b.sekretariat.localeCompare(a.sekretariat)
+          );
         }
 
         const totalPages = Math.ceil(filtered.length / perPage);
@@ -1382,7 +1399,7 @@
           )
           .join('');
 
-        createPagination(pagination, totalPages, currentPage, (newPage) => {
+        createPagination(pagination, totalPages, currentPage, newPage => {
           currentPage = newPage;
           renderChild();
         });

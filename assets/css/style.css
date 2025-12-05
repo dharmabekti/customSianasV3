@@ -2616,6 +2616,7 @@ h3.page-title {
   font-size: 14px;
   cursor: pointer;
   display: flex;
+  white-space: nowrap; /* mencegah tombol pecah baris */
   align-items: center;
   gap: 4px;
 }
@@ -2633,3 +2634,14 @@ h3.page-title {
 .sort-pill:active {
   transform: scale(0.97);
 }
+
+.sort-wrapper {
+  white-space: nowrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.sort-wrapper::-webkit-scrollbar {
+  height: 0px;  /* scrollbar hilang */
+}
+
