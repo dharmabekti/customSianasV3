@@ -543,7 +543,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  contextMenu.addEventListener('click', e => e.stopPropagation());
+  if (contextMenu) {
+    contextMenu.addEventListener('click', e => e.stopPropagation());
+  }
 
   // ================================
   // Scroll / Resize tutup menu
