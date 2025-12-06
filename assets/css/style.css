@@ -1717,7 +1717,7 @@ div.dataTables_wrapper .dataTables_filter input {
 
 .bg-yellow {
   background-color: #f7e463; /* kuning lembut */
-  color: #000;               /* teks hitam */
+  color: #000; /* teks hitam */
   padding: 4px 10px;
   /* font-size: 0.75rem; */
   border-radius: 0.5rem;
@@ -1727,7 +1727,7 @@ div.dataTables_wrapper .dataTables_filter input {
 
 .bg-info-aat {
   background-color: var(--aat-grey) !important; /* biru lembut */
-  color: #000;               /* teks hitam */
+  color: #000; /* teks hitam */
   padding: 4px 10px;
   font-size: 12px;
   border-radius: 0.5rem;
@@ -1974,7 +1974,6 @@ h3.page-title {
     text-align: center;
   }
 }
-
 
 .round-modal {
   border-radius: 15px;
@@ -2557,7 +2556,7 @@ h3.page-title {
   border-radius: 10px;
   border-left: 5px solid var(--aat-blue);
   transition: 0.2s;
-  height: auto; /* Hindari fixed height */
+  height: 100%; /* Sesuaikan tinggi dengan list-card tertinggi */
 }
 
 .list-card:hover {
@@ -2576,13 +2575,24 @@ h3.page-title {
 /* --- MOBILE FIX --- */
 @media (max-width: 767px) {
   .list-card {
-    height: auto !important; /* hilangkan tinggi paksa */
+    height: 100% !important; /* sesuaikan dengan list-card tertinggi */
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .list-img {
-    height: 50px !important; /* lebih besar agar proporsional di mobile */
-    width: 50px !important; /* lebih besar agar proporsional di mobile */
     display: none;
+  }
+
+  /* Pengecualian: jika ada class list-img-mobile → tampil */
+
+  .list-img.list-img-mobile {
+    height: 100px !important;
+    width: 100px !important;
+    display: block !important;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
   }
 
   .list-card .d-flex.flex-column.flex-md-row {
@@ -2679,6 +2689,5 @@ h3.page-title {
 }
 
 .sort-wrapper::-webkit-scrollbar {
-  height: 0px;  /* scrollbar hilang */
+  height: 0px; /* scrollbar hilang */
 }
-
