@@ -20,6 +20,43 @@ function createPagination(paginationElement, totalPages, currentPage, onPageChan
 }
 // ============ Create Pagination ===========
 
+// ========== Image Preview ===================
+// GLOBAL Preview Foto — aman dipanggil di halaman mana pun
+window.previewFoto = function (input) {
+  if (!input) return;
+
+  // Pastikan container upload-box ada
+  const box = input.closest('.upload-box');
+  if (!box) return;
+
+  // Pastikan ada file
+  const file = input.files && input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    // Hapus placeholder jika ada
+    const placeholder = box.querySelector('.placeholder');
+    if (placeholder) placeholder.remove();
+
+    // Hapus gambar lama (bukan placeholder)
+    const existingImg = box.querySelector('img:not(.placeholder)');
+    if (existingImg) existingImg.remove();
+
+    // Buat gambar baru
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    img.classList.add('img-preview'); // opsional untuk styling nanti
+
+    box.appendChild(img);
+  };
+
+  reader.readAsDataURL(file);
+};
+
+// ========== Image Preview ===================
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // === Highlight menu aktif di navbar atas ===
@@ -467,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contextMenu.style.top = y + 'px';
 
     contextMenu.dataset.rowId = row.dataset.id ?? '';
-    contextMenu.dataset.rowNama = row.dataset.nama ?? '';
+    contextMenu.dataset.rowNama = row.dataset.name ?? '';
   }
 
   // ================================
@@ -484,7 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = icon.closest('.card');
       const data = {
         id: card.dataset.id,
-        nama: card.dataset.nama,
+        nama: card.dataset.name,
       };
 
       showMenuAtCard(icon, data);

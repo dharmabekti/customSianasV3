@@ -11,6 +11,8 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Sweet Alerts css -->
+    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -538,33 +540,19 @@
             </div>
             <div id="filterCollapse" class="collapse d-md-block mt-3">
               <div class="filter-section shadow-sm">
-                <h5 class="mb-3">Filter</h5>
-
-                <label class="form-label fw-bold">Sekretariat</label>
-                <div id="filterSekretariat">
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Yogyakarta" id="yogya" />
-                    <label class="form-check-label" for="yogya">Yogyakarta</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Semarang" id="semarang" />
-                    <label class="form-check-label" for="semarang">Semarang</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Madiun" id="madiun" />
-                    <label class="form-check-label" for="madiun">Madiun</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Purwokerto" id="purwokerto" />
-                    <label class="form-check-label" for="purwokerto">Purwokerto</label>
-                  </div>
-                  <div class="form-check mb-3">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Bandung" id="bandung" />
-                    <label class="form-check-label" for="bandung">Bandung</label>
-                  </div>
+                <label class="form-label fw-bold">Status</label>
+                <div class="form-check">
+                  <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
+                  <label class="form-check-label badge bg-success" for="aktif">Aktif</label>
                 </div>
-
-
+                <div class="form-check">
+                  <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
+                  <label class="form-check-label badge bg-yellow" for="pending">Pending</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="nonaktif" />
+                  <label class="form-check-label badge bg-danger" for="nonaktif">Tidak Aktif</label>
+                </div>
               </div>
             </div>
           </div>
@@ -576,9 +564,8 @@
                 <!-- Sort -->
                 <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
                   <label class="fw-bold mb-0">Sort:</label>
+                  <button class="sort-pill" data-sort="id">ID <span class="sort-arrow">↑</span></button>
                   <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
-                  <button class="sort-pill" data-sort="sekretariat">Sekretariat <span class="sort-arrow">↑</span></button>
-                  <button class="sort-pill" data-sort="status">Status <span class="sort-arrow">↑</span></button>
                 </div>
 
                 <!-- Search -->
@@ -609,6 +596,121 @@
       </div>
     </main>
 
+    <!-- Modal Form PJ Sekretariat-->
+    <div
+      class="modal fade"
+      id="formPJSModal"
+      tabindex="-1"
+      aria-labelledby="formPJSLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Form Penanggungjawab Sekretariat</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <span class="text-important">*) Wajib Diisi</span>
+              <div class="row">
+                <!-- Kolom Kiri -->
+                <div class="col-lg-8 col-md-6">
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Sekretariat <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>Yogyakarta</option>
+                        <option>Malang</option>
+                        <option>Madiun</option>
+                        <option>Semarang</option>
+                        <option>Purwokerto</option>
+                        <option>Bandung</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Nama Lengkap</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Katolik</option>
+                        <option>Hindu</option>
+                        <option>Buddha</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Email <sup class="text-important">*)</sup></label>
+                    <div class="col-sm-7">
+                      <input type="email" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >No. WhatsApp <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Status <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>Aktif</option>
+                        <option>Tidak Aktif</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Kolom Tengah (Foto) -->
+                <div class="col-lg-4 col-md-12 text-center">
+                  <div class="upload-box">
+                    <input type="file" accept="image/*" onchange="previewFoto(this)" />
+                    <div class="placeholder">
+                      <div><em>Foto Profil</em></div>
+                      <span>+</span>
+                    </div>
+                  </div>
+                  <small class="d-block mt-2 text-muted text-start text-important">
+                    *) Klik untuk mengubah foto<br />
+                    Foto wajib diisi, format JPEG, JPG, PNG, max 200Kb<br />
+                  </small>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Simpan
+            </button>
+            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Form PJ Sekretariat-->
+
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -622,8 +724,35 @@
       </small>
     </footer>
 
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+      <i class="bi bi-plus-lg text-center"></i>
+    </button>
+
+    <!-- Context Menu for Right-Click Actions -->
+    <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
+      <li>
+        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+          <i class="bi bi-pencil"></i> Edit
+        </a>
+      </li>
+      <li>
+        <a
+          class="dropdown-item"
+          href="#"
+          id="deleteAction"
+          onclick="deleteData(this.closest('#contextMenu').dataset.rowNama)"
+        >
+          <i class="bi bi-trash"></i> Hapus
+        </a>
+      </li>
+    </ul>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <!-- Sweet Alerts Js-->
+    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
     <script>
       const penanggujawabSekretariat = [
         {
@@ -633,7 +762,7 @@
           phone: '0854-XXXX-XXXX',
           email: 'andreas.dedi@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/men/1.jpg`,
         },
         {
           id: 'PJ-0002',
@@ -642,7 +771,7 @@
           phone: '0856-XXXX-XXXX',
           email: 'budi.santoso@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/men/2.jpg`,
         },
         {
           id: 'PJ-0003',
@@ -651,7 +780,7 @@
           phone: '0857-XXXX-XXXX',
           email: 'siti.aminah@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/women/1.jpg`,
         },
         {
           id: 'PJ-0004',
@@ -660,7 +789,7 @@
           phone: '0858-XXXX-XXXX',
           email: 'Ahmad.Rahman@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/men/4.jpg`,
         },
         {
           id: 'PJ-0005',
@@ -669,7 +798,7 @@
           phone: '0859-XXXX-XXXX',
           email: 'Dewi.Lestari@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/women/2.jpg`,
         },
         {
           id: 'PJ-0006',
@@ -678,22 +807,79 @@
           phone: '0860-XXXX-XXXX',
           email: 'Eko.Prasetyo@mail.com',
           status: 'Aktif',
-          foto: 'https://sianas.aat.or.id/assets/images/logo_AAT.png'
+          foto: `https://randomuser.me/api/portraits/men/5.jpg`,
+        },
+        {
+          id: 'PJ-0007',
+          name: 'Rina Sari',
+          sekretariat: 'Surabaya',
+          phone: '0861-XXXX-XXXX',
+          email: 'rina.sari@mail.com',
+          status: 'Pending',
+          foto: `https://randomuser.me/api/portraits/women/3.jpg`,
+        },
+        {
+          id: 'PJ-0008',
+          name: 'Joko Widodo',
+          sekretariat: 'Jakarta',
+          phone: '0862-XXXX-XXXX',
+          email: 'joko.widodo@mail.com',
+          status: 'Tidak Aktif',
+          foto: `https://randomuser.me/api/portraits/men/6.jpg`,
+        },
+        {
+          id: 'PJ-0009',
+          name: 'Maya Putri',
+          sekretariat: 'Medan',
+          phone: '0863-XXXX-XXXX',
+          email: 'maya.putri@mail.com',
+          status: 'Pending',
+          foto: `https://randomuser.me/api/portraits/women/4.jpg`,
+        },
+        {
+          id: 'PJ-0010',
+          name: 'Agus Setiawan',
+          sekretariat: 'Palembang',
+          phone: '0864-XXXX-XXXX',
+          email: 'agus.setiawan@mail.com',
+          status: 'Tidak Aktif',
+          foto: `https://randomuser.me/api/portraits/men/7.jpg`,
+        },
+        {
+          id: 'PJ-0011',
+          name: 'Lina Marlina',
+          sekretariat: 'Makassar',
+          phone: '0865-XXXX-XXXX',
+          email: 'lina.marlina@mail.com',
+          status: 'Aktif',
+          foto: `https://randomuser.me/api/portraits/women/5.jpg`,
+        },
+        {
+          id: 'PJ-0012',
+          name: 'Dedi Kusuma',
+          sekretariat: 'Bali',
+          phone: '0866-XXXX-XXXX',
+          email: 'dedi.kusuma@mail.com',
+          status: 'Pending',
+          foto: `https://randomuser.me/api/portraits/men/8.jpg`,
         },
       ];
 
       function generateSekretariatCard(data) {
+        let badgeClass = 'bg-success';
+        if (data.status === 'Pending') badgeClass = 'bg-warning';
+        else if (data.status === 'Tidak Aktif') badgeClass = 'bg-danger';
         return `
           <div class="col-12 col-sm-6 col-lg-4">
-            <div class="list-card shadow p-3" data-name="${data.name}">
+            <div class="list-card shadow p-3" data-name="${data.name}" data-status="${data.status}">
               <div class="row g-3 align-items-start">
                 <!-- FOTO -->
                 <div class="col-12 col-md-4 text-center">
                   <img
                     src="${data.foto}"
-                    class="list-img list-img-mobile img-fluid"
+                    class="list-img list-img-mobile rounded"
                     alt="Foto"
-                  />
+                  /><span class="badge ${badgeClass}"> ${data.status}</span>
                 </div>
 
                 <!-- DETAIL -->
@@ -706,7 +892,6 @@
                   <div class="list-info">Sekretariat: ${data.sekretariat}</div>
                   <div class="list-info">${data.phone}</div>
                   <div class="list-info">${data.email}</div>
-                  <div class="list-info">${data.status}</div>
                 </div>
               </div>
             </div>
@@ -719,6 +904,7 @@
       const clearSearchBtn = document.getElementById('clearSearchBtn');
       const pagination = document.getElementById('pagination');
       const sortPills = document.querySelectorAll('.sort-pill');
+      const statusCheckboxes = document.querySelectorAll('.status');
 
       let perPage = 6;
       let currentPage = 1;
@@ -727,6 +913,11 @@
 
       function renderSekretariat() {
         const searchTerm = searchInput.value.toLowerCase();
+
+        // Get selected status filters
+        const selectedStatuses = Array.from(statusCheckboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.value);
 
         // Filter by search
         let filtered = penanggujawabSekretariat.filter(
@@ -738,13 +929,16 @@
             s.status.toLowerCase().includes(searchTerm)
         );
 
+        // Filter by status
+        if (selectedStatuses.length > 0) {
+          filtered = filtered.filter(s => selectedStatuses.includes(s.status));
+        }
+
         // Sorting logic
-        if (sortBy === 'nama') {
+        if (sortBy === 'id') {
+          filtered.sort((a, b) => (sortDir === 'asc' ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id)));
+        } else if (sortBy === 'nama') {
           filtered.sort((a, b) => (sortDir === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)));
-        } else if (sortBy === 'sekretariat') {
-          filtered.sort((a, b) => (sortDir === 'asc' ? a.sekretariat.localeCompare(b.sekretariat) : b.sekretariat.localeCompare(a.sekretariat)));
-        } else if (sortBy === 'status') {
-          filtered.sort((a, b) => (sortDir === 'asc' ? a.status.localeCompare(b.status) : b.status.localeCompare(a.status)));
         }
 
         const totalPages = Math.ceil(filtered.length / perPage);
@@ -799,6 +993,14 @@
         searchInput.value = '';
         currentPage = 1;
         renderSekretariat();
+      });
+
+      // Event listeners for status checkboxes
+      statusCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          currentPage = 1;
+          renderSekretariat();
+        });
       });
 
       window.addEventListener('resize', renderSekretariat);
