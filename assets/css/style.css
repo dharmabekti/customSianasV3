@@ -7,6 +7,7 @@
   --aat-white: #fff;
   --aat-grey: #feeebd;
   --aat-orange: #fece2f;
+  --aat-blue: #4a84e5;
 
   /* Ubah nilai berikut untuk kustomisasi global */
   --ft-10: 10px;
@@ -2554,7 +2555,7 @@ h3.page-title {
 .list-card {
   padding: 12px;
   border-radius: 10px;
-  border-left: 5px solid #4a84e5;
+  border-left: 5px solid var(--aat-blue);
   transition: 0.2s;
   height: auto; /* Hindari fixed height */
 }
@@ -2608,7 +2609,7 @@ h3.page-title {
 .list-name a {
   font-size: 14px;
   font-weight: 700;
-  color: #0060d3;
+  color: var(--aat-blue);
   text-decoration: none;
 }
 

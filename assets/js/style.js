@@ -492,34 +492,49 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ================================
-  // DESKTOP: Right-click <tr>
+  // DESKTOP: Right-click <tr> or .list-card
   // ================================
   document.addEventListener('contextmenu', e => {
     if (isMobile) return e.preventDefault();
 
     const row = e.target.closest('tr');
-    if (!row || !row.closest('.dataTable')) return;
+    const card = e.target.closest('.list-card');
 
-    e.preventDefault();
-    showMenuAtEventPos(e.pageX, e.pageY, row);
+    if (row && row.closest('.dataTable')) {
+      e.preventDefault();
+      showMenuAtEventPos(e.pageX, e.pageY, row);
+    } else if (card) {
+      e.preventDefault();
+      showMenuAtEventPos(e.pageX, e.pageY, card);
+    }
   });
 
   // ================================
-  // MOBILE: Long press <tr>
+  // MOBILE: Long press <tr> or .list-card
   // ================================
   document.addEventListener('touchstart', e => {
     if (!isMobile) return;
 
     const row = e.target.closest('tr');
-    if (!row || !row.closest('.dataTable')) return;
+    const card = e.target.closest('.list-card');
 
-    const t = e.touches[0];
-    row.dataset.startX = t.clientX;
-    row.dataset.startY = t.clientY;
+    if (row && row.closest('.dataTable')) {
+      const t = e.touches[0];
+      row.dataset.startX = t.clientX;
+      row.dataset.startY = t.clientY;
 
-    longPressTimer = setTimeout(() => {
-      showMenuAtEventPos(t.pageX, t.pageY, row);
-    }, 550); // long press 0.55s
+      longPressTimer = setTimeout(() => {
+        showMenuAtEventPos(t.pageX, t.pageY, row);
+      }, 550); // long press 0.55s
+    } else if (card) {
+      const t = e.touches[0];
+      card.dataset.startX = t.clientX;
+      card.dataset.startY = t.clientY;
+
+      longPressTimer = setTimeout(() => {
+        showMenuAtEventPos(t.pageX, t.pageY, card);
+      }, 550); // long press 0.55s
+    }
   });
 
   document.addEventListener('touchmove', e => {

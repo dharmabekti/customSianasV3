@@ -424,7 +424,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="#" id="deleteAction">
+        <a class="dropdown-item" href="#" id="deleteAction" onclick="deleteData(this.closest('#contextMenu').dataset.rowNama)">
           <i class="bi bi-trash"></i> Hapus
         </a>
       </li>
@@ -491,7 +491,7 @@
       function generateSekretariatCard(data) {
         return `
           <div class="col-12 col-sm-6 col-lg-4">
-            <div class="list-card shadow p-3">
+            <div class="list-card shadow p-3" data-nama="${data.name}">
               <div class="row g-3 align-items-start">
                 <!-- FOTO -->
                 <div class="col-12 col-md-4 text-center">
@@ -618,6 +618,15 @@
 
       window.addEventListener('resize', renderSekretariat);
       renderSekretariat();
+
+      // Delete Data Action
+      function deleteData(nama) {
+        swal_confirm('Konfirmasi', `Yakin ingin menghapus ${nama}?`, 'warning').then(result => {
+          if (result.isConfirmed) {
+            swal_alert('Berhasil', `${nama} berhasil dihapus!`, 'success');
+          }
+        });
+      }
     </script>
   </body>
 </html>
