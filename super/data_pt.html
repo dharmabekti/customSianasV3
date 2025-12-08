@@ -600,12 +600,102 @@
       </div>
     </main>
 
-    <!-- Modal Form PJ Sekretariat-->
+    <!-- Modal Detail PT -->
+    <div
+      class="modal fade"
+      id="detailPTModal"
+      tabindex="-1"
+      aria-labelledby="formPTLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Pendidikan Tinggi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="row align-items-center">
+              <!-- Logo Komunitas -->
+              <div class="col-12 col-md-4 text-center mb-3 mb-md-0">
+                <img
+                  src="../assets/img/university.png"
+                  alt="Logo Komunitas"
+                  class="img-fluid shadow-sm"
+                  style="height: 150px; width: 150px"
+                />
+              </div>
+
+              <!-- Info Singkat -->
+              <div class="col-12 col-md-8">
+                <div class="table-responsive">
+                  <table
+                    class="table table-borderless mb-0 list-table no-mobile-hide"
+                    style="width: 100%; text-align: left"
+                  >
+                    <tbody>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal" style="width: 30%">
+                          <i class="bi bi-hash me-2 text-secondary"></i> Kode Komunitas
+                        </th>
+                        <td class="text-dark" data-label="Kode Komunitas">KOM-001</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-building me-2 text-secondary"></i> Nama PT
+                        </th>
+                        <td class="text-dark" data-label="Nama PT">Pendidikan Tinggi Terbaik</td>
+                      </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-geo-alt-fill me-2 text-secondary"></i> Alamat
+                        </th>
+                        <td class="text-dark" data-label="Alamat">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                      </tr>
+                      <tr class="border-bottom">
+                        <th class="text-muted fw-normal" style="width: 180px">
+                          <i class="bi bi-envelope me-2 text-secondary"></i> Email
+                        </th>
+                        <td class="text-dark" data-label="Email">ptterbaik@mail.com</td>
+                      </tr>
+                      <tr class="border-bottom">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-telephone me-2 text-secondary"></i> No. Telp
+                        </th>
+                        <td class="text-dark" data-label="No. Telp">(027X)-XXXX-XXXX</td>
+                      </tr>
+                      <tr class="border-bottom">
+                        <th class="text-muted fw-normal">
+                          <i class="bi bi-flag me-2 text-secondary"></i> Status
+                        </th>
+                        <td class="text-dark" data-label="Status"><span class="badge bg-success">Aktif</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end d-flex flex-nowrap">
+            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail PT -->
+
+    <!-- Modal Form PT -->
     <div
       class="modal fade"
       id="formPTModal"
       tabindex="-1"
-      aria-labelledby="formPJSLabel"
+      aria-labelledby="formPTLabel"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -640,7 +730,9 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Nama Pendidikan Tinggi <sup class="text-important">*)</sup></label>
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Nama Pendidikan Tinggi <sup class="text-important">*)</sup></label
+                    >
                     <div class="col-sm-7">
                       <input type="text" class="form-control form-control-sm" />
                     </div>
@@ -652,10 +744,15 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">No. Telp <sup class="text-important">*)</sup></label>
+                    <label class="col-sm-5 col-form-label form-label"
+                      >No. Telp <sup class="text-important">*)</sup></label
+                    >
                     <div class="col-sm-7">
                       <input type="text" class="form-control form-control-sm" />
                     </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Alamat Pendidikan Tinggi</label>
                   </div>
                   <div class="mb-2 row">
                     <label class="col-sm-5 col-form-label form-label"
@@ -684,7 +781,7 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Jalan</label>
+                    <label class="col-sm-5 col-form-label form-label">Jalan <sup class="text-important">*)</sup></label>
                     <div class="col-sm-7">
                       <textarea type="text" class="form-control form-control-sm" rows="3"></textarea>
                     </div>
@@ -720,7 +817,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal Form PJ Sekretariat-->
+    <!-- Modal Form PT -->
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -743,7 +840,7 @@
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPTModal">
+        <a class="dropdown-item" href="#" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailPTModal">
           <i class="bi bi-info"></i> Detail
         </a>
       </li>
@@ -753,7 +850,7 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPTModal">
+        <a class="dropdown-item" href="#" id="setKenaikanAction" data-bs-toggle="modal" data-bs-target="#setKenaikanModal">
           <i class="bi bi-layers-half"></i> Set Kenaikan
         </a>
       </li>
@@ -783,7 +880,9 @@
         const id = `UNIV-${String(i).padStart(4, '0')}`;
         const nama = `Universitas ${i}`;
         const sekretariat = sekretariatList[(i - 1) % sekretariatList.length];
-        const phone = `(${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}) ${String(Math.floor(Math.random() * 10000000)).padStart(7, '0')}`;
+        const phone = `(${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}) ${String(
+          Math.floor(Math.random() * 10000000)
+        ).padStart(7, '0')}`;
         const email = `info@univ${i}.ac.id`;
         const status = statusList[Math.floor(Math.random() * statusList.length)];
         const foto = '../assets/img/university.png';
@@ -884,8 +983,9 @@
         }
 
         // Get selected sekretariat filters
-        const selectedSekretariats = Array.from(document.querySelectorAll('.sekretariat:checked'))
-          .map(checkbox => checkbox.value);
+        const selectedSekretariats = Array.from(document.querySelectorAll('.sekretariat:checked')).map(
+          checkbox => checkbox.value
+        );
 
         // Filter by sekretariat
         if (selectedSekretariats.length > 0) {

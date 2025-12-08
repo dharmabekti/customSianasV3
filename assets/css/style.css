@@ -2065,6 +2065,11 @@ h3.page-title {
   border-radius: 8px;
 }
 
+.badge {
+  display: inline-block; /* atau inline-flex */
+  width: auto;           /* hilangkan full width */
+}
+
 /* Floating badge */
 .ft-badge {
   position: absolute;
