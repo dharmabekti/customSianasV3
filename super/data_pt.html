@@ -6,7 +6,6 @@
     <title>Responsive Admin Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
@@ -265,7 +264,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Penanggungjawab Sekretariat</span>
+        <span class="navbar-brand mx-auto">Data Pendidikan Tinggi</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -520,7 +519,7 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Penanggungjawab Sekretariat</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Data Pendidikan Tinggi</h3>
       <div class="container-fluid form-wrapper">
         <div class="row g-4">
           <!-- Kolom kiri -->
@@ -540,6 +539,11 @@
             </div>
             <div id="filterCollapse" class="collapse d-md-block mt-3">
               <div class="filter-section shadow-sm">
+                <label class="form-label fw-bold">Sekretariat</label>
+                <div id="filterSekretariat">
+                  <!-- Dynamic sekretariat filters will be generated here -->
+                </div>
+
                 <label class="form-label fw-bold">Status</label>
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
@@ -575,7 +579,7 @@
                       type="text"
                       id="searchInput"
                       class="form-control form-control-sm"
-                      placeholder="Cari sekretariat..."
+                      placeholder="Cari universitas..."
                     />
                     <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
                       <i class="bi bi-x text-body"></i>
@@ -599,7 +603,7 @@
     <!-- Modal Form PJ Sekretariat-->
     <div
       class="modal fade"
-      id="formPJSModal"
+      id="formPTModal"
       tabindex="-1"
       aria-labelledby="formPJSLabel"
       aria-hidden="true"
@@ -610,7 +614,7 @@
       <div class="modal-dialog modal-dialog-centered modal-wide">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Form Penanggungjawab Sekretariat</h5>
+            <h5 class="modal-title">Form Pendidikan Tinggi</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -636,21 +640,9 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Nama Lengkap <sup class="text-important">*)</sup></label>
+                    <label class="col-sm-5 col-form-label form-label">Nama Pendidikan Tinggi <sup class="text-important">*)</sup></label>
                     <div class="col-sm-7">
                       <input type="text" class="form-control form-control-sm" />
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Hindu</option>
-                        <option>Buddha</option>
-                      </select>
                     </div>
                   </div>
                   <div class="mb-2 row">
@@ -660,33 +652,41 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">
-                      No HP/WhatsApp <sup class="text-important">*)</sup>
-                    </label>
-
-                    <!-- Select + Input dalam satu baris -->
+                    <label class="col-sm-5 col-form-label form-label">No. Telp <sup class="text-important">*)</sup></label>
                     <div class="col-sm-7">
-                      <div class="row g-2">
-                        <div class="col-6">
-                          <select class="form-control form-control-sm" required>
-                            <option value="62">(+62) Indonesia</option>
-                          </select>
-                        </div>
-                        <div class="col-6">
-                          <input type="text" class="form-control form-control-sm" placeholder="812xxxxxxx" required />
-                        </div>
-                      </div>
+                      <input type="text" class="form-control form-control-sm" />
                     </div>
                   </div>
                   <div class="mb-2 row">
                     <label class="col-sm-5 col-form-label form-label"
-                      >Status <sup class="text-important">*)</sup></label
+                      >Provinsi <sup class="text-important">*)</sup></label
                     >
                     <div class="col-sm-7">
                       <select class="form-select form-select-sm">
-                        <option>Aktif</option>
-                        <option>Tidak Aktif</option>
+                        <option>== Pilih Provinsi ==</option>
                       </select>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Kabupaten/Kota <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>== Pilih Kabupaten/Kota ==</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Kode Pos</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">Jalan</label>
+                    <div class="col-sm-7">
+                      <textarea type="text" class="form-control form-control-sm" rows="3"></textarea>
                     </div>
                   </div>
                 </div>
@@ -701,7 +701,7 @@
                     </div>
                   </div>
                   <small class="d-block mt-2 text-muted text-start text-important">
-                    *) Klik untuk mengubah foto<br />
+                    *) Klik untuk mengubah logo<br />
                     Foto wajib diisi, format JPEG, JPG, PNG, max 200Kb<br />
                   </small>
                 </div>
@@ -736,15 +736,25 @@
     </footer>
 
     <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPTModal">
       <i class="bi bi-plus-lg text-center"></i>
     </button>
 
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPTModal">
+          <i class="bi bi-info"></i> Detail
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPTModal">
           <i class="bi bi-pencil"></i> Edit
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPTModal">
+          <i class="bi bi-layers-half"></i> Set Kenaikan
         </a>
       </li>
       <li>
@@ -765,124 +775,37 @@
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
     <script>
-      const penanggujawabSekretariat = [
-        {
-          id: 'PJ-0001',
-          name: 'Andreas Deddie A. (Gareng)',
-          sekretariat: 'Yogyakarta',
-          phone: '0854-XXXX-XXXX',
-          email: 'andreas.dedi@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/1.jpg`,
-        },
-        {
-          id: 'PJ-0002',
-          name: 'Budi Santoso',
-          sekretariat: 'Purwokerto',
-          phone: '0856-XXXX-XXXX',
-          email: 'budi.santoso@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/2.jpg`,
-        },
-        {
-          id: 'PJ-0003',
-          name: 'Siti Aminah',
-          sekretariat: 'Madiun',
-          phone: '0857-XXXX-XXXX',
-          email: 'siti.aminah@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/1.jpg`,
-        },
-        {
-          id: 'PJ-0004',
-          name: 'Ahmad Rahman',
-          sekretariat: 'Bandung',
-          phone: '0858-XXXX-XXXX',
-          email: 'Ahmad.Rahman@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/4.jpg`,
-        },
-        {
-          id: 'PJ-0005',
-          name: 'Dewi Lestari',
-          sekretariat: 'Malang',
-          phone: '0859-XXXX-XXXX',
-          email: 'Dewi.Lestari@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/2.jpg`,
-        },
-        {
-          id: 'PJ-0006',
-          name: 'Eko Prasetyo',
-          sekretariat: 'Semarang',
-          phone: '0860-XXXX-XXXX',
-          email: 'Eko.Prasetyo@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/5.jpg`,
-        },
-        {
-          id: 'PJ-0007',
-          name: 'Rina Sari',
-          sekretariat: 'Surabaya',
-          phone: '0861-XXXX-XXXX',
-          email: 'rina.sari@mail.com',
-          status: 'Pending',
-          foto: `https://randomuser.me/api/portraits/women/3.jpg`,
-        },
-        {
-          id: 'PJ-0008',
-          name: 'Joko Widodo',
-          sekretariat: 'Jakarta',
-          phone: '0862-XXXX-XXXX',
-          email: 'joko.widodo@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/men/6.jpg`,
-        },
-        {
-          id: 'PJ-0009',
-          name: 'Maya Putri',
-          sekretariat: 'Medan',
-          phone: '0863-XXXX-XXXX',
-          email: 'maya.putri@mail.com',
-          status: 'Pending',
-          foto: `https://randomuser.me/api/portraits/women/4.jpg`,
-        },
-        {
-          id: 'PJ-0010',
-          name: 'Agus Setiawan',
-          sekretariat: 'Palembang',
-          phone: '0864-XXXX-XXXX',
-          email: 'agus.setiawan@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/men/7.jpg`,
-        },
-        {
-          id: 'PJ-0011',
-          name: 'Lina Marlina',
-          sekretariat: 'Makassar',
-          phone: '0865-XXXX-XXXX',
-          email: 'lina.marlina@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/5.jpg`,
-        },
-        {
-          id: 'PJ-0012',
-          name: 'Dedi Kusuma',
-          sekretariat: 'Bali',
-          phone: '0866-XXXX-XXXX',
-          email: 'dedi.kusuma@mail.com',
-          status: 'Pending',
-          foto: `https://randomuser.me/api/portraits/men/8.jpg`,
-        },
-      ];
+      const universitas = [];
+      const sekretariatList = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'];
+      const statusList = ['Aktif', 'Pending', 'Tidak Aktif'];
 
-      function generateSekretariatCard(data) {
+      for (let i = 1; i <= 20; i++) {
+        const id = `UNIV-${String(i).padStart(4, '0')}`;
+        const nama = `Universitas ${i}`;
+        const sekretariat = sekretariatList[(i - 1) % sekretariatList.length];
+        const phone = `(${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}) ${String(Math.floor(Math.random() * 10000000)).padStart(7, '0')}`;
+        const email = `info@univ${i}.ac.id`;
+        const status = statusList[Math.floor(Math.random() * statusList.length)];
+        const foto = '../assets/img/university.png';
+
+        universitas.push({
+          id,
+          nama,
+          sekretariat,
+          phone,
+          email,
+          status,
+          foto,
+        });
+      }
+
+      function generateUniversitasCard(data) {
         let badgeClass = 'bg-success';
         if (data.status === 'Pending') badgeClass = 'bg-warning';
         else if (data.status === 'Tidak Aktif') badgeClass = 'bg-danger';
         return `
           <div class="col-12 col-sm-6 col-lg-4">
-            <div class="list-card shadow p-3" data-name="${data.name}" data-status="${data.status}">
+            <div class="list-card shadow p-3" data-name="${data.nama}" data-status="${data.status}">
               <div class="row g-3 align-items-start">
                 <!-- FOTO -->
                 <div class="col-12 col-md-4 text-center">
@@ -890,19 +813,20 @@
                     src="${data.foto}"
                     class="list-img list-img-mobile rounded"
                     alt="Foto"
-                  /><span class="badge ${badgeClass}"> ${data.status}</span>
+                  />
                 </div>
 
                 <!-- DETAIL -->
                 <div class="col-12 col-md-8 detail-card-section">
                   <div class="list-name">
-                    <a href="#">${data.name}</a>
+                    <a href="#">${data.nama}</a>
                   </div>
 
                   <div class="list-info">ID: ${data.id}</div>
                   <div class="list-info">Sekretariat: ${data.sekretariat}</div>
                   <div class="list-info">${data.phone}</div>
                   <div class="list-info">${data.email}</div>
+                  <span class="badge ${badgeClass}"> ${data.status}</span>
                 </div>
               </div>
             </div>
@@ -910,7 +834,7 @@
         `;
       }
 
-      const sekretariatGrid = document.getElementById('childGrid');
+      const universitasGrid = document.getElementById('childGrid');
       const searchInput = document.getElementById('searchInput');
       const clearSearchBtn = document.getElementById('clearSearchBtn');
       const pagination = document.getElementById('pagination');
@@ -922,7 +846,21 @@
       let sortBy = 'nama'; // default sort by nama
       let sortDir = 'asc'; // default ascending
 
-      function renderSekretariat() {
+      // Generate dynamic sekretariat filters
+      function generateSekretariatFilters() {
+        const filterSekretariat = document.getElementById('filterSekretariat');
+        sekretariatList.forEach(sekretariat => {
+          const div = document.createElement('div');
+          div.className = 'form-check';
+          div.innerHTML = `
+            <input class="form-check-input sekretariat" type="checkbox" value="${sekretariat}" id="${sekretariat.toLowerCase()}" />
+            <label class="form-check-label" for="${sekretariat.toLowerCase()}">${sekretariat}</label>
+          `;
+          filterSekretariat.appendChild(div);
+        });
+      }
+
+      function renderUniversitas() {
         const searchTerm = searchInput.value.toLowerCase();
 
         // Get selected status filters
@@ -931,9 +869,9 @@
           .map(checkbox => checkbox.value);
 
         // Filter by search
-        let filtered = penanggujawabSekretariat.filter(
+        let filtered = universitas.filter(
           s =>
-            s.name.toLowerCase().includes(searchTerm) ||
+            s.nama.toLowerCase().includes(searchTerm) ||
             s.sekretariat.toLowerCase().includes(searchTerm) ||
             s.email.toLowerCase().includes(searchTerm) ||
             s.phone.toLowerCase().includes(searchTerm) ||
@@ -945,11 +883,20 @@
           filtered = filtered.filter(s => selectedStatuses.includes(s.status));
         }
 
+        // Get selected sekretariat filters
+        const selectedSekretariats = Array.from(document.querySelectorAll('.sekretariat:checked'))
+          .map(checkbox => checkbox.value);
+
+        // Filter by sekretariat
+        if (selectedSekretariats.length > 0) {
+          filtered = filtered.filter(s => selectedSekretariats.includes(s.sekretariat));
+        }
+
         // Sorting logic
         if (sortBy === 'id') {
           filtered.sort((a, b) => (sortDir === 'asc' ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id)));
         } else if (sortBy === 'nama') {
-          filtered.sort((a, b) => (sortDir === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)));
+          filtered.sort((a, b) => (sortDir === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)));
         }
 
         const totalPages = Math.ceil(filtered.length / perPage);
@@ -958,11 +905,11 @@
         const start = (currentPage - 1) * perPage;
         const paginated = filtered.slice(start, start + perPage);
 
-        sekretariatGrid.innerHTML = paginated.map(s => generateSekretariatCard(s)).join('');
+        universitasGrid.innerHTML = paginated.map(s => generateUniversitasCard(s)).join('');
 
         createPagination(pagination, totalPages, currentPage, newPage => {
           currentPage = newPage;
-          renderSekretariat();
+          renderUniversitas();
         });
       }
 
@@ -991,31 +938,42 @@
             }
           });
           currentPage = 1;
-          renderSekretariat();
+          renderUniversitas();
         });
       });
 
       searchInput.addEventListener('input', () => {
         currentPage = 1;
-        renderSekretariat();
+        renderUniversitas();
       });
 
       clearSearchBtn.addEventListener('click', () => {
         searchInput.value = '';
         currentPage = 1;
-        renderSekretariat();
+        renderUniversitas();
       });
 
       // Event listeners for status checkboxes
       statusCheckboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
           currentPage = 1;
-          renderSekretariat();
+          renderUniversitas();
         });
       });
 
-      window.addEventListener('resize', renderSekretariat);
-      renderSekretariat();
+      window.addEventListener('resize', renderUniversitas);
+      generateSekretariatFilters();
+
+      // Event listeners for sekretariat checkboxes (added after generating filters)
+      const sekretariatCheckboxes = document.querySelectorAll('.sekretariat');
+      sekretariatCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+          currentPage = 1;
+          renderUniversitas();
+        });
+      });
+
+      renderUniversitas();
 
       // Delete Data Action
       function deleteData(nama) {
