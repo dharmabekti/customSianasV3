@@ -622,7 +622,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('show.bs.modal', () => {
-    contextMenu.style.display = 'none';
+    const contextMenu = document.getElementById('contextMenu');
+    if (contextMenu) {
+      contextMenu.style.display = 'none';
+    }
   });
 });
 

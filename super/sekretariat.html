@@ -536,7 +536,12 @@
               <!-- Search -->
               <div class="col-12 col-md">
                 <div class="input-group input-group-sm">
-                  <input type="text" id="searchInput" class="form-control form-control-sm" placeholder="Cari sekretariat..." />
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control form-control-sm"
+                    placeholder="Cari sekretariat..."
+                  />
                   <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
                     <i class="bi bi-x text-body"></i>
                   </button>
@@ -550,6 +555,9 @@
             <div class="d-flex justify-content-center mt-3">
               <nav><ul class="pagination" id="pagination"></ul></nav>
             </div>
+            <span class="text-danger fw-italic m-2 d-none d-lg-block"
+              >Klik kanan mouse untuk memunculkan menu aksi</span
+            >
           </div>
         </div>
       </div>
@@ -663,7 +671,12 @@
         </a>
       </li>
       <li>
-        <a class="dropdown-item" href="#" id="deleteAction" onclick="deleteData(this.closest('#contextMenu').dataset.rowNama)">
+        <a
+          class="dropdown-item"
+          href="#"
+          id="deleteAction"
+          onclick="deleteData(this.closest('#contextMenu').dataset.rowNama)"
+        >
           <i class="bi bi-trash"></i> Hapus
         </a>
       </li>
@@ -678,53 +691,53 @@
     <script>
       const sekretariatData = [
         {
-          name: "Sekretariat Yogyakarta",
-          email: "sekrejogja@mail.com",
-          pj: "Andreas Deddie A. (Gareng)",
-          phone: "0854-XXXX-XXXX",
+          name: 'Sekretariat Yogyakarta',
+          email: 'sekrejogja@mail.com',
+          pj: 'Andreas Deddie A. (Gareng)',
+          phone: '0854-XXXX-XXXX',
           schools: 25,
-          anak_asuh: 505
+          anak_asuh: 505,
         },
         {
-          name: "Sekretariat Purwokerto",
-          email: "sekrepurwokerto@mail.com",
-          pj: "Budi Santoso (Purwokerto)",
-          phone: "0856-XXXX-XXXX",
+          name: 'Sekretariat Purwokerto',
+          email: 'sekrepurwokerto@mail.com',
+          pj: 'Budi Santoso (Purwokerto)',
+          phone: '0856-XXXX-XXXX',
           schools: 18,
-          anak_asuh: 350
+          anak_asuh: 350,
         },
         {
-          name: "Sekretariat Madiun",
-          email: "sekremadiun@mail.com",
-          pj: "Siti Aminah (Madiun)",
-          phone: "0857-XXXX-XXXX",
+          name: 'Sekretariat Madiun',
+          email: 'sekremadiun@mail.com',
+          pj: 'Siti Aminah (Madiun)',
+          phone: '0857-XXXX-XXXX',
           schools: 22,
-          anak_asuh: 450
+          anak_asuh: 450,
         },
         {
-          name: "Sekretariat Bandung",
-          email: "sekrebandung@mail.com",
-          pj: "Ahmad Rahman (Bandung)",
-          phone: "0858-XXXX-XXXX",
+          name: 'Sekretariat Bandung',
+          email: 'sekrebandung@mail.com',
+          pj: 'Ahmad Rahman (Bandung)',
+          phone: '0858-XXXX-XXXX',
           schools: 30,
-          anak_asuh: 600
+          anak_asuh: 600,
         },
         {
-          name: "Sekretariat Malang",
-          email: "sekremalang@mail.com",
-          pj: "Dewi Lestari (Malang)",
-          phone: "0859-XXXX-XXXX",
+          name: 'Sekretariat Malang',
+          email: 'sekremalang@mail.com',
+          pj: 'Dewi Lestari (Malang)',
+          phone: '0859-XXXX-XXXX',
           schools: 28,
-          anak_asuh: 550
+          anak_asuh: 550,
         },
         {
-          name: "Sekretariat Semarang",
-          email: "sekresemarang@mail.com",
-          pj: "Eko Prasetyo (Semarang)",
-          phone: "0860-XXXX-XXXX",
+          name: 'Sekretariat Semarang',
+          email: 'sekresemarang@mail.com',
+          pj: 'Eko Prasetyo (Semarang)',
+          phone: '0860-XXXX-XXXX',
           schools: 26,
-          anak_asuh: 520
-        }
+          anak_asuh: 520,
+        },
       ];
 
       function generateSekretariatCard(data) {
@@ -764,7 +777,6 @@
           </div>
         `;
       }
-      
 
       const sekretariatGrid = document.getElementById('childGrid');
       const searchInput = document.getElementById('searchInput');
@@ -803,11 +815,7 @@
         const start = (currentPage - 1) * perPage;
         const paginated = filtered.slice(start, start + perPage);
 
-        sekretariatGrid.innerHTML = paginated
-          .map(
-            s => generateSekretariatCard(s)
-          )
-          .join('');
+        sekretariatGrid.innerHTML = paginated.map(s => generateSekretariatCard(s)).join('');
 
         createPagination(pagination, totalPages, currentPage, newPage => {
           currentPage = newPage;
