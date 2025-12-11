@@ -1971,7 +1971,7 @@ h3.page-title {
 /* Mobile: rata tengah */
 @media (max-width: 576px) {
   .detail-card-section {
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -2571,7 +2571,7 @@ h3.page-title {
 /* Foto */
 .list-img {
   width: 100%;
-  height: 90px;
+  height: 100px;
   object-fit: cover;
   border-radius: 10px;
   /* padding-right: 10px; */
@@ -2579,39 +2579,30 @@ h3.page-title {
 
 /* --- MOBILE FIX --- */
 @media (max-width: 767px) {
-  .list-card {
-    height: 100% !important; /* sesuaikan dengan list-card tertinggi */
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
   .list-img {
     display: none;
   }
 
   /* Pengecualian: jika ada class list-img-mobile → tampil */
-
   .list-img.list-img-mobile {
-    height: 100px !important;
-    width: 100px !important;
+    height: 90px !important;
+    width: 100% !important;
     display: block !important;
-    margin-left: auto;
-    margin-right: auto;
     object-fit: cover;
   }
 
-  .list-card .d-flex.flex-column.flex-md-row {
-    flex-direction: column !important; /* foto ke atas, data ke bawah */
+  /* Adjust font sizes for neater mobile display */
+  .list-name a {
+    font-size: 12px !important;
   }
 
-  .list-card .col-md-4,
-  .list-card .col-md-8 {
-    width: 100% !important; /* full width */
+  .list-info {
+    font-size: 11px !important;
   }
 
   .badges-left,
   .badges-right {
-    font-size: 13px;
+    font-size: 11px !important;
   }
 
   .d-flex.justify-content-between {
