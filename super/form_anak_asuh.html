@@ -11,6 +11,9 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Select2 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -263,7 +266,7 @@
         <button class="btn btn-outline-light" type="button" onclick="history.back()">
           <i class="bi bi-arrow-left"></i>
         </button>
-        <span class="navbar-brand mx-auto">Form BPT</span>
+        <span class="navbar-brand mx-auto">Form Anak Asuh</span>
       </div>
     </nav>
 
@@ -271,26 +274,30 @@
     <div class="mobile-bottom-hide"></div>
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Form BPT</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Form Anak Asuh</h3>
       <div class="container form-wrapper">
         <form>
           <span class="text-important">*) Wajib Diisi</span>
           <div class="row">
             <!-- Kolom Kiri -->
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-5 col-md-6">
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label"
-                  >Sekretariat <sup class="text-important">*)</sup></label
+                  >Komunitas/Sekolah <sup class="text-important">*)</sup></label
                 >
                 <div class="col-sm-7">
-                  <select class="form-select form-select-sm">
-                    <option>Pilih Sekretariat</option>
-                    <option>Yogyakarta</option>
-                    <option>Semarang</option>
-                    <option>Purwokerto</option>
-                    <option>Madiun</option>
-                    <option>Malang</option>
-                    <option>Bandung</option>
+                  <select class="form-select form-select-sm select2">
+                    <option>== Pilih Sekolah ==</option>
+                    <option>SMA Negeri 1 Yogyakarta</option>
+                    <option>SMA Negeri 2 Yogyakarta</option>
+                    <option>SMA Negeri 3 Yogyakarta</option>
+                    <option>SMA Negeri 4 Yogyakarta</option>
+                    <option>SMA Negeri 5 Yogyakarta</option>
+                    <option>SMA Negeri 6 Yogyakarta</option>
+                    <option>SMA Negeri 7 Yogyakarta</option>
+                    <option>SMA Negeri 8 Yogyakarta</option>
+                    <option>SMA Negeri 9 Yogyakarta</option>
+                    <option>SMA Negeri 10 Yogyakarta</option>
                   </select>
                 </div>
               </div>
@@ -303,6 +310,12 @@
                 </div>
               </div>
               <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">NISN <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" required />
+                </div>
+              </div>
+              <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label"
                   >Jenis Kelamin <sup class="text-important">*)</sup></label
                 >
@@ -310,6 +323,18 @@
                   <select class="form-select form-select-sm">
                     <option>Laki-laki</option>
                     <option>Perempuan</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7">
+                  <select class="form-select form-select-sm">
+                    <option>Islam</option>
+                    <option>Kristen</option>
+                    <option>Katolik</option>
+                    <option>Hindu</option>
+                    <option>Buddha</option>
                   </select>
                 </div>
               </div>
@@ -330,19 +355,37 @@
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
+                <label class="col-sm-5 col-form-label form-label"
+                  >Kelas Saat Beasiswa Aktif <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-7">
                   <select class="form-select form-select-sm">
-                    <option>Islam</option>
-                    <option>Kristen</option>
-                    <option>Katolik</option>
-                    <option>Hindu</option>
-                    <option>Buddha</option>
+                    <option>== Pilih Kelas ==</option>
+                    <option>SD 1</option>
+                    <option>SD 2</option>
+                    <option>SD 3</option>
+                    <option>SD 4</option>
+                    <option>SD 5</option>
+                    <option>SD 6</option>
+                    <option>SMP 7</option>
+                    <option>SMP 8</option>
+                    <option>SMP 9</option>
+                    <option>SMA 10</option>
+                    <option>SMA 11</option>
+                    <option>SMA 12</option>
                   </select>
                 </div>
               </div>
               <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Alamat Domisili:</label>
+                <label class="col-sm-5 col-form-label form-label">Alamat Tinggal</label>
+                <div class="col-sm-7">
+                  <select class="form-select form-select-sm">
+                    <option>Tinggal Bersama Ortu (Rumah Pribadi)</option>
+                    <option>Tinggal Bersama Ortu (Menumpang/Kontrak)</option>
+                    <option>Kost Sendiri Tidak Bersama Ortu</option>
+                    <option>Tinggal Bersama Kakek/Nenek/Saudara Ortu</option>
+                  </select>
+                </div>
               </div>
               <div class="mb-2 row">
                 <label class="col-sm-5 col-form-label form-label">Provinsi</label>
@@ -383,64 +426,9 @@
               </div>
             </div>
 
-            <!-- Kolom Tengah -->
-            <div class="col-lg-4 col-md-6">
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
-                  >Asal Pendidikan Tinggi <sup class="text-important">*)</sup></label
-                >
-                <div class="col-sm-7">
-                  <select class="form-select form-select-sm">
-                    <option>Pilih Pendidikan Tinggi</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label">Fakultas <sup class="text-important">*)</sup></label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm" />
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
-                  >Program Studi <sup class="text-important">*)</sup></label
-                >
-                <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
-                  >Tahun Angkatan Masuk <sup class="text-important">*)</sup></label
-                >
-                <div class="col-sm-7">
-                  <input type="number" class="form-control form-control-sm" value="2025" min="1990" max="9999" />
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"> Semester <sup class="text-important">*)</sup></label>
-                <div class="col-sm-7">
-                  <select class="form-select form-select-sm">
-                    <option>Pilih Semester</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"
-                  >Tanggal Bergabung <sup class="text-important">*)</sup></label
-                >
-                <div class="col-sm-7">
-                  <input type="date" class="form-control form-control-sm" value="2025-01-01" />
-                </div>
-              </div>
-              <div class="mb-2 row">
-                <label class="col-sm-5 col-form-label form-label"> Status</label>
-                <div class="col-sm-7">
-                  <select class="form-select form-select-sm">
-                    <option>Aktif</option>
-                    <option>Tidak Aktif</option>
-                  </select>
-                </div>
-              </div>
-              <div class="upload-box text-center">
+            <!-- Kolom Tengah (Foto) -->
+            <div class="col-lg-2 col-md-12 text-center">
+              <div class="upload-box">
                 <input type="file" accept="image/*" onchange="previewFoto(this)" />
                 <div class="placeholder">
                   <div><em>Foto Profil</em></div>
@@ -450,140 +438,124 @@
               <small class="d-block mt-2 text-muted text-start text-important">
                 *) Foto wajib diisi, format JPEG, JPG, PNG, max 200Kb<br />
               </small>
+
+              <div class="mt-5">
+                <label class="form-label">Mulai Dibantu :</label>
+                <select class="form-select form-select-sm">
+                  <option>1 Juli 2026</option>
+                  <option>1 Januari 2026</option>
+                </select>
+              </div>
+              <div class="mt-2">
+                <label class="form-label">Status:</label>
+                <select class="form-select form-select-sm">
+                  <option>Pending</option>
+                  <option>Naik Kelas</option>
+                  <option>Tidak Naik Kelas</option>
+                  <option>Lulus</option>
+                  <option>Stop</option>
+                </select>
+              </div>
             </div>
 
             <!-- Kolom Kanan -->
-            <div class="col-lg-4 col-md-12">
-              <div class="d-block d-lg-none mb-3"></div>
-              <!-- Daftar Sekolah yang Didampingi -->
-              <h6 class="mb-3">Daftar Sekolah yang Didampingi</h6>
-
-              <!-- Form Tambah Sekolah -->
-              <div class="mb-2">
-                <input
-                  type="text"
-                  class="form-control form-control-sm"
-                  id="cariSekolah"
-                  placeholder="Ketik nama sekolah..."
-                />
-                <div id="sekolahResults" class="list-group">
-                  <!-- Results will be populated here -->
+            <div class="col-lg-5 col-md-6">
+              <div class="mb-2 row g-2 align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Anak ke- <sup class="text-important">*)</sup></label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control form-control-sm" />
                 </div>
+                <label class="col-sm-1 col-form-label form-label">dari</label>
+                <div class="col-sm-2">
+                  <input type="number" class="form-control form-control-sm" />
+                </div>
+                <label class="col-sm-3 col-form-label form-label">bersaudara</label>
               </div>
-
-              <div class="table-responsive mb-4">
-                <table
-                  id="sekolahTable"
-                  class="table table-bordered align-middle list-table mb-0"
-                  style="width: 100%; text-align: left"
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label">Nama Ayah <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Pekerjaan Ayah <sup class="text-important">*)</sup></label
                 >
-                  <thead class="table-light">
-                    <tr>
-                      <th>Nama Sekolah</th>
-                      <th>Aksi</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
+                <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Penghasilan Ayah <sup class="text-important">*)</sup></label
+                >
+                <div class="col-sm-7">
+                  <select class="form-select form-select-sm">
+                    <option>Tidak Berpenghasilan</option>
+                    <option>Kurang dari Rp 1.000.000</option>
+                    <option>Rp 1.000.000 - Rp 2.500.000</option>
+                    <option>Rp 2.500.000 - Rp 4.000.000</option>
+                    <option>Lebih dari Rp 4.000.000</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label">Nama Ibu <sup class="text-important">*)</sup></label>
+                <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Pekerjaan Ibu <sup class="text-important">*)</sup></label
+                >
+                <div class="col-sm-7"><input type="text" class="form-control form-control-sm" /></div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Penghasilan Ibu <sup class="text-important">*)</sup></label
+                >
+                <div class="col-sm-7">
+                  <select class="form-select form-select-sm">
+                    <option>Tidak Berpenghasilan</option>
+                    <option>Kurang dari Rp 1.000.000</option>
+                    <option>Rp 1.000.000 - Rp 2.500.000</option>
+                    <option>Rp 2.500.000 - Rp 4.000.000</option>
+                    <option>Lebih dari Rp 4.000.000</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2 row">
+                <label class="col-sm-4 col-form-label form-label">No HP / WA</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control form-control-sm" placeholder="(Salah satu Ortu)" />
+                </div>
+              </div>
+              <div class="mb-2 row align-items-start">
+                <label class="col-sm-4 col-form-label form-label">Kendaraan yang Dimiliki</label>
+                <div class="col-sm-7 d-flex flex-column gap-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <label for="mobil" class="form-label mb-0" style="width: 60px">Mobil</label>
+                    <input type="number" id="mobil" class="form-control form-control-sm" min="0" placeholder="0" />
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <label for="motor" class="form-label mb-0" style="width: 60px">Motor</label>
+                    <input type="number" id="motor" class="form-control form-control-sm" min="0" placeholder="0" />
+                  </div>
+                </div>
               </div>
 
-              <h6 class="mb-3">Kartu Hasil Studi</h6>
-              <div id="childGrid" class="row g-2">
-                <div class="col-4 col-md-3">
-                  <div class="child-card">
-                    <img src="../assets/img/file.png" alt="KHS" style="width: fit-content; height: 100px" />
-                    <h6>Semester 1</h6>
-                  </div>
-                </div>
-                <div class="col-4 col-md-3">
-                  <div class="child-card">
-                    <img src="../assets/img/file.png" alt="KHS" style="width: fit-content; height: 100px" />
-                    <h6>Semester 2</h6>
-                  </div>
-                </div>
-                <div class="col-4 col-md-6">
-                  <div class="child-card" style="width: 65%; border: 1px dashed #e0e0e0">
-                    <div style="height: 123px">
-                      <button
-                        type="button"
-                        class="btn btn-outline-secondary btn-plus"
-                        data-bs-toggle="modal"
-                        data-bs-target="#uploadKHSmodal"
-                      >
-                        +
-                      </button>
-                      <h6 class="d-none d-lg-block">Upload KHS</h6>
-                    </div>
-                  </div>
+              <div class="mb-2">
+                <label class="form-label">Kondisi Keluarga <sup class="text-important">*)</sup></label>
+                <div class="col-sm-11">
+                  <textarea class="form-control form-control-sm" rows="5"></textarea>
+                  <span class="text-important"><i>Minimal 100 karakter</i></span>
                 </div>
               </div>
             </div>
 
             <div class="mt-3">
               <button class="btn btn-success btn-sm me-2"><i class="bi bi-check"></i> Simpan</button>
-              <button class="btn btn-danger btn-sm"><i class="bi bi-x"></i> Batal</button>
+              <button class="btn btn-danger btn-sm" onclick="window.history.back()"><i class="bi bi-x-lg"></i> Batal</button>
             </div>
           </div>
         </form>
       </div>
     </main>
-
-    <!-- Modal Upload KHS -->
-    <div
-      class="modal fade"
-      id="uploadKHSmodal"
-      tabindex="-1"
-      aria-labelledby="uploadKHSLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title" id="uploadKHSLabel">Upload Kartu Hasil Studi</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="card p-3">
-                <form id="importForm">
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">
-                      Semester <sup class="text-important">*)</sup></label
-                    >
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Pilih Semester</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
-                      >File KHS <sup class="text-important">*)</sup></label
-                    >
-                    <div class="col-sm-7">
-                      <input type="file" class="form-control form-control-sm" accept=".pdf" />
-                    </div>
-                  </div>
-                  <small class="d-block mt-2 text-muted text-start text-important">
-                    *) File berupa PDF, max 200Kb<br />
-                  </small>
-                  <div class="modal-footer justify-content-end d-flex flex-nowrap">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-check me-2"></i> Simpan</button>
-                    <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
-                      <i class="bi bi-x me-1"></i> Tutup
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Upload KHS -->
-
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -599,134 +571,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script src="../assets/js/select2.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-      // Dummy school data
-      const schools = [
-        'SMA Negeri 1 Yogyakarta',
-        'SMA Negeri 2 Sleman',
-        'SMA Negeri 3 Bantul',
-        'SMA Negeri 4 Gunungkidul',
-        'SMA Negeri 5 Kulon Progo',
-        'SMA Negeri 6 Yogyakarta',
-        'SMA Negeri 7 Sleman',
-        'SMA Negeri 8 Bantul',
-        'SMA Negeri 9 Gunungkidul',
-        'SMA Negeri 10 Kulon Progo',
-      ];
-
-      // Function to search schools
-      function searchSchools(query) {
-        return schools.filter(school => school.toLowerCase().includes(query.toLowerCase()));
-      }
-
-      // Function to display search results
-      function displayResults(results) {
-        const resultsContainer = document.getElementById('sekolahResults');
-        resultsContainer.innerHTML = '';
-
-        if (results.length === 0) {
-          resultsContainer.innerHTML = '<p class="text-muted">Tidak ada sekolah ditemukan</p>';
-          return;
-        }
-
-        results.forEach(school => {
-          const item = document.createElement('a');
-          item.href = 'javascript:void(0);';
-          item.className = 'list-group-item list-group-item-action';
-          item.textContent = school;
-          item.addEventListener('click', e => {
-            e.preventDefault();
-            selectSchool(school);
-          });
-          resultsContainer.appendChild(item);
-        });
-      }
-
-      // Function to renumber rows
-      function renumberRows() {
-        const tableBody = document.querySelector('#sekolahTable tbody');
-        const rows = tableBody.querySelectorAll('tr:not(#noDataRow)');
-        rows.forEach((row, index) => {
-          row.cells[0].textContent = index + 1;
-        });
-      }
-
-      // Function to update table display
-      function updateTableDisplay() {
-        const tableBody = document.querySelector('#sekolahTable tbody');
-        const rows = tableBody.querySelectorAll('tr:not(#noDataRow)');
-
-        if (rows.length === 0) {
-          if (!document.getElementById('noDataRow')) {
-            const noDataRow = document.createElement('tr');
-            noDataRow.id = 'noDataRow';
-            noDataRow.innerHTML = '<td colspan="3" class="text-muted">Tidak ada data</td>';
-            tableBody.appendChild(noDataRow);
-          }
-        } else {
-          const noDataRow = document.getElementById('noDataRow');
-          if (noDataRow) {
-            noDataRow.remove();
-          }
-        }
-      }
-
-      // Function to select a school and add to table
-      function selectSchool(schoolName) {
-        const tableBody = document.querySelector('#sekolahTable tbody');
-        const existingRows = tableBody.querySelectorAll('tr:not(#noDataRow)');
-
-        // Check if school already exists
-        for (let row of existingRows) {
-          const schoolCell = row.cells[1];
-          if (schoolCell.textContent === schoolName) {
-            return;
-          }
-        }
-
-        // Add new row
-        const newRow = document.createElement('tr');
-        const rowCount = existingRows.length + 1;
-
-        newRow.innerHTML = `
-          <td class="text-start" data-label="Sekolah">${rowCount}. ${schoolName}</td>
-          <td>
-            <button class="btn btn-xs btn-danger hapus-btn">Hapus</button>
-          </td>
-        `;
-
-        tableBody.appendChild(newRow);
-
-        // Add event listener to the delete button
-        const deleteBtn = newRow.querySelector('.hapus-btn');
-        deleteBtn.addEventListener('click', function () {
-          newRow.remove();
-          renumberRows();
-          updateTableDisplay();
-        });
-
-        // Update display
-        updateTableDisplay();
-
-        // Clear search input and results
-        document.getElementById('cariSekolah').value = '';
-        document.getElementById('sekolahResults').innerHTML = '';
-      }
-
-      // Initialize table display
-      updateTableDisplay();
-
-      // Event listener for search input
-      document.getElementById('cariSekolah').addEventListener('input', function () {
-        const query = this.value.trim();
-        if (query.length > 0) {
-          const results = searchSchools(query);
-          displayResults(results);
-        } else {
-          document.getElementById('sekolahResults').innerHTML = '';
-        }
-      });
-    </script>
   </body>
 </html>

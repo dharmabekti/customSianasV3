@@ -1252,28 +1252,57 @@ main {
   font-size: 0.75rem;
   padding: 4px 8px;
 }
+/* Wrapper card anak */
+.child-card {
+  position: relative;
+  overflow: hidden;
+}
 
-/* Hover buttons */
+/* ====== HOVER OVERLAY (dipertahankan) ====== */
+/* Overlay tombol */
 .hover-btns {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.55);
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 6px;
+
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s ease;
+
+  z-index: 5; /* PENTING: overlay di atas card */
 }
 
+.hover-btns button { font-size: 0.65rem; padding: 2px 6px; }
+
+/* Saat hover, overlay muncul */
 .child-card:hover .hover-btns {
   opacity: 1;
 }
 
-.hover-btns button {
-  font-size: 0.65rem;
-  padding: 2px 6px;
+/* Tombol vertikal */
+.hover-btns-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
+
+.hover-btns-inner button {
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  width: 120px;
+}
+
+/* Card dibawah overlay */
+.child-card .card {
+  position: relative;
+  z-index: 1;
+}
+
+
 
 /* Filter Section */
 .filter-section {
@@ -2709,12 +2738,12 @@ h3.page-title {
    =============================== */
 .select2-container {
     width: 100% !important;
-    z-index: 9999 !important; /* supaya tidak tertutup elemen lain */
+    /* z-index: 9999 !important; supaya tidak tertutup elemen lain */
 }
 
 /* dropdown selalu berada di atas */
 .select2-container .select2-dropdown {
-    z-index: 999999 !important;
+    /* z-index: 999999 !important; */
     border: 1px solid #ced4da !important;
     border-radius: 0.375rem !important;
     box-shadow: 0 3px 8px rgba(0,0,0,0.08) !important;
