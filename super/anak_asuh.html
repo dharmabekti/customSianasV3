@@ -1292,7 +1292,7 @@
         });
       }
 
-      const childAsuh = Array.from({ length: 30 }, (_, i) => {
+      const childAsuh = Array.from({ length: 100000 }, (_, i) => {
         const pendidikan = ['SD', 'SMP', 'SMA'][i % 3];
         const spp = pendidikan === 'SD' ? 50000 : pendidikan === 'SMP' ? 75000 : 100000;
 
@@ -1465,21 +1465,12 @@
           })
           .join('');
 
-        pagination.innerHTML =
-          totalPages > 1
-            ? Array.from(
-                { length: totalPages },
-                (_, i) => `
-                  <li class="page-item ${i + 1 === currentPage ? 'active' : ''}">
-                    <a class="page-link" href="#">${i + 1}</a>
-                  </li>`
-              ).join('')
-            : '';
+        pagination.innerHTML = totalPages > 1 ? generatePagination(totalPages, currentPage) : '';
 
-        document.querySelectorAll('.page-item').forEach((btn, idx) => {
+        document.querySelectorAll('.page-link[data-page]').forEach(btn => {
           btn.addEventListener('click', e => {
             e.preventDefault();
-            currentPage = idx + 1;
+            currentPage = parseInt(btn.getAttribute('data-page'));
             renderChild();
           });
         });
