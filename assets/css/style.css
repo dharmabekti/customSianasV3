@@ -2687,3 +2687,19 @@ h3.page-title {
 .sort-wrapper::-webkit-scrollbar {
   height: 0px; /* scrollbar hilang */
 }
+
+.log-text {
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.log-box h6 {
+  font-size: 15px;
+}
+
+.log-section {
+  font-size: 14px;
+}
