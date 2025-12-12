@@ -2703,3 +2703,83 @@ h3.page-title {
 .log-section {
   font-size: 14px;
 }
+
+/* Select2 *//* ===============================
+   GLOBAL FIX UNTUK SELECT2
+   =============================== */
+.select2-container {
+    width: 100% !important;
+    z-index: 9999 !important; /* supaya tidak tertutup elemen lain */
+}
+
+/* dropdown selalu berada di atas */
+.select2-container .select2-dropdown {
+    z-index: 999999 !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.375rem !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08) !important;
+    position: absolute !important;
+}
+
+/* ===============================
+   TAMPILAN SINGLE SELECT (Bootstrap-like)
+   =============================== */
+.select2-container--default .select2-selection--single {
+    background-color: #fff !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.375rem !important;
+    height: 38px !important;
+    padding: 6px 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    font-size: 0.95rem !important;
+}
+
+/* Text dalam select */
+.select2-container--default .select2-selection__rendered {
+    color: #212529 !important;
+    padding-left: 0 !important;
+    line-height: 1.4 !important;
+}
+
+/* Arrow nya */
+.select2-container--default .select2-selection__arrow {
+    height: 38px !important;
+    right: 8px !important;
+}
+
+/* Focus ala Bootstrap */
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: #86b7fe !important;
+    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25) !important;
+}
+
+/* Hover results */
+.select2-container--default .select2-results__option--highlighted {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+}
+
+/* ===============================
+   SELECT2 KECIL (Bootstrap .form-control-sm)
+   =============================== */
+.form-control-sm + .select2-container .select2-selection--single,
+.form-select-sm + .select2-container .select2-selection--single {
+    height: 31px !important;
+    min-height: 31px !important;
+    padding: 4px 8px !important;
+    font-size: 0.875rem !important;
+}
+
+/* Arrow kecil */
+.form-control-sm + .select2-container .select2-selection__arrow,
+.form-select-sm + .select2-container .select2-selection__arrow {
+    height: 31px !important;
+}
+
+/* Text kecil */
+.form-control-sm + .select2-container .select2-selection__rendered,
+.form-select-sm + .select2-container .select2-selection__rendered {
+    padding-left: 0 !important;
+    line-height: 1.2 !important;
+}
