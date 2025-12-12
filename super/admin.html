@@ -265,7 +265,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Penanggungjawab Sekretariat</span>
+        <span class="navbar-brand mx-auto">Pengelolaan Admin</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -520,7 +520,7 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Penanggungjawab Sekretariat</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Pengelolaan Admin</h3>
       <div class="container-fluid form-wrapper">
         <div class="row g-4">
           <!-- Kolom kiri -->
@@ -544,10 +544,6 @@
                 <div class="form-check">
                   <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
                   <label class="form-check-label badge bg-success" for="aktif">Aktif</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                  <label class="form-check-label badge bg-yellow" for="pending">Pending</label>
                 </div>
                 <div class="form-check mb-3">
                   <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="nonaktif" />
@@ -575,7 +571,7 @@
                       type="text"
                       id="searchInput"
                       class="form-control form-control-sm"
-                      placeholder="Cari penanggungjawab sekretariat..."
+                      placeholder="Cari admin..."
                     />
                     <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
                       <i class="bi bi-x text-body"></i>
@@ -597,12 +593,12 @@
       </div>
     </main>
 
-    <!-- Modal Form PJ Sekretariat-->
+    <!-- Modal Form Admin -->
     <div
       class="modal fade"
-      id="formPJSModal"
+      id="formAdminModal"
       tabindex="-1"
-      aria-labelledby="formPJSLabel"
+      aria-labelledby="formAdminLabel"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -611,7 +607,7 @@
       <div class="modal-dialog modal-dialog-centered modal-wide">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Form Penanggungjawab Sekretariat</h5>
+            <h5 class="modal-title">Form Admin</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -622,36 +618,9 @@
                 <!-- Kolom Kiri -->
                 <div class="col-lg-8 col-md-6">
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
-                      >Sekretariat <sup class="text-important">*)</sup></label
-                    >
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Yogyakarta</option>
-                        <option>Malang</option>
-                        <option>Madiun</option>
-                        <option>Semarang</option>
-                        <option>Purwokerto</option>
-                        <option>Bandung</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
                     <label class="col-sm-5 col-form-label form-label">Nama Lengkap <sup class="text-important">*)</sup></label>
                     <div class="col-sm-7">
                       <input type="text" class="form-control form-control-sm" />
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Agama <sup class="text-important">*)</sup></label>
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Islam</option>
-                        <option>Kristen</option>
-                        <option>Katolik</option>
-                        <option>Hindu</option>
-                        <option>Buddha</option>
-                      </select>
                     </div>
                   </div>
                   <div class="mb-2 row">
@@ -677,6 +646,20 @@
                           <input type="text" class="form-control form-control-sm" placeholder="812xxxxxxx" required />
                         </div>
                       </div>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Level <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>Pilih Level</option>
+                        <option>Admin Umum</option>
+                        <option>Admin Keuangan</option>
+                        <option>Admin Sianas</option>
+                        <option>Super Admin</option>
+                      </select>
                     </div>
                   </div>
                   <div class="mb-2 row">
@@ -721,7 +704,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal Form PJ Sekretariat-->
+    <!-- Modal Form Admin -->
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -737,14 +720,14 @@
     </footer>
 
     <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formAdminModal">
       <i class="bi bi-plus-lg text-center"></i>
     </button>
 
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formPJSModal">
+        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formAdminModal">
           <i class="bi bi-pencil"></i> Edit
         </a>
       </li>
@@ -766,121 +749,120 @@
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
     <script>
-      const penanggujawabSekretariat = [
+      const admin = [
         {
-          id: 'PJ-0001',
+          id: 'ADM-0001',
           name: 'Andreas Deddie A. (Gareng)',
-          sekretariat: 'Yogyakarta',
+          sekretariat: 'Super Admin',
           phone: '0854-XXXX-XXXX',
           email: 'andreas.dedi@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/men/1.jpg`,
         },
         {
-          id: 'PJ-0002',
+          id: 'ADM-0002',
           name: 'Budi Santoso',
-          sekretariat: 'Purwokerto',
+          sekretariat: 'Admin Keuangan',
           phone: '0856-XXXX-XXXX',
           email: 'budi.santoso@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/men/2.jpg`,
         },
         {
-          id: 'PJ-0003',
+          id: 'ADM-0003',
           name: 'Siti Aminah',
-          sekretariat: 'Madiun',
+          sekretariat: 'Admin Sianas',
           phone: '0857-XXXX-XXXX',
           email: 'siti.aminah@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/women/1.jpg`,
         },
         {
-          id: 'PJ-0004',
+          id: 'ADM-0004',
           name: 'Ahmad Rahman',
-          sekretariat: 'Bandung',
+          sekretariat: 'Admin Umum',
           phone: '0858-XXXX-XXXX',
           email: 'Ahmad.Rahman@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/men/4.jpg`,
         },
         {
-          id: 'PJ-0005',
+          id: 'ADM-0005',
           name: 'Dewi Lestari',
-          sekretariat: 'Malang',
+          sekretariat: 'Super Admin',
           phone: '0859-XXXX-XXXX',
           email: 'Dewi.Lestari@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/women/2.jpg`,
         },
         {
-          id: 'PJ-0006',
+          id: 'ADM-0006',
           name: 'Eko Prasetyo',
-          sekretariat: 'Semarang',
+          sekretariat: 'Admin Keuangan',
           phone: '0860-XXXX-XXXX',
           email: 'Eko.Prasetyo@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/men/5.jpg`,
         },
         {
-          id: 'PJ-0007',
+          id: 'ADM-0007',
           name: 'Rina Sari',
-          sekretariat: 'Surabaya',
+          sekretariat: 'Admin Sianas',
           phone: '0861-XXXX-XXXX',
           email: 'rina.sari@mail.com',
-          status: 'Pending',
+          status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/women/3.jpg`,
         },
         {
-          id: 'PJ-0008',
+          id: 'ADM-0008',
           name: 'Joko Widodo',
-          sekretariat: 'Jakarta',
+          sekretariat: 'Admin Umum',
           phone: '0862-XXXX-XXXX',
           email: 'joko.widodo@mail.com',
           status: 'Tidak Aktif',
           foto: `https://randomuser.me/api/portraits/men/6.jpg`,
         },
         {
-          id: 'PJ-0009',
+          id: 'ADM-0009',
           name: 'Maya Putri',
-          sekretariat: 'Medan',
+          sekretariat: 'Super Admin',
           phone: '0863-XXXX-XXXX',
           email: 'maya.putri@mail.com',
-          status: 'Pending',
+          status: 'Tidak Aktif',
           foto: `https://randomuser.me/api/portraits/women/4.jpg`,
         },
         {
-          id: 'PJ-0010',
+          id: 'ADM-0010',
           name: 'Agus Setiawan',
-          sekretariat: 'Palembang',
+          sekretariat: 'Admin Keuangan',
           phone: '0864-XXXX-XXXX',
           email: 'agus.setiawan@mail.com',
           status: 'Tidak Aktif',
           foto: `https://randomuser.me/api/portraits/men/7.jpg`,
         },
         {
-          id: 'PJ-0011',
+          id: 'ADM-0011',
           name: 'Lina Marlina',
-          sekretariat: 'Makassar',
+          sekretariat: 'Admin Sianas',
           phone: '0865-XXXX-XXXX',
           email: 'lina.marlina@mail.com',
           status: 'Aktif',
           foto: `https://randomuser.me/api/portraits/women/5.jpg`,
         },
         {
-          id: 'PJ-0012',
+          id: 'ADM-0012',
           name: 'Dedi Kusuma',
-          sekretariat: 'Bali',
+          sekretariat: 'Admin Umum',
           phone: '0866-XXXX-XXXX',
           email: 'dedi.kusuma@mail.com',
-          status: 'Pending',
+          status: 'Tidak Aktif',
           foto: `https://randomuser.me/api/portraits/men/8.jpg`,
         },
       ];
 
-      function generateSekretariatCard(data) {
+      function generateCard(data) {
         let badgeClass = 'bg-success';
-        if (data.status === 'Pending') badgeClass = 'bg-warning';
-        else if (data.status === 'Tidak Aktif') badgeClass = 'bg-danger';
+        if (data.status === 'Tidak Aktif') badgeClass = 'bg-danger';
         return `
           <div class="col-12 col-sm-6 col-lg-4">
             <div class="list-card shadow p-3" data-name="${data.name}" data-status="${data.status}">
@@ -901,7 +883,7 @@
                   </div>
 
                   <div class="list-info">ID: ${data.id}</div>
-                  <div class="list-info">Sekretariat: ${data.sekretariat}</div>
+                  <div class="list-info">${data.sekretariat}</div>
                   <div class="list-info">${data.phone}</div>
                   <div class="list-info">${data.email}</div>
                   <div class="list-info"><span class="badge ${badgeClass}"> ${data.status}</span></div>
@@ -933,7 +915,7 @@
           .map(checkbox => checkbox.value);
 
         // Filter by search
-        let filtered = penanggujawabSekretariat.filter(
+        let filtered = admin.filter(
           s =>
             s.name.toLowerCase().includes(searchTerm) ||
             s.sekretariat.toLowerCase().includes(searchTerm) ||
@@ -960,7 +942,7 @@
         const start = (currentPage - 1) * perPage;
         const paginated = filtered.slice(start, start + perPage);
 
-        sekretariatGrid.innerHTML = paginated.map(s => generateSekretariatCard(s)).join('');
+        sekretariatGrid.innerHTML = paginated.map(s => generateCard(s)).join('');
 
         createPagination(pagination, totalPages, currentPage, newPage => {
           currentPage = newPage;
