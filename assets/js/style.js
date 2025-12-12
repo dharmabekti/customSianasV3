@@ -24,9 +24,9 @@ function createPagination(paginationElement, totalPages, currentPage, onPageChan
 function generatePagination(totalPages, currentPage) {
   let html = '';
   // Previous button
-  html += `<li class="page-item ${
-    currentPage === 1 ? 'disabled' : ''
-  }"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+  html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${
+    currentPage - 1
+  }">Previous</a></li>`;
 
   // Page numbers with ellipses for large totalPages
   const maxVisible = 7; // Maximum visible page links
@@ -83,6 +83,28 @@ function generatePagination(totalPages, currentPage) {
   }"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
   return html;
 }
+
+// ===================== PER PAGE DINAMIS =====================
+function updatePerPage() {
+  const height = window.innerHeight;
+  const cardHeight = 210;
+  const rows = Math.floor((height - 250) / cardHeight);
+  perPage = rows * 6 || 6;
+}
+
+// Update tampilan sort pill
+function updateSortPillUI(sortPills, activePill, sortDirection) {
+  sortPills.forEach(p => {
+    p.classList.remove('active');
+    const arrow = p.querySelector('.sort-arrow');
+    if (arrow) arrow.textContent = '↑';
+  });
+
+  activePill.classList.add('active');
+
+  const arrow = activePill.querySelector('.sort-arrow');
+  if (arrow) arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
+}
 // ============ Generate Pagination ===========
 
 // ========== Image Preview ===================
@@ -121,7 +143,6 @@ window.previewFoto = function (input) {
 };
 
 // ========== Image Preview ===================
-
 
 document.addEventListener('DOMContentLoaded', function () {
   // === Highlight menu aktif di navbar atas ===

@@ -556,7 +556,7 @@
                 <div id="filterStatus">
                   <div class="form-check">
                     <input class="form-check-input status" type="checkbox" value="Naik Kelas" id="naik_kelas" />
-                    <label class="form-check-label badge bg-success " for="naik_kelas">Naik Kelas</label>
+                    <label class="form-check-label badge bg-success" for="naik_kelas">Naik Kelas</label>
                   </div>
                   <div class="form-check">
                     <input
@@ -1276,53 +1276,55 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script src="../assets/js/badges.js"></script>
 
     <script>
       const sekretariatList = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'];
+
       function generateSekretariatFilters() {
         const filterSekretariat = document.getElementById('filterSekretariat');
-        sekretariatList.forEach(sekretariat => {
+        filterSekretariat.innerHTML = '';
+        sekretariatList.forEach(sek => {
           const div = document.createElement('div');
           div.className = 'form-check';
           div.innerHTML = `
-            <input class="form-check-input sekretariat" type="checkbox" value="${sekretariat}" id="${sekretariat.toLowerCase()}" />
-            <label class="form-check-label" for="${sekretariat.toLowerCase()}">${sekretariat}</label>
-          `;
+        <input class="form-check-input sekretariat" type="checkbox" value="${sek}" id="${sek.toLowerCase()}" />
+        <label class="form-check-label" for="${sek.toLowerCase()}">${sek}</label>
+      `;
           filterSekretariat.appendChild(div);
         });
       }
 
+      generateSekretariatFilters();
+
+      // ===================== DATA SIMULASI 100 RIBU =====================
       const childAsuh = Array.from({ length: 100000 }, (_, i) => {
         const pendidikan = ['SD', 'SMP', 'SMA'][i % 3];
         const spp = pendidikan === 'SD' ? 50000 : pendidikan === 'SMP' ? 75000 : 100000;
 
-        const statusOptions = ['Naik Kelas', 'Tidak Naik Kelas', 'Lulus', 'Stop', 'Pending'];
-        const statusSPPOptions = ['Aktif', 'Tidak Aktif', 'Pending', 'Belum Diset'];
+        const statusArr = ['Naik Kelas', 'Tidak Naik Kelas', 'Lulus', 'Stop', 'Pending'];
+        const sppArr = ['Aktif', 'Tidak Aktif', 'Pending', 'Belum Diset'];
 
-        // Tentukan kelas sesuai pendidikan
         let kelas;
-        if (pendidikan === 'SD') {
-          kelas = (i % 6) + 1; // 1–6
-        } else if (pendidikan === 'SMP') {
-          kelas = (i % 3) + 7; // 7–9
-        } else {
-          kelas = (i % 3) + 10; // 10–12
-        }
+        if (pendidikan === 'SD') kelas = (i % 6) + 1;
+        else if (pendidikan === 'SMP') kelas = (i % 3) + 7;
+        else kelas = (i % 3) + 10;
 
         return {
-          id: '25-' + (1001 + i),
+          id: '25-' + (1000 + i),
           nama: 'Anak ' + (i + 1),
           namaSekolah: `${pendidikan} ${i + 1}`,
-          sekretariat: sekretariatList[(i - 1) % sekretariatList.length],
+          sekretariat: sekretariatList[i % sekretariatList.length],
           spp: spp,
           pendidikan: pendidikan,
           kelas: kelas,
-          status: statusOptions[i % 5],
-          statusSPP: statusSPPOptions[i % 4],
-          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
+          status: statusArr[i % 5],
+          statusSPP: sppArr[i % 4],
+          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${(i % 99) + 1}.jpg`,
         };
       });
 
+      // ===================== ELEMENT =====================
       const childGrid = document.getElementById('childGrid');
       const searchInput = document.getElementById('searchInput');
       const pagination = document.getElementById('pagination');
@@ -1336,109 +1338,63 @@
       let currentSort = 'nama';
       let sortDirection = 'asc';
 
-      // Event listeners for sort pills
+      // Cache
+      let cachedFiltered = childAsuh;
+      let needSort = true;
+
+      // ===================== SORT HANDLER =====================
       sortPills.forEach(pill => {
         pill.addEventListener('click', () => {
           const sortBy = pill.dataset.sort;
+
           if (currentSort === sortBy) {
             sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
           } else {
             currentSort = sortBy;
             sortDirection = 'asc';
           }
-          // Update active class
-          sortPills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          // Update arrows
-          sortPills.forEach(p => {
-            const arrow = p.querySelector('.sort-arrow');
-            if (p === pill) {
-              arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
-            } else {
-              arrow.textContent = '↑';
-            }
-          });
+
+          // UI styling pindah ke style.js
+          updateSortPillUI(sortPills, pill, sortDirection);
+
+          needSort = true;
           currentPage = 1;
           renderChild();
         });
       });
 
-      // Default: tidak ada filter status SPP yang dicentang
-
-
-      function getBadgeStatus(status) {
-        switch (status) {
-          case 'Naik Kelas':
-            return 'bg-success';
-          case 'Tidak Naik Kelas':
-            return 'bg-warning';
-          case 'Lulus':
-            return 'bg-info';
-          case 'Stop':
-            return 'bg-danger';
-          default:
-            return 'bg-yellow';
-        }
-      }
-
-      function getBadgeClass(statusSPP) {
-        switch (statusSPP) {
-          case 'Aktif':
-            return 'bg-success';
-          case 'Tidak Aktif':
-            return 'bg-danger';
-          case 'Pending':
-            return 'bg-warning';
-          case 'Belum Diset':
-            return 'bg-secondary';
-          default:
-            return 'bg-secondary';
-        }
-      }
-
-      function updatePerPageDynamically() {
-        const screenHeight = window.innerHeight;
-        const cardHeight = 200;
-        const rows = Math.floor((screenHeight - 250) / cardHeight);
-        perPage = rows * 6 || 6;
-      }
-
+      // ===================== RENDER CORE =====================
       function renderChild() {
-        updatePerPageDynamically();
+        updatePerPage();
 
-        const selectedStatus = Array.from(statusCheckbox)
+        const selectedStatus = [...statusCheckbox].filter(c => c.checked).map(c => c.value);
+        const selectedTingkat = [...tingkatCheckbox].filter(c => c.checked).map(c => c.value);
+        const selectedSPP = [...statusSPPCheckbox].filter(c => c.checked).map(c => c.value);
+        const selectedSekretariat = [...document.querySelectorAll('.sekretariat')]
           .filter(c => c.checked)
           .map(c => c.value);
-        const selectedTingkat = Array.from(tingkatCheckbox)
-          .filter(c => c.checked)
-          .map(c => c.value);
-        const selectedStatusSPP = Array.from(statusSPPCheckbox)
-          .filter(c => c.checked)
-          .map(c => c.value);
-        const selectedSekretariat = Array.from(document.querySelectorAll('.sekretariat'))
-          .filter(c => c.checked)
-          .map(c => c.value);
-        const searchTerm = searchInput.value.toLowerCase();
+        const keyword = searchInput.value.toLowerCase();
 
         let filtered = childAsuh.filter(
           a =>
             (selectedStatus.length === 0 || selectedStatus.includes(a.status)) &&
-            (selectedStatusSPP.length === 0 || selectedStatusSPP.includes(a.statusSPP)) &&
+            (selectedSPP.length === 0 || selectedSPP.includes(a.statusSPP)) &&
             (selectedTingkat.length === 0 || selectedTingkat.includes(a.pendidikan)) &&
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            a.nama.toLowerCase().includes(searchTerm)
+            a.nama.toLowerCase().includes(keyword)
         );
 
-        // Sort based on currentSort and sortDirection
-        if (currentSort === 'nama') {
-          filtered.sort((a, b) =>
-            sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)
-          );
-        } else if (currentSort === 'kelas') {
-          filtered.sort((a, b) => (sortDirection === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas));
-        } else if (currentSort === 'id') {
-          filtered.sort((a, b) => (sortDirection === 'asc' ? a.id - b.id : b.id - a.id));
+        if (needSort) {
+          filtered.sort((a, b) => {
+            if (currentSort === 'nama')
+              return sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
+            if (currentSort === 'kelas') return sortDirection === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
+            if (currentSort === 'id') return sortDirection === 'asc' ? a.id - b.id : b.id - a.id;
+          });
+          needSort = false;
         }
+
+        cachedFiltered = filtered;
 
         const totalPages = Math.ceil(filtered.length / perPage);
         if (currentPage > totalPages) currentPage = totalPages || 1;
@@ -1447,54 +1403,75 @@
         const paginated = filtered.slice(start, start + perPage);
 
         childGrid.innerHTML = paginated
-          .map(a => {
-            return `
-              <div class="col-6 col-md-2">
-                <div class="child-card">
-                  <img src="${a.foto}" alt="${a.nama}" />
-                  <span class="badge ${getBadgeStatus(a.status)}">${a.id}</span>
-                  <span>${a.nama}</span>
-                  <p>${a.namaSekolah}<br>Kelas ${a.kelas}</p>
-                  <span class="badge ${getBadgeClass(a.statusSPP)}">Rp${a.spp.toLocaleString()}</span>
-                  <div class="hover-btns">
-                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
-                    <button class="btn btn-sm btn-warning" onclick="window.location.href='input_anak_asuh.html'">Edit</button>
-                  </div>
-                </div>
-              </div>`;
-          })
+          .map(
+            a => `
+      <div class="col-6 col-md-2">
+        <div class="child-card">
+          <img loading="lazy" src="${a.foto}" alt="${a.nama}">
+          <span class="badge ${getBadgeStatus(a.status)}">${a.id}</span>
+          <span>${a.nama}</span>
+          <p>${a.namaSekolah}<br>Kelas ${a.kelas}</p>
+          <span class="badge ${getBadgeClass(a.statusSPP)}">Rp${a.spp.toLocaleString()}</span>
+          <div class="hover-btns">
+            <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
+            <button class="btn btn-warning btn-sm" onclick="location.href='input_anak_asuh.html'">Edit</button>
+          </div>
+        </div>
+      </div>
+    `
+          )
           .join('');
 
-        pagination.innerHTML = totalPages > 1 ? generatePagination(totalPages, currentPage) : '';
+        pagination.innerHTML = generatePagination(totalPages, currentPage);
 
         document.querySelectorAll('.page-link[data-page]').forEach(btn => {
           btn.addEventListener('click', e => {
             e.preventDefault();
-            currentPage = parseInt(btn.getAttribute('data-page'));
+            currentPage = parseInt(btn.dataset.page);
             renderChild();
           });
         });
       }
 
-      [searchInput, ...tingkatCheckbox, ...statusCheckbox, ...statusSPPCheckbox].forEach(el =>
-        el.addEventListener('input', () => {
+      // ===================== DEBOUNCE SEARCH =====================
+      function debounce(fn, delay = 200) {
+        let timer;
+        return function () {
+          clearTimeout(timer);
+          timer = setTimeout(() => fn.apply(this, arguments), delay);
+        };
+      }
+
+      searchInput.addEventListener(
+        'input',
+        debounce(() => {
+          needSort = true;
+          currentPage = 1;
+          renderChild();
+        }, 200)
+      );
+
+      // ===================== FILTER LISTENER =====================
+      [...tingkatCheckbox, ...statusCheckbox, ...statusSPPCheckbox].forEach(chk =>
+        chk.addEventListener('input', () => {
+          needSort = true;
+          currentPage = 1;
+          renderChild();
+        })
+      );
+
+      document.querySelectorAll('.sekretariat').forEach(chk =>
+        chk.addEventListener('input', () => {
+          needSort = true;
           currentPage = 1;
           renderChild();
         })
       );
 
       window.addEventListener('resize', renderChild);
-      renderChild(); // ✅ Render awal langsung statusSPP Aktif
-      generateSekretariatFilters();
 
-      // Add event listeners for sekretariat checkboxes after they are generated
-      const sekretariatCheckbox = document.querySelectorAll('.sekretariat');
-      sekretariatCheckbox.forEach(el =>
-        el.addEventListener('input', () => {
-          currentPage = 1;
-          renderChild();
-        })
-      );
+      // FIRST RENDER
+      renderChild();
     </script>
   </body>
 </html>
