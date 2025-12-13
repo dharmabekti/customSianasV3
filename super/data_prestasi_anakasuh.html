@@ -651,12 +651,16 @@
                           <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
                           <td class="d-none d-md-table-cell" data-label="Tgl Kirim">05 Juli 2020</td>
                           <td class="d-none d-md-table-cell" data-label="File">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
+                            <button
+                              type="button"
+                              class="btn btn-outline-warning btn-xs text-dark"
+                              onclick="openForm('riwayatPendidikan')"
                             >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
+                              <i class="bi bi-pencil"></i> Edit
+                            </button>
+                            <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                              <i class="bi bi-send"></i> Kirim
+                            </button>
                           </td>
                         </tr>
                         <tr class="accordion-details">
@@ -669,10 +673,18 @@
                               <strong>Keterangan</strong> Lulus<br />
                               <strong>Tgl Kirim</strong> 05 Juli 2020<br />
                               <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-warning btn-xs text-dark"
+                                  onclick="openForm('riwayatPendidikan')"
+                                >
                                   <i class="bi bi-pencil"></i> Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-info btn-xs text-dark"
+                                  onclick="sendConfirm()"
+                                >
                                   <i class="bi bi-send"></i> Kirim
                                 </button>
                               </div>
@@ -695,12 +707,16 @@
                           <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
                           <td class="d-none d-md-table-cell" data-label="Tgl Kirim">05 Juli 2020</td>
                           <td class="d-none d-md-table-cell" data-label="File">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
+                            <button
+                              type="button"
+                              class="btn btn-outline-warning btn-xs text-dark"
+                              onclick="openForm('riwayatPendidikan')"
                             >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
+                              <i class="bi bi-pencil"></i> Edit
+                            </button>
+                            <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                              <i class="bi bi-send"></i> Kirim
+                            </button>
                           </td>
                         </tr>
                         <tr class="accordion-details">
@@ -713,52 +729,18 @@
                               <strong>Keterangan</strong> Lulus<br />
                               <strong>Tgl Kirim</strong> 05 Juli 2020<br />
                               <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-warning btn-xs text-dark"
+                                  onclick="openForm('riwayatPendidikan')"
+                                >
                                   <i class="bi bi-pencil"></i> Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
-                                  <i class="bi bi-send"></i> Kirim
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="d-none d-md-table-cell" data-label="Jenjang">SMA</td>
-                          <td class="accordion-name" data-label="">
-                            SMA Negeri 1 Sleman
-                            <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                          </td>
-                          <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Sleman</td>
-                          <td class="d-none d-md-table-cell" data-label="Jurusan">IPA</td>
-                          <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2023</td>
-                          <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2026</td>
-                          <td class="d-none d-md-table-cell" data-label="File">-</td>
-                          <td class="d-none d-md-table-cell" data-label="Keterangan">Masih Studi</td>
-                          <td class="d-none d-md-table-cell" data-label="Tgl Kirim">05 Juli 2020</td>
-                          <td class="d-none d-md-table-cell" data-label="File">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
-                            >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
-                          </td>
-                        </tr>
-                        <tr class="accordion-details">
-                          <td colspan="10" class="accordion-detail-wrapper">
-                            <div class="accordion-detail">
-                              <strong>Jenjang</strong> SMA<br />
-                              <strong>Kota/Kabupaten</strong> Sleman<br />
-                              <strong>Tahun Studi</strong> 2023 - 2026<br />
-                              <strong>File</strong> -<br />
-                              <strong>Keterangan</strong> Masih Studi<br />
-                              <strong>Tgl Kirim</strong> 05 Juli 2020<br />
-                              <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
-                                  <i class="bi bi-pencil"></i> Edit
-                                </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-info btn-xs text-dark"
+                                  onclick="sendConfirm()"
+                                >
                                   <i class="bi bi-send"></i> Kirim
                                 </button>
                               </div>
@@ -807,12 +789,16 @@
                           <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
                           <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
                           <td class="d-none d-md-table-cell" data-label="Aksi">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
+                            <button
+                              type="button"
+                              class="btn btn-outline-warning btn-xs text-dark"
+                              onclick="openForm('akademik')"
                             >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
+                              <i class="bi bi-pencil"></i> Edit
+                            </button>
+                            <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                              <i class="bi bi-send"></i> Kirim
+                            </button>
                           </td>
                         </tr>
                         <tr class="accordion-details">
@@ -826,10 +812,18 @@
                               <strong>Keterangan:</strong> Lulus<br />
                               <strong>Tgl Kirim:</strong> 20-06-2019<br />
                               <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-warning btn-xs text-dark"
+                                  onclick="openForm('akademik')"
+                                >
                                   <i class="bi bi-pencil"></i> Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-info btn-xs text-dark"
+                                  onclick="sendConfirm()"
+                                >
                                   <i class="bi bi-send"></i> Kirim
                                 </button>
                               </div>
@@ -849,12 +843,16 @@
                           <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
                           <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
                           <td class="d-none d-md-table-cell" data-label="Aksi">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
+                            <button
+                              type="button"
+                              class="btn btn-outline-warning btn-xs text-dark"
+                              onclick="openForm('akademik')"
                             >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
+                              <i class="bi bi-pencil"></i> Edit
+                            </button>
+                            <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                              <i class="bi bi-send"></i> Kirim
+                            </button>
                           </td>
                         </tr>
                         <tr class="accordion-details">
@@ -867,53 +865,22 @@
                               <strong>File:</strong> -<br />
                               <strong>Keterangan:</strong> Lulus<br />
                               <strong>Tgl Kirim:</strong> 20-06-2022<br />
-                              <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                              <div
+                                class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1"
+                                onclick="openForm('akademik')"
+                              >
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-warning btn-xs text-dark"
+                                  onclick="openForm('akademik')"
+                                >
                                   <i class="bi bi-pencil"></i> Edit
                                 </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
-                                  <i class="bi bi-send"></i> Kirim
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="accordion-name" data-label="">
-                            SMK Wiyata Dharma Walikukun
-                            <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                          </td>
-                          <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2025</td>
-                          <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
-                          <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
-                          <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                          <td class="d-none d-md-table-cell" data-label="File">-</td>
-                          <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
-                          <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
-                          <td class="d-none d-md-table-cell" data-label="Aksi">
-                            <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                              ><i class="bi bi-pencil"></i> Edit</a
-                            >
-                            <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                              ><i class="bi bi-send"></i> Kirim</a
-                            >
-                          </td>
-                        </tr>
-                        <tr class="accordion-details">
-                          <td colspan="9" class="accordion-detail-wrapper">
-                            <div class="accordion-detail">
-                              <strong>Tahun Akademik:</strong> 2025<br />
-                              <strong>Kelas:</strong> Kelas 12<br />
-                              <strong>Semester:</strong> Gasal<br />
-                              <strong>Rangking:</strong> -<br />
-                              <strong>File:</strong> -<br />
-                              <strong>Keterangan:</strong> Naik Kelas<br />
-                              <strong>Tgl Kirim:</strong> 20-06-2025<br />
-                              <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                                <button type="button" class="btn btn-outline-warning btn-xs text-dark">
-                                  <i class="bi bi-pencil"></i> Edit
-                                </button>
-                                <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                                <button
+                                  type="button"
+                                  class="btn btn-outline-info btn-xs text-dark"
+                                  onclick="sendConfirm()"
+                                >
                                   <i class="bi bi-send"></i> Kirim
                                 </button>
                               </div>
@@ -959,12 +926,16 @@
                         <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
                         <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2023</td>
                         <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
+                          <button
+                            type="button"
+                            class="btn btn-outline-warning btn-xs text-dark"
+                            onclick="openForm('kegiatan')"
                           >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
+                            <i class="bi bi-pencil"></i> Edit
+                          </button>
+                          <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                            <i class="bi bi-send"></i> Kirim
+                          </button>
                         </td>
                       </tr>
                       <tr class="accordion-details">
@@ -977,92 +948,18 @@
                             <strong>File Pendukung:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-warning btn-xs text-dark"
+                                onclick="openForm('kegiatan')"
+                              >
                                 <i class="bi bi-pencil"></i> Edit
                               </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
-                                <i class="bi bi-send"></i> Kirim
-                              </button>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="accordion-name" data-label="">
-                          Lomba Pidato Bahasa Indonesia
-                          <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                        </td>
-                        <td class="d-none d-md-table-cell" data-label="Tahun">2024</td>
-                        <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Non-Akademik</td>
-                        <td class="d-none d-md-table-cell" data-label="Tingkat">Provinsi</td>
-                        <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 1</td>
-                        <td class="d-none d-md-table-cell" data-label="File Pendukung">
-                          <i class="bi bi-file-earmark"></i>
-                        </td>
-                        <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2024</td>
-                        <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
-                          >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
-                        </td>
-                      </tr>
-                      <tr class="accordion-details">
-                        <td colspan="8" class="accordion-detail-wrapper">
-                          <div class="accordion-detail">
-                            <strong>Tahun:</strong> 2024<br />
-                            <strong>Jenis Kegiatan/Perlombaan:</strong> Non-Akademik<br />
-                            <strong>Tingkat:</strong> Provinsi<br />
-                            <strong>Prestasi:</strong> Juara 1<br />
-                            <strong>File Pendukung:</strong> <i class="bi bi-file-earmark"></i><br />
-                            <strong>Tgl Kirim:</strong> 20-06-2024<br />
-                            <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
-                                <i class="bi bi-pencil"></i> Edit
-                              </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
-                                <i class="bi bi-send"></i> Kirim
-                              </button>
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="accordion-name" data-label="">
-                          Lomba Olahraga Atletik
-                          <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                        </td>
-                        <td class="d-none d-md-table-cell" data-label="Tahun">2022</td>
-                        <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Olahraga</td>
-                        <td class="d-none d-md-table-cell" data-label="Tingkat">Sekolah</td>
-                        <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 3</td>
-                        <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
-                        <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
-                        <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
-                          >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
-                        </td>
-                      </tr>
-                      <tr class="accordion-details">
-                        <td colspan="8" class="accordion-detail-wrapper">
-                          <div class="accordion-detail">
-                            <strong>Tahun:</strong> 2022<br />
-                            <strong>Jenis Kegiatan/Perlombaan:</strong> Olahraga<br />
-                            <strong>Tingkat:</strong> Sekolah<br />
-                            <strong>Prestasi:</strong> Juara 3<br />
-                            <strong>File Pendukung:</strong> -<br />
-                            <strong>Tgl Kirim:</strong> 20-06-2022<br />
-                            <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
-                                <i class="bi bi-pencil"></i> Edit
-                              </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-info btn-xs text-dark"
+                                onclick="sendConfirm()"
+                              >
                                 <i class="bi bi-send"></i> Kirim
                               </button>
                             </div>
@@ -1105,12 +1002,16 @@
                         <td class="d-none d-md-table-cell" data-label="Keterangan">-</td>
                         <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2023</td>
                         <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
+                          <button
+                            type="button"
+                            class="btn btn-outline-warning btn-xs text-dark"
+                            onclick="openForm('pendidikanTambahan')"
                           >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
+                            <i class="bi bi-pencil"></i> Edit
+                          </button>
+                          <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                            <i class="bi bi-send"></i> Kirim
+                          </button>
                         </td>
                       </tr>
                       <tr class="accordion-details">
@@ -1122,10 +1023,18 @@
                             <strong>Keterangan:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-warning btn-xs text-dark"
+                                onclick="openForm('pendidikanTambahan')"
+                              >
                                 <i class="bi bi-pencil"></i> Edit
                               </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-info btn-xs text-dark"
+                                onclick="sendConfirm()"
+                              >
                                 <i class="bi bi-send"></i> Kirim
                               </button>
                             </div>
@@ -1168,12 +1077,16 @@
                         <td class="d-none d-md-table-cell" data-label="Keterangan">-</td>
                         <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2023</td>
                         <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
+                          <button
+                            type="button"
+                            class="btn btn-outline-warning btn-xs text-dark"
+                            onclick="openForm('organisasi')"
                           >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
+                            <i class="bi bi-pencil"></i> Edit
+                          </button>
+                          <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                            <i class="bi bi-send"></i> Kirim
+                          </button>
                         </td>
                       </tr>
                       <tr class="accordion-details">
@@ -1185,10 +1098,18 @@
                             <strong>Keterangan:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-warning btn-xs text-dark"
+                                onclick="openForm('organisasi')"
+                              >
                                 <i class="bi bi-pencil"></i> Edit
                               </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-info btn-xs text-dark"
+                                onclick="sendConfirm()"
+                              >
                                 <i class="bi bi-send"></i> Kirim
                               </button>
                             </div>
@@ -1229,12 +1150,16 @@
                         <td class="d-none d-md-table-cell" data-label="Keterangan">-</td>
                         <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2023</td>
                         <td class="d-none d-md-table-cell" data-label="Aksi">
-                          <a type="button" class="btn btn-outline-warning btn-xs text-dark" href="#"
-                            ><i class="bi bi-pencil"></i> Edit</a
+                          <button
+                            type="button"
+                            class="btn btn-outline-warning btn-xs text-dark"
+                            onclick="openForm('bahasa')"
                           >
-                          <a type="button" class="btn btn-outline-info btn-xs text-dark" href="#"
-                            ><i class="bi bi-send"></i> Kirim</a
-                          >
+                            <i class="bi bi-pencil"></i> Edit
+                          </button>
+                          <button type="button" class="btn btn-outline-info btn-xs text-dark" onclick="sendConfirm()">
+                            <i class="bi bi-send"></i> Kirim
+                          </button>
                         </td>
                       </tr>
                       <tr class="accordion-details">
@@ -1245,10 +1170,18 @@
                             <strong>Keterangan:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer justify-content-center d-flex flex-nowrap gap-2 mt-1">
-                              <button type="button" class="btn btn-outline-warning btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-warning btn-xs text-dark"
+                                onclick="openForm('bahasa')"
+                              >
                                 <i class="bi bi-pencil"></i> Edit
                               </button>
-                              <button type="button" class="btn btn-outline-info btn-xs text-dark">
+                              <button
+                                type="button"
+                                class="btn btn-outline-info btn-xs text-dark"
+                                onclick="sendConfirm()"
+                              >
                                 <i class="bi bi-send"></i> Kirim
                               </button>
                             </div>
@@ -1286,37 +1219,37 @@
       <!-- Submenu -->
       <div class="fab-menu">
         <!-- Riwayat Pendidikan -->
-        <button class="btn btn-aat text-dark fab-item" data-bs-toggle="modal" data-bs-target="#riwayatPendidikanModal">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('riwayatPendidikan')">
           <i class="bi bi-mortarboard-fill"></i>
           <span>Riwayat Pendidikan</span>
         </button>
 
         <!-- Prestasi Akademik -->
-        <button class="btn btn-aat text-dark fab-item" data-bs-toggle="modal" data-bs-target="#formDonasiModal">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('akademik')">
           <i class="bi bi-award-fill"></i>
           <span>Prestasi Akademik</span>
         </button>
 
         <!-- Prestasi Kegiatan -->
-        <button class="btn btn-aat text-dark fab-item">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('kegiatan')">
           <i class="bi bi-trophy-fill"></i>
           <span>Prestasi Kegiatan</span>
         </button>
 
         <!-- Pendidikan Tambahan -->
-        <button class="btn btn-aat text-dark fab-item">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('pendidikanTambahan')">
           <i class="bi bi-book-half"></i>
           <span>Pendidikan Tambahan</span>
         </button>
 
         <!-- Kegiatan & Organisasi -->
-        <button class="btn btn-aat text-dark fab-item">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('organisasi')">
           <i class="bi bi-people-fill"></i>
           <span>Kegiatan & Organisasi</span>
         </button>
 
         <!-- Kemampuan Bahasa -->
-        <button class="btn btn-aat text-dark fab-item">
+        <button class="btn btn-aat text-dark fab-item" onclick="openForm('bahasa')">
           <i class="bi bi-translate"></i>
           <span>Kemampuan Bahasa</span>
         </button>
@@ -1456,11 +1389,146 @@
     </div>
     <!-- Modal Riwayat Pendidikan -->
 
+    <!-- Modal Prestasi Akademik -->
+    <div
+      class="modal fade"
+      id="akademikModal"
+      tabindex="-1"
+      aria-labelledby="akademikLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Prestasi Akademik</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <span class="text-important">*) Wajib Diisi</span>
+              <div class="row">
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Tahun Akademik <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm">
+                      <option>2025/2026</option>
+                      <option>2024/2025</option>
+                      <option>2023/2024</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Komunitas <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm">
+                      <option>== Pilih Komunitas ==</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Nama Sekolah <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">Kelas</label>
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm">
+                      <option>== Belum Diset ==</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Semester <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm">
+                      <option>Gasal</option>
+                      <option>Genap</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">Rangking</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" />
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >File Pendudukung <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <input type="file" class="form-control form-control-sm" required />
+                    <span class="text-important fw-italic"
+                      >File yang diterima : .jpg, .png, .pdf. Ukuran maksimal 500 KB</span
+                    >
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">Keterangan</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-2 px-lg-4"><i class="bi bi-check me-1"></i> Simpan</button>
+            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Prestasi Akademik -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
     <script src="../assets/js/badges.js"></script>
     <!-- Sweet Alerts Js-->
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+    <script>
+      function openForm(formName) {
+        if (formName == 'riwayatPendidikan') {
+          $('#riwayatPendidikanModal').modal('show');
+        } else if (formName == 'akademik') {
+          $('#akademikModal').modal('show');
+        } else if (formName == 'kegiatan') {
+          $('#kegiatanModal').modal('show');
+        } else if (formName == 'pendidikanTambahan') {
+          $('#pendidikanTambahanModal').modal('show');
+        } else if (formName == 'organisasi') {
+          $('#organisasiModal').modal('show');
+        } else if (formName == 'bahasa') {
+          $('#bahasaModal').modal('show');
+        }
+      }
+
+      // Send Data Action
+      function sendConfirm() {
+        swal_confirm('Konfirmasi', `Yakin ingin mengirim data?`, 'warning').then(result => {
+          if (result.isConfirmed) {
+            swal_alert('Berhasil', `Data berhasil dihapus!`, 'success');
+          }
+        });
+      }
+    </script>
   </body>
 </html>
