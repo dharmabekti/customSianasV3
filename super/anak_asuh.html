@@ -9,7 +9,7 @@
 
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Select2 CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -759,43 +759,72 @@
               <!-- Navigasi Tab (Desktop) -->
               <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#alamat">Alamat</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
                     Kondisi Keluarga
                   </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat_pendidikan">
-                    Riwayat Pendidikan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_akademik">
-                    Prestasi Akademik
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_kegiatan">
-                    Prestasi Kegiatan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan_tambahan">
-                    Pendidikan Tambahan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kegiatan_organisasi">
-                    Kegiatan & Organisasi
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bahasa">Kemampuan Bahasa</button>
                 </li>
               </ul>
 
               <!-- Isi Tab (Satu Sumber Data) -->
               <div class="tab-content" id="profileContent">
-                <div class="tab-pane fade show active" id="kondisi_keluarga">
+                <div class="tab-pane fade show active" id="alamat">
+                  <div class="card">
+                    <div class="card border-0 shadow-sm rounded-4">
+                      <div class="card-body content-section px-4 py-3 text-start">
+                        <!-- Heading muncul hanya di mobile -->
+                        <h5 class="fw-semibold mb-3 d-block d-md-none">Alamat</h5>
+
+                        <div class="table-responsive">
+                          <table class="table table-borderless list-table mb-0" style="width: 100%; text-align: left">
+                            <tbody>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal" style="width: 180px">
+                                  <i class="bi bi-house-door me-2 text-secondary"></i> Alamat
+                                </th>
+                                <td class="text-dark">Jl. Merpati No. 123, Sleman, Yogyakarta</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-building me-2 text-secondary"></i> Kabupaten / Kota
+                                </th>
+                                <td class="text-dark">Sleman</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-geo-alt me-2 text-secondary"></i> Provinsi
+                                </th>
+                                <td class="text-dark">D.I. Yogyakarta</td>
+                              </tr>
+                              <tr>
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-globe me-2 text-secondary"></i> Negara
+                                </th>
+                                <td class="text-dark">Indonesia</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-mailbox me-2 text-secondary"></i>Kode Pos
+                                </th>
+                                <td class="text-dark">55555</td>
+                              </tr>
+                              <tr class="border-bottom">
+                                <th class="text-muted fw-normal">
+                                  <i class="bi bi-telephone me-2 text-secondary"></i>No. HP Ortu
+                                </th>
+                                <td class="text-dark">021-123456</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="kondisi_keluarga">
                   <div class="card">
                     <div class="card border-0 shadow-sm rounded-4">
                       <div class="card-body content-section text-start">
@@ -852,347 +881,6 @@
                           </table>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="riwayat_pendidikan">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section">
-                        <!-- Heading muncul hanya di mobile -->
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Riwayat Pendidikan</h5>
-                        <div class="table-responsive text-start">
-                          <table
-                            class="table table-borderless education-table mb-0"
-                            style="width: 100%; text-align: left !important"
-                          >
-                            <thead>
-                              <tr>
-                                <th>Jenjang</th>
-                                <th class="d-none d-md-table-cell">Sekolah</th>
-                                <th class="d-none d-md-table-cell">Kota/Kabupaten</th>
-                                <th class="d-none d-md-table-cell">Jurusan</th>
-                                <th class="d-none d-md-table-cell">Tahun Masuk</th>
-                                <th class="d-none d-md-table-cell">Tahun Lulus</th>
-                                <th class="d-none d-md-table-cell">File</th>
-                                <th class="d-none d-md-table-cell">Keterangan</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SD</td>
-                                <td class="school-name" data-label="">
-                                  SD Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Kebumen</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2014</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2020</td>
-                                <td class="d-none d-md-table-cell" data-label="File">
-                                  <a href="#"><i class="bi bi-file-earmark"></i></a>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SD<br />
-                                    <strong>Kota/Kabupaten</strong> Kebumen<br />
-                                    <strong>Tahun Studi</strong> 2014 - 2020<br />
-                                    <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
-                                    <strong>Keterangan</strong> Lulus
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SMP</td>
-                                <td class="school-name" data-label="">
-                                  SMP Negeri 3 Yogyakarta
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Yogyakarta</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2020</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2023</td>
-                                <td class="d-none d-md-table-cell" data-label="File">
-                                  <a href="#"><i class="bi bi-file-earmark"></i></a>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SMP<br />
-                                    <strong>Kota/Kabupaten</strong> Yogyakarta<br />
-                                    <strong>Tahun Studi</strong> 2020 - 2023<br />
-                                    <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
-                                    <strong>Keterangan</strong> Lulus
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SMA</td>
-                                <td class="school-name" data-label="">
-                                  SMA Negeri 1 Sleman
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Sleman</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">IPA</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2023</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2026</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Masih Studi</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SMA<br />
-                                    <strong>Kota/Kabupaten</strong> Sleman<br />
-                                    <strong>Tahun Studi</strong> 2023 - 2026<br />
-                                    <strong>File</strong> -<br />
-                                    <strong>Keterangan</strong> Masih Studi
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade show" id="prestasi_akademik">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section text-start">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Akademik</h5>
-                        <div class="table-responsive text-start">
-                          <table
-                            class="table table-borderless education-table mb-0"
-                            style="width: 100%; text-align: left !important"
-                          >
-                            <thead>
-                              <tr>
-                                <th>Sekolah</th>
-                                <th class="d-none d-md-table-cell">Tahun Akademik</th>
-                                <th class="d-none d-md-table-cell">Kelas</th>
-                                <th class="d-none d-md-table-cell">Semester</th>
-                                <th class="d-none d-md-table-cell">Rangking</th>
-                                <th class="d-none d-md-table-cell">File</th>
-                                <th class="d-none d-md-table-cell">Keterangan</th>
-                                <th class="d-none d-md-table-cell">Tgl Kirim</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SD Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2019</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2019<br />
-                                    <strong>Kelas:</strong> Kelas 6<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> 5<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2019
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SMP Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2022</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2022<br />
-                                    <strong>Kelas:</strong> Kelas 3<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2022
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="school-name" data-label="">
-                                  SMK Wiyata Dharma Walikukun
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Akademik">2025</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Akademik:</strong> 2025<br />
-                                    <strong>Kelas:</strong> Kelas 12<br />
-                                    <strong>Semester:</strong> Gasal<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Naik Kelas<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2025
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="prestasi_kegiatan">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Kegiatan</h5>
-                      <div class="table-responsive text-start">
-                        <table
-                          class="table table-borderless education-table mb-0"
-                          style="width: 100%; text-align: left !important"
-                        >
-                          <thead>
-                            <tr>
-                              <th>Nama Kegiatan/Perlombaan</th>
-                              <th class="d-none d-md-table-cell">Tahun</th>
-                              <th class="d-none d-md-table-cell">Jenis Kegiatan/Perlombaan</th>
-                              <th class="d-none d-md-table-cell">Tingkat</th>
-                              <th class="d-none d-md-table-cell">Prestasi</th>
-                              <th class="d-none d-md-table-cell">File Pendukung</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="school-name" data-label="">
-                                Lomba Cerdas Cermat Matematika
-                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                              </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2023</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Akademik</td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Kabupaten</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 2</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
-                            </tr>
-                            <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
-                                <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2023<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Akademik<br />
-                                  <strong>Tingkat:</strong> Kabupaten<br />
-                                  <strong>Prestasi:</strong> Juara 2<br />
-                                  <strong>File Pendukung:</strong> -
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="school-name" data-label="">
-                                Lomba Pidato Bahasa Indonesia
-                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                              </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2024</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">
-                                Non-Akademik
-                              </td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Provinsi</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 1</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">
-                                <i class="bi bi-file-earmark"></i>
-                              </td>
-                            </tr>
-                            <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
-                                <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2024<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Non-Akademik<br />
-                                  <strong>Tingkat:</strong> Provinsi<br />
-                                  <strong>Prestasi:</strong> Juara 1<br />
-                                  <strong>File Pendukung:</strong> <i class="bi bi-file-earmark"></i>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="school-name" data-label="">
-                                Lomba Olahraga Atletik
-                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                              </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2022</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Olahraga</td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Sekolah</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 3</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
-                            </tr>
-                            <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
-                                <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2022<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Olahraga<br />
-                                  <strong>Tingkat:</strong> Sekolah<br />
-                                  <strong>Prestasi:</strong> Juara 3<br />
-                                  <strong>File Pendukung:</strong> -
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="pendidikan_tambahan">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan Tambahan</h5>
-                      <span>Belum ada data!</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="kegiatan_organisasi">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kegiatan & Organisasi</h5>
-                      <span>Belum ada data!</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="bahasa">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kemampuan Bahasa</h5>
-                      <span>Belum ada data!</span>
                     </div>
                   </div>
                 </div>
@@ -1414,10 +1102,11 @@
                       <!-- Overlay & tombol -->
                       <div class="hover-btns">
                         <div class="hover-btns-inner">
-                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
+                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
                           <button class="btn btn-warning btn-sm" onclick="window.location.href='form_anak_asuh.html'">Edit</button>
+                          <button class="btn btn-light btn-sm" onclick="window.location.href='data_spp_anakasuh.html'">Data SPP</button>
+                          <button class="btn btn-info btn-sm" onclick="window.location.href='data_prestasi_anakasuh.html'">Lainnya</button>
                           <button class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
-                          <button class="btn btn-info btn-sm">Lainnya</button>
                         </div>
                       </div>
 

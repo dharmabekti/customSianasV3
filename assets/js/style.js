@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // JavaScript for collapsible education table
 document.addEventListener('DOMContentLoaded', function () {
-  const schoolNames = document.querySelectorAll('.school-name');
+  const schoolNames = document.querySelectorAll('.accordion-name');
   schoolNames.forEach(name => {
     name.addEventListener('click', function () {
       const nextRow = this.closest('tr').nextElementSibling;
@@ -716,3 +716,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==================== CONTEXT MENU ===================
+
+// ========= FLOATING BUTTON =================== //
+document.addEventListener('DOMContentLoaded', function () {
+  const fab = document.getElementById('fabToggle');
+  const fabContainer = fab?.closest('.fab-container');
+
+  if (!fab || !fabContainer) return;
+
+  fab.addEventListener('click', function (e) {
+    e.stopPropagation();
+    fabContainer.classList.toggle('active');
+  });
+
+  // Klik di luar → tutup
+  document.addEventListener('click', function () {
+    fabContainer.classList.remove('active');
+  });
+});
+
+// ========= FLOATING BUTTON =================== //
