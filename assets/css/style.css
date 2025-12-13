@@ -2693,6 +2693,10 @@ h3.page-title {
   }
 }
 
+.no-decoration {
+  text-decoration: none !important;
+}
+
 /* Text */
 .list-name a {
   font-size: 14px;
