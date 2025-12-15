@@ -838,53 +838,6 @@
     </div>
     <!-- Modal Detail Anak -->
 
-    <!-- Modal Input Anak Asuh -->
-    <div
-      class="modal fade"
-      id="inputModal"
-      tabindex="-1"
-      aria-labelledby="inputModalLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="card p-3">
-                <h6 class="fw-bold mb-3">Import dari Excel</h6>
-                <form id="importForm">
-                  <div class="mb-3">
-                    <label for="excelFile" class="form-label">Pilih File Excel</label>
-                    <input type="file" class="form-control mb-3" id="excelFile" accept=".xlsx,.xls" required />
-                    <a href="https://example.com/template.xlsx" download>
-                      <i class="bi bi-download me-2"></i> Download Template Excel
-                    </a>
-                  </div>
-                  <div class="d-flex gap-2 align-items-center">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-upload me-2"></i> Import</button>
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary"
-                      onclick="window.location.href='form_anak_asuh.html'"
-                    >
-                      <i class="bi bi-pencil-square me-2"></i> Input Manual
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Input Anak Asuh -->
-
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -898,10 +851,123 @@
       </small>
     </footer>
 
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#inputModal">
-      <i class="bi bi-plus-lg text-center"></i>
-    </button>
+    <!-- Modal Set SPP -->
+    <div
+      class="modal fade"
+      id="setSPPModal"
+      tabindex="-1"
+      aria-labelledby="setSPPLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Set SPP Anak Asuh</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <span class="text-important">*) Wajib Diisi</span>
+              <div class="row">
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Tingkat Pendidikan <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm" required>
+                      <option>== Pilih Pendidikan ==</option>
+                      <option>TK</option>
+                      <option>SD</option>
+                      <option>SMP</option>
+                      <option>SMA</option>
+                      <option>Diploma</option>
+                      <option>Sarjana</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Nama Sekolah <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">Kota <sup class="text-important">*)</sup></label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Tahun Akademik <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-7">
+                    <select class="form-select form-select-sm" required>
+                      <option>2025/2026</option>
+                      <option>2024/2025</option>
+                      <option>2023/2024</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">
+                    Periode SPP <sup class="text-important">*)</sup>
+                  </label>
+
+                  <div class="col-sm-7">
+                    <div class="row g-2 align-items-center">
+                      <div class="col-5">
+                        <input
+                          type="date"
+                          class="form-control form-control-sm"
+                          id="waktu_mulai"
+                          value="2025-07-01"
+                          required
+                        />
+                      </div>
+
+                      <div class="col-2 text-center">
+                        <span class="fw-semibold small">s.d</span>
+                      </div>
+
+                      <div class="col-5">
+                        <input
+                          type="date"
+                          class="form-control form-control-sm"
+                          id="waktu_selesai"
+                          value="2026-06-30"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-2 row">
+                  <label class="col-sm-5 col-form-label form-label">Keterangan</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control form-control-sm" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-2 px-lg-4"><i class="bi bi-check me-1"></i> Simpan</button>
+            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Set SPP -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -935,7 +1001,7 @@
         const spp = pendidikan === 'SD' ? 50000 : pendidikan === 'SMP' ? 75000 : 100000;
 
         const statusArr = ['Naik Kelas', 'Tidak Naik Kelas', 'Lulus', 'Stop', 'Pending'];
-        const sppArr = ['Aktif', 'Tidak Aktif', 'Pending', 'Belum Diset'];
+        const sppArr = ['Pending', 'Belum Diset'];
 
         let kelas;
         if (pendidikan === 'SD') kelas = (i % 6) + 1;
@@ -1037,8 +1103,7 @@
                         <div class="hover-btns-inner">
                           <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
                           <button class="btn btn-warning btn-sm" onclick="window.location.href='form_anak_asuh.html'">Edit</button>
-                          <button class="btn btn-light btn-sm" onclick="window.location.href='data_spp_anakasuh.html'">Data SPP</button>
-                          <button class="btn btn-info btn-sm" onclick="window.location.href='data_prestasi_anakasuh.html'">Lainnya</button>
+                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Set SPP</button>
                           <button class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
                         </div>
                       </div>
@@ -1085,21 +1150,18 @@
       );
 
       // ===================== FILTER LISTENER =====================
-      [...tingkatCheckbox].forEach(chk =>
-        chk.addEventListener('input', () => {
-          needSort = true;
-          currentPage = 1;
-          renderChild();
-        })
-      );
+      function bindFilter(selector) {
+        document.querySelectorAll(selector).forEach(chk =>
+          chk.addEventListener('input', () => {
+            needSort = true;
+            currentPage = 1;
+            renderChild();
+          })
+        );
+      }
 
-      document.querySelectorAll('.sekretariat').forEach(chk =>
-        chk.addEventListener('input', () => {
-          needSort = true;
-          currentPage = 1;
-          renderChild();
-        })
-      );
+      bindFilter('.tingkat');
+      bindFilter('.sekretariat');
 
       window.addEventListener('resize', renderChild);
 
