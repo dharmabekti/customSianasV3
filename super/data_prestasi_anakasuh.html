@@ -3,20 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Prestasi Anak Asuh</title>
+    <title>Responsive Admin Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
     <!-- Select2 CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    <!-- Sweet Alerts css -->
-    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -104,11 +101,7 @@
                 <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
                 <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal"
-                    >SK Beasiswa</a
-                  >
-                </li>
+                <li><a class="dropdown-item" href="sk.html">SK Beasiswa</a></li>
               </ul>
             </li>
 
@@ -270,267 +263,15 @@
     <!-- Navbar Mobile (atas) -->
     <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
       <div class="container-fluid">
-        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
-          <i class="bi bi-list"></i>
+        <button class="btn btn-outline-light" type="button" onclick="history.back()">
+          <i class="bi bi-arrow-left"></i>
         </button>
         <span class="navbar-brand mx-auto">Data Prestasi Anak Asuh</span>
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-light"
-            type="button"
-            id="mobileProfileDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
-            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
-          </ul>
-        </div>
       </div>
     </nav>
 
-    <!-- Offcanvas Sidebar (Mobile) -->
-    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
-      <!-- Header Sidebar -->
-      <div class="offcanvas-header border-bottom">
-        <div class="d-flex align-items-center">
-          <img
-            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-            class="rounded-circle me-2 profile-img"
-            alt="Logo"
-            width="40"
-            height="40"
-          />
-          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
-        </div>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
-      </div>
-
-      <!-- Profil User -->
-      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
-        <img
-          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-          class="rounded-circle profile-img"
-          alt="User"
-          width="80"
-          height="80"
-        />
-        <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">ADM-XXXX</small><br />
-        <small class="mb-0">Super Admin</small>
-      </div>
-
-      <!-- Body Sidebar -->
-      <div class="offcanvas-body d-flex flex-column p-0">
-        <!-- Menu scrollable -->
-        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
-          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
-            <i class="bi bi-house me-2"></i> Beranda
-          </a>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#donatur"
-          >
-            <i class="bi bi-person me-2"></i> Donatur <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="donatur">
-            <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
-            <a href="riwayat_donasi_all.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Riwayat Donasi Donatur</a
-            >
-            <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pemilihan Anak Asuh oleh Donatur</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#sekretariat"
-          >
-            <i class="bi bi-building me-2"></i> Sekretariat <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="sekretariat">
-            <a href="sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Sekretariat</a
-            >
-            <a href="penanggungjawab_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data PJ Sekretariat</a
-            >
-            <a href="data_pt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Pendidikan Tinggi</a
-            >
-            <a href="bpt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data BPT Sekretariat</a>
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#komunitas"
-          >
-            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="komunitas">
-            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Komunitas/Sekolah</a
-            >
-            <a href="penanggungjawab.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data PJ Sekolah</a
-            >
-            <a href="konfirmasi_penanggungjawab.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Konfirmasi PJ Sekolah Baru</a
-            >
-            <a
-              href="#"
-              class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              data-bs-toggle="modal"
-              data-bs-target="#skBeasiswaModal"
-              >SK Beasiswa</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#anakasuh"
-          >
-            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="anakasuh">
-            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
-            <a href="pengajuan_anakasuh_baru.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Konfirmasi Anak Asuh Baru</a
-            >
-            <a href="konfirmasi_naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Konfirmasi Kenaikan Jenjang</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#transferbeasiswa"
-          >
-            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="transferbeasiswa">
-            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Data Transfer Beasiswa</a
-            >
-            <a href="status_transfer.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Status Transfer Beasiswa</a
-            >
-            <a href="ganti_rekening.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Penggantian No Rekening</a
-            >
-            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pengembalian Dana Berlebih</a
-            >
-            <a
-              href="#"
-              class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              data-bs-toggle="modal"
-              data-bs-target="#rekeningYayasanModal"
-              >Rekening Yayasan</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#laporan"
-          >
-            <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="laporan">
-            <a href="report_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Laporan Donatur</a
-            >
-            <a href="report_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Laporan Sekretariat</a
-            >
-            <a href="report_anakasuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Laporan Anak Asuh</a
-            >
-            <a href="report_raport.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Laporan Raport, SKL, & Ijasah</a
-            >
-            <a href="report_sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Laporan Komunitas/Sekolah</a
-            >
-            <a
-              href="#"
-              class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              data-bs-toggle="modal"
-              data-bs-target="#statistikModal"
-              >Data & Statistik</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
-            data-bs-target="#pengaturan"
-          >
-            <i class="bi bi-gear me-2"></i> Pengaturan <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="pengaturan">
-            <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_akademik.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Akademik</a
-            >
-            <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Sekretariat</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="modal"
-            data-bs-target="#kontakYayasanModal"
-          >
-            <i class="bi bi-telephone me-2"></i> Hubungi Kami
-          </a>
-        </div>
-
-        <!-- Footer Mobile -->
-        <div class="p-3 border-top small text-center text-white d-lg-none">
-          © Yayasan AAT Indonesia <br />
-          Developed by <span class="fw-bold">Omah IT</span> <br />
-          Maintained by <span class="fw-bold">Mandhira IT</span>
-        </div>
-      </div>
-    </div>
-
     <!-- Bottom Navigation (Mobile) -->
-    <div class="mobile-bottom-nav">
-      <a href="index.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-house-fill fs-4"></i><br />
-        <small>Beranda</small>
-      </a>
-
-      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-receipt fs-4"></i><br />
-        <small>Transfer Beasiswa</small>
-      </a>
-
-      <a href="status_transfer.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-card-checklist fs-4"></i><br />
-        <small>Status Transfer</small>
-      </a>
-
-      <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
-        <i class="bi bi-journal-text fs-4"></i><br />
-        <small>Raport</small>
-      </a>
-    </div>
+    <div class="mobile-bottom-hide"></div>
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
@@ -581,6 +322,10 @@
                         <th class="text-muted fw-normal">Status</th>
                         <td data-label="Status">Naik Kelas</td>
                       </tr>
+                      <tr class="border-bottom align-middle">
+                        <th class="text-muted fw-normal">SPP</th>
+                        <td data-label="SPP"><span class="badge bg-success">Rp 100.000,-</span></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -596,10 +341,10 @@
             </button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_akademik">Prestasi Akademik</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">Raport</button>
           </li>
           <li class="nav-item">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_kegiatan">Prestasi Kegiatan</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_lomba">Prestasi Lomba</button>
           </li>
           <li class="nav-item">
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan_tambahan">
@@ -801,11 +546,11 @@
             </div>
           </div>
 
-          <div class="tab-pane fade show" id="prestasi_akademik">
+          <div class="tab-pane fade show" id="raport">
             <div class="card">
               <div class="card border-0 shadow-sm rounded-4">
                 <div class="card-body content-section text-start">
-                  <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Akademik</h5>
+                  <h5 class="fw-semibold mb-3 d-block d-md-none">Raport</h5>
                   <div class="table-responsive text-start">
                     <table class="table table-borderless mb-0" style="width: 100%; text-align: left !important">
                       <thead>
@@ -944,10 +689,7 @@
                               <strong>Keterangan:</strong> Lulus<br />
                               <strong>Tgl Kirim:</strong> 20-06-2022<br />
                               <div class="modal-footer action-footer mt-1">
-                                <button
-                                  class="btn btn-outline-warning btn-xs text-dark"
-                                  onclick="openForm('akademik')"
-                                >
+                                <button class="btn btn-outline-warning btn-xs text-dark" onclick="openForm('akademik')">
                                   <i class="bi bi-pencil"></i>
                                   <span class="btn-text">Edit</span>
                                 </button>
@@ -973,10 +715,10 @@
             </div>
           </div>
 
-          <div class="tab-pane fade" id="prestasi_kegiatan">
+          <div class="tab-pane fade" id="prestasi_lomba">
             <div class="card">
               <div class="card-body content-section text-start">
-                <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Kegiatan</h5>
+                <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Lomba</h5>
                 <div class="table-responsive text-start">
                   <table class="table table-borderless mb-0" style="width: 100%; text-align: left !important">
                     <thead>
@@ -1043,10 +785,7 @@
                             <strong>File Pendukung:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer action-footer mt-1">
-                              <button
-                                class="btn btn-outline-warning btn-xs text-dark"
-                                onclick="openForm('kegiatan')"
-                              >
+                              <button class="btn btn-outline-warning btn-xs text-dark" onclick="openForm('kegiatan')">
                                 <i class="bi bi-pencil"></i>
                                 <span class="btn-text">Edit</span>
                               </button>
@@ -1138,7 +877,10 @@
                             <strong>Keterangan:</strong> -<br />
                             <strong>Tgl Kirim:</strong> 20-06-2023<br />
                             <div class="modal-footer action-footer mt-1">
-                              <button class="btn btn-outline-warning btn-xs text-dark" onclick="openForm('pendidikanTambahan')">
+                              <button
+                                class="btn btn-outline-warning btn-xs text-dark"
+                                onclick="openForm('pendidikanTambahan')"
+                              >
                                 <i class="bi bi-pencil"></i>
                                 <span class="btn-text">Edit</span>
                               </button>
@@ -1347,6 +1089,9 @@
 
         <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
         <div id="mobileProfile" class="d-md-none"></div>
+        <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm mt-3 d-none d-lg-block">
+          <i class="bi bi-arrow-left"></i> Kembali
+        </button>
       </div>
     </main>
 
@@ -1379,10 +1124,10 @@
           <span>Prestasi Akademik</span>
         </button>
 
-        <!-- Prestasi Kegiatan -->
+        <!-- Prestasi Lomba -->
         <button class="btn btn-aat text-dark fab-item" onclick="openForm('kegiatan')">
           <i class="bi bi-trophy-fill"></i>
-          <span>Prestasi Kegiatan</span>
+          <span>Prestasi Lomba</span>
         </button>
 
         <!-- Pendidikan Tambahan -->
@@ -1405,7 +1150,7 @@
       </div>
 
       <!-- Main FAB -->
-      <button class="btn-float bg-aat" id="fabToggle">
+      <button class="btn-float btn-float-2 bg-aat" id="fabToggle">
         <i class="bi bi-plus-lg"></i>
       </button>
     </div>
@@ -1647,7 +1392,7 @@
     </div>
     <!-- Modal Prestasi Akademik -->
 
-    <!-- Modal Prestasi Kegiatan -->
+    <!-- Modal Prestasi Lomba -->
     <div
       class="modal fade"
       id="kegiatanModal"
@@ -1661,7 +1406,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Prestasi Kegiatan</h5>
+            <h5 class="modal-title">Prestasi Lomba</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -1755,7 +1500,7 @@
         </div>
       </div>
     </div>
-    <!-- Modal Prestasi Kegiatan -->
+    <!-- Modal Prestasi Lomba -->
 
     <!-- Modal Pendidikan Tambahan -->
     <div
