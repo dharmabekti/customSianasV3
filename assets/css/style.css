@@ -2869,3 +2869,34 @@ h3.page-title {
     padding-left: 0 !important;
     line-height: 1.2 !important;
 }
+
+.action-footer {
+  display: flex;
+  flex-wrap: nowrap;       /* ⬅️ PAKSA 1 BARIS */
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  border-top: none;
+  width: 100%;
+}
+
+.action-footer .btn {
+  flex: 1 1 0;             /* ⬅️ BAGI RATA */
+  min-width: 0;            /* ⬅️ CEGAH OVERFLOW */
+  white-space: nowrap;
+  text-align: center;
+  padding: 4px 6px;
+  font-size: 0.7rem;
+}
+
+/* Mobile: sembunyikan teks, icon saja */
+@media (max-width: 576px) {
+  .action-footer .btn-text {
+    display: none;
+  }
+
+  .action-footer .btn i {
+    margin: 0;
+    font-size: 0.85rem;
+  }
+}
