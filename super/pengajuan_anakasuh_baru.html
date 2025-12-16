@@ -862,7 +862,7 @@
       data-bs-keyboard="false"
       tabindex="-1"
     >
-      <div class="modal-dialog modal-dialog-centered modal-wide">
+      <div class="modal-dialog modal-dialog-centered modal-md">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
             <h5 class="modal-title">Set SPP Anak Asuh</h5>
@@ -873,34 +873,28 @@
             <form>
               <span class="text-important">*) Wajib Diisi</span>
               <div class="row">
-                <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label"
-                    >Tingkat Pendidikan <sup class="text-important">*)</sup></label
-                  >
+                <div class="row">
+                  <label class="col-sm-5 col-form-label form-label">Nama Lengkap</label>
                   <div class="col-sm-7">
-                    <select class="form-select form-select-sm" required>
-                      <option>== Pilih Pendidikan ==</option>
-                      <option>TK</option>
-                      <option>SD</option>
-                      <option>SMP</option>
-                      <option>SMA</option>
-                      <option>Diploma</option>
-                      <option>Sarjana</option>
-                    </select>
+                    <span class="fw-semibold">Ki Anom Dharma Bekti</span>
                   </div>
                 </div>
-                <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label"
-                    >Nama Sekolah <sup class="text-important">*)</sup></label
-                  >
+                <div class="row">
+                  <label class="col-sm-5 col-form-label form-label">Nama Sekolah</label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" required />
+                    <span class="fw-semibold">SMA Bhakti Mulia</span>
                   </div>
                 </div>
-                <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label">Kota <sup class="text-important">*)</sup></label>
+                <div class="row">
+                  <label class="col-sm-5 col-form-label form-label">Kelas saat Beasiswa Aktif</label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" required />
+                    <span class="fw-semibold">SMA Kelas 12</span>
+                  </div>
+                </div>
+                <div class="row">
+                  <label class="col-sm-5 col-form-label form-label">Tempat, Tanggal Lahir</label>
+                  <div class="col-sm-7">
+                    <span class="fw-semibold">London, 01 Januari 2000</span>
                   </div>
                 </div>
                 <div class="mb-2 row">
@@ -919,7 +913,6 @@
                   <label class="col-sm-5 col-form-label form-label">
                     Periode SPP <sup class="text-important">*)</sup>
                   </label>
-
                   <div class="col-sm-7">
                     <div class="row g-2 align-items-center">
                       <div class="col-5">
@@ -948,10 +941,18 @@
                     </div>
                   </div>
                 </div>
+                
                 <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label">Keterangan</label>
+                  <label class="col-sm-5 col-form-label form-label"
+                    >Besaran SPP <sup class="text-important">*)</sup></label
+                  >
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" />
+                    <select class="form-select form-select-sm" required>
+                      <option>== Pilih SPP ==</option>
+                      <option>Rp 50.000</option>
+                      <option>Rp 75.000</option>
+                      <option>Rp 100.000</option>
+                    </select>
                   </div>
                 </div>
               </div>
