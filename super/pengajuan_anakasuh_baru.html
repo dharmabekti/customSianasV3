@@ -581,30 +581,74 @@
 
           <!-- ✅ GRID ANAK ASUH -->
           <div class="col-md-10">
-            <!-- Sort & Search -->
-            <div class="row g-2 align-items-center mb-3">
-              <!-- Sort -->
-              <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
-                <label class="fw-bold mb-0">Sort:</label>
-                <button class="sort-pill" data-sort="id">ID <span class="sort-arrow">↑</span></button>
-                <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
-                <button class="sort-pill" data-sort="kelas">Kelas <span class="sort-arrow">↑</span></button>
-              </div>
-              <div class="col-6 col-md">
-                <input
-                  type="text"
-                  id="searchInput"
-                  class="form-control form-control-sm w-100"
-                  placeholder="Cari anak..."
-                />
-              </div>
-            </div>
+            <!-- Navigasi Tab (Desktop) -->
+            <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#anak_asuh">Anak Asuh Baru</button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prapaad">Pra-PAAD</button>
+              </li>
+            </ul>
 
-            <div id="childGrid" class="row g-2"></div>
+            <!-- Isi Tab (Satu Sumber Data) -->
+            <div class="tab-content" id="profileContent">
+              <div class="tab-pane fade show active" id="anak_asuh">
+                <!-- Sort & Search -->
+                <div class="row g-2 align-items-center mb-3">
+                  <!-- Sort -->
+                  <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
+                    <label class="fw-bold mb-0">Sort:</label>
+                    <button class="sort-pill" data-sort="id">ID <span class="sort-arrow">↑</span></button>
+                    <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
+                    <button class="sort-pill" data-sort="kelas">Kelas <span class="sort-arrow">↑</span></button>
+                  </div>
+                  <div class="col-6 col-md">
+                    <input
+                      type="text"
+                      id="searchInputAnakAsuh"
+                      class="form-control form-control-sm w-100"
+                      placeholder="Cari anak..."
+                    />
+                  </div>
+                </div>
 
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-3">
-              <nav><ul class="pagination" id="pagination"></ul></nav>
+                <div id="childGridAnakAsuh" class="row g-2"></div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-3">
+                  <nav><ul class="pagination" id="paginationAnakAsuh"></ul></nav>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="prapaad">
+                <!-- Sort & Search -->
+                <div class="row g-2 align-items-center mb-3">
+                  <!-- Sort -->
+                  <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
+                    <label class="fw-bold mb-0">Sort:</label>
+                    <button class="sort-pill" data-sort="id">ID <span class="sort-arrow">↑</span></button>
+                    <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
+                    <button class="sort-pill" data-sort="kelas">Kelas <span class="sort-arrow">↑</span></button>
+                  </div>
+                  <div class="col-6 col-md">
+                    <input
+                      type="text"
+                      id="searchInputPraPaad"
+                      class="form-control form-control-sm w-100"
+                      placeholder="Cari anak..."
+                    />
+                  </div>
+                </div>
+
+                <div id="childGridPraPaad" class="row g-2"></div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-3">
+                  <nav><ul class="pagination" id="paginationPraPaad"></ul></nav>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -941,7 +985,7 @@
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="mb-2 row">
                   <label class="col-sm-5 col-form-label form-label"
                     >Besaran SPP <sup class="text-important">*)</sup></label
@@ -996,13 +1040,39 @@
 
       generateSekretariatFilters();
 
-      // ===================== DATA SIMULASI 100 RIBU =====================
-      const childAsuh = Array.from({ length: 100000 }, (_, i) => {
+      // ===================== DATA SIMULASI 50 =====================
+      const childAsuh = Array.from({ length: 50 }, (_, i) => {
+        const pendidikan = ['SD', 'SMP', 'SMA'][i % 3];
+
+        const statusArr = ['Naik Kelas', 'Tidak Naik Kelas'];
+        const sppArr = ['Belum Diset'];
+
+        let kelas;
+        if (pendidikan === 'SD') kelas = (i % 6) + 1;
+        else if (pendidikan === 'SMP') kelas = (i % 3) + 7;
+        else kelas = (i % 3) + 10;
+
+        return {
+          id: '25-' + (1000 + i),
+          nama: 'Anak ' + (i + 1),
+          namaSekolah: `${pendidikan} ${i + 1}`,
+          sekretariat: sekretariatList[i % sekretariatList.length],
+          spp: sppArr[0],
+          pendidikan: pendidikan,
+          kelas: kelas,
+          status: statusArr[i % 5],
+          statusSPP: sppArr[i % 4],
+          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${(i % 99) + 1}.jpg`,
+        };
+      });
+
+      const childAsuhPraPaad = Array.from({ length: 50 }, (_, i) => {
+        i += 50;
         const pendidikan = ['SD', 'SMP', 'SMA'][i % 3];
         const spp = pendidikan === 'SD' ? 50000 : pendidikan === 'SMP' ? 75000 : 100000;
 
-        const statusArr = ['Naik Kelas', 'Tidak Naik Kelas', 'Lulus', 'Stop', 'Pending'];
-        const sppArr = ['Pending', 'Belum Diset'];
+        const statusArr = ['Naik Kelas', 'Tidak Naik Kelas'];
+        const sppArr = ['Pending'];
 
         let kelas;
         if (pendidikan === 'SD') kelas = (i % 6) + 1;
@@ -1024,51 +1094,82 @@
       });
 
       // ===================== ELEMENT =====================
-      const childGrid = document.getElementById('childGrid');
-      const searchInput = document.getElementById('searchInput');
-      const pagination = document.getElementById('pagination');
+      const childGridAnakAsuh = document.getElementById('childGridAnakAsuh');
+      const searchInputAnakAsuh = document.getElementById('searchInputAnakAsuh');
+      const paginationAnakAsuh = document.getElementById('paginationAnakAsuh');
+      const sortPillsAnakAsuh = document.querySelectorAll('.sort-pill-anak-asuh');
+
+      const childGridPraPaad = document.getElementById('childGridPraPaad');
+      const searchInputPraPaad = document.getElementById('searchInputPraPaad');
+      const paginationPraPaad = document.getElementById('paginationPraPaad');
+      const sortPillsPraPaad = document.querySelectorAll('.sort-pill-prapaad');
+
       const tingkatCheckbox = document.querySelectorAll('.tingkat');
-      const sortPills = document.querySelectorAll('.sort-pill');
 
       let perPage = 12;
-      let currentPage = 1;
-      let currentSort = 'nama';
-      let sortDirection = 'asc';
+      let currentPageAnakAsuh = 1;
+      let currentSortAnakAsuh = 'nama';
+      let sortDirectionAnakAsuh = 'asc';
+      let cachedFilteredAnakAsuh = [];
+      let needSortAnakAsuh = true;
 
-      // Cache
-      let cachedFiltered = childAsuh;
-      let needSort = true;
+      let currentPagePraPaad = 1;
+      let currentSortPraPaad = 'nama';
+      let sortDirectionPraPaad = 'asc';
+      let cachedFilteredPraPaad = [];
+      let needSortPraPaad = true;
 
-      // ===================== SORT HANDLER =====================
-      sortPills.forEach(pill => {
+      // ===================== SORT HANDLER ANAK ASUH =====================
+      sortPillsAnakAsuh.forEach(pill => {
         pill.addEventListener('click', () => {
           const sortBy = pill.dataset.sort;
 
-          if (currentSort === sortBy) {
-            sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+          if (currentSortAnakAsuh === sortBy) {
+            sortDirectionAnakAsuh = sortDirectionAnakAsuh === 'asc' ? 'desc' : 'asc';
           } else {
-            currentSort = sortBy;
-            sortDirection = 'asc';
+            currentSortAnakAsuh = sortBy;
+            sortDirectionAnakAsuh = 'asc';
           }
 
           // UI styling pindah ke style.js
-          updateSortPillUI(sortPills, pill, sortDirection);
+          updateSortPillUI(sortPillsAnakAsuh, pill, sortDirectionAnakAsuh);
 
-          needSort = true;
-          currentPage = 1;
-          renderChild();
+          needSortAnakAsuh = true;
+          currentPageAnakAsuh = 1;
+          renderChildAnakAsuh();
         });
       });
 
-      // ===================== RENDER CORE =====================
-      function renderChild() {
+      // ===================== SORT HANDLER PRA-PAAD =====================
+      sortPillsPraPaad.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const sortBy = pill.dataset.sort;
+
+          if (currentSortPraPaad === sortBy) {
+            sortDirectionPraPaad = sortDirectionPraPaad === 'asc' ? 'desc' : 'asc';
+          } else {
+            currentSortPraPaad = sortBy;
+            sortDirectionPraPaad = 'asc';
+          }
+
+          // UI styling pindah ke style.js
+          updateSortPillUI(sortPillsPraPaad, pill, sortDirectionPraPaad);
+
+          needSortPraPaad = true;
+          currentPagePraPaad = 1;
+          renderChildPraPaad();
+        });
+      });
+
+      // ===================== RENDER CORE ANAK ASUH =====================
+      function renderChildAnakAsuh() {
         updatePerPage();
 
         const selectedTingkat = [...tingkatCheckbox].filter(c => c.checked).map(c => c.value);
         const selectedSekretariat = [...document.querySelectorAll('.sekretariat')]
           .filter(c => c.checked)
           .map(c => c.value);
-        const keyword = searchInput.value.toLowerCase();
+        const keyword = searchInputAnakAsuh.value.toLowerCase();
 
         let filtered = childAsuh.filter(
           a =>
@@ -1077,25 +1178,25 @@
             a.nama.toLowerCase().includes(keyword)
         );
 
-        if (needSort) {
+        if (needSortAnakAsuh) {
           filtered.sort((a, b) => {
-            if (currentSort === 'nama')
-              return sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
-            if (currentSort === 'kelas') return sortDirection === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
-            if (currentSort === 'id') return sortDirection === 'asc' ? a.id - b.id : b.id - a.id;
+            if (currentSortAnakAsuh === 'nama')
+              return sortDirectionAnakAsuh === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
+            if (currentSortAnakAsuh === 'kelas') return sortDirectionAnakAsuh === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
+            if (currentSortAnakAsuh === 'id') return sortDirectionAnakAsuh === 'asc' ? a.id - b.id : b.id - a.id;
           });
-          needSort = false;
+          needSortAnakAsuh = false;
         }
 
-        cachedFiltered = filtered;
+        cachedFilteredAnakAsuh = filtered;
 
         const totalPages = Math.ceil(filtered.length / perPage);
-        if (currentPage > totalPages) currentPage = totalPages || 1;
+        if (currentPageAnakAsuh > totalPages) currentPageAnakAsuh = totalPages || 1;
 
-        const start = (currentPage - 1) * perPage;
+        const start = (currentPageAnakAsuh - 1) * perPage;
         const paginated = filtered.slice(start, start + perPage);
 
-        childGrid.innerHTML = paginated
+        childGridAnakAsuh.innerHTML = paginated
           .map(
             a => `<div class="col-6 col-md-2">
                     <div class="child-card">
@@ -1114,20 +1215,92 @@
                         <span class="badge ${getBadgeStatus(a.status)}">${a.id}</span>
                         <span>${a.nama}</span>
                         <p>${a.namaSekolah}<br>Kelas ${a.kelas}</p>
-                        <span class="badge ${getBadgeClass(a.statusSPP)}">Rp${a.spp.toLocaleString()}</span>
+                        <span class="badge ${getBadgeClass(a.statusSPP)}">${a.spp.toLocaleString()}</span>
                     </div>
                   </div>
                   `
           )
           .join('');
 
-        pagination.innerHTML = generatePagination(totalPages, currentPage);
+        paginationAnakAsuh.innerHTML = generatePagination(totalPages, currentPageAnakAsuh);
 
-        document.querySelectorAll('.page-link[data-page]').forEach(btn => {
+        document.querySelectorAll('#paginationAnakAsuh .page-link[data-page]').forEach(btn => {
           btn.addEventListener('click', e => {
             e.preventDefault();
-            currentPage = parseInt(btn.dataset.page);
-            renderChild();
+            currentPageAnakAsuh = parseInt(btn.dataset.page);
+            renderChildAnakAsuh();
+          });
+        });
+      }
+
+      // ===================== RENDER CORE PRA-PAAD =====================
+      function renderChildPraPaad() {
+        updatePerPage();
+
+        const selectedTingkat = [...tingkatCheckbox].filter(c => c.checked).map(c => c.value);
+        const selectedSekretariat = [...document.querySelectorAll('.sekretariat')]
+          .filter(c => c.checked)
+          .map(c => c.value);
+        const keyword = searchInputPraPaad.value.toLowerCase();
+
+        let filtered = childAsuhPraPaad.filter(
+          a =>
+            (selectedTingkat.length === 0 || selectedTingkat.includes(a.pendidikan)) &&
+            (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
+            a.nama.toLowerCase().includes(keyword)
+        );
+
+        if (needSortPraPaad) {
+          filtered.sort((a, b) => {
+            if (currentSortPraPaad === 'nama')
+              return sortDirectionPraPaad === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
+            if (currentSortPraPaad === 'kelas') return sortDirectionPraPaad === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
+            if (currentSortPraPaad === 'id') return sortDirectionPraPaad === 'asc' ? a.id - b.id : b.id - a.id;
+          });
+          needSortPraPaad = false;
+        }
+
+        cachedFilteredPraPaad = filtered;
+
+        const totalPages = Math.ceil(filtered.length / perPage);
+        if (currentPagePraPaad > totalPages) currentPagePraPaad = totalPages || 1;
+
+        const start = (currentPagePraPaad - 1) * perPage;
+        const paginated = filtered.slice(start, start + perPage);
+
+        childGridPraPaad.innerHTML = paginated
+          .map(
+            a => `<div class="col-6 col-md-2">
+                    <div class="child-card">
+                      <!-- Overlay & tombol -->
+                      <div class="hover-btns">
+                        <div class="hover-btns-inner">
+                          <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
+                          <button class="btn btn-warning btn-sm" onclick="window.location.href='form_anak_asuh.html'">Edit</button>
+                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Set SPP</button>
+                          <button class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
+                        </div>
+                      </div>
+
+                      <!-- Isi card -->
+                      <img loading="lazy" src="${a.foto}" alt="${a.nama}">
+                        <span class="badge ${getBadgeStatus(a.status)}">${a.id}</span>
+                        <span>${a.nama}</span>
+                        <p>${a.namaSekolah}<br>Kelas ${a.kelas}</p>
+                        <span class="badge ${getBadgeClass(a.statusSPP)}">Rp ${a.spp.toLocaleString()}</span>
+                    </div>
+                  </div>
+                  `
+          )
+          .join('');
+
+        paginationPraPaad.innerHTML = generatePagination(totalPages, currentPagePraPaad);
+
+        document.querySelectorAll('#paginationPraPaad .page-link[data-page]').forEach(btn => {
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            currentPagePraPaad = parseInt(btn.dataset.page);
+            renderChildPraPaad();
           });
         });
       }
@@ -1141,12 +1314,21 @@
         };
       }
 
-      searchInput.addEventListener(
+      searchInputAnakAsuh.addEventListener(
         'input',
         debounce(() => {
-          needSort = true;
-          currentPage = 1;
-          renderChild();
+          needSortAnakAsuh = true;
+          currentPageAnakAsuh = 1;
+          renderChildAnakAsuh();
+        }, 200)
+      );
+
+      searchInputPraPaad.addEventListener(
+        'input',
+        debounce(() => {
+          needSortPraPaad = true;
+          currentPagePraPaad = 1;
+          renderChildPraPaad();
         }, 200)
       );
 
@@ -1154,9 +1336,12 @@
       function bindFilter(selector) {
         document.querySelectorAll(selector).forEach(chk =>
           chk.addEventListener('input', () => {
-            needSort = true;
-            currentPage = 1;
-            renderChild();
+            needSortAnakAsuh = true;
+            currentPageAnakAsuh = 1;
+            renderChildAnakAsuh();
+            needSortPraPaad = true;
+            currentPagePraPaad = 1;
+            renderChildPraPaad();
           })
         );
       }
@@ -1164,10 +1349,14 @@
       bindFilter('.tingkat');
       bindFilter('.sekretariat');
 
-      window.addEventListener('resize', renderChild);
+      window.addEventListener('resize', () => {
+        renderChildAnakAsuh();
+        renderChildPraPaad();
+      });
 
       // FIRST RENDER
-      renderChild();
+      renderChildAnakAsuh();
+      renderChildPraPaad();
 
       // Delete Data Action
       function deleteData() {
