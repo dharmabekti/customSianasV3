@@ -639,6 +639,19 @@
                       placeholder="Cari anak..."
                     />
                   </div>
+                  <div class="col-auto">
+                    <button id="confirmSelectedPraPaad" class="btn btn-success btn-sm">Konfirmasi Terpilih</button>
+                  </div>
+                </div>
+
+                <!-- Select All Checkbox -->
+                <div class="row mb-3">
+                  <div class="col-auto">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="selectAllPraPaad" />
+                      <label class="form-check-label fw-bold" for="selectAllPraPaad">Pilih Semua</label>
+                    </div>
+                  </div>
                 </div>
 
                 <div id="childGridPraPaad" class="row g-2"></div>
@@ -648,7 +661,6 @@
                   <nav><ul class="pagination" id="paginationPraPaad"></ul></nav>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -1057,11 +1069,11 @@
           nama: 'Anak ' + (i + 1),
           namaSekolah: `${pendidikan} ${i + 1}`,
           sekretariat: sekretariatList[i % sekretariatList.length],
-          spp: sppArr[0],
+          spp: sppArr[i % 1],
           pendidikan: pendidikan,
           kelas: kelas,
-          status: statusArr[i % 5],
-          statusSPP: sppArr[i % 4],
+          status: statusArr[i % 2],
+          statusSPP: sppArr[i % 1],
           foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${(i % 99) + 1}.jpg`,
         };
       });
@@ -1087,8 +1099,8 @@
           spp: spp,
           pendidikan: pendidikan,
           kelas: kelas,
-          status: statusArr[i % 5],
-          statusSPP: sppArr[i % 4],
+          status: statusArr[i % 2],
+          statusSPP: sppArr[i % 1],
           foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${(i % 99) + 1}.jpg`,
         };
       });
@@ -1097,12 +1109,12 @@
       const childGridAnakAsuh = document.getElementById('childGridAnakAsuh');
       const searchInputAnakAsuh = document.getElementById('searchInputAnakAsuh');
       const paginationAnakAsuh = document.getElementById('paginationAnakAsuh');
-      const sortPillsAnakAsuh = document.querySelectorAll('.sort-pill-anak-asuh');
+      const sortPillsAnakAsuh = document.querySelectorAll('#anak_asuh .sort-pill');
 
       const childGridPraPaad = document.getElementById('childGridPraPaad');
       const searchInputPraPaad = document.getElementById('searchInputPraPaad');
       const paginationPraPaad = document.getElementById('paginationPraPaad');
-      const sortPillsPraPaad = document.querySelectorAll('.sort-pill-prapaad');
+      const sortPillsPraPaad = document.querySelectorAll('#prapaad .sort-pill');
 
       const tingkatCheckbox = document.querySelectorAll('.tingkat');
 
@@ -1175,14 +1187,17 @@
           a =>
             (selectedTingkat.length === 0 || selectedTingkat.includes(a.pendidikan)) &&
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            a.nama.toLowerCase().includes(keyword)
+            (a.id.toLowerCase().includes(keyword) ||
+              a.nama.toLowerCase().includes(keyword) ||
+              a.namaSekolah.toLowerCase().includes(keyword))
         );
 
         if (needSortAnakAsuh) {
           filtered.sort((a, b) => {
             if (currentSortAnakAsuh === 'nama')
               return sortDirectionAnakAsuh === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
-            if (currentSortAnakAsuh === 'kelas') return sortDirectionAnakAsuh === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
+            if (currentSortAnakAsuh === 'kelas')
+              return sortDirectionAnakAsuh === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
             if (currentSortAnakAsuh === 'id') return sortDirectionAnakAsuh === 'asc' ? a.id - b.id : b.id - a.id;
           });
           needSortAnakAsuh = false;
@@ -1247,14 +1262,17 @@
           a =>
             (selectedTingkat.length === 0 || selectedTingkat.includes(a.pendidikan)) &&
             (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            a.nama.toLowerCase().includes(keyword)
+            (a.id.toLowerCase().includes(keyword) ||
+              a.nama.toLowerCase().includes(keyword) ||
+              a.namaSekolah.toLowerCase().includes(keyword))
         );
 
         if (needSortPraPaad) {
           filtered.sort((a, b) => {
             if (currentSortPraPaad === 'nama')
               return sortDirectionPraPaad === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
-            if (currentSortPraPaad === 'kelas') return sortDirectionPraPaad === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
+            if (currentSortPraPaad === 'kelas')
+              return sortDirectionPraPaad === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
             if (currentSortPraPaad === 'id') return sortDirectionPraPaad === 'asc' ? a.id - b.id : b.id - a.id;
           });
           needSortPraPaad = false;
@@ -1271,7 +1289,12 @@
         childGridPraPaad.innerHTML = paginated
           .map(
             a => `<div class="col-6 col-md-2">
-                    <div class="child-card">
+                    <div class="child-card position-relative">
+                      <!-- Checkbox -->
+                      <input type="checkbox" id="check-${a.id}" value="${
+              a.id
+            }" class="position-absolute top-0 start-0 m-1" style="z-index: 10;">
+
                       <!-- Overlay & tombol -->
                       <div class="hover-btns">
                         <div class="hover-btns-inner">
@@ -1366,6 +1389,51 @@
           }
         });
       }
+
+      // Select All Pra-PAAD Action
+      document.getElementById('selectAllPraPaad').addEventListener('change', e => {
+        const isChecked = e.target.checked;
+        const checkboxes = document.querySelectorAll('#childGridPraPaad input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+          cb.checked = isChecked;
+        });
+      });
+
+      // Confirm Selected Pra-PAAD Action
+      document.getElementById('confirmSelectedPraPaad').addEventListener('click', () => {
+        const selectedCheckboxes = document.querySelectorAll('#childGridPraPaad input[type="checkbox"]:checked');
+        const selectedIds = Array.from(selectedCheckboxes).map(cb => cb.value);
+
+        if (selectedIds.length === 0) {
+          swal_alert('Peringatan', 'Pilih setidaknya satu anak asuh untuk dikonfirmasi!', 'warning');
+          return;
+        }
+
+        const selectedNames = selectedIds
+          .map(id => {
+            const child = childAsuhPraPaad.find(a => a.id === id);
+            return child ? child.nama : id;
+          })
+          .join(', ');
+
+        swal_confirm('Konfirmasi', `Yakin ingin mengkonfirmasi anak asuh berikut: ${selectedNames}?`, 'question').then(
+          result => {
+            if (result.isConfirmed) {
+              // Simulate confirmation: remove from Pra-PAAD and add to Anak Asuh or just alert
+              selectedIds.forEach(id => {
+                const index = childAsuhPraPaad.findIndex(a => a.id === id);
+                if (index !== -1) {
+                  const confirmedChild = childAsuhPraPaad.splice(index, 1)[0];
+                  // Optionally add to childAsuh if needed, but for demo, just remove
+                }
+              });
+              renderChildPraPaad(); // Re-render to update the grid
+              renderChildAnakAsuh(); // If adding to Anak Asuh, but here just re-render Pra-PAAD
+              swal_alert('Berhasil', `Anak asuh ${selectedNames} berhasil dikonfirmasi!`, 'success');
+            }
+          }
+        );
+      });
     </script>
   </body>
 </html>
