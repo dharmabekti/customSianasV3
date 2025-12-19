@@ -1416,23 +1416,25 @@
           })
           .join(', ');
 
-        swal_confirm('Konfirmasi', `Yakin ingin mengkonfirmasi anak asuh berikut: ${selectedNames}?`, 'question').then(
-          result => {
-            if (result.isConfirmed) {
-              // Simulate confirmation: remove from Pra-PAAD and add to Anak Asuh or just alert
-              selectedIds.forEach(id => {
-                const index = childAsuhPraPaad.findIndex(a => a.id === id);
-                if (index !== -1) {
-                  const confirmedChild = childAsuhPraPaad.splice(index, 1)[0];
-                  // Optionally add to childAsuh if needed, but for demo, just remove
-                }
-              });
-              renderChildPraPaad(); // Re-render to update the grid
-              renderChildAnakAsuh(); // If adding to Anak Asuh, but here just re-render Pra-PAAD
-              swal_alert('Berhasil', `Anak asuh ${selectedNames} berhasil dikonfirmasi!`, 'success');
-            }
+        swal_confirm(
+          'Konfirmasi',
+          `Kamu yakin akan mengkonfirmasi sejumlah  ${selectedIds.length} anak dan masuk PAAD?`,
+          'question'
+        ).then(result => {
+          if (result.isConfirmed) {
+            // Simulate confirmation: remove from Pra-PAAD and add to Anak Asuh or just alert
+            selectedIds.forEach(id => {
+              const index = childAsuhPraPaad.findIndex(a => a.id === id);
+              if (index !== -1) {
+                const confirmedChild = childAsuhPraPaad.splice(index, 1)[0];
+                // Optionally add to childAsuh if needed, but for demo, just remove
+              }
+            });
+            renderChildPraPaad(); // Re-render to update the grid
+            renderChildAnakAsuh(); // If adding to Anak Asuh, but here just re-render Pra-PAAD
+            swal_alert('Berhasil', `${selectedIds.length} anak asuh berhasil dikonfirmasi!`, 'success');
           }
-        );
+        });
       });
     </script>
   </body>
