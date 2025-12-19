@@ -273,7 +273,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Pengajuan Anak Asuh Baru</span>
+        <span class="navbar-brand mx-auto">Pengajuan Naik Jenjang</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -528,7 +528,7 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Pengajuan Anak Asuh Baru</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Pengajuan Naik Jenjang</h3>
       <div class="container-fluid mb-5 container-wrapper">
         <!-- ✅ Tombol Toggle Filter (Mobile) -->
         <div class="d-md-none mb-2">
@@ -584,7 +584,7 @@
             <!-- Navigasi Tab (Desktop) -->
             <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
               <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#anak_asuh">Anak Asuh Baru</button>
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#anakasuh_naik_jenjang">Anak Asuh Naik Jenjang</button>
               </li>
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prapaad">Pra-PAAD</button>
@@ -593,7 +593,7 @@
 
             <!-- Isi Tab (Satu Sumber Data) -->
             <div class="tab-content" id="profileContent">
-              <div class="tab-pane fade show active" id="anak_asuh">
+              <div class="tab-pane fade show active" id="anakasuh_naik_jenjang">
                 <!-- Sort & Search -->
                 <div class="row g-2 align-items-center mb-3">
                   <!-- Sort -->
@@ -1109,7 +1109,7 @@
       const childGridAnakAsuh = document.getElementById('childGridAnakAsuh');
       const searchInputAnakAsuh = document.getElementById('searchInputAnakAsuh');
       const paginationAnakAsuh = document.getElementById('paginationAnakAsuh');
-      const sortPillsAnakAsuh = document.querySelectorAll('#anak_asuh .sort-pill');
+      const sortPillsAnakAsuh = document.querySelectorAll('#anakasuh_naik_jenjang .sort-pill');
 
       const childGridPraPaad = document.getElementById('childGridPraPaad');
       const searchInputPraPaad = document.getElementById('searchInputPraPaad');
@@ -1198,7 +1198,11 @@
               return sortDirectionAnakAsuh === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
             if (currentSortAnakAsuh === 'kelas')
               return sortDirectionAnakAsuh === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
-            if (currentSortAnakAsuh === 'id') return sortDirectionAnakAsuh === 'asc' ? a.id - b.id : b.id - a.id;
+            if (currentSortAnakAsuh === 'id') {
+              const idA = parseInt(a.id.split('-')[1]);
+              const idB = parseInt(b.id.split('-')[1]);
+              return sortDirectionAnakAsuh === 'asc' ? idA - idB : idB - idA;
+            }
           });
           needSortAnakAsuh = false;
         }
@@ -1220,8 +1224,8 @@
                         <div class="hover-btns-inner">
                           <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
                           <button class="btn btn-warning btn-sm" onclick="window.location.href='form_anak_asuh.html'">Edit</button>
-                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Set SPP</button>
-                          <button class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
+                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Acc & Set SPP</button>
+                          <button class="btn btn-danger btn-sm" onclick="rejectData()">Reject</button>
                         </div>
                       </div>
 
@@ -1273,7 +1277,11 @@
               return sortDirectionPraPaad === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama);
             if (currentSortPraPaad === 'kelas')
               return sortDirectionPraPaad === 'asc' ? a.kelas - b.kelas : b.kelas - a.kelas;
-            if (currentSortPraPaad === 'id') return sortDirectionPraPaad === 'asc' ? a.id - b.id : b.id - a.id;
+            if (currentSortPraPaad === 'id') {
+              const idA = parseInt(a.id.split('-')[1]);
+              const idB = parseInt(b.id.split('-')[1]);
+              return sortDirectionPraPaad === 'asc' ? idA - idB : idB - idA;
+            }
           });
           needSortPraPaad = false;
         }
@@ -1300,8 +1308,8 @@
                         <div class="hover-btns-inner">
                           <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailAnakModal">Detail</button>
                           <button class="btn btn-warning btn-sm" onclick="window.location.href='form_anak_asuh.html'">Edit</button>
-                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Set SPP</button>
-                          <button class="btn btn-danger btn-sm" onclick="deleteData()">Hapus</button>
+                          <button class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#setSPPModal">Acc & Set SPP</button>
+                          <button class="btn btn-danger btn-sm" onclick="rejectData()">Reject</button>
                         </div>
                       </div>
 
@@ -1382,10 +1390,10 @@
       renderChildPraPaad();
 
       // Delete Data Action
-      function deleteData() {
-        swal_confirm('Konfirmasi', `Yakin ingin menghapus [NAMA ANAKASUH]?`, 'warning').then(result => {
+      function rejectData() {
+        swal_confirm('Konfirmasi', `Yakin ingin menolak [NAMA ANAKASUH]?`, 'warning').then(result => {
           if (result.isConfirmed) {
-            swal_alert('Berhasil', `[NAMA ANAKASUH] berhasil dihapus!`, 'success');
+            swal_alert('Berhasil', `[NAMA ANAKASUH] berhasil ditolak!`, 'success');
           }
         });
       }
