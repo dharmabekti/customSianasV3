@@ -84,6 +84,28 @@ function generatePagination(totalPages, currentPage) {
   return html;
 }
 
+// ============ Generate Pagination 2 ===========
+function generatePagination2(totalPages, currentPage) {
+  let html = '';
+  // Previous button
+  html += `<li class="page-item ${
+    currentPage === 1 ? 'disabled' : ''
+  }"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+  // Page numbers: show current -1, current, current +1, clamped
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(totalPages, currentPage + 1);
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<li class="page-item ${
+      i === currentPage ? 'active' : ''
+    }"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+  }
+  // Next button
+  html += `<li class="page-item ${
+    currentPage === totalPages ? 'disabled' : ''
+  }"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+  return html;
+}
+
 // ===================== PER PAGE DINAMIS =====================
 function updatePerPage() {
   const height = window.innerHeight;
