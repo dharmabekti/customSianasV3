@@ -553,7 +553,7 @@
                 </div>
 
                 <label for="tahunAkademikFilter">Tahun Akademik:</label>
-                <select id="tahunAkademikFilter" class="form-select form-select-sm mb-2" onchange="onFilterChange()">
+                <select id="tahunAkademikFilter" class="form-select form-select-sm mb-2">
                   <option selected="selected">2025/2026</option>
                   <option>2024/2025</option>
                   <option>2023/2024</option>
@@ -565,7 +565,7 @@
                 </div>
 
                 <label for="sekolahFilter">Komunitas/Sekolah:</label>
-                <select id="sekolahFilter" class="form-select form-select-sm select2" onchange="onFilterChange()">
+                <select id="sekolahFilter" class="form-select form-select-sm select2">
                   <option value="">Semua</option>
                 </select>
               </div>
@@ -580,7 +580,7 @@
                   <div class="col-12 col-md-auto">
                     <div class="filter-row">
                       <label for="bulanFilter">Bulan</label>
-                      <select id="bulanFilter" class="form-select form-select-sm" onchange="onFilterChange()">
+                      <select id="bulanFilter" class="form-select form-select-sm">
                         <option value="">Semua</option>
                         <option>Januari</option>
                         <option>Februari</option>
@@ -602,7 +602,7 @@
                   <div class="col-12 col-md-auto">
                     <div class="filter-row">
                       <label for="statusFilter">Status</label>
-                      <select id="statusFilter" class="form-select form-select-sm" onchange="onFilterChange()">
+                      <select id="statusFilter" class="form-select form-select-sm">
                         <option value="">Semua</option>
                         <option>Sudah Transfer</option>
                         <option>Belum Ditransfer</option>
@@ -1060,18 +1060,54 @@
         list.innerHTML = filtered
           .slice(start, start + CONFIG.itemsPerPageMobile)
           .map(
-            d => `
+            item => `
       <div class="col-12">
-        <div class="card shadow-sm p-3 mb-2">
-          <h5 class="fw-bold">${d.sekolah}</h5>
-          <div><b>Tahun:</b> ${d.tahun}</div>
-          <div><b>Tanggal:</b> ${d.tanggal}</div>
-          <div><b>Bulan:</b> ${d.bulan}</div>
-          <div><b>Jumlah:</b> Rp ${d.jumlah.toLocaleString('id-ID')}</div>
-          <div><span class="badge bg-${getStatusBadgeClass(d.status)}">${d.status}</span></div>
-        </div>
-      </div>
-    `
+                <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.sekolah}">
+                  <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
+                    ${item.sekolah}
+                    <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
+                  </h5>
+                  <div class="divider-1"></div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Th. Akademik</div>
+                    <div class="col-7">${item.tahun}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Tanggal</div>
+                    <div class="col-7">${item.tanggal}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">SPP Bulan</div>
+                    <div class="col-7">${item.bulan}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Jumlah</div>
+                    <div class="col-7">Rp ${item.jumlah.toLocaleString('id-ID')}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Kuitansi</div>
+                    <div class="col-7"><span class="badge bg-${getFileBadgeClass(item.kuitansi)}">${
+              item.kuitansi
+            }</span></div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Lampiran</div>
+                    <div class="col-7"><span class="badge bg-${getFileBadgeClass(item.lampiranKuitansi)}">${
+              item.lampiranKuitansi
+            }</span></div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Status</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.status)}">${
+              item.status
+            }</span></div>
+                  </div>
+                </div>
+              </div>`
           )
           .join('');
 
