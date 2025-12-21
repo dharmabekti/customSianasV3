@@ -2,15 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Responsive Admin Template</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
     <link href="../assets/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-    <!-- Sweet Alerts css -->
-    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -98,7 +102,11 @@
                 <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
                 <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="sk.html">SK Beasiswa</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal"
+                    >SK Beasiswa</a
+                  >
+                </li>
               </ul>
             </li>
 
@@ -265,7 +273,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Tahun Akademik</span>
+        <span class="navbar-brand mx-auto">Beranda</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -520,29 +528,68 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">List Tahun Akademik</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Raport, SKL, & Ijazah</h3>
       <div class="container-fluid mb-5 container-wrapper">
+        <!-- ✅ Tombol Toggle Filter (Mobile) -->
+        <div class="d-md-none mb-2">
+          <button
+            class="btn btn-outline-primary w-100"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#filterCollapse"
+            aria-expanded="false"
+            aria-controls="filterCollapse"
+          >
+            <i class="bi bi-funnel"></i> Tampilkan Filter
+          </button>
+        </div>
+
         <div class="row">
+          <!-- ✅ FILTER -->
+          <div class="col-md-2 mb-3">
+            <div id="filterCollapse" class="collapse d-md-block">
+              <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
+                <label for="tahunAjaranFilter">Tahun Ajaran:</label>
+                <select id="tahunAjaranFilter" class="form-select form-select-sm mb-2">
+                  <option selected="selected">2025/2026</option>
+                  <option>2024/2025</option>
+                  <option>2023/2024</option>
+                </select>
+
+                <label>Tingkat Sekolah:</label>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
+                  <label class="form-check-label" for="sd">SD</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
+                  <label class="form-check-label" for="smp">SMP</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
+                  <label class="form-check-label" for="sma">SMA</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- ✅ GRID ANAK ASUH -->
-          <div class="col-md-12">
-            <div class="table-responsive d-none d-lg-block">
-              <table
-                id="datatable"
-                class="table table-striped table-bordered align-middle text-center bg-white shadow-sm"
-              >
+          <div class="col-md-10">
+            <div class="table-responsive table-desktop">
+              <table id="datatable" class="table table-striped table-bordered align-middle text-center bg-white shadow-sm">
                 <thead class="table-light">
                   <tr>
+                    <th>No</th>
                     <th>ID</th>
-                    <th>Kode</th>
-                    <th>Tahun Akademik</th>
-                    <th>Status</th>
+                    <th>Nama</th>
+                    <th>Komunitas/Sekolah</th>
+                    <th>Tahun Ajaran</th>
+                    <th>Kelas</th>
+                    <th>Keterangan</th>
+                    <th>Aksi</th>
                   </tr>
                 </thead>
-                <tbody></tbody>
               </table>
-              <span class="text-danger fw-italic m-2 d-none d-lg-block"
-                >Klik kanan mouse untuk memunculkan menu aksi</span
-              >
             </div>
           </div>
         </div>
@@ -552,12 +599,7 @@
           <!-- 🔍 PENCARIAN MOBILE -->
           <div class="input-group mb-3 shadow-sm">
             <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
-            <input
-              type="text"
-              id="searchCard"
-              class="form-control border-start-0"
-              placeholder="Cari tahun akademik..."
-            />
+            <input type="text" id="searchCard" class="form-control border-start-0" placeholder="Cari anak asuh..." />
           </div>
 
           <!-- LIST CARD -->
@@ -584,272 +626,344 @@
       </small>
     </footer>
 
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formTahunAkademikModal">
-      <i class="bi bi-plus-lg text-center"></i>
-    </button>
-
-    <!-- Context Menu for Right-Click Actions -->
-    <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
-      <li>
-        <a
-          class="dropdown-item"
-          href="#"
-          id="activationAction"
-          onclick="activationTA(this.closest('#contextMenu').dataset.rowId)"
-        >
-          <i class="bi bi-info"></i> Aktifkan
-        </a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#" id="editAction"  data-bs-toggle="modal" data-bs-target="#formTahunAkademikModal">
-          <i class="bi bi-pencil"></i> Edit
-        </a>
-      </li>
-      <li>
-        <a class="dropdown-item" href="#" id="deleteAction" onclick="deleteData()">
-          <i class="bi bi-trash"></i> Hapus
-        </a>
-      </li>
-    </ul>
-
-    <!-- Modal Input Tahun Akademik -->
+    <!-- Modal Detail Raport -->
     <div
       class="modal fade"
-      id="formTahunAkademikModal"
+      id="detailRaportModal"
       tabindex="-1"
-      aria-labelledby="formTahunAkademikLabel"
+      aria-labelledby="detailRaportLabel"
       aria-hidden="true"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabindex="-1"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-md">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Tahun Akademik</h5>
+            <h5 class="modal-title">Detail Raport Semester Ganjil</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
             <div class="info-section">
               <div class="row g-3">
+                <!-- Kolom kiri -->
                 <div class="col-12 col-md-12 info-column">
-                  <!-- Tahun Akademik -->
-                  <div class="info-item mb-2">
-                    <span class="info-label">Tahun <sup class="text-important">*)</sup></span>
-                    <input
-                      type="number"
-                      id="kodeInput"
-                      class="form-control form-control-sm" value="2025" min="1900" max="9999"
-                      required
-                    />
+                  <div class="info-item">
+                    <span class="info-label">ID</span>
+                    <span class="info-value">24-00071</span>
                   </div>
-                  <!-- Kode Tahun Akademik -->
-                  <div class="info-item mb-2">
-                    <span class="info-label">Tahun Akademik</span>
-                    <input
-                      type="text"
-                      id="kodeInput"
-                      class="form-control form-control-sm"
-                      value="2025/2026"
-                      readonly
-                    />
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
                   </div>
-
-                  <!-- Catatan -->
-                  <small class="text-important">*) Wajib Diisi</small>
+                  <div class="info-item">
+                    <span class="info-label">Nama Lengkap</span>
+                    <span class="info-value">Antonio Veejay Alhdhir</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kelas</span>
+                    <span class="info-value">SMA/SMK Kelas 12</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Semester</span>
+                    <span class="info-value">Gasal</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">File</span>
+                    <span class="info-value"><a href="#">24-00071.pdf</a></span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="badge bg-danger">Rejected</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Catatan</span>
+                    <span class="info-value">File tidak lengkap, ada halaman yang blur</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-success px-2 px-lg-4" onclick="simpanTahunAkademik()">
-              <i class="bi bi-check me-1"></i> Simpan
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-warning px-4 fw-bold text-white" data-bs-dismiss="modal">
+              <i class="bi bi-pen me-1"></i> Revisi
             </button>
-            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-x me-1"></i> Batal
+            <button type="button" class="btn btn-primary px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-arrow-left me-1"></i> Kembali
             </button>
           </div>
         </div>
       </div>
     </div>
-    <!-- Modal Input Tahun Akademik -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
-    <!-- jQuery (dibutuhkan oleh DataTables) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- DataTables JS -->
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-
-    <script src="../assets/js/datatable.init.js"></script>
-    <!-- Sweet Alerts Js-->
-    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
       // ===============================
-      // Status List for Tahun Akademik
+      // Daftar Nama Anak Asuh
       // ===============================
-      const statusList = ['Aktif', 'Tidak Aktif'];
+      const namaList = [
+        'Ahmad Fauzi',
+        'Budi Santoso',
+        'Citra Dewi',
+        'Dedi Rahman',
+        'Eka Sari',
+        'Fajar Nugroho',
+        'Gita Permata',
+        'Hadi Wijaya',
+        'Indah Lestari',
+        'Joko Susilo',
+        'Kartika Sari',
+        'Lutfi Hakim',
+        'Maya Sari',
+        'Nanda Putra',
+        'Oka Wibowo',
+        'Putri Ayu',
+        'Rudi Hartono',
+        'Sari Indah',
+        'Taufik Rahman',
+        'Umi Kalsum',
+        'Vina Sari',
+        'Wahyu Nugroho',
+        'Yuniarti',
+        'Zainal Abidin',
+        'Ani Suryani',
+        'Bambang Setiawan',
+        'Cici Handayani',
+        'Dian Purnama',
+        'Eko Prasetyo',
+        'Fina Sari',
+      ];
+
+      const sekolahList = [
+        'SD Dharma Bakti 1',
+        'SD Dharma Bakti 2',
+        'SMP Dharma Bakti',
+        'SMA Dharma Bakti',
+        'SD Islam Terpadu',
+        'SMP Islam Terpadu',
+        'SMA Islam Terpadu',
+        'SD Negeri 1',
+        'SMP Negeri 1',
+        'SMA Negeri 1',
+      ];
+
+      const tahunAjaranList = ['2023/2024', '2024/2025', '2025/2026'];
+      const tingkatList = ['SD', 'SMP', 'SMA'];
+      const aksiList = ['Waiting', 'Need Approval', 'Approved'];
+      const keteranganList = ['Raport Ganjil', 'Raport Genap', 'SKL', 'Ijazah'];
 
       // ===============================
-      // Badge Class Functions
+      // Generate Data Anak Asuh
       // ===============================
-      function getStatusClass(status) {
-        switch (status) {
-          case 'Aktif':
-            return 'success';
-          default:
-            return 'danger';
-        }
-      }
+      const anakAsuhData = [];
+      let no = 1;
+      for (let i = 0; i < 50; i++) {
+        const nama = namaList[Math.floor(Math.random() * namaList.length)];
+        const sekolah = sekolahList[Math.floor(Math.random() * sekolahList.length)];
+        const tahunAjaran = tahunAjaranList[Math.floor(Math.random() * tahunAjaranList.length)];
+        const tingkat = tingkatList[Math.floor(Math.random() * tingkatList.length)];
+        let kelas;
+        if (tingkat === 'SD') kelas = Math.floor(Math.random() * 6) + 1;
+        else if (tingkat === 'SMP') kelas = Math.floor(Math.random() * 3) + 7;
+        else kelas = Math.floor(Math.random() * 3) + 10;
 
-      // ===============================
-      // Generate Data Tahun Akademik
-      // ===============================
-      const tahunAkademikData = [];
-      const startYear = 2020;
-      const endYear = 2025;
-      for (let year = startYear; year <= endYear; year++) {
-        const id = year.toString();
-        const kode = `${year}/${year + 1}`;
-        const tahun_akademik = kode;
-        const status = 'Tidak Aktif'; // Default status
+        const id = `AA-${String(i + 1).padStart(4, '0')}`;
 
-        tahunAkademikData.push({
-          id,
-          kode,
-          tahun_akademik,
-          status,
+        // Create 4 rows per student
+        keteranganList.forEach(keterangan => {
+          anakAsuhData.push({
+            no: no++,
+            id,
+            nama,
+            sekolah,
+            tahunAjaran,
+            tingkat,
+            kelas,
+            keterangan,
+            aksi: aksiList[Math.floor(Math.random() * aksiList.length)],
+          });
         });
-      }
-
-      // Sort data in descending order by year
-      tahunAkademikData.sort((a, b) => b.id - a.id);
-
-      // Set only the first (latest) year to 'Aktif'
-      if (tahunAkademikData.length > 0) {
-        tahunAkademikData[0].status = 'Aktif';
       }
 
       const cardList = document.getElementById('cardList');
       const searchCard = document.getElementById('searchCard');
       const paginationMobile = document.getElementById('paginationMobile');
+
+      // Filter elements
+      const tahunAjaranFilter = document.getElementById('tahunAjaranFilter');
+      const tingkatCheckboxes = document.querySelectorAll('.tingkat');
+
       let currentPageMobile = 1;
-      const itemsPerPageMobile = 10;
+      const perPageMobile = 6;
+
+      // ===============================
+      // Helper: Warna badge file
+      // ===============================
+      function getFileBadgeClass(fileStatus) {
+        const status = fileStatus.toLowerCase();
+        if (status === 'done') return 'success';
+        if (status === 'approved') return 'info';
+        if (status === 'waiting') return 'warning';
+        if (status === 'rejected') return 'danger';
+        return 'secondary'; // for 'belum upload', 'belum upload'
+      }
+
+      // ===============================
+      // Get selected tingkat
+      // ===============================
+      function getSelectedTingkat(checkboxes) {
+        return Array.from(checkboxes)
+          .filter(cb => cb.checked)
+          .map(cb => cb.value);
+      }
+
+      // ===============================
+      // Filter data
+      // ===============================
+      function filterData(data, tahunAjaran, selectedTingkat) {
+        return data.filter(item => {
+          const tahunMatch = tahunAjaran === '' || item.tahunAjaran === tahunAjaran;
+          const tingkatMatch = selectedTingkat.length === 0 || selectedTingkat.includes(item.tingkat);
+          return tahunMatch && tingkatMatch;
+        });
+      }
 
       // ===============================
       // Initialize DataTable (Desktop) - once only
       // ===============================
       let dataTable; // Global variable to hold DataTable instance
 
-      function renderTable() {
-        const tableBody = document.querySelector('#datatable tbody');
-
-        tableBody.innerHTML = tahunAkademikData
-          .map(
-            d => `
-        <tr class="table-row" data-id="${d.id}">
-          <td data-label="ID">${d.id}</td>
-          <td data-label="Kode">${d.kode}</td>
-          <td data-label="Tahun Akademik">Tahun Akademik ${d.tahun_akademik}</td>
-          <td data-label="Status"><span class="badge bg-${getStatusClass(d.status)}">${d.status}</span></td>
-        </tr>
-      `
-          )
-          .join('');
-
-        // Add right-click context menu to rows
-        tableBody.querySelectorAll('.table-row').forEach(row => {
-          row.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            const contextMenu = document.getElementById('contextMenu');
-            contextMenu.style.display = 'block';
-            contextMenu.style.left = e.pageX + 'px';
-            contextMenu.style.top = e.pageY + 'px';
-            // Store the row data for actions
-            contextMenu.dataset.rowId = this.dataset.id;
-          });
+      function initDataTable() {
+        dataTable = $('#datatable').DataTable({
+          data: anakAsuhData,
+          columns: [
+            { data: 'no' },
+            { data: 'id' },
+            { data: 'nama' },
+            { data: 'sekolah' },
+            { data: 'tahunAjaran' },
+            { data: 'kelas' },
+            { data: 'keterangan' },
+            {
+              data: 'aksi',
+              render: function (data) {
+                return `<span class="badge bg-${getFileBadgeClass(data)}" onclick="window.location.href='form_approval.html'">${data}</span>`;
+              },
+            },
+            { data: 'tingkat', visible: false }, // Hidden column for filtering
+          ],
+          language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/id.json',
+          },
+          pageLength: 10,
+          lengthMenu: [
+            [10, 15, 20, -1],
+            [10, 15, 20, 'Semua'],
+          ],
+          ordering: true,
         });
+      }
+
+      // ===============================
+      // Filter DataTable using API (no destroy/recreate)
+      // ===============================
+      function filterTable() {
+        const tahunAjaran = tahunAjaranFilter.value;
+        const selectedTingkat = getSelectedTingkat(tingkatCheckboxes);
+
+        // Filter by tahun ajaran
+        dataTable.column(4).search(tahunAjaran).draw();
+
+        // Filter by tingkat using custom filter
+        $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
+          if (selectedTingkat.length === 0) return true;
+          return selectedTingkat.includes(data[8]); // Index 8 is the hidden tingkat column
+        });
+        dataTable.draw();
+        $.fn.dataTable.ext.search.pop(); // Remove the custom filter after draw
       }
 
       // ===============================
       // Render Cards (Mobile)
       // ===============================
       function renderCards() {
-        if (!cardList || !searchCard || !paginationMobile) {
-          console.log('Required DOM elements not found');
-          return;
-        }
-
         const searchTerm = searchCard.value.toLowerCase();
+        const isMobile = window.innerWidth < 992;
+        const tahunAjaran = isMobile ? document.getElementById('tahunAjaranFilter').value : tahunAjaranFilter.value;
+        const selectedTingkat = getSelectedTingkat(tingkatCheckboxes);
 
-        let filtered = tahunAkademikData;
+        let filtered = filterData(anakAsuhData, tahunAjaran, selectedTingkat);
 
         // Apply search
         if (searchTerm) {
           filtered = filtered.filter(
-            item => item.kode.toLowerCase().includes(searchTerm) || item.id.toLowerCase().includes(searchTerm)
+            item =>
+              item.nama.toLowerCase().includes(searchTerm) ||
+              item.sekolah.toLowerCase().includes(searchTerm) ||
+              item.id.toLowerCase().includes(searchTerm)
           );
         }
 
-        // Pagination
-        const totalPages = Math.ceil(filtered.length / itemsPerPageMobile);
-        const start = (currentPageMobile - 1) * itemsPerPageMobile;
-        const end = start + itemsPerPageMobile;
-        const paginated = filtered.slice(start, end);
+        const totalPages = Math.ceil(filtered.length / perPageMobile);
+        if (currentPageMobile > totalPages) currentPageMobile = totalPages || 1;
+
+        const start = (currentPageMobile - 1) * perPageMobile;
+        const paginated = filtered.slice(start, start + perPageMobile);
 
         cardList.innerHTML = paginated
           .map(
             item => `
-              <div class="col-12">
-                <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-kode="${item.kode}">
-                  <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
-                    ${item.kode}
-                    <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
-                  </h5>
-                  <div class="divider-1"></div>
-
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">ID</div>
-                    <div class="col-7">${item.id}</div>
-                  </div>
-
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Akademik</div>
-                    <div class="col-7">${item.tahun_akademik}</div>
-                  </div>
-
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Status</div>
-                    <div class="col-7">
-                      <span class="badge bg-${getStatusClass(item.status)}">${item.status}</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>`
+      <div class="col-12">
+        <div class="card shadow-sm p-3 mb-2">
+          <h5 class="card-title">${item.nama}</h5>
+          <p class="mb-1"><strong>ID:</strong> ${item.id}</p>
+          <p class="mb-1"><strong>Sekolah:</strong> ${item.sekolah}</p>
+          <p class="mb-1"><strong>Tahun Ajaran:</strong> ${item.tahunAjaran}</p>
+          <p class="mb-1"><strong>Kelas:</strong> ${item.kelas}</p>
+          <p class="mb-1"><strong>Keterangan:</strong> ${item.keterangan}</p>
+          <p class="mb-1"><strong>Aksi:</strong> <span class="badge bg-${getFileBadgeClass(item.aksi)}">${
+              item.aksi
+            }</span></p>
+        </div>
+      </div>
+    `
           )
           .join('');
 
-        // Generate Pagination
-
-        paginationMobile.innerHTML =
-          totalPages > 1
-            ? `<ul class="pagination justify-content-center">${generatePagination(totalPages, currentPageMobile)}</ul>`
-            : '';
+        // Pagination
+        function generatePagination(totalPages, currentPage) {
+          let html = '';
+          // Previous button
+          html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+          // Page numbers: show current -1, current, current +1, clamped
+          const start = Math.max(1, currentPage - 1);
+          const end = Math.min(totalPages, currentPage + 1);
+          for (let i = start; i <= end; i++) {
+            html += `<li class="page-item ${i === currentPage ? 'active' : ''}"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
+          }
+          // Next button
+          html += `<li class="page-item ${currentPage === totalPages ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+          return html;
+        }
+        paginationMobile.innerHTML = totalPages > 1 ? generatePagination(totalPages, currentPageMobile) : '';
 
         paginationMobile.querySelectorAll('.page-link').forEach(link => {
           link.addEventListener('click', e => {
             e.preventDefault();
             const page = parseInt(e.target.dataset.page);
-            if (page && page !== currentPageMobile && page >= 1 && page <= totalPages) {
+            if (page && page !== currentPageMobile) {
               currentPageMobile = page;
               renderCards();
             }
@@ -865,27 +979,60 @@
         renderCards();
       });
 
+      tahunAjaranFilter.addEventListener('change', () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      tingkatCheckboxes.forEach(cb => {
+        cb.addEventListener('change', () => {
+          currentPageMobile = 1;
+          renderCards();
+        });
+      });
+
       // ===============================
       // Inisialisasi Awal
       // ===============================
-      renderTable();
       renderCards();
 
-      function activationTA(status) {
-        msg = status < 2025 ? 'mengaktifkan' : 'menonaktifkan';
-        swal_confirm('Konfirmasi', `Apakah anda yakin akan ${msg} data tersebut?`, 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', `Berhasil ${msg} tahun akademik`, 'success');
+      // ===============================
+      // DataTable (Desktop) - Initialize once, filter dynamically
+      // ===============================
+      $(document).ready(function () {
+        if (window.innerWidth >= 992) {
+          initDataTable();
+        }
+      });
+
+      // ===============================
+      // Event Listener for Desktop Filters - Use filterTable to avoid flickering
+      // ===============================
+      tahunAjaranFilter.addEventListener('change', filterTable);
+      tingkatCheckboxes.forEach(cb => cb.addEventListener('change', filterTable));
+
+      // ===============================
+      // Handle Window Resize for Responsive Mode Switching
+      // ===============================
+      let currentMode = window.innerWidth >= 992 ? 'desktop' : 'mobile';
+
+      window.addEventListener('resize', () => {
+        const newMode = window.innerWidth >= 992 ? 'desktop' : 'mobile';
+        if (newMode !== currentMode) {
+          currentMode = newMode;
+          if (newMode === 'desktop') {
+            // Switching to desktop: Initialize DataTable if not already done
+            if (!dataTable) {
+              initDataTable();
+            }
+            // Apply current filters
+            filterTable();
+          } else {
+            // Switching to mobile: Re-render cards
+            renderCards();
           }
-        });
-      }
-      function deleteData() {
-        swal_confirm('Konfirmasi', 'Yakin ingin menghapus tahun akademik?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Tahun akademik berhasil dihapus!', 'success');
-          }
-        });
-      }
+        }
+      });
     </script>
   </body>
 </html>
