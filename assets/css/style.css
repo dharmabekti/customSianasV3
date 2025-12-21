@@ -1451,6 +1451,7 @@ div.dataTables_wrapper .dataTables_filter {
   z-index: 1040 !important;
   position: absolute;
   display: none;
+  cursor: pointer;
 }
 
 /* Data Table */

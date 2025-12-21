@@ -936,34 +936,6 @@
           renderCards();
         });
       });
-
-      function resetPassword() {
-        swal_confirm('Konfirmasi', 'Kamu yakin akan mereset password akun Donatur tersebut?', 'warning').then(
-          result => {
-            if (result.isConfirmed) {
-              swal_alert('Berhasil', 'Data berhasil direset! Password baru dikirim ke WhatsApp/Email', 'success');
-            }
-          }
-        );
-      }
-      function lanjutDOnasi() {
-        swal_confirm(
-          'Konfirmasi',
-          'Kamu akan mengirimkan Email/WA Konfirmasi Lanjut Donasi ke TA Selanjutnya untuk Donatur tersebut?',
-          'warning'
-        ).then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Berhasil mengirim data!', 'success');
-          }
-        });
-      }
-      function deleteData() {
-        swal_confirm('Konfirmasi', 'Yakin ingin menghapus data donatur?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Data berhasil dihapus!', 'success');
-          }
-        });
-      }
     </script>
   </body>
 </html>

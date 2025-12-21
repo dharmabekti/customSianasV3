@@ -11,10 +11,8 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-    <!-- Select2 CSS & JS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Sweet Alerts css -->
+    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -444,16 +442,136 @@
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="upload_kuitansi.html" id="uploadAction">
-          <i class="bi bi-upload"></i> Upload Kuitansi
-        </a>
+        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailTransferModal">
+          <i class="bi bi-info"></i> Detail
+        </button>
       </li>
       <li>
-        <a class="dropdown-item" href="riwayat_transfer_beasiswa.html" id="riwayatAction">
-          <i class="bi bi-receipt"></i> Riwayat
-        </a>
+        <a class="dropdown-item" href="upload_kuitansi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
+      </li>
+      <li>
+        <abutton class="dropdown-item" id="sendAction" onclick="sendData()"> <i class="bi bi-send"></i> Kirim </abutton>
+      </li>
+      <li>
+        <button class="dropdown-item text-danger" id="deleteAction" onclick="deleteData()">
+          <i class="bi bi-trash"></i> Hapus
+        </button>
       </li>
     </ul>
+
+    <!-- Modal Detail Data Transfer -->
+    <div
+      class="modal fade"
+      id="detailTransferModal"
+      tabindex="-1"
+      aria-labelledby="detailTransferLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Data Transfer Beasiswa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section ft-14">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tanggal Transfer</span>
+                    <span class="info-value">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kode Transfer</span>
+                    <span class="info-value">-</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Dari Rekening</span>
+                    <span class="info-value">BCA an Yayasan AAT Indonesia</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Bank Tujuan</span>
+                    <span class="info-value">BRI</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Rek Tujuan</span>
+                    <span class="info-value">0048-01-027309-50-8</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Atas Nama</span>
+                    <span class="info-value">SMK KRISTEN 2 MAGELANG</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Jumlah Transfer</span>
+                    <span class="info-value">Rp1.000.000</span>
+                  </div>
+                </div>
+
+                <!-- Kolom kanan -->
+                <div class="col-12 col-md-6 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Kuitansi</span>
+                    <a href="#" class="info-value text-primary text-decoration-none">
+                      <i class="bi bi-file-earmark-text"></i> Lihat</a
+                    >
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Lampiran Kuitansi</span>
+                    <a href="#" class="info-value text-primary text-decoration-none">
+                      <i class="bi bi-file-earmark-text"></i> Lihat
+                    </a>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Uraian</span>
+                    <span class="info-value">—</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <div class="info-value">
+                      <span class="badge bg-danger">Reject by Admin</span>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Catatan</span>
+                    <div class="info-value">
+                      <p class="text-danger small mt-1 mb-0">
+                        Kesalahan Penulisan, seharusnya <span class="fw-semibold">SPP/Bulan</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button
+              class="btn btn-warning text-white px-2 px-lg-4"
+              onclick="window.location.href='upload_kuitansi.html'"
+            >
+              <i class="bi bi-pencil-square me-1"></i> Edit
+            </button>
+            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail Data Transfer -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/badges.js"></script>
@@ -757,28 +875,18 @@
       filterTable();
       renderCards();
 
-      function resetPassword() {
-        swal_confirm('Konfirmasi', 'Kamu yakin akan mereset password akun Donatur tersebut?', 'warning').then(
-          result => {
-            if (result.isConfirmed) {
-              swal_alert('Berhasil', 'Data berhasil direset! Password baru dikirim ke WhatsApp/Email', 'success');
-            }
-          }
-        );
-      }
-      function lanjutDOnasi() {
-        swal_confirm(
-          'Konfirmasi',
-          'Kamu akan mengirimkan Email/WA Konfirmasi Lanjut Donasi ke TA Selanjutnya untuk Donatur tersebut?',
-          'warning'
-        ).then(result => {
+      // Delete Data
+      function sendData() {
+        swal_confirm('Konfirmasi', 'Yakin ingin mengirim data?', 'warning').then(result => {
           if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Berhasil mengirim data!', 'success');
+            swal_alert('Berhasil', 'Data berhasil dikirim!', 'success');
           }
         });
       }
+
+      // Delete Data
       function deleteData() {
-        swal_confirm('Konfirmasi', 'Yakin ingin menghapus data donatur?', 'warning').then(result => {
+        swal_confirm('Konfirmasi', 'Yakin ingin menghapus data?', 'warning').then(result => {
           if (result.isConfirmed) {
             swal_alert('Berhasil', 'Data berhasil dihapus!', 'success');
           }
