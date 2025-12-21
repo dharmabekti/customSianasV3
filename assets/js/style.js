@@ -88,9 +88,9 @@ function generatePagination(totalPages, currentPage) {
 function generatePagination2(totalPages, currentPage) {
   let html = '';
   // Previous button
-  html += `<li class="page-item ${
-    currentPage === 1 ? 'disabled' : ''
-  }"><a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a></li>`;
+  html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${
+    currentPage - 1
+  }">Previous</a></li>`;
   // Page numbers: show current -1, current, current +1, clamped
   const startPage = Math.max(1, currentPage - 1);
   const endPage = Math.min(totalPages, currentPage + 1);
@@ -758,3 +758,20 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // ========= FLOATING BUTTON =================== //
+
+function generateCheckboxList(containerId, list, className) {
+  const container = qs(`#${containerId}`);
+  container.innerHTML = '';
+  list.forEach(item => {
+    const id = item.toLowerCase().replace(/\s+/g, '-');
+    container.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="form-check">
+        <input class="form-check-input ${className}" type="checkbox" value="${item}" id="${id}">
+        <label class="form-check-label" for="${id}">${item}</label>
+      </div>
+    `
+    );
+  });
+}

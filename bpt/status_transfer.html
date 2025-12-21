@@ -226,7 +226,7 @@
           height="80"
         />
         <h6 class="mt-1">Ki Anom</h6>
-        <small class="mb-0">BPT-XX-XXXX</small><br>
+        <small class="mb-0">BPT-XX-XXXX</small><br />
         <small class="mb-0">Sekretariat Yogyakarta</small>
       </div>
 
@@ -337,7 +337,6 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Status Transfer Beasiswa</h3>
       <div class="container-fluid form-wrapper">
-
         <!-- ✅ FILTER BAR UNTUK DESKTOP -->
         <div class="table-responsive table-desktop">
           <div class="filter-bar d-none d-lg-flex">
@@ -398,7 +397,9 @@
         <div class="card-mobile d-lg-none">
           <!-- 🔽 FILTER DROPDOWN UNTUK MOBILE -->
           <div class="filter-mobile mb-3">
-            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">Filter Tahun, Bulan & Status</button>
+            <button class="filter-toggle" type="button" onclick="toggleFilterMobile()">
+              Filter Tahun, Bulan & Status
+            </button>
             <div class="filter-content" id="filterContentMobile">
               <label for="tahunFilterMobile">Tahun:</label>
               <select id="tahunFilterMobile" class="form-select form-select-sm mb-2">
@@ -618,24 +619,24 @@
       const fileStatusList = ['Ada', 'Belum Ada'];
 
       // ===============================
-// Generate Data Sekolah
-// ===============================
-const sekolahData = Array.from({ length: 30 }, (_, i) => {
-  const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
-  const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
-  const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+      // Generate Data Sekolah
+      // ===============================
+      const sekolahData = Array.from({ length: 30 }, (_, i) => {
+        const tahun = tahunList[Math.floor(Math.random() * tahunList.length)];
+        const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
+        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
-  return {
-    id: i + 1,
-    tahun,
-    sekolah: `Sekolah ${i + 1}`,
-    bulan,
-    jumlah,
-    kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-    lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
-    status: statusList[Math.floor(Math.random() * statusList.length)],
-  };
-});
+        return {
+          id: i + 1,
+          tahun,
+          sekolah: `Sekolah ${i + 1}`,
+          bulan,
+          jumlah,
+          kuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+          lampiranKuitansi: fileStatusList[Math.floor(Math.random() * fileStatusList.length)],
+          status: statusList[Math.floor(Math.random() * statusList.length)],
+        };
+      });
 
       const tableBody = document.querySelector('#datatable tbody');
       const cardList = document.getElementById('cardList');
@@ -689,7 +690,10 @@ const sekolahData = Array.from({ length: 30 }, (_, i) => {
         const statusVal = statusFilter.value;
 
         const filtered = sekolahData.filter(
-          s => (tahunVal === '' || s.tahun == tahunVal) && (bulanVal === '' || s.bulan === bulanVal) && (statusVal === '' || s.status === statusVal)
+          s =>
+            (tahunVal === '' || s.tahun == tahunVal) &&
+            (bulanVal === '' || s.bulan === bulanVal) &&
+            (statusVal === '' || s.status === statusVal)
         );
 
         tableBody.innerHTML = filtered

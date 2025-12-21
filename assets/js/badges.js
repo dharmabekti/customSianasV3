@@ -33,3 +33,7 @@ function getStatusBadgeClass(status) {
       return 'light';
   }
 }
+
+function getFileBadgeClass(fileStatus) {
+  return fileStatus === 'Ada' ? 'success' : 'secondary';
+}
