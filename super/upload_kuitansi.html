@@ -11,6 +11,7 @@
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <!-- Select2 CSS & JS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -279,22 +280,46 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Input Data Transfer Beasiswa</h3>
       <div class="container form-wrapper">
-         <small class="text-important">*) Wajib diisi</small>
+        <small class="text-important">*) Wajib diisi</small>
         <form action="">
           <div class="row">
             <!-- Kiri -->
-            <div class="col-md-7">
+            <div class="col-md-6">
               <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">ID Komunitas</label>
-                <div class="col-sm-8 d-flex align-items-center">
-                  <input type="text" class="form-control form-control-sm" value="K-14-0209" disabled />
+                <label class="col-sm-4 col-form-label form-label"
+                  >Tgl Transfer <sup class="text-danger">*)</sup></label
+                >
+                <div class="col-sm-8">
+                  <input type="date" class="form-control form-control-sm" value="2025-12-01" />
                 </div>
               </div>
-
               <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">Komunitas</label>
+                <label class="col-sm-4 col-form-label form-label"
+                  >Tahun Akademik <sup class="text-danger">*)</sup></label
+                >
                 <div class="col-sm-8">
-                  <input type="text" class="form-control form-control-sm" value="SMK Kristen 2 Magelang" disabled />
+                  <select class="form-select form-select-sm">
+                    <option>2025/2026</option>
+                    <option>2024/2025</option>
+                    <option>2023/2024</option>
+                    <option>2022/2023</option>
+                    <option>2021/2022</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Komunitas/Sekolah <sup class="text-danger">*)</sup></label
+                >
+                <div class="col-sm-8">
+                  <select class="form-select form-select-sm select2">
+                    <option>== Pilih Komunitas/Sekolah ==</option>
+                    <option>SMA Pius 1 Kutoarjo</option>
+                    <option>SMK Kristen 2 Magelang</option>
+                    <option>SMA Bopkri 2 Magelang</option>
+                    <option>SMK Yos 2 Magelang</option>
+                    <!-- Add more options here as needed -->
+                  </select>
                 </div>
               </div>
 
@@ -318,6 +343,134 @@
                   <input type="text" class="form-control form-control-sm" value="SMK KRISTEN 2 MAGELANG" disabled />
                 </div>
               </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Rekening Asal <sup class="text-danger">*)</sup></label
+                >
+                <div class="col-sm-8">
+                  <select class="form-select form-select-sm">
+                    <option>== Pilih Rekening Asal ==</option>
+                    <option>BCA a.n Yayasan AAT Indonesia</option>
+                    <option>Mandiri a.n Yayasan AAT Indonesia</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Kode Transfer</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" />
+                </div>
+                <small class="text-muted fst-italic ft-10 text-important">
+                  Masukkan Kode Pembayaran sebagai berikut KodeBank(B untuk BCA M untuk
+                  Mandiri)-Bulan(MMM)-Tahun(YY)-No.urut, contoh kode: B-JUL-11-01
+                </small>
+              </div>
+            </div>
+
+            <!-- Kanan -->
+            <div class="col-md-6">
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label"
+                  >Nominal Transfer <sup class="text-danger">*)</sup></label
+                >
+                <div class="col-sm-8">
+                  <input type="text" class="form-control form-control-sm" />
+                </div>
+              </div>
+
+              <div class="mb-3 row">
+                <label class="col-12 col-md-4 col-form-label form-label">
+                  Bulan <sup class="text-danger">*)</sup>
+                </label>
+
+                <div class="col-12 col-md-8">
+                  <div class="row g-2">
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="jul" />
+                        <label class="form-check-label" for="jul">Jul</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="ags" />
+                        <label class="form-check-label" for="ags">Ags</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="sep" />
+                        <label class="form-check-label" for="sep">Sep</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="okt" />
+                        <label class="form-check-label" for="okt">Okt</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="nov" />
+                        <label class="form-check-label" for="nov">Nov</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="des" />
+                        <label class="form-check-label" for="des">Des</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="jan" />
+                        <label class="form-check-label" for="jan">Jan</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="feb" />
+                        <label class="form-check-label" for="feb">Feb</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="mar" />
+                        <label class="form-check-label" for="mar">Mar</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="apr" />
+                        <label class="form-check-label" for="apr">Apr</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="mei" />
+                        <label class="form-check-label" for="mei">Mei</label>
+                      </div>
+                    </div>
+
+                    <div class="col-4 col-sm-3 col-lg-2">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="bulan[]" id="jun" />
+                        <label class="form-check-label" for="jun">Jun</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div class="mb-2 row align-items-center">
                 <label class="col-sm-4 col-form-label form-label">Kuitansi <sup class="text-important">*)</sup></label>
@@ -330,7 +483,9 @@
               </div>
 
               <div class="mb-3 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">Lampiran Kuitansi <sup class="text-important">*)</sup></label>
+                <label class="col-sm-4 col-form-label form-label"
+                  >Lampiran Kuitansi <sup class="text-important">*)</sup></label
+                >
                 <div class="col-sm-8 d-flex gap-2">
                   <input type="file" class="form-control form-control-sm" />
                 </div>
@@ -338,47 +493,27 @@
                   *Format file <em>hanya PDF, JPEG, JPG, dan PNG</em> dengan ukuran maksimal <strong>500 kb</strong>
                 </small>
               </div>
-            </div>
-
-            <!-- Kanan -->
-            <div class="col-md-5">
-              <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">Tahun Ajaran</label>
-                <div class="col-sm-8 d-flex align-items-center">
-                  <input type="text" class="form-control form-control-sm" value="2025/2026" disabled />
-                </div>
-              </div>
-
-              <div class="mb-3 row align-items-top">
-                <label class="col-sm-4 col-form-label form-label">Bulan <sup class="text-important">*)</sup></label>
-                <div class="col-sm-8">
-                  <div class="d-flex flex-wrap gap-3">
-                    <label><input type="radio" name="bulan" /> Jul</label>
-                    <label><input type="radio" name="bulan" /> Ags</label>
-                    <label><input type="radio" name="bulan" /> Sep</label>
-                    <label><input type="radio" name="bulan" /> Okt</label>
-                    <label><input type="radio" name="bulan" /> Nov</label>
-                    <label><input type="radio" name="bulan" /> Des</label>
-                    <label><input type="radio" name="bulan" /> Jan</label>
-                    <label><input type="radio" name="bulan" /> Feb</label>
-                    <label><input type="radio" name="bulan" /> Mar</label>
-                    <label><input type="radio" name="bulan" /> Apr</label>
-                    <label><input type="radio" name="bulan" /> Mei</label>
-                    <label><input type="radio" name="bulan" /> Jun</label>
-                  </div>
-                </div>
-              </div>
 
               <div class="mb-3 row">
                 <label class="col-sm-4 col-form-label form-label">Uraian</label>
                 <div class="col-sm-8">
-                  <textarea class="form-control form-control-sm" rows="4"></textarea>
+                  <textarea class="form-control form-control-sm" rows="2"></textarea>
+                </div>
+              </div>
+              <div class="mb-2 row align-items-center">
+                <label class="col-sm-4 col-form-label form-label">Status <sup class="text-danger">*)</sup></label>
+                <div class="col-sm-8">
+                  <select class="form-select form-select-sm">
+                    <option>Menunggu Konfirmasi</option>
+                    <option>Sudah Transfer</option>
+                    <option>Diverifikasi</option>
+                  </select>
                 </div>
               </div>
             </div>
             <div class="text-start mt-3">
-              <button type="submit" class="btn btn-success">Simpan</button>
-              <button type="reset" class="btn btn-danger">Kembali</button>
+              <button type="submit" class="btn btn-success"><i class="bi bi-check"></i> Simpan</button>
+              <button type="reset" class="btn btn-danger"><i class="bi bi-x"></i>Kembali</button>
             </div>
           </div>
         </form>
@@ -399,6 +534,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
+    <!-- Select2 -->
+    <script src="../assets/js/select2.js"></script>
     <script>
       function previewFoto(input) {
         const box = input.closest('.upload-box');
