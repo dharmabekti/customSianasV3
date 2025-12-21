@@ -2907,3 +2907,47 @@ h3.page-title {
     font-size: 0.85rem;
   }
 }
+
+/* Default (mobile) sudah OK */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Label */
+.filter-row label {
+  min-width: 90px;
+  margin-bottom: 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Field */
+.filter-row select {
+  width: 100%;
+  max-width: 180px;
+}
+
+/* =========================
+   DESKTOP BEHAVIOR
+   ========================= */
+@media (min-width: 768px) {
+  /* Semua filter dalam satu baris */
+  .filter-section .row {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  /* Kolom auto agar tidak full */
+  .filter-section .col-md-auto {
+    flex: 0 0 auto;
+  }
+
+  /* Field desktop lebih ringkas */
+  .filter-row select {
+    width: auto;
+    min-width: 150px;
+    max-width: 180px;
+  }
+}

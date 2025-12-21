@@ -20,3 +20,16 @@ function getBadgeClass(s) {
     }[s] || 'bg-secondary'
   );
 }
+
+function getStatusBadgeClass(status) {
+  switch (status) {
+    case 'Sudah Transfer':
+      return 'success';
+    case 'Belum Ditransfer':
+      return 'secondary';
+    case 'Menunggu':
+      return 'warning';
+    default:
+      return 'light';
+  }
+}
