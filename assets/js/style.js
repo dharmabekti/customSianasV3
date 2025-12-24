@@ -1,3 +1,212 @@
+// Helper untuk menyalin konten tab ke kartu mobile (bisa dipanggil ulang setelah modal dirender)
+function cloneSectionsToMobileCards(sectionSelector, targetId, navSelector) {
+  let sections = Array.from(document.querySelectorAll(sectionSelector));
+  const container = document.getElementById(targetId);
+
+  if (!container) {
+    return;
+  }
+
+  // Susun ulang sesuai urutan nav (jika disediakan)
+  if (navSelector) {
+    const orderTargets = Array.from(document.querySelectorAll(navSelector)).map(
+      btn => btn.getAttribute('data-bs-target') || btn.getAttribute('href')
+    );
+    if (orderTargets.length > 0) {
+      const keyedSections = new Map();
+      sections.forEach(sec => {
+        const pane = sec.closest('.tab-pane');
+        if (pane && pane.id) {
+          keyedSections.set(`#${pane.id}`, sec);
+        }
+      });
+      const ordered = orderTargets.map(key => keyedSections.get(key)).filter(Boolean);
+      if (ordered.length) {
+        sections = ordered;
+      }
+    }
+  }
+
+  container.innerHTML = '';
+  if (sections.length === 0) return;
+
+  sections.forEach(section => {
+    const card = document.createElement('div');
+    card.className = 'card shadow-sm mb-3';
+
+    const body = document.createElement('div');
+    body.className = 'card-body text-center text-wrap';
+    body.innerHTML = section.innerHTML;
+
+    const table = body.querySelector('.list-table');
+    if (table) {
+      const rows = table.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const th = row.querySelector('th');
+        const td = row.querySelector('td');
+        if (th && td) {
+          td.setAttribute('data-label', th.textContent.trim());
+        }
+      });
+    }
+
+    card.appendChild(body);
+    container.appendChild(card);
+  });
+
+  // rebind accordion/listener untuk elemen yang diklon
+  bindAccordions(container);
+}
+
+// Pasang handler accordion/chevron pada elemen yang baru diklon (hindari double-bind dengan flag)
+function bindAccordions(root) {
+  const labelNames = root.querySelectorAll('.label-name');
+  labelNames.forEach(name => {
+    if (name.dataset.mobileBound === '1') return;
+    name.dataset.mobileBound = '1';
+    name.addEventListener('click', function () {
+      const nextRow = this.closest('tr')?.nextElementSibling;
+      if (nextRow && nextRow.classList.contains('accordion-details')) {
+        nextRow.classList.toggle('show');
+        const icon = this.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('bi-chevron-down');
+          icon.classList.toggle('bi-chevron-up');
+        }
+      }
+    });
+  });
+
+  const schoolNames = root.querySelectorAll('.school-name');
+  schoolNames.forEach(name => {
+    if (name.dataset.mobileBound === '1') return;
+    name.dataset.mobileBound = '1';
+    name.addEventListener('click', function () {
+      const nextRow = this.closest('tr')?.nextElementSibling;
+      if (nextRow && nextRow.classList.contains('accordion-details')) {
+        nextRow.classList.toggle('show');
+        const icon = this.querySelector('i');
+        if (icon) {
+          icon.classList.toggle('bi-chevron-down');
+          icon.classList.toggle('bi-chevron-up');
+        }
+      }
+    });
+  });
+}
+
+function attachAccordionButtons() {
+  const accButtons = document.querySelectorAll('.accordion-btn');
+  accButtons.forEach(btn => {
+    if (btn.dataset.mobileBound === '1') return;
+    btn.dataset.mobileBound = '1';
+    btn.addEventListener('click', function () {
+      if (window.innerWidth <= 768) {
+        const row = btn.closest('tr')?.nextElementSibling;
+        if (row && row.classList.contains('accordion-details')) {
+          row.classList.toggle('show');
+          btn.textContent = row.classList.contains('show') ? '-' : '+';
+        }
+      }
+    });
+  });
+}
+
+// Ekspos supaya bisa dipanggil dari Livewire saat modal dibuka
+function initMobileProfile() {
+  cloneSectionsToMobileCards('#profileContent .content-section', 'mobileProfile', '#profileTab [data-bs-target]');
+}
+
+function populateMobileCards() {
+  cloneSectionsToMobileCards('#tabContent .content-section', 'listCardMobile');
+}
+
+function initMobileProfileBpt() {
+  cloneSectionsToMobileCards('#tabContent2 .content-section', 'listCardMobile2');
+}
+
+function initMobileProfilePj() {
+  cloneSectionsToMobileCards('#tabContent3 .content-section', 'listCardMobile3');
+}
+
+// pastikan tersedia di window meskipun bundler/module berbeda
+if (typeof window !== 'undefined') {
+  window.initMobileProfile = initMobileProfile;
+  window.populateMobileCards = populateMobileCards;
+  window.initMobileProfileBpt = initMobileProfileBpt;
+  window.initMobileProfilePj = initMobileProfilePj;
+}
+
+function initPageScripts() {
+  // === Highlight menu aktif di navbar atas ===
+  const navbarLinks = document.querySelectorAll('.navbar-nav a');
+  const currentPath = window.location.pathname.split('/').pop();
+  navbarLinks.forEach(item => {
+    const hrefPath = item.getAttribute('href');
+    if (hrefPath === currentPath && hrefPath !== '#') {
+      item.classList.add('active');
+      const dropdownParent = item.closest('.dropdown');
+      if (dropdownParent) {
+        dropdownParent.querySelector('.nav-link.dropdown-toggle')?.classList.add('active');
+      }
+    }
+  });
+
+  // === Mobile bottom nav (jika ada) ===
+  const mobileMenu = document.querySelectorAll('.mobile-bottom-nav a');
+  mobileMenu.forEach(item => {
+    const hrefPath = item.getAttribute('href');
+    if (hrefPath === currentPath && hrefPath !== '#') {
+      item.classList.add('active');
+    }
+  });
+
+  // === Highlight menu aktif di sidebar mobile ===
+  const sidebarLinks = document.querySelectorAll('.offcanvas .list-group-item');
+  sidebarLinks.forEach(item => {
+    const hrefPath = item.getAttribute('href');
+    if (hrefPath === currentPath && hrefPath !== '#') {
+      item.classList.add('active');
+      const collapseParent = item.closest('.collapse');
+      if (collapseParent) {
+        const trigger = document.querySelector(`[data-bs-target="#${collapseParent.id}"]`);
+        if (trigger) {
+          trigger.classList.add('active');
+        }
+      }
+    }
+  });
+
+  // === Profil (mobile view) ===
+  initMobileProfile();
+  initMobileProfileBpt();
+  initMobileProfilePj();
+
+  // === Mobile List Card (mobile view) ===
+  if (window.innerWidth <= 768) {
+    populateMobileCards();
+  }
+
+  // === Event listener untuk resize window ===
+  window.addEventListener('resize', function () {
+    if (window.innerWidth <= 768) {
+      populateMobileCards();
+    } else {
+      const listCardMobileContainer = document.getElementById('listCardMobile');
+      if (listCardMobileContainer) {
+        listCardMobileContainer.innerHTML = '';
+      }
+    }
+  });
+
+  // Bind accordion untuk konten awal
+  bindAccordions(document);
+  attachAccordionButtons();
+}
+
+document.addEventListener('DOMContentLoaded', initPageScripts);
+
+//=======================================================================================================================//
 // ============ Create Pagination ===========
 function createPagination(paginationElement, totalPages, currentPage, onPageChange) {
   paginationElement.innerHTML =

@@ -778,6 +778,11 @@ main {
   }
 }
 
+.hero-text {
+    font-size: 14px !important;
+    /* line-height: 0 !important; */
+}
+
 @media (max-width: 576px) {
   .hero-text {
     font-size: 10px !important;
