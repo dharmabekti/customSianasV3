@@ -24,11 +24,16 @@ function getBadgeClass(s) {
 function getStatusBadgeClass(status) {
   switch (status) {
     case 'Sudah Transfer':
+    case 'Disetujui':
       return 'success';
     case 'Belum Ditransfer':
       return 'secondary';
     case 'Menunggu':
       return 'warning';
+    case 'Butuh Verifikasi':
+      return 'info';
+    case 'Ditolak':
+      return 'danger';
     default:
       return 'light';
   }
