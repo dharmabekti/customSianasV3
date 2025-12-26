@@ -846,6 +846,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ================================
+  // EVENT: Klik titik tiga kartu untuk Approval
+  // ================================
+  const cardListApproval = document.getElementById('cardListApproval');
+  if (cardListApproval) {
+    cardListApproval.addEventListener('click', e => {
+      const icon = e.target.closest('.card-menu');
+      if (!icon) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const card = icon.closest('.card');
+      const data = {
+        id: card.dataset.id,
+        nama: card.dataset.name,
+      };
+
+      showMenuAtCard(icon, data);
+    });
+  }
+
+  // ================================
   // DESKTOP: Right-click <tr> or .list-card
   // ================================
   document.addEventListener('contextmenu', e => {

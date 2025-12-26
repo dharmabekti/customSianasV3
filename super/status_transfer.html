@@ -729,7 +729,9 @@
                       </select>
                     </div>
                     <div class="col-12 col-md-2">
-                      <button class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download"></i> Export</button>
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        <i class="bi bi-download"></i> Export
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -760,28 +762,28 @@
               <span class="text-danger fst-italic d-none d-lg-block">
                 Klik kanan mouse untuk memunculkan menu aksi
               </span>
-            </div>
 
-            <!-- ================= MOBILE CARD ================= -->
-            <div class="card-mobile d-lg-none mt-3">
-              <div class="input-group mb-3 shadow-sm">
-                <span class="input-group-text bg-white border-end-0">
-                  <i class="bi bi-search"></i>
-                </span>
-                <input
-                  type="text"
-                  class="form-control border-start-0"
-                  placeholder="Cari transfer beasiswa..."
-                  id="searchCard"
-                />
-              </div>
+              <!-- ================= MOBILE CARD ================= -->
+              <div class="card-mobile d-lg-none mt-3">
+                <div class="input-group mb-3 shadow-sm">
+                  <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control border-start-0"
+                    placeholder="Cari transfer beasiswa..."
+                    id="searchCard"
+                  />
+                </div>
 
-              <div id="cardList" class="row g-2"></div>
+                <div id="cardList" class="row g-2"></div>
 
-              <div class="d-flex justify-content-center mt-3">
-                <nav>
-                  <ul class="pagination justify-content-center" id="paginationMobile"></ul>
-                </nav>
+                <div class="d-flex justify-content-center mt-3">
+                  <nav>
+                    <ul class="pagination justify-content-center" id="paginationMobile"></ul>
+                  </nav>
+                </div>
               </div>
             </div>
           </div>
@@ -967,7 +969,7 @@
        * ====================================================== */
       const CONFIG = {
         tahunAkademik: ['2024/2025', '2025/2026'],
-        status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu','Ditolak'],
+        status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
@@ -1236,9 +1238,11 @@
       renderCards();
 
       // Attach event listeners
-      ['tahunAkademikFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
-        qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
-      });
+      ['tahunAkademikFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(
+        id => {
+          qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
+        }
+      );
 
       qs('#searchCard')?.addEventListener('input', () => {
         currentPageMobile = 1;
@@ -1315,7 +1319,7 @@
           jumlah,
           kuitansi: CONFIGApproval.fileStatus[Math.floor(Math.random() * 2)],
           lampiranKuitansi: CONFIGApproval.fileStatus[Math.floor(Math.random() * 2)],
-          status: "Menunggu",
+          status: 'Menunggu',
           sekretariat,
           tanggal: moment(rand).format('DD/MM/YYYY'),
         };
@@ -1529,11 +1533,7 @@
       renderCardsApproval();
 
       // Attach event listeners for Approval
-      [
-        'tahunAkademikFilter',
-        'bulanFilter',
-        'sekretariatFilter',
-      ].forEach(id => {
+      ['tahunAkademikFilter', 'bulanFilter', 'sekretariatFilter'].forEach(id => {
         qsApproval(`#${id}`)?.addEventListener('change', onMasterFilterChangeApproval);
       });
 
@@ -1541,6 +1541,8 @@
         currentPageMobileApproval = 1;
         renderCardsApproval();
       });
+
+
 
       // Delete Data Approval
       function deleteDataApproval() {
