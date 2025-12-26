@@ -959,10 +959,6 @@ main {
 }
 
 @media (max-width: 767.98px) {
-  #profileContent {
-    display: none;
-  }
-
   #mobileProfile {
     display: block;
   }
