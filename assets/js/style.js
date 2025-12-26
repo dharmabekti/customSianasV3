@@ -1006,3 +1006,14 @@ function generateCheckboxList(containerId, list, className) {
     );
   });
 }
+
+// Button Back
+document.addEventListener('DOMContentLoaded', () => {
+  const btnBack = document.querySelector('.btn-back');
+
+  if (btnBack) {
+    btnBack.addEventListener('click', () => {
+      history.back();
+    });
+  }
+});
