@@ -753,9 +753,6 @@
         <a class="dropdown-item" href="upload_kuitansi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
       </li>
       <li>
-        <abutton class="dropdown-item" id="sendAction" onclick="sendData()"> <i class="bi bi-send"></i> Kirim </abutton>
-      </li>
-      <li>
         <button class="dropdown-item text-danger" id="deleteAction" onclick="deleteData()">
           <i class="bi bi-trash"></i> Hapus
         </button>
@@ -1183,15 +1180,6 @@
         renderCards();
       });
 
-      // Send Data
-      function sendData() {
-        swal_confirm('Konfirmasi', 'Yakin ingin mengirim data?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Data berhasil dikirim!', 'success');
-          }
-        });
-      }
-
       // Delete Data
       function deleteData() {
         swal_confirm('Konfirmasi', 'Yakin ingin menghapus data?', 'warning').then(result => {
@@ -1491,15 +1479,6 @@
         currentPageMobileApproval = 1;
         renderCardsApproval();
       });
-
-      // Send Data Approval
-      function sendDataApproval() {
-        swal_confirm('Konfirmasi', 'Yakin ingin mengirim data?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Data berhasil dikirim!', 'success');
-          }
-        });
-      }
 
       // Delete Data Approval
       function deleteDataApproval() {
