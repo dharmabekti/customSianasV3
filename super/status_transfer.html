@@ -534,79 +534,6 @@
 
       <div class="container-fluid mb-5 container-wrapper">
         <div class="row">
-          <!-- 🔹 TOMBOL FILTER (MOBILE ONLY) -->
-          <div class="d-md-none mb-2">
-            <button
-              class="btn btn-outline-primary w-100"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#filterCollapse"
-              aria-expanded="false"
-              aria-controls="filterCollapse"
-            >
-              <i class="bi bi-funnel"></i> Tampilkan Filter
-            </button>
-          </div>
-
-          <!-- 🔹 FILTER -->
-          <div id="filterCollapse" class="collapse d-md-block">
-            <div class="filter-section ft-12 mb-3">
-              <div class="row g-3 align-items-end">
-                <!-- Tahun Akademik -->
-                <div class="col-12 col-md-2">
-                  <label class="form-label fw-semibold">Th. Akademik</label>
-                  <select id="tahunAkademikFilter" class="form-select form-select-sm">
-                    <option value="">Semua</option>
-                    <option>2025/2026</option>
-                    <option>2024/2025</option>
-                    <option>2023/2024</option>
-                  </select>
-                </div>
-
-                <!-- Sekretariat -->
-                <div class="col-12 col-md-2">
-                  <label class="form-label fw-semibold">Sekretariat</label>
-                  <select id="sekretariatFilter" class="form-select form-select-sm">
-                    <!-- options -->
-                  </select>
-                </div>
-
-                <!-- Bulan -->
-                <div class="col-12 col-md-2">
-                  <label class="form-label fw-semibold">Bulan</label>
-                  <select id="bulanFilter" class="form-select form-select-sm">
-                    <option value="">Semua</option>
-                    <option>Januari</option>
-                    <option>Februari</option>
-                    <option>Maret</option>
-                    <option>April</option>
-                    <option>Mei</option>
-                    <option>Juni</option>
-                    <option>Juli</option>
-                    <option>Agustus</option>
-                    <option>September</option>
-                    <option>Oktober</option>
-                    <option>November</option>
-                    <option>Desember</option>
-                  </select>
-                </div>
-
-                <!-- Status -->
-                <div class="col-12 col-md-2">
-                  <label class="form-label fw-semibold">Status</label>
-                  <select id="statusFilter" class="form-select form-select-sm">
-                    <option value="">Semua</option>
-                    <option>Sudah Transfer</option>
-                    <option>Belum Ditransfer</option>
-                    <option>Menunggu</option>
-                  </select>
-                </div>
-                <div class="col-12 col-md-2">
-                  <button class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download"></i> Export</button>
-                </div>
-              </div>
-            </div>
-          </div>
           <!-- ================= TAB ================= -->
           <ul class="nav nav-tabs mb-3 d-flex flex-nowrap" role="tablist" style="font-size: 12px">
             <li class="nav-item">
@@ -623,6 +550,70 @@
 
           <div class="tab-content">
             <div class="tab-pane fade show active" id="approvalTransfer">
+              <!-- 🔹 TOMBOL FILTER (MOBILE ONLY) -->
+              <div class="d-md-none mb-2">
+                <button
+                  class="btn btn-outline-primary w-100"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterCollapse"
+                  aria-expanded="false"
+                  aria-controls="filterCollapse"
+                >
+                  <i class="bi bi-funnel"></i> Tampilkan Filter
+                </button>
+              </div>
+
+              <!-- 🔹 FILTER -->
+              <div id="filterCollapse" class="collapse d-md-block">
+                <div class="filter-section ft-12 mb-3">
+                  <div class="row g-3 align-items-end">
+                    <!-- Tahun Akademik -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Th. Akademik</label>
+                      <select id="tahunAkademikFilter" class="form-select form-select-sm">
+                        <option value="">Semua</option>
+                        <option>2025/2026</option>
+                        <option>2024/2025</option>
+                        <option>2023/2024</option>
+                      </select>
+                    </div>
+
+                    <!-- Sekretariat -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Sekretariat</label>
+                      <select id="sekretariatFilter" class="form-select form-select-sm">
+                        <!-- options -->
+                      </select>
+                    </div>
+
+                    <!-- Bulan -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Bulan</label>
+                      <select id="bulanFilter" class="form-select form-select-sm">
+                        <option value="">Semua</option>
+                        <option>Januari</option>
+                        <option>Februari</option>
+                        <option>Maret</option>
+                        <option>April</option>
+                        <option>Mei</option>
+                        <option>Juni</option>
+                        <option>Juli</option>
+                        <option>Agustus</option>
+                        <option>September</option>
+                        <option>Oktober</option>
+                        <option>November</option>
+                        <option>Desember</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        <i class="bi bi-download"></i> Export
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- ================= TABLE DESKTOP ================= -->
               <div class="table-responsive d-none d-lg-block">
                 <table
@@ -669,6 +660,80 @@
 
             <!-- ================= STATUS TRANSFER ================= -->
             <div class="tab-pane fade" id="statusTransfer">
+              <!-- 🔹 TOMBOL FILTER (MOBILE ONLY) -->
+              <div class="d-md-none mb-2">
+                <button
+                  class="btn btn-outline-primary w-100"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterCollapseStatus"
+                  aria-expanded="false"
+                  aria-controls="filterCollapseStatus"
+                >
+                  <i class="bi bi-funnel"></i> Tampilkan Filter
+                </button>
+              </div>
+
+              <!-- 🔹 FILTER -->
+              <div id="filterCollapseStatus" class="collapse d-md-block">
+                <div class="filter-section ft-12 mb-3">
+                  <div class="row g-3 align-items-end">
+                    <!-- Tahun Akademik -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Th. Akademik</label>
+                      <select id="tahunAkademikFilterStatus" class="form-select form-select-sm">
+                        <option value="">Semua</option>
+                        <option>2025/2026</option>
+                        <option>2024/2025</option>
+                        <option>2023/2024</option>
+                      </select>
+                    </div>
+
+                    <!-- Sekretariat -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Sekretariat</label>
+                      <select id="sekretariatFilterStatus" class="form-select form-select-sm">
+                        <!-- options -->
+                      </select>
+                    </div>
+
+                    <!-- Bulan -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Bulan</label>
+                      <select id="bulanFilterStatus" class="form-select form-select-sm">
+                        <option value="">Semua</option>
+                        <option>Januari</option>
+                        <option>Februari</option>
+                        <option>Maret</option>
+                        <option>April</option>
+                        <option>Mei</option>
+                        <option>Juni</option>
+                        <option>Juli</option>
+                        <option>Agustus</option>
+                        <option>September</option>
+                        <option>Oktober</option>
+                        <option>November</option>
+                        <option>Desember</option>
+                      </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Status</label>
+                      <select id="statusFilterStatus" class="form-select form-select-sm">
+                        <option value="">Semua</option>
+                        <option>Sudah Transfer</option>
+                        <option>Belum Ditransfer</option>
+                        <option>Menunggu</option>
+                        <option>Ditolak</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <button class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download"></i> Export</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- ================= TABLE DESKTOP ================= -->
               <div class="table-responsive d-none d-lg-block">
                 <table
@@ -696,29 +761,29 @@
                 Klik kanan mouse untuk memunculkan menu aksi
               </span>
             </div>
-          </div>
-        </div>
 
-        <!-- ================= MOBILE CARD ================= -->
-        <div class="card-mobile d-lg-none mt-3">
-          <div class="input-group mb-3 shadow-sm">
-            <span class="input-group-text bg-white border-end-0">
-              <i class="bi bi-search"></i>
-            </span>
-            <input
-              type="text"
-              class="form-control border-start-0"
-              placeholder="Cari transfer beasiswa..."
-              id="searchCard"
-            />
-          </div>
+            <!-- ================= MOBILE CARD ================= -->
+            <div class="card-mobile d-lg-none mt-3">
+              <div class="input-group mb-3 shadow-sm">
+                <span class="input-group-text bg-white border-end-0">
+                  <i class="bi bi-search"></i>
+                </span>
+                <input
+                  type="text"
+                  class="form-control border-start-0"
+                  placeholder="Cari transfer beasiswa..."
+                  id="searchCard"
+                />
+              </div>
 
-          <div id="cardList" class="row g-2"></div>
+              <div id="cardList" class="row g-2"></div>
 
-          <div class="d-flex justify-content-center mt-3">
-            <nav>
-              <ul class="pagination justify-content-center" id="paginationMobile"></ul>
-            </nav>
+              <div class="d-flex justify-content-center mt-3">
+                <nav>
+                  <ul class="pagination justify-content-center" id="paginationMobile"></ul>
+                </nav>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -902,7 +967,7 @@
        * ====================================================== */
       const CONFIG = {
         tahunAkademik: ['2024/2025', '2025/2026'],
-        status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu'],
+        status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu','Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
@@ -937,7 +1002,7 @@
        * GENERATE SEKRETARIAT SELECT OPTIONS
        * ====================================================== */
       function generateSekretariatFilter() {
-        const select = qs('#sekretariatFilter');
+        const select = qs('#sekretariatFilterStatus');
         select.innerHTML = '<option value="">Semua</option>';
 
         CONFIG.sekretariat.forEach(val => {
@@ -979,10 +1044,10 @@
        * ====================================================== */
       function getFilterValues() {
         return {
-          tahun: qs('#tahunAkademikFilter').value,
-          bulan: qs('#bulanFilter').value,
-          status: qs('#statusFilter').value,
-          sekretariat: qs('#sekretariatFilter').value,
+          tahun: qs('#tahunAkademikFilterStatus').value,
+          bulan: qs('#bulanFilterStatus').value,
+          status: qs('#statusFilterStatus').value,
+          sekretariat: qs('#sekretariatFilterStatus').value,
           search: qs('#searchCard')?.value.toLowerCase() || '',
         };
       }
@@ -1171,7 +1236,7 @@
       renderCards();
 
       // Attach event listeners
-      ['tahunAkademikFilter', 'bulanFilter', 'statusFilter', 'sekretariatFilter'].forEach(id => {
+      ['tahunAkademikFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
         qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
       });
 
@@ -1197,7 +1262,6 @@
        * ====================================================== */
       const CONFIGApproval = {
         tahunAkademik: ['2024/2025', '2025/2026'],
-        status: ['Menunggu','Butuh Verifikasi','Disetujui','Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
@@ -1251,7 +1315,7 @@
           jumlah,
           kuitansi: CONFIGApproval.fileStatus[Math.floor(Math.random() * 2)],
           lampiranKuitansi: CONFIGApproval.fileStatus[Math.floor(Math.random() * 2)],
-          status: CONFIGApproval.status[Math.floor(Math.random() * 3)],
+          status: "Menunggu",
           sekretariat,
           tanggal: moment(rand).format('DD/MM/YYYY'),
         };
@@ -1264,7 +1328,6 @@
         return {
           tahun: qsApproval('#tahunAkademikFilter').value,
           bulan: qsApproval('#bulanFilter').value,
-          status: qsApproval('#statusFilter').value,
           sekretariat: qsApproval('#sekretariatFilter').value,
           search: qsApproval('#searchCardApproval')?.value.toLowerCase() || '',
         };
@@ -1467,10 +1530,9 @@
 
       // Attach event listeners for Approval
       [
-        'tahunAkademikFilterApproval',
-        'bulanFilterApproval',
-        'statusFilterApproval',
-        'sekretariatFilterApproval',
+        'tahunAkademikFilter',
+        'bulanFilter',
+        'sekretariatFilter',
       ].forEach(id => {
         qsApproval(`#${id}`)?.addEventListener('change', onMasterFilterChangeApproval);
       });

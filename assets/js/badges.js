@@ -27,9 +27,9 @@ function getStatusBadgeClass(status) {
     case 'Disetujui':
       return 'success';
     case 'Belum Ditransfer':
-      return 'secondary';
-    case 'Menunggu':
       return 'warning';
+    case 'Menunggu':
+      return 'secondary';
     case 'Butuh Verifikasi':
       return 'info';
     case 'Ditolak':
