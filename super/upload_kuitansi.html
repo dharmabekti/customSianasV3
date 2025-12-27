@@ -301,17 +301,7 @@
               </div>
 
               <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label"
-                  >Tgl Transfer <sup class="text-danger">*)</sup></label
-                >
-                <div class="col-sm-8">
-                  <input type="date" class="form-control form-control-sm" value="2025-12-01" />
-                </div>
-              </div>
-              <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label"
-                  >Tahun Ajaran <sup class="text-danger">*)</sup></label
-                >
+                <label class="col-sm-4 col-form-label form-label">Tahun Ajaran <sup class="text-danger">*)</sup></label>
                 <div class="col-sm-8">
                   <select class="form-select form-select-sm">
                     <option>2025/2026</option>
@@ -343,32 +333,7 @@
                   <input type="text" class="form-control form-control-sm" value="SMK KRISTEN 2 MAGELANG" disabled />
                 </div>
               </div>
-              <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label"
-                  >Rekening Asal <sup class="text-danger">*)</sup></label
-                >
-                <div class="col-sm-8">
-                  <select class="form-select form-select-sm">
-                    <option>== Pilih Rekening Asal ==</option>
-                    <option>BCA a.n Yayasan AAT Indonesia</option>
-                    <option>Mandiri a.n Yayasan AAT Indonesia</option>
-                  </select>
-                </div>
-              </div>
-              <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">Kode Transfer</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control form-control-sm" />
-                </div>
-                <small class="text-muted fst-italic ft-10 text-important">
-                  Masukkan Kode Pembayaran sebagai berikut KodeBank(B untuk BCA M untuk
-                  Mandiri)-Bulan(MMM)-Tahun(YY)-No.urut, contoh kode: B-JUL-11-01
-                </small>
-              </div>
-            </div>
 
-            <!-- Kanan -->
-            <div class="col-md-6">
               <div class="mb-2 row align-items-center">
                 <label class="col-sm-4 col-form-label form-label"
                   >Nominal Transfer <sup class="text-danger">*)</sup></label
@@ -377,7 +342,10 @@
                   <input type="text" class="form-control form-control-sm" />
                 </div>
               </div>
+            </div>
 
+            <!-- Kanan -->
+            <div class="col-md-6">
               <div class="mb-3 row">
                 <label class="col-12 col-md-4 col-form-label form-label">
                   Bulan <sup class="text-danger">*)</sup>
@@ -500,20 +468,12 @@
                   <textarea class="form-control form-control-sm" rows="2"></textarea>
                 </div>
               </div>
-              <div class="mb-2 row align-items-center">
-                <label class="col-sm-4 col-form-label form-label">Status <sup class="text-danger">*)</sup></label>
-                <div class="col-sm-8">
-                  <select class="form-select form-select-sm">
-                    <option>Menunggu Konfirmasi</option>
-                    <option>Sudah Transfer</option>
-                    <option>Diverifikasi</option>
-                  </select>
-                </div>
-              </div>
             </div>
             <div class="text-start mt-3">
               <button type="submit" class="btn btn-success"><i class="bi bi-check"></i> Simpan</button>
-              <button type="reset" class="btn btn-danger" onclick="window.history.back()"><i class="bi bi-x"></i>Kembali</button>
+              <button type="reset" class="btn btn-danger" onclick="window.history.back()">
+                <i class="bi bi-x"></i>Kembali
+              </button>
             </div>
           </div>
         </form>
