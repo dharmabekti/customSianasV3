@@ -21,7 +21,7 @@
         <div class="ms-2 me-auto">
           <span class="fw-bold">Sistem Informasi Anak Asuh</span>
         </div>
-        <!-- Tahun Akademik + Datetime -->
+        <!-- Tahun Ajaran + Datetime -->
         <div class="text-center me-3">
           <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
@@ -192,7 +192,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_akademik.html">Tahun Akademik</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
                 <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
@@ -468,8 +468,8 @@
           </a>
           <div class="collapse" id="pengaturan">
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_akademik.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Akademik</a
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Tahun Ajaran</a
             >
             <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Sekretariat</a
@@ -544,9 +544,9 @@
                   <button class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download"></i> Export</button>
                 </div>
 
-                <label for="tahunAkademikFilter">Tahun Akademik:</label>
+                <label for="TahunAjaranFilter">Tahun Ajaran:</label>
                 <select
-                  id="tahunAkademikFilter"
+                  id="TahunAjaranFilter"
                   class="form-select form-select-sm mb-2"
                   onchange="filterTable(); renderCards();"
                 >
@@ -592,7 +592,7 @@
                     <th>No</th>
                     <th>Komunitas/Sekolah</th>
                     <th>Sekretariat</th>
-                    <th>Tahun Akademik</th>
+                    <th>Tahun Ajaran</th>
                     <th>SPP Bulan</th>
                   </tr>
                 </thead>
@@ -675,7 +675,7 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
-      const tahunAkademikList = ['2024/2025', '2025/2026'];
+      const TahunAjaranList = ['2024/2025', '2025/2026'];
       const sekretariatList = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'];
       const bulanSppList = [
         'Januari',
@@ -710,14 +710,14 @@
       // Generate Data Sekolah
       // ===============================
       const sekolahData = Array.from({ length: 30 }, (_, i) => {
-        const randomTahun = tahunAkademikList[Math.floor(Math.random() * tahunAkademikList.length)];
+        const randomTahun = TahunAjaranList[Math.floor(Math.random() * TahunAjaranList.length)];
         const randomBulan = bulanSppList[Math.floor(Math.random() * bulanSppList.length)];
 
         return {
           id: i + 1,
           sekolah: 'Sekolah ' + (i + 1),
           sekretariat: sekretariatList[i % sekretariatList.length],
-          tahun_akademik: randomTahun,
+          tahun_ajaran: randomTahun,
           bulan_spp: randomBulan,
         };
       });
@@ -743,7 +743,7 @@
       function filterData(data, selectedSekretariat, selectedTahun, selectedBulan) {
         return data.filter(item => {
           const sekretariatMatch = selectedSekretariat.length === 0 || selectedSekretariat.includes(item.sekretariat);
-          const tahunMatch = !selectedTahun || item.tahun_akademik === selectedTahun;
+          const tahunMatch = !selectedTahun || item.tahun_ajaran === selectedTahun;
           const bulanMatch = !selectedBulan || item.bulan_spp === selectedBulan;
           return sekretariatMatch && tahunMatch && bulanMatch;
         });
@@ -764,7 +764,7 @@
           <td data-label="No">${d.id}</td>
           <td data-label="Komunitas/Sekolah"><strong>${d.sekolah}</strong></td>
           <td data-label="Sekretariat">${d.sekretariat}</td>
-          <td data-label="Tahun Akademik">${d.tahun_akademik}</td>
+          <td data-label="Tahun Ajaran">${d.tahun_ajaran}</td>
           <td data-label="SPP Bulan">${d.bulan_spp}</td>
         </tr>
       `
@@ -796,7 +796,7 @@
       // ===============================
       function filterTable() {
         const selectedSekretariat = getSelectedStatus(document.querySelectorAll('.sekretariat'));
-        const selectedTahun = document.getElementById('tahunAkademikFilter').value;
+        const selectedTahun = document.getElementById('TahunAjaranFilter').value;
         const selectedBulan = document.getElementById('bulanFilter').value;
 
         // Clear old filter
@@ -810,7 +810,7 @@
             return false;
           }
 
-          // --- Tahun Akademik (jika kosong → ALL) ---
+          // --- Tahun Ajaran (jika kosong → ALL) ---
           // Kolom tahun = index 3
           if (selectedTahun && data[3] !== selectedTahun) {
             return false;
@@ -840,7 +840,7 @@
 
         const searchTerm = searchCard.value.toLowerCase();
         const selectedSekretariat = getSelectedStatus(document.querySelectorAll('.sekretariat'));
-        const selectedTahun = document.getElementById('tahunAkademikFilter').value;
+        const selectedTahun = document.getElementById('TahunAjaranFilter').value;
         const selectedBulan = document.getElementById('bulanFilter').value;
 
         let filtered = filterData(sekolahData, selectedSekretariat, selectedTahun, selectedBulan);
@@ -880,8 +880,8 @@
                   </div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Akademik</div>
-                    <div class="col-7">${item.tahun_akademik}</div>
+                    <div class="col-5 fw-bold">Th. Ajaran</div>
+                    <div class="col-7">${item.tahun_ajaran}</div>
                   </div>
 
                   <div class="row mb-1">

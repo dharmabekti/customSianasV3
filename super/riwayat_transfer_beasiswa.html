@@ -23,7 +23,7 @@
         <div class="ms-2 me-auto">
           <span class="fw-bold">Sistem Informasi Anak Asuh</span>
         </div>
-        <!-- Tahun Akademik + Datetime -->
+        <!-- Tahun Ajaran + Datetime -->
         <div class="text-center me-3">
           <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
@@ -194,7 +194,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_akademik.html">Tahun Akademik</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
                 <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
@@ -311,12 +311,12 @@
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section ft-12 mb-3">
                 <div class="row g-2">
-                  <!-- Tahun Akademik -->
+                  <!-- Tahun Ajaran -->
                   <div class="col-12 col-md-auto">
                     <div class="filter-row">
-                      <label for="tahunAkademikFilter">Tahun</label>
+                      <label for="TahunAjaranFilter">Tahun</label>
                       <select
-                        id="tahunAkademikFilter"
+                        id="TahunAjaranFilter"
                         class="form-select form-select-sm"
                         onchange="filterTable(); renderCards();"
                       >
@@ -380,7 +380,7 @@
               >
                 <thead class="table-light">
                   <tr>
-                    <th>Tahun Akademik</th>
+                    <th>Tahun Ajaran</th>
                     <th>Tanggal Transfer</th>
                     <th>Kode</th>
                     <th>SPP Bulan</th>
@@ -590,7 +590,7 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
-      const tahunAkademikList = ['2024/2025', '2025/2026'];
+      const TahunAjaranList = ['2024/2025', '2025/2026'];
       const statusList = ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu'];
       const sekretariatList = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'];
       const fileStatusList = ['Ada', 'Belum Ada'];
@@ -637,7 +637,7 @@
       // Generate Data Riwayat
       // ===============================
       const riwayatData = Array.from({ length: 30 }, (_, i) => {
-        const tahun = tahunAkademikList[Math.floor(Math.random() * tahunAkademikList.length)];
+        const tahun = TahunAjaranList[Math.floor(Math.random() * TahunAjaranList.length)];
         const bulan = bulanList[Math.floor(Math.random() * bulanList.length)];
         const jumlah = Math.floor(Math.random() * 3000000) + 500000;
 
@@ -706,7 +706,7 @@
           .map(
             d => `
         <tr class="table-row" data-id="${d.id}" data-nama="${d.sekolah}">
-          <td data-label="Tahun Akademik">${d.tahun}</td>
+          <td data-label="Tahun Ajaran">${d.tahun}</td>
           <td data-label="Tanggal Transfer">${d.tglTransfer}</td>
           <td data-label="Kode">${d.status === 'Sudah Transfer' ? generateKode(d.bulan, d.tahun) : ''}</td>
           <td data-label="SPP Bulan">${d.bulan}</td>
@@ -741,7 +741,7 @@
       // Filter DataTable using API (no destroy/recreate)
       // ===============================
       function filterTable() {
-        const selectedTahun = document.getElementById('tahunAkademikFilter').value;
+        const selectedTahun = document.getElementById('TahunAjaranFilter').value;
         const selectedBulan = document.getElementById('bulanFilter').value;
         const selectedStatus = document.getElementById('statusFilter').value;
 
@@ -750,7 +750,7 @@
 
         // Filter using custom filter
         $.fn.dataTable.ext.search.push(function (settings, data, dataIndex) {
-          // --- Tahun Akademik (jika kosong → ALL) ---
+          // --- Tahun Ajaran (jika kosong → ALL) ---
           // Kolom tahun = index 0
           if (selectedTahun && data[0] !== selectedTahun) {
             return false;
@@ -784,7 +784,7 @@
         }
 
         const searchTerm = searchCard.value.toLowerCase();
-        const selectedTahun = document.getElementById('tahunAkademikFilter').value;
+        const selectedTahun = document.getElementById('TahunAjaranFilter').value;
         const selectedBulan = document.getElementById('bulanFilter').value;
         const selectedStatus = document.getElementById('statusFilter').value;
 
@@ -820,7 +820,7 @@
                   </div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Akademik</div>
+                    <div class="col-5 fw-bold">Th. Ajaran</div>
                     <div class="col-7">${item.tahun}</div>
                   </div>
 

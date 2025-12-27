@@ -21,7 +21,7 @@
         <div class="ms-2 me-auto">
           <span class="fw-bold">Sistem Informasi Anak Asuh</span>
         </div>
-        <!-- Tahun Akademik + Datetime -->
+        <!-- Tahun Ajaran + Datetime -->
         <div class="text-center me-3">
           <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
@@ -192,7 +192,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_akademik.html">Tahun Akademik</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
                 <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
@@ -468,8 +468,8 @@
           </a>
           <div class="collapse" id="pengaturan">
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_akademik.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Akademik</a
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Tahun Ajaran</a
             >
             <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Sekretariat</a
@@ -735,7 +735,7 @@
       const statusList = ['Aktif', 'Pending', 'Dormant', 'Stop', 'Tidak Aktif'];
       const lanjutDonasiList = ['Belum Respon', 'Ya', 'Tidak'];
       const statusDonasiList = ['Lunas', 'Kelebihan', 'Kekurangan'];
-      const tahunAkademikList = ['2025/2026', '2024/2025', '2023/2024'];
+      const TahunAjaranList = ['2025/2026', '2024/2025', '2023/2024'];
       const currentTahun = '2025/2026';
 
       // ===============================
@@ -805,7 +805,7 @@
         );
         const lanjut_donasi = lanjutDonasiList[Math.floor(Math.random() * lanjutDonasiList.length)];
         const status_donasi = statusDonasiList[Math.floor(Math.random() * statusDonasiList.length)];
-        const tahun_akademik = tahunAkademikList[Math.floor(Math.random() * tahunAkademikList.length)];
+        const tahun_ajaran = TahunAjaranList[Math.floor(Math.random() * TahunAjaranList.length)];
         const id = `DN-${String(i + 1).padStart(4, '0')}`;
 
         donaturData.push({
@@ -824,7 +824,7 @@
           last_reminder: lastReminder,
           lanjut_donasi,
           status_donasi,
-          tahun_akademik,
+          tahun_ajaran,
         });
       }
 
@@ -876,8 +876,8 @@
             });
           }
 
-          // Filter tahun akademik
-          const tahunMatch = selectedTahun === '' || item.tahun_akademik === selectedTahun;
+          // Filter Tahun Ajaran
+          const tahunMatch = selectedTahun === '' || item.tahun_ajaran === selectedTahun;
 
           return statusMatch && statusDonasiMatch && tahunMatch;
         });
@@ -969,8 +969,8 @@
             if (!statusDonasiMatch) return false;
           }
 
-          // --- TAHUN AKADEMIK ---
-          if (selectedTahun !== '' && rowData.tahun_akademik !== selectedTahun) {
+          // --- Tahun Ajaran ---
+          if (selectedTahun !== '' && rowData.tahun_ajaran !== selectedTahun) {
             return false;
           }
 

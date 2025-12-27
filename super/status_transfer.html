@@ -31,7 +31,7 @@
         <div class="ms-2 me-auto">
           <span class="fw-bold">Sistem Informasi Anak Asuh</span>
         </div>
-        <!-- Tahun Akademik + Datetime -->
+        <!-- Tahun Ajaran + Datetime -->
         <div class="text-center me-3">
           <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
@@ -202,7 +202,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_akademik.html">Tahun Akademik</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
                 <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
@@ -478,8 +478,8 @@
           </a>
           <div class="collapse" id="pengaturan">
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_akademik.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Akademik</a
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Tahun Ajaran</a
             >
             <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Sekretariat</a
@@ -568,10 +568,10 @@
               <div id="filterCollapse" class="collapse d-md-block">
                 <div class="filter-section ft-12 mb-3">
                   <div class="row g-3 align-items-end">
-                    <!-- Tahun Akademik -->
+                    <!-- Tahun Ajaran -->
                     <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Th. Akademik</label>
-                      <select id="tahunAkademikFilter" class="form-select form-select-sm">
+                      <label class="form-label fw-semibold">Th. Ajaran</label>
+                      <select id="TahunAjaranFilter" class="form-select form-select-sm">
                         <option value="">Semua</option>
                         <option>2025/2026</option>
                         <option>2024/2025</option>
@@ -678,10 +678,10 @@
               <div id="filterCollapseStatus" class="collapse d-md-block">
                 <div class="filter-section ft-12 mb-3">
                   <div class="row g-3 align-items-end">
-                    <!-- Tahun Akademik -->
+                    <!-- Tahun Ajaran -->
                     <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Th. Akademik</label>
-                      <select id="tahunAkademikFilterStatus" class="form-select form-select-sm">
+                      <label class="form-label fw-semibold">Th. Ajaran</label>
+                      <select id="TahunAjaranFilterStatus" class="form-select form-select-sm">
                         <option value="">Semua</option>
                         <option>2025/2026</option>
                         <option>2024/2025</option>
@@ -968,7 +968,7 @@
        * CONFIG
        * ====================================================== */
       const CONFIG = {
-        tahunAkademik: ['2024/2025', '2025/2026'],
+        TahunAjaran: ['2024/2025', '2025/2026'],
         status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         fileStatus: ['Ada', 'Belum Ada'],
@@ -1016,7 +1016,7 @@
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const riwayatData = Array.from({ length: 30 }, (_, i) => {
-        const tahun = CONFIG.tahunAkademik[Math.floor(Math.random() * CONFIG.tahunAkademik.length)];
+        const tahun = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
         const bulan = CONFIG.bulan[Math.floor(Math.random() * CONFIG.bulan.length)];
         const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
         const jumlah = Math.floor(Math.random() * 3000000) + 500000;
@@ -1046,7 +1046,7 @@
        * ====================================================== */
       function getFilterValues() {
         return {
-          tahun: qs('#tahunAkademikFilterStatus').value,
+          tahun: qs('#TahunAjaranFilterStatus').value,
           bulan: qs('#bulanFilterStatus').value,
           status: qs('#statusFilterStatus').value,
           sekretariat: qs('#sekretariatFilterStatus').value,
@@ -1168,7 +1168,7 @@
                   <div class="divider-1"></div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Akademik</div>
+                    <div class="col-5 fw-bold">Th. Ajaran</div>
                     <div class="col-7">${item.tahun}</div>
                   </div>
                   <div class="row mb-1">
@@ -1238,7 +1238,7 @@
       renderCards();
 
       // Attach event listeners
-      ['tahunAkademikFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(
+      ['TahunAjaranFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(
         id => {
           qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
         }
@@ -1265,7 +1265,7 @@
        * CONFIG APPROVAL
        * ====================================================== */
       const CONFIGApproval = {
-        tahunAkademik: ['2024/2025', '2025/2026'],
+        TahunAjaran: ['2024/2025', '2025/2026'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
@@ -1300,7 +1300,7 @@
        * DATA SOURCE APPROVAL (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const riwayatDataApproval = Array.from({ length: 30 }, (_, i) => {
-        const tahun = CONFIGApproval.tahunAkademik[Math.floor(Math.random() * CONFIGApproval.tahunAkademik.length)];
+        const tahun = CONFIGApproval.TahunAjaran[Math.floor(Math.random() * CONFIGApproval.TahunAjaran.length)];
         const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];
         const sekretariat = CONFIGApproval.sekretariat[Math.floor(Math.random() * CONFIGApproval.sekretariat.length)];
         const jumlah = Math.floor(Math.random() * 3000000) + 500000;
@@ -1330,7 +1330,7 @@
        * ====================================================== */
       function getFilterValuesApproval() {
         return {
-          tahun: qsApproval('#tahunAkademikFilter').value,
+          tahun: qsApproval('#TahunAjaranFilter').value,
           bulan: qsApproval('#bulanFilter').value,
           sekretariat: qsApproval('#sekretariatFilter').value,
           search: qsApproval('#searchCardApproval')?.value.toLowerCase() || '',
@@ -1457,7 +1457,7 @@
                   <div class="divider-1"></div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Akademik</div>
+                    <div class="col-5 fw-bold">Th. Ajaran</div>
                     <div class="col-7">${item.tahun}</div>
                   </div>
                   <div class="row mb-1">
@@ -1525,7 +1525,7 @@
       renderCardsApproval();
 
       // Attach event listeners for Approval
-      ['tahunAkademikFilter', 'bulanFilter', 'sekretariatFilter'].forEach(id => {
+      ['TahunAjaranFilter', 'bulanFilter', 'sekretariatFilter'].forEach(id => {
         qsApproval(`#${id}`)?.addEventListener('change', onMasterFilterChangeApproval);
       });
 

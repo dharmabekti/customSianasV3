@@ -24,7 +24,7 @@
         <div class="ms-2 me-auto">
           <span class="fw-bold">Sistem Informasi Anak Asuh</span>
         </div>
-        <!-- Tahun Akademik + Datetime -->
+        <!-- Tahun Ajaran + Datetime -->
         <div class="text-center me-3">
           <h4 class="mb-0">TA. 2025/2026</h4>
           <div class="datetime" id="currentDateTime"></div>
@@ -195,7 +195,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_akademik.html">Tahun Akademik</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
                 <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
@@ -341,7 +341,7 @@
                   <thead class="table-light text-center">
                     <tr>
                       <th>No</th>
-                      <th>Tahun Akademik</th>
+                      <th>Tahun Ajaran</th>
                       <th>Komunitas / Sekolah</th>
                       <th>Kelas</th>
                       <th>SPP Bulanan</th>
@@ -391,7 +391,7 @@
               <div class="row">
                 <div class="mb-2 row">
                   <label class="col-sm-5 col-form-label form-label"
-                    >Tahun Akademik <sup class="text-important">*)</sup></label
+                    >Tahun Ajaran <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
                     <select class="form-select form-select-sm">
@@ -499,7 +499,7 @@
       const sppData = [
         {
           no: 1,
-          tahunAkademik: 'Tahun Ajaran 2025/2026',
+          TahunAjaran: 'Tahun Ajaran 2025/2026',
           komunitas: 'SMK Sanjaya Gunungkidul',
           kelas: 'SMA/SMK Kelas 12',
           sppBulanan: 'Rp 100.000,00',
@@ -510,7 +510,7 @@
         },
         {
           no: 2,
-          tahunAkademik: 'Tahun Ajaran 2024/2025',
+          TahunAjaran: 'Tahun Ajaran 2024/2025',
           komunitas: 'SMK Sanjaya Gunungkidul',
           kelas: 'SMA/SMK Kelas 11',
           sppBulanan: 'Rp 100.000,00',
@@ -521,7 +521,7 @@
         },
         {
           no: 3,
-          tahunAkademik: 'Tahun Ajaran 2022/2023',
+          TahunAjaran: 'Tahun Ajaran 2022/2023',
           komunitas: 'SMP Sanjaya Ngawen',
           kelas: 'SMP Kelas 9',
           sppBulanan: 'Rp 50.000,00',
@@ -532,7 +532,7 @@
         },
         {
           no: 4,
-          tahunAkademik: 'Tahun Ajaran 2021/2022',
+          TahunAjaran: 'Tahun Ajaran 2021/2022',
           komunitas: 'SMP Sanjaya Ngawen',
           kelas: 'SMP Kelas 8',
           sppBulanan: 'Rp 50.000,00',
@@ -543,7 +543,7 @@
         },
         {
           no: 5,
-          tahunAkademik: 'Tahun Ajaran 2020/2021',
+          TahunAjaran: 'Tahun Ajaran 2020/2021',
           komunitas: 'SMP Sanjaya Ngawen',
           kelas: 'SMP Kelas 7',
           sppBulanan: 'Rp 50.000,00',
@@ -561,7 +561,7 @@
           const row = document.createElement('tr');
           row.innerHTML = `
             <td data-label="No" class="text-center">${item.no}</td>
-            <td data-label="Tahun Akademik">${item.tahunAkademik}</td>
+            <td data-label="Tahun Ajaran">${item.TahunAjaran}</td>
             <td data-label="Komunitas / Sekolah">${item.komunitas}</td>
             <td data-label="Kelas">${item.kelas}</td>
             <td data-label="SPP Bulanan">${item.sppBulanan}</td>
