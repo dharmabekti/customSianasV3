@@ -859,7 +859,9 @@
           </div>
 
           <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-success px-2 px-lg-4" onclick="konfirmasiPengajuan()"><i class="bi bi-check-lg me-1"></i> Konfirmasi</button>
+            <button type="button" class="btn btn-success px-2 px-lg-4" onclick="konfirmasiPengajuan()">
+              <i class="bi bi-check-lg me-1"></i> Konfirmasi
+            </button>
             <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
               <i class="bi bi-x me-1"></i> Tutup
             </button>
@@ -1103,7 +1105,7 @@
           .slice(start, start + CONFIGpermohonan.itemsPerPageMobile)
           .map(
             item => `
-      <div class="col-12">
+            <div class="col-12">
                 <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.komunitasSekolah}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
                     ${item.komunitasSekolah}
@@ -1118,12 +1120,18 @@
 
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Rekening Lama</div>
-                    <div class="col-7">${item.noRekeningLama}</div>
+                    <div class="col-7">
+                      ${item.bankRekeningLama} ${item.noRekeningLama} <br>
+                      ${item.atasNamaRekeningLama}
+                    </div>
                   </div>
 
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Rekening Baru</div>
-                    <div class="col-7">${item.noRekeningBaru}</div>
+                    <div class="col-7">
+                      ${item.bankRekeningBaru} ${item.noRekeningBaru} <br>
+                      ${item.atasNamaRekeningBaru}
+                    </div>
                   </div>
 
                   <div class="row mb-1">
@@ -1246,24 +1254,8 @@
        * CONFIG
        * ====================================================== */
       const CONFIG = {
-        TahunAjaran: ['2024/2025', '2025/2026'],
-        status: ['Sudah Transfer', 'Belum Ditransfer', 'Menunggu', 'Ditolak'],
+        status: ['Menunggu', 'Disetujui', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
-        fileStatus: ['Ada', 'Belum Ada'],
-        bulan: [
-          'Januari',
-          'Februari',
-          'Maret',
-          'April',
-          'Mei',
-          'Juni',
-          'Juli',
-          'Agustus',
-          'September',
-          'Oktober',
-          'November',
-          'Desember',
-        ],
         itemsPerPageMobile: 10,
       };
 
@@ -1294,28 +1286,38 @@
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const riwayatData = Array.from({ length: 30 }, (_, i) => {
-        const tahun = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
-        const bulan = CONFIG.bulan[Math.floor(Math.random() * CONFIG.bulan.length)];
-        const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
-        const jumlah = Math.floor(Math.random() * 3000000) + 500000;
+        // Tahun & bulan acak
+        const tahun = CONFIGpermohonan.TahunAjaran[Math.floor(Math.random() * CONFIGpermohonan.TahunAjaran.length)];
+        const bulan = CONFIGpermohonan.bulan[Math.floor(Math.random() * CONFIGpermohonan.bulan.length)];
 
-        const bulanIndex = CONFIG.bulan.indexOf(bulan);
+        // Komunitas / Sekolah
+        const komunitasSekolah =
+          `Sekolah ${i + 1} ` +
+          CONFIGpermohonan.sekretariat[Math.floor(Math.random() * CONFIGpermohonan.sekretariat.length)];
+
+        // Bank
+        const bankList = ['BCA', 'BRI', 'BNI', 'Mandiri'];
+        const bankRekeningLama = bankList[Math.floor(Math.random() * bankList.length)];
+        const bankRekeningBaru = bankList[Math.floor(Math.random() * bankList.length)];
+
+        // Generate tanggal acak sesuai bulan
+        const bulanIndex = CONFIGpermohonan.bulan.indexOf(bulan);
         const year = parseInt(tahun.split('/')[0]);
         const start = new Date(year, bulanIndex, 1);
         const end = new Date(year, bulanIndex + 1, 0);
-        const rand = new Date(start.getTime() + Math.random() * (end - start));
+        const randDate = new Date(start.getTime() + Math.random() * (end - start));
 
         return {
           id: i + 1,
-          tahun,
-          sekolah: `Sekolah ${i + 1}`,
-          bulan,
-          jumlah,
-          kuitansi: CONFIG.fileStatus[Math.floor(Math.random() * 2)],
-          lampiranKuitansi: CONFIG.fileStatus[Math.floor(Math.random() * 2)],
-          status: CONFIG.status[Math.floor(Math.random() * 3)],
-          sekretariat,
-          tanggal: moment(rand).format('DD/MM/YYYY'),
+          tanggal: moment(randDate).format('DD/MM/YYYY'),
+          komunitasSekolah,
+          bankRekeningLama,
+          noRekeningLama: `10${Math.floor(100000000 + Math.random() * 900000000)}`,
+          atasNamaRekeningLama: `Yayasan ${komunitasSekolah}`,
+          bankRekeningBaru,
+          noRekeningBaru: `20${Math.floor(100000000 + Math.random() * 900000000)}`,
+          atasNamaRekeningBaru: `Yayasan ${komunitasSekolah}`,
+          status: 'Menunggu',
         };
       });
 
