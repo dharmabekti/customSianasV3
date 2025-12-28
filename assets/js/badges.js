@@ -31,11 +31,12 @@ function getStatusBadgeClass(status) {
     case 'Menunggu':
       return 'secondary';
     case 'Butuh Verifikasi':
+    case 'Diverifikasi':
       return 'info';
     case 'Ditolak':
       return 'danger';
     default:
-      return 'light';
+      return 'yellow';
   }
 }
 

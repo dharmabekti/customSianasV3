@@ -704,23 +704,12 @@
                       </select>
                     </div>
 
-                    <!-- Jenis File -->
-                    <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Jenis File</label>
-                      <select id="jenisFileFilterStatus" class="form-select form-select-sm">
-                        <option value="">Semua</option>
-                        <option>Raport Gasal</option>
-                        <option>Raport Genap</option>
-                        <option>SKL</option>
-                        <option>Ijasah</option>
-                      </select>
-                    </div>
-
                     <!-- Status -->
                     <div class="col-12 col-md-2">
                       <label class="form-label fw-semibold">Status</label>
                       <select id="statusFilterStatus" class="form-select form-select-sm">
                         <option value="">Semua</option>
+                        <option>Belum Upload</option>
                         <option>Menunggu</option>
                         <option>Diverifikasi</option>
                         <option>Disetujui</option>
@@ -749,8 +738,10 @@
                       <th>Komunitas/Sekolah</th>
                       <th>Tahun Ajaran</th>
                       <th>Kelas</th>
-                      <th>Jenis File</th>
-                      <th>Status</th>
+                      <th>Raport Ganjil</th>
+                      <th>Raport Genap</th>
+                      <th>SKL</th>
+                      <th>Ijazah</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -963,7 +954,7 @@
         if (!dataTableApproval) {
           // Initialize DataTable with empty data and disable built-in search
           tbody.innerHTML = '';
-          dataTableApproval = $('#datatable').DataTable({ searching: false });
+          dataTableApproval = $('#datatable').DataTable();
         }
 
         // Clear existing rows
@@ -1008,7 +999,7 @@
                 <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.nama}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
                     ${item.nama}
-                    <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
+                    <i class="bi bi-check-circle text-success me-1" style="cursor: pointer;"></i>
                   </h5>
                   <div class="divider-1"></div>
 
@@ -1107,7 +1098,7 @@
        * ====================================================== */
       const CONFIG = {
         TahunAjaran: ['2024/2025', '2025/2026'],
-        status: ['Menunggu', 'Diverifikasi', 'Disetujui', 'Ditolak'],
+        status: ['Belum Upload','Menunggu', 'Diverifikasi', 'Disetujui', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         tingkatList: ['SD', 'SMP', 'SMA/SMK'],
         jenisFile: ['Raport Gasal', 'Raport Genap', 'SKL', 'Ijasah'],
@@ -1137,13 +1128,9 @@
         });
       }
 
-      /* ======================================================
-       * DATA SOURCE RAPORT (SINGLE SOURCE OF TRUTH)
-       * ====================================================== */
       const riwayatDataRaport = Array.from({ length: 30 }, (_, i) => {
         const tahunAjaran = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
         const tingkat = CONFIG.tingkatList[Math.floor(Math.random() * CONFIG.tingkatList.length)];
-        const jenisFile = CONFIG.jenisFile[Math.floor(Math.random() * CONFIG.jenisFile.length)];
         const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
         let kelas;
         if (tingkat === 'SD') kelas = Math.floor(Math.random() * 6) + 1;
@@ -1152,7 +1139,9 @@
 
         const id = `AA-${String(i + 1).padStart(4, '0')}`;
 
-        return {
+        const jenisFile = CONFIG.jenisFile[Math.floor(Math.random() * CONFIG.jenisFile.length)];
+
+        const data = {
           no: i + 1,
           id,
           nama: `Anak Asuh ${i + 1}`,
@@ -1160,10 +1149,15 @@
           tahunAjaran,
           tingkat,
           kelas,
-          jenisFile,
           sekretariat,
-          status: CONFIG.status[Math.floor(Math.random() * 3)],
+          raportGanjil: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
+          raportGenap: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
+          skl: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
+          ijazah: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
+          jenisFile,
         };
+
+        return data;
       });
 
       /* ======================================================
@@ -1173,7 +1167,6 @@
         return {
           tahun: qs('#TahunAjaranFilterStatus').value,
           tingkat: qs('#tingkatSekolahFilterStatus').value,
-          jenisFile: qs('#jenisFileFilterStatus').value,
           status: qs('#statusFilterStatus').value,
           sekretariat: qs('#sekretariatFilterStatus').value,
           search: qs('#searchCard')?.value.toLowerCase() || '',
@@ -1187,7 +1180,6 @@
         return data.filter(item => {
           if (f.tahun && item.tahunAjaran !== f.tahun) return false;
           if (f.tingkat && item.tingkat !== f.tingkat) return false;
-          if (f.jenisFile && item.jenisFile !== f.jenisFile) return false;
           if (f.status && item.status !== f.status) return false;
           if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
 
@@ -1215,7 +1207,7 @@
         if (!dataTable) {
           // Initialize DataTable with empty data and disable built-in search
           qs('#datatable2 tbody').innerHTML = '';
-          dataTable = $('#datatable2').DataTable({ searching: false });
+          dataTable = $('#datatable2').DataTable();
         }
 
         // Clear existing rows
@@ -1230,23 +1222,15 @@
             d.sekolah,
             d.tahunAjaran,
             `${d.tingkat} Kelas ${d.kelas}`,
-            d.jenisFile,
-            `<span class="badge bg-${getStatusBadgeClass(d.status)}">${d.status}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.raportGanjil)}">${d.raportGanjil}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.raportGenap)}">${d.raportGenap}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.skl)}">${d.skl}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.ijazah)}">${d.ijazah}</span>`,
           ])
         );
 
         // Draw the table
         dataTable.draw();
-      }
-
-      function generatePagination2(totalPages, currentPage) {
-        let html = '';
-        for (let i = 1; i <= totalPages; i++) {
-          html += `<li class="page-item ${
-            i === currentPage ? 'active' : ''
-          }"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
-        }
-        return html;
       }
 
       /* ======================================================
@@ -1342,7 +1326,6 @@
         'TahunAjaranFilterStatus',
         'sekretariatFilterStatus',
         'tingkatSekolahFilterStatus',
-        'jenisFileFilterStatus',
         'statusFilterStatus',
       ].forEach(id => {
         qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
