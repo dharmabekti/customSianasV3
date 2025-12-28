@@ -1180,7 +1180,7 @@
         return data.filter(item => {
           if (f.tahun && item.tahunAjaran !== f.tahun) return false;
           if (f.tingkat && item.tingkat !== f.tingkat) return false;
-          if (f.status && item.status !== f.status) return false;
+          if (f.status && !(item.raportGanjil === f.status || item.raportGenap === f.status || item.skl === f.status || item.ijazah === f.status)) return false;
           if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
 
           if (f.search) {
@@ -1283,10 +1283,20 @@
                     <div class="col-7">${item.jenisFile}</div>
                   </div>
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Status</div>
-                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.status)}">${
-              item.status
-            }</span></div>
+                    <div class="col-5 fw-bold">Raport Ganjil</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGanjil)}">${item.raportGanjil}</span></div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Raport Genap</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGenap)}">${item.raportGenap}</span></div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">SKL</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.skl)}">${item.skl}</span></div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Ijazah</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.ijazah)}">${item.ijazah}</span></div>
                   </div>
                 </div>
               </div>`
