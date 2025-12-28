@@ -871,19 +871,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // DESKTOP: Right-click <tr> or .list-card
   // ================================
   document.addEventListener('contextmenu', e => {
-    if (isMobile) return e.preventDefault();
+    if (isMobile) {
+      e.preventDefault();
+      return;
+    }
 
     const row = e.target.closest('tr');
     const card = e.target.closest('.list-card');
 
-    if (row && row.closest('.dataTable')) {
-      e.preventDefault();
-      showMenuAtEventPos(e.pageX, e.pageY, row);
-    } else if (card) {
+    // ===== DATATABLE =====
+    if (row) {
+      const table = row.closest('.dataTable');
+
+      if (table && !table.classList.contains('no-contextmenu')) {
+        e.preventDefault();
+        showMenuAtEventPos(e.pageX, e.pageY, row);
+        return;
+      }
+    }
+
+    // ===== CARD =====
+    if (card) {
       e.preventDefault();
       showMenuAtEventPos(e.pageX, e.pageY, card);
     }
   });
+
 
   // ================================
   // MOBILE: Long press <tr> or .list-card
