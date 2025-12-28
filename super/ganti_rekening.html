@@ -574,7 +574,7 @@
                       </select>
                     </div>
 
-                    <!-- Bulan -->
+                    <!-- Tanggal -->
                     <div class="col-12 col-md-2">
                       <label class="form-label fw-semibold">Tanggal</label>
                       <input
@@ -616,7 +616,7 @@
                   <input
                     type="text"
                     class="form-control border-start-0"
-                    placeholder="Cari transfer beasiswa..."
+                    placeholder="Cari permohonan penggantian no rekening..."
                     id="searchCardApproval"
                   />
                 </div>
@@ -648,20 +648,9 @@
               </div>
 
               <!-- 🔹 FILTER -->
-              <div id="filterCollapseStatus" class="collapse d-md-block">
+              <div id="filterCollapseStatus" class="collapse show d-md-block">
                 <div class="filter-section ft-12 mb-3">
                   <div class="row g-3 align-items-end">
-                    <!-- Tahun Ajaran -->
-                    <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Th. Ajaran</label>
-                      <select id="TahunAjaranFilterStatus" class="form-select form-select-sm">
-                        <option value="">Semua</option>
-                        <option>2025/2026</option>
-                        <option>2024/2025</option>
-                        <option>2023/2024</option>
-                      </select>
-                    </div>
-
                     <!-- Sekretariat -->
                     <div class="col-12 col-md-2">
                       <label class="form-label fw-semibold">Sekretariat</label>
@@ -670,24 +659,15 @@
                       </select>
                     </div>
 
-                    <!-- Bulan -->
+                    <!-- Tanggal -->
                     <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Bulan</label>
-                      <select id="bulanFilterStatus" class="form-select form-select-sm">
-                        <option value="">Semua</option>
-                        <option>Januari</option>
-                        <option>Februari</option>
-                        <option>Maret</option>
-                        <option>April</option>
-                        <option>Mei</option>
-                        <option>Juni</option>
-                        <option>Juli</option>
-                        <option>Agustus</option>
-                        <option>September</option>
-                        <option>Oktober</option>
-                        <option>November</option>
-                        <option>Desember</option>
-                      </select>
+                      <label class="form-label fw-semibold">Tanggal</label>
+                      <input
+                        type="text"
+                        id="datepicker2"
+                        class="form-control form-control-sm"
+                        placeholder="dd/mm/yyyy - dd/mm/yyyy"
+                      />
                     </div>
 
                     <!-- Status -->
@@ -695,8 +675,7 @@
                       <label class="form-label fw-semibold">Status</label>
                       <select id="statusFilterStatus" class="form-select form-select-sm">
                         <option value="">Semua</option>
-                        <option>Sudah Transfer</option>
-                        <option>Belum Ditransfer</option>
+                        <option>Disetujui</option>
                         <option>Menunggu</option>
                         <option>Ditolak</option>
                       </select>
@@ -718,14 +697,12 @@
                   <thead class="table-light">
                     <tr>
                       <th>ID</th>
-                      <th>Tahun</th>
-                      <th>Sekolah</th>
                       <th>Tanggal</th>
-                      <th>Bulan</th>
-                      <th>Jumlah</th>
-                      <th>Kuitansi</th>
-                      <th>Lampiran</th>
+                      <th>Komunitas/Sekolah</th>
+                      <th>Rekening Lama</th>
+                      <th>Rekening Baru</th>
                       <th>Status</th>
+                      <th>Last Update</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -745,7 +722,7 @@
                   <input
                     type="text"
                     class="form-control border-start-0"
-                    placeholder="Cari transfer beasiswa..."
+                    placeholder="Cari riwayat penggantian no rekening..."
                     id="searchCard"
                   />
                 </div>
@@ -777,20 +754,17 @@
       </small>
     </footer>
 
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" onclick="window.location.href='upload_kuitansi.html'">
-      <i class="bi bi-upload text-center"></i>
-    </button>
-
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailPermohonanModal">
+        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailPenggantianModal">
           <i class="bi bi-info"></i> Detail
         </button>
       </li>
       <li>
-        <a class="dropdown-item" href="upload_kuitansi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
+        <a class="dropdown-item" id="editAction" data-bs-toggle="modal" data-bs-target="#formGantiRekeningModal">
+          <i class="bi bi-pencil"></i> Edit
+        </a>
       </li>
       <li>
         <button class="dropdown-item text-danger" id="deleteAction" onclick="deleteData()">
@@ -799,7 +773,7 @@
       </li>
     </ul>
 
-    <!-- Modal Detail Permohonan -->
+    <!-- Modal Konfirmasi Permohonan -->
     <div
       class="modal fade"
       id="konfirmasiPermohonanModal"
@@ -869,7 +843,219 @@
         </div>
       </div>
     </div>
-    <!-- Modal Detail Permohonan -->
+    <!-- Modal Konfirmasi Permohonan -->
+
+    <!-- Modal Detail Penggantian No Rekening -->
+    <div
+      class="modal fade"
+      id="detailPenggantianModal"
+      tabindex="-1"
+      aria-labelledby="detailLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Pergantian No Rekening</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section ft-14">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-12 info-column">
+                  <div class="info-item">
+                    <span class="info-label">Tgl Permohonan</span>
+                    <span class="info-value">27 Desember 2025</span>
+                  </div>
+                  <div class="info-item mb-3">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item mb-3">
+                    <span class="info-label">Rekening Lama</span>
+                    <span class="info-value">
+                      BRI 0256565XXXXXXX
+                      <br />
+                      a/n SMK KRISTEN 2 MAGELANG
+                    </span>
+                  </div>
+                  <div class="info-item mb-3">
+                    <span class="info-label">Rekening Baru</span>
+                    <span class="info-value"
+                      >BCA 5698979
+                      <br />
+                      a/n SMK KRISTEN 2 MAGELANG
+                    </span>
+                  </div>
+
+                  <div class="info-item mb-3">
+                    <span class="info-label">Surat Keterangan</span>
+                    <a href="#" class="info-value text-primary text-decoration-none">
+                      <i class="bi bi-file-earmark-text"></i> Lihat</a
+                    >
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Status</span>
+                    <span class="info-value">
+                      <span class="badge bg-success">Disetujui</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-warning text-white px-2 px-lg-4" onclick="konfirmasiPengajuan()">
+              <i class="bi bi-check-lg me-1"></i> Edit
+            </button>
+            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail Penggantian No Rekening -->
+
+    <!-- Modal Form Ganti Rekening -->
+    <div
+      class="modal fade"
+      id="formGantiRekeningModal"
+      tabindex="-1"
+      aria-labelledby="formLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Form Pergantian No Rekening</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+        <small class="text-important">*) Wajib diisi</small>
+            <div class="row">
+              <!-- Kiri -->
+              <div class="col-md-6">
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label"
+                    >Komunitas/Sekolah <sup class="text-danger">*)</sup></label
+                  >
+                  <div class="col-sm-8">
+                    <select class="form-select form-select-sm select2">
+                      <option>== Pilih Komunitas/Sekolah ==</option>
+                      <option>SMA Pius 1 Kutoarjo</option>
+                      <option>SMK Kristen 2 Magelang</option>
+                      <option>SMA Bopkri 2 Magelang</option>
+                      <option>SMK Yos 2 Magelang</option>
+                      <!-- Add more options here as needed -->
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label"
+                    >Tahun Ajaran <sup class="text-danger">*)</sup></label
+                  >
+                  <div class="col-sm-8">
+                    <select class="form-select form-select-sm">
+                      <option>2025/2026</option>
+                      <option>2024/2025</option>
+                      <option>2023/2024</option>
+                      <option>2022/2023</option>
+                      <option>2021/2022</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label">Bank Tujuan</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" value="BRI" disabled />
+                  </div>
+                </div>
+
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label">Rek Tujuan</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" value="0048-01-027309-50-8" disabled />
+                  </div>
+                </div>
+
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label">Atas Nama</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" value="SMK KRISTEN 2 MAGELANG" disabled />
+                  </div>
+                </div>
+
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label"
+                    >Nominal Transfer <sup class="text-danger">*)</sup></label
+                  >
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control form-control-sm" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kanan -->
+              <div class="col-md-6">
+                <div class="mb-2 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label"
+                    >Kuitansi <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-8 d-flex gap-2">
+                    <input type="file" class="form-control form-control-sm" />
+                  </div>
+                  <small class="text-muted fst-italic ft-10 text-important">
+                    *Format file <em>hanya PDF, JPEG, JPG, dan PNG</em> dengan ukuran maksimal <strong>500 kb</strong>
+                  </small>
+                </div>
+
+                <div class="mb-3 row align-items-center">
+                  <label class="col-sm-4 col-form-label form-label"
+                    >Lampiran Kuitansi <sup class="text-important">*)</sup></label
+                  >
+                  <div class="col-sm-8 d-flex gap-2">
+                    <input type="file" class="form-control form-control-sm" />
+                  </div>
+                  <small class="text-muted fst-italic ft-10 text-important">
+                    *Format file <em>hanya PDF, JPEG, JPG, dan PNG</em> dengan ukuran maksimal <strong>500 kb</strong>
+                  </small>
+                </div>
+
+                <div class="mb-3 row">
+                  <label class="col-sm-4 col-form-label form-label">Uraian</label>
+                  <div class="col-sm-8">
+                    <textarea class="form-control form-control-sm" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-2 px-lg-4">
+              <i class="bi bi-check-lg me-1"></i> Simpan
+            </button>
+            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Form Ganti Rekening -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/badges.js"></script>
@@ -900,22 +1086,7 @@
        * CONFIG PERMOHONAN
        * ====================================================== */
       const CONFIGpermohonan = {
-        TahunAjaran: ['2024/2025', '2025/2026'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
-        bulan: [
-          'Januari',
-          'Februari',
-          'Maret',
-          'April',
-          'Mei',
-          'Juni',
-          'Juli',
-          'Agustus',
-          'September',
-          'Oktober',
-          'November',
-          'Desember',
-        ],
         itemsPerPageMobile: 10,
       };
 
@@ -934,10 +1105,6 @@
        * DATA SOURCE APPROVAL (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const dataPermohonan = Array.from({ length: 30 }, (_, i) => {
-        // Tahun & bulan acak
-        const tahun = CONFIGpermohonan.TahunAjaran[Math.floor(Math.random() * CONFIGpermohonan.TahunAjaran.length)];
-        const bulan = CONFIGpermohonan.bulan[Math.floor(Math.random() * CONFIGpermohonan.bulan.length)];
-
         // Komunitas / Sekolah
         const komunitasSekolah =
           `Sekolah ${i + 1} ` +
@@ -948,12 +1115,10 @@
         const bankRekeningLama = bankList[Math.floor(Math.random() * bankList.length)];
         const bankRekeningBaru = bankList[Math.floor(Math.random() * bankList.length)];
 
-        // Generate tanggal acak sesuai bulan
-        const bulanIndex = CONFIGpermohonan.bulan.indexOf(bulan);
-        const year = parseInt(tahun.split('/')[0]);
-        const start = new Date(year, bulanIndex, 1);
-        const end = new Date(year, bulanIndex + 1, 0);
-        const randDate = new Date(start.getTime() + Math.random() * (end - start));
+        // Generate tanggal acak dalam 2 tahun terakhir
+        const now = new Date();
+        const twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+        const randDate = new Date(twoYearsAgo.getTime() + Math.random() * (now.getTime() - twoYearsAgo.getTime()));
 
         return {
           id: i + 1,
@@ -1172,7 +1337,7 @@
       renderCardsApproval();
 
       // Attach event listeners for Approval
-      ['TahunAjaranFilter', 'bulanFilter', 'sekretariatFilter'].forEach(id => {
+      ['sekretariatFilter'].forEach(id => {
         qsApproval(`#${id}`)?.addEventListener('change', onMasterFilterChangeApproval);
       });
 
@@ -1231,21 +1396,18 @@
           setTimeout(() => document.body.focus(), 0);
         });
       }
-
-      // Delete Data Approval
-      function deleteDataApproval() {
-        swal_confirm('Konfirmasi', 'Yakin ingin menghapus data?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Data berhasil dihapus!', 'success');
-          }
-        });
-      }
     </script>
 
     <!-- Initialize Datepicker -->
     <script>
       $(document).ready(function () {
         initDateRangePicker('#datepicker', onMasterFilterChangeApproval);
+        initDateRangePicker('#datepicker2', onMasterFilterChange);
+
+        // Ensure datepicker2 triggers filter on change
+        $('#datepicker2').on('apply.daterangepicker', function (ev, picker) {
+          onMasterFilterChange();
+        });
       });
     </script>
 
@@ -1286,26 +1448,21 @@
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const riwayatData = Array.from({ length: 30 }, (_, i) => {
-        // Tahun & bulan acak
-        const tahun = CONFIGpermohonan.TahunAjaran[Math.floor(Math.random() * CONFIGpermohonan.TahunAjaran.length)];
-        const bulan = CONFIGpermohonan.bulan[Math.floor(Math.random() * CONFIGpermohonan.bulan.length)];
-
         // Komunitas / Sekolah
         const komunitasSekolah =
-          `Sekolah ${i + 1} ` +
-          CONFIGpermohonan.sekretariat[Math.floor(Math.random() * CONFIGpermohonan.sekretariat.length)];
+          `Sekolah ${i + 1} ` + CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
+
+        const status = CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)];
 
         // Bank
         const bankList = ['BCA', 'BRI', 'BNI', 'Mandiri'];
         const bankRekeningLama = bankList[Math.floor(Math.random() * bankList.length)];
         const bankRekeningBaru = bankList[Math.floor(Math.random() * bankList.length)];
 
-        // Generate tanggal acak sesuai bulan
-        const bulanIndex = CONFIGpermohonan.bulan.indexOf(bulan);
-        const year = parseInt(tahun.split('/')[0]);
-        const start = new Date(year, bulanIndex, 1);
-        const end = new Date(year, bulanIndex + 1, 0);
-        const randDate = new Date(start.getTime() + Math.random() * (end - start));
+        // Generate tanggal acak dalam 2 tahun terakhir
+        const now = new Date();
+        const twoYearsAgo = new Date(now.getFullYear() - 2, now.getMonth(), now.getDate());
+        const randDate = new Date(twoYearsAgo.getTime() + Math.random() * (now.getTime() - twoYearsAgo.getTime()));
 
         return {
           id: i + 1,
@@ -1317,7 +1474,8 @@
           bankRekeningBaru,
           noRekeningBaru: `20${Math.floor(100000000 + Math.random() * 900000000)}`,
           atasNamaRekeningBaru: `Yayasan ${komunitasSekolah}`,
-          status: 'Menunggu',
+          status: status,
+          lastUpdate: moment(randDate).format('DD/MM/YYYY'),
         };
       });
 
@@ -1325,12 +1483,22 @@
        * FILTER STATE
        * ====================================================== */
       function getFilterValues() {
+        const datepickerVal = qs('#datepicker2').value;
+        let startDate = null,
+          endDate = null;
+        if (datepickerVal) {
+          const dates = datepickerVal.split(' - ');
+          if (dates.length === 2) {
+            startDate = moment(dates[0], 'DD/MM/YYYY').startOf('day');
+            endDate = moment(dates[1], 'DD/MM/YYYY').endOf('day');
+          }
+        }
         return {
-          tahun: qs('#TahunAjaranFilterStatus').value,
-          bulan: qs('#bulanFilterStatus').value,
           status: qs('#statusFilterStatus').value,
           sekretariat: qs('#sekretariatFilterStatus').value,
           search: qs('#searchCard')?.value.toLowerCase() || '',
+          startDate,
+          endDate,
         };
       }
 
@@ -1339,40 +1507,21 @@
        * ====================================================== */
       function filterData(data, f) {
         return data.filter(item => {
-          if (f.tahun && item.tahun !== f.tahun) return false;
-          if (f.bulan && item.bulan !== f.bulan) return false;
           if (f.status && item.status !== f.status) return false;
-          if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
+          if (f.sekretariat && !item.komunitasSekolah.includes(f.sekretariat)) return false;
 
           if (f.search) {
-            if (!item.sekolah.toLowerCase().includes(f.search) && !item.id.toString().includes(f.search)) return false;
+            if (!item.komunitasSekolah.toLowerCase().includes(f.search) && !item.id.toString().includes(f.search))
+              return false;
+          }
+
+          if (f.startDate && f.endDate) {
+            const itemDate = moment(item.tanggal, 'DD/MM/YYYY');
+            if (!itemDate.isBetween(f.startDate, f.endDate, null, '[]')) return false;
           }
 
           return true;
         });
-      }
-
-      /* ======================================================
-       * SEKOLAH FILTER (BERDASARKAN RIWAYATDATA + SEKRETARIAT)
-       * ====================================================== */
-      function populateSekolahFilter(forceRefresh = false) {
-        const select = qs('#sekolahFilter');
-        const current = select.value;
-
-        // ⛔ Jika sudah ada pilihan sekolah & tidak dipaksa refresh → STOP
-        if (current && !forceRefresh) return;
-
-        const f = getFilterValues(false);
-
-        const data = filterData(riwayatData, f);
-
-        const sekolahList = [...new Set(data.map(d => d.sekolah))].sort();
-
-        select.innerHTML = '<option value="">Semua</option>';
-
-        sekolahList.forEach(s => select.insertAdjacentHTML('beforeend', `<option value="${s}">${s}</option>`));
-
-        select.value = sekolahList.includes(current) ? current : '';
       }
 
       /* ======================================================
@@ -1396,14 +1545,12 @@
         dataTable.rows.add(
           filtered.map(d => [
             d.id,
-            d.tahun,
-            d.sekolah,
             d.tanggal,
-            d.bulan,
-            `Rp ${d.jumlah.toLocaleString('id-ID')}`,
-            `<span class="badge bg-${getFileBadgeClass(d.kuitansi)}">${d.kuitansi}</span>`,
-            `<span class="badge bg-${getFileBadgeClass(d.lampiranKuitansi)}">${d.lampiranKuitansi}</span>`,
+            `<span class="text-start d-block">${d.komunitasSekolah}</span>`,
+            `${d.bankRekeningLama} ${d.noRekeningLama}<br>${d.atasNamaRekeningLama}`,
+            `${d.bankRekeningBaru} ${d.noRekeningBaru}<br>${d.atasNamaRekeningBaru}`,
             `<span class="badge bg-${getStatusBadgeClass(d.status)}">${d.status}</span>`,
+            d.lastUpdate,
           ])
         );
 
@@ -1440,49 +1587,44 @@
           .map(
             item => `
       <div class="col-12">
-                <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.sekolah}">
+                <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.komunitasSekolah}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
-                    ${item.sekolah}
+                    ${item.komunitasSekolah}
                     <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
                   </h5>
                   <div class="divider-1"></div>
 
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Th. Ajaran</div>
-                    <div class="col-7">${item.tahun}</div>
-                  </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Tanggal</div>
                     <div class="col-7">${item.tanggal}</div>
                   </div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">SPP Bulan</div>
-                    <div class="col-7">${item.bulan}</div>
+                    <div class="col-5 fw-bold">Rekening Lama</div>
+                    <div class="col-7">
+                      ${item.bankRekeningLama} ${item.noRekeningLama} <br>
+                      ${item.atasNamaRekeningLama}
+                    </div>
                   </div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Jumlah</div>
-                    <div class="col-7">Rp ${item.jumlah.toLocaleString('id-ID')}</div>
+                    <div class="col-5 fw-bold">Rekening Baru</div>
+                    <div class="col-7">
+                      ${item.bankRekeningBaru} ${item.noRekeningBaru} <br>
+                      ${item.atasNamaRekeningBaru}
+                    </div>
                   </div>
 
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Kuitansi</div>
-                    <div class="col-7"><span class="badge bg-${getFileBadgeClass(item.kuitansi)}">${
-              item.kuitansi
-            }</span></div>
-                  </div>
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Lampiran</div>
-                    <div class="col-7"><span class="badge bg-${getFileBadgeClass(item.lampiranKuitansi)}">${
-              item.lampiranKuitansi
-            }</span></div>
-                  </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Status</div>
                     <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.status)}">${
               item.status
             }</span></div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Last Update</div>
+                    <div class="col-7">${item.lastUpdate}</div>
                   </div>
                 </div>
               </div>`
@@ -1517,8 +1659,17 @@
       renderTable();
       renderCards();
 
+      // Handle tab changes to render tables when tab is shown
+      $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        const target = $(e.target).attr('data-bs-target');
+        if (target === '#riwayatGanti') {
+          renderTable();
+          renderCards();
+        }
+      });
+
       // Attach event listeners
-      ['TahunAjaranFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
+      ['statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
         qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
       });
 

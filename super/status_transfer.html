@@ -478,9 +478,7 @@
           </a>
           <div class="collapse" id="pengaturan">
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Ajaran</a
-            >
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
             <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Sekretariat</a
             >
@@ -759,10 +757,6 @@
                 </table>
               </div>
 
-              <span class="text-danger fst-italic d-none d-lg-block">
-                Klik kanan mouse untuk memunculkan menu aksi
-              </span>
-
               <!-- ================= MOBILE CARD ================= -->
               <div class="card-mobile d-lg-none mt-3">
                 <div class="input-group mb-3 shadow-sm">
@@ -788,6 +782,8 @@
             </div>
           </div>
         </div>
+
+        <span class="text-danger fst-italic d-none d-lg-block"> Klik kanan mouse untuk memunculkan menu aksi </span>
       </div>
     </main>
 
@@ -1238,11 +1234,9 @@
       renderCards();
 
       // Attach event listeners
-      ['TahunAjaranFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(
-        id => {
-          qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
-        }
-      );
+      ['TahunAjaranFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
+        qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
+      });
 
       qs('#searchCard')?.addEventListener('input', () => {
         currentPageMobile = 1;
@@ -1420,9 +1414,7 @@
             d.sekolah,
             d.bulan,
             `Rp ${d.jumlah.toLocaleString('id-ID')}`,
-            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${
-              d.status
-            }</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${d.status}</span>`,
           ])
         );
 
