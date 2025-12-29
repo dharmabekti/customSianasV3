@@ -35,6 +35,8 @@ function getStatusBadgeClass(status) {
       return 'info';
     case 'Ditolak':
       return 'danger';
+    case '-':
+      return 'dark';
     default:
       return 'yellow';
   }

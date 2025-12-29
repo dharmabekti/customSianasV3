@@ -791,6 +791,252 @@
       </small>
     </footer>
 
+    <!-- Modal Upload Raport -->
+    <div
+      class="modal fade"
+      id="uploadRaportModal"
+      tabindex="-1"
+      aria-labelledby="uploadRaportLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Input Raport Semester Ganjil</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-12 info-column">
+                  <div class="info-item">
+                    <span class="info-label">ID</span>
+                    <span class="info-value">24-00071</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Lengkap</span>
+                    <span class="info-value">Antonio Veejay Alhdhir</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Kelas</span>
+                    <span class="info-value">SMA/SMK Kelas 12</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Semester</span>
+                    <span class="info-value">Gasal</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tahun Ajaran</span>
+                    <span class="info-value">2025/2026</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">File <sup class="text-important">*)</sup></span>
+                    <div class="col-sm-8 d-flex gap-2">
+                      <input type="file" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <small class="text-important">*) Wajib Diisi, Format file PDF</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-success px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Upload
+            </button>
+            <button type="button" class="btn btn-danger px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Upload SKL -->
+    <div
+      class="modal fade"
+      id="uploadSklModal"
+      tabindex="-1"
+      aria-labelledby="uploadSklLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Input SKL</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-12 info-column">
+                  <div class="info-item">
+                    <span class="info-label">ID</span>
+                    <span class="info-value">24-00071</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Lengkap</span>
+                    <span class="info-value">Antonio Veejay Alhdhir</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tingkat Pendidikan</span>
+                    <span class="info-value">SMA/SMK</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Sekolah <sup class="text-important">*)</sup></span>
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Jurusan <sup class="text-important">*)</sup></span>
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="info-item">
+                        <span class="info-label">Tahun Masuk <sup class="text-important">*)</sup></span>
+                        <input type="number" class="form-control form-control-sm" value="2022" required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="info-item">
+                        <span class="info-label">Tahun Lulus <sup class="text-important">*)</sup></span>
+                        <input type="number" class="form-control form-control-sm" value="2025" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">File <sup class="text-important">*)</sup></span>
+                    <div class="col-sm-9 d-flex gap-2">
+                      <input type="file" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <small class="text-important">*) Wajib Diisi, Format file PDF</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-success px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Upload
+            </button>
+            <button type="button" class="btn btn-danger px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Upload Ijasah -->
+    <div
+      class="modal fade"
+      id="uploadIjasahModal"
+      tabindex="-1"
+      aria-labelledby="uploadIjasahLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-wide">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Input Ijasah</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="info-section">
+              <div class="row g-3">
+                <!-- Kolom kiri -->
+                <div class="col-12 col-md-12 info-column">
+                  <div class="info-item">
+                    <span class="info-label">ID</span>
+                    <span class="info-value">24-00071</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Lengkap</span>
+                    <span class="info-value">Antonio Veejay Alhdhir</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Komunitas/Sekolah</span>
+                    <span class="info-value">SMK Kristen 2 Magelang</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Tingkat Pendidikan</span>
+                    <span class="info-value">SMA/SMK</span>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Nama Sekolah <sup class="text-important">*)</sup></span>
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">Jurusan <sup class="text-important">*)</sup></span>
+                    <input type="text" class="form-control form-control-sm" required />
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="info-item">
+                        <span class="info-label">Tahun Masuk <sup class="text-important">*)</sup></span>
+                        <input type="number" class="form-control form-control-sm" value="2022" required />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="info-item">
+                        <span class="info-label">Tahun Lulus <sup class="text-important">*)</sup></span>
+                        <input type="number" class="form-control form-control-sm" value="2025" required />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="info-item">
+                    <span class="info-label">File <sup class="text-important">*)</sup></span>
+                    <div class="col-sm-9 d-flex gap-2">
+                      <input type="file" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <small class="text-important">*) Wajib Diisi, Format file PDF</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-success px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Upload
+            </button>
+            <button type="button" class="btn btn-danger px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/badges.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -979,7 +1225,7 @@
                 <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.nama}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
                     ${item.nama}
-                    <i class="bi bi-check-circle text-success me-1" style="cursor: pointer;"></i>
+                    <i class="bi bi-check-circle text-success me-1" style="cursor: pointer;" onclick="form_approval('${item.jenisFile}')"></i>
                   </h5>
                   <div class="divider-1"></div>
 
@@ -1114,14 +1360,17 @@
         const tahunAjaran = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
         const tingkat = CONFIG.tingkatList[Math.floor(Math.random() * CONFIG.tingkatList.length)];
         const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
+
         let kelas;
         if (tingkat === 'SD') kelas = Math.floor(Math.random() * 6) + 1;
         else if (tingkat === 'SMP') kelas = Math.floor(Math.random() * 3) + 7;
         else kelas = Math.floor(Math.random() * 3) + 10;
 
         const id = `AA-${String(i + 1).padStart(4, '0')}`;
-
         const jenisFile = CONFIG.jenisFile[Math.floor(Math.random() * CONFIG.jenisFile.length)];
+
+        // 🔑 Kelas akhir
+        const isKelasAkhir = [6, 9, 12].includes(kelas);
 
         const data = {
           no: i + 1,
@@ -1134,8 +1383,8 @@
           sekretariat,
           raportGanjil: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
           raportGenap: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
-          skl: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
-          ijazah: CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)],
+          skl: isKelasAkhir ? CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)] : '-',
+          ijazah: isKelasAkhir ? CONFIG.status[Math.floor(Math.random() * CONFIG.status.length)] : '-',
           jenisFile,
         };
 
@@ -1213,10 +1462,10 @@
             d.sekolah,
             d.tahunAjaran,
             `${d.tingkat} Kelas ${d.kelas}`,
-            `<span class="badge bg-${getStatusBadgeClass(d.raportGanjil)}">${d.raportGanjil}</span>`,
-            `<span class="badge bg-${getStatusBadgeClass(d.raportGenap)}">${d.raportGenap}</span>`,
-            `<span class="badge bg-${getStatusBadgeClass(d.skl)}">${d.skl}</span>`,
-            `<span class="badge bg-${getStatusBadgeClass(d.ijazah)}">${d.ijazah}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.raportGanjil)}" onclick="form_upload('raport')">${d.raportGanjil}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.raportGenap)}" onclick="form_upload('raport')">${d.raportGenap}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.skl)}" onclick="form_upload('skl')">${d.skl}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.ijazah)}" onclick="form_upload('ijasah')">${d.ijazah}</span>`,
           ])
         );
 
@@ -1246,7 +1495,6 @@
                 <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.nama}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
                     ${item.nama}
-                    <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
                   </h5>
                   <div class="divider-1"></div>
 
@@ -1268,19 +1516,14 @@
                     <div class="col-5 fw-bold">Kelas</div>
                     <div class="col-7">${item.tingkat} Kelas ${item.kelas}</div>
                   </div>
-
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Keterangan</div>
-                    <div class="col-7">${item.jenisFile}</div>
-                  </div>
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Raport Ganjil</div>
+                    <div class="col-5 fw-bold">Rpt. Ganjil</div>
                     <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGanjil)}">${
               item.raportGanjil
             }</span></div>
                   </div>
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">Raport Genap</div>
+                    <div class="col-5 fw-bold">Rpt. Genap</div>
                     <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGenap)}">${
               item.raportGenap
             }</span></div>
@@ -1342,6 +1585,19 @@
         currentPageMobile = 1;
         renderCards();
       });
+
+      // Form Upload Raport, SKL, dan Ijasah
+      function form_upload($jenisFile) {        
+        if ($jenisFile == 'skl') {
+          $('#uploadSklModal').modal('show');
+        }
+        else if ($jenisFile == 'ijasah') {
+          $('#uploadIjasahModal').modal('show');
+        }
+        else  {
+          $('#uploadRaportModal').modal('show');
+        }
+      }
 
       // Delete Data
       function deleteData() {
