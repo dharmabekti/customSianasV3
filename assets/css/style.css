@@ -681,6 +681,24 @@ main {
     color: #666;
   }
 
+  /* Khusus untuk submenu sekretariat di profil, muncul ke kiri */
+  .navbar .dropdown-menu-end .dropdown-submenu > .dropdown-menu {
+    left: auto !important;
+    right: 100% !important;
+    top: 0 !important;
+    transform: translateX(-10px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .navbar .dropdown-menu-end .dropdown-submenu:hover > .dropdown-menu {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
   /* Active link style */
   .navbar .nav-link.active,
   .navbar .dropdown-item.active {

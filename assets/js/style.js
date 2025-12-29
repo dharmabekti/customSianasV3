@@ -712,21 +712,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Fungsi untuk menyimpan pengaturan shortcut
-function saveShortcutSettings() {
-  const selectedShortcuts = [];
-  for (let i = 1; i <= 12; i++) {
-    const checkbox = document.getElementById(`shortcut${i}`);
-    if (checkbox && checkbox.checked) {
-      selectedShortcuts.push(i);
-    }
-  }
-  localStorage.setItem('selectedShortcuts', JSON.stringify(selectedShortcuts));
-  applyShortcutVisibility(selectedShortcuts);
-  alert('Pengaturan shortcut berhasil disimpan!');
-  $('#settingShortcutModal').modal('hide');
-}
-
 // Fungsi untuk menerapkan visibilitas shortcut berdasarkan array
 function applyShortcutVisibility(selected) {
   const cards = document.querySelectorAll('.card-menu');

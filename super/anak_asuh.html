@@ -203,7 +203,6 @@
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
                 <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
-                <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
 
@@ -257,10 +256,37 @@
                 <span class="fw-semibold ft-12">ADM-XXXX</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Profil</a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
+                </li>
+
+                <!-- SUBMENU SEKRETARIAT -->
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    Sekretariat : <strong>All</strong>
+                    <i class="bi bi-caret-down-fill ms-2"></i>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item active" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                    <li><a class="dropdown-item" href="#">Semarang</a></li>
+                    <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                    <li><a class="dropdown-item" href="#">Madiun</a></li>
+                    <li><a class="dropdown-item" href="#">Malang</a></li>
+                    <li><a class="dropdown-item" href="#">Bandung</a></li>
+                  </ul>
+                </li>
+
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+
+                <li>
+                  <a class="dropdown-item text-danger" href="#">Logout</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -480,9 +506,6 @@
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
             <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Tahun Ajaran</a
-            >
-            <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Sekretariat</a
             >
           </div>
           <a

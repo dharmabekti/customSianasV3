@@ -201,7 +201,6 @@
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
                 <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
-                <li><a class="dropdown-item" href="default_sekretariat.html">Sekretariat</a></li>
               </ul>
             </li>
 
@@ -252,13 +251,41 @@
                   height="30"
                   class="rounded-circle profile-img shadow-sm me-2"
                 />
-                <span class="fw-semibold ft-12">ADM-XXXX</span>
+                <span class="fw-semibold ft-12">ADM-NAS-XXXX</span>
               </a>
+
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-                <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Profil</a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
+                </li>
+
+                <!-- SUBMENU SEKRETARIAT -->
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    Sekretariat : <strong>All</strong>
+                    <i class="bi bi-caret-down-fill ms-2"></i>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item active" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                    <li><a class="dropdown-item" href="#">Semarang</a></li>
+                    <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                    <li><a class="dropdown-item" href="#">Madiun</a></li>
+                    <li><a class="dropdown-item" href="#">Malang</a></li>
+                    <li><a class="dropdown-item" href="#">Bandung</a></li>
+                  </ul>
+                </li>
+
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+
+                <li>
+                  <a class="dropdown-item text-danger" href="#">Logout</a>
+                </li>
               </ul>
             </li>
           </ul>
@@ -476,12 +503,7 @@
           </a>
           <div class="collapse" id="pengaturan">
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
-            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Tahun Ajaran</a
-            >
-            <a href="default_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Sekretariat</a
-            >
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
           </div>
           <a
             href="#"
@@ -531,38 +553,50 @@
       <!-- Hanya muncul di layar besar -->
       <div class="card p-3">
         <div class="container-fluid">
-          <div class="d-flex align-items-center">
-            <!-- FOTO PROFIL / LOGO -->
-            <img
-              src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
-              class="rounded-circle me-3 profile-img"
-              alt="Logo"
-              width="65"
-              height="65"
-            />
+          <div class="hero-wrapper">
+            <div class="d-flex align-items-center">
+              <!-- FOTO PROFIL / LOGO -->
+              <img
+                src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                class="rounded-circle me-3 profile-img"
+                alt="Logo"
+                width="65"
+                height="65"
+              />
 
-            <!-- TEKS DI SEBELAH KANAN -->
-            <div class="hero-text">
-              <h4 class="mb-1">Selamat Datang di SIANAS</h4>
-              <p class="text-muted mb-0">Ki Anom - Admin</p>
+              <!-- TEKS -->
+              <div class="hero-text">
+                <h4 class="mb-1">Selamat Datang di SIANAS</h4>
+                <p class="text-muted mb-0">Ki Anom - Admin</p>
+              </div>
+
+              <!-- BUTTON DESKTOP -->
+              <button
+                class="btn btn-outline-secondary btn-xs ms-auto d-none d-md-inline-flex"
+                data-bs-toggle="modal"
+                data-bs-target="#settingShortcutModal"
+              >
+                Setting Shortcut <i class="bi bi-gear ms-1"></i>
+              </button>
             </div>
 
-            <!-- TOMBOL SETTING SHORTCUT DI KANAN -->
-            <button
-              class="btn btn-outline-dark btn-xs ms-auto"
-              title="Pengaturan Shortcut"
-              data-bs-toggle="modal"
-              data-bs-target="#settingShortcutModal"
-            >
-              Setting Shortcut <i class="bi bi-gear"></i>
-            </button>
+            <!-- BUTTON MOBILE -->
+            <div class="d-md-none mt-3">
+              <button
+                class="btn btn-outline-secondary w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#settingShortcutModal"
+              >
+                <i class="bi bi-gear me-1"></i> Setting Shortcut
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="container-fluid my-4">
         <div class="row g-3">
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('anak_asuh')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('pengajuan_anakasuh_baru')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Anak Asuh Baru</strong>
@@ -574,7 +608,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('naik_jenjang')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('konfirmasi_naik_jenjang')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Pengajuan Naik Jenjang</strong>
@@ -621,7 +655,7 @@
             </div>
           </div>
 
-          <div class="col-6 col-md-2 card-menu" onclick="openPage('data_pj')">
+          <div class="col-6 col-md-2 card-menu" onclick="openPage('penanggungjawab')">
             <div class="card shadow-sm text-center position-relative">
               <div class="card-body">
                 <strong class="font-title-menu">Penanggungjawab Sekolah</strong>
@@ -958,9 +992,13 @@
               </div>
             </div>
           </div>
-          <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
-            <button type="button" class="btn btn-success btn-sm" onclick="saveShortcutSettings()">Simpan</button>
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-4 fw-bold" onclick="saveShortcutSettings()">
+              <i class="bi bi-check me-1"></i> Simpan
+            </button>
+            <button type="button" class="btn btn-danger px-4 fw-bold" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
           </div>
         </div>
       </div>
@@ -1111,6 +1149,21 @@
     `
         )
         .join('');
+
+      // Fungsi untuk menyimpan pengaturan shortcut
+      function saveShortcutSettings() {
+        const selectedShortcuts = [];
+        for (let i = 1; i <= 12; i++) {
+          const checkbox = document.getElementById(`shortcut${i}`);
+          if (checkbox && checkbox.checked) {
+            selectedShortcuts.push(i);
+          }
+        }
+        localStorage.setItem('selectedShortcuts', JSON.stringify(selectedShortcuts));
+        applyShortcutVisibility(selectedShortcuts);
+        alert('Pengaturan shortcut berhasil disimpan!');
+        $('#settingShortcutModal').modal('hide');
+      }
     </script>
   </body>
 </html>
