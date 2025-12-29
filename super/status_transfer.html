@@ -1068,28 +1068,6 @@
         });
       }
 
-      /* ======================================================
-       * SEKOLAH FILTER (BERDASARKAN RIWAYATDATA + SEKRETARIAT)
-       * ====================================================== */
-      function populateSekolahFilter(forceRefresh = false) {
-        const select = qs('#sekolahFilter');
-        const current = select.value;
-
-        // ⛔ Jika sudah ada pilihan sekolah & tidak dipaksa refresh → STOP
-        if (current && !forceRefresh) return;
-
-        const f = getFilterValues(false);
-
-        const data = filterData(riwayatData, f);
-
-        const sekolahList = [...new Set(data.map(d => d.sekolah))].sort();
-
-        select.innerHTML = '<option value="">Semua</option>';
-
-        sekolahList.forEach(s => select.insertAdjacentHTML('beforeend', `<option value="${s}">${s}</option>`));
-
-        select.value = sekolahList.includes(current) ? current : '';
-      }
 
       /* ======================================================
        * DATATABLE (DESKTOP)
@@ -1361,29 +1339,6 @@
 
           return true;
         });
-      }
-
-      /* ======================================================
-       * SEKOLAH FILTER APPROVAL (BERDASARKAN RIWAYATDATA + SEKRETARIAT)
-       * ====================================================== */
-      function populateSekolahFilterApproval(forceRefresh = false) {
-        const select = qsApproval('#sekolahFilter');
-        const current = select.value;
-
-        // ⛔ Jika sudah ada pilihan sekolah & tidak dipaksa refresh → STOP
-        if (current && !forceRefresh) return;
-
-        const f = getFilterValuesApproval(false);
-
-        const data = filterDataApproval(riwayatDataApproval, f);
-
-        const sekolahList = [...new Set(data.map(d => d.sekolah))].sort();
-
-        select.innerHTML = '<option value="">Semua</option>';
-
-        sekolahList.forEach(s => select.insertAdjacentHTML('beforeend', `<option value="${s}">${s}</option>`));
-
-        select.value = sekolahList.includes(current) ? current : '';
       }
 
       /* ======================================================

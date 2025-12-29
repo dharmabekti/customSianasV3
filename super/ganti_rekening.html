@@ -1190,29 +1190,6 @@
       }
 
       /* ======================================================
-       * SEKOLAH FILTER APPROVAL (BERDASARKAN RIWAYATDATA + SEKRETARIAT)
-       * ====================================================== */
-      function populateSekolahFilterApproval(forceRefresh = false) {
-        const select = qsApproval('#sekolahFilter');
-        const current = select.value;
-
-        // ⛔ Jika sudah ada pilihan sekolah & tidak dipaksa refresh → STOP
-        if (current && !forceRefresh) return;
-
-        const f = getFilterValuesApproval(false);
-
-        const data = filterDataApproval(dataPermohonan, f);
-
-        const sekolahList = [...new Set(data.map(d => d.komunitasSekolah))].sort();
-
-        select.innerHTML = '<option value="">Semua</option>';
-
-        sekolahList.forEach(s => select.insertAdjacentHTML('beforeend', `<option value="${s}">${s}</option>`));
-
-        select.value = sekolahList.includes(current) ? current : '';
-      }
-
-      /* ======================================================
        * DATATABLE APPROVAL (DESKTOP)
        * ====================================================== */
       let dataTableApproval;
