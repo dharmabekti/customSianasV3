@@ -601,11 +601,6 @@ main {
   border-radius: 20px;
   display: inline-block;
 }
-@media (max-width: 992px) {
-  .upload-box {
-    margin-top: 20px;
-  }
-}
 
 /* =========================================================
 🖥 Grid Custom (Desktop)
@@ -704,6 +699,22 @@ main {
     height: auto !important;
     visibility: visible !important;
   }
+  
+  .upload-box {
+    margin-top: 20px;
+  }
+
+  .info-separator {
+    display: inline-block;
+    text-align: center;
+    color: #6c757d;
+    margin-right: 10px;
+  }
+
+  /* .info-value::before {
+    content: ' :';
+    margin-right: 8px;
+  } */
 
   /* Untuk layar kecil: submenu tampil di bawah */
   @media (max-width: 991px) {
@@ -779,8 +790,8 @@ main {
 }
 
 .hero-text {
-    font-size: 14px !important;
-    /* line-height: 0 !important; */
+  font-size: 14px !important;
+  /* line-height: 0 !important; */
 }
 
 @media (max-width: 576px) {
@@ -1277,7 +1288,10 @@ main {
   z-index: 5; /* PENTING: overlay di atas card */
 }
 
-.hover-btns button { font-size: 0.65rem; padding: 2px 6px; }
+.hover-btns button {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+}
 
 /* Saat hover, overlay muncul */
 .child-card:hover .hover-btns {
@@ -1302,8 +1316,6 @@ main {
   position: relative;
   z-index: 1;
 }
-
-
 
 /* Filter Section */
 .filter-section {
@@ -2098,7 +2110,7 @@ h3.page-title {
 
 .badge {
   display: inline-block; /* atau inline-flex */
-  width: auto;           /* hilangkan full width */
+  width: auto; /* hilangkan full width */
 }
 
 /* Floating badge */
@@ -2273,7 +2285,7 @@ h3.page-title {
   border-radius: 20px;
   font-size: 0.85rem;
   white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* Icon rotate when active */
@@ -2281,7 +2293,6 @@ h3.page-title {
   transform: rotate(45deg);
   transition: transform 0.3s;
 }
-
 
 /* End Button floating */
 
@@ -2507,10 +2518,15 @@ h3.page-title {
   color: #222;
 }
 
+.info-separator {
+  display: none;
+}
+
 /* Nilai di kanan */
 .info-value {
   flex: 1;
-  color: #444;
+  /* color: #2d2b2b; */
+  /* font-weight: bold; */
   word-break: break-word;
 }
 
@@ -2541,6 +2557,11 @@ h3.page-title {
     flex: none;
     width: 100%;
     margin-bottom: 0.15rem;
+  }
+
+  .info-label::after {
+    content: ' :';
+    margin-right: 8px;
   }
 
   .info-value {
@@ -2799,60 +2820,60 @@ h3.page-title {
   font-size: 14px;
 }
 
-/* Select2 *//* ===============================
+/* Select2 */ /* ===============================
    GLOBAL FIX UNTUK SELECT2
    =============================== */
 .select2-container {
-    width: 100% !important;
-    /* z-index: 9999 !important; supaya tidak tertutup elemen lain */
+  width: 100% !important;
+  /* z-index: 9999 !important; supaya tidak tertutup elemen lain */
 }
 
 /* dropdown selalu berada di atas */
 .select2-container .select2-dropdown {
-    /* z-index: 999999 !important; */
-    border: 1px solid #ced4da !important;
-    border-radius: 0.375rem !important;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08) !important;
-    position: absolute !important;
+  /* z-index: 999999 !important; */
+  border: 1px solid #ced4da !important;
+  border-radius: 0.375rem !important;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08) !important;
+  position: absolute !important;
 }
 
 /* ===============================
    TAMPILAN SINGLE SELECT (Bootstrap-like)
    =============================== */
 .select2-container--default .select2-selection--single {
-    background-color: #fff !important;
-    border: 1px solid #ced4da !important;
-    border-radius: 0.375rem !important;
-    height: 38px !important;
-    padding: 6px 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    font-size: 0.95rem !important;
+  background-color: #fff !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.375rem !important;
+  height: 38px !important;
+  padding: 6px 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: 0.95rem !important;
 }
 
 /* Text dalam select */
 .select2-container--default .select2-selection__rendered {
-    color: #212529 !important;
-    padding-left: 0 !important;
-    line-height: 1.4 !important;
+  color: #212529 !important;
+  padding-left: 0 !important;
+  line-height: 1.4 !important;
 }
 
 /* Arrow nya */
 .select2-container--default .select2-selection__arrow {
-    height: 38px !important;
-    right: 8px !important;
+  height: 38px !important;
+  right: 8px !important;
 }
 
 /* Focus ala Bootstrap */
 .select2-container--default.select2-container--focus .select2-selection--single {
-    border-color: #86b7fe !important;
-    box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25) !important;
+  border-color: #86b7fe !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
 }
 
 /* Hover results */
 .select2-container--default .select2-results__option--highlighted {
-    background-color: #0d6efd !important;
-    color: #fff !important;
+  background-color: #0d6efd !important;
+  color: #fff !important;
 }
 
 /* ===============================
@@ -2860,28 +2881,28 @@ h3.page-title {
    =============================== */
 .form-control-sm + .select2-container .select2-selection--single,
 .form-select-sm + .select2-container .select2-selection--single {
-    height: 31px !important;
-    min-height: 31px !important;
-    padding: 4px 8px !important;
-    font-size: 0.875rem !important;
+  height: 31px !important;
+  min-height: 31px !important;
+  padding: 4px 8px !important;
+  font-size: 0.875rem !important;
 }
 
 /* Arrow kecil */
 .form-control-sm + .select2-container .select2-selection__arrow,
 .form-select-sm + .select2-container .select2-selection__arrow {
-    height: 31px !important;
+  height: 31px !important;
 }
 
 /* Text kecil */
 .form-control-sm + .select2-container .select2-selection__rendered,
 .form-select-sm + .select2-container .select2-selection__rendered {
-    padding-left: 0 !important;
-    line-height: 1.2 !important;
+  padding-left: 0 !important;
+  line-height: 1.2 !important;
 }
 
 .action-footer {
   display: flex;
-  flex-wrap: nowrap;       /* ⬅️ PAKSA 1 BARIS */
+  flex-wrap: nowrap; /* ⬅️ PAKSA 1 BARIS */
   justify-content: center;
   gap: 6px;
   padding: 0;
@@ -2890,8 +2911,8 @@ h3.page-title {
 }
 
 .action-footer .btn {
-  flex: 1 1 0;             /* ⬅️ BAGI RATA */
-  min-width: 0;            /* ⬅️ CEGAH OVERFLOW */
+  flex: 1 1 0; /* ⬅️ BAGI RATA */
+  min-width: 0; /* ⬅️ CEGAH OVERFLOW */
   white-space: nowrap;
   text-align: center;
   padding: 4px 6px;

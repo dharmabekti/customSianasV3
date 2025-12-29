@@ -274,7 +274,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Raport, SKL, dan IJasah</span>
+        <span class="navbar-brand mx-auto">Raport, SKL, dan Ijasah</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -528,7 +528,7 @@
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
 
-      <h3 class="text-center page-title d-none d-lg-block">Raport, SKL, dan IJasah</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Raport, SKL, dan Ijasah</h3>
 
       <div class="container-fluid mb-5 container-wrapper">
         <div class="row">
@@ -541,7 +541,7 @@
             </li>
             <li class="nav-item">
               <button class="nav-link" data-bs-toggle="tab" data-bs-target="#statusTransfer">
-                Data Raport, SKL, dan IJasah
+                Data Raport, SKL, dan Ijasah
               </button>
             </li>
           </ul>
@@ -791,28 +791,6 @@
       </small>
     </footer>
 
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" onclick="window.location.href='upload_kuitansi.html'">
-      <i class="bi bi-upload text-center"></i>
-    </button>
-
-    <!-- Context Menu for Right-Click Actions -->
-    <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
-      <li>
-        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailTransferModal">
-          <i class="bi bi-info"></i> Detail
-        </button>
-      </li>
-      <li>
-        <a class="dropdown-item" href="upload_kuitansi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
-      </li>
-      <li>
-        <button class="dropdown-item text-danger" id="deleteAction" onclick="deleteData()">
-          <i class="bi bi-trash"></i> Hapus
-        </button>
-      </li>
-    </ul>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/badges.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -969,7 +947,9 @@
             d.sekolah,
             `${d.tingkat} Kelas ${d.kelas}`,
             d.jenisFile,
-            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${d.status}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval('${d.jenisFile}')">
+              ${d.status}
+              </span>`,
           ])
         );
 
@@ -1079,8 +1059,10 @@
       });
 
       // Form Approval
-      function form_approval() {
-        window.location.href = `form_approval_transfer.html`;
+      function form_approval($jenisFile) {
+        if ($jenisFile == 'SKL') window.location.href = `form_approval_skl.html`;
+        else if ($jenisFile == 'Ijasah') window.location.href = `form_approval_ijasah.html`;
+        else window.location.href = `form_approval_raport.html`;
       }
 
       // Delete Data Approval
@@ -1098,7 +1080,7 @@
        * ====================================================== */
       const CONFIG = {
         TahunAjaran: ['2024/2025', '2025/2026'],
-        status: ['Belum Upload','Menunggu', 'Diverifikasi', 'Disetujui', 'Ditolak'],
+        status: ['Belum Upload', 'Menunggu', 'Diverifikasi', 'Disetujui', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         tingkatList: ['SD', 'SMP', 'SMA/SMK'],
         jenisFile: ['Raport Gasal', 'Raport Genap', 'SKL', 'Ijasah'],
@@ -1180,7 +1162,16 @@
         return data.filter(item => {
           if (f.tahun && item.tahunAjaran !== f.tahun) return false;
           if (f.tingkat && item.tingkat !== f.tingkat) return false;
-          if (f.status && !(item.raportGanjil === f.status || item.raportGenap === f.status || item.skl === f.status || item.ijazah === f.status)) return false;
+          if (
+            f.status &&
+            !(
+              item.raportGanjil === f.status ||
+              item.raportGenap === f.status ||
+              item.skl === f.status ||
+              item.ijazah === f.status
+            )
+          )
+            return false;
           if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
 
           if (f.search) {
@@ -1284,11 +1275,15 @@
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Raport Ganjil</div>
-                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGanjil)}">${item.raportGanjil}</span></div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGanjil)}">${
+              item.raportGanjil
+            }</span></div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Raport Genap</div>
-                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGenap)}">${item.raportGenap}</span></div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.raportGenap)}">${
+              item.raportGenap
+            }</span></div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">SKL</div>
@@ -1296,7 +1291,9 @@
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Ijazah</div>
-                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.ijazah)}">${item.ijazah}</span></div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.ijazah)}">${
+              item.ijazah
+            }</span></div>
                   </div>
                 </div>
               </div>`
