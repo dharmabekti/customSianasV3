@@ -1015,3 +1015,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// Fix for mobileProfileDropdown sekretariat submenu toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const submenuToggles = document.querySelectorAll('.dropdown-submenu > a');
+
+  submenuToggles.forEach(toggle => {
+    toggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const submenu = this.nextElementSibling;
+      if (submenu) {
+        submenu.classList.toggle('show');
+      }
+
+      // Toggle icon
+      const icon = this.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('bi-caret-down-fill');
+        icon.classList.toggle('bi-caret-up-fill');
+      }
+    });
+  });
+});
