@@ -39,7 +39,7 @@ const ReportUI = {
     const listGroup = document.querySelector(`${listSelector} .list-group`);
     listGroup.innerHTML = '';
 
-    const rows = document.querySelectorAll(`${tableSelector} tbody tr`);
+    const rows = document.querySelectorAll(`${tableSelector} table tbody tr`);
 
     headers.slice(1).forEach((year, yearIndex) => {
       const card = document.createElement('div');
@@ -60,7 +60,7 @@ const ReportUI = {
         const isNegative = !isNaN(raw) && Number(raw) < 0;
 
         html += `
-          <div class="d-flex justify-content-between mb-2">
+          <div class="d-flex justify-content-between text-start mb-2">
             <span>${label}</span>
             <span class="${isNegative ? 'text-danger fw-semibold' : ''}">
               ${value}
