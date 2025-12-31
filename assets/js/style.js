@@ -1039,3 +1039,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// FUngsi untuk mengubah nilai negatif berwarna merah
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('table tbody td').forEach(td => {
+    const val = td.textContent.trim().replace(/\./g, '');
+
+    if (!isNaN(val) && Number(val) < 0) {
+      td.classList.add('text-danger', 'fw-semibold');
+    }
+  });
+});

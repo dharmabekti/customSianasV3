@@ -717,7 +717,7 @@ main {
     height: auto !important;
     visibility: visible !important;
   }
-  
+
   .upload-box {
     margin-top: 20px;
   }
@@ -1028,6 +1028,15 @@ main {
 .table-estetik .amount {
   font-weight: 600;
   color: #2c3e50;
+}
+
+/* Override warna table-primary */
+.table-bg-aat {
+  --bs-table-bg: var(--aat-primary); /* background utama */
+  --bs-table-striped-bg: #3f6cb2; /* striped */
+  --bs-table-hover-bg: #355fa3; /* hover */
+  --bs-table-border-color: #cfd8ea;
+  --bs-table-color: #ffffff; /* teks */
 }
 
 /* =========================================================
