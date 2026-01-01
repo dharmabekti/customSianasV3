@@ -651,7 +651,19 @@
               <!-- ID Donatur -->
               <div class="col-12 col-md-3">
                 <label class="form-label d-block d-lg-none">Id Donatur</label>
-                <input type="text" class="form-control form-control-sm w-100" placeholder="Masukkan ID Donatur" />
+                <select class="form-select form-select-sm w-100 select2" id="id_donatur">
+                  <option value="">Pilih ID Donatur</option>
+                  <option value="D-XX-0001">D-XX-0001 - Ki Anom Dharma Bekti</option>
+                  <option value="D-XX-0002">D-XX-0002 - Siti Nurhaliza</option>
+                  <option value="D-XX-0003">D-XX-0003 - Ahmad Rahman</option>
+                  <option value="D-XX-0004">D-XX-0004 - Maya Sari</option>
+                  <option value="D-XX-0005">D-XX-0005 - Budi Santoso</option>
+                  <option value="D-XX-0006">D-XX-0006 - Rina Kusuma</option>
+                  <option value="D-XX-0007">D-XX-0007 - Eko Prasetyo</option>
+                  <option value="D-XX-0008">D-XX-0008 - Lestari Dewi</option>
+                  <option value="D-XX-0009">D-XX-0009 - Hendro Wibowo</option>
+                  <option value="D-XX-0010">D-XX-0010 - Sari Indah</option>
+                </select>
               </div>
 
               <!-- Cari -->
@@ -825,6 +837,14 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
+      // Initialize Select2 for ID Donatur
+      $(document).ready(function() {
+        $('#id_donatur').select2({
+          placeholder: 'Pilih ID Donatur',
+          allowClear: true
+        });
+      });
+
       const placeholder = document.getElementById('placeholderData');
       const tableWrapper = document.getElementById('resultTable');
       const listWrapper = document.getElementById('resultList');
