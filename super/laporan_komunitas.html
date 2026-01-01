@@ -329,7 +329,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Laporan Sekretariat</span>
+        <span class="navbar-brand mx-auto">Laporan Komunitas/Sekolah</span>
         <div class="dropdown">
           <button
             class="btn btn-outline-light"
@@ -596,7 +596,7 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Laporan Sekretariat</h3>
+      <h3 class="text-center page-title d-none d-lg-block">Laporan Komunitas/Sekolah</h3>
       <div class="mb-3">
         <button
           class="btn btn-outline-primary w-100 d-lg-none"
@@ -648,17 +648,21 @@
                 </select>
               </div>
 
-              <!-- Sekretariat -->
+              <!-- Komunitas/Sekolah -->
               <div class="col-12 col-md-3">
-                <label class="form-label d-block d-lg-none">Sekretariat</label>
-                <select class="form-select form-select-sm w-100 select2">
-                  <option value="">Pilih Sekretariat</option>
-                  <option>Yogyakarta</option>
-                  <option>Purwokerto</option>
-                  <option>Semarang</option>
-                  <option>Malang</option>
-                  <option>Bandung</option>
-                  <option>Madiun</option>
+                <label class="form-label d-block d-lg-none">Komunitas/Sekolah</label>
+                <select class="form-select form-select-sm w-100 select2" id="sekretariat">
+                  <option>Pilih Komunitas/Sekolah</option>
+                  <option>SDN 1 Yogyakarta (K-XX-0001)</option>
+                  <option>SMPN 2 Semarang (K-XX-0002)</option>
+                  <option>SMAN 3 Bandung (K-XX-0003)</option>
+                  <option>SDN 4 Purwokerto (K-XX-0004)</option>
+                  <option>SMPN 5 Malang (K-XX-0005)</option>
+                  <option>SMAN 6 Madiun (K-XX-0006)</option>
+                  <option>SDN 7 Surabaya (K-XX-0007)</option>
+                  <option>SMPN 8 Jakarta (K-XX-0008)</option>
+                  <option>SMAN 9 Bogor (K-XX-0009)</option>
+                  <option>SDN 10 Depok (K-XX-0010)</option>
                 </select>
               </div>
 
@@ -694,13 +698,13 @@
           <div class="col-lg-3">
             <div class="p-4 border rounded-4 text-center">
               <img
-                src="../assets/img/logo_AAT.png"
+                src="../assets/img/sekolah.png"
                 alt="Logo Komunitas"
                 class="rounded-circle img-fluid shadow-sm"
                 style="height: 150px; width: 150px"
               />
-              <h5 class="mt-2">Sekretariat Yogyakarta</h5>
-              <p class="mt-2">Andreas Deddie A. (Gareng)</p>
+              <h5 class="mt-2">SMA Bhakti Mulia</h5>
+              <p class="mt-2">K-XX-XXXX</p>
               <span class="badge bg-success">Aktif</span>
             </div>
 
@@ -720,7 +724,7 @@
                 >
                   <thead class="table-bg-aat text-center">
                     <tr>
-                      <th>Indikator</th>
+                      <th class="text-start">Indikator</th>
                       <th>2021/2022</th>
                       <th>2022/2023</th>
                       <th>2023/2024</th>
@@ -731,65 +735,74 @@
                   <tbody>
                     <tr>
                       <td class="text-start">Jml AA Aktif</td>
-                      <td>36</td>
-                      <td>43</td>
-                      <td>72</td>
-                      <td>59</td>
-                      <td>56</td>
+                      <td>45</td>
+                      <td>52</td>
+                      <td>60</td>
+                      <td>58</td>
+                      <td>55</td>
                     </tr>
 
                     <tr>
                       <td class="text-start">Jml AA Mengundurkan Diri</td>
-                      <td>2</td>
                       <td>3</td>
                       <td>4</td>
-                      <td>3</td>
-                      <td>2</td>
+                      <td>5</td>
+                      <td>4</td>
+                      <td>6</td>
                     </tr>
 
                     <tr>
                       <td class="text-start">Jml AA Lulus pada akhir TA</td>
                       <td>6</td>
-                      <td>7</td>
-                      <td>9</td>
                       <td>8</td>
-                      <td>6</td>
+                      <td>10</td>
+                      <td>9</td>
+                      <td>7</td>
                     </tr>
 
                     <tr>
                       <td class="text-start">Jml AA Naik Jenjang (Mutasi)</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+
+                    <tr>
+                      <td class="text-start">Pergantian Rekening (Intensitas)</td>
+                      <td>2</td>
+                      <td>3</td>
+                      <td>2</td>
                       <td>4</td>
-                      <td>5</td>
-                      <td>6</td>
-                      <td>5</td>
                       <td>3</td>
                     </tr>
 
                     <tr>
-                      <td class="text-start">Jml Komunitas/Sekolah Aktif</td>
-                      <td>18</td>
-                      <td>21</td>
-                      <td>25</td>
-                      <td>24</td>
-                      <td>23</td>
+                      <td class="text-start">Pengembalian Dana Berlebih</td>
+                      <td>1</td>
+                      <td>2</td>
+                      <td>1</td>
+                      <td>1</td>
+                      <td>2</td>
                     </tr>
 
                     <tr class="fw-bold table-secondary">
                       <td class="text-start">Total Donasi/Tahun</td>
-                      <td>Rp31.480.000</td>
-                      <td>Rp48.775.000</td>
-                      <td>Rp60.716.000</td>
-                      <td>Rp43.500.000</td>
-                      <td>Rp43.500.000</td>
+                      <td>Rp145.000.000</td>
+                      <td>Rp162.500.000</td>
+                      <td>Rp178.750.000</td>
+                      <td>Rp170.000.000</td>
+                      <td>Rp168.250.000</td>
                     </tr>
 
                     <tr class="fw-bold">
                       <td class="text-start">Jml Transfer Beasiswa</td>
-                      <td>Rp54.390.000</td>
-                      <td>Rp43.500.000</td>
-                      <td>Rp43.500.000</td>
-                      <td>Rp43.500.000</td>
-                      <td>Rp21.750.000</td>
+                      <td>Rp150.000.000</td>
+                      <td>Rp160.000.000</td>
+                      <td>Rp180.000.000</td>
+                      <td>Rp170.000.000</td>
+                      <td>Rp165.000.000</td>
                     </tr>
                   </tbody>
                 </table>
