@@ -312,6 +312,7 @@ main {
 .table thead th {
   line-height: 1 !important;
   font-size: var(--ft-14);
+  text-align: center !important;
 }
 .table tbody td {
   line-height: 1 !important;
