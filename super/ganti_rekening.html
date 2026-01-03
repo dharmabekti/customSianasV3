@@ -736,7 +736,7 @@
                       <label class="form-label fw-semibold">Status</label>
                       <select id="statusFilterStatus" class="form-select form-select-sm">
                         <option value="">Semua</option>
-                        <option>Disetujui</option>
+                        <option>Selesai</option>
                         <option>Diverifikasi</option>
                         <option>Menunggu</option>
                         <option>Ditolak</option>
@@ -962,7 +962,7 @@
                   <div class="info-item">
                     <span class="info-label">Status</span>
                     <span class="info-value">
-                      <span class="badge bg-success">Disetujui</span>
+                      <span class="badge bg-success">Selesai</span>
                     </span>
                   </div>
                 </div>
@@ -1403,7 +1403,7 @@
           if (result.isConfirmed) {
             console.log('APPROVE:', id);
             // 👉 TODO: AJAX / fetch approve di sini
-            swal_alert('Berhasil', 'Pengajuan berhasil disetujui', 'success');
+            swal_alert('Berhasil', 'Pengajuan berhasil Selesai', 'success');
           }
 
           /* ================= REJECT ================= */
@@ -1453,7 +1453,7 @@
        * CONFIG
        * ====================================================== */
       const CONFIG = {
-        status: ['Menunggu', 'Diverifikasi', 'Disetujui', 'Ditolak'],
+        status: ['Menunggu', 'Diverifikasi', 'Selesai', 'Ditolak'],
         sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
         itemsPerPageMobile: 10,
       };
