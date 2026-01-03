@@ -75,3 +75,25 @@ const ReportUI = {
     });
   },
 };
+
+function updateDisplay() {
+  // hanya jalan jika data sudah dicari
+  if (!placeholder.classList.contains('d-none')) return;
+
+  if (ReportUI.isMobile()) {
+    ReportUI.show(tableWrapper);
+    ReportUI.hide(document.getElementById('tableContainer'));
+    ReportUI.show(listWrapper);
+    ReportUI.populateMobileList({
+      tableSelector: '#resultTable',
+      listSelector: '#resultList',
+      headers,
+    });
+  } else {
+    ReportUI.show(tableWrapper);
+    ReportUI.show(document.getElementById('tableContainer'));
+    ReportUI.hide(listWrapper);
+    ReportUI.initDataTable('#tableContainer');
+    ReportUI.highlightNegativeValues('#tableContainer');
+  }
+}
