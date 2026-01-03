@@ -25,6 +25,7 @@ function getStatusBadgeClass(status) {
   switch (status) {
     case 'Sudah Transfer':
     case 'Disetujui':
+    case 'Selesai':
       return 'success';
     case 'Belum Ditransfer':
       return 'warning';
