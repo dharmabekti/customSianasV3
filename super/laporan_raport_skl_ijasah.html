@@ -7,20 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Daterangepicker JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
     <!-- Sweet Alerts css -->
     <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- Select2 CSS & JS -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-    <!-- Date Range Picker -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -136,7 +136,7 @@
                 <li><a class="dropdown-item" href="pengajuan_anakasuh_baru.html">Konfirmasi Anak Asuh Baru</a></li>
                 <li><a class="dropdown-item" href="konfirmasi_naik_jenjang.html">Konfirmasi Kenaikan Jenjang</a></li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijazah</a></li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijasah</a></li>
               </ul>
             </li>
 
@@ -610,7 +610,7 @@
               <!-- Sort -->
               <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
                 <label class="fw-bold mb-0">Tahun Ajaran</label>
-                <select class="form-select form-select-sm w-100">
+                <select class="form-select form-select-sm w-100" id="tahunAjaranSelect">
                   <option>2025/2026</option>
                   <option>2024/2025</option>
                   <option>2023/2024</option>
@@ -625,6 +625,10 @@
                 </button>
 
                 <button class="btn btn-outline-danger btn-sm"><i class="bi bi-file-earmark-pdf"></i> Export PDF</button>
+              </div>
+              <div class="form-check d-lg-none">
+                <input class="form-check-input" type="checkbox" id="sekretariatToggle" />
+                <label class="form-check-label" for="sekretariatToggle"> Tampilkan per Sekretariat </label>
               </div>
             </div>
           </div>
@@ -641,7 +645,7 @@
           <div class="row">
             <!-- Tabel (disembunyikan awal) -->
             <!-- Data Hasil Search -->
-            <div class="table-responsive d-none d-lg-block" id="tableContainer">
+            <div class="table-responsive" id="tableContainer">
               <table class="table table-bordered table-striped align-middle text-center">
                 <thead class="table-bg-aat text-center">
                   <tr>
@@ -649,7 +653,7 @@
                     <th>Raport Ganjil</th>
                     <th>Raport Genap</th>
                     <th>SKL</th>
-                    <th>Ijazah</th>
+                    <th>Ijasah</th>
                   </tr>
                 </thead>
 
@@ -1116,7 +1120,7 @@
                   <th colspan="2">Raport Ganjil</th>
                   <th colspan="2">Raport Genap</th>
                   <th colspan="2">SKL</th>
-                  <th colspan="2">Ijazah</th>
+                  <th colspan="2">Ijasah</th>
                 </tr>
 
                 <!-- HEADER SEBENARNYA (INI YANG DIBACA DATATABLES) -->
@@ -1263,35 +1267,204 @@
       const listWrapper = document.getElementById('resultList');
       const btnSearch = document.getElementById('btnSearch');
 
-      const headers = ['Yogyakarta', 'Semarang', 'Bandung', 'Purwokerto', 'Madiun', 'Malang'];
+      const headers = ['Sekretariat', 'Raport Ganjil', 'Raport Genap', 'SKL', 'Ijasah'];
 
       // Klik cari
       btnSearch.addEventListener('click', () => {
         ReportUI.hide(placeholder);
         updateDisplay();
       });
-
-      // Resize window
-      window.addEventListener('resize', updateDisplay);
     </script>
 
     <script>
+      window.expandedSekretariats = {};
+
+      function toggleSekretariat(target) {
+        window.expandedSekretariats[target] = !window.expandedSekretariats[target];
+        document.querySelectorAll('.' + target).forEach(tr => {
+          tr.classList.toggle('d-none');
+        });
+        const row = document.querySelector(`[data-target="${target}"]`);
+        if (row) {
+          const icon = row.querySelector('.toggle-icon');
+          icon.textContent = window.expandedSekretariats[target] ? '▾' : '▸';
+        }
+        if (ReportUI.isMobile() && placeholder.classList.contains('d-none')) {
+          ReportUI.populateMobileSekretariatList({
+            tableSelector: '#resultTable',
+            listSelector: '#resultList',
+            headers,
+          });
+        }
+      }
+
       document.querySelectorAll('.table-row').forEach(row => {
         row.addEventListener('click', () => {
           const target = row.dataset.target;
-          const icon = row.querySelector('.toggle-icon');
-
-          document.querySelectorAll('.' + target).forEach(tr => {
-            tr.classList.toggle('d-none');
-          });
-
-          icon.textContent = icon.textContent === '▸' ? '▾' : '▸';
+          toggleSekretariat(target);
         });
       });
 
+      // Show Model Detail
       function detailSekolah() {
         $('#detailSekolahModal').modal('show');
       }
+
+      // Untuk mengatur tampilan di mode mobile
+      ReportUI.populateMobileSekretariatList = function ({ tableSelector, listSelector, headers }) {
+        const listGroup = document.querySelector(`${listSelector} .list-group`);
+        listGroup.innerHTML = '';
+
+        const allowedSekretariats = [
+          'sek-yogya',
+          'sek-malang',
+          'sek-bandung',
+          'sek-madiun',
+          'sek-semarang',
+          'sek-purwokerto',
+        ];
+        const sekretariatRows = document.querySelectorAll(`${tableSelector} table tbody .table-row`);
+
+        sekretariatRows.forEach(sekRow => {
+          const target = sekRow.dataset.target;
+          if (!allowedSekretariats.includes(target)) return;
+
+          const sekName = sekRow
+            .querySelector('td')
+            .textContent.trim()
+            .replace(/^[▸▾]\s*/, '');
+          const isExpanded = window.expandedSekretariats && window.expandedSekretariats[target];
+
+          const card = document.createElement('div');
+          card.className = 'card mb-3';
+
+          let html = `
+            <div class="card-header bg-aat text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleSekretariat('${target}')">
+              <h6 class="mb-0">${sekName}</h6>
+              <span class="toggle-icon">${isExpanded ? '▾' : '▸'}</span>
+            </div>
+          `;
+
+          // Membuka detail toggle sekretariat
+          if (isExpanded) {
+            const subRows = document.querySelectorAll(`${tableSelector} table tbody .subtable-row.${target}`);
+            const visibleSubRows = Array.from(subRows).filter(row => !row.classList.contains('d-none'));
+
+            headers.slice(1).forEach((year, yearIndex) => {
+              const isBold = headers.includes(year);
+              html += `
+                <div class="card mb-2">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0 ${isBold ? 'fw-bold' : ''}">${year}</h6>
+                  </div>
+                  <div class="card-body">
+              `;
+
+              visibleSubRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const label = cells[0].textContent.trim();
+                const value = cells[yearIndex + 1].textContent.trim();
+                const raw = value.replace(/\./g, '');
+                const isNegative = !isNaN(raw) && Number(raw) < 0;
+
+                html += `
+                  <div class="d-flex justify-content-between text-start mb-2">
+                    <span>${label}</span>
+                    <span class="${isNegative ? 'text-danger fw-semibold' : ''}">
+                      ${value}
+                    </span>
+                  </div>
+                `;
+              });
+
+              html += `</div></div>`;
+            });
+          }
+
+          card.innerHTML = html;
+          listGroup.appendChild(card);
+        });
+      };
+
+      ReportUI.populateMobileList = function ({
+        tableSelector,
+        listSelector,
+        headers,
+        cardHeaderClass = 'bg-aat text-white',
+      }) {
+        const listGroup = document.querySelector(`${listSelector} .list-group`);
+        listGroup.innerHTML = '';
+
+        const sekretariatRows = document.querySelectorAll(`${tableSelector} table tbody .table-row`);
+
+        sekretariatRows.forEach(sekRow => {
+          const target = sekRow.dataset.target;
+          const sekName = sekRow
+            .querySelector('td')
+            .textContent.trim()
+            .replace(/^[▸▾]\s*/, '');
+          const isExpanded = window.expandedSekretariats && window.expandedSekretariats[target];
+
+          const card = document.createElement('div');
+          card.className = 'card mb-3';
+
+          let html = `
+            <div class="card-header ${cardHeaderClass} d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleSekretariat('${target}')">
+              <h6 class="mb-0">${sekName}</h6>
+              <span class="toggle-icon">${isExpanded ? '▾' : '▸'}</span>
+            </div>
+          `;
+
+          if (isExpanded) {
+            const subRows = document.querySelectorAll(`${tableSelector} table tbody .subtable-row.${target}`);
+            const visibleSubRows = Array.from(subRows).filter(row => !row.classList.contains('d-none'));
+
+            headers.slice(1).forEach((year, yearIndex) => {
+              const isBold = headers.includes(year);
+              html += `
+                <div class="card mb-2">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0 ${isBold ? 'fw-bold' : ''}">${year}</h6>
+                  </div>
+                  <div class="card-body">
+              `;
+
+              visibleSubRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const label = cells[0].textContent.trim();
+                const value = cells[yearIndex + 1].textContent.trim();
+                const raw = value.replace(/\./g, '');
+                const isNegative = !isNaN(raw) && Number(raw) < 0;
+
+                html += `
+                  <div class="d-flex justify-content-between text-start mb-2">
+                    <span>${label}</span>
+                    <span class="${isNegative ? 'text-danger fw-semibold' : ''}">
+                      ${value}
+                    </span>
+                  </div>
+                `;
+              });
+
+              html += `</div></div>`;
+            });
+          }
+
+          card.innerHTML = html;
+          listGroup.appendChild(card);
+        });
+      };
+    </script>
+
+    <script>
+      // Handle submenu toggle for Sekretariat in profile dropdown
+      document.querySelectorAll('.dropdown-submenu > a').forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+          submenu.classList.toggle('show');
+        });
+      });
     </script>
   </body>
 </html>

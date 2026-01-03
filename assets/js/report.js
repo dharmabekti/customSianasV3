@@ -97,3 +97,6 @@ function updateDisplay() {
     ReportUI.highlightNegativeValues('#tableContainer');
   }
 }
+
+// Resize window
+window.addEventListener('resize', updateDisplay);
