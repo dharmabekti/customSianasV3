@@ -3002,3 +3002,40 @@ h3.page-title {
     max-width: 180px;
   }
 }
+
+/* Table Toggle DropDown */
+.table-row {
+  cursor: pointer;
+  background-color: #f8f9fa;
+}
+
+.subtable-row td {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.toggle-icon {
+  color: var(--aat-primary);
+  font-weight: bold;
+}
+/* Table Toggle DropDown */
+
+/* Progress Bar */
+.progress-outline {
+  height: 18px;
+  background-color: #fff; /* background putih */
+  border: 1.5px solid #000; /* border hitam */
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-outline .progress-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  border-radius: 999px;
+  color: black;
+  padding-left: 1rem;
+}
+
+/* Progress Bar */

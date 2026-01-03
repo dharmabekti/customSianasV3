@@ -9,6 +9,7 @@ $(document).ready(function () {
         previous: '<<',
         next: '>>',
       },
+      zeroRecords: 'Tidak ada data yang ditemukan',
       info: 'Menampilkan _START_ sampai _END_ dari _TOTAL_ data',
     },
     autowidth: false,
