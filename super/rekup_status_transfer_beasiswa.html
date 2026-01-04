@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Responsive Admin Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <link href="../assets/css/style.css" rel="stylesheet" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Daterangepicker JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+    <!-- Sweet Alerts css -->
+    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header align-items-center">
+        <img src="https://sianas.aat.or.id/assets/images/logo_AAT.png" alt="Logo" />
+        <div class="ms-2 me-auto">
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <!-- Tahun Ajaran + Datetime -->
+        <div class="text-center me-3">
+          <h4 class="mb-0">TA. 2025/2026</h4>
+          <div class="datetime" id="currentDateTime"></div>
+        </div>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg px-3">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="donaturDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Donatur
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="donaturDropdown">
+                <li><a class="dropdown-item" href="donatur.html">List Donatur</a></li>
+                <li><a class="dropdown-item" href="form_donatur.html">Input Donatur</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="riwayat_donasi_all.html">Riwayat Donasi Donatur</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="lelang.html">Pemilihan Anak Asuh oleh Donatur</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="sekretariatDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Sekretariat
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="sekretariatDropdown">
+                <li><a class="dropdown-item" href="sekretariat.html">Data Sekretariat</a></li>
+                <li><a class="dropdown-item" href="penanggungjawab_sekretariat.html">Data PJ Sekretariat</a></li>
+                <li><a class="dropdown-item" href="form_pjs.html">Input PJ Sekretariat</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="data_pt.html">Data Pendidikan Tinggi</a></li>
+                <li><a class="dropdown-item" href="form_pt.html">Input Pendidikan Tinggi</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="bpt.html">Data BPT Sekretariat</a></li>
+                <li><a class="dropdown-item" href="form_bpt.html">Input BPT Sekretariat</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="komunitasDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Komunitas/Sekolah
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="komunitasDropdown">
+                <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
+                <li><a class="dropdown-item" href="form_sekolah.html">Input Komunitas/Sekolah</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="penanggungjawab.html">Data PJ Sekolah</a></li>
+                <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
+                <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="sk.html">SK Beasiswa</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="form_anak_asuh.html">Input Manual</a></li>
+                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                  </ul>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="pengajuan_anakasuh_baru.html">Konfirmasi Anak Asuh Baru</a></li>
+                <li><a class="dropdown-item" href="konfirmasi_naik_jenjang.html">Konfirmasi Kenaikan Jenjang</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijasah</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="transferBeasiswaDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Transfer Beasiswa
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="transferBeasiswaDropdown">
+                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="ganti_rekening.html">Penggantian No Rekening</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
+                    >Rekening Yayasan</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="laporanDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Laporan
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Laporan Donatur</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="laporan_donatur.html">Cari per ID</a></li>
+                    <li><a class="dropdown-item" href="statistik_donatur.html">Statistik Umum</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Laporan Sekretariat</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="laporan_sekretariat.html">Cari per Nama</a></li>
+                    <li><a class="dropdown-item" href="statistik_sekretariat.html">Statistik Umum</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Laporan Komunitas</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="laporan_komunitas.html">Cari per ID</a></li>
+                    <li><a class="dropdown-item" href="statistik_komunitas.html">Statistik Umum</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Laporan Anak Asuh</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="laporan_anakasuh.html">Cari per ID</a></li>
+                    <li><a class="dropdown-item" href="statistik_anakasuh.html">Statistik Umum</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="laporan_raport_skl_ijasah.html">Laporan Raport, SKL, & Ijasah</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item" href="#">Rekup Transfer Beasiswa</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="rekup_status_transfer_beasiswa.html">Status Transfer</a></li>
+                    <li><a class="dropdown-item" href="rekup_nominal_transfer_beasiswa.html">Nominal</a></li>
+                  </ul>
+                </li>
+                <li><a class="dropdown-item" href="rekup_kode_unik.html">Rekup Kode Unik</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="settingDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                >Pengaturan
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="settingDropdown">
+                <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
+                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">ADM-XXXX</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                <li>
+                  <a class="dropdown-item" href="profil.html">Profil</a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
+                </li>
+
+                <!-- SUBMENU SEKRETARIAT -->
+                <li class="dropdown-submenu">
+                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                    Sekretariat : <strong>All</strong>
+                    <i class="bi bi-caret-down-fill ms-2"></i>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item active" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                    <li><a class="dropdown-item" href="#">Semarang</a></li>
+                    <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                    <li><a class="dropdown-item" href="#">Madiun</a></li>
+                    <li><a class="dropdown-item" href="#">Malang</a></li>
+                    <li><a class="dropdown-item" href="#">Bandung</a></li>
+                  </ul>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                  <a class="dropdown-item text-danger" href="#">Logout</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Rekup Transfer Beasiswa</span>
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-light"
+            type="button"
+            id="mobileProfileDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
+            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <!-- SUBMENU SEKRETARIAT -->
+            <li class="dropdown-submenu">
+              <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                Sekretariat : <strong>All</strong>
+                <i class="bi bi-caret-down-fill ms-2"></i>
+              </a>
+
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item active" href="#">All</a></li>
+                <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                <li><a class="dropdown-item" href="#">Semarang</a></li>
+                <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                <li><a class="dropdown-item" href="#">Madiun</a></li>
+                <li><a class="dropdown-item" href="#">Malang</a></li>
+                <li><a class="dropdown-item" href="#">Bandung</a></li>
+              </ul>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div class="offcanvas offcanvas-start bg-dark text-white bg-aat" tabindex="-1" id="mobileSidebar">
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+
+      <!-- Profil User -->
+      <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
+        <img
+          src="https://sianas.aat.or.id/assets/images/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mt-1">Ki Anom</h6>
+        <small class="mb-0">ADM-XXXX</small><br />
+        <small class="mb-0">Super Admin</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a href="index.html" class="list-group-item list-group-item-action bg-aat text-white">
+            <i class="bi bi-house me-2"></i> Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#donatur"
+          >
+            <i class="bi bi-person me-2"></i> Donatur <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="donatur">
+            <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
+            <a href="riwayat_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Riwayat Donasi Donatur</a
+            >
+            <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pemilihan Anak Asuh oleh Donatur</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#sekretariat"
+          >
+            <i class="bi bi-building me-2"></i> Sekretariat <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="sekretariat">
+            <a href="sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Sekretariat</a
+            >
+            <a href="penanggungjawab_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data PJ Sekretariat</a
+            >
+            <a href="data_pt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Pendidikan Tinggi</a
+            >
+            <a href="bpt.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Data BPT Sekretariat</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-house-fill me-2"></i> Komunitas/Sekolah <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="komunitas">
+            <a href="sekolah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Komunitas/Sekolah</a
+            >
+            <a href="penanggungjawab.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data PJ Sekolah</a
+            >
+            <a href="konfirmasi_penanggungjawab.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Konfirmasi PJ Sekolah Baru</a
+            >
+            <a href="sk.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">SK Beasiswa</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#anakasuh"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i> Anak Asuh <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="anakasuh">
+            <a href="anak_asuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Anak Asuh</a>
+            <a href="pengajuan_anakasuh_baru.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Konfirmasi Anak Asuh Baru</a
+            >
+            <a href="konfirmasi_naik_jenjang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Konfirmasi Kenaikan Jenjang</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i> Transfer Beasiswa <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="transferbeasiswa">
+            <a href="transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Data Transfer Beasiswa</a
+            >
+            <a href="status_transfer.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Status Transfer Beasiswa</a
+            >
+            <a href="ganti_rekening.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Penggantian No Rekening</a
+            >
+            <a href="pengembalian_dana.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pengembalian Dana Berlebih</a
+            >
+            <a
+              href="#"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              data-bs-toggle="modal"
+              data-bs-target="#rekeningYayasanModal"
+              >Rekening Yayasan</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#laporan"
+          >
+            <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="laporan">
+            <a href="laporan_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Donatur</a
+            >
+            <a href="laporan_sekretariat.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Sekretariat</a
+            >
+            <a href="laporan_komunitas.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Komunitas/Sekolah</a
+            >
+            <a href="laporan_anakasuh.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Anak Asuh</a
+            >
+            <a href="laporan_raport_skl_ijasah.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Laporan Raport, SKL, & Ijasah</a
+            >
+            <a href="rekup_transfer_beasiswa.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Rekup Transfer Beasiswa</a
+            >
+            <a href="rekup_kode_unik.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Rekup Kode Unik</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#pengaturan"
+          >
+            <i class="bi bi-gear me-2"></i> Pengaturan <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="pengaturan">
+            <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
+            <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="modal"
+            data-bs-target="#kontakYayasanModal"
+          >
+            <i class="bi bi-telephone me-2"></i> Hubungi Kami
+          </a>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia <br />
+          Developed by <span class="fw-bold">Omah IT</span> <br />
+          Maintained by <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a href="index.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-house-fill fs-4"></i><br />
+        <small>Beranda</small>
+      </a>
+
+      <a href="transfer_beasiswa.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-receipt fs-4"></i><br />
+        <small>Transfer Beasiswa</small>
+      </a>
+
+      <a href="status_transfer.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-card-checklist fs-4"></i><br />
+        <small>Status Transfer</small>
+      </a>
+
+      <a href="raport_skl_ijasah.html" class="text-dark text-center text-decoration-none">
+        <i class="bi bi-journal-text fs-4"></i><br />
+        <small>Raport</small>
+      </a>
+    </div>
+
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+      <h3 class="text-center page-title d-none d-lg-block">Rekup Transfer Beasiswa</h3>
+      <div class="mb-3">
+        <button
+          class="btn btn-outline-primary w-100 d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#unifiedFilters"
+          aria-expanded="false"
+          aria-controls="unifiedFilters"
+        >
+          <i class="bi bi-funnel me-2"></i>Tampilkan Filter
+        </button>
+
+        <!-- Elemen collapse TIDAK boleh memakai d-flex -->
+        <div class="collapse mt-2 mt-lg-0" id="unifiedFilters">
+          <!-- Layout wrapper baru -->
+          <div class="filter-section ft-12 mb-3">
+            <div class="row g-2 align-items-center mb-3">
+              <!-- Sort -->
+              <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
+                <label class="fw-bold mb-0">Tahun Ajaran</label>
+                <select class="form-select form-select-sm w-100" id="tahunAjaranSelect">
+                  <option>2025/2026</option>
+                  <option>2024/2025</option>
+                  <option>2023/2024</option>
+                  <option>2022/2023</option>
+                  <option>2021/2022</option>
+                </select>
+                <button class="btn btn-outline-primary btn-sm" id="btnSearch"><i class="bi bi-search"></i> Cari</button>
+              </div>
+              <div class="d-flex flex-column flex-md-row gap-2">
+                <button class="btn btn-outline-success btn-sm">
+                  <i class="bi bi-file-earmark-excel"></i> Export Excel
+                </button>
+
+                <button class="btn btn-outline-danger btn-sm"><i class="bi bi-file-earmark-pdf"></i> Export PDF</button>
+              </div>
+              <div class="form-check d-lg-none">
+                <input class="form-check-input" type="checkbox" id="sekretariatToggle" />
+                <label class="form-check-label" for="sekretariatToggle"> Tampilkan per Sekretariat </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid form-wrapper">
+        <!-- Placeholder -->
+        <div id="placeholderData" class="text-center py-4">
+          <span class="fst-italic text-muted">Belum ada data !</span>
+        </div>
+
+        <div class="row g-4 d-none" id="resultTable">
+          <div class="row">
+            <!-- Tabel (disembunyikan awal) -->
+            <!-- Data Hasil Search -->
+            <div class="table-responsive" id="tableContainer">
+              <table class="table table-bordered table-striped align-middle text-center">
+                <thead class="table-bg-aat text-center">
+                  <tr>
+                    <th class="text-start">Sekretariat</th>
+                    <th>JUL</th>
+                    <th>AGS</th>
+                    <th>SEPT</th>
+                    <th>OKT</th>
+                    <th>NOV</th>
+                    <th>DES</th>
+                    <th>JAN</th>
+                    <th>FEB</th>
+                    <th>MAR</th>
+                    <th>APR</th>
+                    <th>MAY</th>
+                    <th>JUN</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <!-- ROW SEKRETARIAT -->
+                  <tr class="table-row" data-target="sek-yogya">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Yogyakarta</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 27%">27%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 27%">27%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 27%">27%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 27%">27%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-yogya d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Bandung 1 Yogyakarta</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 20%">20%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-yogya d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Beji</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 25%">25%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table-row" data-target="sek-semarang">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Semarang</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 32%">32%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 40%">40%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-semarang d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Kalibanteng</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 30%">30%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 50%">50%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-semarang d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Genuk</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 35%">35%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table-row" data-target="sek-madiun">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Madiun</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 28%">28%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 25%">25%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-madiun d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Madiun</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 28%">28%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 25%">25%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table-row" data-target="sek-purwokerto">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Purwokerto</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 40%">40%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 60%">60%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-purwokerto d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Purwokerto</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 40%">40%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 60%">60%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table-row" data-target="sek-bandung">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Bandung</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 55%">55%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 70%">70%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-bandung d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Bandung 1</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 50%">50%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 80%">80%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-bandung d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Cibeureum</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 60%">60%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="table-row" data-target="sek-malang">
+                    <td class="text-start fw-bold"><span class="toggle-icon me-2">▸</span> Malang</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 45%">45%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 55%">55%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="subtable-row sek-malang d-none">
+                    <td class="text-start ps-4" onclick="detailSekolah()">SD Kanisius Malang</td>
+                    <td colspan="4">
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 45%">45%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label bg-aat" style="width: 55%">55%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="progress progress-outline">
+                        <span class="progress-label" style="width: 0%">0%</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- List View for Mobile -->
+            <div class="d-lg-none" id="resultList">
+              <div class="list-group">
+                <!-- List items will be populated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/badges.js"></script>
+    <script src="../assets/js/style.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="../assets/js/report.js"></script>
+    <!-- Select2 -->
+    <script src="../assets/js/select2.js"></script>
+    <!-- Sweet Alerts Js-->
+    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+
+    <script>
+      const placeholder = document.getElementById('placeholderData');
+      const tableWrapper = document.getElementById('resultTable');
+      const listWrapper = document.getElementById('resultList');
+      const btnSearch = document.getElementById('btnSearch');
+
+      const headers = ['Sekretariat', 'Raport Ganjil', 'Raport Genap', 'SKL', 'Ijasah'];
+
+      // Klik cari
+      btnSearch.addEventListener('click', () => {
+        ReportUI.hide(placeholder);
+        updateDisplay();
+      });
+    </script>
+
+    <script>
+      window.expandedSekretariats = {};
+
+      function toggleSekretariat(target) {
+        window.expandedSekretariats[target] = !window.expandedSekretariats[target];
+        document.querySelectorAll('.' + target).forEach(tr => {
+          tr.classList.toggle('d-none');
+        });
+        const row = document.querySelector(`[data-target="${target}"]`);
+        if (row) {
+          const icon = row.querySelector('.toggle-icon');
+          icon.textContent = window.expandedSekretariats[target] ? '▾' : '▸';
+        }
+        if (ReportUI.isMobile() && placeholder.classList.contains('d-none')) {
+          ReportUI.populateMobileSekretariatList({
+            tableSelector: '#resultTable',
+            listSelector: '#resultList',
+            headers,
+          });
+        }
+      }
+
+      document.querySelectorAll('.table-row').forEach(row => {
+        row.addEventListener('click', () => {
+          const target = row.dataset.target;
+          toggleSekretariat(target);
+        });
+      });
+
+      // Show Model Detail
+      function detailSekolah(schoolName) {
+        document.getElementById('detailSekolahLabel').textContent = schoolName;
+        $('#detailSekolahModal').modal('show');
+      }
+
+      // Untuk mengatur tampilan di mode mobile
+      ReportUI.populateMobileSekretariatList = function ({ tableSelector, listSelector, headers }) {
+        const listGroup = document.querySelector(`${listSelector} .list-group`);
+        listGroup.innerHTML = '';
+
+        const allowedSekretariats = [
+          'sek-yogya',
+          'sek-malang',
+          'sek-bandung',
+          'sek-madiun',
+          'sek-semarang',
+          'sek-purwokerto',
+        ];
+        const sekretariatRows = document.querySelectorAll(`${tableSelector} table tbody .table-row`);
+
+        sekretariatRows.forEach(sekRow => {
+          const target = sekRow.dataset.target;
+          if (!allowedSekretariats.includes(target)) return;
+
+          const sekName = sekRow
+            .querySelector('td')
+            .textContent.trim()
+            .replace(/^[▸▾]\s*/, '');
+          const isExpanded = window.expandedSekretariats && window.expandedSekretariats[target];
+
+          const card = document.createElement('div');
+          card.className = 'card mb-3';
+
+          let html = `
+            <div class="card-header bg-aat text-white d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleSekretariat('${target}')">
+              <h6 class="mb-0">${sekName}</h6>
+              <span class="toggle-icon">${isExpanded ? '▾' : '▸'}</span>
+            </div>
+          `;
+
+          // Membuka detail toggle sekretariat
+          if (isExpanded) {
+            const subRows = document.querySelectorAll(`${tableSelector} table tbody .subtable-row.${target}`);
+            const visibleSubRows = Array.from(subRows).filter(row => !row.classList.contains('d-none'));
+
+            headers.slice(1).forEach((year, yearIndex) => {
+              const isBold = headers.includes(year);
+              html += `
+                <div class="card mb-2">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0 ${isBold ? 'fw-bold' : ''}">${year}</h6>
+                  </div>
+                  <div class="card-body">
+              `;
+
+              visibleSubRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const label = cells[0].textContent.trim();
+                const value = cells[yearIndex + 1].textContent.trim();
+                const raw = value.replace(/\./g, '');
+                const isNegative = !isNaN(raw) && Number(raw) < 0;
+
+                html += `
+                  <div class="d-flex justify-content-between text-start mb-2">
+                    <span onclick="detailSekolah('${label}')" style="cursor: pointer;">${label}</span>
+                    <span class="${isNegative ? 'text-danger fw-semibold' : ''}">
+                      ${value}
+                    </span>
+                  </div>
+                `;
+              });
+
+              html += `</div></div>`;
+            });
+          }
+
+          card.innerHTML = html;
+          listGroup.appendChild(card);
+        });
+      };
+
+      ReportUI.populateMobileList = function ({
+        tableSelector,
+        listSelector,
+        headers,
+        cardHeaderClass = 'bg-aat text-white',
+      }) {
+        const listGroup = document.querySelector(`${listSelector} .list-group`);
+        listGroup.innerHTML = '';
+
+        const sekretariatRows = document.querySelectorAll(`${tableSelector} table tbody .table-row`);
+
+        sekretariatRows.forEach(sekRow => {
+          const target = sekRow.dataset.target;
+          const sekName = sekRow
+            .querySelector('td')
+            .textContent.trim()
+            .replace(/^[▸▾]\s*/, '');
+          const isExpanded = window.expandedSekretariats && window.expandedSekretariats[target];
+
+          const card = document.createElement('div');
+          card.className = 'card mb-3';
+
+          let html = `
+            <div class="card-header ${cardHeaderClass} d-flex justify-content-between align-items-center" style="cursor: pointer;" onclick="toggleSekretariat('${target}')">
+              <h6 class="mb-0">${sekName}</h6>
+              <span class="toggle-icon">${isExpanded ? '▾' : '▸'}</span>
+            </div>
+          `;
+
+          if (isExpanded) {
+            const subRows = document.querySelectorAll(`${tableSelector} table tbody .subtable-row.${target}`);
+            const visibleSubRows = Array.from(subRows).filter(row => !row.classList.contains('d-none'));
+
+            headers.slice(1).forEach((year, yearIndex) => {
+              const isBold = headers.includes(year);
+              html += `
+                <div class="card mb-2">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0 ${isBold ? 'fw-bold' : ''}">${year}</h6>
+                  </div>
+                  <div class="card-body">
+              `;
+
+              visibleSubRows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const label = cells[0].textContent.trim();
+                const value = cells[yearIndex + 1].textContent.trim();
+                const raw = value.replace(/\./g, '');
+                const isNegative = !isNaN(raw) && Number(raw) < 0;
+
+                html += `
+                  <div class="d-flex justify-content-between text-start mb-2">
+                    <span>${label}</span>
+                    <span class="${isNegative ? 'text-danger fw-semibold' : ''}">
+                      ${value}
+                    </span>
+                  </div>
+                `;
+              });
+
+              html += `</div></div>`;
+            });
+          }
+
+          card.innerHTML = html;
+          listGroup.appendChild(card);
+        });
+      };
+    </script>
+
+    <script>
+      // Handle submenu toggle for Sekretariat in profile dropdown
+      document.querySelectorAll('.dropdown-submenu > a').forEach(item => {
+        item.addEventListener('click', function (e) {
+          e.preventDefault();
+          const submenu = this.nextElementSibling;
+          submenu.classList.toggle('show');
+        });
+      });
+    </script>
+  </body>
+</html>

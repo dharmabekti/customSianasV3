@@ -93,7 +93,7 @@ function updateDisplay() {
     ReportUI.show(tableWrapper);
     ReportUI.show(document.getElementById('tableContainer'));
     ReportUI.hide(listWrapper);
-    ReportUI.initDataTable('#tableContainer');
+    // ReportUI.initDataTable('#tableContainer');
     ReportUI.highlightNegativeValues('#tableContainer');
   }
 }
