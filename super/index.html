@@ -585,14 +585,13 @@
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
             <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
           </div>
-          <a
-            href="#"
+          <button
+            type="button"
             class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="modal"
-            data-bs-target="#kontakYayasanModal"
+            onclick="openPage('kontak')"
           >
-            <i class="bi bi-telephone me-2"></i> Hubungi Kami
-          </a>
+            <i class="bi bi-house me-2"></i> Hubungi Kami
+          </button>
         </div>
 
         <!-- Footer Mobile -->
@@ -1257,8 +1256,21 @@
         if (page === 'donasi_langsung') {
           // Buka modal QRIS langsung
           $('#rekeningYayasanModal').modal('show');
-        }
-        if (page === 'berkas_pendukung') {
+        } else if (page === 'kontak') {
+          // Buka modal kontakYayasanModal
+          // DISMISS OFFCANVAS (jika ada)
+          const offcanvasEl = document.getElementById('mobileSidebar');
+          const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+
+          if (bsOffcanvas) {
+            bsOffcanvas.hide();
+          }
+
+          // BUKA MODAL SETELAH OFFCANVAS DITUTUP
+          setTimeout(() => {
+            $('#kontakYayasanModal').modal('show');
+          }, 300); // delay kecil agar animasi offcanvas selesai
+        } else if (page === 'berkas_pendukung') {
           window.open('https://drive.google.com/drive/folders/1mq6w54qD383kHMC-9iOmKF4z3-zCKejC', '_blank');
         } else {
           // Pindah ke halaman lain
@@ -1377,27 +1389,6 @@
             checkbox.checked = selectedShortcuts.includes(i);
           }
         }
-      });
-    </script>
-    <script>
-      // Script to close offcanvas when navigation links are clicked
-      document.addEventListener('DOMContentLoaded', function () {
-        const offcanvas = document.getElementById('mobileSidebar');
-        const links = offcanvas.querySelectorAll('a[href]:not([data-bs-toggle="modal"])');
-        links.forEach(link => {
-          link.setAttribute('data-bs-dismiss', 'offcanvas');
-        });
-
-        // Special handling for modal links to ensure offcanvas closes before modal opens
-        const modalLinks = offcanvas.querySelectorAll('a[data-bs-toggle="modal"]');
-        modalLinks.forEach(link => {
-          link.addEventListener('click', function () {
-            const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvas);
-            if (bsOffcanvas) {
-              bsOffcanvas.hide();
-            }
-          });
-        });
       });
     </script>
   </body>
