@@ -3045,3 +3045,71 @@ h3.page-title {
 }
 
 /* Progress Bar */
+
+/* =====================================
+   CORE FLEX FIX
+===================================== */
+
+.custom-navbar .container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Semua nav boleh wrap */
+.custom-navbar .navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* =====================================
+   MENU KANAN (PROFIL & NOTIF)
+===================================== */
+
+/* DEFAULT: selalu di kanan */
+.nav-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/* SAAT WRAP TERJADI → otomatis turun & ke kiri */
+.nav-right {
+  flex-basis: auto;
+}
+
+/* Jika sudah turun baris (wrap), paksa full row */
+.nav-right:has(.nav-item) {
+  max-width: 100%;
+}
+
+/* =====================================
+   VISIBILITY & SAFETY
+===================================== */
+
+.custom-navbar,
+.custom-navbar .navbar-nav,
+.custom-navbar .dropdown-menu {
+  overflow: visible !important;
+}
+
+/* Cegah teks patah */
+.custom-navbar .nav-item {
+  white-space: nowrap;
+}
+
+/* Dropdown aman */
+.dropdown-menu {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  z-index: 1055;
+}
+
+/* Submenu */
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+}

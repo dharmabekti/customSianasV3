@@ -329,40 +329,62 @@
           <i class="bi bi-list"></i>
         </button>
         <span class="navbar-brand mx-auto">Rekup Transfer Beasiswa</span>
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-light"
-            type="button"
-            id="mobileProfileDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <i class="bi bi-three-dots-vertical"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
-            <li><a class="dropdown-item" href="profil.html">Profil</a></li>
-            <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <!-- SUBMENU SEKRETARIAT -->
-            <li class="dropdown-submenu">
-              <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                Sekretariat : <strong>All</strong>
-                <i class="bi bi-caret-down-fill ms-2"></i>
-              </a>
+        <div class="d-flex">
+          <div class="dropdown me-1">
+            <button
+              class="btn btn-outline-light position-relative"
+              type="button"
+              id="mobileNotifDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-bell"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">3</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileNotifDropdown">
+              <li><h6 class="dropdown-header">Notifikasi</h6></li>
+              <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+              <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+              <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light"
+              type="button"
+              id="mobileProfileDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="mobileProfileDropdown">
+              <li><a class="dropdown-item" href="profil.html">Profil</a></li>
+              <li><a class="dropdown-item" href="ubah_password.html">Ubah Password</a></li>
+              <li><hr class="dropdown-divider" /></li>
+              <!-- SUBMENU SEKRETARIAT -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                  Sekretariat : <strong>All</strong>
+                  <i class="bi bi-caret-down-fill ms-2"></i>
+                </a>
 
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item active" href="#">All</a></li>
-                <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
-                <li><a class="dropdown-item" href="#">Semarang</a></li>
-                <li><a class="dropdown-item" href="#">Purwokerto</a></li>
-                <li><a class="dropdown-item" href="#">Madiun</a></li>
-                <li><a class="dropdown-item" href="#">Malang</a></li>
-                <li><a class="dropdown-item" href="#">Bandung</a></li>
-              </ul>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
-          </ul>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item active" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                  <li><a class="dropdown-item" href="#">Semarang</a></li>
+                  <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                  <li><a class="dropdown-item" href="#">Madiun</a></li>
+                  <li><a class="dropdown-item" href="#">Malang</a></li>
+                  <li><a class="dropdown-item" href="#">Bandung</a></li>
+                </ul>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
