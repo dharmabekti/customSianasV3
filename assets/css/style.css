@@ -112,7 +112,7 @@ body {
   font-family: Arial, sans-serif;
   padding: 20px;
   background: #f5f5f5;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 header.fixed-top,
@@ -124,7 +124,7 @@ footer.fixed-bottom {
 
 table {
   font-family: Arial, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 main {
@@ -222,7 +222,7 @@ main {
 }
 
 .tab-pane ul li {
-  font-size: 0.95rem; /* ukuran default untuk desktop */
+  font-size: 12px; /* ukuran default untuk desktop */
   line-height: 1.5;
   color: #333;
   margin-bottom: 0.4rem;
@@ -235,7 +235,7 @@ main {
   transition: all 0.2s ease;
   border-radius: 0.4rem;
   padding: 4px 10px !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .navbar .nav-link:hover,
@@ -249,7 +249,7 @@ main {
   border-radius: 0.4rem;
   transition: all 0.2s ease;
   /* margin: 2px 4px; */
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .navbar .dropdown-menu .dropdown-item:hover,
@@ -260,12 +260,12 @@ main {
 
 /* Dropdown notifikasi */
 .dropdown-menu .dropdown-item.small {
-  font-size: 0.85rem;
+  font-size: 12px;
   padding: 6px 12px;
 }
 
 .dropdown-menu h6.dropdown-header {
-  font-size: 0.9rem;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -285,7 +285,7 @@ main {
 }
 
 .navbar .badge {
-  font-size: 0.65rem;
+  font-size: 12px;
   padding: 0.25em 0.4em;
 }
 
@@ -306,23 +306,23 @@ main {
 
 .table {
   line-height: 1 !important;
-  font-size: var(--ft-14);
+  font-size: var(--ft-12);
 }
 
 .table thead th {
   line-height: 1 !important;
-  font-size: var(--ft-14);
+  font-size: var(--ft-12);
   text-align: center !important;
 }
 .table tbody td {
   line-height: 1 !important;
-  font-size: var(--ft-14);
+  font-size: var(--ft-12);
 }
 
 .table th,
 .table td {
   border-bottom: 1px solid #ddd !important;
-  font-size: var(--ft-14);
+  font-size: var(--ft-12);
 }
 
 .table-responsive-custom {
@@ -486,7 +486,7 @@ main {
 
 .accordion-detail p {
   margin: 0.25rem 0;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 .accordion-detail strong {
@@ -618,7 +618,7 @@ main {
   }
 
   .navbar {
-    font-size: 14px;
+    font-size: 12px;
     background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%);
     --bs-navbar-padding-y: 0;
   }
@@ -809,7 +809,7 @@ main {
 }
 
 .hero-text {
-  font-size: 14px !important;
+  font-size: 12px !important;
   /* line-height: 0 !important; */
 }
 
@@ -819,7 +819,7 @@ main {
   }
 
   .hero-text h4 {
-    font-size: 14px !important;
+    font-size: 12px !important;
   }
 
   .hero-text p {
@@ -831,11 +831,11 @@ main {
   }
 
   .copy-box span {
-    font-size: 0.95rem;
+    font-size: 12px;
   }
 
   .btn-copy {
-    font-size: 1rem;
+    font-size: 12px;
   }
 
   .d-flex.flex-column.gap-3 {
@@ -850,12 +850,12 @@ main {
   }
 
   .card h4 {
-    font-size: 1rem;
+    font-size: 12px;
     margin-bottom: 0.5rem;
   }
 
   .card p {
-    font-size: 0.8rem;
+    font-size: 12px;
     margin-bottom: 0;
     line-height: 1.2;
   }
@@ -932,7 +932,7 @@ main {
   }
 
   .checkbox-group label {
-    font-size: 0.9rem;
+    font-size: 12px;
   }
 
   .terms-box {
@@ -940,7 +940,7 @@ main {
   }
 
   .confirm-btn {
-    font-size: 1rem;
+    font-size: 12px;
   }
 
   .payment-summary-box .total {
@@ -978,7 +978,7 @@ main {
   .profile-img {
     max-width: 250px;
     height: auto;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -1022,7 +1022,7 @@ main {
 
 .table-estetik th,
 .table-estetik td {
-  padding: 14px 16px;
+  padding: 12px 16px;
   vertical-align: middle;
 }
 
@@ -1215,7 +1215,7 @@ main {
 .contact-info p {
   margin: 0;
   color: #6c757d;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 @media (min-width: 768px) {
@@ -1239,7 +1239,7 @@ main {
   }
 
   .contact-info p {
-    font-size: 0.95rem;
+    font-size: 12px;
   }
 }
 
@@ -1272,7 +1272,7 @@ main {
 }
 
 .child-card h6 {
-  font-size: 0.8rem;
+  font-size: 12px;
   margin-top: 5px;
   white-space: normal; /* Izinkan wrapping */
   word-wrap: break-word; /* Pecah kata panjang */
@@ -1282,14 +1282,14 @@ main {
 }
 
 .child-card p {
-  font-size: 0.7rem;
+  font-size: 12px;
   margin: 0;
 }
 
 .child-card .badge {
   display: inline-block;
   margin-top: 6px;
-  font-size: 0.75rem;
+  font-size: 12px;
   padding: 4px 8px;
 }
 /* Wrapper card anak */
@@ -1317,7 +1317,7 @@ main {
 }
 
 .hover-btns button {
-  font-size: 0.65rem;
+  font-size: 12px;
   padding: 2px 6px;
 }
 
@@ -1334,7 +1334,7 @@ main {
 }
 
 .hover-btns-inner button {
-  font-size: 0.65rem;
+  font-size: 12px;
   padding: 3px 8px;
   width: 120px;
 }
@@ -1363,7 +1363,7 @@ main {
 
 .filter-bar label {
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 .filter-bar select {
@@ -1485,7 +1485,7 @@ div.dataTables_wrapper .dataTables_filter {
 
 .filter-mobile label {
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 #contextMenu {
@@ -1493,6 +1493,7 @@ div.dataTables_wrapper .dataTables_filter {
   position: absolute;
   display: none;
   cursor: pointer;
+  font-size: 12px;
 }
 
 /* Data Table */
@@ -1640,7 +1641,7 @@ div.dataTables_wrapper .dataTables_filter input {
 
   #sortSelect,
   #searchInput {
-    font-size: 0.9rem;
+    font-size: 12px;
   }
 }
 
@@ -1664,7 +1665,7 @@ div.dataTables_wrapper .dataTables_filter input {
 }
 
 .font-title-menu {
-  /* font-size: 14px; */
+  /* font-size: 12px; */
   font-weight: 600;
   min-height: 38px;
   display: flex;
@@ -1674,7 +1675,7 @@ div.dataTables_wrapper .dataTables_filter input {
 }
 
 .font-subtitle-menu {
-  font-size: 14px;
+  font-size: 12px;
   min-height: 36px;
   display: flex;
   align-items: center;
@@ -1713,7 +1714,7 @@ div.dataTables_wrapper .dataTables_filter input {
 /* Mobile */
 @media (max-width: 576px) {
   .modal-body p {
-    font-size: 0.9rem;
+    font-size: 12px;
     margin-bottom: 0.4rem;
   }
 
@@ -1773,7 +1774,7 @@ div.dataTables_wrapper .dataTables_filter input {
 
   .btn {
     padding: 0.25rem 0.5rem; /* lebih kecil */
-    font-size: 0.75rem; /* perkecil teks */
+    font-size: 12px; /* perkecil teks */
   }
 }
 
@@ -1782,7 +1783,7 @@ div.dataTables_wrapper .dataTables_filter input {
 }
 
 .badge-lg {
-  font-size: 0.9rem;
+  font-size: 12px;
   padding: 0.5em 0.6em;
 }
 
@@ -1790,7 +1791,7 @@ div.dataTables_wrapper .dataTables_filter input {
   background-color: #f7e463; /* kuning lembut */
   color: #000; /* teks hitam */
   padding: 4px 10px;
-  /* font-size: 0.75rem; */
+  /* font-size: 12px; */
   border-radius: 0.5rem;
   display: inline-block;
   font-weight: 600;
@@ -1841,7 +1842,7 @@ h3.page-title {
   color: #495057;
 }
 .payment-status .badge {
-  font-size: 0.85rem;
+  font-size: 12px;
   padding: 0.5em 0.8em;
 }
 .payment-actions button {
@@ -1874,7 +1875,7 @@ h3.page-title {
   background-color: #00b050;
   color: #fff;
   padding: 3px 10px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -1898,7 +1899,7 @@ h3.page-title {
 }
 
 .checkbox-group label {
-  font-size: 0.95rem;
+  font-size: 12px;
   color: #333;
   line-height: 1.4;
   text-align: justify;
@@ -1928,7 +1929,7 @@ h3.page-title {
   display: block;
   text-align: center;
   margin-top: 5px;
-  font-size: 14px;
+  font-size: 12px;
   text-decoration: underline;
   color: #007bff;
   cursor: pointer;
@@ -1944,7 +1945,7 @@ h3.page-title {
 }
 
 .total-card p {
-  font-size: 0.95rem;
+  font-size: 12px;
 }
 
 /* ====== RINGKASAN PEMBAYARAN ====== */
@@ -2016,7 +2017,7 @@ h3.page-title {
 
 .btn-xs {
   padding: 0.15rem 0.35rem;
-  font-size: 0.7rem;
+  font-size: 12px;
   border-radius: 0.2rem;
 }
 
@@ -2096,11 +2097,11 @@ h3.page-title {
 }
 .accordion-button.collapsed .text-primary::before {
   content: ' ▼';
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 .accordion-button:not(.collapsed) .text-primary::before {
   content: ' ▲';
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 
 /* Tambahkan warna untuk accordion-button */
@@ -2149,7 +2150,7 @@ h3.page-title {
   background: #dc3545;
   color: white;
   padding: 4px 10px;
-  font-size: 0.75rem;
+  font-size: 12px;
   border-radius: 50px;
   z-index: 20;
 }
@@ -2207,7 +2208,7 @@ h3.page-title {
     font-weight: 600;
     color: #6c757d;
     margin-bottom: 0.25rem;
-    font-size: 0.9rem;
+    font-size: 12px;
   }
 
   /* Warna khusus untuk kekurangan */
@@ -2311,7 +2312,7 @@ h3.page-title {
   gap: 8px;
   padding: 6px 12px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 12px;
   white-space: nowrap;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
@@ -2426,7 +2427,7 @@ h3.page-title {
   border-radius: 20px;
   text-align: center;
   padding: 5px;
-  font-size: 0.9em;
+  font-size: 12px;
 }
 
 .main-value {
@@ -2455,7 +2456,7 @@ h3.page-title {
   height: 100%;
   text-align: center;
   color: white;
-  font-size: 0.7em;
+  font-size: 12px;
   font-weight: bold;
   padding-top: 3px;
 }
@@ -2474,7 +2475,7 @@ h3.page-title {
 }
 
 .section-desc {
-  font-size: 0.9em;
+  font-size: 12px;
   text-align: center;
   margin-top: 5px;
 }
@@ -2486,7 +2487,7 @@ h3.page-title {
   padding: 3px 8px;
   text-align: center;
   margin-top: 8px;
-  font-size: 0.9em;
+  font-size: 12px;
 }
 
 .not-found {
@@ -2528,7 +2529,7 @@ h3.page-title {
 
 /* Container utama */
 .info-section {
-  font-size: 0.95rem;
+  font-size: 12px;
   color: #333;
 }
 
@@ -2671,7 +2672,7 @@ h3.page-title {
 
 /* Atur ulang padding isi agar rapi */
 .accordion-detail {
-  padding: 10px 14px !important;
+  padding: 10px 12px !important;
 }
 
 /* Modal Detail Donatur - Fullscreen pada Mobile */
@@ -2757,7 +2758,7 @@ h3.page-title {
 
 /* Text */
 .list-name a {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--aat-blue);
   text-decoration: none;
@@ -2782,7 +2783,7 @@ h3.page-title {
 .badges-right {
   background: #b4f6b4;
   color: #008c00;
-  font-size: 14px;
+  font-size: 12px;
   padding: 4px 10px;
   font-weight: 600;
   border-radius: 12px;
@@ -2798,9 +2799,9 @@ h3.page-title {
 .sort-pill {
   background: white;
   border: none;
-  padding: 4px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   display: flex;
   white-space: nowrap; /* mencegah tombol pecah baris */
@@ -2845,7 +2846,7 @@ h3.page-title {
 }
 
 .log-section {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* Select2 */ /* ===============================
@@ -2876,7 +2877,7 @@ h3.page-title {
   padding: 6px 12px !important;
   display: flex !important;
   align-items: center !important;
-  font-size: 0.95rem !important;
+  font-size: 12px !important;
 }
 
 /* Text dalam select */
@@ -2912,7 +2913,7 @@ h3.page-title {
   height: 31px !important;
   min-height: 31px !important;
   padding: 4px 8px !important;
-  font-size: 0.875rem !important;
+  font-size: 12px !important;
 }
 
 /* Arrow kecil */
@@ -2944,7 +2945,7 @@ h3.page-title {
   white-space: nowrap;
   text-align: center;
   padding: 4px 6px;
-  font-size: 0.7rem;
+  font-size: 12px;
 }
 
 /* Mobile: sembunyikan teks, icon saja */
@@ -2955,7 +2956,7 @@ h3.page-title {
 
   .action-footer .btn i {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 12px;
   }
 }
 
@@ -3011,7 +3012,7 @@ h3.page-title {
 
 .subtable-row td {
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 12px;
 }
 
 .toggle-icon {
