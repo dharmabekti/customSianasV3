@@ -1316,6 +1316,11 @@ main {
   z-index: 5; /* PENTING: overlay di atas card */
 }
 
+button,
+.btn {
+  font-size: 12px;
+}
+
 .hover-btns button {
   font-size: 12px;
   padding: 2px 6px;
