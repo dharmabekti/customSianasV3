@@ -63,6 +63,21 @@ function getStatusBadgeClass(status) {
   }
 }
 
+function getStatusDonasiClass(status) {
+  switch (status) {
+    case 'Lunas':
+      return 'primary';
+    case 'Lunas Berlebih':
+      return 'info';
+    case 'Belum Lunas':
+      return 'secondary';
+    case 'Tidak Aktif':
+      return 'danger';
+    default:
+      return 'secondary';
+  }
+}
+
 function getFileBadgeClass(fileStatus) {
   return fileStatus === 'Ada' ? 'success' : 'secondary';
 }
