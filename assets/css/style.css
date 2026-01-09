@@ -526,6 +526,17 @@ main {
   font-weight: 500;
 }
 
+.form-control,
+.form-select,
+textarea {
+  font-size: 12px;
+}
+
+.form-control::placeholder,
+textarea::placeholder {
+  font-size: 12px;
+}
+
 .upload-box {
   position: relative;
   width: 140px; /* ukuran kotak foto */
@@ -3113,3 +3124,30 @@ h3.page-title {
   top: 0;
   left: 100%;
 }
+
+
+/* ============== KUITANSI ======================= */
+.kwitansi-container {
+  font-size: 12px;
+  color: #000;
+}
+
+.kwitansi-header {
+  border-bottom: 1px solid #000;
+  padding-bottom: 8px;
+}
+
+.kwitansi-total {
+  border: 1px dashed #000;
+  padding: 10px;
+}
+
+@media print {
+  .modal-footer,
+  .btn,
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ============== KUITANSI ======================= */
