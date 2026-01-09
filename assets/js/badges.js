@@ -10,6 +10,26 @@ function getBadgeStatus(s) {
   );
 }
 
+// ===============================
+// Badge Class Functions
+// ===============================
+function getStatusClass(status) {
+  switch (status) {
+    case 'Aktif':
+      return 'success';
+    case 'Pending':
+      return 'warning';
+    case 'Dormant':
+      return 'yellow';
+    case 'Stop':
+      return 'secondary';
+    case 'Tidak Aktif':
+      return 'danger';
+    default:
+      return 'secondary';
+  }
+}
+
 function getBadgeClass(s) {
   return (
     {
