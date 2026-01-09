@@ -16,6 +16,7 @@ function getBadgeStatus(s) {
 function getStatusClass(status) {
   switch (status) {
     case 'Aktif':
+    case 'Valid':
       return 'success';
     case 'Pending':
       return 'warning';
@@ -24,6 +25,7 @@ function getStatusClass(status) {
     case 'Stop':
       return 'secondary';
     case 'Tidak Aktif':
+    case 'Tidak Valid':
       return 'danger';
     default:
       return 'secondary';
