@@ -17,10 +17,12 @@ function getStatusClass(status) {
   switch (status) {
     case 'Aktif':
     case 'Valid':
+    case 'Sudah Dikonfirmasi':
       return 'success';
     case 'Pending':
       return 'warning';
     case 'Dormant':
+    case 'Ada Klaim':
       return 'yellow';
     case 'Stop':
       return 'secondary';
