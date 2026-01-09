@@ -29,7 +29,7 @@
       </div>
 
       <!-- Navbar Desktop -->
-      <nav class="navbar navbar-expand-lg px-3 custom-navbar">
+      <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
           <!-- LEFT MENU -->
           <ul class="navbar-nav me-auto nav-left">
@@ -170,7 +170,9 @@
                 >Pembayaran & Donasi
               </a>
               <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
-                <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a></li>
+                <li>
+                  <a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a>
+                </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
                 <li><hr class="dropdown-divider" /></li>
@@ -380,7 +382,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Riwayat Pembayaran Donatur</span>
+        <span class="navbar-brand mx-auto">Riwayat Pembayaran</span>
         <div class="d-flex">
           <div class="dropdown me-1">
             <button
@@ -490,7 +492,8 @@
           <div class="collapse" id="donatur">
             <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
             <a href="riwayat_donasi_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Riwayat Donasi Donatur</a>
+              >Riwayat Donasi Donatur</a
+            >
             <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Pemilihan Anak Asuh oleh Donatur</a
             >
@@ -688,29 +691,39 @@
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">Riwayat Pembayaran Donatur</h3>
       <div class="container-fluid mb-5 container-wrapper">
-        <!-- ✅ Tombol Toggle Filter (Mobile) -->
-        <div class="d-md-none mb-2">
-          <button
-            class="btn btn-outline-primary w-100"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#filterCollapse"
-            aria-expanded="false"
-            aria-controls="filterCollapse"
-          >
-            <i class="bi bi-funnel"></i> Tampilkan Filter
-          </button>
-        </div>
-
         <div class="row">
           <!-- ✅ FILTER -->
-          <div class="col-md-2 mb-3">
+          <div class="col-md-3 mb-3">
+            <div class="p-4 border rounded-4 text-center mb-3">
+              <img
+                src="https://randomuser.me/api/portraits/men/10.jpg"
+                alt="Logo Komunitas"
+                class="rounded-circle img-fluid shadow-sm"
+                style="height: 150px; width: 150px"
+              />
+              <h5 class="mt-2">Ki Anom Dharma Bekti</h5>
+              <p class="mt-2">D-XX-0001</p>
+              <span class="badge bg-success">Aktif</span>
+            </div>
+
+            <!-- ✅ Tombol Toggle Filter (Mobile) -->
+            <div class="d-md-none mb-2">
+              <button
+                class="btn btn-outline-primary w-100"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#filterCollapse"
+                aria-expanded="false"
+                aria-controls="filterCollapse"
+              >
+                <i class="bi bi-funnel"></i> Tampilkan Filter
+              </button>
+            </div>
+
             <div id="filterCollapse" class="collapse d-md-block">
               <div class="filter-section shadow-sm p-3 bg-white rounded ft-12">
                 <div class="mb-3">
-                  <button class="btn btn-outline-primary btn-sm w-100">
-                    <i class="bi bi-download"></i> Export
-                  </button>
+                  <button class="btn btn-outline-primary btn-sm w-100"><i class="bi bi-download"></i> Export</button>
                 </div>
                 <label for="tahunAjaranFilter">Tahun Ajaran:</label>
                 <select id="tahunAjaranFilter" class="form-select form-select-sm mb-2">
@@ -721,42 +734,23 @@
 
                 <label>Status:</label>
                 <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" />
-                  <label class="form-check-label badge bg-success" for="aktif">Aktif</label>
+                  <input class="form-check-input status" type="checkbox" value="Menunggu Konfirmasi" id="menunggu" />
+                  <label class="form-check-label badge bg-secondary" for="menunggu">Menunggu Konfirmasi</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Pending" id="pending" />
-                  <label class="form-check-label badge bg-yellow" for="pending">Pending</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Dormant" id="dormant" />
-                  <label class="form-check-label badge bg-warning" for="dormant">Dormant</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Stop" id="stop" />
-                  <label class="form-check-label badge bg-secondary" for="stop">Stop</label>
+                  <input class="form-check-input status" type="checkbox" value="Valid" id="valid" />
+                  <label class="form-check-label badge bg-success" for="valid">Valid</label>
                 </div>
                 <div class="form-check mb-3">
-                  <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="nonaktif" />
-                  <label class="form-check-label badge bg-danger" for="nonaktif">Tidak Aktif</label>
-                </div>
-
-                <div class="mt-3 p-2 text-center rounded bg-light border card-total">
-                  <strong class="text-muted fw-semibold d-block text-wrap">
-                    Total Komitmen <br />
-                    <span class="text-primary fw-bold d-block">Rpx.xxx.xxx.000/Tahun</span><br />
-                    Total Transfer <br />
-                    <span class="text-aat fw-bold d-block">Rpx.xxx.xxx.000/Tahun</span><br />
-                    Belum Transfer <br />
-                    <span class="text-danger fw-bold d-block">Rpx.xxx.xxx.000/Tahun</span><br />
-                  </strong>
+                  <input class="form-check-input status" type="checkbox" value="Tidak Valid" id="tidakvalid" />
+                  <label class="form-check-label badge bg-danger" for="tidakvalid">Tidak Valid</label>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- ✅ GRID ANAK ASUH -->
-          <div class="col-md-10">
+          <div class="col-md-9">
             <div class="table-responsive d-none d-lg-block">
               <table
                 id="datatable"
@@ -768,9 +762,7 @@
                     <th>Tahun Ajaran</th>
                     <th>Rekening Tujuan</th>
                     <th>Rekening Asal</th>
-                    <th>Kode</th>
                     <th>Tgl Transfer</th>
-                    <th>Tgl Konfirmasi</th>
                     <th>Jumlah</th>
                     <th>Status</th>
                     <th>Kirim Email</th>
@@ -778,7 +770,9 @@
                 </thead>
                 <tbody></tbody>
               </table>
-              <span class="text-danger fw-italic m-2 d-none d-lg-block">Klik kanan mouse untuk memunculkan menu aksi</span>
+              <span class="text-danger fw-italic m-2 d-none d-lg-block"
+                >Klik kanan mouse untuk memunculkan menu aksi</span
+              >
             </div>
           </div>
         </div>
@@ -818,18 +812,128 @@
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <a class="dropdown-item" href="edit_donasi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit Donasi </a>
+        <a class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#detailModal">
+          <i class="bi bi-info"></i> Detail
+        </a>
       </li>
       <li>
-        <a class="dropdown-item" href="assign_donasi.html" id="assignAction"> <i class="bi bi-person-check"></i> Assign Donasi </a>
+        <a class="dropdown-item" href="edit_donasi.html" id="editAction"> <i class="bi bi-pencil"></i> Edit </a>
       </li>
       <li>
-        <a class="dropdown-item" href="#" id="reminderAction" onclick="reminderAction()"> <i class="bi bi-bell"></i> Kirim Reminder </a>
+        <a class="dropdown-item" href="#" id="sendAction" onclick="sendAction()">
+          <i class="bi bi-send"></i> Kirim Pemberitahuan
+        </a>
       </li>
       <li>
-        <a class="dropdown-item" href="#" id="rincianAction" onclick="rincianAction()"> <i class="bi bi-receipt"></i> Kirim Rincian Donasi </a>
+        <a class="dropdown-item" href="#" id="printAction" onclick="rincianAction()">
+          <i class="bi bi-receipt"></i> Cetak Kuitansi
+        </a>
       </li>
     </ul>
+
+    <!-- Modal Detail Riwayat -->
+    <div
+      class="modal fade"
+      id="detailModal"
+      tabindex="-1"
+      aria-labelledby="detailLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Detail Pembayaran</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="row align-items-center">
+              <!-- Info Singkat -->
+              <div class="table-responsive">
+                <table
+                  class="table table-borderless mb-0 list-table no-mobile-hide"
+                  style="width: 100%; text-align: left"
+                >
+                  <tbody>
+                    <tr class="border-bottom align-middle">
+                      <th class="text-muted fw-normal" style="width: 30%">
+                        <i class="bi bi-person-circle me-2 text-secondary"></i> Donatur
+                      </th>
+                      <td class="text-dark" data-label="Donatur">Ki Anom Dharma Bekti (D-XX-XXXX)</td>
+                    </tr>
+
+                    <tr class="border-bottom align-middle">
+                      <th class="text-muted fw-normal">
+                        <i class="bi bi-calendar-range me-2 text-secondary"></i> Tahun Ajaran
+                      </th>
+                      <td class="text-dark" data-label="Tahun Ajaran">2025/2026</td>
+                    </tr>
+
+                    <tr class="border-bottom align-middle">
+                      <th class="text-muted fw-normal">
+                        <i class="bi bi-calendar-check me-2 text-secondary"></i> Tgl Transfer
+                      </th>
+                      <td class="text-dark" data-label="Tgl Transfer">02 Januari 2026</td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                      <th class="text-muted fw-normal" style="width: 180px">
+                        <i class="bi bi-bank me-2 text-secondary"></i> Rekening Tujuan
+                      </th>
+                      <td class="text-dark" data-label="Rek. Tujuan">56555989799</td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                      <th class="text-muted fw-normal" style="width: 180px">
+                        <i class="bi bi-credit-card me-2 text-secondary"></i> Rekening Asal
+                      </th>
+                      <td class="text-dark" data-label="Rek. Asal">1323565</td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                      <th class="text-muted fw-normal"><i class="bi bi-cash-stack me-2 text-secondary"></i> Jumlah</th>
+                      <td class="text-dark" data-label="Jumlah">Rp 3.600.000</td>
+                    </tr>
+
+                    <tr class="border-bottom align-middle">
+                      <th class="text-muted fw-normal">
+                        <i class="bi bi-calendar-check me-2 text-secondary"></i> Tgl Konfirmasi
+                      </th>
+                      <td class="text-dark" data-label="Tgl KOnfirmasi">09 Januari 2026</td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                      <th class="text-muted fw-normal">
+                        <i class="bi bi-send-check me-2 text-secondary"></i> Kirim Email / WA
+                      </th>
+                      <td class="text-dark" data-label="Kirim Email/WA">Ya</td>
+                    </tr>
+
+                    <tr class="border-bottom">
+                      <th class="text-muted fw-normal">
+                        <i class="bi bi-patch-check-fill me-2 text-secondary"></i> Status
+                      </th>
+                      <td class="text-dark" data-label="Status">
+                        <span class="badge bg-success">Valid</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-footer justify-content-end d-flex flex-nowrap">
+            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail Riwayat -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/style.js"></script>
@@ -848,43 +952,7 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
-      // ===============================
-      // Daftar Nama Pembayaran
-      // ===============================
-      const namaList = [
-        'Ahmad Fauzi',
-        'Budi Santoso',
-        'Citra Dewi',
-        'Dedi Rahman',
-        'Eka Sari',
-        'Fajar Nugroho',
-        'Gita Permata',
-        'Hadi Wijaya',
-        'Indah Lestari',
-        'Joko Susilo',
-        'Kartika Sari',
-        'Lutfi Hakim',
-        'Maya Sari',
-        'Nanda Putra',
-        'Oka Wibowo',
-        'Putri Ayu',
-        'Rudi Hartono',
-        'Sari Indah',
-        'Taufik Rahman',
-        'Umi Kalsum',
-        'Vina Sari',
-        'Wahyu Nugroho',
-        'Yuniarti',
-        'Zainal Abidin',
-        'Ani Suryani',
-        'Bambang Setiawan',
-        'Cici Handayani',
-        'Dian Purnama',
-        'Eko Prasetyo',
-        'Fina Sari',
-      ];
-
-      const statusList = ['Aktif', 'Pending', 'Dormant', 'Stop', 'Tidak Aktif'];
+      const statusList = ['Menunggu Konfirmasi', 'Valid', 'Tidak Valid'];
       const tahunAjaranList = ['2025/2026', '2024/2025', '2023/2024'];
 
       // ===============================
@@ -893,21 +961,33 @@
       const pembayaranData = [];
       let no = 1;
       for (let i = 0; i < 50; i++) {
-        const nama = namaList[Math.floor(Math.random() * namaList.length)];
         const status = statusList[Math.floor(Math.random() * statusList.length)];
         const tahunAjaran = tahunAjaranList[Math.floor(Math.random() * tahunAjaranList.length)];
-        const pembayaranTerakhir = new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toLocaleDateString(
+        const rekeningTujuan = `1234567890${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+        const rekeningAsal = `0987654321${String(Math.floor(Math.random() * 1000)).padStart(3, '0')}`;
+        const kode = `KODE${String(i + 1).padStart(4, '0')}`;
+        const tglTransfer = new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toLocaleDateString(
           'id-ID'
         );
-        const id = `D-${String(i + 1).padStart(4, '0')}`;
+        const tglKonfirmasi = new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toLocaleDateString(
+          'id-ID'
+        );
+        const jumlah = `Rp ${Math.floor(Math.random() * 10000000 + 1000000).toLocaleString('id-ID')}`;
+        const kirimEmail = Math.random() > 0.5 ? 'Ya' : 'Belum Kirim';
+        const id = `DON${String(i + 1).padStart(4, '0')}`;
 
         pembayaranData.push({
           no: no++,
-          id,
-          nama,
-          status,
-          pembayaran_terakhir: pembayaranTerakhir,
+          id: id,
           tahun_ajaran: tahunAjaran,
+          rekening_tujuan: rekeningTujuan,
+          rekening_asal: rekeningAsal,
+          kode: kode,
+          tgl_transfer: tglTransfer,
+          tgl_konfirmasi: tglKonfirmasi,
+          jumlah: jumlah,
+          status: status,
+          kirim_email: kirimEmail,
         });
       }
 
@@ -933,16 +1013,8 @@
       // ===============================
       // Filter data
       // ===============================
-      function parseRupiahToNumber(rpString) {
-        if (!rpString) return 0;
-        return Number(rpString.replace(/Rp/g, '').replace(/\./g, '').replace(/,/g, '').replace(/\s/g, ''));
-      }
-
       function filterData(data, selectedStatus, selectedTahun) {
         return data.filter(item => {
-          // Konversi sisa menjadi angka
-          const sisaNumber = parseRupiahToNumber(item.sisa);
-
           // Filter status biasa
           const statusMatch = selectedStatus.length === 0 || selectedStatus.includes(item.status);
 
@@ -964,30 +1036,19 @@
         tableBody.innerHTML = pembayaranData
           .map(
             d => `
-        <tr class="table-row" data-id="${d.id}" data-nama="${d.nama}">
+        <tr class="table-row" data-kode="${d.kode}">
           <td data-label="No"><strong>${d.no}</strong></td>
-          <td data-label="ID">${d.id}</td>
-          <td data-label="Nama">${d.nama}</td>
+          <td data-label="Tahun Ajaran">${d.tahun_ajaran}</td>
+          <td data-label="Rekening Tujuan">${d.rekening_tujuan}</td>
+          <td data-label="Rekening Asal">${d.rekening_asal}</td>
+          <td data-label="Tgl Transfer">${d.tgl_transfer}</td>
+          <td data-label="Jumlah">${d.jumlah}</td>
           <td data-label="Status"><span class="badge bg-${getStatusClass(d.status)}">${d.status}</span></td>
-          <td data-label="Pembayaran Terakhir">${d.pembayaran_terakhir}</td>
+          <td data-label="Kirim Email">${d.kirim_email}</td>
         </tr>
       `
           )
           .join('');
-
-        // Add right-click context menu to rows
-        tableBody.querySelectorAll('.table-row').forEach(row => {
-          row.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            const contextMenu = document.getElementById('contextMenu');
-            contextMenu.style.display = 'block';
-            contextMenu.style.left = e.pageX + 'px';
-            contextMenu.style.top = e.pageY + 'px';
-            // Store the row data for actions
-            contextMenu.dataset.rowId = this.dataset.id;
-            contextMenu.dataset.rowNama = this.dataset.nama;
-          });
-        });
 
         // Initialize DataTable after populating the table
         if (!dataTable) {
@@ -1061,14 +1122,24 @@
               <div class="col-12">
                 <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.nama}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
-                    ${item.nama}
+                    ${item.tahun_ajaran}
                     <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
                   </h5>
                   <div class="divider-1"></div>
 
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">ID</div>
-                    <div class="col-7">${item.id}</div>
+                    <div class="col-5 fw-bold">Jumlah</div>
+                    <div class="col-7">${item.jumlah}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Tgl Transfer</div>
+                    <div class="col-7">${item.tgl_transfer}</div>
+                  </div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Kirim Email/WA</div>
+                    <div class="col-7">${item.kirim_email}</div>
                   </div>
 
                   <div class="row mb-1">
@@ -1127,27 +1198,6 @@
       renderTable();
       filterTable();
       renderCards();
-
-      function reminderAction() {
-        swal_confirm('Konfirmasi', 'Kamu yakin akan mengirimkan Email/WA Reminder ke Donatur tersebut?', 'question').then(
-          result => {
-            if (result.isConfirmed) {
-              swal_alert('Berhasil', 'Reminder telah dikirim ke donatur', 'success');
-            }
-          }
-        );
-      }
-      function rincianAction() {
-        swal_confirm(
-          'Konfirmasi',
-          'Kamu yakin akan mengirimkan Email/WA Rincian Donasi ke Donatur tersebut?',
-          'warning'
-        ).then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', 'Rincian Donasi telah dikirim ke donatur!', 'success');
-          }
-        });
-      }
     </script>
   </body>
 </html>
