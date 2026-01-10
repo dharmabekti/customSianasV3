@@ -931,6 +931,30 @@
               </div>
             </div>
           </div>
+
+          <div id="card18" class="col-6 col-md-2 card-menu" onclick="openPage('upload_kuitansi')">
+            <div class="card shadow-sm text-center position-relative">
+              <div class="card-body">
+                <strong class="font-title-menu">Upload Kuitansi</strong>
+                <div class="position-relative d-inline-block">
+                  <img src="../assets/img/payment.png" alt="Anak Asuh" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="card19" class="col-6 col-md-2 card-menu" onclick="openPage('pengembalian_dana')">
+            <div class="card shadow-sm text-center position-relative">
+              <div class="card-body">
+                <strong class="font-title-menu">Pengembalian Dana Berlebih</strong>
+                <div class="position-relative d-inline-block">
+                  <img src="../assets/img/receipt.png" alt="Anak Asuh" />
+                </div>
+                <small class="font-subtitle-menu">&nbsp;</small>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <br />
@@ -1215,6 +1239,18 @@
                     <label class="form-check-label" for="shortcut17"> Berkas Pendukung </label>
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut18" checked />
+                    <label class="form-check-label" for="shortcut18"> Upload Kuitansi </label>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="shortcut19" checked />
+                    <label class="form-check-label" for="shortcut19"> Pengebalian Dana Berlebih </label>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1394,7 +1430,7 @@
       // Fungsi untuk menyimpan pengaturan shortcut
       function saveShortcutSettings() {
         const selectedShortcuts = [];
-        for (let i = 1; i <= 17; i++) {
+        for (let i = 1; i <= 19; i++) {
           const checkbox = document.getElementById(`shortcut${i}`);
           if (checkbox && checkbox.checked) {
             selectedShortcuts.push(i);
@@ -1408,10 +1444,10 @@
 
       // Fungsi untuk menerapkan visibilitas shortcut
       function applyShortcutVisibility(selectedShortcuts) {
-        for (let i = 1; i <= 17; i++) {
+        for (let i = 1; i <= 19; i++) {
           const card = document.getElementById(`card${i}`);
           if (card) {
-            if (i <= 17) {
+            if (i <= 19) {
               card.style.display = selectedShortcuts.includes(i) ? 'block' : 'none';
             } else {
               card.style.display = 'block'; // Selalu tampilkan card 13 dan 14
@@ -1440,9 +1476,9 @@
           selectedShortcuts = JSON.parse(saved);
         } else {
           // Default: semua shortcut aktif
-          selectedShortcuts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
+          selectedShortcuts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
         }
-        for (let i = 1; i <= 17; i++) {
+        for (let i = 1; i <= 19; i++) {
           const checkbox = document.getElementById(`shortcut${i}`);
           if (checkbox) {
             checkbox.checked = selectedShortcuts.includes(i);
