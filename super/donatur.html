@@ -1426,11 +1426,6 @@
         currentPageMobile = 1;
         renderCards();
       }, 300);
-
-      function searchTableAll(keyword) {
-        if (!dataTable) return;
-        dataTable.search(keyword).draw(false);
-      }
       // ===============================
 
       // ===============================
@@ -1440,10 +1435,8 @@
         'input',
         debounce(e => {
           const keyword = e.target.value.trim();
-
-          // Desktop → search semua kolom
-          searchTableAll(keyword);
-
+          // Desktop
+          // dataTable.search(keyword).draw();
           // Mobile → tetap pakai filter lama
           currentPageMobile = 1;
           renderCards();
