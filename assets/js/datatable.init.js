@@ -12,7 +12,7 @@ $(document).ready(function () {
       zeroRecords: 'Tidak ada data yang ditemukan',
       info: 'Menampilkan _START_ sampai _END_ dari _TOTAL_ data',
     },
-    autowidth: false,
+    autowidth: true,
     pageLength: 10,
     lengthMenu: [
       [10, 20, 25, 50, 100, -1],

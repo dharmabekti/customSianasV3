@@ -235,7 +235,7 @@ function generatePagination(totalPages, currentPage) {
   // Previous button
   html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${
     currentPage - 1
-  }">Previous</a></li>`;
+  }"> << </a></li>`;
 
   // Page numbers with ellipses for large totalPages
   const maxVisible = 7; // Maximum visible page links
@@ -289,7 +289,7 @@ function generatePagination(totalPages, currentPage) {
   // Next button
   html += `<li class="page-item ${
     currentPage === totalPages ? 'disabled' : ''
-  }"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+  }"><a class="page-link" href="#" data-page="${currentPage + 1}"> >> </a></li>`;
   return html;
 }
 
@@ -299,7 +299,7 @@ function generatePagination2(totalPages, currentPage) {
   // Previous button
   html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}"><a class="page-link" href="#" data-page="${
     currentPage - 1
-  }">Previous</a></li>`;
+  }"> << </a></li>`;
   // Page numbers: show current -1, current, current +1, clamped
   const startPage = Math.max(1, currentPage - 1);
   const endPage = Math.min(totalPages, currentPage + 1);
@@ -311,7 +311,7 @@ function generatePagination2(totalPages, currentPage) {
   // Next button
   html += `<li class="page-item ${
     currentPage === totalPages ? 'disabled' : ''
-  }"><a class="page-link" href="#" data-page="${currentPage + 1}">Next</a></li>`;
+  }"><a class="page-link" href="#" data-page="${currentPage + 1}"> >> </a></li>`;
   return html;
 }
 
@@ -882,7 +882,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-
   // ================================
   // MOBILE: Long press <tr> or .list-card
   // ================================
@@ -1017,11 +1016,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fix for mobileProfileDropdown sekretariat submenu toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const submenuToggles = document.querySelectorAll('.dropdown-submenu > a');
 
   submenuToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
+    toggle.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -1050,3 +1049,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+/* =====================================================
+      UTILITIES
+      ===================================================== */
+function debounce(fn, delay = 300) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn.apply(this, args), delay);
+  };
+}
