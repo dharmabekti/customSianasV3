@@ -832,14 +832,15 @@
                 >
                   <thead class="table-light">
                     <tr>
-                      <th>ID SPP</th>
+                      <th>ID Donatur</th>
+                      <th>Nama Donatur</th>
                       <th>Tahun Ajaran</th>
-                      <th>Komunitas/Sekolah</th>
-                      <th>Bulan</th>
-                      <th>Tgl Transfer</th>
+                      <th>Rekening Tujuan</th>
                       <th>Jumlah Transfer</th>
-                      <th>Jumlah Pengembalian</th>
+                      <th>Tgl Transfer</th>
+                      <th>Pengirim</th>
                       <th>Status</th>
+                      <th>Kirim Email</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -1395,12 +1396,14 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       /* ======================================================
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
+      const rekeningOptions = ['BCA- Yayasan AAT Indonesia', 'Mandiri- Yayasan AAT Indonesia'];
       const riwayatData = Array.from({ length: 30 }, (_, i) => {
         const tahun = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
         const bulan = CONFIG.bulan[Math.floor(Math.random() * CONFIG.bulan.length)];
         const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
         const jmlTransfer = Math.floor(Math.random() * 3000000) + 500000;
-        const jmlKembali = Math.floor(Math.random() * 3000000) + 500000;
+        const rekeningTujuan = rekeningOptions[Math.floor(Math.random() * rekeningOptions.length)];
+        const namaDonatur = `Donatur ${i + 1}`;
 
         const bulanIndex = CONFIG.bulan.indexOf(bulan);
         const year = parseInt(tahun.split('/')[0]);
@@ -1409,15 +1412,17 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         const rand = new Date(start.getTime() + Math.random() * (end - start));
 
         return {
-          id: i + 1,
-          tahun,
-          sekolah: `Sekolah ${i + 1}`,
-          bulan,
-          jmlTransfer,
-          jmlKembali,
-          status: CONFIG.status[Math.floor(Math.random() * 3)],
-          sekretariat,
+          idDonatur: i + 1,
+          namaDonatur,
+          tahunAjaran: tahun,
+          rekeningTujuan,
+          jumlahTransfer: jmlTransfer,
           tglTransfer: moment(rand).format('DD/MM/YYYY'),
+          pengirim: namaDonatur,
+          status: CONFIG.status[Math.floor(Math.random() * 3)],
+          kirimEmail: Math.random() > 0.5,
+          sekretariat,
+          bulan,
         };
       });
 
@@ -1439,13 +1444,13 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
        * ====================================================== */
       function filterData(data, f) {
         return data.filter(item => {
-          if (f.tahun && item.tahun !== f.tahun) return false;
+          if (f.tahun && item.tahunAjaran !== f.tahun) return false;
           if (f.bulan && item.bulan !== f.bulan) return false;
           if (f.status && item.status !== f.status) return false;
           if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
 
           if (f.search) {
-            if (!item.sekolah.toLowerCase().includes(f.search) && !item.id.toString().includes(f.search)) return false;
+            if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search)) return false;
           }
 
           return true;
@@ -1472,14 +1477,15 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         // Add filtered rows using DataTable API
         dataTable.rows.add(
           filtered.map(d => [
-            d.id,
-            d.tahun,
-            d.sekolah,
+            d.idDonatur,
+            d.namaDonatur,
+            d.tahunAjaran,
+            d.rekeningTujuan,
+            `Rp ${d.jumlahTransfer.toLocaleString('id-ID')}`,
             d.tglTransfer,
-            d.bulan,
-            `Rp ${d.jmlTransfer.toLocaleString('id-ID')}`,
-            `Rp ${d.jmlKembali.toLocaleString('id-ID')}`,
+            d.pengirim,
             `<span class="badge bg-${getStatusBadgeClass(d.status)}">${d.status}</span>`,
+            d.kirimEmail ? 'Ya' : 'Tidak',
           ])
         );
 
@@ -1506,34 +1512,36 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
           .map(
             item => `
       <div class="col-12">
-                <div class="card shadow-sm p-3 mb-2" data-id="${item.id}" data-nama="${item.sekolah}">
+                <div class="card shadow-sm p-3 mb-2" data-id="${item.idDonatur}" data-nama="${item.namaDonatur}">
                   <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
-                    ${item.sekolah}
+                    ${item.namaDonatur}
                     <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
                   </h5>
                   <div class="divider-1"></div>
 
                   <div class="row mb-1">
+                    <div class="col-5 fw-bold">ID Donatur</div>
+                    <div class="col-7">${item.idDonatur}</div>
+                  </div>
+                  <div class="row mb-1">
                     <div class="col-5 fw-bold">Th. Ajaran</div>
-                    <div class="col-7">${item.tahun}</div>
+                    <div class="col-7">${item.tahunAjaran}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Rekening Tujuan</div>
+                    <div class="col-7">${item.rekeningTujuan}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Jml Transfer</div>
+                    <div class="col-7">Rp ${item.jumlahTransfer.toLocaleString('id-ID')}</div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Tgl Transfer</div>
                     <div class="col-7">${item.tglTransfer}</div>
                   </div>
-
                   <div class="row mb-1">
-                    <div class="col-5 fw-bold">SPP Bulan</div>
-                    <div class="col-7">${item.bulan}</div>
-                  </div>
-
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Jml Transfer</div>
-                    <div class="col-7">Rp ${item.jmlTransfer.toLocaleString('id-ID')}</div>
-                  </div>
-                  <div class="row mb-1">
-                    <div class="col-5 fw-bold">Jml Kembali</div>
-                    <div class="col-7">Rp ${item.jmlKembali.toLocaleString('id-ID')}</div>
+                    <div class="col-5 fw-bold">Pengirim</div>
+                    <div class="col-7">${item.pengirim}</div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Status</div>
