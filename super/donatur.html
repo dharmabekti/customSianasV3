@@ -1256,8 +1256,7 @@
         // Inisialisasi DataTable sekali saja
         if (!dataTable) {
           dataTable = $('#datatable').DataTable({
-            deferRender: true, // 🔥 penting untuk data besar
-            pageLength: 25,
+            // deferRender: true, // 🔥 penting untuk data besar
             processing: true,
           });
         }
