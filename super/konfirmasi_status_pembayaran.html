@@ -777,33 +777,7 @@
                       </select>
                     </div>
 
-                    <!-- Sekretariat -->
-                    <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Sekretariat</label>
-                      <select id="sekretariatFilterStatus" class="form-select form-select-sm">
-                        <!-- options -->
-                      </select>
-                    </div>
 
-                    <!-- Bulan -->
-                    <div class="col-12 col-md-2">
-                      <label class="form-label fw-semibold">Bulan</label>
-                      <select id="bulanFilterStatus" class="form-select form-select-sm">
-                        <option value="">Semua</option>
-                        <option>Januari</option>
-                        <option>Februari</option>
-                        <option>Maret</option>
-                        <option>April</option>
-                        <option>Mei</option>
-                        <option>Juni</option>
-                        <option>Juli</option>
-                        <option>Agustus</option>
-                        <option>September</option>
-                        <option>Oktober</option>
-                        <option>November</option>
-                        <option>Desember</option>
-                      </select>
-                    </div>
 
                     <!-- Status -->
                     <div class="col-12 col-md-2">
@@ -1182,20 +1156,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       }
 
       /* ======================================================
-       * GENERATE SEKRETARIAT SELECT OPTIONS APPROVAL
-       * ====================================================== */
-      function generateSekretariatFilterApproval() {
-        const select = qsApproval('#sekretariatFilter');
-        if (!select) return;
-
-        select.innerHTML = '<option value="">Semua</option>';
-
-        CONFIGApproval.sekretariat.forEach(val => {
-          select.insertAdjacentHTML('beforeend', `<option value="${val}">${val}</option>`);
-        });
-      }
-
-      /* ======================================================
        * CORE FILTER ENGINE APPROVAL (DIPAKAI SEMUA)
        * ====================================================== */
       function filterDataApproval(data, f) {
@@ -1329,7 +1289,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       /* ======================================================
        * INIT APPROVAL
        * ====================================================== */
-      generateSekretariatFilterApproval();
       renderTableApproval();
       renderCardsApproval();
 
@@ -1382,18 +1341,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
           .map(el => el.value);
 
       /* ======================================================
-       * GENERATE SEKRETARIAT SELECT OPTIONS
-       * ====================================================== */
-      function generateSekretariatFilter() {
-        const select = qs('#sekretariatFilterStatus');
-        select.innerHTML = '<option value="">Semua</option>';
-
-        CONFIG.sekretariat.forEach(val => {
-          select.insertAdjacentHTML('beforeend', `<option value="${val}">${val}</option>`);
-        });
-      }
-
-      /* ======================================================
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const rekeningOptions = ['BCA- Yayasan AAT Indonesia', 'Mandiri- Yayasan AAT Indonesia'];
@@ -1432,9 +1379,7 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       function getFilterValues() {
         return {
           tahun: qs('#TahunAjaranFilterStatus').value,
-          bulan: qs('#bulanFilterStatus').value,
           status: qs('#statusFilterStatus').value,
-          sekretariat: qs('#sekretariatFilterStatus').value,
           search: qs('#searchCard')?.value.toLowerCase() || '',
         };
       }
@@ -1445,9 +1390,7 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       function filterData(data, f) {
         return data.filter(item => {
           if (f.tahun && item.tahunAjaran !== f.tahun) return false;
-          if (f.bulan && item.bulan !== f.bulan) return false;
           if (f.status && item.status !== f.status) return false;
-          if (f.sekretariat && item.sekretariat !== f.sekretariat) return false;
 
           if (f.search) {
             if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search)) return false;
@@ -1578,7 +1521,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       /* ======================================================
        * INIT
        * ====================================================== */
-      generateSekretariatFilter();
       renderTable();
       renderCards();
 
