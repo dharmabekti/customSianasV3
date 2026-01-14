@@ -1077,15 +1077,13 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
     <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="../assets/plugins/datepicker/datepicker.init.js"></script>
 
-    <!-- JavaScript for Approval Transfer Tab -->
+    <!-- JavaScript for Approval Donasi -->
     <script>
       /* ======================================================
        * CONFIG APPROVAL
        * ====================================================== */
       const CONFIGApproval = {
         TahunAjaran: ['2024/2025', '2025/2026'],
-        sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
-        fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
           'Januari',
           'Februari',
@@ -1119,13 +1117,12 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
        * ====================================================== */
       const riwayatDataApproval = Array.from({ length: 15 }, (_, i) => {
         const tahun = CONFIGApproval.TahunAjaran[Math.floor(Math.random() * CONFIGApproval.TahunAjaran.length)];
-        const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];
-        const sekretariat = CONFIGApproval.sekretariat[Math.floor(Math.random() * CONFIGApproval.sekretariat.length)];
         const jmlTransfer = Math.floor(Math.random() * 3000000) + 500000;
         const rekeningOptions = ['BCA- Yayasan AAT Indonesia', 'Mandiri- Yayasan AAT Indonesia'];
         const rekeningTujuan = rekeningOptions[Math.floor(Math.random() * rekeningOptions.length)];
         const namaDonatur = `Donatur ${i + 1}`;
 
+        const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];
         const bulanIndex = CONFIGApproval.bulan.indexOf(bulan);
         const year = parseInt(tahun.split('/')[0]);
         const start = new Date(year, bulanIndex, 1);
@@ -1141,7 +1138,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
           tglTransfer: moment(rand).format('DD/MM/YYYY'),
           pengirim: namaDonatur,
           status: 'Menunggu',
-          sekretariat,
           bulan,
         };
       });
@@ -1292,11 +1288,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       renderTableApproval();
       renderCardsApproval();
 
-      // Attach event listeners for Approval
-      ['TahunAjaranFilter', 'bulanFilter', 'sekretariatFilter'].forEach(id => {
-        qsApproval(`#${id}`)?.addEventListener('change', onMasterFilterChangeApproval);
-      });
-
       qsApproval('#searchCardApproval')?.addEventListener('input', () => {
         currentPageMobileApproval = 1;
         renderCardsApproval();
@@ -1310,8 +1301,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       const CONFIG = {
         TahunAjaran: ['2024/2025', '2025/2026'],
         status: ['Menunggu', 'Diverifikasi', 'Selesai', 'Ditolak'],
-        sekretariat: ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'],
-        fileStatus: ['Ada', 'Belum Ada'],
         bulan: [
           'Januari',
           'Februari',
@@ -1344,15 +1333,15 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
        * DATA SOURCE (SINGLE SOURCE OF TRUTH)
        * ====================================================== */
       const rekeningOptions = ['BCA- Yayasan AAT Indonesia', 'Mandiri- Yayasan AAT Indonesia'];
-      const riwayatData = Array.from({ length: 30 }, (_, i) => {
+      const riwayatData = Array.from({ length: 1000 }, (_, i) => {
         const tahun = CONFIG.TahunAjaran[Math.floor(Math.random() * CONFIG.TahunAjaran.length)];
-        const bulan = CONFIG.bulan[Math.floor(Math.random() * CONFIG.bulan.length)];
-        const sekretariat = CONFIG.sekretariat[Math.floor(Math.random() * CONFIG.sekretariat.length)];
         const jmlTransfer = Math.floor(Math.random() * 3000000) + 500000;
         const rekeningTujuan = rekeningOptions[Math.floor(Math.random() * rekeningOptions.length)];
         const namaDonatur = `Donatur ${i + 1}`;
 
+        const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];        
         const bulanIndex = CONFIG.bulan.indexOf(bulan);
+        console.log(bulanIndex);
         const year = parseInt(tahun.split('/')[0]);
         const start = new Date(year, bulanIndex, 1);
         const end = new Date(year, bulanIndex + 1, 0);
@@ -1368,8 +1357,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
           pengirim: namaDonatur,
           status: CONFIG.status[Math.floor(Math.random() * 3)],
           kirimEmail: Math.random() > 0.5,
-          sekretariat,
-          bulan,
         };
       });
 
@@ -1525,7 +1512,7 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       renderCards();
 
       // Attach event listeners
-      ['TahunAjaranFilterStatus', 'bulanFilterStatus', 'statusFilterStatus', 'sekretariatFilterStatus'].forEach(id => {
+      ['TahunAjaranFilterStatus', 'statusFilterStatus'].forEach(id => {
         qs(`#${id}`)?.addEventListener('change', onMasterFilterChange);
       });
 

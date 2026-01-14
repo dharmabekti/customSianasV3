@@ -2554,6 +2554,7 @@ h3.page-title {
   display: flex;
   align-items: flex-start;
   margin-bottom: 0.4rem;
+  font-size: 12px;
 }
 
 /* Label di kiri */
