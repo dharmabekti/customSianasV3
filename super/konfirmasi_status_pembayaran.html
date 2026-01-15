@@ -180,7 +180,9 @@
                 >Pembayaran & Donasi
               </a>
               <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
-                <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a></li>
+                <li>
+                  <a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a>
+                </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
                 <li><hr class="dropdown-divider" /></li>
@@ -470,13 +472,7 @@
 
       <!-- Profil User -->
       <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
-        <img
-          src="../assets/img/logo_AAT.png"
-          class="rounded-circle profile-img"
-          alt="User"
-          width="80"
-          height="80"
-        />
+        <img src="../assets/img/logo_AAT.png" class="rounded-circle profile-img" alt="User" width="80" height="80" />
         <h6 class="mt-1">Ki Anom</h6>
         <small class="mb-0">ADM-XXXX</small><br />
         <small class="mb-0">Super Admin</small>
@@ -692,9 +688,7 @@
               </button>
             </li>
             <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatTab">
-                Status Pembayaran
-              </button>
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatTab">Status Pembayaran</button>
             </li>
           </ul>
 
@@ -776,8 +770,6 @@
                         <option>2023/2024</option>
                       </select>
                     </div>
-
-
 
                     <!-- Status -->
                     <div class="col-12 col-md-2">
@@ -865,24 +857,14 @@
     </footer>
 
     <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" onclick="window.location.href='upload_kuitansi.html'">
-      <i class="bi bi-upload text-center"></i>
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPembayaranModal">
+      <i class="bi bi-plus text-center"></i>
     </button>
 
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
-        <button
-          class="dropdown-item"
-          id="detailAction"
-          data-bs-toggle="modal"
-          data-bs-target="#detailPengembalianModal"
-        >
-          <i class="bi bi-info"></i> Detail
-        </button>
-      </li>
-      <li>
-        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#editDataModal">
+        <button class="dropdown-item" id="detailAction" data-bs-toggle="modal" data-bs-target="#formPembayaranModal">
           <i class="bi bi-pencil"></i> Edit
         </button>
       </li>
@@ -907,7 +889,7 @@
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Form Konfirmasi Donasi</h5>
+            <h5 class="modal-title">Konfirmasi Pembayaran Donasi</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
@@ -943,18 +925,17 @@
 
                   <!-- Dari Rekening -->
                   <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label"
-                    >Rekening Asal <sup class="text-important">*)</sup></label
-                  >
-                  <div class="col-sm-7">
-                    <select class="form-select form-select-sm">
-                      <option>BCA</option>
-                      <option>Mandiri</option>
-                      <option>Lainnya</option>
-                    </select>
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Rekening Asal <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>BCA</option>
+                        <option>Mandiri</option>
+                        <option>Lainnya</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
-
 
                   <!-- Atas Nama -->
                   <div class="mb-2 row">
@@ -987,10 +968,12 @@
                 </div>
 
                 <!-- KOLOM KANAN -->
-                <div class="col-lg-6 col-md-6">                  
+                <div class="col-lg-6 col-md-6">
                   <!-- Tahun Ajaran -->
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"> Tahun Ajaran  <sup class="text-important">*)</sup></label>
+                    <label class="col-sm-5 col-form-label form-label">
+                      Tahun Ajaran <sup class="text-important">*)</sup></label
+                    >
                     <div class="col-sm-7">
                       <select class="form-select form-select-sm">
                         <option>2025/2026</option>
@@ -1052,7 +1035,162 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         </div>
       </div>
     </div>
-    <!-- Modal Form Konfirmasi -->    
+    <!-- Modal Form Konfirmasi -->
+
+    <!-- Modal Form Konfirmasi -->
+    <div
+      class="modal fade"
+      id="formPembayaranModal"
+      tabindex="-1"
+      aria-labelledby="formPembayaranLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Form Pembayaran Donasi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form>
+              <span class="text-important">*) Wajib Diisi</span>
+
+              <div class="row">
+                <!-- KOLOM KIRI -->
+                <div class="col-lg-6 col-md-6">
+                  <!-- Tanggal -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Tgl Transfer <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <input type="date" class="form-control form-control-sm" value="2026-01-11" />
+                    </div>
+                  </div>
+
+                  <!-- Rekening Tujuan -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Rekening Tujuan <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>== Pilih Rekening</option>
+                        <option>BCA No.037 351 1118 a.n Yayasan AAT Indonesia</option>
+                        <option>Mandiri a.n Yayasan AAT Indonesia</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Dari Rekening -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"
+                      >Rekening Asal <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>== Pilih Rekening</option>
+                        <option>BCA</option>
+                        <option>Mandiri</option>
+                        <option>Lainnya</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Atas Nama -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Atas Nama <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+
+                  <!-- Jumlah -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Jumlah <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                  <!-- Kode Unik -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Kode Unik <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- KOLOM KANAN -->
+                <div class="col-lg-6 col-md-6">
+                  <!-- Tahun Ajaran -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Tahun Ajaran <sup class="text-important">*)</sup></label
+                    >
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>2025/2026</option>
+                        <option>2024/2025</option>
+                        <option>2023/2024</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Keterangan -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"> Keterangan </label>
+                    <div class="col-sm-7">
+                      <textarea class="form-control form-control-sm" rows="3"></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Tanggal Konfirmasi -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"> Tgl Konfirmasi </label>
+                    <div class="col-sm-7">
+                      <input type="date" class="form-control form-control-sm" value="2016-07-17" />
+                    </div>
+                  </div>
+
+                  <!-- Status -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label"> Status </label>
+                    <div class="col-sm-7">
+                      <select class="form-select form-select-sm">
+                        <option>Menunggu Konfirmasi</option>
+                        <option>Valid</option>
+                        <option>Tidak Valid</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer justify-content-center d-flex flex-nowrap">
+            <button type="button" class="btn btn-success px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-check me-1"></i> Simpan
+            </button>
+            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
+              <i class="bi bi-x me-1"></i> Batal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Form Konfirmasi -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/badges.js"></script>
@@ -1157,7 +1295,8 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
       function filterDataApproval(data, f) {
         return data.filter(item => {
           if (f.search) {
-            if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search)) return false;
+            if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search))
+              return false;
           }
 
           return true;
@@ -1339,7 +1478,7 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         const rekeningTujuan = rekeningOptions[Math.floor(Math.random() * rekeningOptions.length)];
         const namaDonatur = `Donatur ${i + 1}`;
 
-        const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];        
+        const bulan = CONFIGApproval.bulan[Math.floor(Math.random() * CONFIGApproval.bulan.length)];
         const bulanIndex = CONFIG.bulan.indexOf(bulan);
         console.log(bulanIndex);
         const year = parseInt(tahun.split('/')[0]);
@@ -1380,7 +1519,8 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
           if (f.status && item.status !== f.status) return false;
 
           if (f.search) {
-            if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search)) return false;
+            if (!item.namaDonatur.toLowerCase().includes(f.search) && !item.idDonatur.toString().includes(f.search))
+              return false;
           }
 
           return true;
@@ -1472,6 +1612,10 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Pengirim</div>
                     <div class="col-7">${item.pengirim}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Kirim Email</div>
+                    <div class="col-7">${item.kirimEmail ? 'Ya' : 'Belum'}</div>
                   </div>
                   <div class="row mb-1">
                     <div class="col-5 fw-bold">Status</div>
@@ -1596,5 +1740,3 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
     </script>
   </body>
 </html>
-
-
