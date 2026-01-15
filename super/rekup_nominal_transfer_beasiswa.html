@@ -1374,6 +1374,37 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
+  // daftar status yang akan diganti nominal
+  const statusList = [
+    'done',
+    'paid off',
+    'paid off 1',
+    'paid off 2',
+    'paid off 3',
+    'not yet',
+    'on process',
+    'waiting',
+    'not verified',
+    'need upload'
+  ];
+
+  function randomJutaan(min = 1, max = 15) {
+    const juta = Math.floor(Math.random() * (max - min + 1)) + min;
+    const ribu = Math.floor(Math.random() * 900 + 100) * 1000;
+    return `Rp ${(juta * 1_000_000 + ribu).toLocaleString('id-ID')}`;
+  }
+
+  document.querySelectorAll('.badge').forEach(badge => {
+    const text = badge.textContent.trim().toLowerCase();
+
+    if (statusList.some(status => text.includes(status))) {
+      badge.textContent = randomJutaan();
+    }
+  });
+</script>
+
+
+    <script>
       const placeholder = document.getElementById('placeholderData');
       const tableWrapper = document.getElementById('resultTable');
       const listWrapper = document.getElementById('resultList');

@@ -8,6 +8,7 @@
   --aat-grey: #feeebd;
   --aat-orange: #fece2f;
   --aat-blue: #4a84e5;
+  --aat-process: #ffc3a0;
 
   /* Ubah nilai berikut untuk kustomisasi global */
   --ft-10: 10px;
@@ -159,6 +160,10 @@ main {
 
 .bg-aat-grey {
   background-color: var(--aat-grey) !important;
+  color: black;
+}
+.bg-process {
+  background-color: var(--aat-process) !important;
   color: black;
 }
 
@@ -3049,8 +3054,7 @@ h3.page-title {
 
 .progress-outline .progress-label {
   font-size: 12px;
-  font-weight: 600;
-  line-height: 18px;
+  line-height: 15px;
   border-radius: 999px;
   color: black;
   padding-left: 1rem;
