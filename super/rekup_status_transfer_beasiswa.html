@@ -180,13 +180,12 @@
                 >Pembayaran & Donasi
               </a>
               <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
-                <li>
-                  <a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
+                <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a></li>
+                <li><a class="dropdown-item" href="pemindahan_sisa_donasi.html">Pemindahan Sisa Donasi</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="transfer_tak_dikenal.html">Transfer Tak Dikenal</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
               </ul>
             </li>
 
@@ -472,7 +471,13 @@
 
       <!-- Profil User -->
       <div class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black">
-        <img src="../assets/img/logo_AAT.png" class="rounded-circle profile-img" alt="User" width="80" height="80" />
+        <img
+          src="../assets/img/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
         <h6 class="mt-1">Ki Anom</h6>
         <small class="mb-0">ADM-XXXX</small><br />
         <small class="mb-0">Super Admin</small>
@@ -495,9 +500,8 @@
           </a>
           <div class="collapse" id="donatur">
             <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
-            <a href="riwayat_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Riwayat Donasi Donatur</a
-            >
+            <a href="riwayat_donasi_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Riwayat Donasi Donatur</a>
             <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Pemilihan Anak Asuh oleh Donatur</a
             >
@@ -592,6 +596,28 @@
             href="#"
             class="list-group-item list-group-item-action bg-aat text-white"
             data-bs-toggle="collapse"
+            data-bs-target="#pembayaranDonasi"
+          >
+            <i class="bi bi-cash-coin me-2"></i> Pembayaran & Donasi <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="pembayaranDonasi">
+            <a href="konfirmasi_status_pembayaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Konfirmasi & Status Pembayaran</a
+            >
+            <a href="pemindahan_sisa_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pemindahan Sisa Donasi</a
+            >
+            <a href="transfer_tak_dikenal.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Transfer Tak Dikenal</a
+            >
+            <a href="donasi_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
             data-bs-target="#laporan"
           >
             <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
@@ -631,14 +657,13 @@
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
             <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
           </div>
-          <a
-            href="#"
+          <button
+            type="button"
             class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="modal"
-            data-bs-target="#kontakYayasanModal"
+            onclick="openPage('kontak')"
           >
-            <i class="bi bi-telephone me-2"></i> Hubungi Kami
-          </a>
+            <i class="bi bi-house me-2"></i> Hubungi Kami
+          </button>
         </div>
 
         <!-- Footer Mobile -->

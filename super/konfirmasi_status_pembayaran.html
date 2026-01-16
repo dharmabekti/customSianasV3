@@ -183,10 +183,11 @@
                 <li>
                   <a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a>
                 </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
+                <li><a class="dropdown-item" href="pemindahan_sisa_donasi.html">Pemindahan Sisa Donasi</a></li>
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item" href="transfer_tak_dikenal.html">Transfer Tak Dikenal</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
               </ul>
             </li>
 
@@ -392,7 +393,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Konfirmasi Status Pembayaran</span>
+        <span class="navbar-brand mx-auto">Pembayaran</span>
         <div class="d-flex">
           <div class="dropdown me-1">
             <button
@@ -495,7 +496,7 @@
           </a>
           <div class="collapse" id="donatur">
             <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
-            <a href="riwayat_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            <a href="riwayat_donasi_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Riwayat Donasi Donatur</a
             >
             <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
@@ -592,6 +593,28 @@
             href="#"
             class="list-group-item list-group-item-action bg-aat text-white"
             data-bs-toggle="collapse"
+            data-bs-target="#pembayaranDonasi"
+          >
+            <i class="bi bi-cash-coin me-2"></i> Pembayaran & Donasi <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div class="collapse" id="pembayaranDonasi">
+            <a href="konfirmasi_status_pembayaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Konfirmasi & Status Pembayaran</a
+            >
+            <a href="pemindahan_sisa_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Pemindahan Sisa Donasi</a
+            >
+            <a href="transfer_tak_dikenal.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Transfer Tak Dikenal</a
+            >
+            <a href="donasi_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Donasi Langsung</a
+            >
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
             data-bs-target="#laporan"
           >
             <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
@@ -631,14 +654,13 @@
             <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
             <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
           </div>
-          <a
-            href="#"
+          <button
+            type="button"
             class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="modal"
-            data-bs-target="#kontakYayasanModal"
+            onclick="openPage('kontak')"
           >
-            <i class="bi bi-telephone me-2"></i> Hubungi Kami
-          </a>
+            <i class="bi bi-house me-2"></i> Hubungi Kami
+          </button>
         </div>
 
         <!-- Footer Mobile -->

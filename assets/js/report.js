@@ -2,10 +2,12 @@ const ReportUI = {
   breakpoint: 992,
 
   hide(el) {
+    if (!el) return; // ⬅️ cegah error
     el.classList.add('d-none');
   },
 
   show(el) {
+    if (!el) return; // ⬅️ cegah error
     el.classList.remove('d-none');
   },
 
