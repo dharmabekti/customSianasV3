@@ -1060,3 +1060,9 @@ function debounce(fn, delay = 300) {
     timer = setTimeout(() => fn.apply(this, args), delay);
   };
 }
+
+// Currency
+document.addEventListener('input', e => {
+  if (!e.target.classList.contains('currency')) return;
+  e.target.value = e.target.value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+});
