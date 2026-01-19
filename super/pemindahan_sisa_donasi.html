@@ -1,0 +1,2418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>Responsive Admin Template</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="../assets/css/style.css"
+      rel="stylesheet"
+    />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"
+    />
+    <!-- Sweet Alerts css -->
+    <link
+      href="../assets/plugins/sweetalert2/sweetalert2.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Select2 CSS & JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Date Range Picker -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Header fixed -->
+    <header class="fixed-top shadow-sm">
+      <!-- Branding Panel (Desktop) -->
+      <div class="branding d-none d-lg-flex panel-header align-items-center">
+        <img
+          src="../assets/img/logo_AAT.png"
+          alt="Logo"
+        />
+        <div class="ms-2 me-auto">
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <!-- Tahun Ajaran + Datetime -->
+        <div class="text-center me-3">
+          <h4 class="mb-0">TA. 2025/2026</h4>
+          <div
+            class="datetime"
+            id="currentDateTime"
+          ></div>
+        </div>
+      </div>
+
+      <!-- Navbar Desktop -->
+      <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container-fluid">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto nav-left">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="index.html"
+              >
+                Beranda
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="donaturDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Donatur
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="donaturDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="donatur.html"
+                  >
+                    List Donatur
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_donatur.html"
+                  >
+                    Input Donatur
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="riwayat_donasi_donatur.html"
+                  >
+                    Riwayat Donasi Donatur
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="lelang.html"
+                  >
+                    Pemilihan Anak Asuh oleh Donatur
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="sekretariatDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sekretariat
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="sekretariatDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="sekretariat.html"
+                  >
+                    Data Sekretariat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="penanggungjawab_sekretariat.html"
+                  >
+                    Data PJ Sekretariat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_pjs.html"
+                  >
+                    Input PJ Sekretariat
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="data_pt.html"
+                  >
+                    Data Pendidikan Tinggi
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_pt.html"
+                  >
+                    Input Pendidikan Tinggi
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="bpt.html"
+                  >
+                    Data BPT Sekretariat
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_bpt.html"
+                  >
+                    Input BPT Sekretariat
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="komunitasDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Komunitas/Sekolah
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="komunitasDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="sekolah.html"
+                  >
+                    Data Komunitas/Sekolah
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_sekolah.html"
+                  >
+                    Input Komunitas/Sekolah
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="penanggungjawab.html"
+                  >
+                    Data PJ Sekolah
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="form_penanggungjawab.html"
+                  >
+                    Input PJ Sekolah
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="konfirmasi_penanggungjawab.html"
+                  >
+                    Konfirmasi PJ Sekolah Baru
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#skBeasiswaModal"
+                  >
+                    SK Beasiswa
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="anakAsuhDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Anak Asuh
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="anakAsuhDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="anak_asuh.html"
+                  >
+                    List Anak Asuh
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Input Anak Asuh
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="form_anak_asuh.html"
+                      >
+                        Input Manual
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="import_anak_asuh.html"
+                      >
+                        Import dari Excel
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="pengajuan_anakasuh_baru.html"
+                  >
+                    Konfirmasi Anak Asuh Baru
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="konfirmasi_naik_jenjang.html"
+                  >
+                    Konfirmasi Kenaikan Jenjang
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="raport_skl_ijasah.html"
+                  >
+                    Raport, SKl & Ijazah
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="transferBeasiswaDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Transfer Beasiswa
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="transferBeasiswaDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="transfer_beasiswa.html"
+                  >
+                    Data Transfer Beasiswa
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="status_transfer.html"
+                  >
+                    Status Transfer Beasiswa
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="ganti_rekening.html"
+                  >
+                    Penggantian No Rekening
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="pengembalian_dana.html"
+                  >
+                    Pengembalian Dana Berlebih
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-bs-toggle="modal"
+                    data-bs-target="#rekeningYayasanModal"
+                  >
+                    Rekening Yayasan
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="pembayaranDonasiDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Pembayaran & Donasi
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="pembayaranDonasiDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="konfirmasi_status_pembayaran.html"
+                  >
+                    Konfirmasi & Status Pembayaran
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="pemindahan_sisa_donasi.html"
+                  >
+                    Pemindahan Sisa Donasi
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="transfer_tak_dikenal.html"
+                  >
+                    Transfer Tak Dikenal
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="donasi_langsung.html"
+                  >
+                    Donasi Langsung
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="laporanDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Laporan
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="laporanDropdown"
+              >
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Laporan Donatur
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="laporan_donatur.html"
+                      >
+                        Cari per ID
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="statistik_donatur.html"
+                      >
+                        Statistik Umum
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Laporan Sekretariat
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="laporan_sekretariat.html"
+                      >
+                        Cari per Nama
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="statistik_sekretariat.html"
+                      >
+                        Statistik Umum
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Laporan Komunitas
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="laporan_komunitas.html"
+                      >
+                        Cari per ID
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="statistik_komunitas.html"
+                      >
+                        Statistik Umum
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Laporan Anak Asuh
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="laporan_anakasuh.html"
+                      >
+                        Cari per ID
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="statistik_anakasuh.html"
+                      >
+                        Statistik Umum
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="laporan_raport_skl_ijasah.html"
+                  >
+                    Laporan Raport, SKL, & Ijasah
+                  </a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                  >
+                    Rekup Transfer Beasiswa
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="rekup_status_transfer_beasiswa.html"
+                      >
+                        Status Transfer
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="rekup_nominal_transfer_beasiswa.html"
+                      >
+                        Nominal
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="rekup_kode_unik.html"
+                  >
+                    Rekup Kode Unik
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="settingDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Pengaturan
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="settingDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="admin.html"
+                  >
+                    Manajemen Admin
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="tahun_ajaran.html"
+                  >
+                    Tahun Ajaran
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="kontakDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Hubungi Kami
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="kontakDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://wa.me/628xxxxxxxxx"
+                    target="_blank"
+                  >
+                    <i class="bi bi-whatsapp me-2"></i>
+                    WhatsApp
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="mailto:beasiswa@aat.or.id"
+                  >
+                    <i class="bi bi-envelope me-2"></i>
+                    Email
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://instagram.com/aat.indonesia"
+                    target="_blank"
+                  >
+                    <i class="bi bi-instagram me-2"></i>
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://youtube.com/@aatindonesia"
+                    target="_blank"
+                  >
+                    <i class="bi bi-youtube me-2"></i>
+                    YouTube
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://facebook.com/aatindonesia"
+                    target="_blank"
+                  >
+                    <i class="bi bi-facebook me-2"></i>
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="https://x.com/aat_indonesia"
+                    target="_blank"
+                  >
+                    <i class="bi bi-twitter-x me-2"></i>
+                    X (Twitter)
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+          <ul class="navbar-nav ms-auto align-items-center nav-right">
+            <!-- 🔔 Notifikasi -->
+            <li class="nav-item dropdown me-2">
+              <a
+                class="nav-link position-relative"
+                href="#"
+                id="notifDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i
+                  class="bi bi-bell"
+                  style="font-size: 14px"
+                ></i>
+                <span
+                  class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >
+                  3
+                </span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="notifDropdown"
+              >
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li>
+                  <a
+                    class="dropdown-item small"
+                    href="#"
+                  >
+                    Pembayaran donasi berhasil
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item small"
+                    href="#"
+                  >
+                    SPP anak asuh sudah jatuh tempo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item small"
+                    href="#"
+                  >
+                    Laporan bulanan tersedia
+                  </a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-center small text-primary"
+                    href="#"
+                  >
+                    Lihat semua
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- 👤 Profil -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle d-flex align-items-center"
+                href="#"
+                id="profileDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="../assets/img/logo_AAT.png"
+                  alt="User"
+                  width="30"
+                  height="30"
+                  class="rounded-circle profile-img shadow-sm me-2"
+                />
+                <span class="fw-semibold ft-12">ADM-NAS-XXXX</span>
+              </a>
+
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="profileDropdown"
+              >
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="profil.html"
+                  >
+                    Profil
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="ubah_password.html"
+                  >
+                    Ubah Password
+                  </a>
+                </li>
+
+                <!-- SUBMENU SEKRETARIAT -->
+                <li class="dropdown-submenu">
+                  <a
+                    class="dropdown-item d-flex justify-content-between align-items-center"
+                    href="#"
+                  >
+                    Sekretariat :
+                    <strong>All</strong>
+                    <i class="bi bi-caret-down-fill ms-2"></i>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a
+                        class="dropdown-item active"
+                        href="#"
+                      >
+                        All
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Yogyakarta
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Semarang
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Purwokerto
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Madiun
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Malang
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        class="dropdown-item"
+                        href="#"
+                      >
+                        Bandung
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                  <a
+                    class="dropdown-item text-danger"
+                    href="#"
+                  >
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Navbar Mobile (atas) -->
+    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+      <div class="container-fluid">
+        <button
+          class="btn btn-outline-light"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#mobileSidebar"
+        >
+          <i class="bi bi-list"></i>
+        </button>
+        <span class="navbar-brand mx-auto">Sisa Donasi</span>
+        <div class="d-flex">
+          <div class="dropdown me-1">
+            <button
+              class="btn btn-outline-light position-relative"
+              type="button"
+              id="mobileNotifDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-bell"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+              >
+                3
+              </span>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="mobileNotifDropdown"
+            >
+              <li><h6 class="dropdown-header">Notifikasi</h6></li>
+              <li>
+                <a
+                  class="dropdown-item small"
+                  href="#"
+                >
+                  Pembayaran donasi berhasil
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item small"
+                  href="#"
+                >
+                  SPP anak asuh sudah jatuh tempo
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item small"
+                  href="#"
+                >
+                  Laporan bulanan tersedia
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-center small text-primary"
+                  href="#"
+                >
+                  Lihat semua
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light"
+              type="button"
+              id="mobileProfileDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="mobileProfileDropdown"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="profil.html"
+                >
+                  Profil
+                </a>
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="ubah_password.html"
+                >
+                  Ubah Password
+                </a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <!-- SUBMENU SEKRETARIAT -->
+              <li class="dropdown-submenu">
+                <a
+                  class="dropdown-item d-flex justify-content-between align-items-center"
+                  href="#"
+                >
+                  Sekretariat :
+                  <strong>All</strong>
+                  <i class="bi bi-caret-down-fill ms-2"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      class="dropdown-item active"
+                      href="#"
+                    >
+                      All
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Yogyakarta
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Semarang
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Purwokerto
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Madiun
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Malang
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="#"
+                    >
+                      Bandung
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-danger"
+                  href="#"
+                >
+                  Logout
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Offcanvas Sidebar (Mobile) -->
+    <div
+      class="offcanvas offcanvas-start bg-dark text-white bg-aat"
+      tabindex="-1"
+      id="mobileSidebar"
+    >
+      <!-- Header Sidebar -->
+      <div class="offcanvas-header border-bottom">
+        <div class="d-flex align-items-center">
+          <img
+            src="../assets/img/logo_AAT.png"
+            class="rounded-circle me-2 profile-img"
+            alt="Logo"
+            width="40"
+            height="40"
+          />
+          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-white"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+
+      <!-- Profil User -->
+      <div
+        class="p-4 border-bottom text-center bg-aat-grey bg-gradient text-black"
+      >
+        <img
+          src="../assets/img/logo_AAT.png"
+          class="rounded-circle profile-img"
+          alt="User"
+          width="80"
+          height="80"
+        />
+        <h6 class="mt-1">Ki Anom</h6>
+        <small class="mb-0">ADM-XXXX</small>
+        <br />
+        <small class="mb-0">Super Admin</small>
+      </div>
+
+      <!-- Body Sidebar -->
+      <div class="offcanvas-body d-flex flex-column p-0">
+        <!-- Menu scrollable -->
+        <div class="list-group list-group-flush flex-grow-1 overflow-auto">
+          <a
+            href="index.html"
+            class="list-group-item list-group-item-action bg-aat text-white"
+          >
+            <i class="bi bi-house me-2"></i>
+            Beranda
+          </a>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#donatur"
+          >
+            <i class="bi bi-person me-2"></i>
+            Donatur
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="donatur"
+          >
+            <a
+              href="donatur.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              List Donatur
+            </a>
+            <a
+              href="riwayat_donasi_donatur.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Riwayat Donasi Donatur
+            </a>
+            <a
+              href="lelang.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Pemilihan Anak Asuh oleh Donatur
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#sekretariat"
+          >
+            <i class="bi bi-building me-2"></i>
+            Sekretariat
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="sekretariat"
+          >
+            <a
+              href="sekretariat.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data Sekretariat
+            </a>
+            <a
+              href="penanggungjawab_sekretariat.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data PJ Sekretariat
+            </a>
+            <a
+              href="data_pt.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data Pendidikan Tinggi
+            </a>
+            <a
+              href="bpt.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data BPT Sekretariat
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#komunitas"
+          >
+            <i class="bi bi-house-fill me-2"></i>
+            Komunitas/Sekolah
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="komunitas"
+          >
+            <a
+              href="sekolah.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data Komunitas/Sekolah
+            </a>
+            <a
+              href="penanggungjawab.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data PJ Sekolah
+            </a>
+            <a
+              href="konfirmasi_penanggungjawab.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Konfirmasi PJ Sekolah Baru
+            </a>
+            <a
+              href="sk.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              SK Beasiswa
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#anakasuh"
+          >
+            <i class="bi bi-person-lines-fill me-2"></i>
+            Anak Asuh
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="anakasuh"
+          >
+            <a
+              href="anak_asuh.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              List Anak Asuh
+            </a>
+            <a
+              href="pengajuan_anakasuh_baru.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Konfirmasi Anak Asuh Baru
+            </a>
+            <a
+              href="konfirmasi_naik_jenjang.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Konfirmasi Kenaikan Jenjang
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#transferbeasiswa"
+          >
+            <i class="bi bi-receipt me-2"></i>
+            Transfer Beasiswa
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="transferbeasiswa"
+          >
+            <a
+              href="transfer_beasiswa.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Data Transfer Beasiswa
+            </a>
+            <a
+              href="status_transfer.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Status Transfer Beasiswa
+            </a>
+            <a
+              href="ganti_rekening.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Penggantian No Rekening
+            </a>
+            <a
+              href="pengembalian_dana.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Pengembalian Dana Berlebih
+            </a>
+            <a
+              href="#"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              data-bs-toggle="modal"
+              data-bs-target="#rekeningYayasanModal"
+            >
+              Rekening Yayasan
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#pembayaranDonasi"
+          >
+            <i class="bi bi-cash-coin me-2"></i>
+            Pembayaran & Donasi
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="pembayaranDonasi"
+          >
+            <a
+              href="konfirmasi_status_pembayaran.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Konfirmasi & Status Pembayaran
+            </a>
+            <a
+              href="pemindahan_sisa_donasi.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Pemindahan Sisa Donasi
+            </a>
+            <a
+              href="transfer_tak_dikenal.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Transfer Tak Dikenal
+            </a>
+            <a
+              href="donasi_langsung.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Donasi Langsung
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#laporan"
+          >
+            <i class="bi bi-journal-text me-2"></i>
+            Laporan
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="laporan"
+          >
+            <a
+              href="laporan_donatur.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Laporan Donatur
+            </a>
+            <a
+              href="laporan_sekretariat.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Laporan Sekretariat
+            </a>
+            <a
+              href="laporan_komunitas.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Laporan Komunitas/Sekolah
+            </a>
+            <a
+              href="laporan_anakasuh.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Laporan Anak Asuh
+            </a>
+            <a
+              href="laporan_raport_skl_ijasah.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Laporan Raport, SKL, & Ijasah
+            </a>
+            <a
+              href="rekup_transfer_beasiswa.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Rekup Transfer Beasiswa
+            </a>
+            <a
+              href="rekup_kode_unik.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Rekup Kode Unik
+            </a>
+          </div>
+          <a
+            href="#"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            data-bs-toggle="collapse"
+            data-bs-target="#pengaturan"
+          >
+            <i class="bi bi-gear me-2"></i>
+            Pengaturan
+            <i class="bi bi-chevron-down float-end"></i>
+          </a>
+          <div
+            class="collapse"
+            id="pengaturan"
+          >
+            <a
+              href="admin.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Manajemen Admin
+            </a>
+            <a
+              href="tahun_ajaran.html"
+              class="list-group-item list-group-item-action bg-aat-grey ps-5"
+            >
+              Tahun Ajaran
+            </a>
+          </div>
+          <button
+            type="button"
+            class="list-group-item list-group-item-action bg-aat text-white"
+            onclick="openPage('kontak')"
+          >
+            <i class="bi bi-house me-2"></i>
+            Hubungi Kami
+          </button>
+        </div>
+
+        <!-- Footer Mobile -->
+        <div class="p-3 border-top small text-center text-white d-lg-none">
+          © Yayasan AAT Indonesia
+          <br />
+          Developed by
+          <span class="fw-bold">Omah IT</span>
+          <br />
+          Maintained by
+          <span class="fw-bold">Mandhira IT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Navigation (Mobile) -->
+    <div class="mobile-bottom-nav">
+      <a
+        href="index.html"
+        class="text-dark text-center text-decoration-none"
+      >
+        <i class="bi bi-house-fill fs-4"></i>
+        <br />
+        <small>Beranda</small>
+      </a>
+
+      <a
+        href="transfer_beasiswa.html"
+        class="text-dark text-center text-decoration-none"
+      >
+        <i class="bi bi-receipt fs-4"></i>
+        <br />
+        <small>Transfer Beasiswa</small>
+      </a>
+
+      <a
+        href="status_transfer.html"
+        class="text-dark text-center text-decoration-none"
+      >
+        <i class="bi bi-card-checklist fs-4"></i>
+        <br />
+        <small>Status Transfer</small>
+      </a>
+
+      <a
+        href="raport_skl_ijasah.html"
+        class="text-dark text-center text-decoration-none"
+      >
+        <i class="bi bi-journal-text fs-4"></i>
+        <br />
+        <small>Raport</small>
+      </a>
+    </div>
+
+    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+      <div class="d-none d-lg-block mb-5"></div>
+
+      <h3 class="text-center page-title d-none d-lg-block">
+        Pemindahan Sisa Donasi
+      </h3>
+
+      <div class="container-fluid mb-5 container-wrapper">
+        <div class="row">
+          <!-- ================= TAB ================= -->
+          <ul
+            class="nav nav-tabs mb-3 d-flex flex-nowrap"
+            role="tablist"
+            style="font-size: 12px"
+          >
+            <li class="nav-item">
+              <button
+                class="nav-link active"
+                data-bs-toggle="tab"
+                data-bs-target="#pengambalianTab"
+              >
+                Permohonan Pemindahan
+              </button>
+            </li>
+            <li class="nav-item">
+              <button
+                class="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#riwayatTab"
+              >
+                Riwayat Pemindahan
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div
+              class="tab-pane fade show active"
+              id="pengambalianTab"
+            >
+              <!-- ================= TABLE DESKTOP ================= -->
+              <div class="table-responsive d-none d-lg-block">
+                <table
+                  id="datatable"
+                  class="table table-striped table-bordered align-middle text-center bg-white shadow-sm no-contextmenu"
+                >
+                  <thead class="table-light">
+                    <tr>
+                      <th>ID Donatur</th>
+                      <th>Nama Donatur</th>
+                      <th>Tahun Ajaran Asal</th>
+                      <th>Tahun Ajaran Tujuan</th>
+                      <th>Nominal Kelebihan</th>
+                      <th>Tgl Pengajuan</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <!-- ================= MOBILE CARD ================= -->
+              <div class="card-mobile d-lg-none mt-3">
+                <div class="input-group mb-3 shadow-sm">
+                  <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control border-start-0"
+                    placeholder="Cari transfer beasiswa..."
+                    id="searchCardApproval"
+                  />
+                </div>
+
+                <div
+                  id="cardListApproval"
+                  class="row g-2"
+                ></div>
+
+                <div class="d-flex justify-content-center mt-3">
+                  <nav>
+                    <ul
+                      class="pagination justify-content-center"
+                      id="paginationMobileApproval"
+                    ></ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================= STATUS TRANSFER ================= -->
+            <div
+              class="tab-pane fade"
+              id="riwayatTab"
+            >
+              <!-- 🔹 TOMBOL FILTER (MOBILE ONLY) -->
+              <div class="d-md-none mb-2">
+                <button
+                  class="btn btn-outline-primary w-100"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#filterCollapseStatus"
+                  aria-expanded="false"
+                  aria-controls="filterCollapseStatus"
+                >
+                  <i class="bi bi-funnel"></i>
+                  Tampilkan Filter
+                </button>
+              </div>
+
+              <!-- 🔹 FILTER -->
+              <div
+                id="filterCollapseStatus"
+                class="collapse d-md-block"
+              >
+                <div class="filter-section ft-12 mb-3">
+                  <div class="row g-3 align-items-end">
+                    <!-- Tahun Ajaran -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Th. Ajaran</label>
+                      <select
+                        id="TahunAjaranFilterStatus"
+                        class="form-select form-select-sm"
+                      >
+                        <option value="">Semua</option>
+                        <option>2025/2026</option>
+                        <option>2024/2025</option>
+                        <option>2023/2024</option>
+                      </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-12 col-md-2">
+                      <label class="form-label fw-semibold">Status</label>
+                      <select
+                        id="statusFilterStatus"
+                        class="form-select form-select-sm"
+                      >
+                        <option value="">Semua</option>
+                        <option>Menunggu Verifikasi</option>
+                        <option>Ditolak</option>
+                        <option>Disetujui</option>
+                      </select>
+                    </div>
+                    <div class="col-12 col-md-2">
+                      <button class="btn btn-outline-primary btn-sm w-100">
+                        <i class="bi bi-download"></i>
+                        Export
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- ================= TABLE DESKTOP ================= -->
+              <div class="table-responsive d-none d-lg-block">
+                <table
+                  id="datatable2"
+                  class="table table-striped table-bordered align-middle text-center bg-white shadow-sm"
+                >
+                  <thead class="table-light">
+                    <tr>
+                      <th>ID Donatur</th>
+                      <th>Nama Donatur</th>
+                      <th>Tahun Ajaran Asal</th>
+                      <th>Tahun Ajaran Tujuan</th>
+                      <th>Nominal Kelebihan</th>
+                      <th>Tgl Pengajuan</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+
+              <!-- ================= MOBILE CARD ================= -->
+              <div class="card-mobile d-lg-none mt-3">
+                <div class="input-group mb-3 shadow-sm">
+                  <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control border-start-0"
+                    placeholder="Cari transfer beasiswa..."
+                    id="searchCard"
+                  />
+                </div>
+
+                <div
+                  id="cardList"
+                  class="row g-2"
+                ></div>
+
+                <div class="d-flex justify-content-center mt-3">
+                  <nav>
+                    <ul
+                      class="pagination justify-content-center"
+                      id="paginationMobile"
+                    ></ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span class="text-danger fst-italic d-none d-lg-block">
+          Klik kanan mouse untuk memunculkan menu aksi
+        </span>
+      </div>
+    </main>
+
+    <!-- Footer Desktop (sticky di bawah halaman) -->
+    <footer
+      class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat"
+    >
+      <small>
+        Copyright © Yayasan AAT Indonesia | Developed by
+        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span>
+        | Maintained by
+        <span class="fw-bold">Mandhira IT</span>
+        <br />
+        Gunakan Browser
+        <span class="fw-bold">Google Chrome</span>
+        atau
+        <span class="fw-bold">Mozilla Firefox</span>
+        untuk tampilan terbaik.
+        <div class="d-none d-lg-block mb-5"></div>
+      </small>
+    </footer>
+
+    <!-- Modal Detail Data -->
+    <div
+      class="modal fade"
+      id="detailModal"
+      tabindex="-1"
+      aria-labelledby="detailLabel"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-aat text-white">
+            <h5 class="modal-title">Verifikasi Pemindahan Sisa Donasi</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <table class="table table-borderless mb-4">
+              <tbody>
+                <tr>
+                  <td
+                    class="fw-semibold"
+                    style="width: 35%"
+                  >
+                    ID Donatur
+                  </td>
+                  <td style="width: 5%">:</td>
+                  <td>D-xx-yyyy</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Nama Donatur</td>
+                  <td>:</td>
+                  <td>AAAAAAAA</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">TA Asal</td>
+                  <td>:</td>
+                  <td>2024/2025</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">TA Tujuan</td>
+                  <td>:</td>
+                  <td>2025/2026</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Nominal Kelebihan Transfer</td>
+                  <td>:</td>
+                  <td class="fw-bold">Rp xxx.xxxx</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="modal-footer justify-content-end d-flex flex-nowrap">
+            <button
+              type="button"
+              class="btn btn-success px-2 px-lg-4"
+              onclick="verifikasiData()"
+            >
+              <i class="bi bi-check-lg me-1"></i>
+              Verifikasi
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-secondary px-2 px-lg-4"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-x me-1"></i>
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Detail Data -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/badges.js"></script>
+    <script src="../assets/js/style.js"></script>
+    <!-- Select2 -->
+    <script src="../assets/js/select2.js"></script>
+    <!-- jQuery (dibutuhkan oleh DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <script src="../assets/js/datatable.init.js"></script>
+    <!-- Sweet Alerts Js-->
+    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+
+    <!-- Date Range Picker -->
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="../assets/plugins/datepicker/datepicker.init.js"></script>
+
+    <!-- JavaScript for Approval Donasi -->
+    <script>
+      /* ======================================================
+       * CONFIG APPROVAL
+       * ====================================================== */
+      const CONFIGApproval = {
+        TahunAjaran: ["2024/2025", "2025/2026"],
+        bulan: [
+          "Januari",
+          "Februari",
+          "Maret",
+          "April",
+          "Mei",
+          "Juni",
+          "Juli",
+          "Agustus",
+          "September",
+          "Oktober",
+          "November",
+          "Desember",
+        ],
+        itemsPerPageMobile: 10,
+      };
+
+      /* ======================================================
+       * HELPERS APPROVAL
+       * ====================================================== */
+      const qsApproval = s => document.querySelector(s);
+      const qsaApproval = s => [...document.querySelectorAll(s)];
+
+      const getCheckedValuesApproval = selector =>
+        qsaApproval(selector)
+          .filter(el => el.checked)
+          .map(el => el.value);
+
+      /* ======================================================
+       * DATA SOURCE APPROVAL (SINGLE SOURCE OF TRUTH)
+       * ====================================================== */
+      const riwayatDataApproval = Array.from({ length: 15 }, (_, i) => {
+        const nominalKelebihan = Math.floor(Math.random() * 3000000) + 500000;
+        const namaDonatur = `Donatur ${i + 1}`;
+
+        const bulanOptions = ["Januari", "Februari", "Maret"];
+        const bulan =
+          bulanOptions[Math.floor(Math.random() * bulanOptions.length)];
+        const bulanIndex = CONFIGApproval.bulan.indexOf(bulan);
+        const year = 2026; // Use 2026 for date calculation
+        const start = new Date(year, bulanIndex, 1);
+        const end = new Date(year, bulanIndex + 1, 0);
+        const rand = new Date(start.getTime() + Math.random() * (end - start));
+
+        return {
+          idDonatur: i + 1,
+          namaDonatur,
+          tahunAjaranAsal: "2025/2026",
+          tahunAjaranTujuan: "2026/2027",
+          nominalKelebihan,
+          tglPengajuan: moment(rand).format("DD/MM/YYYY"),
+          status: "Butuh Konfirmasi",
+          bulan,
+        };
+      });
+
+      /* ======================================================
+       * FILTER STATE APPROVAL
+       * ====================================================== */
+      function getFilterValuesApproval() {
+        return {
+          search: qsApproval("#searchCardApproval")?.value.toLowerCase() || "",
+        };
+      }
+
+      /* ======================================================
+       * CORE FILTER ENGINE APPROVAL (DIPAKAI SEMUA)
+       * ====================================================== */
+      function filterDataApproval(data, f) {
+        return data.filter(item => {
+          if (f.search) {
+            if (
+              !item.namaDonatur.toLowerCase().includes(f.search) &&
+              !item.idDonatur.toString().includes(f.search)
+            )
+              return false;
+          }
+
+          return true;
+        });
+      }
+
+      /* ======================================================
+       * DATATABLE APPROVAL (DESKTOP)
+       * ====================================================== */
+      let dataTableApproval;
+
+      function renderTableApproval() {
+        const tbody = qsApproval("#datatable tbody");
+        if (!tbody) return;
+
+        const filtered = filterDataApproval(
+          riwayatDataApproval,
+          getFilterValuesApproval(),
+        );
+
+        if (!dataTableApproval) {
+          // Initialize DataTable with empty data and enable built-in search
+          tbody.innerHTML = "";
+          dataTableApproval = $("#datatable").DataTable();
+        }
+
+        // Clear existing rows
+        dataTableApproval.clear();
+
+        // Add filtered rows using DataTable API
+        dataTableApproval.rows.add(
+          filtered.map(d => [
+            d.idDonatur,
+            d.namaDonatur,
+            d.tahunAjaranAsal,
+            d.tahunAjaranTujuan,
+            `Rp ${d.nominalKelebihan.toLocaleString("id-ID")}`,
+            d.tglPengajuan,
+            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${d.status}</span>`,
+          ]),
+        );
+
+        // Draw the table
+        dataTableApproval.draw();
+      }
+
+      /* ======================================================
+       * MOBILE CARD APPROVAL
+       * ====================================================== */
+      let currentPageMobileApproval = 1;
+
+      function renderCardsApproval() {
+        const list = qsApproval("#cardListApproval");
+        const pag = qsApproval("#paginationMobileApproval");
+        if (!list || !pag) return;
+
+        const filtered = filterDataApproval(
+          riwayatDataApproval,
+          getFilterValuesApproval(),
+        );
+        const total = Math.ceil(
+          filtered.length / CONFIGApproval.itemsPerPageMobile,
+        );
+        const start =
+          (currentPageMobileApproval - 1) * CONFIGApproval.itemsPerPageMobile;
+
+        list.innerHTML = filtered
+          .slice(start, start + CONFIGApproval.itemsPerPageMobile)
+          .map(
+            item => `
+      <div class="col-12">
+                <div class="card shadow-sm p-3 mb-2" data-id="${item.idDonatur}" data-nama="${item.namaDonatur}">
+                  <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
+                    ${item.namaDonatur}
+                    <i class="bi bi-check-circle text-success me-1" style="cursor: pointer;" onclick="form_approval()"></i>
+                  </h5>
+                  <div class="divider-1"></div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">ID Donatur</div>
+                    <div class="col-7">${item.idDonatur}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Th. Ajaran Asal</div>
+                    <div class="col-7">${item.tahunAjaranAsal}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Th. Ajaran Tujuan</div>
+                    <div class="col-7">${item.tahunAjaranTujuan}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Nominal Kelebihan</div>
+                    <div class="col-7">Rp ${item.nominalKelebihan.toLocaleString("id-ID")}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Tgl Pengajuan</div>
+                    <div class="col-7">${item.tglPengajuan}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Status</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.status)}" onclick="form_approval()">${item.status}</span></div>
+                  </div>
+                </div>
+              </div>`,
+          )
+          .join("");
+
+        pag.innerHTML =
+          total > 1
+            ? generatePagination2(total, currentPageMobileApproval)
+            : "";
+
+        qsaApproval("#paginationMobileApproval .page-link").forEach(a => {
+          a.onclick = e => {
+            e.preventDefault();
+            currentPageMobileApproval = +a.dataset.page;
+            renderCardsApproval();
+          };
+        });
+      }
+
+      /* ======================================================
+       * EVENT FLOW APPROVAL (PENTING)
+       * ====================================================== */
+      function onMasterFilterChangeApproval() {
+        renderTableApproval();
+        renderCardsApproval();
+      }
+
+      /* ======================================================
+       * INIT APPROVAL
+       * ====================================================== */
+      renderTableApproval();
+      renderCardsApproval();
+
+      qsApproval("#searchCardApproval")?.addEventListener("input", () => {
+        currentPageMobileApproval = 1;
+        renderCardsApproval();
+      });
+    </script>
+
+    <script>
+      /* ======================================================
+       * CONFIG
+       * ====================================================== */
+      const CONFIG = {
+        TahunAjaran: ["2024/2025", "2025/2026"],
+        status: ["Menunggu Verifikasi", "Ditolak", "Disetujui"],
+        bulan: [
+          "Januari",
+          "Februari",
+          "Maret",
+          "April",
+          "Mei",
+          "Juni",
+          "Juli",
+          "Agustus",
+          "September",
+          "Oktober",
+          "November",
+          "Desember",
+        ],
+        itemsPerPageMobile: 10,
+      };
+
+      /* ======================================================
+       * HELPERS
+       * ====================================================== */
+      const qs = s => document.querySelector(s);
+      const qsa = s => [...document.querySelectorAll(s)];
+
+      const getCheckedValues = selector =>
+        qsa(selector)
+          .filter(el => el.checked)
+          .map(el => el.value);
+
+      /* ======================================================
+       * DATA SOURCE (SINGLE SOURCE OF TRUTH)
+       * ====================================================== */
+      const riwayatData = Array.from({ length: 10000 }, (_, i) => {
+        const nominalKelebihan = Math.floor(Math.random() * 3000000) + 500000;
+        const namaDonatur = `Donatur ${i + 1}`;
+
+        const bulan =
+          CONFIGApproval.bulan[
+            Math.floor(Math.random() * CONFIGApproval.bulan.length)
+          ];
+        const bulanIndex = CONFIG.bulan.indexOf(bulan);
+        const year = 2026; // Use 2026 for date calculation
+        const start = new Date(year, bulanIndex, 1);
+        const end = new Date(year, bulanIndex + 1, 0);
+        const rand = new Date(start.getTime() + Math.random() * (end - start));
+
+        const tahunAsal =
+          CONFIG.TahunAjaran[
+            Math.floor(Math.random() * CONFIG.TahunAjaran.length)
+          ];
+        const [startYear, endYear] = tahunAsal.split("/").map(Number);
+        const tahunTujuan = `${startYear + 1}/${endYear + 1}`;
+
+        return {
+          idDonatur: i + 1,
+          namaDonatur,
+          tahunAjaranAsal: tahunAsal,
+          tahunAjaranTujuan: tahunTujuan,
+          nominalKelebihan,
+          tglPengajuan: moment(rand).format("DD/MM/YYYY"),
+          status: CONFIG.status[Math.floor(Math.random() * 3)],
+        };
+      });
+
+      /* ======================================================
+       * FILTER STATE
+       * ====================================================== */
+      function getFilterValues() {
+        return {
+          tahun: qs("#TahunAjaranFilterStatus").value,
+          status: qs("#statusFilterStatus").value,
+          search: qs("#searchCard")?.value.toLowerCase() || "",
+        };
+      }
+
+      /* ======================================================
+       * CORE FILTER ENGINE (DIPAKAI SEMUA)
+       * ====================================================== */
+      function filterData(data, f) {
+        return data.filter(item => {
+          if (f.tahun && item.tahunAjaranAsal !== f.tahun) return false;
+          if (f.status && item.status !== f.status) return false;
+
+          if (f.search) {
+            if (
+              !item.namaDonatur.toLowerCase().includes(f.search) &&
+              !item.idDonatur.toString().includes(f.search)
+            )
+              return false;
+          }
+
+          return true;
+        });
+      }
+
+      /* ======================================================
+       * DATATABLE (DESKTOP)
+       * ====================================================== */
+      let dataTable;
+
+      function renderTable() {
+        const filtered = filterData(riwayatData, getFilterValues());
+
+        if (!dataTable) {
+          // Initialize DataTable with empty data and disable built-in search
+          qs("#datatable2 tbody").innerHTML = "";
+          dataTable = $("#datatable2").DataTable({ searching: false });
+        }
+
+        // Clear existing rows
+        dataTable.clear();
+
+        dataTable.rows
+          .add(
+            filtered.map(d => [
+              d.idDonatur,
+              d.namaDonatur,
+              d.tahunAjaranAsal,
+              d.tahunAjaranTujuan,
+              `Rp ${d.nominalKelebihan.toLocaleString("id-ID")}`,
+              d.tglPengajuan,
+              `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${d.status}</span>`,
+            ]),
+          )
+          .draw();
+      }
+
+      /* ======================================================
+       * MOBILE CARD
+       * ====================================================== */
+      let currentPageMobile = 1;
+
+      function renderCards() {
+        const list = qs("#cardList");
+        const pag = qs("#paginationMobile");
+        if (!list || !pag) return;
+
+        const filtered = filterData(riwayatData, getFilterValues());
+        const total = Math.ceil(filtered.length / CONFIG.itemsPerPageMobile);
+        const start = (currentPageMobile - 1) * CONFIG.itemsPerPageMobile;
+
+        list.innerHTML = filtered
+          .slice(start, start + CONFIG.itemsPerPageMobile)
+          .map(
+            item => `
+      <div class="col-12">
+                <div class="card shadow-sm p-3 mb-2" data-id="${item.idDonatur}" data-nama="${item.namaDonatur}">
+                  <h5 class="card-title fw-bold d-flex justify-content-between align-items-center">
+                    ${item.namaDonatur}
+                    <i class="bi bi-three-dots-vertical card-menu" style="cursor: pointer;"></i>
+                  </h5>
+                  <div class="divider-1"></div>
+
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">ID Donatur</div>
+                    <div class="col-7">${item.idDonatur}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Th. Ajaran Asal</div>
+                    <div class="col-7">${item.tahunAjaranAsal}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Th. Ajaran Tujuan</div>
+                    <div class="col-7">${item.tahunAjaranTujuan}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Nominal Kelebihan</div>
+                    <div class="col-7">Rp ${item.nominalKelebihan.toLocaleString("id-ID")}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Tgl Pengajuan</div>
+                    <div class="col-7">${item.tglPengajuan}</div>
+                  </div>
+                  <div class="row mb-1">
+                    <div class="col-5 fw-bold">Status</div>
+                    <div class="col-7"><span class="badge bg-${getStatusBadgeClass(item.status)}">${
+                      item.status
+                    }</span></div>
+                  </div>
+                </div>
+              </div>`,
+          )
+          .join("");
+
+        pag.innerHTML =
+          total > 1 ? generatePagination2(total, currentPageMobile) : "";
+
+        qsa("#paginationMobile .page-link").forEach(a => {
+          a.onclick = e => {
+            e.preventDefault();
+            currentPageMobile = +a.dataset.page;
+            renderCards();
+          };
+        });
+      }
+
+      /* ======================================================
+       * EVENT FLOW (PENTING)
+       * ====================================================== */
+      function onMasterFilterChange() {
+        renderTable();
+        renderCards();
+        renderTableApproval();
+        renderCardsApproval();
+      }
+
+      /* ======================================================
+       * INIT
+       * ====================================================== */
+      renderTable();
+      renderCards();
+
+      // Attach event listeners
+      ["TahunAjaranFilterStatus", "statusFilterStatus"].forEach(id => {
+        qs(`#${id}`)?.addEventListener("change", onMasterFilterChange);
+      });
+
+      qs("#searchCard")?.addEventListener("input", () => {
+        currentPageMobile = 1;
+        renderCards();
+      });
+
+      // Tab change event listener
+      $('a[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
+        if ($(e.target).attr("data-bs-target") === "#riwayatTab") {
+          renderTable();
+          renderCards();
+        }
+      });
+    </script>
+
+    <script>
+      // Form Approval
+      function form_approval() {
+        $("#detailModal").modal("show");
+      }
+
+      // Verifikasi Data
+      function verifikasiData(id) {
+        $("#detailModal").modal("hide");
+        Swal.fire({
+          title: "Konfirmasi Pengajuan",
+          text: `Proses pengajuan ID ${id}?`,
+          icon: "question",
+          showDenyButton: true,
+          showCancelButton: false,
+          confirmButtonText: "Setuju",
+          denyButtonText: "Tolak",
+          confirmButtonColor: "#198754",
+          denyButtonColor: "#dc3545",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+        }).then(async result => {
+          /* ================= APPROVE ================= */
+          if (result.isConfirmed) {
+            console.log("APPROVE:", id);
+            // 👉 TODO: AJAX / fetch approve di sini
+            swal_alert("Berhasil", "Pengajuan berhasil Selesai", "success");
+          }
+
+          /* ================= REJECT ================= */
+          if (result.isDenied) {
+            const alasan = await Swal.fire({
+              title: "Alasan Penolakan",
+              input: "textarea",
+              inputPlaceholder: "Masukkan alasan penolakan...",
+              inputValidator: v => {
+                if (!v) return "Alasan wajib diisi";
+              },
+              showCancelButton: true,
+              confirmButtonText: "Kirim",
+              cancelButtonText: "Batal",
+              allowOutsideClick: false,
+              allowEscapeKey: false,
+            });
+
+            // ❌ Batal → stop
+            if (!alasan.isConfirmed) return;
+
+            // 👉 TODO: AJAX / fetch reject di sini
+            swal_alert(
+              "Ditolak",
+              `Pengajuan ditolak<br><small><em>${alasan.value}</em></small>`,
+              "success",
+            );
+          }
+
+          // 🔑 FIX FOCUS (hindari aria-hidden warning)
+          setTimeout(() => document.body.focus(), 0);
+        });
+      }
+    </script>
+  </body>
+</html>

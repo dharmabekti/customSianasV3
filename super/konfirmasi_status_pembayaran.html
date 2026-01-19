@@ -1700,57 +1700,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         $('#editDataModal').modal('show');
       }
 
-      // Verifikasi Data
-      function verifikasiData(id) {
-        $('#detailPengembalianModal').modal('hide');
-        Swal.fire({
-          title: 'Konfirmasi Approval',
-          text: `Proses pengajuan ID ${id}?`,
-          icon: 'question',
-          showDenyButton: true,
-          showCancelButton: false,
-          confirmButtonText: 'Setuju',
-          denyButtonText: 'Tolak',
-          confirmButtonColor: '#198754',
-          denyButtonColor: '#dc3545',
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        }).then(async result => {
-          /* ================= APPROVE ================= */
-          if (result.isConfirmed) {
-            console.log('APPROVE:', id);
-            // 👉 TODO: AJAX / fetch approve di sini
-            swal_alert('Berhasil', 'Pengajuan berhasil Selesai', 'success');
-          }
-
-          /* ================= REJECT ================= */
-          if (result.isDenied) {
-            const alasan = await Swal.fire({
-              title: 'Alasan Penolakan',
-              input: 'textarea',
-              inputPlaceholder: 'Masukkan alasan penolakan...',
-              inputValidator: v => {
-                if (!v) return 'Alasan wajib diisi';
-              },
-              showCancelButton: true,
-              confirmButtonText: 'Kirim',
-              cancelButtonText: 'Batal',
-              allowOutsideClick: false,
-              allowEscapeKey: false,
-            });
-
-            // ❌ Batal → stop
-            if (!alasan.isConfirmed) return;
-
-            // 👉 TODO: AJAX / fetch reject di sini
-            swal_alert('Ditolak', `Pengajuan ditolak<br><small><em>${alasan.value}</em></small>`, 'success');
-          }
-
-          // 🔑 FIX FOCUS (hindari aria-hidden warning)
-          setTimeout(() => document.body.focus(), 0);
-        });
-      }
-
       // Delete Data
       function deleteData() {
         swal_confirm('Konfirmasi', 'Yakin ingin menghapus data?', 'warning').then(result => {
