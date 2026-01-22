@@ -958,7 +958,7 @@
         >
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Statistik Donatur</span>
+        <span class="navbar-brand mx-auto">Statistik Sekretariat</span>
         <div class="d-flex">
           <div class="dropdown me-1">
             <button
@@ -1525,7 +1525,7 @@
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
       <h3 class="text-center page-title d-none d-lg-block">
-        Statistik Donatur
+        Statistik Sekretariat
       </h3>
       <div class="mb-3">
         <button
@@ -1630,12 +1630,12 @@
             <div class="col-12 mt-4 mb-5">
               <div class="bg-white shadow-sm p-4 rounded">
                 <h5 class="text-center mb-4">
-                  Jumlah Donatur Berdasarkan Status
+                  Data Anak Asuh Aktif
                 </h5>
                 <canvas
                   id="barChart1"
-                  width="400"
-                  height="200"
+                  width="600"
+                  height="360"
                 ></canvas>
               </div>
             </div>
@@ -1647,12 +1647,12 @@
             <div class="col-12 mt-4">
               <div class="bg-white shadow-sm p-4 rounded">
                 <h5 class="text-center mb-4">
-                  Donasi Donatur
+                  Total Donasi per Tahun
                 </h5>
                 <canvas
                   id="barChart2"
-                  width="400"
-                  height="200"
+                  width="600"
+                  height="360"
                 ></canvas>
               </div>
             </div>
@@ -1733,7 +1733,7 @@
                 display: true,
                 text: 'Tahun Ajaran'
               },
-              barPercentage: 0.8,
+              barPercentage: 1.0,
               categoryPercentage: 0.8,
               grid: {
                 display: true
@@ -1746,38 +1746,45 @@
         const labels1 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
         const datasets1 = [
           {
-            label: 'Aktif',
+            label: 'Bandung',
             data: [10, 15, 25, 30, 40],
             backgroundColor: 'rgba(40, 167, 69, 0.8)',
             borderColor: 'rgba(40, 167, 69, 1)',
             borderWidth: 1
           },
           {
-            label: 'Pending',
+            label: 'Malang',
             data: [8, 12, 18, 22, 15],
             backgroundColor: 'rgba(255, 255, 0, 0.8)',
             borderColor: 'rgba(255, 255, 0, 1)',
             borderWidth: 1
           },
           {
-            label: 'Dormant',
+            label: 'Madiun',
             data: [5, 5, 5, 5, 5],
             backgroundColor: 'rgba(255, 193, 7, 0.8)',
             borderColor: 'rgba(255, 193, 7, 1)',
             borderWidth: 1
           },
           {
-            label: 'Stop',
+            label: 'Purwokerto',
             data: [10, 5, 5, 5, 5],
             backgroundColor: 'rgba(108, 117, 125, 0.8)',
             borderColor: 'rgba(108, 117, 125, 1)',
             borderWidth: 1
           },
           {
-            label: 'Nonaktif',
+            label: 'Semarang',
             data: [75, 75, 65, 60, 50],
             backgroundColor: 'rgba(220, 53, 69, 0.8)',
             borderColor: 'rgba(220, 53, 69, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Yogyakarta',
+            data: [20, 25, 30, 35, 45],
+            backgroundColor: 'rgba(0, 123, 255, 0.8)',
+            borderColor: 'rgba(0, 123, 255, 1)',
             borderWidth: 1
           }
         ];
@@ -1829,24 +1836,45 @@
         const labels2 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
         const datasets2 = [
           {
-            label: 'Total Komitmen',
-            data: [750000000, 800000000, 800000000, 850000000, 1000000000],
-            backgroundColor: 'rgba(0, 123, 255, 0.8)',
-            borderColor: 'rgba(0, 123, 255, 1)',
+            label: 'Bandung',
+            data: [750000000, 800000000, 850000000, 900000000, 1000000000],
+            backgroundColor: 'rgba(40, 167, 69, 0.8)',
+            borderColor: 'rgba(40, 167, 69, 1)',
             borderWidth: 1
           },
           {
-            label: 'Lunas',
-            data: [700000000, 700000000, 700000000, 700000000, 500000000],
+            label: 'Malang',
+            data: [700000000, 750000000, 800000000, 850000000, 900000000],
+            backgroundColor: 'rgba(255, 255, 0, 0.8)',
+            borderColor: 'rgba(255, 255, 0, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Madiun',
+            data: [500000000, 550000000, 600000000, 650000000, 700000000],
             backgroundColor: 'rgba(255, 193, 7, 0.8)',
             borderColor: 'rgba(255, 193, 7, 1)',
             borderWidth: 1
           },
           {
-            label: 'Belum Lunas',
-            data: [50000000, 100000000, 100000000, 150000000, 500000000],
+            label: 'Purwokerto',
+            data: [600000000, 650000000, 700000000, 750000000, 800000000],
             backgroundColor: 'rgba(108, 117, 125, 0.8)',
             borderColor: 'rgba(108, 117, 125, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Semarang',
+            data: [800000000, 850000000, 900000000, 950000000, 1000000000],
+            backgroundColor: 'rgba(220, 53, 69, 0.8)',
+            borderColor: 'rgba(220, 53, 69, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Yogyakarta',
+            data: [900000000, 950000000, 1000000000, 1050000000, 1100000000],
+            backgroundColor: 'rgba(0, 123, 255, 0.8)',
+            borderColor: 'rgba(0, 123, 255, 1)',
             borderWidth: 1
           }
         ];
