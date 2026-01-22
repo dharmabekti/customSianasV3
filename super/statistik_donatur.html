@@ -50,6 +50,7 @@
     <!-- Chart.js v4 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <script src="../assets/js/chart.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -1706,178 +1707,186 @@
       });
 
       function loadChart() {
-        // Chart for barChart1
-        const ctx1 = document.getElementById('barChart1').getContext('2d');
         Chart.register(ChartDataLabels);
-        new Chart(ctx1, {
-          type: 'bar',
-          data: {
-            labels: ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'],
-            datasets: [
-              {
-                label: 'Aktif',
-                data: [10, 15, 25, 30, 40],
-                backgroundColor: 'rgba(40, 167, 69, 0.8)',
-                borderColor: 'rgba(40, 167, 69, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Pending',
-                data: [8, 12, 18, 22, 15],
-                backgroundColor: 'rgba(255, 255, 0, 0.8)',
-                borderColor: 'rgba(255, 255, 0, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Dormant',
-                data: [5, 5, 5, 5, 5],
-                backgroundColor: 'rgba(255, 193, 7, 0.8)',
-                borderColor: 'rgba(255, 193, 7, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Stop',
-                data: [10, 5, 5, 5, 5],
-                backgroundColor: 'rgba(108, 117, 125, 0.8)',
-                borderColor: 'rgba(108, 117, 125, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Nonaktif',
-                data: [75, 75, 65, 60, 50],
-                backgroundColor: 'rgba(220, 53, 69, 0.8)',
-                borderColor: 'rgba(220, 53, 69, 1)',
-                borderWidth: 1
-              }
-            ]
-          },
-          options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'right',
-                labels: {
-                  generateLabels: (chart) => {
-                    const datasets = chart.data.datasets;
-                    return datasets.map((dataset, i) => {
-                      const total = dataset.data.reduce((sum, value) => sum + value, 0);
-                      return {
-                        text: `${dataset.label} (${total})`,
-                        fillStyle: dataset.backgroundColor,
-                        strokeStyle: dataset.borderColor,
-                        lineWidth: dataset.borderWidth,
-                        hidden: !chart.isDatasetVisible(i),
-                        index: i
-                      };
-                    });
-                  }
-                }
-              },
-              datalabels: {
-                anchor: 'end',
-                align: 'end',
-                formatter: (value) => value
-              }
-            },
-            scales: {
-              x: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Jumlah Donatur'
-                }
-              },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Tahun Ajaran'
-                },
-                barPercentage: 0.8,
-                categoryPercentage: 0.8
-              }
-            }
-          }
-        });
 
-        // Chart for barChart2
-        const ctx2 = document.getElementById('barChart2').getContext('2d');
-        new Chart(ctx2, {
-          type: 'bar',
-          data: {
-            labels: ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'],
-            datasets: [
-              {
-                label: 'Total Komitmen',
-                data: [750000000, 800000000, 800000000, 850000000, 1000000000],
-                backgroundColor: 'rgba(0, 123, 255, 0.8)',
-                borderColor: 'rgba(0, 123, 255, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Lunas',
-                data: [700000000, 700000000, 700000000, 700000000, 500000000],
-                backgroundColor: 'rgba(255, 193, 7, 0.8)',
-                borderColor: 'rgba(255, 193, 7, 1)',
-                borderWidth: 1
-              },
-              {
-                label: 'Belum Lunas',
-                data: [50000000, 100000000, 100000000, 150000000, 500000000],
-                backgroundColor: 'rgba(108, 117, 125, 0.8)',
-                borderColor: 'rgba(108, 117, 125, 1)',
-                borderWidth: 1
-              }
-            ]
+        // Common options for horizontal bar charts
+        const commonOptions = {
+          indexAxis: 'y',
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom'
+            },
+            datalabels: {
+              anchor: 'end',
+              align: 'end'
+            }
           },
-          options: {
-            indexAxis: 'y',
-            responsive: true,
-            plugins: {
-              legend: {
-                position: 'right'
-              },
-              datalabels: {
-                anchor: 'end',
-                align: 'end',
-                formatter: (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')
-              },
-              tooltip: {
-                callbacks: {
-                  label: (context) => {
-                    const label = context.dataset.label || '';
-                    const value = context.parsed.x;
-                    return `${label}: ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')}`;
-                  }
-                }
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true
               }
             },
-            scales: {
-              x: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Nominal (Rp)'
-                },
-                grid: {
-                  display: false
-                },
-                ticks: {
-                  callback: (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')
-                }
+            y: {
+              title: {
+                display: true,
+                text: 'Tahun Ajaran'
               },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Tahun Ajaran'
-                },
-                grid: {
-                  display: true
-                }
+              barPercentage: 0.8,
+              categoryPercentage: 0.8,
+              grid: {
+                display: true
               }
             }
           }
-        });
+        };
+
+        // Data for barChart1
+        const labels1 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
+        const datasets1 = [
+          {
+            label: 'Aktif',
+            data: [10, 15, 25, 30, 40],
+            backgroundColor: 'rgba(40, 167, 69, 0.8)',
+            borderColor: 'rgba(40, 167, 69, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Pending',
+            data: [8, 12, 18, 22, 15],
+            backgroundColor: 'rgba(255, 255, 0, 0.8)',
+            borderColor: 'rgba(255, 255, 0, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Dormant',
+            data: [5, 5, 5, 5, 5],
+            backgroundColor: 'rgba(255, 193, 7, 0.8)',
+            borderColor: 'rgba(255, 193, 7, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Stop',
+            data: [10, 5, 5, 5, 5],
+            backgroundColor: 'rgba(108, 117, 125, 0.8)',
+            borderColor: 'rgba(108, 117, 125, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Nonaktif',
+            data: [75, 75, 65, 60, 50],
+            backgroundColor: 'rgba(220, 53, 69, 0.8)',
+            borderColor: 'rgba(220, 53, 69, 1)',
+            borderWidth: 1
+          }
+        ];
+        const options1 = {
+          ...commonOptions,
+          plugins: {
+            ...commonOptions.plugins,
+            legend: {
+              ...commonOptions.plugins.legend,
+              labels: {
+                generateLabels: (chart) => {
+                  const datasets = chart.data.datasets;
+                  return datasets.map((dataset, i) => {
+                    const total = dataset.data.reduce((sum, value) => sum + value, 0);
+                    return {
+                      text: `${dataset.label} (${total})`,
+                      fillStyle: dataset.backgroundColor,
+                      strokeStyle: dataset.borderColor,
+                      lineWidth: dataset.borderWidth,
+                      hidden: !chart.isDatasetVisible(i),
+                      index: i
+                    };
+                  });
+                }
+              }
+            },
+            datalabels: {
+              ...commonOptions.plugins.datalabels,
+              formatter: (value) => value
+            }
+          },
+          scales: {
+            ...commonOptions.scales,
+            x: {
+              ...commonOptions.scales.x,
+              title: {
+                ...commonOptions.scales.x.title,
+                text: 'Jumlah Donatur'
+              },
+              grid: {
+                display: false
+              }
+            }
+          }
+        };
+        createBarChart('barChart1', labels1, datasets1, options1);
+
+        // Data for barChart2
+        const labels2 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
+        const datasets2 = [
+          {
+            label: 'Total Komitmen',
+            data: [750000000, 800000000, 800000000, 850000000, 1000000000],
+            backgroundColor: 'rgba(0, 123, 255, 0.8)',
+            borderColor: 'rgba(0, 123, 255, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Lunas',
+            data: [700000000, 700000000, 700000000, 700000000, 500000000],
+            backgroundColor: 'rgba(255, 193, 7, 0.8)',
+            borderColor: 'rgba(255, 193, 7, 1)',
+            borderWidth: 1
+          },
+          {
+            label: 'Belum Lunas',
+            data: [50000000, 100000000, 100000000, 150000000, 500000000],
+            backgroundColor: 'rgba(108, 117, 125, 0.8)',
+            borderColor: 'rgba(108, 117, 125, 1)',
+            borderWidth: 1
+          }
+        ];
+        const options2 = {
+          ...commonOptions,
+          plugins: {
+            ...commonOptions.plugins,
+            datalabels: {
+              ...commonOptions.plugins.datalabels,
+              formatter: (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')
+            },
+            tooltip: {
+              callbacks: {
+                label: (context) => {
+                  const label = context.dataset.label || '';
+                  const value = context.parsed.x;
+                  return `${label}: ${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')}`;
+                }
+              }
+            }
+          },
+          scales: {
+            ...commonOptions.scales,
+            x: {
+              ...commonOptions.scales.x,
+              title: {
+                ...commonOptions.scales.x.title,
+                text: 'Nominal (Rp)'
+              },
+              grid: {
+                display: true
+              },
+              ticks: {
+                callback: (value) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(value).replace('IDR', 'Rp')
+              }
+            }
+          }
+        };
+        createBarChart('barChart2', labels2, datasets2, options2);
       }
     </script>
   </body>
