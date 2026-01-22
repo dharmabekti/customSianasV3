@@ -1657,6 +1657,28 @@
               </div>
             </div>
           </div>
+          <!-- Rekap Total Donasi per Sekretariat -->
+          <div class="row g-4 d-none" id="rekapTable">
+            <div class="col-12">
+              <div class="bg-white shadow-sm p-4 rounded">
+                <h5 class="text-center mb-4">Rekap Total Donasi dan Anak Asuh Aktif per Sekretariat</h5>
+                <div class="table-responsive">
+                  <table class="table table-striped table-hover">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Sekretariat</th>
+                        <th>Total Anak Asuh Aktif</th>
+                        <th>Total Donasi (Rp)</th>
+                      </tr>
+                    </thead>
+                    <tbody id="rekapBody">
+                      <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -1696,6 +1718,8 @@
         ReportUI.hide(placeholder);
         updateDisplay();
         loadChart();
+        populateRekapTable();
+        document.getElementById('rekapTable').classList.remove('d-none');
       });
 
       // Resize window
@@ -1704,6 +1728,8 @@
       // Load chart on page load
       document.addEventListener("DOMContentLoaded", () => {
         loadChart();
+        populateRekapTable();
+        document.getElementById('rekapTable').classList.remove('d-none');
       });
 
       function loadChart() {
@@ -1914,6 +1940,82 @@
           }
         };
         createBarChart('barChart2', labels2, datasets2, options2);
+      }
+
+      function populateRekapTable() {
+        const rekapBody = document.getElementById('rekapBody');
+        rekapBody.innerHTML = ''; // Clear existing rows
+
+        // Data for barChart1 (Anak Asuh Aktif)
+        const datasets1 = [
+          {
+            label: 'Bandung',
+            data: [10, 15, 25, 30, 40]
+          },
+          {
+            label: 'Malang',
+            data: [8, 12, 18, 22, 15]
+          },
+          {
+            label: 'Madiun',
+            data: [5, 5, 5, 5, 5]
+          },
+          {
+            label: 'Purwokerto',
+            data: [10, 5, 5, 5, 5]
+          },
+          {
+            label: 'Semarang',
+            data: [75, 75, 65, 60, 50]
+          },
+          {
+            label: 'Yogyakarta',
+            data: [20, 25, 30, 35, 45]
+          }
+        ];
+
+        // Data for barChart2 (Total Donasi)
+        const datasets2 = [
+          {
+            label: 'Bandung',
+            data: [750000000, 800000000, 850000000, 900000000, 1000000000]
+          },
+          {
+            label: 'Malang',
+            data: [700000000, 750000000, 800000000, 850000000, 900000000]
+          },
+          {
+            label: 'Madiun',
+            data: [500000000, 550000000, 600000000, 650000000, 700000000]
+          },
+          {
+            label: 'Purwokerto',
+            data: [600000000, 650000000, 700000000, 750000000, 800000000]
+          },
+          {
+            label: 'Semarang',
+            data: [800000000, 850000000, 900000000, 950000000, 1000000000]
+          },
+          {
+            label: 'Yogyakarta',
+            data: [900000000, 950000000, 1000000000, 1050000000, 1100000000]
+          }
+        ];
+
+        datasets2.forEach((dataset, index) => {
+          const totalDonasi = dataset.data.reduce((sum, value) => sum + value, 0);
+          const formattedTotalDonasi = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalDonasi).replace('IDR', 'Rp');
+
+          const totalAnakAsuh = datasets1[index].data.reduce((sum, value) => sum + value, 0);
+
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td class="text-center">${dataset.label}</td>
+            <td class="text-center">${totalAnakAsuh}</td>
+            <td class="text-center">${formattedTotalDonasi}</td>
+          `;
+          rekapBody.appendChild(row);
+        });
       }
     </script>
   </body>
