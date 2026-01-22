@@ -21,6 +21,10 @@
 
     <!-- Date Range Picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -886,6 +890,11 @@
                 </div>
               </div>
             </div>
+            <br>
+            <h4 class="text-center mt-3">Peta Persebaran Sekolah TA. 2021/2022 s.d 2025/2026</h4>
+            <div class="row">
+              <div id="schoolMap" style="height: 400px; width: 100%;"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -932,14 +941,115 @@
 
       const headers = ['Indikator', '2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
 
+      let mapInitialized = false;
+
       // Klik cari
       btnSearch.addEventListener('click', () => {
         ReportUI.hide(placeholder);
         updateDisplay();
+
+        // Initialize map if not already done and map container is visible
+        if (!mapInitialized && document.getElementById('schoolMap')) {
+          initializeMap();
+          mapInitialized = true;
+        }
       });
 
       // Resize window
       window.addEventListener('resize', updateDisplay);
+
+      // Function to initialize Leaflet Map for School Distribution
+      function initializeMap() {
+        // Initialize map centered on Java Island
+        var map = L.map('schoolMap').setView([-7.7956, 110.3695], 8);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Sample school data with coordinates
+        var schools = [
+          {
+            name: "Sekolah Dasar Negeri 1 Yogyakarta",
+            location: "Yogyakarta",
+            lat: -7.7956,
+            lng: 110.3695,
+            students: 150
+          },
+          {
+            name: "Sekolah Menengah Pertama Negeri 2 Semarang",
+            location: "Semarang",
+            lat: -6.9667,
+            lng: 110.4167,
+            students: 200
+          },
+          {
+            name: "Sekolah Menengah Atas Negeri 1 Bandung",
+            location: "Bandung",
+            lat: -6.9175,
+            lng: 107.6191,
+            students: 300
+          },
+          {
+            name: "Sekolah Dasar Negeri 3 Malang",
+            location: "Malang",
+            lat: -7.9666,
+            lng: 112.6326,
+            students: 120
+          },
+          {
+            name: "Sekolah Menengah Pertama Negeri 1 Madiun",
+            location: "Madiun",
+            lat: -7.6298,
+            lng: 111.5239,
+            students: 180
+          },
+          {
+            name: "Sekolah Dasar Negeri 2 Purwokerto",
+            location: "Purwokerto",
+            lat: -7.4214,
+            lng: 109.2344,
+            students: 140
+          }
+        ];
+
+        // Add markers for each school
+        schools.forEach(function(school) {
+          var marker = L.marker([school.lat, school.lng]).addTo(map);
+
+          // Create popup content
+          var popupContent = `
+            <div class="text-center">
+              <h6 class="fw-bold">${school.name}</h6>
+              <p class="mb-1"><i class="bi bi-geo-alt"></i> ${school.location}</p>
+              <p class="mb-0"><i class="bi bi-people"></i> ${school.students} Siswa</p>
+            </div>
+          `;
+
+          marker.bindPopup(popupContent);
+        });
+
+        // Add a legend
+        var legend = L.control({position: 'bottomright'});
+
+        legend.onAdd = function (map) {
+          var div = L.DomUtil.create('div', 'info legend bg-white p-2 rounded shadow');
+          div.innerHTML = `
+            <h6 class="mb-2 fw-bold">Legenda</h6>
+            <div class="d-flex align-items-center mb-1">
+              <div class="bg-primary rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+              <span class="small">Lokasi Sekolah</span>
+            </div>
+            <div class="small text-muted mt-2">
+              Klik marker untuk detail
+            </div>
+          `;
+          return div;
+        };
+
+        legend.addTo(map);
+      }
     </script>
   </body>
 </html>
