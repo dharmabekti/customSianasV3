@@ -16,6 +16,11 @@ function createBarChart(canvasId, labels, datasets, options = {}) {
     return null;
   }
 
+  // Destroy existing chart if it exists
+  if (Chart.getChart(canvasId)) {
+    Chart.getChart(canvasId).destroy();
+  }
+
   const defaultOptions = {
     responsive: true,
     plugins: {
