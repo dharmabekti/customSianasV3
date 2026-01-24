@@ -377,7 +377,7 @@ window.previewImg2 = function (input) {
   if (!input) return;
 
   // Pastikan container upload-box ada
-  const box = input.closest('.upload-box-ttd');
+  const box = input.closest('.upload-box-2');
   if (!box) return;
 
   // Pastikan ada file

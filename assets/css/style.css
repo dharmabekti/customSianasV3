@@ -548,7 +548,7 @@ textarea::placeholder {
 
 
 
-.upload-box-ttd {
+.upload-box-2 {
   position: relative;
   height: 140px; /* ukuran kotak foto */
   width: 200px;
@@ -562,11 +562,11 @@ textarea::placeholder {
   transition: border-color 0.3s;
 }
 
-.upload-box-ttd:hover {
+.upload-box-2:hover {
   border-color: #007bff;
 }
 
-.upload-box-ttd input[type="file"] {
+.upload-box-2 input[type="file"] {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -575,15 +575,15 @@ textarea::placeholder {
   z-index: 2;
 }
 
-.upload-box-ttd .placeholder {
+.upload-box-2 .placeholder {
   color: white; /* ubah warna placeholder */
 }
-.upload-box-ttd .placeholder span {
+.upload-box-2 .placeholder span {
   color: #69b3ff; /* warna tanda + */
   font-size: 48px;
 }
 
-.upload-box-ttd span {
+.upload-box-2 span {
   display: block;
   font-size: 28px;
   font-weight: bold;
@@ -592,7 +592,7 @@ textarea::placeholder {
 }
 
 /* 🖼️ Aturan gambar agar proporsional dan penuh area */
-.upload-box-ttd img {
+.upload-box-2 img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* cover = isi penuh tapi tetap proporsional */
