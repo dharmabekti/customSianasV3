@@ -590,85 +590,88 @@
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Detail Data Transfer Beasiswa</h5>
+            <h5 class="modal-title">Detail Transfer Beasiswa</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
           <div class="modal-body">
-            <div class="info-section ft-14">
-              <div class="row g-3">
-                <!-- Kolom kiri -->
-                <div class="col-12 col-md-6 info-column">
-                  <div class="info-item">
-                    <span class="info-label">Tahun Ajaran</span>
-                    <span class="info-value">2025/2026</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Komunitas</span>
-                    <span class="info-value">SMK Kristen 2 Magelang</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tanggal Transfer</span>
-                    <span class="info-value">-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kode Transfer</span>
-                    <span class="info-value">-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Dari Rekening</span>
-                    <span class="info-value">BCA an Yayasan AAT Indonesia</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Bank Tujuan</span>
-                    <span class="info-value">BRI</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Rek Tujuan</span>
-                    <span class="info-value">0048-01-027309-50-8</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Atas Nama</span>
-                    <span class="info-value">SMK KRISTEN 2 MAGELANG</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Jumlah Transfer</span>
-                    <span class="info-value">Rp1.000.000</span>
-                  </div>
+            <div class="row">
+              <!-- ================= TAB ================= -->
+              <ul class="nav nav-tabs mb-3 d-flex flex-nowrap" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detailData">
+                    Detail Data
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatVerifikasi">
+                    Riwayat Verifikasi
+                  </button>
+                </li>
+              </ul>
+            
+              <div class="tab-content">
+                <!-- ================= DETAIL DATA ================= -->
+                <div class="tab-pane fade show active" id="detailData">
+                  
                 </div>
-
-                <!-- Kolom kanan -->
-                <div class="col-12 col-md-6 info-column">
-                  <div class="info-item">
-                    <span class="info-label">Kuitansi</span>
-                    <a href="#" class="info-value text-primary text-decoration-none">
-                      <i class="bi bi-file-earmark-text"></i> Lihat</a
-                    >
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Lampiran Kuitansi</span>
-                    <a href="#" class="info-value text-primary text-decoration-none">
-                      <i class="bi bi-file-earmark-text"></i> Lihat
-                    </a>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Uraian</span>
-                    <span class="info-value">—</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Status</span>
-                    <div class="info-value">
-                      <span class="badge bg-danger">Reject by Admin</span>
-                    </div>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Catatan</span>
-                    <div class="info-value">
-                      <p class="text-danger small mt-1 mb-0">
-                        Kesalahan Penulisan, seharusnya <span class="fw-semibold">SPP/Bulan</span>
-                      </p>
-                    </div>
-                  </div>
+            
+                <!-- ================= SRIWAYAT VERIFIKASI ================= -->
+                <div class="tab-pane fade" id="riwayatVerifikasi">
+                  <ul class="timeline">
+                    <li class="timeline-item success">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">15 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-013 (Ketua)</strong> menyetujui pengajuan transfer beasiswa</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item info">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">10 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-028 (Admin Sianas)</strong> menyetujui pengajuan transfer beasiswa</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item waiting">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Data Diperbarui</strong>
+                        <small class="text-muted">05 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>PJ-XX-XXXX</strong> memperbarui pengajuan transfer beasiswa</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item danger">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">03 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-028</strong> menolak pengajuan transfer beasiswa</p>
+                        <span class="text-important fst-italic">Alasan: Ada Anak Asuh Keluar</span>
+                      </div>
+                    </li>
+                    <li class="timeline-item waiting">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Data Dikirim</strong>
+                        <small class="text-muted">01 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>PJ-XX-XXXX</strong> mengajukan transfer beasiswa</p>
+                      </div>
+                    </li>
+            
+                  </ul>
                 </div>
               </div>
             </div>
