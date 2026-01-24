@@ -1162,6 +1162,19 @@
     function loadChart() {
       Chart.register(ChartDataLabels);
 
+      const isMobile = window.innerWidth < 768;
+
+      // Adjust canvas height for mobile
+      const canvas1 = document.getElementById('barChart1');
+      const canvas2 = document.getElementById('barChart2');
+      if (isMobile) {
+        canvas1.height = 1024;
+        canvas2.height = 1024;
+      } else {
+        canvas1.height = 500;
+        canvas2.height = 500;
+      }
+
       // Common options for horizontal bar charts
       const commonOptions = {
         indexAxis: 'y',
@@ -1171,7 +1184,7 @@
             position: 'bottom'
           },
           datalabels: {
-            display: false
+            display: isMobile
           }
         },
         scales: {
@@ -1179,6 +1192,11 @@
             beginAtZero: true,
             title: {
               display: true
+            },
+            ticks: {
+              font: {
+                size: isMobile ? 10 : 12
+              }
             }
           },
           y: {
@@ -1190,6 +1208,11 @@
             categoryPercentage: 0.8,
             grid: {
               display: true
+            },
+            ticks: {
+              font: {
+                size: isMobile ? 10 : 12
+              }
             }
           }
         }
