@@ -35,92 +35,78 @@
       </div>
 
       <!-- Navbar Desktop -->
-      <nav class="navbar navbar-expand-lg px-3">
+      <nav class="navbar navbar-expand-lg custom-navbar">
         <div class="container-fluid">
           <!-- LEFT MENU -->
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav me-auto nav-left">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Beranda</a>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="donaturDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Donatur
+              <a class="nav-link dropdown-toggle" href="#" id="donaturDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Donatur
               </a>
               <ul class="dropdown-menu" aria-labelledby="donaturDropdown">
                 <li><a class="dropdown-item" href="donatur.html">List Donatur</a></li>
                 <li><a class="dropdown-item" href="form_donatur.html">Input Donatur</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="riwayat_donasi_all.html">Riwayat Donasi Donatur</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="riwayat_donasi_donatur.html">Riwayat Donasi Donatur</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="lelang.html">Pemilihan Anak Asuh oleh Donatur</a></li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="sekretariatDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Sekretariat
+              <a class="nav-link dropdown-toggle" href="#" id="sekretariatDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Sekretariat
               </a>
               <ul class="dropdown-menu" aria-labelledby="sekretariatDropdown">
                 <li><a class="dropdown-item" href="sekretariat.html">Data Sekretariat</a></li>
                 <li><a class="dropdown-item" href="penanggungjawab_sekretariat.html">Data PJ Sekretariat</a></li>
                 <li><a class="dropdown-item" href="form_pjs.html">Input PJ Sekretariat</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="data_pt.html">Data Pendidikan Tinggi</a></li>
                 <li><a class="dropdown-item" href="form_pt.html">Input Pendidikan Tinggi</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="bpt.html">Data BPT Sekretariat</a></li>
                 <li><a class="dropdown-item" href="form_bpt.html">Input BPT Sekretariat</a></li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="komunitasDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Komunitas/Sekolah
+              <a class="nav-link dropdown-toggle" href="#" id="komunitasDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Komunitas/Sekolah
               </a>
               <ul class="dropdown-menu" aria-labelledby="komunitasDropdown">
                 <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
                 <li><a class="dropdown-item" href="form_sekolah.html">Input Komunitas/Sekolah</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="penanggungjawab.html">Data PJ Sekolah</a></li>
                 <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
                 <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
-                <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal"
-                    >SK Beasiswa</a
-                  >
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal">SK Beasiswa</a>
                 </li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="anakAsuhDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
+              <a class="nav-link dropdown-toggle" href="#" id="anakAsuhDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
                 Anak Asuh
               </a>
               <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
@@ -132,48 +118,61 @@
                     <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
                   </ul>
                 </li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="pengajuan_anakasuh_baru.html">Konfirmasi Anak Asuh Baru</a></li>
                 <li><a class="dropdown-item" href="konfirmasi_naik_jenjang.html">Konfirmasi Kenaikan Jenjang</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijazah</a></li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="transferBeasiswaDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Transfer Beasiswa
+              <a class="nav-link dropdown-toggle" href="#" id="transferBeasiswaDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Transfer Beasiswa
               </a>
               <ul class="dropdown-menu" aria-labelledby="transferBeasiswaDropdown">
                 <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
                 <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="ganti_rekening.html">Penggantian No Rekening</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
                 <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
-                    >Rekening Yayasan</a
-                  >
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal">Rekening
+                    Yayasan</a>
                 </li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="laporanDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Laporan
+              <a class="nav-link dropdown-toggle" href="#" id="pembayaranDonasiDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Pembayaran & Donasi
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
+                <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a></li>
+                <li><a class="dropdown-item" href="pemindahan_sisa_donasi.html">Pemindahan Sisa Donasi</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="transfer_tak_dikenal.html">Transfer Tak Dikenal</a></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
+              </ul>
+            </li>
+      
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="laporanDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Laporan
               </a>
               <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
                 <li class="dropdown-submenu">
@@ -196,7 +195,8 @@
                     <li><a class="dropdown-item" href="laporan_komunitas.html">Cari per ID</a></li>
                     <li><a class="dropdown-item" href="statistik_komunitas.html">Statistik Umum</a></li>
                   </ul>
-                </li><li class="dropdown-submenu">
+                </li>
+                <li class="dropdown-submenu">
                   <a class="dropdown-item" href="#">Laporan Anak Asuh</a>
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="laporan_anakasuh.html">Cari per ID</a></li>
@@ -216,88 +216,97 @@
                 <li><a class="dropdown-item" href="rekup_kode_unik.html">Rekup Kode Unik</a></li>
               </ul>
             </li>
-
+      
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="settingDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Pengaturan
+              <a class="nav-link dropdown-toggle" href="#" id="settingDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Pengaturan
               </a>
               <ul class="dropdown-menu" aria-labelledby="settingDropdown">
                 <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
                 <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
               </ul>
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#kontakYayasanModal">Hubungi Kami</a>
+      
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="kontakDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Hubungi Kami
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="kontakDropdown">
+                <li>
+                  <a class="dropdown-item" href="https://wa.me/628xxxxxxxxx" target="_blank"><i
+                      class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="mailto:beasiswa@aat.or.id"><i class="bi bi-envelope me-2"></i>Email</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://instagram.com/aat.indonesia" target="_blank"><i
+                      class="bi bi-instagram me-2"></i>Instagram</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://youtube.com/@aatindonesia" target="_blank"><i
+                      class="bi bi-youtube me-2"></i>YouTube</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://facebook.com/aatindonesia" target="_blank"><i
+                      class="bi bi-facebook me-2"></i>Facebook</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://x.com/aat_indonesia" target="_blank"><i
+                      class="bi bi-twitter-x me-2"></i>X (Twitter)</a>
+                </li>
+              </ul>
             </li>
           </ul>
-
+      
           <!-- RIGHT PROFILE & NOTIFICATION MENU -->
-          <ul class="navbar-nav ms-auto align-items-center">
+          <ul class="navbar-nav ms-auto align-items-center nav-right">
             <!-- 🔔 Notifikasi -->
             <li class="nav-item dropdown me-2">
-              <a
-                class="nav-link position-relative"
-                href="#"
-                id="notifDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="bi bi-bell" style="font-size: 1.3rem"></i>
+              <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="bi bi-bell" style="font-size: 14px"></i>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
-                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li>
+                  <h6 class="dropdown-header">Notifikasi</h6>
+                </li>
                 <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
                 <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
                 <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
-                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
                 <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
               </ul>
             </li>
-
+      
             <!-- 👤 Profil -->
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle d-flex align-items-center"
-                href="#"
-                id="profileDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="../assets/img/logo_AAT.png"
-                  alt="User"
-                  width="30"
-                  height="30"
-                  class="rounded-circle profile-img shadow-sm me-2"
-                />
-                <span class="fw-semibold ft-12">ADM-XXXX</span>
+              <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../assets/img/logo_AAT.png" alt="User" width="30" height="30"
+                  class="rounded-circle profile-img shadow-sm me-2" />
+                <span class="fw-semibold ft-12">ADM-NAS-XXXX</span>
               </a>
+      
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                 <li>
                   <a class="dropdown-item" href="profil.html">Profil</a>
                 </li>
-
+      
                 <li>
                   <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
                 </li>
-
+      
                 <!-- SUBMENU SEKRETARIAT -->
                 <li class="dropdown-submenu">
                   <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
                     Sekretariat : <strong>All</strong>
                     <i class="bi bi-caret-down-fill ms-2"></i>
                   </a>
-
+      
                   <ul class="dropdown-menu">
                     <li><a class="dropdown-item active" href="#">All</a></li>
                     <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
@@ -308,9 +317,11 @@
                     <li><a class="dropdown-item" href="#">Bandung</a></li>
                   </ul>
                 </li>
-
-                <li><hr class="dropdown-divider" /></li>
-
+      
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+      
                 <li>
                   <a class="dropdown-item text-danger" href="#">Logout</a>
                 </li>
