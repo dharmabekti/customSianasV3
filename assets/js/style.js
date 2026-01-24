@@ -373,6 +373,39 @@ window.previewFoto = function (input) {
   reader.readAsDataURL(file);
 };
 
+window.previewImg2 = function (input) {
+  if (!input) return;
+
+  // Pastikan container upload-box ada
+  const box = input.closest('.upload-box-ttd');
+  if (!box) return;
+
+  // Pastikan ada file
+  const file = input.files && input.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    // Hapus placeholder jika ada
+    const placeholder = box.querySelector('.placeholder');
+    if (placeholder) placeholder.remove();
+
+    // Hapus gambar lama (bukan placeholder)
+    const existingImg = box.querySelector('img:not(.placeholder)');
+    if (existingImg) existingImg.remove();
+
+    // Buat gambar baru
+    const img = document.createElement('img');
+    img.src = e.target.result;
+    img.classList.add('img-preview'); // opsional untuk styling nanti
+
+    box.appendChild(img);
+  };
+
+  reader.readAsDataURL(file);
+};
+
 // ========== Image Preview ===================
 
 document.addEventListener('DOMContentLoaded', function () {
