@@ -614,7 +614,7 @@
       <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
         <i class="bi bi-list"></i>
       </button>
-      <span class="navbar-brand mx-auto">Statistik Sekretariat</span>
+      <span class="navbar-brand mx-auto">Stat. Komunitas/Sekolah</span>
       <div class="d-flex">
         <div class="dropdown me-1">
           <button class="btn btn-outline-light position-relative" type="button" id="mobileNotifDropdown"
@@ -952,7 +952,7 @@
   <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
     <div class="d-none d-lg-block mb-5"></div>
     <h3 class="text-center page-title d-none d-lg-block">
-      Statistik Sekretariat
+      Statistik Komunitas/Sekolah
     </h3>
     <div class="mb-3">
       <button class="btn btn-outline-primary w-100 d-lg-none" type="button" data-bs-toggle="collapse"
@@ -1024,89 +1024,54 @@
       </div>
     </div>
 
-
-    <!-- Placeholder -->
-    <div id="placeholderData" class="container-fluid form-wrapper">
-      <div class="text-center py-4">
+    <div class="container-fluid form-wrapper">
+      <!-- Placeholder -->
+      <div id="placeholderData" class="text-center py-4">
         <span class="fst-italic text-muted">Belum ada data !</span>
       </div>
-    </div>
-    <div class="row d-none mt-3" id="resultTable">
-      <div class="container-fluid mb-5 container-wrapper">
+
+      <div class="row g-4 d-none" id="resultTable">
+        <!-- Kolom kiri -->
+        <div class="col-lg-6">
+          <!-- Bar Chart Container -->
+          <div class="col-12 mt-4 mb-5">
+            <div class="bg-white shadow-sm p-4 rounded">
+              <h5 class="text-center mb-4">
+                Komunitas/Sekolah Aktif
+              </h5>
+              <canvas id="barChart1" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom kanan -->
+        <div class="col-lg-6">
+          <!-- Bar Chart Container -->
+          <div class="col-12 mt-4">
+            <div class="bg-white shadow-sm p-4 rounded">
+              <h5 class="text-center mb-4">
+                Total Donasi Per Tahun
+              </h5>
+              <canvas id="barChart2" width="400" height="200"></canvas>
+            </div>
+          </div>
+        </div>
         <div class="row">
-          <!-- ================= TAB ================= -->
-          <ul class="nav nav-tabs mb-3 d-flex flex-nowrap" role="tablist" style="font-size: 12px">
-            <li class="nav-item">
-              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#grafik">
-                Grafik Anak Asuh & Donasi
-              </button>
-            </li>
-            <li class="nav-item">
-              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#rata2">Waktu Rata–Rata Administrasi</button>
-            </li>
-          </ul>
-          <!-- ================= GRAFIK ================= -->
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="grafik">
-              <div class="row">
-                <!-- Kolom kiri -->
-                <div class="col-lg-6">
-                  <!-- Bar Chart Container -->
-                  <div class="col-12 mt-4 mb-5">
-                    <div class="bg-white shadow-sm p-4 rounded">
-                      <h5 class="text-center mb-4">
-                        Data Anak Asuh Aktif
-                      </h5>
-                      <canvas id="barChart1" width="600" height="360"></canvas>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Kolom kanan -->
-                <div class="col-lg-6">
-                  <!-- Bar Chart Container -->
-                  <div class="col-12 mt-4">
-                    <div class="bg-white shadow-sm p-4 rounded">
-                      <h5 class="text-center mb-4">
-                        Total Donasi per Tahun
-                      </h5>
-                      <canvas id="barChart2" width="600" height="360"></canvas>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Rekap Total Donasi per Sekretariat -->
-              <div class="row">
-                <div class="col-12">
-                  <div class="bg-white shadow-sm p-4 rounded">
-                    <h5 class="text-center mb-4">Rekap Total Donasi dan Anak Asuh Aktif per Sekretariat</h5>
-                    <div class="table-responsive">
-                      <table class="table table-striped table-hover no-mobile-hide">
-                        <thead class="table-light">
-                          <tr>
-                            <th>Sekretariat</th>
-                            <th>Total Anak Asuh Aktif</th>
-                            <th>Total Donasi (Rp)</th>
-                          </tr>
-                        </thead>
-                        <tbody id="rekapBody">
-                          <!-- Data will be populated by JavaScript -->
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- ================= WAKTU RATA-RATA KUITANSI ================= -->
-            <div class="tab-pane fade" id="rata2">
-              <div class="mb-4">
-                <div class="accordion" id="mobileAccordion">
-                  <div id="accordionContainer"></div>
-                </div>
-              </div>
-            </div>
+          <div class="d-block d-lg-none mb-5"></div>
+          <h5 class="text-center mb-4">Rekap Komunitas/Sekolah Aktif dan Donasi per Tahun</h5>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover no-mobile-hide">
+              <thead class="table-light">
+                <tr>
+                  <th>Jenis Komunitas/Sekolah</th>
+                  <th>Total Aktif</th>
+                  <th>Total Donasi (Rp)</th>
+                </tr>
+              </thead>
+              <tbody id="rekapBody">
+                <!-- Data will be populated by JavaScript -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -1146,7 +1111,6 @@
       ReportUI.hide(placeholder);
       updateDisplay();
       loadChart();
-      populateRekapTable();
     });
 
     // Resize window
@@ -1155,8 +1119,6 @@
     // Load chart on page load
     document.addEventListener("DOMContentLoaded", () => {
       loadChart();
-      populateRekapTable();
-      populateAccordion();
     });
 
     function loadChart() {
@@ -1186,7 +1148,7 @@
               display: true,
               text: 'Tahun Ajaran'
             },
-            barPercentage: 1.0,
+            barPercentage: 0.8,
             categoryPercentage: 0.8,
             grid: {
               display: true
@@ -1199,45 +1161,31 @@
       const labels1 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
       const datasets1 = [
         {
-          label: 'Bandung',
+          label: 'Komunitas',
           data: [10, 15, 25, 30, 40],
+          backgroundColor: 'rgba(0, 123, 255, 0.8)',
+          borderColor: 'rgba(0, 123, 255, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'SD',
+          data: [8, 12, 18, 22, 15],
           backgroundColor: 'rgba(40, 167, 69, 0.8)',
           borderColor: 'rgba(40, 167, 69, 1)',
           borderWidth: 1
         },
         {
-          label: 'Malang',
-          data: [8, 12, 18, 22, 15],
-          backgroundColor: 'rgba(255, 255, 0, 0.8)',
-          borderColor: 'rgba(255, 255, 0, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Madiun',
+          label: 'SMP',
           data: [5, 5, 5, 5, 5],
           backgroundColor: 'rgba(255, 193, 7, 0.8)',
           borderColor: 'rgba(255, 193, 7, 1)',
           borderWidth: 1
         },
         {
-          label: 'Purwokerto',
+          label: 'SMA/SMK',
           data: [10, 5, 5, 5, 5],
-          backgroundColor: 'rgba(108, 117, 125, 0.8)',
-          borderColor: 'rgba(108, 117, 125, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Semarang',
-          data: [75, 75, 65, 60, 50],
           backgroundColor: 'rgba(220, 53, 69, 0.8)',
           borderColor: 'rgba(220, 53, 69, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Yogyakarta',
-          data: [20, 25, 30, 35, 45],
-          backgroundColor: 'rgba(0, 123, 255, 0.8)',
-          borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
         }
       ];
@@ -1247,22 +1195,6 @@
           ...commonOptions.plugins,
           legend: {
             ...commonOptions.plugins.legend,
-            labels: {
-              generateLabels: (chart) => {
-                const datasets = chart.data.datasets;
-                return datasets.map((dataset, i) => {
-                  const total = dataset.data.reduce((sum, value) => sum + value, 0);
-                  return {
-                    text: `${dataset.label} (${total})`,
-                    fillStyle: dataset.backgroundColor,
-                    strokeStyle: dataset.borderColor,
-                    lineWidth: dataset.borderWidth,
-                    hidden: !chart.isDatasetVisible(i),
-                    index: i
-                  };
-                });
-              }
-            }
           },
           datalabels: {
             ...commonOptions.plugins.datalabels,
@@ -1289,45 +1221,31 @@
       const labels2 = ['2021/2022', '2022/2023', '2023/2024', '2024/2025', '2025/2026'];
       const datasets2 = [
         {
-          label: 'Bandung',
-          data: [750000000, 800000000, 850000000, 900000000, 1000000000],
+          label: 'Komunitas',
+          data: [750000000, 800000000, 800000000, 850000000, 1000000000],
+          backgroundColor: 'rgba(0, 123, 255, 0.8)',
+          borderColor: 'rgba(0, 123, 255, 1)',
+          borderWidth: 1
+        },
+        {
+          label: 'SD',
+          data: [700000000, 700000000, 700000000, 700000000, 500000000],
           backgroundColor: 'rgba(40, 167, 69, 0.8)',
           borderColor: 'rgba(40, 167, 69, 1)',
           borderWidth: 1
         },
         {
-          label: 'Malang',
-          data: [700000000, 750000000, 800000000, 850000000, 900000000],
-          backgroundColor: 'rgba(255, 255, 0, 0.8)',
-          borderColor: 'rgba(255, 255, 0, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Madiun',
-          data: [500000000, 550000000, 600000000, 650000000, 700000000],
+          label: 'SMP',
+          data: [50000000, 100000000, 100000000, 150000000, 500000000],
           backgroundColor: 'rgba(255, 193, 7, 0.8)',
           borderColor: 'rgba(255, 193, 7, 1)',
           borderWidth: 1
         },
         {
-          label: 'Purwokerto',
-          data: [600000000, 650000000, 700000000, 750000000, 800000000],
-          backgroundColor: 'rgba(108, 117, 125, 0.8)',
-          borderColor: 'rgba(108, 117, 125, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Semarang',
-          data: [800000000, 850000000, 900000000, 950000000, 1000000000],
+          label: 'SMA/SMK',
+          data: [100000000, 200000000, 300000000, 400000000, 600000000],
           backgroundColor: 'rgba(220, 53, 69, 0.8)',
           borderColor: 'rgba(220, 53, 69, 1)',
-          borderWidth: 1
-        },
-        {
-          label: 'Yogyakarta',
-          data: [900000000, 950000000, 1000000000, 1050000000, 1100000000],
-          backgroundColor: 'rgba(0, 123, 255, 0.8)',
-          borderColor: 'rgba(0, 123, 255, 1)',
           borderWidth: 1
         }
       ];
@@ -1367,233 +1285,23 @@
         }
       };
       createBarChart('barChart2', labels2, datasets2, options2);
-    }
 
-    function populateRekapTable() {
-      const rekapBody = document.getElementById('rekapBody');
-      rekapBody.innerHTML = ''; // Clear existing rows
+      function populateRekapBody() {
+        const tbody = document.getElementById('rekapBody');
+        tbody.innerHTML = '';
+        datasets1.forEach((ds, index) => {
+          const totalAktif = ds.data.reduce((sum, val) => sum + val, 0);
+          const totalDonasi = datasets2[index].data.reduce((sum, val) => sum + val, 0);
+          const row = `<tr  class="text-center">
+            <td data-label="Jenis">${ds.label}</td>
+            <td data-label="Aktif">${totalAktif}</td>
+            <td data-label="Jml Donasi">Rp ${new Intl.NumberFormat('id-ID').format(totalDonasi)}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      }
 
-      // Data for barChart1 (Anak Asuh Aktif)
-      const datasets1 = [
-        {
-          label: 'Bandung',
-          data: [10, 15, 25, 30, 40]
-        },
-        {
-          label: 'Malang',
-          data: [8, 12, 18, 22, 15]
-        },
-        {
-          label: 'Madiun',
-          data: [5, 5, 5, 5, 5]
-        },
-        {
-          label: 'Purwokerto',
-          data: [10, 5, 5, 5, 5]
-        },
-        {
-          label: 'Semarang',
-          data: [75, 75, 65, 60, 50]
-        },
-        {
-          label: 'Yogyakarta',
-          data: [20, 25, 30, 35, 45]
-        }
-      ];
-
-      // Data for barChart2 (Total Donasi)
-      const datasets2 = [
-        {
-          label: 'Bandung',
-          data: [750000000, 800000000, 850000000, 900000000, 1000000000]
-        },
-        {
-          label: 'Malang',
-          data: [700000000, 750000000, 800000000, 850000000, 900000000]
-        },
-        {
-          label: 'Madiun',
-          data: [500000000, 550000000, 600000000, 650000000, 700000000]
-        },
-        {
-          label: 'Purwokerto',
-          data: [600000000, 650000000, 700000000, 750000000, 800000000]
-        },
-        {
-          label: 'Semarang',
-          data: [800000000, 850000000, 900000000, 950000000, 1000000000]
-        },
-        {
-          label: 'Yogyakarta',
-          data: [900000000, 950000000, 1000000000, 1050000000, 1100000000]
-        }
-      ];
-
-      datasets2.forEach((dataset, index) => {
-        const totalDonasi = dataset.data.reduce((sum, value) => sum + value, 0);
-        const formattedTotalDonasi = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(totalDonasi).replace('IDR', 'Rp');
-
-        const totalAnakAsuh = datasets1[index].data.reduce((sum, value) => sum + value, 0);
-
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td class="text-center" data-label="Sekretariat">${dataset.label}</td>
-            <td class="text-center" data-label="AA Aktif">${totalAnakAsuh}</td>
-            <td class="text-center" data-label="Jml Donasi">${formattedTotalDonasi}</td>
-          `;
-        rekapBody.appendChild(row);
-      });
-    }
-
-    function populateAccordion() {
-      const container = document.getElementById('accordionContainer');
-      const cities = ['Yogyakarta', 'Malang', 'Semarang', 'Bandung', 'Purwokerto', 'Madiun'];
-
-      cities.forEach((city, index) => {
-        const accordionId = `accordion${index + 1}`;
-        const headerId = `sekre-${city.toLowerCase()}`;
-
-        const accordionItem = document.createElement('div');
-        accordionItem.className = 'accordion-item mt-3';
-        accordionItem.innerHTML = `
-          <h6 class="accordion-header" id="${headerId}">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-              data-bs-target="#${accordionId}" aria-expanded="false" aria-controls="${accordionId}">
-              <span class="flex-grow-1">Sekretariat ${city}</span>
-              <i class="bi bi-chevron-right"></i>
-            </button>
-          </h6>
-          <div id="${accordionId}" class="accordion-collapse collapse" aria-labelledby="${headerId}"
-            data-bs-parent="#mobileAccordion">
-            <div class="accordion-body">
-              <div class="table-responsive">
-                <table class="table table-striped table-bordered align-middle text-center bg-white shadow-sm no-mobile-hide">
-                  <thead class="table-light">
-                    <tr>
-                      <th rowspan="2">Tahun Ajaran</th>
-                      <th colspan="11">Transfer Kuitansi</th>
-                      <th colspan="2">Administrasi Raport</th>
-                      <th rowspan="2">Administrasi Ijazah</th>
-                      <tr>
-                      <th>Jul–Okt</th>
-                      <th>Sept</th>
-                      <th>Nov</th>
-                      <th>Des</th>
-                      <th>Jan</th>
-                      <th>Feb</th>
-                      <th>Mar</th>
-                      <th>Apr</th>
-                      <th>Mei</th>
-                      <th>Jun</th>
-                      <th>Jul</th>
-                      <th>Ganjil</th>
-                      <th>Genap</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td data-label="Tahun Ajaran">2021/2022</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Transfer Kuitansi</td>
-                      <td data-label="Jul–Okt">01 Jul 2021</td>
-                      <td data-label="Sept">03 Sep 2021</td>
-                      <td data-label="Nov">04 Nov 2021</td>
-                      <td data-label="Des">05 Des 2021</td>
-                      <td data-label="Jan">10 Jan 2022</td>
-                      <td data-label="Feb">12 Feb 2022</td>
-                      <td data-label="Mar">15 Mar 2022</td>
-                      <td data-label="Apr">18 Apr 2022</td>
-                      <td data-label="Mei">20 Mei 2022</td>
-                      <td data-label="Jun">22 Jun 2022</td>
-                      <td data-label="Jul">25 Jul 2022</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Raport & Ijazah</td>
-                      <td data-label="Rpt Ganjil">15 Jan 2022</td>
-                      <td data-label="Rpt Genap">30 Jun 2022</td>
-                      <td data-label="Ijazah">30 Jul 2022</td>
-                    </tr>
-                    <tr>
-                      <td data-label="Tahun Ajaran">2022/2023</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Transfer Kuitansi</td>
-                      <td data-label="Jul–Okt">02 Jul 2022</td>
-                      <td data-label="Sept">05 Sep 2022</td>
-                      <td data-label="Nov">06 Nov 2022</td>
-                      <td data-label="Des">07 Des 2022</td>
-                      <td data-label="Jan">11 Jan 2023</td>
-                      <td data-label="Feb">13 Feb 2023</td>
-                      <td data-label="Mar">16 Mar 2023</td>
-                      <td data-label="Apr">19 Apr 2023</td>
-                      <td data-label="Mei">21 Mei 2023</td>
-                      <td data-label="Jun">23 Jun 2023</td>
-                      <td data-label="Jul">26 Jul 2023</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Raport & Ijazah</td>
-                      <td data-label="Rpt Ganjil">15 Jan 2023</td>
-                      <td data-label="Rpt Genap">30 Jun 2023</td>
-                      <td data-label="Ijazah">30 Jul 2023</td>
-                    </tr>
-                    <tr>
-                      <td data-label="Tahun Ajaran">2023/2024</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Transfer Kuitansi</td>
-                      <td data-label="Jul–Okt">03 Jul 2023</td>
-                      <td data-label="Sept">06 Sep 2023</td>
-                      <td data-label="Nov">07 Nov 2023</td>
-                      <td data-label="Des">08 Des 2023</td>
-                      <td data-label="Jan">12 Jan 2024</td>
-                      <td data-label="Feb">14 Feb 2024</td>
-                      <td data-label="Mar">17 Mar 2024</td>
-                      <td data-label="Apr">20 Apr 2024</td>
-                      <td data-label="Mei">22 Mei 2024</td>
-                      <td data-label="Jun">24 Jun 2024</td>
-                      <td data-label="Jul">27 Jul 2024</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Raport & Ijazah</td>
-                      <td data-label="Rpt Ganjil">15 Jan 2024</td>
-                      <td data-label="Rpt Genap">30 Jun 2024</td>
-                      <td data-label="Ijazah">30 Jul 2024</td>
-                    </tr>
-                    <tr>
-                      <td data-label="Tahun Ajaran">2024/2025</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Transfer Kuitansi</td>
-                      <td data-label="Jul–Okt">04 Jul 2024</td>
-                      <td data-label="Sept">07 Sep 2024</td>
-                      <td data-label="Nov">08 Nov 2024</td>
-                      <td data-label="Des">09 Des 2024</td>
-                      <td data-label="Jan">13 Jan 2025</td>
-                      <td data-label="Feb">15 Feb 2025</td>
-                      <td data-label="Mar">18 Mar 2025</td>
-                      <td data-label="Apr">21 Apr 2025</td>
-                      <td data-label="Mei">23 Mei 2025</td>
-                      <td data-label="Jun">25 Jun 2025</td>
-                      <td data-label="Jul">28 Jul 2025</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Raport & Ijazah</td>
-                      <td data-label="Rpt Ganjil">15 Jan 2025</td>
-                      <td data-label="Rpt Genap">30 Jun 2025</td>
-                      <td data-label="Ijazah">30 Jul 2025</td>
-                    </tr>
-                    <tr>
-                      <td data-label="Tahun Ajaran">2025/2026</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Transfer Kuitansi</td>
-                      <td data-label="Jul–Okt">05 Jul 2025</td>
-                      <td data-label="Sept">08 Sep 2025</td>
-                      <td data-label="Nov">09 Nov 2025</td>
-                      <td data-label="Des">10 Des 2025</td>
-                      <td data-label="Jan">14 Jan 2026</td>
-                      <td data-label="Feb">-</td>
-                      <td data-label="Mar">-</td>
-                      <td data-label="Apr">-</td>
-                      <td data-label="Mei">-</td>
-                      <td data-label="Jun">-</td>
-                      <td data-label="Jul">-</td>
-                      <td class="text-center d-block d-md-none text-primary mt-2">Raport & Ijazah</td>
-                      <td data-label="Rpt Ganjil">15 Jan 2026</td>
-                      <td data-label="Rpt Genap">-</td>
-                      <td data-label="Ijazah">-</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        `;
-        container.appendChild(accordionItem);
-      });
+      populateRekapBody();
     }
   </script>
 </body>
