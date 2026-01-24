@@ -1002,73 +1002,152 @@
           </div>
 
           <div class="modal-body">
-            <div class="info-section ft-14">
-              <div class="row g-3">
-                <!-- Kolom kiri -->
-                <div class="col-12 col-md-6 info-column">
-                  <div class="info-item">
-                    <span class="info-label">ID SPP</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">20057</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tahun Ajaran</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">2025/2026</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Komunitas/Sekolah</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">SMK Kristen 2 Magelang</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Bulan</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">Juni</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Tanggal Transfer</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">12 Desember 2025</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Kode Transfer</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Jumlah Transfer</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">Rp 3.000.000,-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Jumlah Pengembalian</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">Rp 1.000.000,-</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Alasan Pengembalian</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value">Ada Anak Asuh Keluar</span>
-                  </div>
-                  <div class="info-item">
-                    <span class="info-label">Status</span>
-                    <span class="info-separator d-none d-lg-inline">:</span>
-                    <span class="info-value"><small class="badge bg-secondary">Menunggu</small></span>
-                  </div>
-                </div>
-
-                <!-- Kolom kanan -->
-                <div class="col-12 col-md-6 text-center">
-                  <small>Preview Bukti Transfer Pengembalian</small>
-                  <div class="border rounded-4 p-3 position-relative mb-3" style="min-height: auto">
-                    <div class="d-flex flex-column justify-content-center align-items-center h-100">
-                      <!--  -->
+            <div class="row">
+              <!-- ================= TAB ================= -->
+              <ul class="nav nav-tabs mb-3 d-flex flex-nowrap" role="tablist" style="font-size: 12px">
+                <li class="nav-item">
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#detailData">
+                    Detail Data
+                  </button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatVerifikasi">
+                    Riwayat Verifikasi
+                  </button>
+                </li>
+              </ul>
+            
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="detailData">
+                  <div class="info-section ft-14">
+                    <div class="row g-3">
+                      <!-- Kolom kiri -->
+                      <div class="col-12 col-md-6 info-column">
+                        <div class="info-item">
+                          <span class="info-label">ID SPP</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">20057</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Tahun Ajaran</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">2025/2026</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Komunitas/Sekolah</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">SMK Kristen 2 Magelang</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Bulan</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">Juni</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Tanggal Transfer</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">12 Desember 2025</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Kode Transfer</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">-</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Jumlah Transfer</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">Rp 3.000.000,-</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Jumlah Pengembalian</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">Rp 1.000.000,-</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Alasan Pengembalian</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value">Ada Anak Asuh Keluar</span>
+                        </div>
+                        <div class="info-item">
+                          <span class="info-label">Status</span>
+                          <span class="info-separator d-none d-lg-inline">:</span>
+                          <span class="info-value"><small class="badge bg-secondary">Menunggu</small></span>
+                        </div>
+                      </div>
+                  
+                      <!-- Kolom kanan -->
+                      <div class="col-12 col-md-6 text-center">
+                        <small>Preview Bukti Transfer Pengembalian</small>
+                        <div class="border rounded-4 p-3 position-relative mb-3" style="min-height: auto">
+                          <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                            <!--  -->
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
+            
+                <!-- ================= STATUS TRANSFER ================= -->
+                <div class="tab-pane fade" id="riwayatVerifikasi">
+                  <ul class="timeline">
+                    <li class="timeline-item success">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">15 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-013 (Ketua)</strong> menyetujui pengajuan pengembalian dana</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item info">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">10 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-028 (Admin Sianas)</strong> menyetujui pengajuan pengembalian dana</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item waiting">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Data Diperbarui</strong>
+                        <small class="text-muted">05 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>PJ-XX-XXXX</strong> memperbarui pengajuan pengembalian dana</p>
+                      </div>
+                    </li>
+                    <li class="timeline-item danger">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Verifikasi Data</strong>
+                        <small class="text-muted">03 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>AATADM-028</strong> menolak pengajuan pengembalian dana</p>
+                        <span class="text-important fst-italic">Alasan: Ada Anak Asuh Keluar</span>
+                      </div>
+                    </li>
+                    <li class="timeline-item waiting">
+                      <div class="timeline-icon">
+                        <i class="bi bi-check-circle"></i>
+                      </div>
+                      <div class="timeline-content">
+                        <strong class="mb-1 fw-semibold">Data Dikirim</strong>
+                        <small class="text-muted">01 Jul 2024 • 09:15</small>
+                        <p class="mb-0"><strong>PJ-XX-XXXX</strong> mengajukan pengembalian dana</p>
+                      </div>
+                    </li>
+
+                  </ul>
+                </div>
               </div>
             </div>
+
           </div>
 
           <div class="modal-footer justify-content-center d-flex flex-nowrap">

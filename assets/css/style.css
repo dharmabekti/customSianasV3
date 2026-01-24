@@ -155,7 +155,11 @@ main {
 💚 Warna Khusus AAT
 ========================================================= */
 .bg-aat {
-  background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%) !important;
+  background: linear-gradient(
+    to bottom,
+    var(--aat-primary) 0,
+    var(--aat-primary-light) 100%
+  ) !important;
 }
 
 .bg-aat-grey {
@@ -560,7 +564,7 @@ textarea::placeholder {
   border-color: #007bff;
 }
 
-.upload-box input[type='file'] {
+.upload-box input[type="file"] {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -635,7 +639,11 @@ textarea::placeholder {
 
   .navbar {
     font-size: 12px;
-    background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%);
+    background: linear-gradient(
+      to bottom,
+      var(--aat-primary) 0,
+      var(--aat-primary-light) 100%
+    );
     --bs-navbar-padding-y: 0;
   }
 
@@ -691,7 +699,7 @@ textarea::placeholder {
 
   /* Panah untuk submenu */
   .navbar .dropdown-submenu > a::after {
-    content: '▶';
+    content: "▶";
     float: right;
     margin-left: 0.5em;
     font-size: 12px;
@@ -760,7 +768,7 @@ textarea::placeholder {
     }
 
     .navbar .dropdown-submenu > a::after {
-      content: '';
+      content: "";
     }
   }
 }
@@ -812,7 +820,11 @@ textarea::placeholder {
     left: 0;
     right: 0;
     height: 30px;
-    background: linear-gradient(to bottom, var(--aat-primary) 0, var(--aat-primary-light) 100%) !important;
+    background: linear-gradient(
+      to bottom,
+      var(--aat-primary) 0,
+      var(--aat-primary-light) 100%
+    ) !important;
     border-top: 1px solid #ddd;
     justify-content: space-around;
     align-items: center;
@@ -1484,7 +1496,7 @@ div.dataTables_wrapper .dataTables_filter {
 }
 
 .filter-mobile .filter-toggle::after {
-  content: '▾';
+  content: "▾";
   position: absolute;
   right: 12px;
   top: 50%;
@@ -1912,7 +1924,7 @@ h3.page-title {
   margin-bottom: 1rem;
 }
 
-.checkbox-group input[type='checkbox'] {
+.checkbox-group input[type="checkbox"] {
   margin-top: 4px;
   width: 18px;
   height: 18px;
@@ -2032,7 +2044,7 @@ h3.page-title {
 }
 
 .copy-box span {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
@@ -2117,11 +2129,11 @@ h3.page-title {
   display: none;
 }
 .accordion-button.collapsed .text-primary::before {
-  content: ' ▼';
+  content: " ▼";
   font-size: 12px;
 }
 .accordion-button:not(.collapsed) .text-primary::before {
-  content: ' ▲';
+  content: " ▲";
   font-size: 12px;
 }
 
@@ -2373,7 +2385,9 @@ h3.page-title {
   font-weight: bold;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  transition:
+    transform 0.2s,
+    background 0.3s;
   margin-bottom: 0.5rem;
 }
 
@@ -2611,7 +2625,7 @@ h3.page-title {
   }
 
   .info-label::after {
-    content: ' :';
+    content: " :";
     margin-right: 8px;
   }
 
@@ -2916,7 +2930,8 @@ h3.page-title {
 }
 
 /* Focus ala Bootstrap */
-.select2-container--default.select2-container--focus .select2-selection--single {
+.select2-container--default.select2-container--focus
+  .select2-selection--single {
   border-color: #86b7fe !important;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
 }
@@ -3218,3 +3233,83 @@ h3.page-title {
 }
 
 /* End Legend */
+
+/* ======== Timeline CSS Start */
+.timeline {
+  list-style: none;
+  padding: 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #dee2e6;
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-icon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #adb5bd;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.timeline-content {
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  font-size: 12px;
+}
+
+/* Status Colors */
+.timeline-item.success .timeline-icon {
+  background: #198754;
+}
+
+.timeline-item.warning .timeline-icon {
+  background: #ffac07;
+  color: #212529;
+}
+
+.timeline-item.yellow .timeline-icon {
+  background: #f7e463;
+  color: #212529;
+}
+
+.timeline-item.primary .timeline-icon {
+  background: #0d6efd;
+  color: #212529;
+}
+
+.timeline-item.info .timeline-icon {
+  background: #01f1fd;
+  color: #212529;
+}
+
+.timeline-item.danger .timeline-icon {
+  background: #dc3545;
+}
+
+.timeline-item.waiting .timeline-icon {
+  background: #bcbcbc;
+  color: #212529;
+}
+
+/* ======== Timeline CSS End */
