@@ -143,6 +143,13 @@ main {
   font-size: 11px;
 }
 
+.text-note {
+  color: #3B82F6 !important;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 11px;
+}
+
 .divider-1 {
   border-bottom: 1px solid #dee2e6;
   margin-top: 0;
