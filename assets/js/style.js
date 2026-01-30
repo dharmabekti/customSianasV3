@@ -237,54 +237,25 @@ function generatePagination(totalPages, currentPage) {
     currentPage - 1
   }"> << </a></li>`;
 
-  // Page numbers with ellipses for large totalPages
-  const maxVisible = 7; // Maximum visible page links
-  let pages = [];
-
-  if (totalPages <= maxVisible) {
-    // Show all pages if total is small
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(i);
-    }
-  } else {
-    // Always show first page
-    pages.push(1);
-
-    // Calculate range around current page
-    const start = Math.max(2, currentPage - 2);
-    const end = Math.min(totalPages - 1, currentPage + 2);
-
-    // Add ellipsis if there's a gap after first page
-    if (start > 2) {
-      pages.push('...');
-    }
-
-    // Add pages in range
-    for (let i = start; i <= end; i++) {
-      pages.push(i);
-    }
-
-    // Add ellipsis if there's a gap before last page
-    if (end < totalPages - 1) {
-      pages.push('...');
-    }
-
-    // Always show last page if more than 1 page
-    if (totalPages > 1) {
-      pages.push(totalPages);
-    }
+  // Page numbers: show current -1, current, current +1, clamped
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(totalPages, currentPage + 1);
+  for (let i = startPage; i <= endPage; i++) {
+    html += `<li class="page-item ${
+      i === currentPage ? 'active' : ''
+    }"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
   }
 
-  // Generate HTML for pages
-  pages.forEach(page => {
-    if (page === '...') {
+  // Add ellipsis and last page if not already shown
+  if (endPage < totalPages) {
+    if (endPage < totalPages - 1) {
       html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
-    } else {
-      html += `<li class="page-item ${
-        page === currentPage ? 'active' : ''
-      }"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`;
     }
-  });
+    html += `<li class="page-item"><a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a></li>`;
+  }
+
+  // Add total pages indicator
+  html += ``;
 
   // Next button
   html += `<li class="page-item ${
