@@ -1,780 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Responsive Admin Template</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
-    <link href="../assets/css/style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
-    <!-- Sweet Alerts css -->
-    <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  </head>
-  <body class="d-flex flex-column min-vh-100">
-    <!-- Header fixed -->
-    <header class="fixed-top shadow-sm">
-      <!-- Branding Panel (Desktop) -->
-      <div class="branding d-none d-lg-flex panel-header align-items-center">
-        <img src="../assets/img/logo_AAT.png" alt="Logo" />
-        <div class="ms-2 me-auto">
-          <span class="fw-bold">Sistem Informasi Anak Asuh</span>
-        </div>
-        <!-- Tahun Ajaran + Datetime -->
-        <div class="text-center me-3">
-          <h4 class="mb-0">TA. 2025/2026</h4>
-          <div class="datetime" id="currentDateTime"></div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Responsive Admin Template</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
+  <!-- Sweet Alerts css -->
+  <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <!-- Header fixed -->
+  <header class="fixed-top shadow-sm">
+    <!-- Branding Panel (Desktop) -->
+    <div class="branding d-none d-lg-flex panel-header align-items-center">
+      <img src="../assets/img/logo_AAT.png" alt="Logo" />
+      <div class="ms-2 me-auto">
+        <span class="fw-bold">Sistem Informasi Anak Asuh</span>
       </div>
+      <!-- Tahun Ajaran + Datetime -->
+      <div class="text-center me-3">
+        <h4 class="mb-0">TA. 2025/2026</h4>
+        <div class="datetime" id="currentDateTime"></div>
+      </div>
+    </div>
 
-      <!-- Navbar Desktop -->
-      <nav class="navbar navbar-expand-lg custom-navbar">
-        <div class="container-fluid">
-          <!-- LEFT MENU -->
-          <ul class="navbar-nav me-auto nav-left">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Beranda</a>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="donaturDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Donatur
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="donaturDropdown">
-                <li><a class="dropdown-item" href="donatur.html">List Donatur</a></li>
-                <li><a class="dropdown-item" href="form_donatur.html">Input Donatur</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="riwayat_donasi_donatur.html">Riwayat Donasi Donatur</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="lelang.html">Pemilihan Anak Asuh oleh Donatur</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="sekretariatDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Sekretariat
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="sekretariatDropdown">
-                <li><a class="dropdown-item" href="sekretariat.html">Data Sekretariat</a></li>
-                <li><a class="dropdown-item" href="penanggungjawab_sekretariat.html">Data PJ Sekretariat</a></li>
-                <li><a class="dropdown-item" href="form_pjs.html">Input PJ Sekretariat</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="data_pt.html">Data Pendidikan Tinggi</a></li>
-                <li><a class="dropdown-item" href="form_pt.html">Input Pendidikan Tinggi</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="bpt.html">Data BPT Sekretariat</a></li>
-                <li><a class="dropdown-item" href="form_bpt.html">Input BPT Sekretariat</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="komunitasDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Komunitas/Sekolah
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="komunitasDropdown">
-                <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
-                <li><a class="dropdown-item" href="form_sekolah.html">Input Komunitas/Sekolah</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="penanggungjawab.html">Data PJ Sekolah</a></li>
-                <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
-                <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal"
-                    >SK Beasiswa</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="anakAsuhDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Anak Asuh
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
-                <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Input Anak Asuh</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="form_anak_asuh.html">Input Manual</a></li>
-                    <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
-                  </ul>
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="pengajuan_anakasuh_baru.html">Konfirmasi Anak Asuh Baru</a></li>
-                <li><a class="dropdown-item" href="konfirmasi_naik_jenjang.html">Konfirmasi Kenaikan Jenjang</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijazah</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="transferBeasiswaDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Transfer Beasiswa
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="transferBeasiswaDropdown">
-                <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
-                <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="ganti_rekening.html">Penggantian No Rekening</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
-                <li>
-                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal"
-                    >Rekening Yayasan</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="pembayaranDonasiDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Pembayaran & Donasi
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
-                <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a></li>
-                <li><a class="dropdown-item" href="pemindahan_sisa_donasi.html">Pemindahan Sisa Donasi</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="transfer_tak_dikenal.html">Transfer Tak Dikenal</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="laporanDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Laporan
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Laporan Donatur</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="laporan_donatur.html">Cari per ID</a></li>
-                    <li><a class="dropdown-item" href="statistik_donatur.html">Statistik Umum</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Laporan Sekretariat</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="laporan_sekretariat.html">Cari per Nama</a></li>
-                    <li><a class="dropdown-item" href="statistik_sekretariat.html">Statistik Umum</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Laporan Komunitas</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="laporan_komunitas.html">Cari per ID</a></li>
-                    <li><a class="dropdown-item" href="statistik_komunitas.html">Statistik Umum</a></li>
-                  </ul>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Laporan Anak Asuh</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="laporan_anakasuh.html">Cari per ID</a></li>
-                    <li><a class="dropdown-item" href="statistik_anakasuh.html">Statistik Umum</a></li>
-                  </ul>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="laporan_raport_skl_ijasah.html">Laporan Raport, SKL, & Ijasah</a>
-                </li>
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item" href="#">Rekup Transfer Beasiswa</a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="rekup_status_transfer_beasiswa.html">Status Transfer</a></li>
-                    <li><a class="dropdown-item" href="rekup_nominal_transfer_beasiswa.html">Nominal</a></li>
-                  </ul>
-                </li>
-                <li><a class="dropdown-item" href="rekup_kode_unik.html">Rekup Kode Unik</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="settingDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Pengaturan
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="settingDropdown">
-                <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
-                <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="pengurus_inti.html">Pengurus Inti</a></li>
-              </ul>
-            </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="kontakDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Hubungi Kami
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="kontakDropdown">
-                <li>
-                  <a class="dropdown-item" href="https://wa.me/628xxxxxxxxx" target="_blank"
-                    ><i class="bi bi-whatsapp me-2"></i>WhatsApp</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="mailto:beasiswa@aat.or.id"><i class="bi bi-envelope me-2"></i>Email</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://instagram.com/aat.indonesia" target="_blank"
-                    ><i class="bi bi-instagram me-2"></i>Instagram</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://youtube.com/@aatindonesia" target="_blank"
-                    ><i class="bi bi-youtube me-2"></i>YouTube</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://facebook.com/aatindonesia" target="_blank"
-                    ><i class="bi bi-facebook me-2"></i>Facebook</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="https://x.com/aat_indonesia" target="_blank"
-                    ><i class="bi bi-twitter-x me-2"></i>X (Twitter)</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-
-          <!-- RIGHT PROFILE & NOTIFICATION MENU -->
-          <ul class="navbar-nav ms-auto align-items-center nav-right">
-            <!-- 🔔 Notifikasi -->
-            <li class="nav-item dropdown me-2">
-              <a
-                class="nav-link position-relative"
-                href="#"
-                id="notifDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="bi bi-bell" style="font-size: 14px"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
-                <li><h6 class="dropdown-header">Notifikasi</h6></li>
-                <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
-                <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
-                <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
-                <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
-              </ul>
-            </li>
-
-            <!-- 👤 Profil -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle d-flex align-items-center"
-                href="#"
-                id="profileDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <img
-                  src="../assets/img/logo_AAT.png"
-                  alt="User"
-                  width="30"
-                  height="30"
-                  class="rounded-circle profile-img shadow-sm me-2"
-                />
-                <span class="fw-semibold ft-12">ADM-NAS-XXXX</span>
-              </a>
-
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                <li>
-                  <a class="dropdown-item" href="profil.html">Profil</a>
-                </li>
-
-                <li>
-                  <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
-                </li>
-
-                <!-- SUBMENU SEKRETARIAT -->
-                <li class="dropdown-submenu">
-                  <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                    Sekretariat : <strong>All</strong>
-                    <i class="bi bi-caret-down-fill ms-2"></i>
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item active" href="#">All</a></li>
-                    <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
-                    <li><a class="dropdown-item" href="#">Semarang</a></li>
-                    <li><a class="dropdown-item" href="#">Purwokerto</a></li>
-                    <li><a class="dropdown-item" href="#">Madiun</a></li>
-                    <li><a class="dropdown-item" href="#">Malang</a></li>
-                    <li><a class="dropdown-item" href="#">Bandung</a></li>
-                  </ul>
-                </li>
-
-                <li><hr class="dropdown-divider" /></li>
-
-                <li>
-                  <a class="dropdown-item text-danger" href="#">Logout</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Navbar Mobile (atas) -->
-    <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+    <!-- Navbar Desktop -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
       <div class="container-fluid">
-        <button class="btn btn-outline-light" type="button" onclick="history.back()">
-          <i class="bi bi-arrow-left"></i>
-        </button>
-        <span class="navbar-brand mx-auto">Assign Donasi</span>
-      </div>
-    </nav>
+        <!-- LEFT MENU -->
+        <ul class="navbar-nav me-auto nav-left">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Beranda</a>
+          </li>
 
-    <!-- Bottom Navigation (Mobile) -->
-    <div class="mobile-bottom-hide"></div>
-
-    <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
-      <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Assign Donasi</h3>
-      <div class="container-fluid form-wrapper">
-        <div class="row g-4">
-          <!-- Kolom kiri -->
-          <div class="col-lg-3">
-            <div class="p-4 border rounded-4 text-center">
-              <img
-                src="https://randomuser.me/api/portraits/men/10.jpg"
-                alt="Logo Komunitas"
-                class="rounded-circle img-fluid shadow-sm"
-                style="height: 150px; width: 150px"
-              />
-              <h5 class="mt-2">Ki Anom Dharma Bekti</h5>
-              <p class="mt-2">D-XX-0001</p>
-              <span class="badge bg-success">Aktif</span>
-            </div>
-            <!-- ✅ Tombol Toggle Filter (hanya tampil di mobile) -->
-            <div class="d-md-none mt-2">
-              <button
-                class="btn btn-outline-primary w-100"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#filterCollapse"
-                aria-expanded="false"
-                aria-controls="filterCollapse"
-              >
-                <i class="bi bi-funnel"></i> Tampilkan Filter
-              </button>
-            </div>
-            <div id="filterCollapse" class="collapse d-md-block mt-3">
-              <div class="filter-section shadow-sm">
-                <h5 class="mb-3">Filter</h5>
-
-                <label class="form-label fw-bold">Sekretariat</label>
-                <div id="filterSekretariat">
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Yogyakarta" id="yogya" />
-                    <label class="form-check-label" for="yogya">Yogyakarta</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Semarang" id="semarang" />
-                    <label class="form-check-label" for="semarang">Semarang</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Madiun" id="madiun" />
-                    <label class="form-check-label" for="madiun">Madiun</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Purwokerto" id="purwokerto" />
-                    <label class="form-check-label" for="purwokerto">Purwokerto</label>
-                  </div>
-                  <div class="form-check mb-3">
-                    <input class="form-check-input sekretariat" type="checkbox" value="Bandung" id="bandung" />
-                    <label class="form-check-label" for="bandung">Bandung</label>
-                  </div>
-                </div>
-
-                <label class="form-label fw-bold">Tingkat Sekolah</label>
-                <div class="form-check">
-                  <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
-                  <label class="form-check-label" for="sd">SD</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
-                  <label class="form-check-label" for="smp">SMP</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
-                  <label class="form-check-label" for="sma">SMA</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Kolom kanan -->
-          <div class="col-lg-9">
-            <!-- Navigasi Tab (Desktop) -->
-            <ul class="nav nav-tabs mb-3 flex-nowrap" role="tablist" style="font-size: 12px">
-              <li class="nav-item">
-                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#donasiSPP">Donasi SPP</button>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="donaturDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Donatur
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="donaturDropdown">
+              <li><a class="dropdown-item" href="donatur.html">List Donatur</a></li>
+              <li><a class="dropdown-item" href="form_donatur.html">Input Donatur</a></li>
+              <li>
+                <hr class="dropdown-divider" />
               </li>
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#donasiPT">Donasi PT</button>
+              <li><a class="dropdown-item" href="riwayat_donasi_donatur.html">Riwayat Donasi Donatur</a></li>
+              <li>
+                <hr class="dropdown-divider" />
               </li>
-              <li class="nav-item">
-                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#donasiOpr">Donasi Operasional</button>
+              <li><a class="dropdown-item" href="lelang.html">Pemilihan Anak Asuh oleh Donatur</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="sekretariatDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Sekretariat
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="sekretariatDropdown">
+              <li><a class="dropdown-item" href="sekretariat.html">Data Sekretariat</a></li>
+              <li><a class="dropdown-item" href="penanggungjawab_sekretariat.html">Data PJ Sekretariat</a></li>
+              <li><a class="dropdown-item" href="form_pjs.html">Input PJ Sekretariat</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="data_pt.html">Data Pendidikan Tinggi</a></li>
+              <li><a class="dropdown-item" href="form_pt.html">Input Pendidikan Tinggi</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="bpt.html">Data BPT Sekretariat</a></li>
+              <li><a class="dropdown-item" href="form_bpt.html">Input BPT Sekretariat</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="komunitasDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Komunitas/Sekolah
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="komunitasDropdown">
+              <li><a class="dropdown-item" href="sekolah.html">Data Komunitas/Sekolah</a></li>
+              <li><a class="dropdown-item" href="form_sekolah.html">Input Komunitas/Sekolah</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="penanggungjawab.html">Data PJ Sekolah</a></li>
+              <li><a class="dropdown-item" href="form_penanggungjawab.html">Input PJ Sekolah</a></li>
+              <li><a class="dropdown-item" href="konfirmasi_penanggungjawab.html">Konfirmasi PJ Sekolah Baru</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#skBeasiswaModal">SK
+                  Beasiswa</a>
               </li>
             </ul>
-            <div class="tab-content">
-              <div class="tab-pane fade show active" id="donasiSPP">
-                <div class="p-4 border rounded-4 text-start">
-                  <div class="row g-2 align-items-center mb-3">
-                    <!-- Sort -->
-                    <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
-                      <label class="fw-bold mb-0">Sort:</label>
-                      <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
-                      <button class="sort-pill" data-sort="sekolah">Sekolah <span class="sort-arrow">↑</span></button>
-                    </div>
+          </li>
 
-                    <!-- Search -->
-                    <div class="col-12 col-md">
-                      <div class="input-group input-group-sm">
-                        <input
-                          type="text"
-                          id="searchInput"
-                          class="form-control form-control-sm"
-                          placeholder="Cari anak..."
-                        />
-                        <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
-                          <i class="bi bi-x text-body"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="anakAsuhDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Anak Asuh
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="anakAsuhDropdown">
+              <li><a class="dropdown-item" href="anak_asuh.html">List Anak Asuh</a></li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Input Anak Asuh</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="form_anak_asuh.html">Input Manual</a></li>
+                  <li><a class="dropdown-item" href="import_anak_asuh.html">Import dari Excel</a></li>
+                </ul>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="pengajuan_anakasuh_baru.html">Konfirmasi Anak Asuh Baru</a></li>
+              <li><a class="dropdown-item" href="konfirmasi_naik_jenjang.html">Konfirmasi Kenaikan Jenjang</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="raport_skl_ijasah.html">Raport, SKl & Ijazah</a></li>
+            </ul>
+          </li>
 
-                  <div id="childGrid" class="row g-2"></div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="transferBeasiswaDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Transfer Beasiswa
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="transferBeasiswaDropdown">
+              <li><a class="dropdown-item" href="transfer_beasiswa.html">Data Transfer Beasiswa</a></li>
+              <li><a class="dropdown-item" href="status_transfer.html">Status Transfer Beasiswa</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="ganti_rekening.html">Penggantian No Rekening</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="pengembalian_dana.html">Pengembalian Dana Berlebih</a></li>
+              <li>
+                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#rekeningYayasanModal">Rekening
+                  Yayasan</a>
+              </li>
+            </ul>
+          </li>
 
-                  <!-- Pagination -->
-                  <div class="d-flex justify-content-center mt-3">
-                    <nav><ul class="pagination" id="pagination"></ul></nav>
-                  </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pembayaranDonasiDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Pembayaran & Donasi
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="pembayaranDonasiDropdown">
+              <li><a class="dropdown-item" href="konfirmasi_status_pembayaran.html">Konfirmasi & Status Pembayaran</a>
+              </li>
+              <li><a class="dropdown-item" href="pemindahan_sisa_donasi.html">Pemindahan Sisa Donasi</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="transfer_tak_dikenal.html">Transfer Tak Dikenal</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="donasi_langsung.html">Donasi Langsung</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="laporanDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Laporan
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="laporanDropdown">
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Laporan Donatur</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="laporan_donatur.html">Cari per ID</a></li>
+                  <li><a class="dropdown-item" href="statistik_donatur.html">Statistik Umum</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Laporan Sekretariat</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="laporan_sekretariat.html">Cari per Nama</a></li>
+                  <li><a class="dropdown-item" href="statistik_sekretariat.html">Statistik Umum</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Laporan Komunitas</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="laporan_komunitas.html">Cari per ID</a></li>
+                  <li><a class="dropdown-item" href="statistik_komunitas.html">Statistik Umum</a></li>
+                </ul>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Laporan Anak Asuh</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="laporan_anakasuh.html">Cari per ID</a></li>
+                  <li><a class="dropdown-item" href="statistik_anakasuh.html">Statistik Umum</a></li>
+                </ul>
+              </li>
+              <li>
+                <a class="dropdown-item" href="laporan_raport_skl_ijasah.html">Laporan Raport, SKL, & Ijasah</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a class="dropdown-item" href="#">Rekup Transfer Beasiswa</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="rekup_status_transfer_beasiswa.html">Status Transfer</a></li>
+                  <li><a class="dropdown-item" href="rekup_nominal_transfer_beasiswa.html">Nominal</a></li>
+                </ul>
+              </li>
+              <li><a class="dropdown-item" href="rekup_kode_unik.html">Rekup Kode Unik</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="settingDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Pengaturan
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="settingDropdown">
+              <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
+              <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="pengurus_inti.html">Pengurus Inti</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="kontakDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">Hubungi Kami
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="kontakDropdown">
+              <li>
+                <a class="dropdown-item" href="https://wa.me/628xxxxxxxxx" target="_blank"><i
+                    class="bi bi-whatsapp me-2"></i>WhatsApp</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="mailto:beasiswa@aat.or.id"><i class="bi bi-envelope me-2"></i>Email</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://instagram.com/aat.indonesia" target="_blank"><i
+                    class="bi bi-instagram me-2"></i>Instagram</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://youtube.com/@aatindonesia" target="_blank"><i
+                    class="bi bi-youtube me-2"></i>YouTube</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://facebook.com/aatindonesia" target="_blank"><i
+                    class="bi bi-facebook me-2"></i>Facebook</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://x.com/aat_indonesia" target="_blank"><i
+                    class="bi bi-twitter-x me-2"></i>X (Twitter)</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- RIGHT PROFILE & NOTIFICATION MENU -->
+        <ul class="navbar-nav ms-auto align-items-center nav-right">
+          <!-- 🔔 Notifikasi -->
+          <li class="nav-item dropdown me-2">
+            <a class="nav-link position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <i class="bi bi-bell" style="font-size: 14px"></i>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 3 </span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notifDropdown">
+              <li>
+                <h6 class="dropdown-header">Notifikasi</h6>
+              </li>
+              <li><a class="dropdown-item small" href="#">Pembayaran donasi berhasil</a></li>
+              <li><a class="dropdown-item small" href="#">SPP anak asuh sudah jatuh tempo</a></li>
+              <li><a class="dropdown-item small" href="#">Laporan bulanan tersedia</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item text-center small text-primary" href="#">Lihat semua</a></li>
+            </ul>
+          </li>
+
+          <!-- 👤 Profil -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="profileDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../assets/img/logo_AAT.png" alt="User" width="30" height="30"
+                class="rounded-circle profile-img shadow-sm me-2" />
+              <span class="fw-semibold ft-12">ADM-NAS-XXXX</span>
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li>
+                <a class="dropdown-item" href="profil.html">Profil</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="ubah_password.html">Ubah Password</a>
+              </li>
+
+              <!-- SUBMENU SEKRETARIAT -->
+              <li class="dropdown-submenu">
+                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                  Sekretariat : <strong>All</strong>
+                  <i class="bi bi-caret-down-fill ms-2"></i>
+                </a>
+
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item active" href="#">All</a></li>
+                  <li><a class="dropdown-item" href="#">Yogyakarta</a></li>
+                  <li><a class="dropdown-item" href="#">Semarang</a></li>
+                  <li><a class="dropdown-item" href="#">Purwokerto</a></li>
+                  <li><a class="dropdown-item" href="#">Madiun</a></li>
+                  <li><a class="dropdown-item" href="#">Malang</a></li>
+                  <li><a class="dropdown-item" href="#">Bandung</a></li>
+                </ul>
+              </li>
+
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+
+              <li>
+                <a class="dropdown-item text-danger" href="#">Logout</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Navbar Mobile (atas) -->
+  <nav class="fixed-top navbar navbar-dark bg-dark d-lg-none bg-aat">
+    <div class="container-fluid">
+      <button class="btn btn-outline-light" type="button" onclick="history.back()">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+      <span class="navbar-brand mx-auto">Assign Donasi</span>
+    </div>
+  </nav>
+
+  <!-- Bottom Navigation (Mobile) -->
+  <div class="mobile-bottom-hide"></div>
+
+  <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
+    <div class="d-none d-lg-block mb-5"></div>
+    <h3 class="text-center page-title d-none d-lg-block">Assign Donasi</h3>
+    <div class="container-fluid form-wrapper">
+      <div class="row g-4">
+        <!-- Kolom kiri -->
+        <div class="col-lg-3">
+          <div class="p-4 border rounded-4 text-center">
+            <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Logo Komunitas"
+              class="rounded-circle img-fluid shadow-sm" style="height: 150px; width: 150px" />
+            <h5 class="mt-2">Ki Anom Dharma Bekti</h5>
+            <p class="mt-2">D-XX-0001</p>
+            <span class="badge bg-success">Aktif</span>
+          </div>
+          <!-- ✅ Tombol Toggle Filter (hanya tampil di mobile) -->
+          <div class="d-md-none mt-2">
+            <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="collapse"
+              data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+              <i class="bi bi-funnel"></i> Tampilkan Filter
+            </button>
+          </div>
+          <div id="filterCollapse" class="collapse d-md-block mt-3">
+            <div class="filter-section shadow-sm">
+              <h5 class="mb-3">Filter</h5>
+
+              <label class="form-label fw-bold">Sekretariat</label>
+              <div id="filterSekretariat">
+                <div class="form-check">
+                  <input class="form-check-input sekretariat" type="checkbox" value="Yogyakarta" id="yogya" />
+                  <label class="form-check-label" for="yogya">Yogyakarta</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input sekretariat" type="checkbox" value="Semarang" id="semarang" />
+                  <label class="form-check-label" for="semarang">Semarang</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input sekretariat" type="checkbox" value="Madiun" id="madiun" />
+                  <label class="form-check-label" for="madiun">Madiun</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input sekretariat" type="checkbox" value="Purwokerto" id="purwokerto" />
+                  <label class="form-check-label" for="purwokerto">Purwokerto</label>
+                </div>
+                <div class="form-check mb-3">
+                  <input class="form-check-input sekretariat" type="checkbox" value="Bandung" id="bandung" />
+                  <label class="form-check-label" for="bandung">Bandung</label>
                 </div>
               </div>
 
-              <div class="tab-pane fade" id="donasiPT">
-                <div class="p-4 border rounded-4 text-start">
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-8">
-                        <small class="text-muted text-important">*) Wajib Diisi</small>
-
-                        <!-- Nominal -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Nominal Donasi <sup class="text-important">*)</sup>
-                          </label>
-                          <div class="col-sm-7">
-                            <div class="input-group input-group-sm">
-                              <input type="text" class="form-control form-control-sm" id="nominal" required />
-                              <span class="input-group-text">/ bulan</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- 🔥 Periode Donasi (Mulai - s.d - Akhir) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Periode Donasi <sup class="text-important">*)</sup>
-                          </label>
-
-                          <div class="col-sm-7">
-                            <div class="row g-2 align-items-center">
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="mulai_donasi" required />
-                              </div>
-
-                              <div class="col-2 text-center">
-                                <span class="fw-semibold small">s.d</span>
-                              </div>
-
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="akhir_donasi" required />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- 🔥 Jumlah Bulan Donasi (field baru) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label"> Jumlah Bulan Donasi </label>
-                          <div class="col-sm-3">
-                            <div class="input-group input-group-sm">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                id="jml_bulan"
-                                value="12"
-                                readonly
-                              />
-                              <span class="input-group-text">bulan</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Tombol -->
-                      <div class="mt-3">
-                        <button type="submit" class="btn btn-success btn-sm me-2" onclick="konfirmasiAssignDonasi()">
-                          <i class="bi bi-check me-1"></i> Konfirmasi
-                        </button>
-                        <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x me-1"></i> Batal</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+              <label class="form-label fw-bold">Tingkat Sekolah</label>
+              <div class="form-check">
+                <input class="form-check-input tingkat" type="checkbox" value="SD" id="sd" />
+                <label class="form-check-label" for="sd">SD</label>
               </div>
+              <div class="form-check">
+                <input class="form-check-input tingkat" type="checkbox" value="SMP" id="smp" />
+                <label class="form-check-label" for="smp">SMP</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input tingkat" type="checkbox" value="SMA" id="sma" />
+                <label class="form-check-label" for="sma">SMA</label>
+              </div>
+            </div>
+          </div>
+        </div>
 
-              <div class="tab-pane fade" id="donasiOpr">
-                <div class="p-4 border rounded-4 text-start">
-                  <form>
-                    <div class="row">
-                      <div class="col-lg-8">
-                        <small class="text-muted text-important">*) Wajib Diisi</small>
+        <!-- Kolom kanan -->
+        <div class="col-lg-9">
+          <!-- Navigasi Tab (Desktop) -->
+          <ul class="nav nav-tabs mb-3 flex-nowrap" role="tablist" style="font-size: 12px">
+            <li class="nav-item">
+              <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#donasiSPP">Donasi SPP</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#donasiPT">Donasi PT</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" data-bs-toggle="tab" data-bs-target="#donasiOpr">Donasi Operasional</button>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="donasiSPP">
+              <div class="p-4 border rounded-4 text-start">
+                <div class="row g-2 align-items-center mb-3">
+                  <!-- Sort -->
+                  <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
+                    <label class="fw-bold mb-0">Sort:</label>
+                    <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
+                    <button class="sort-pill" data-sort="sekolah">Sekolah <span class="sort-arrow">↑</span></button>
+                  </div>
 
-                        <!-- Nominal -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Nominal Donasi <sup class="text-important">*)</sup>
-                          </label>
-                          <div class="col-sm-7">
-                            <div class="input-group input-group-sm">
-                              <input type="text" class="form-control form-control-sm" id="nominal" required />
-                              <span class="input-group-text">/ bulan</span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- 🔥 Periode Donasi (Mulai - s.d - Akhir) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label">
-                            Periode Donasi <sup class="text-important">*)</sup>
-                          </label>
-
-                          <div class="col-sm-7">
-                            <div class="row g-2 align-items-center">
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="mulai_donasi" required />
-                              </div>
-
-                              <div class="col-2 text-center">
-                                <span class="fw-semibold small">s.d</span>
-                              </div>
-
-                              <div class="col-5">
-                                <input type="date" class="form-control form-control-sm" id="akhir_donasi" required />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <!-- 🔥 Jumlah Bulan Donasi (field baru) -->
-                        <div class="mb-2 row">
-                          <label class="col-sm-5 col-form-label form-label"> Jumlah Bulan Donasi </label>
-                          <div class="col-sm-3">
-                            <div class="input-group input-group-sm">
-                              <input
-                                type="text"
-                                class="form-control form-control-sm"
-                                id="jml_bulan"
-                                value="12"
-                                readonly
-                              />
-                              <span class="input-group-text">bulan</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <!-- Tombol -->
-                      <div class="mt-3">
-                        <button type="submit" class="btn btn-success btn-sm me-2" onclick="konfirmasiDonasi()">
-                          <i class="bi bi-check me-1"></i> Konfirmasi
-                        </button>
-                        <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x me-1"></i> Batal</button>
-                      </div>
+                  <!-- Search -->
+                  <div class="col-12 col-md">
+                    <div class="input-group input-group-sm">
+                      <input type="text" id="searchInput" class="form-control form-control-sm"
+                        placeholder="Cari anak..." />
+                      <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
+                        <i class="bi bi-x text-body"></i>
+                      </button>
                     </div>
-                  </form>
+                  </div>
+                </div>
+
+                <div id="childGrid" class="row g-2"></div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-3">
+                  <nav>
+                    <ul class="pagination" id="pagination"></ul>
+                  </nav>
                 </div>
               </div>
             </div>
 
-            <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm mt-3 d-none d-lg-block">
-              <i class="bi bi-arrow-left"></i> Kembali
-            </button>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Footer Desktop (sticky di bawah halaman) -->
-    <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
-      <small>
-        Copyright © Yayasan AAT Indonesia | Developed by
-        <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
-        <span class="fw-bold">Mandhira IT</span>
-        <br />
-        Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
-        <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
-        <div class="d-none d-lg-block mb-5"></div>
-      </small>
-    </footer>
-
-    <!-- Floating Input Button -->
-    <button
-      id="btnCartFloat"
-      class="btn-float bg-aat"
-      data-bs-toggle="modal"
-      data-bs-target="#konfirmasiAssignDonasiModal"
-    >
-      <i class="bi bi-cart3"></i>
-      <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger"> 6 </span>
-    </button>
-
-    <!-- Modal Detail Anak -->
-    <div
-      class="modal fade"
-      id="detailAnakModal"
-      tabindex="-1"
-      aria-labelledby="detailAnakLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title fw-bold" id="detailAnakLabel">Detail Anak Asuh</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <div class="container my-4">
-              <!-- Card Profil Utama -->
-              <div class="card shadow-sm mb-4">
-                <div class="card-body">
+            <div class="tab-pane fade" id="donasiPT">
+              <div class="p-4 border rounded-4 text-start">
+                <form>
                   <div class="row">
-                    <!-- Foto Profil -->
-                    <div class="col-md-3 text-center mb-3 mb-md-0">
-                      <img
-                        src="https://randomuser.me/api/portraits/men/10.jpg"
-                        alt="Foto Profil"
-                        class="img-fluid shadow-sm"
-                        style="height: 75%; width: 75%"
-                      />
+                    <div class="col-lg-8">
+                      <small class="text-muted text-important">*) Wajib Diisi</small>
+
+                      <!-- Nominal -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label">
+                          Nominal Donasi <sup class="text-important">*)</sup>
+                        </label>
+                        <div class="col-sm-7">
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control form-control-sm" id="nominal" required />
+                            <span class="input-group-text">/ bulan</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 🔥 Periode Donasi (Mulai - s.d - Akhir) -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label">
+                          Periode Donasi <sup class="text-important">*)</sup>
+                        </label>
+
+                        <div class="col-sm-7">
+                          <div class="row g-2 align-items-center">
+                            <div class="col-5">
+                              <input type="date" class="form-control form-control-sm" id="mulai_donasi" required />
+                            </div>
+
+                            <div class="col-2 text-center">
+                              <span class="fw-semibold small">s.d</span>
+                            </div>
+
+                            <div class="col-5">
+                              <input type="date" class="form-control form-control-sm" id="akhir_donasi" required />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 🔥 Jumlah Bulan Donasi (field baru) -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label"> Jumlah Bulan Donasi </label>
+                        <div class="col-sm-3">
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control form-control-sm" id="jml_bulan" value="12"
+                              readonly />
+                            <span class="input-group-text">bulan</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
-                    <!-- Info Singkat -->
-                    <div class="col-12 col-md-8">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Info Singkat</h5>
+                    <!-- Tombol -->
+                    <div class="mt-3">
+                      <button type="submit" class="btn btn-success btn-sm me-2" onclick="konfirmasiAssignDonasi()">
+                        <i class="bi bi-check me-1"></i> Konfirmasi
+                      </button>
+                      <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x me-1"></i> Batal</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="donasiOpr">
+              <div class="p-4 border rounded-4 text-start">
+                <form>
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <small class="text-muted text-important">*) Wajib Diisi</small>
+
+                      <!-- Nominal -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label">
+                          Nominal Donasi <sup class="text-important">*)</sup>
+                        </label>
+                        <div class="col-sm-7">
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control form-control-sm" id="nominal" required />
+                            <span class="input-group-text">/ bulan</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 🔥 Periode Donasi (Mulai - s.d - Akhir) -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label">
+                          Periode Donasi <sup class="text-important">*)</sup>
+                        </label>
+
+                        <div class="col-sm-7">
+                          <div class="row g-2 align-items-center">
+                            <div class="col-5">
+                              <input type="date" class="form-control form-control-sm" id="mulai_donasi" required />
+                            </div>
+
+                            <div class="col-2 text-center">
+                              <span class="fw-semibold small">s.d</span>
+                            </div>
+
+                            <div class="col-5">
+                              <input type="date" class="form-control form-control-sm" id="akhir_donasi" required />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- 🔥 Jumlah Bulan Donasi (field baru) -->
+                      <div class="mb-2 row">
+                        <label class="col-sm-5 col-form-label form-label"> Jumlah Bulan Donasi </label>
+                        <div class="col-sm-3">
+                          <div class="input-group input-group-sm">
+                            <input type="text" class="form-control form-control-sm" id="jml_bulan" value="12"
+                              readonly />
+                            <span class="input-group-text">bulan</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Tombol -->
+                    <div class="mt-3">
+                      <button type="submit" class="btn btn-success btn-sm me-2" onclick="konfirmasiDonasi()">
+                        <i class="bi bi-check me-1"></i> Konfirmasi
+                      </button>
+                      <button type="reset" class="btn btn-danger btn-sm"><i class="bi bi-x me-1"></i> Batal</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="window.history.back()" class="btn btn-outline-secondary btn-sm mt-3 d-none d-lg-block">
+            <i class="bi bi-arrow-left"></i> Kembali
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer Desktop (sticky di bawah halaman) -->
+  <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
+    <small>
+      Copyright © Yayasan AAT Indonesia | Developed by
+      <span class="fw-bold">Omah IT - Gateway to Your IT Solutions</span> | Maintained by
+      <span class="fw-bold">Mandhira IT</span>
+      <br />
+      Gunakan Browser <span class="fw-bold">Google Chrome</span> atau
+      <span class="fw-bold">Mozilla Firefox</span> untuk tampilan terbaik.
+      <div class="d-none d-lg-block mb-5"></div>
+    </small>
+  </footer>
+
+  <!-- Floating Input Button -->
+  <button id="btnCartFloat" class="btn-float bg-aat" data-bs-toggle="modal"
+    data-bs-target="#konfirmasiAssignDonasiModal">
+    <i class="bi bi-cart3"></i>
+    <span class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger"> 6 </span>
+  </button>
+
+  <!-- Modal Detail Anak -->
+  <div class="modal fade" id="detailAnakModal" tabindex="-1" aria-labelledby="detailAnakLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-aat text-white">
+          <h5 class="modal-title fw-bold" id="detailAnakLabel">Detail Anak Asuh</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container my-4">
+            <!-- Card Profil Utama -->
+            <div class="card shadow-sm mb-4">
+              <div class="card-body">
+                <div class="row">
+                  <!-- Foto Profil -->
+                  <div class="col-md-3 text-center mb-3 mb-md-0">
+                    <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Foto Profil"
+                      class="img-fluid shadow-sm" style="height: 75%; width: 75%" />
+                  </div>
+
+                  <!-- Info Singkat -->
+                  <div class="col-12 col-md-8">
+                    <h5 class="fw-semibold mb-3 d-block d-md-none">Info Singkat</h5>
+                    <div class="table-responsive">
+                      <table class="table table-borderless list-table mb-0 no-mobile-hide"
+                        style="width: 100%; text-align: left">
+                        <tbody>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Nama Lengkap</th>
+                            <td class="text-dark" data-label="Nama Lengkap">Ki Anom Dharma Bekti</td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Jenis Kelamin</th>
+                            <td data-label="Jenis Kelamin">Laki - Laki</td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Agama</th>
+                            <td data-label="Agama">Islam</td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Tempat, Tanggal Lahir</th>
+                            <td data-label="Tempat, Tanggal Lahir">Kebumen, 26 September 2008</td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Komunitas</th>
+                            <td data-label="Komunitas">
+                              <span class="text-success fw-semibold">SMK Wiyata Dharma Walikukun</span>
+                            </td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Pendidikan / Saat ini</th>
+                            <td data-label="Pendidikan / Saat ini">SMA/SMK Kelas 12</td>
+                          </tr>
+                          <tr class="border-bottom align-middle">
+                            <th class="text-muted fw-normal">Status</th>
+                            <td data-label="Status">Naik Kelas</td>
+                          </tr>
+                          <tr>
+                            <th class="text-muted fw-normal">Mulai Dibantu</th>
+                            <td data-label="Mulai Dibantu">01 Juli 2025</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigasi Tab (Desktop) -->
+            <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
+              <li class="nav-item">
+                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
+                  Kondisi Keluarga
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat_pendidikan">
+                  Riwayat Pendidikan
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#raport">
+                  Raport
+                </button>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_lomba">
+                  Prestasi Lomba
+                </button>
+              </li>
+            </ul>
+
+            <!-- Isi Tab (Satu Sumber Data) -->
+            <div class="tab-content" id="profileContent">
+              <div class="tab-pane fade show active" id="kondisi_keluarga">
+                <div class="card">
+                  <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kondisi Keluarga</h5>
                       <div class="table-responsive">
-                        <table
-                          class="table table-borderless list-table mb-0 no-mobile-hide"
-                          style="width: 100%; text-align: left"
-                        >
-                          <tbody>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Nama Lengkap</th>
-                              <td class="text-dark" data-label="Nama Lengkap">Ki Anom Dharma Bekti</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Jenis Kelamin</th>
-                              <td data-label="Jenis Kelamin">Laki - Laki</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Agama</th>
-                              <td data-label="Agama">Islam</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Tempat, Tanggal Lahir</th>
-                              <td data-label="Tempat, Tanggal Lahir">Kebumen, 26 September 2008</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Komunitas</th>
-                              <td data-label="Komunitas">
-                                <span class="text-success fw-semibold">SMK Wiyata Dharma Walikukun</span>
-                              </td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Pendidikan / Saat ini</th>
-                              <td data-label="Pendidikan / Saat ini">SMA/SMK Kelas 12</td>
-                            </tr>
-                            <tr class="border-bottom align-middle">
-                              <th class="text-muted fw-normal">Status</th>
-                              <td data-label="Status">Naik Kelas</td>
+                        <table class="table table-borderless list-table mb-0 no-mobile-hide"
+                          style="width: 100%; text-align: left">
+                          <tbody class="border-bottom align-middle">
+                            <tr>
+                              <th class="text-muted fw-normal">Anak ke</th>
+                              <td data-label="Anak ke">1 dari 2 bersaudara</td>
                             </tr>
                             <tr>
-                              <th class="text-muted fw-normal">Mulai Dibantu</th>
-                              <td data-label="Mulai Dibantu">01 Juli 2025</td>
+                              <th class="text-muted fw-normal">Nama Ayah</th>
+                              <td data-label="Nama Ayah">Moh. Turisno</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Pekerjaan Ayah</th>
+                              <td data-label="Pekerjaan Ayah">Buruh Tani</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Penghasilan Ayah</th>
+                              <td data-label="Penghasilan Ayah">Tidak Berpenghasilan per bulan</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Nama Ibu</th>
+                              <td data-label="Nama Ibu">Sudarmi</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Pekerjaan Ibu</th>
+                              <td data-label="Pekerjaan Ibu">Ibu Rumah Tangga</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Penghasilan Ibu</th>
+                              <td data-label="Penghasilan Ibu">Tidak Berpenghasilan per bulan</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Status Tempat Tinggal</th>
+                              <td data-label="Status Tempat Tinggal">Rumah Sendiri</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Kendaraan Dimiliki</th>
+                              <td data-label="Kendaraan Dimiliki">0 mobil, 1 motor, 0 sepeda</td>
+                            </tr>
+                            <tr>
+                              <th class="text-muted fw-normal">Kondisi Keluarga</th>
+                              <td data-label="Kondisi Keluarga">
+                                Tinggal bersama dengan kedua orang tua serta seorang adik...
+                              </td>
                             </tr>
                           </tbody>
                         </table>
@@ -784,410 +784,208 @@
                 </div>
               </div>
 
-              <!-- Navigasi Tab (Desktop) -->
-              <ul class="nav nav-tabs mb-3 d-none d-md-flex" id="profileTab" role="tablist" style="font-size: 12px">
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#kondisi_keluarga">
-                    Kondisi Keluarga
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat_pendidikan">
-                    Riwayat Pendidikan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_akademik">
-                    Prestasi Akademik
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#prestasi_kegiatan">
-                    Prestasi Kegiatan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pendidikan_tambahan">
-                    Pendidikan Tambahan
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kegiatan_organisasi">
-                    Kegiatan & Organisasi
-                  </button>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#bahasa">Kemampuan Bahasa</button>
-                </li>
-              </ul>
-
-              <!-- Isi Tab (Satu Sumber Data) -->
-              <div class="tab-content" id="profileContent">
-                <div class="tab-pane fade show active" id="kondisi_keluarga">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section text-start">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Kondisi Keluarga</h5>
-                        <div class="table-responsive">
-                          <table
-                            class="table table-borderless list-table mb-0 no-mobile-hide"
-                            style="width: 100%; text-align: left"
-                          >
-                            <tbody class="border-bottom align-middle">
-                              <tr>
-                                <th class="text-muted fw-normal">Anak ke</th>
-                                <td data-label="Anak ke">1 dari 2 bersaudara</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Nama Ayah</th>
-                                <td data-label="Nama Ayah">Moh. Turisno</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Pekerjaan Ayah</th>
-                                <td data-label="Pekerjaan Ayah">Buruh Tani</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Penghasilan Ayah</th>
-                                <td data-label="Penghasilan Ayah">Tidak Berpenghasilan per bulan</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Nama Ibu</th>
-                                <td data-label="Nama Ibu">Sudarmi</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Pekerjaan Ibu</th>
-                                <td data-label="Pekerjaan Ibu">Ibu Rumah Tangga</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Penghasilan Ibu</th>
-                                <td data-label="Penghasilan Ibu">Tidak Berpenghasilan per bulan</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Status Tempat Tinggal</th>
-                                <td data-label="Status Tempat Tinggal">Rumah Sendiri</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Kendaraan Dimiliki</th>
-                                <td data-label="Kendaraan Dimiliki">0 mobil, 1 motor, 0 sepeda</td>
-                              </tr>
-                              <tr>
-                                <th class="text-muted fw-normal">Kondisi Keluarga</th>
-                                <td data-label="Kondisi Keluarga">
-                                  Tinggal bersama dengan kedua orang tua serta seorang adik...
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="riwayat_pendidikan">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section">
-                        <!-- Heading muncul hanya di mobile -->
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Riwayat Pendidikan</h5>
-                        <div class="table-responsive text-start">
-                          <table
-                            class="table table-borderless education-table mb-0"
-                            style="width: 100%; text-align: left !important"
-                          >
-                            <thead>
-                              <tr>
-                                <th>Jenjang</th>
-                                <th class="d-none d-md-table-cell">Sekolah</th>
-                                <th class="d-none d-md-table-cell">Kota/Kabupaten</th>
-                                <th class="d-none d-md-table-cell">Jurusan</th>
-                                <th class="d-none d-md-table-cell">Tahun Masuk</th>
-                                <th class="d-none d-md-table-cell">Tahun Lulus</th>
-                                <th class="d-none d-md-table-cell">File</th>
-                                <th class="d-none d-md-table-cell">Keterangan</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SD</td>
-                                <td class="accordion-name" data-label="">
-                                  SD Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Kebumen</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2014</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2020</td>
-                                <td class="d-none d-md-table-cell" data-label="File">
-                                  <a href="#"><i class="bi bi-file-earmark"></i></a>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SD<br />
-                                    <strong>Kota/Kabupaten</strong> Kebumen<br />
-                                    <strong>Tahun Studi</strong> 2014 - 2020<br />
-                                    <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
-                                    <strong>Keterangan</strong> Lulus
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SMP</td>
-                                <td class="accordion-name" data-label="">
-                                  SMP Negeri 3 Yogyakarta
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Yogyakarta</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2020</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2023</td>
-                                <td class="d-none d-md-table-cell" data-label="File">
-                                  <a href="#"><i class="bi bi-file-earmark"></i></a>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SMP<br />
-                                    <strong>Kota/Kabupaten</strong> Yogyakarta<br />
-                                    <strong>Tahun Studi</strong> 2020 - 2023<br />
-                                    <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
-                                    <strong>Keterangan</strong> Lulus
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="d-none d-md-table-cell" data-label="Jenjang">SMA</td>
-                                <td class="accordion-name" data-label="">
-                                  SMA Negeri 1 Sleman
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Sleman</td>
-                                <td class="d-none d-md-table-cell" data-label="Jurusan">IPA</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2023</td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2026</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Masih Studi</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Jenjang</strong> SMA<br />
-                                    <strong>Kota/Kabupaten</strong> Sleman<br />
-                                    <strong>Tahun Studi</strong> 2023 - 2026<br />
-                                    <strong>File</strong> -<br />
-                                    <strong>Keterangan</strong> Masih Studi
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade show" id="prestasi_akademik">
-                  <div class="card">
-                    <div class="card border-0 shadow-sm rounded-4">
-                      <div class="card-body content-section text-start">
-                        <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Akademik</h5>
-                        <div class="table-responsive text-start">
-                          <table
-                            class="table table-borderless education-table mb-0"
-                            style="width: 100%; text-align: left !important"
-                          >
-                            <thead>
-                              <tr>
-                                <th>Sekolah</th>
-                                <th class="d-none d-md-table-cell">Tahun Ajaran</th>
-                                <th class="d-none d-md-table-cell">Kelas</th>
-                                <th class="d-none d-md-table-cell">Semester</th>
-                                <th class="d-none d-md-table-cell">Rangking</th>
-                                <th class="d-none d-md-table-cell">File</th>
-                                <th class="d-none d-md-table-cell">Keterangan</th>
-                                <th class="d-none d-md-table-cell">Tgl Kirim</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-                                <td class="accordion-name" data-label="">
-                                  SD Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2019</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Ajaran:</strong> 2019<br />
-                                    <strong>Kelas:</strong> Kelas 6<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> 5<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2019
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="accordion-name" data-label="">
-                                  SMP Negeri 1 Kebumen
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2022</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Ajaran:</strong> 2022<br />
-                                    <strong>Kelas:</strong> Kelas 3<br />
-                                    <strong>Semester:</strong> Genap<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Lulus<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2022
-                                  </div>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="accordion-name" data-label="">
-                                  SMK Wiyata Dharma Walikukun
-                                  <i class="bi bi-chevron-down ms-2 d-md-none"></i>
-                                </td>
-                                <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2025</td>
-                                <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
-                                <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
-                                <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
-                                <td class="d-none d-md-table-cell" data-label="File">-</td>
-                                <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
-                                <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
-                              </tr>
-                              <tr class="accordion-details">
-                                <td colspan="8" class="accordion-detail-wrapper">
-                                  <div class="accordion-detail">
-                                    <strong>Tahun Ajaran:</strong> 2025<br />
-                                    <strong>Kelas:</strong> Kelas 12<br />
-                                    <strong>Semester:</strong> Gasal<br />
-                                    <strong>Rangking:</strong> -<br />
-                                    <strong>File:</strong> -<br />
-                                    <strong>Keterangan:</strong> Naik Kelas<br />
-                                    <strong>Tgl Kirim:</strong> 20-06-2025
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="prestasi_kegiatan">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Kegiatan</h5>
+              <div class="tab-pane fade" id="riwayat_pendidikan">
+                <div class="card">
+                  <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body content-section">
+                      <!-- Heading muncul hanya di mobile -->
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Riwayat Pendidikan</h5>
                       <div class="table-responsive text-start">
-                        <table
-                          class="table table-borderless education-table mb-0"
-                          style="width: 100%; text-align: left !important"
-                        >
+                        <table class="table table-borderless education-table mb-0"
+                          style="width: 100%; text-align: left !important">
                           <thead>
                             <tr>
-                              <th>Nama Kegiatan/Perlombaan</th>
-                              <th class="d-none d-md-table-cell">Tahun</th>
-                              <th class="d-none d-md-table-cell">Jenis Kegiatan/Perlombaan</th>
-                              <th class="d-none d-md-table-cell">Tingkat</th>
-                              <th class="d-none d-md-table-cell">Prestasi</th>
-                              <th class="d-none d-md-table-cell">File Pendukung</th>
+                              <th>Jenjang</th>
+                              <th class="d-none d-md-table-cell">Sekolah</th>
+                              <th class="d-none d-md-table-cell">Kota/Kabupaten</th>
+                              <th class="d-none d-md-table-cell">Jurusan</th>
+                              <th class="d-none d-md-table-cell">Tahun Masuk</th>
+                              <th class="d-none d-md-table-cell">Tahun Lulus</th>
+                              <th class="d-none d-md-table-cell">File</th>
+                              <th class="d-none d-md-table-cell">Keterangan</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="d-none d-md-table-cell" data-label="Jenjang">SD</td>
+                              <td class="accordion-name" data-label="">
+                                SD Negeri 1 Kebumen
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Kebumen</td>
+                              <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2014</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2020</td>
+                              <td class="d-none d-md-table-cell" data-label="File">
+                                <a href="#"><i class="bi bi-file-earmark"></i></a>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="8" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Jenjang</strong> SD<br />
+                                  <strong>Kota/Kabupaten</strong> Kebumen<br />
+                                  <strong>Tahun Studi</strong> 2014 - 2020<br />
+                                  <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
+                                  <strong>Keterangan</strong> Lulus
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="d-none d-md-table-cell" data-label="Jenjang">SMP</td>
+                              <td class="accordion-name" data-label="">
+                                SMP Negeri 3 Yogyakarta
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Yogyakarta</td>
+                              <td class="d-none d-md-table-cell" data-label="Jurusan">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2020</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2023</td>
+                              <td class="d-none d-md-table-cell" data-label="File">
+                                <a href="#"><i class="bi bi-file-earmark"></i></a>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="8" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Jenjang</strong> SMP<br />
+                                  <strong>Kota/Kabupaten</strong> Yogyakarta<br />
+                                  <strong>Tahun Studi</strong> 2020 - 2023<br />
+                                  <strong>File</strong> <a href="#"><i class="bi bi-file-earmark"></i> Lihat</a><br />
+                                  <strong>Keterangan</strong> Lulus
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="d-none d-md-table-cell" data-label="Jenjang">SMA</td>
+                              <td class="accordion-name" data-label="">
+                                SMA Negeri 1 Sleman
+                                <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Kota/Kabupaten">Sleman</td>
+                              <td class="d-none d-md-table-cell" data-label="Jurusan">IPA</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Masuk">2023</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Lulus">2026</td>
+                              <td class="d-none d-md-table-cell" data-label="File">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Masih Studi</td>
+                            </tr>
+                            <tr class="accordion-details">
+                              <td colspan="8" class="accordion-detail-wrapper">
+                                <div class="accordion-detail">
+                                  <strong>Jenjang</strong> SMA<br />
+                                  <strong>Kota/Kabupaten</strong> Sleman<br />
+                                  <strong>Tahun Studi</strong> 2023 - 2026<br />
+                                  <strong>File</strong> -<br />
+                                  <strong>Keterangan</strong> Masih Studi
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade show" id="raport">
+                <div class="card">
+                  <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card-body content-section text-start">
+                      <h5 class="fw-semibold mb-3 d-block d-md-none">Raport</h5>
+                      <div class="table-responsive text-start">
+                        <table class="table table-borderless education-table mb-0"
+                          style="width: 100%; text-align: left !important">
+                          <thead>
+                            <tr>
+                              <th>Sekolah</th>
+                              <th class="d-none d-md-table-cell">Tahun Ajaran</th>
+                              <th class="d-none d-md-table-cell">Kelas</th>
+                              <th class="d-none d-md-table-cell">Semester</th>
+                              <th class="d-none d-md-table-cell">Rangking</th>
+                              <th class="d-none d-md-table-cell">File</th>
+                              <th class="d-none d-md-table-cell">Keterangan</th>
+                              <th class="d-none d-md-table-cell">Tgl Kirim</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
                               <td class="accordion-name" data-label="">
-                                Lomba Cerdas Cermat Matematika
+                                SD Negeri 1 Kebumen
                                 <i class="bi bi-chevron-down ms-2 d-md-none"></i>
                               </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2023</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Akademik</td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Kabupaten</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 2</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2019</td>
+                              <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 6</td>
+                              <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                              <td class="d-none d-md-table-cell" data-label="Rangking">5</td>
+                              <td class="d-none d-md-table-cell" data-label="File">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                              <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2019</td>
                             </tr>
                             <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
+                              <td colspan="8" class="accordion-detail-wrapper">
                                 <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2023<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Akademik<br />
-                                  <strong>Tingkat:</strong> Kabupaten<br />
-                                  <strong>Prestasi:</strong> Juara 2<br />
-                                  <strong>File Pendukung:</strong> -
+                                  <strong>Tahun Ajaran:</strong> 2019<br />
+                                  <strong>Kelas:</strong> Kelas 6<br />
+                                  <strong>Semester:</strong> Genap<br />
+                                  <strong>Rangking:</strong> 5<br />
+                                  <strong>File:</strong> -<br />
+                                  <strong>Keterangan:</strong> Lulus<br />
+                                  <strong>Tgl Kirim:</strong> 20-06-2019
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td class="accordion-name" data-label="">
-                                Lomba Pidato Bahasa Indonesia
+                                SMP Negeri 1 Kebumen
                                 <i class="bi bi-chevron-down ms-2 d-md-none"></i>
                               </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2024</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">
-                                Non-Akademik
-                              </td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Provinsi</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 1</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">
-                                <i class="bi bi-file-earmark"></i>
-                              </td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2022</td>
+                              <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 3</td>
+                              <td class="d-none d-md-table-cell" data-label="Semester">Genap</td>
+                              <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                              <td class="d-none d-md-table-cell" data-label="File">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Lulus</td>
+                              <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2022</td>
                             </tr>
                             <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
+                              <td colspan="8" class="accordion-detail-wrapper">
                                 <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2024<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Non-Akademik<br />
-                                  <strong>Tingkat:</strong> Provinsi<br />
-                                  <strong>Prestasi:</strong> Juara 1<br />
-                                  <strong>File Pendukung:</strong> <i class="bi bi-file-earmark"></i>
+                                  <strong>Tahun Ajaran:</strong> 2022<br />
+                                  <strong>Kelas:</strong> Kelas 3<br />
+                                  <strong>Semester:</strong> Genap<br />
+                                  <strong>Rangking:</strong> -<br />
+                                  <strong>File:</strong> -<br />
+                                  <strong>Keterangan:</strong> Lulus<br />
+                                  <strong>Tgl Kirim:</strong> 20-06-2022
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td class="accordion-name" data-label="">
-                                Lomba Olahraga Atletik
+                                SMK Wiyata Dharma Walikukun
                                 <i class="bi bi-chevron-down ms-2 d-md-none"></i>
                               </td>
-                              <td class="d-none d-md-table-cell" data-label="Tahun">2022</td>
-                              <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Olahraga</td>
-                              <td class="d-none d-md-table-cell" data-label="Tingkat">Sekolah</td>
-                              <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 3</td>
-                              <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Tahun Ajaran">2025</td>
+                              <td class="d-none d-md-table-cell" data-label="Kelas">Kelas 12</td>
+                              <td class="d-none d-md-table-cell" data-label="Semester">Gasal</td>
+                              <td class="d-none d-md-table-cell" data-label="Rangking">-</td>
+                              <td class="d-none d-md-table-cell" data-label="File">-</td>
+                              <td class="d-none d-md-table-cell" data-label="Keterangan">Naik Kelas</td>
+                              <td class="d-none d-md-table-cell" data-label="Tgl Kirim">20-06-2025</td>
                             </tr>
                             <tr class="accordion-details">
-                              <td colspan="6" class="accordion-detail-wrapper">
+                              <td colspan="8" class="accordion-detail-wrapper">
                                 <div class="accordion-detail">
-                                  <strong>Tahun:</strong> 2022<br />
-                                  <strong>Jenis Kegiatan/Perlombaan:</strong> Olahraga<br />
-                                  <strong>Tingkat:</strong> Sekolah<br />
-                                  <strong>Prestasi:</strong> Juara 3<br />
-                                  <strong>File Pendukung:</strong> -
+                                  <strong>Tahun Ajaran:</strong> 2025<br />
+                                  <strong>Kelas:</strong> Kelas 12<br />
+                                  <strong>Semester:</strong> Gasal<br />
+                                  <strong>Rangking:</strong> -<br />
+                                  <strong>File:</strong> -<br />
+                                  <strong>Keterangan:</strong> Naik Kelas<br />
+                                  <strong>Tgl Kirim:</strong> 20-06-2025
                                 </div>
                               </td>
                             </tr>
@@ -1197,319 +995,376 @@
                     </div>
                   </div>
                 </div>
+              </div>
 
-                <div class="tab-pane fade" id="pendidikan_tambahan">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Pendidikan Tambahan</h5>
-                      <span>Belum ada data!</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="kegiatan_organisasi">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kegiatan & Organisasi</h5>
-                      <span>Belum ada data!</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="tab-pane fade" id="bahasa">
-                  <div class="card">
-                    <div class="card-body content-section text-start">
-                      <h5 class="fw-semibold mb-3 d-block d-md-none">Kemampuan Bahasa</h5>
-                      <span>Belum ada data!</span>
+              <div class="tab-pane fade" id="prestasi_lomba">
+                <div class="card">
+                  <div class="card-body content-section text-start">
+                    <h5 class="fw-semibold mb-3 d-block d-md-none">Prestasi Lomba</h5>
+                    <div class="table-responsive text-start">
+                      <table class="table table-borderless education-table mb-0"
+                        style="width: 100%; text-align: left !important">
+                        <thead>
+                          <tr>
+                            <th>Nama Kegiatan/Perlombaan</th>
+                            <th class="d-none d-md-table-cell">Tahun</th>
+                            <th class="d-none d-md-table-cell">Jenis Kegiatan/Perlombaan</th>
+                            <th class="d-none d-md-table-cell">Tingkat</th>
+                            <th class="d-none d-md-table-cell">Prestasi</th>
+                            <th class="d-none d-md-table-cell">File Pendukung</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="accordion-name" data-label="">
+                              Lomba Cerdas Cermat Matematika
+                              <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                            </td>
+                            <td class="d-none d-md-table-cell" data-label="Tahun">2023</td>
+                            <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Akademik</td>
+                            <td class="d-none d-md-table-cell" data-label="Tingkat">Kabupaten</td>
+                            <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 2</td>
+                            <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                          </tr>
+                          <tr class="accordion-details">
+                            <td colspan="6" class="accordion-detail-wrapper">
+                              <div class="accordion-detail">
+                                <strong>Tahun:</strong> 2023<br />
+                                <strong>Jenis Kegiatan/Perlombaan:</strong> Akademik<br />
+                                <strong>Tingkat:</strong> Kabupaten<br />
+                                <strong>Prestasi:</strong> Juara 2<br />
+                                <strong>File Pendukung:</strong> -
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="accordion-name" data-label="">
+                              Lomba Pidato Bahasa Indonesia
+                              <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                            </td>
+                            <td class="d-none d-md-table-cell" data-label="Tahun">2024</td>
+                            <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">
+                              Non-Akademik
+                            </td>
+                            <td class="d-none d-md-table-cell" data-label="Tingkat">Provinsi</td>
+                            <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 1</td>
+                            <td class="d-none d-md-table-cell" data-label="File Pendukung">
+                              <i class="bi bi-file-earmark"></i>
+                            </td>
+                          </tr>
+                          <tr class="accordion-details">
+                            <td colspan="6" class="accordion-detail-wrapper">
+                              <div class="accordion-detail">
+                                <strong>Tahun:</strong> 2024<br />
+                                <strong>Jenis Kegiatan/Perlombaan:</strong> Non-Akademik<br />
+                                <strong>Tingkat:</strong> Provinsi<br />
+                                <strong>Prestasi:</strong> Juara 1<br />
+                                <strong>File Pendukung:</strong> <i class="bi bi-file-earmark"></i>
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="accordion-name" data-label="">
+                              Lomba Olahraga Atletik
+                              <i class="bi bi-chevron-down ms-2 d-md-none"></i>
+                            </td>
+                            <td class="d-none d-md-table-cell" data-label="Tahun">2022</td>
+                            <td class="d-none d-md-table-cell" data-label="Jenis Kegiatan/Perlombaan">Olahraga</td>
+                            <td class="d-none d-md-table-cell" data-label="Tingkat">Sekolah</td>
+                            <td class="d-none d-md-table-cell" data-label="Prestasi">Juara 3</td>
+                            <td class="d-none d-md-table-cell" data-label="File Pendukung">-</td>
+                          </tr>
+                          <tr class="accordion-details">
+                            <td colspan="6" class="accordion-detail-wrapper">
+                              <div class="accordion-detail">
+                                <strong>Tahun:</strong> 2022<br />
+                                <strong>Jenis Kegiatan/Perlombaan:</strong> Olahraga<br />
+                                <strong>Tingkat:</strong> Sekolah<br />
+                                <strong>Prestasi:</strong> Juara 3<br />
+                                <strong>File Pendukung:</strong> -
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
-              <div id="mobileProfile" class="d-md-none"></div>
             </div>
-          </div>
 
-          <div class="modal-footer justify-content-end">
-            <button type="button" class="btn btn-primary btn-sm" onclick="pilihAnakAsuh()">
-              <i class="bi bi-check"></i>Pilih
-            </button>
+            <!-- Mobile Cards (dibentuk otomatis dari isi tab) -->
+            <div id="mobileProfile" class="d-md-none"></div>
           </div>
+        </div>
+
+        <div class="modal-footer justify-content-end">
+          <button type="button" class="btn btn-primary btn-sm" onclick="pilihAnakAsuh()">
+            <i class="bi bi-check"></i>Pilih
+          </button>
         </div>
       </div>
     </div>
-    <!-- Modal Detail Anak -->
+  </div>
+  <!-- Modal Detail Anak -->
 
-    <!-- Modal Input Donatur -->
-    <div
-      class="modal fade"
-      id="konfirmasiAssignDonasiModal"
-      tabindex="-1"
-      aria-labelledby="konfirmasiAssignDonasiLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-wide">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Konfirmasi Assign Donasi</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+  <!-- Modal Input Donatur -->
+  <div class="modal fade" id="konfirmasiAssignDonasiModal" tabindex="-1" aria-labelledby="konfirmasiAssignDonasiLabel"
+    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-wide">
+      <div class="modal-content">
+        <div class="modal-header bg-aat text-white">
+          <h5 class="modal-title">Konfirmasi Assign Donasi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
 
-          <div class="modal-body">
-            <div class="table-responsive">
-              <table class="table no-mobile-hide table-bordered align-middle mb-0">
-                <!-- HEADER UTAMA -->
-                <!-- SUB HEADER ANAK ASUH -->
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table no-mobile-hide table-bordered align-middle mb-0">
+              <!-- HEADER UTAMA -->
+              <!-- SUB HEADER ANAK ASUH -->
+              <tr class="table-light fw-bold">
+                <td colspan="7" class="text-start">Donasi Anak Asuh SD/SMP/SMA</td>
+              </tr>
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center">No</th>
+                  <th>Nama Anak Asuh</th>
+                  <th>Komunitas/Sekolah</th>
+                  <th>Kelas</th>
+                  <th>Donasi/bulan (Rp)</th>
+                  <th>Jml. Bulan</th>
+                  <th>Subtotal (Rp)</th>
+                </tr>
+              </thead>
+              <!-- DATA ANAK ASUH -->
+              <tr>
+                <td class="text-center d-none d-md-block">1</td>
+                <td data-label="Anak Asuh">Agata Cahaya Angel Fradista</td>
+                <td data-label="Komunitas">SD Katolik Santa Maria Ponorogo</td>
+                <td data-label="Kelas">SD Kelas 3</td>
+                <td class="text-end" data-label="Donasi/bln (Rp)">50.000,00</td>
+                <td class="text-center" data-label="Jml. Bulan">12</td>
+                <td class="text-end" data-label="Subtotal (Rp)">600.000,00</td>
+              </tr>
+
+              <tr>
+                <td class="text-center d-none d-md-block">2</td>
+                <td data-label="Anak Asuh">Adinda Dewi Puspita Sari</td>
+                <td data-label="Komunitas">SMK 17 Agustus 1945 Semarang</td>
+                <td data-label="Kelas">SMA/SMK Kelas 11</td>
+                <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                <td class="text-center" data-label="Jml. Bulan">12</td>
+                <td class="text-end" data-label="Subtotal (Rp)">1.200.000,00</td>
+              </tr>
+
+              <!-- DONASI PERGURUAN TINGGI -->
+              <thead class="table-light">
+                <tr>
+                  <th class="text-center">No</th>
+                  <th colspan="3">Mulai Donasi</th>
+                  <th>Donasi / Bulan</th>
+                  <th>Jml. Bulan</th>
+                  <th>Sub Total</th>
+                </tr>
+              </thead>
+              <tbody>
                 <tr class="table-light fw-bold">
-                  <td colspan="7" class="text-start">Donasi Anak Asuh SD/SMP/SMA</td>
+                  <td colspan="7" class="text-start">Bantuan Pendidikan Tinggi</td>
                 </tr>
-                <thead class="table-light">
-                  <tr>
-                    <th class="text-center">No</th>
-                    <th>Nama Anak Asuh</th>
-                    <th>Komunitas/Sekolah</th>
-                    <th>Kelas</th>
-                    <th>Donasi/bulan (Rp)</th>
-                    <th>Jml. Bulan</th>
-                    <th>Subtotal (Rp)</th>
-                  </tr>
-                </thead>
-                <!-- DATA ANAK ASUH -->
                 <tr>
-                  <td class="text-center d-none d-md-block">1</td>
-                  <td data-label="Anak Asuh">Agata Cahaya Angel Fradista</td>
-                  <td data-label="Komunitas">SD Katolik Santa Maria Ponorogo</td>
-                  <td data-label="Kelas">SD Kelas 3</td>
-                  <td class="text-end" data-label="Donasi/bln (Rp)">50.000,00</td>
-                  <td class="text-center" data-label="Jml. Bulan">12</td>
-                  <td class="text-end" data-label="Subtotal (Rp)">600.000,00</td>
-                </tr>
-
-                <tr>
-                  <td class="text-center d-none d-md-block">2</td>
-                  <td data-label="Anak Asuh">Adinda Dewi Puspita Sari</td>
-                  <td data-label="Komunitas">SMK 17 Agustus 1945 Semarang</td>
-                  <td data-label="Kelas">SMA/SMK Kelas 11</td>
+                  <td class="text-center d-none d-md-block">3</td>
+                  <td colspan="3" data-label="Mulai Donasi">04 September 2025</td>
                   <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                  <td class="text-center" data-label="Jml. Bulan">12</td>
-                  <td class="text-end" data-label="Subtotal (Rp)">1.200.000,00</td>
+                  <td class="text-center" data-label="Jml. Bulan">10</td>
+                  <td class="text-end" data-label="Subtotal (Rp)">1.000.000,00</td>
                 </tr>
 
-                <!-- DONASI PERGURUAN TINGGI -->
-                <thead class="table-light">
-                  <tr>
-                    <th class="text-center">No</th>
-                    <th colspan="3">Mulai Donasi</th>
-                    <th>Donasi / Bulan</th>
-                    <th>Jml. Bulan</th>
-                    <th>Sub Total</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="table-light fw-bold">
-                    <td colspan="7" class="text-start">Bantuan Pendidikan Tinggi</td>
-                  </tr>
-                  <tr>
-                    <td class="text-center d-none d-md-block">3</td>
-                    <td colspan="3" data-label="Mulai Donasi">04 September 2025</td>
-                    <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                    <td class="text-center" data-label="Jml. Bulan">10</td>
-                    <td class="text-end" data-label="Subtotal (Rp)">1.000.000,00</td>
-                  </tr>
+                <tr>
+                  <td class="text-center d-none d-md-block">4</td>
+                  <td colspan="3" data-label="Mulai Donasi">18 November 2025</td>
+                  <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                  <td class="text-center" data-label="Jml. Bulan">8</td>
+                  <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
+                </tr>
 
-                  <tr>
-                    <td class="text-center d-none d-md-block">4</td>
-                    <td colspan="3" data-label="Mulai Donasi">18 November 2025</td>
-                    <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                    <td class="text-center" data-label="Jml. Bulan">8</td>
-                    <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
-                  </tr>
+                <!-- DONASI OPERASIONAL -->
+                <tr class="table-light fw-bold">
+                  <td colspan="7" class="text-start">Bantuan Operasional</td>
+                </tr>
+                <tr>
+                  <td class="text-center d-none d-md-block">5</td>
+                  <td colspan="3" data-label="Mulai Donasi">04 September 2025</td>
+                  <td class="text-end" data-label="Donasi/bln (Rp)">10.000,00</td>
+                  <td class="text-center" data-label="Jml. Bulan">10</td>
+                  <td class="text-end" data-label="Subtotal (Rp)">100.000,00</td>
+                </tr>
 
-                  <!-- DONASI OPERASIONAL -->
-                  <tr class="table-light fw-bold">
-                    <td colspan="7" class="text-start">Bantuan Operasional</td>
-                  </tr>
-                  <tr>
-                    <td class="text-center d-none d-md-block">5</td>
-                    <td colspan="3" data-label="Mulai Donasi">04 September 2025</td>
-                    <td class="text-end" data-label="Donasi/bln (Rp)">10.000,00</td>
-                    <td class="text-center" data-label="Jml. Bulan">10</td>
-                    <td class="text-end" data-label="Subtotal (Rp)">100.000,00</td>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center d-none d-md-block">6</td>
-                    <td colspan="3" data-label="Mulai Donasi">24 November 2025</td>
-                    <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
-                    <td class="text-center" data-label="Jml. Bulan">8</td>
-                    <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
-                  </tr>
-                  <!-- TOTAL -->
-                  <tr class="fw-bold bg-light">
-                    <td colspan="4" class="text-end">Total</td>
-                    <td class="text-end" data-label="Donasi/bln (Rp)">460.000,00</td>
-                    <td></td>
-                    <td class="text-end" data-label="Subtotal (Rp)">4.500.000,00</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                <tr>
+                  <td class="text-center d-none d-md-block">6</td>
+                  <td colspan="3" data-label="Mulai Donasi">24 November 2025</td>
+                  <td class="text-end" data-label="Donasi/bln (Rp)">100.000,00</td>
+                  <td class="text-center" data-label="Jml. Bulan">8</td>
+                  <td class="text-end" data-label="Subtotal (Rp)">800.000,00</td>
+                </tr>
+                <!-- TOTAL -->
+                <tr class="fw-bold bg-light">
+                  <td colspan="4" class="text-end">Total</td>
+                  <td class="text-end" data-label="Donasi/bln (Rp)">460.000,00</td>
+                  <td></td>
+                  <td class="text-end" data-label="Subtotal (Rp)">4.500.000,00</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
 
-          <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-success px-2 px-lg-4" onclick="konfirmasiAssignDonasi()">
-              <i class="bi bi-check me-1"></i> Konfirmasi
-            </button>
-            <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-x me-1"></i> Tutup
-            </button>
-          </div>
+        <div class="modal-footer justify-content-center d-flex flex-nowrap">
+          <button type="button" class="btn btn-success px-2 px-lg-4" onclick="konfirmasiAssignDonasi()">
+            <i class="bi bi-check me-1"></i> Konfirmasi
+          </button>
+          <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
+            <i class="bi bi-x me-1"></i> Tutup
+          </button>
         </div>
       </div>
     </div>
-    <!-- Modal Input Donatur -->
+  </div>
+  <!-- Modal Input Donatur -->
 
-    <!-- Context Menu -->
-    <div
-      id="contextMenu"
-      class="context-menu"
-      style="
+  <!-- Context Menu -->
+  <div id="contextMenu" class="context-menu" style="
         display: none;
         position: absolute;
         background: white;
         border: 1px solid #ccc;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         z-index: 1000;
-      "
-    >
-      <div class="context-menu-item" data-action="detail">Lihat Detail</div>
-      <div class="context-menu-item" data-action="edit">Edit</div>
-    </div>
+      ">
+    <div class="context-menu-item" data-action="detail">Lihat Detail</div>
+    <div class="context-menu-item" data-action="edit">Edit</div>
+  </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/style.js"></script>
-    <!-- Sweet Alerts Js-->
-    <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
-    <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/style.js"></script>
+  <!-- Sweet Alerts Js-->
+  <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
-    <script>
-      const schoolsBySekretariat = {
-        Yogyakarta: [
-          { pendidikan: 'SD Negeri 1 Yogyakarta', level: 'SD', spp: 50000 },
-          { pendidikan: 'SMP Negeri 3 Yogyakarta', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 },
-        ],
-        Semarang: [
-          { pendidikan: 'SD Negeri 1 Semarang', level: 'SD', spp: 50000 },
-          { pendidikan: 'SMP Negeri 3 Semarang', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 },
-        ],
-        Madiun: [
-          { pendidikan: 'SD Negeri 1 Madiun', level: 'SD', spp: 50000 },
-          { pendidikan: 'SMP Negeri 3 Madiun', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 },
-        ],
-        Purwokerto: [
-          { pendidikan: 'SD Negeri 1 Purwokerto', level: 'SD', spp: 50000 },
-          { pendidikan: 'SMP Negeri 3 Purwokerto', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 },
-        ],
-        Bandung: [
-          { pendidikan: 'SD Negeri 1 Bandung', level: 'SD', spp: 50000 },
-          { pendidikan: 'SMP Negeri 3 Bandung', level: 'SMP', spp: 75000 },
-          { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 },
-        ],
+  <script>
+    const schoolsBySekretariat = {
+      Yogyakarta: [
+        { pendidikan: 'SD Negeri 1 Yogyakarta', level: 'SD', spp: 50000 },
+        { pendidikan: 'SMP Negeri 3 Yogyakarta', level: 'SMP', spp: 75000 },
+        { pendidikan: 'SMA Negeri 1 Sleman', level: 'SMA', spp: 100000 },
+      ],
+      Semarang: [
+        { pendidikan: 'SD Negeri 1 Semarang', level: 'SD', spp: 50000 },
+        { pendidikan: 'SMP Negeri 3 Semarang', level: 'SMP', spp: 75000 },
+        { pendidikan: 'SMA Negeri 1 Semarang', level: 'SMA', spp: 100000 },
+      ],
+      Madiun: [
+        { pendidikan: 'SD Negeri 1 Madiun', level: 'SD', spp: 50000 },
+        { pendidikan: 'SMP Negeri 3 Madiun', level: 'SMP', spp: 75000 },
+        { pendidikan: 'SMA Negeri 1 Madiun', level: 'SMA', spp: 100000 },
+      ],
+      Purwokerto: [
+        { pendidikan: 'SD Negeri 1 Purwokerto', level: 'SD', spp: 50000 },
+        { pendidikan: 'SMP Negeri 3 Purwokerto', level: 'SMP', spp: 75000 },
+        { pendidikan: 'SMA Negeri 1 Purwokerto', level: 'SMA', spp: 100000 },
+      ],
+      Bandung: [
+        { pendidikan: 'SD Negeri 1 Bandung', level: 'SD', spp: 50000 },
+        { pendidikan: 'SMP Negeri 3 Bandung', level: 'SMP', spp: 75000 },
+        { pendidikan: 'SMA Negeri 1 Bandung', level: 'SMA', spp: 100000 },
+      ],
+    };
+
+    const childAsuh = Array.from({ length: 30 }, (_, i) => {
+      const sekretariat = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'][i % 5];
+      const school = schoolsBySekretariat[sekretariat][i % 3];
+      return {
+        nama: 'Anak ' + (i + 1),
+        spp: school.spp,
+        pendidikan: school.pendidikan,
+        level: school.level,
+        sekretariat: sekretariat,
+        foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
       };
+    });
 
-      const childAsuh = Array.from({ length: 30 }, (_, i) => {
-        const sekretariat = ['Yogyakarta', 'Semarang', 'Madiun', 'Purwokerto', 'Bandung'][i % 5];
-        const school = schoolsBySekretariat[sekretariat][i % 3];
-        return {
-          nama: 'Anak ' + (i + 1),
-          spp: school.spp,
-          pendidikan: school.pendidikan,
-          level: school.level,
-          sekretariat: sekretariat,
-          foto: `https://randomuser.me/api/portraits/${i % 2 ? 'men' : 'women'}/${i + 1}.jpg`,
-        };
-      });
+    const childGrid = document.getElementById('childGrid');
+    const searchInput = document.getElementById('searchInput');
+    const pagination = document.getElementById('pagination');
+    const tingkatCheckbox = document.querySelectorAll('.tingkat');
+    const sekretariatCheckbox = document.querySelectorAll('.sekretariat');
+    const sortPills = document.querySelectorAll('.sort-pill');
 
-      const childGrid = document.getElementById('childGrid');
-      const searchInput = document.getElementById('searchInput');
-      const pagination = document.getElementById('pagination');
-      const tingkatCheckbox = document.querySelectorAll('.tingkat');
-      const sekretariatCheckbox = document.querySelectorAll('.sekretariat');
-      const sortPills = document.querySelectorAll('.sort-pill');
+    let perPage = 12;
+    let currentPage = 1;
+    let currentSort = 'nama';
+    let sortDirection = 'asc';
 
-      let perPage = 12;
-      let currentPage = 1;
-      let currentSort = 'nama';
-      let sortDirection = 'asc';
+    function updatePerPageDynamically() {
+      const screenHeight = window.innerHeight;
+      const cardHeight = 200;
+      const rows = Math.floor((screenHeight - 250) / cardHeight);
+      perPage = rows * 6 || 6;
+    }
 
-      function updatePerPageDynamically() {
-        const screenHeight = window.innerHeight;
-        const cardHeight = 200;
-        const rows = Math.floor((screenHeight - 250) / cardHeight);
-        perPage = rows * 6 || 6;
-      }
-
-      function updatesortPills() {
-        sortPills.forEach(btn => {
-          const sortType = btn.getAttribute('data-sort');
-          const arrow = btn.querySelector('.sort-arrow');
-          if (sortType === currentSort) {
-            btn.classList.add('active');
-            arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
-          } else {
-            btn.classList.remove('active');
-            arrow.textContent = '↑';
-          }
-        });
-      }
-
-      function renderChild() {
-        updatePerPageDynamically();
-
-        const selectedSekretariat = Array.from(sekretariatCheckbox)
-          .filter(c => c.checked)
-          .map(c => c.value);
-        const selectedTingkat = Array.from(tingkatCheckbox)
-          .filter(c => c.checked)
-          .map(c => c.value);
-        const searchTerm = searchInput.value.toLowerCase();
-
-        let filtered = childAsuh.filter(
-          a =>
-            (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
-            (selectedTingkat.length === 0 || selectedTingkat.includes(a.level)) &&
-            (a.nama.toLowerCase().includes(searchTerm)||a.sekretariat.toLowerCase().includes(searchTerm)||a.pendidikan.toLowerCase().includes(searchTerm))
-        );
-
-        if (currentSort === 'nama') {
-          filtered.sort((a, b) =>
-            sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)
-          );
-        } else if (currentSort === 'sekolah') {
-          filtered.sort((a, b) =>
-            sortDirection === 'asc'
-              ? a.sekretariat.localeCompare(b.sekretariat)
-              : b.sekretariat.localeCompare(a.sekretariat)
-          );
+    function updatesortPills() {
+      sortPills.forEach(btn => {
+        const sortType = btn.getAttribute('data-sort');
+        const arrow = btn.querySelector('.sort-arrow');
+        if (sortType === currentSort) {
+          btn.classList.add('active');
+          arrow.textContent = sortDirection === 'asc' ? '↑' : '↓';
+        } else {
+          btn.classList.remove('active');
+          arrow.textContent = '↑';
         }
+      });
+    }
 
-        const totalPages = Math.ceil(filtered.length / perPage);
-        if (currentPage > totalPages) currentPage = totalPages || 1;
+    function renderChild() {
+      updatePerPageDynamically();
 
-        const start = (currentPage - 1) * perPage;
-        const paginated = filtered.slice(start, start + perPage);
+      const selectedSekretariat = Array.from(sekretariatCheckbox)
+        .filter(c => c.checked)
+        .map(c => c.value);
+      const selectedTingkat = Array.from(tingkatCheckbox)
+        .filter(c => c.checked)
+        .map(c => c.value);
+      const searchTerm = searchInput.value.toLowerCase();
 
-        childGrid.innerHTML = paginated
-          .map(
-            a => `
+      let filtered = childAsuh.filter(
+        a =>
+          (selectedSekretariat.length === 0 || selectedSekretariat.includes(a.sekretariat)) &&
+          (selectedTingkat.length === 0 || selectedTingkat.includes(a.level)) &&
+          (a.nama.toLowerCase().includes(searchTerm) || a.sekretariat.toLowerCase().includes(searchTerm) || a.pendidikan.toLowerCase().includes(searchTerm))
+      );
+
+      if (currentSort === 'nama') {
+        filtered.sort((a, b) =>
+          sortDirection === 'asc' ? a.nama.localeCompare(b.nama) : b.nama.localeCompare(a.nama)
+        );
+      } else if (currentSort === 'sekolah') {
+        filtered.sort((a, b) =>
+          sortDirection === 'asc'
+            ? a.sekretariat.localeCompare(b.sekretariat)
+            : b.sekretariat.localeCompare(a.sekretariat)
+        );
+      }
+
+      const totalPages = Math.ceil(filtered.length / perPage);
+      if (currentPage > totalPages) currentPage = totalPages || 1;
+
+      const start = (currentPage - 1) * perPage;
+      const paginated = filtered.slice(start, start + perPage);
+
+      childGrid.innerHTML = paginated
+        .map(
+          a => `
           <div class="col-6 col-md-2" data-bs-toggle="modal" data-bs-target="#detailAnakModal">
             <div class="child-card position-relative">
               <img src="${a.foto}" alt="${a.nama}" />
@@ -1518,64 +1373,63 @@
               <p>Rp ${a.spp.toLocaleString()}</p>
             </div>
           </div>`
-          )
-          .join('');
+        )
+        .join('');
 
-        createPagination(pagination, totalPages, currentPage, newPage => {
-          currentPage = newPage;
-          renderChild();
-        });
-      }
-
-      [searchInput, ...tingkatCheckbox, ...sekretariatCheckbox].forEach(el =>
-        el.addEventListener('input', () => {
-          currentPage = 1;
-          renderChild();
-        })
-      );
-
-      // Event listeners for sort pills
-      sortPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          const newSortBy = pill.getAttribute('data-sort');
-          if (currentSort === newSortBy) {
-            // Toggle direction
-            sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
-          } else {
-            // Change sort by and reset to asc
-            currentSort = newSortBy;
-            sortDirection = 'asc';
-          }
-          // Update UI
-          updatesortPills();
-          currentPage = 1;
-          renderChild();
-        });
+      createPagination(pagination, totalPages, currentPage, newPage => {
+        currentPage = newPage;
+        renderChild();
       });
+    }
 
-      window.addEventListener('resize', renderChild);
-      renderChild();
+    [searchInput, ...tingkatCheckbox, ...sekretariatCheckbox].forEach(el =>
+      el.addEventListener('input', () => {
+        currentPage = 1;
+        renderChild();
+      })
+    );
 
-      function pilihAnakAsuh() {
-        toast_alert('Anak asuh telah dipilih!', 'success');
-        $('#detailAnakModal').modal('hide');
-      }
-      function konfirmasiDonasi() {
-        toast_alert('Donasi telah ditambahkan ke keranjang!', 'success');
-      }
-      function konfirmasiAssignDonasi() {
-        swal_confirm('Konfirmasi', 'Yakin ingin assign donasi untuk donatur tersebut?', 'warning').then(result => {
-          if (result.isConfirmed) {
-            $('#konfirmasiAssignDonasiModal').modal('hide');
-            swal_alert('Berhasil', 'Assign donasi berhasil!', 'success').then(() => {
-              // Redirect setelah user menutup alert
-              window.location.href = 'riwayat_donasi.html';
-            });
-          }
-        });
-      }
-    </script>
-  </body>
+    // Event listeners for sort pills
+    sortPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const newSortBy = pill.getAttribute('data-sort');
+        if (currentSort === newSortBy) {
+          // Toggle direction
+          sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+          // Change sort by and reset to asc
+          currentSort = newSortBy;
+          sortDirection = 'asc';
+        }
+        // Update UI
+        updatesortPills();
+        currentPage = 1;
+        renderChild();
+      });
+    });
+
+    window.addEventListener('resize', renderChild);
+    renderChild();
+
+    function pilihAnakAsuh() {
+      toast_alert('Anak asuh telah dipilih!', 'success');
+      $('#detailAnakModal').modal('hide');
+    }
+    function konfirmasiDonasi() {
+      toast_alert('Donasi telah ditambahkan ke keranjang!', 'success');
+    }
+    function konfirmasiAssignDonasi() {
+      swal_confirm('Konfirmasi', 'Yakin ingin assign donasi untuk donatur tersebut?', 'warning').then(result => {
+        if (result.isConfirmed) {
+          $('#konfirmasiAssignDonasiModal').modal('hide');
+          swal_alert('Berhasil', 'Assign donasi berhasil!', 'success').then(() => {
+            // Redirect setelah user menutup alert
+            window.location.href = 'riwayat_donasi.html';
+          });
+        }
+      });
+    }
+  </script>
+</body>
+
 </html>
-
-
