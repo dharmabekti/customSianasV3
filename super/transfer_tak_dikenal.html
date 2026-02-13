@@ -983,7 +983,7 @@
                     >Tgl Transfer <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
-                    <input type="date" class="form-control form-control-sm" value="2026-01-01" />
+                    <input type="date" class="form-control form-control-sm" value="2026-01-01" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
@@ -991,12 +991,7 @@
                     >Rekening Tujuan <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
-                    <select class="form-select form-select-sm">
-                      <option>== Pilih Rekening ==</option>
-                      <option selected>BCA No.037 351 1118. a.n Yayasan AAT Indonesia</option>
-                      <option>Mandiri No.137 00 0044555 7. a.n Yayasan AAT Indonesia</option>
-                      <option>QRIS No.-. a.n Yayasan AAT Indonesia</option>
-                    </select>
+                    <input type="text" class="form-control form-control-sm" value="BCA No.037 351 1118. a.n Yayasan AAT Indonesia" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
@@ -1004,11 +999,7 @@
                     >Rekening Asal <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
-                    <select class="form-select form-select-sm">
-                      <option selected>BCA</option>
-                      <option>Mandiri</option>
-                      <option>Lainnya</option>
-                    </select>
+                    <input type="text" class="form-control form-control-sm" value="BCA" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
@@ -1016,7 +1007,7 @@
                     >Atas Nama Rekening <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" value="Ki Dharma Suroto" />
+                    <input type="text" class="form-control form-control-sm" value="Ki Dharma Suroto" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
@@ -1024,31 +1015,21 @@
                     >Jumlah Transfer <sup class="text-important">*)</sup></label
                   >
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" value="Rp 3.600.000" />
+                    <input type="text" class="form-control form-control-sm" value="Rp 3.600.000" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
                   <label class="col-sm-5 col-form-label form-label">Kode Transfer</label>
                   <div class="col-sm-7">
-                    <input type="text" class="form-control form-control-sm" value="B-JUL-25" />
+                    <input type="text" class="form-control form-control-sm" value="B-JUL-25" readonly />
                   </div>
                 </div>
                 <div class="mb-2 row">
                   <label class="col-sm-5 col-form-label form-label">Keterangan</label>
                   <div class="col-sm-7">
-                    <textarea class="form-control form-control-sm" rows="2">
+                    <textarea class="form-control form-control-sm" rows="2" readonly>
 TRSF E-BANKING CR 0407/FTSCY/WS95031 500000.00 HARRY SUHARTO</textarea
                     >
-                  </div>
-                </div>
-                <div class="mb-2 row">
-                  <label class="col-sm-5 col-form-label form-label">Status <sup class="text-important">*)</sup></label>
-                  <div class="col-sm-7">
-                    <select class="form-select form-select-sm">
-                      <option>Belum Ada Klaim</option>
-                      <option>Ada Klaim</option>
-                      <option selected>Sudah Terkonfirmasi</option>
-                    </select>
                   </div>
                 </div>
               </div>
@@ -1057,7 +1038,7 @@ TRSF E-BANKING CR 0407/FTSCY/WS95031 500000.00 HARRY SUHARTO</textarea
 
           <div class="modal-footer justify-content-center d-flex flex-nowrap">
             <button type="button" class="btn btn-success px-2 px-lg-4" onclick="klaimTransfer()">
-              <i class="bi bi-check me-1"></i> Simpan
+              <i class="bi bi-check me-1"></i> Konfirmasi Klaim
             </button>
             <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
               <i class="bi bi-x me-1"></i> Batal
