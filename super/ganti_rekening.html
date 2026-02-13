@@ -900,6 +900,11 @@
       </div>
     </main>
 
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" onclick="formData()">
+      <i class="bi bi-plus-lg text-center"></i>
+    </button>
+
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
       <small>
@@ -921,7 +926,7 @@
         </button>
       </li>
       <li>
-        <a class="dropdown-item" id="editAction" onclick="formEdit()"> <i class="bi bi-pencil"></i> Edit </a>
+        <a class="dropdown-item" id="editAction" onclick="formData()"> <i class="bi bi-pencil"></i> Edit </a>
       </li>
       <li>
         <button class="dropdown-item text-danger" id="deleteAction" onclick="deleteData()">
@@ -1068,7 +1073,7 @@
           </div>
 
           <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-warning text-white px-2 px-lg-4" onclick="formEdit()">
+            <button type="button" class="btn btn-warning text-white px-2 px-lg-4" onclick="formData()">
               <i class="bi bi-check-lg me-1"></i> Edit
             </button>
             <button type="button" class="btn btn-outline-secondary px-2 px-lg-4" data-bs-dismiss="modal">
@@ -1803,7 +1808,7 @@
       });
 
       // Form Edit
-      function formEdit(id) {
+      function formData(id) {
         $('#detailPenggantianModal').modal('hide');
         $('#formGantiRekeningModal').modal('show');
       }
