@@ -730,20 +730,6 @@
                   <option>2024/2025</option>
                   <option>2023/2024</option>
                 </select>
-
-                <label>Status:</label>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Menunggu Konfirmasi" id="waiting" />
-                  <label class="form-check-label badge bg-secondary" for="waiting">Menunggu Konfirmasi</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Valid" id="valid" />
-                  <label class="form-check-label badge bg-success" for="valid">Valid</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Tidak Valid" id="unvalid" />
-                  <label class="form-check-label badge bg-danger" for="unvalid">Tidak Valid</label>
-                </div>
               </div>
             </div>
           </div>
@@ -1045,16 +1031,6 @@
                       <input type="text" class="form-control form-control-sm" value="NOGA SAPUTRA" />
                     </div>
                   </div>
-
-                  <!-- Jumlah -->
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">
-                      Jumlah <sup class="text-important">*)</sup>
-                    </label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control form-control-sm" value="500000" />
-                    </div>
-                  </div>
                 </div>
 
                 <!-- KOLOM KANAN -->
@@ -1064,6 +1040,16 @@
                     <label class="col-sm-5 col-form-label form-label"> Kode </label>
                     <div class="col-sm-7">
                       <input type="text" class="form-control form-control-sm" value="B-JUL-16-51" />
+                    </div>
+                  </div>
+
+                  <!-- Jumlah -->
+                  <div class="mb-2 row">
+                    <label class="col-sm-5 col-form-label form-label">
+                      Jumlah <sup class="text-important">*)</sup>
+                    </label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control form-control-sm" value="500000" />
                     </div>
                   </div>
 
@@ -1092,18 +1078,6 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
                     <label class="col-sm-5 col-form-label form-label"> Tanggal Konfirmasi </label>
                     <div class="col-sm-7">
                       <input type="date" class="form-control form-control-sm" value="2016-07-17" />
-                    </div>
-                  </div>
-
-                  <!-- Status -->
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"> Status </label>
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option selected>Valid</option>
-                        <option>Menunggu Konfirmasi</option>
-                        <option>Tidak Valid</option>
-                      </select>
                     </div>
                   </div>
                 </div>
@@ -1159,7 +1133,7 @@ TRSF E-BANKING CR 0807/FTSCY/WS95011 500000.00 AAT July 2016 NOGA SAPUTRA</texta
         $('.select2').select2();
       });
 
-      const statusList = ['Menunggu Konfirmasi', 'Valid', 'Tidak Valid'];
+      const statusList = ['Valid'];
       const tahunAjaranList = ['2025/2026', '2024/2025', '2023/2024'];
       const rekeningList = ['BCA a.n. Yayasan AAT Indonesia', 'Mandiri a.n. Yayasan AAT Indonesia'];
 
