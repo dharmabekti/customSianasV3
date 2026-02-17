@@ -232,10 +232,10 @@
             <ul class="dropdown-menu" aria-labelledby="settingDropdown">
               <li><a class="dropdown-item" href="admin.html">Manajemen Admin</a></li>
               <li><a class="dropdown-item" href="tahun_ajaran.html">Tahun Ajaran</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="pengurus_inti.html">Pengurus Inti</a></li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li><a class="dropdown-item" href="pengurus_inti.html">Pengurus Inti</a></li>
             </ul>
           </li>
 
@@ -527,7 +527,7 @@
         <div class="collapse" id="pengaturan">
           <a href="admin.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Manajemen Admin</a>
           <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
-            <a href="pengurus_inti.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengurus Inti</a>
+          <a href="pengurus_inti.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengurus Inti</a>
         </div>
         <a href="#" class="list-group-item list-group-item-action bg-aat text-white" data-bs-toggle="modal"
           data-bs-target="#kontakYayasanModal">
@@ -860,6 +860,11 @@
                 </button>
               </li>
               <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#listIndikator">
+                  Pengecekan Indikator
+                </button>
+              </li>
+              <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayatVerifikasi">
                   Riwayat Verifikasi
                 </button>
@@ -947,7 +952,47 @@
                 </div>
               </div>
 
-              <!-- ================= SRIWAYAT VERIFIKASI ================= -->
+              <!-- ================= PENGECEKAN INDOKATOR ================= -->
+              <div class="tab-pane fade" id="listIndikator">
+                <p class="fw-semibold mb-3">Indikator Pengecekan Kuitansi & Lampiran</p>
+                <div class="d-flex flex-column">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator1" />
+                    <label class="form-check-label" for="indikator1">File Kuitansi dan Lampiran Kuitansi Terbaca dengan
+                      Jelas</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator2" />
+                    <label class="form-check-label" for="indikator2">Peruntukan Bulan Sesuai </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator3" />
+                    <label class="form-check-label" for="indikator3">Nominal Sesuai </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator4" />
+                    <label class="form-check-label" for="indikator4">Posisi File Tegak </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator5" />
+                    <label class="form-check-label" for="indikator5">TTD penanggungjawab & Cap Sekolah Di Kuitansi
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator6" />
+                    <label class="form-check-label" for="indikator6">TTD kepala sekolah & Cap Sekolah dan
+                      penanggungjawab di Lampiran
+                      Kuitansi
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="indikator[]" id="indikator7" />
+                    <label class="form-check-label" for="indikator7">Tanggal Sesuai </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ================= RIWAYAT VERIFIKASI ================= -->
               <div class="tab-pane fade" id="riwayatVerifikasi">
                 <ul class="timeline">
                   <li class="timeline-item success">
