@@ -1155,12 +1155,23 @@
             d.tahunAjaranTujuan,
             `Rp ${d.nominalKelebihan.toLocaleString("id-ID")}`,
             d.tglPengajuan,
-            `<span class="badge bg-${getStatusBadgeClass(d.status)}" onclick="form_approval()">${d.status}</span>`,
+            `<span class="badge bg-${getStatusBadgeClass(d.status)}">${d.status}</span>`,
           ]),
         );
 
         // Draw the table
         dataTableApproval.draw();
+        // 🔥 Klik baris
+        $('#datatable tbody').off('click').on('click', 'tr', function () {
+
+          const rowData = dataTableApproval.row(this).data();
+          if (!rowData) return;
+
+          // Ambil idDonatur (kolom pertama)
+          const idDonatur = rowData[0];
+
+          form_approval(idDonatur);
+        });
       }
 
       /* ======================================================
