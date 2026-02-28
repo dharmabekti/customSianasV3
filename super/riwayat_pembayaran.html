@@ -811,6 +811,11 @@
       </small>
     </footer>
 
+    <!-- Floating Input Button -->
+    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formPembayaranModal">
+      <i class="bi bi-plus text-center"></i>
+    </button>
+
     <!-- Context Menu for Right-Click Actions -->
     <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
       <li>
@@ -845,7 +850,7 @@
       data-bs-backdrop="static"
       data-bs-keyboard="false"
     >
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-dialog modal-dialog-centered modal-wide">
         <div class="modal-content">
           <div class="modal-header bg-aat text-white">
             <h5 class="modal-title">Detail Pembayaran</h5>
@@ -854,80 +859,81 @@
 
           <div class="modal-body">
             <div class="row align-items-center">
-              <!-- Info Singkat -->
-              <div class="table-responsive">
-                <table
-                  class="table table-borderless mb-0 list-table no-mobile-hide"
-                  style="width: 100%; text-align: left"
-                >
-                  <tbody>
-                    <tr class="border-bottom align-middle">
-                      <th class="text-muted fw-normal" style="width: 30%">
-                        <i class="bi bi-person-circle me-2 text-secondary"></i> Donatur
-                      </th>
-                      <td class="text-dark" data-label="Donatur">Ki Anom Dharma Bekti (D-XX-XXXX)</td>
-                    </tr>
-
-                    <tr class="border-bottom align-middle">
-                      <th class="text-muted fw-normal">
-                        <i class="bi bi-calendar-range me-2 text-secondary"></i> Tahun Ajaran
-                      </th>
-                      <td class="text-dark" data-label="Tahun Ajaran">2025/2026</td>
-                    </tr>
-
-                    <tr class="border-bottom align-middle">
-                      <th class="text-muted fw-normal">
-                        <i class="bi bi-calendar-check me-2 text-secondary"></i> Tgl Transfer
-                      </th>
-                      <td class="text-dark" data-label="Tgl Transfer">02 Januari 2026</td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                      <th class="text-muted fw-normal" style="width: 180px">
-                        <i class="bi bi-bank me-2 text-secondary"></i> Rekening Tujuan
-                      </th>
-                      <td class="text-dark" data-label="Rekening Tujuan">56555989799</td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                      <th class="text-muted fw-normal" style="width: 180px">
-                        <i class="bi bi-credit-card me-2 text-secondary"></i> Rekening Asal
-                      </th>
-                      <td class="text-dark" data-label="Rekening Asal">1323565</td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                      <th class="text-muted fw-normal"><i class="bi bi-cash-stack me-2 text-secondary"></i> Jumlah</th>
-                      <td class="text-dark" data-label="Jumlah">Rp 3.600.000</td>
-                    </tr>
-
-                    <tr class="border-bottom align-middle">
-                      <th class="text-muted fw-normal">
-                        <i class="bi bi-calendar-check me-2 text-secondary"></i> Tgl Konfirmasi
-                      </th>
-                      <td class="text-dark" data-label="Tgl KOnfirmasi">09 Januari 2026</td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                      <th class="text-muted fw-normal">
-                        <i class="bi bi-send-check me-2 text-secondary"></i> Kirim Email / WA
-                      </th>
-                      <td class="text-dark" data-label="Kirim Email/WA">Ya</td>
-                    </tr>
-
-                    <tr class="border-bottom">
-                      <th class="text-muted fw-normal">
-                        <i class="bi bi-patch-check-fill me-2 text-secondary"></i> Status
-                      </th>
-                      <td class="text-dark" data-label="Status">
-                        <div>
-                          <span class="badge bg-success">Valid</span>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div class="info-section ft-14">
+                <div class="row g-3">
+                  <!-- Kolom kiri -->
+                  <div class="col-12 col-md-6 info-column">
+                    <div class="info-item">
+                      <span class="info-label">ID Donatur</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">D-XX-XXXX</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Donatur</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">Ki Anom Dharma Bekti</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Tahun Ajaran</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">2025/2026</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Tgl Transfer</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">02 Januari 2026</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Rekening Tujuan</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">BCA 56898977<br>Yayasan AAT Indonesia</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Rekening Asal</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">BCA 123456<br>Ki Anom Dharma Bekti</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Kode Transfer</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">CA-JAN-26</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Jumlah Transfer</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">Rp 3.000.000,-</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Tgl Konfirmasi</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">02 Januari 2026</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Kirim Email / WA</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <span class="info-value">Ya</span>
+                    </div>
+                    <div class="info-item">
+                      <span class="info-label">Status</span>
+                      <span class="info-separator d-none d-lg-inline">:</span>
+                      <div>
+                        <span class="badge bg-success">Valid</span>
+                      </div>
+                    </div>
+                  </div>
+              
+                  <!-- Kolom kanan -->
+                  <div class="col-12 col-md-6 text-center">
+                    <small>Bukti Transfer</small>
+                    <div class="border rounded-4 p-3 position-relative mb-3" style="min-height: auto">
+                      <div class="d-flex flex-column justify-content-center align-items-center h-100">
+                        <!--  -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
+              
             </div>
           </div>
 
@@ -1019,11 +1025,10 @@
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
-                      >Kode Unik <sup class="text-important">*)</sup></label
+                    <label class="col-sm-5 col-form-label form-label">Kode Unik</label
                     >
                     <div class="col-sm-7">
-                      <input type="text" class="form-control form-control-sm" />
+                      <input type="text" class="form-control form-control-sm" placeholder="Diambil dari 3 digit ID donatur" readonly />
                     </div>
                   </div>
                 </div>
@@ -1031,36 +1036,37 @@
                 <!-- Kolom Tengah (Foto) -->
                 <div class="col-lg-6 col-md-6">
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Kode Transfer</label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control form-control-sm" />
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
+                    <label class="col-sm-4 col-form-label form-label"
                       >Tgl Transfer <sup class="text-important">*)</sup></label
                     >
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                       <input type="date" class="form-control form-control-sm" value="2026-01-01" />
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Tgl Konfirmasi</label>
-                    <div class="col-sm-7">
+                    <label class="col-sm-4 col-form-label form-label">Tgl Konfirmasi</label>
+                    <div class="col-sm-8">
                       <input type="date" class="form-control form-control-sm" value="2026-01-01" />
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Uraian</label>
-                    <div class="col-sm-7">
+                    <label class="col-sm-4 col-form-label form-label">Bukti Transfer</label>
+                    <div class="col-sm-8">
+                      <input type="file" class="form-control form-control-sm" />
+                      <span class="text-muted text-note ft-10">Format file PDF, JPG, JPEG, PNG maks 1MB</span>
+                    </div>
+                  </div>
+                  <div class="mb-2 row">
+                    <label class="col-sm-4 col-form-label form-label">Uraian</label>
+                    <div class="col-sm-8">
                       <textarea class="form-control form-control-sm" rows="2"></textarea>
                     </div>
                   </div>
                   <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
+                    <label class="col-sm-4 col-form-label form-label"
                       >Status <sup class="text-important">*)</sup></label
                     >
-                    <div class="col-sm-7">
+                    <div class="col-sm-8">
                       <select class="form-select form-select-sm">
                         <option>Menunggu Konfirmasi</option>
                         <option>Valid</option>
