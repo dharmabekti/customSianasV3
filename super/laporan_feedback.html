@@ -765,7 +765,11 @@
       <div class="feedback-board border rounded-3 bg-white overflow-hidden">
         <div class="row g-0">
           <div class="col-lg-2 border-end">
-            <div class="p-3 p-lg-2">
+            <div class="p-3 p-lg-2"><div class="mb-3">
+              <button type="button" class="btn btn-outline-primary btn-sm w-100">
+                <i class="bi bi-share"></i> Bagikan
+              </button>
+            </div>
               <div class="d-grid gap-2">
                 <button type="button" class="feedback-pill active" data-group="target">Donatur</button>
                 <button type="button" class="feedback-pill" data-group="target">PJ Sekolah</button>
@@ -787,94 +791,10 @@
                 <button type="button" class="sort-chip" data-group="web-sort">Terendah</button>
               </div>
 
-              <div class="d-flex justify-content-between align-items-start mb-2 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1234</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>1 April 2026</em>
-              </div>
+              <div id="webFeedbackList"></div>
 
-              <div class="feedback-message">
-                Tampilan website jauh lebih baik, lebih fresh dan mempermudah saat pembayaran, thx
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1288</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </span>
-                </div>
-                <em>12 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Halaman konfirmasi pembayaran sekarang lebih cepat dan alurnya mudah dipahami. Mantap.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1355</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>15 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Menu laporan mudah dicari, hanya saja di mobile kadang perlu scroll lebih jauh.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1492</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>18 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Proses unggah bukti transfer sudah bagus, tapi notifikasi suksesnya bisa dibuat lebih jelas.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1521</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                  </span>
-                </div>
-                <em>24 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Dashboard sekarang terasa ringan, pencarian data anak asuh juga jauh lebih cepat.
+              <div class="d-flex justify-content-center mt-3">
+                <nav><ul class="pagination mb-0" id="webPagination"></ul></nav>
               </div>
             </section>
           </div>
@@ -893,94 +813,10 @@
                 <button type="button" class="sort-chip" data-group="admin-sort">Terendah</button>
               </div>
 
-              <div class="d-flex justify-content-between align-items-start mb-2 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1111</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>20 April 2026</em>
-              </div>
+              <div id="adminFeedbackList"></div>
 
-              <div class="feedback-message">
-                Saya baru mendapatkan raport anak asuh saya semester ganjil pada bulan Februari, kenapa telat sekali???
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1420</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>22 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Admin responsif, tapi update status berkas kadang baru muncul beberapa hari kemudian.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1304</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>14 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Informasi jadwal pencairan sudah jelas, terima kasih tim sekretariat atas bantuannya.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1477</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>23 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Mohon konfirmasi dokumen bisa dipercepat, karena sekolah meminta berkas final minggu ini.
-              </div>
-
-              <div class="d-flex justify-content-between align-items-start mb-2 mt-3 small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="fw-semibold">D-11-1550</span>
-                  <span class="feedback-stars text-warning">
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star text-muted"></i>
-                  </span>
-                </div>
-                <em>25 April 2026</em>
-              </div>
-
-              <div class="feedback-message">
-                Komunikasi admin sangat membantu, semoga update laporan bulanan bisa lebih konsisten waktunya.
+              <div class="d-flex justify-content-center mt-3">
+                <nav><ul class="pagination mb-0" id="adminPagination"></ul></nav>
               </div>
             </section>
           </div>
@@ -1011,15 +847,159 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
+      const webFeedbackData = [
+        {
+          id: 'D-11-1234',
+          rating: 4,
+          date: '1 April 2026',
+          message: 'Tampilan website jauh lebih baik, lebih fresh dan mempermudah saat pembayaran, thx',
+        },
+        {
+          id: 'D-11-1288',
+          rating: 5,
+          date: '12 April 2026',
+          message: 'Halaman konfirmasi pembayaran sekarang lebih cepat dan alurnya mudah dipahami. Mantap.',
+        },
+        {
+          id: 'D-11-1355',
+          rating: 4,
+          date: '15 April 2026',
+          message: 'Menu laporan mudah dicari, hanya saja di mobile kadang perlu scroll lebih jauh.',
+        },
+        {
+          id: 'D-11-1492',
+          rating: 3,
+          date: '18 April 2026',
+          message: 'Proses unggah bukti transfer sudah bagus, tapi notifikasi suksesnya bisa dibuat lebih jelas.',
+        },
+        {
+          id: 'D-11-1521',
+          rating: 5,
+          date: '24 April 2026',
+          message: 'Dashboard sekarang terasa ringan, pencarian data anak asuh juga jauh lebih cepat.',
+        },
+      ];
+
+      const adminFeedbackData = [
+        {
+          id: 'D-11-1111',
+          rating: 2,
+          date: '20 April 2026',
+          message: 'Saya baru mendapatkan raport anak asuh saya semester ganjil pada bulan Februari, kenapa telat sekali???',
+        },
+        {
+          id: 'D-11-1420',
+          rating: 3,
+          date: '22 April 2026',
+          message: 'Admin responsif, tapi update status berkas kadang baru muncul beberapa hari kemudian.',
+        },
+        {
+          id: 'D-11-1304',
+          rating: 4,
+          date: '14 April 2026',
+          message: 'Informasi jadwal pencairan sudah jelas, terima kasih tim sekretariat atas bantuannya.',
+        },
+        {
+          id: 'D-11-1477',
+          rating: 2,
+          date: '23 April 2026',
+          message: 'Mohon konfirmasi dokumen bisa dipercepat, karena sekolah meminta berkas final minggu ini.',
+        },
+        {
+          id: 'D-11-1550',
+          rating: 4,
+          date: '25 April 2026',
+          message: 'Komunikasi admin sangat membantu, semoga update laporan bulanan bisa lebih konsisten waktunya.',
+        },
+      ];
+
+      const feedbackState = {
+        web: { currentPage: 1, perPage: 3, sort: 'Terbaru' },
+        admin: { currentPage: 1, perPage: 3, sort: 'Terbaru' },
+      };
+
       function setActiveInGroup(groupName, element) {
         const group = document.querySelectorAll('[data-group="' + groupName + '"]');
         group.forEach((item) => item.classList.remove('active'));
         element.classList.add('active');
       }
 
+      function renderStars(rating) {
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+          stars += `<i class="bi ${i <= rating ? 'bi-star-fill' : 'bi-star text-muted'}"></i>`;
+        }
+        return stars;
+      }
+
+      function sortFeedback(data, sortType) {
+        const sorted = [...data];
+        if (sortType === 'Tertinggi') {
+          sorted.sort((a, b) => b.rating - a.rating || new Date(b.date) - new Date(a.date));
+        } else if (sortType === 'Terendah') {
+          sorted.sort((a, b) => a.rating - b.rating || new Date(b.date) - new Date(a.date));
+        } else {
+          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+        }
+        return sorted;
+      }
+
+      function renderFeedbackSection(type) {
+        const isWeb = type === 'web';
+        const dataSource = isWeb ? webFeedbackData : adminFeedbackData;
+        const listElement = document.getElementById(isWeb ? 'webFeedbackList' : 'adminFeedbackList');
+        const paginationElement = document.getElementById(isWeb ? 'webPagination' : 'adminPagination');
+        const currentState = feedbackState[type];
+
+        const sortedData = sortFeedback(dataSource, currentState.sort);
+        const totalPages = Math.ceil(sortedData.length / currentState.perPage) || 1;
+        if (currentState.currentPage > totalPages) currentState.currentPage = totalPages;
+
+        const start = (currentState.currentPage - 1) * currentState.perPage;
+        const paginatedData = sortedData.slice(start, start + currentState.perPage);
+
+        listElement.innerHTML = paginatedData
+          .map((item, index) => {
+            const marginClass = index === 0 ? '' : ' mt-3';
+            return `
+              <div class="d-flex justify-content-between align-items-start mb-2 small${marginClass}">
+                <div class="d-flex align-items-center gap-2">
+                  <span class="fw-semibold">${item.id}</span>
+                  <span class="feedback-stars text-warning">${renderStars(item.rating)}</span>
+                </div>
+                <em>${item.date}</em>
+              </div>
+              <div class="feedback-message">${item.message}</div>
+            `;
+          })
+          .join('');
+
+        paginationElement.innerHTML = generatePagination(totalPages, currentState.currentPage);
+
+        paginationElement.querySelectorAll('.page-link[data-page]').forEach((btn) => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetPage = parseInt(btn.dataset.page, 10);
+            if (targetPage < 1 || targetPage > totalPages) return;
+            currentState.currentPage = targetPage;
+            renderFeedbackSection(type);
+          });
+        });
+      }
+
       document.querySelectorAll('.sort-chip').forEach((button) => {
         button.addEventListener('click', function () {
           setActiveInGroup(this.dataset.group, this);
+          if (this.dataset.group === 'web-sort') {
+            feedbackState.web.sort = this.textContent.trim();
+            feedbackState.web.currentPage = 1;
+            renderFeedbackSection('web');
+          }
+          if (this.dataset.group === 'admin-sort') {
+            feedbackState.admin.sort = this.textContent.trim();
+            feedbackState.admin.currentPage = 1;
+            renderFeedbackSection('admin');
+          }
         });
       });
 
@@ -1028,6 +1008,9 @@
           setActiveInGroup(this.dataset.group, this);
         });
       });
+
+      renderFeedbackSection('web');
+      renderFeedbackSection('admin');
     </script>
   </body>
 </html>
