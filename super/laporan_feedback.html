@@ -765,14 +765,16 @@
       <div class="feedback-board border rounded-3 bg-white overflow-hidden">
         <div class="row g-0">
           <div class="col-lg-2 border-end">
-            <div class="p-3 p-lg-2"><div class="mb-3">
-              <button type="button" class="btn btn-outline-primary btn-sm w-100">
-                <i class="bi bi-share"></i> Bagikan
-              </button>
-            </div>
+            <div class="p-3 p-lg-2">
               <div class="d-grid gap-2">
                 <button type="button" class="feedback-pill active" data-group="target">Donatur</button>
                 <button type="button" class="feedback-pill" data-group="target">PJ Sekolah</button>
+              </div>
+
+              <div class="mt-3">
+                <button type="button" class="btn btn-outline-primary btn-sm w-100">
+                  <i class="bi bi-share"></i> Bagikan
+                </button>
               </div>
             </div>
           </div>
@@ -786,9 +788,9 @@
 
               <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
                 <span class="fw-semibold">Sort:</span>
-                <button type="button" class="sort-chip active" data-group="web-sort">Terbaru</button>
-                <button type="button" class="sort-chip" data-group="web-sort">Tertinggi</button>
-                <button type="button" class="sort-chip" data-group="web-sort">Terendah</button>
+                <button type="button" class="sort-chip active" data-group="web-sort" data-sort="newest">Terbaru</button>
+                <button type="button" class="sort-chip" data-group="web-sort" data-sort="highest">Tertinggi</button>
+                <button type="button" class="sort-chip" data-group="web-sort" data-sort="lowest">Terendah</button>
               </div>
 
               <div id="webFeedbackList"></div>
@@ -808,9 +810,9 @@
 
               <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
                 <span class="fw-semibold">Sort:</span>
-                <button type="button" class="sort-chip active" data-group="admin-sort">Terbaru</button>
-                <button type="button" class="sort-chip" data-group="admin-sort">Tertinggi</button>
-                <button type="button" class="sort-chip" data-group="admin-sort">Terendah</button>
+                <button type="button" class="sort-chip active" data-group="admin-sort" data-sort="newest">Terbaru</button>
+                <button type="button" class="sort-chip" data-group="admin-sort" data-sort="highest">Tertinggi</button>
+                <button type="button" class="sort-chip" data-group="admin-sort" data-sort="lowest">Terendah</button>
               </div>
 
               <div id="adminFeedbackList"></div>
@@ -852,30 +854,35 @@
           id: 'D-11-1234',
           rating: 4,
           date: '1 April 2026',
+          dateValue: '2026-04-01',
           message: 'Tampilan website jauh lebih baik, lebih fresh dan mempermudah saat pembayaran, thx',
         },
         {
           id: 'D-11-1288',
           rating: 5,
           date: '12 April 2026',
+          dateValue: '2026-04-12',
           message: 'Halaman konfirmasi pembayaran sekarang lebih cepat dan alurnya mudah dipahami. Mantap.',
         },
         {
           id: 'D-11-1355',
           rating: 4,
           date: '15 April 2026',
+          dateValue: '2026-04-15',
           message: 'Menu laporan mudah dicari, hanya saja di mobile kadang perlu scroll lebih jauh.',
         },
         {
           id: 'D-11-1492',
           rating: 3,
           date: '18 April 2026',
+          dateValue: '2026-04-18',
           message: 'Proses unggah bukti transfer sudah bagus, tapi notifikasi suksesnya bisa dibuat lebih jelas.',
         },
         {
           id: 'D-11-1521',
           rating: 5,
           date: '24 April 2026',
+          dateValue: '2026-04-24',
           message: 'Dashboard sekarang terasa ringan, pencarian data anak asuh juga jauh lebih cepat.',
         },
       ];
@@ -885,37 +892,42 @@
           id: 'D-11-1111',
           rating: 2,
           date: '20 April 2026',
+          dateValue: '2026-04-20',
           message: 'Saya baru mendapatkan raport anak asuh saya semester ganjil pada bulan Februari, kenapa telat sekali???',
         },
         {
           id: 'D-11-1420',
           rating: 3,
           date: '22 April 2026',
+          dateValue: '2026-04-22',
           message: 'Admin responsif, tapi update status berkas kadang baru muncul beberapa hari kemudian.',
         },
         {
           id: 'D-11-1304',
           rating: 4,
           date: '14 April 2026',
+          dateValue: '2026-04-14',
           message: 'Informasi jadwal pencairan sudah jelas, terima kasih tim sekretariat atas bantuannya.',
         },
         {
           id: 'D-11-1477',
           rating: 2,
           date: '23 April 2026',
+          dateValue: '2026-04-23',
           message: 'Mohon konfirmasi dokumen bisa dipercepat, karena sekolah meminta berkas final minggu ini.',
         },
         {
           id: 'D-11-1550',
           rating: 4,
           date: '25 April 2026',
+          dateValue: '2026-04-25',
           message: 'Komunikasi admin sangat membantu, semoga update laporan bulanan bisa lebih konsisten waktunya.',
         },
       ];
 
       const feedbackState = {
-        web: { currentPage: 1, perPage: 3, sort: 'Terbaru' },
-        admin: { currentPage: 1, perPage: 3, sort: 'Terbaru' },
+        web: { currentPage: 1, perPage: 3, sort: 'newest' },
+        admin: { currentPage: 1, perPage: 3, sort: 'newest' },
       };
 
       function setActiveInGroup(groupName, element) {
@@ -934,12 +946,12 @@
 
       function sortFeedback(data, sortType) {
         const sorted = [...data];
-        if (sortType === 'Tertinggi') {
-          sorted.sort((a, b) => b.rating - a.rating || new Date(b.date) - new Date(a.date));
-        } else if (sortType === 'Terendah') {
-          sorted.sort((a, b) => a.rating - b.rating || new Date(b.date) - new Date(a.date));
+        if (sortType === 'highest') {
+          sorted.sort((a, b) => b.rating - a.rating || new Date(b.dateValue) - new Date(a.dateValue));
+        } else if (sortType === 'lowest') {
+          sorted.sort((a, b) => a.rating - b.rating || new Date(b.dateValue) - new Date(a.dateValue));
         } else {
-          sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+          sorted.sort((a, b) => new Date(b.dateValue) - new Date(a.dateValue));
         }
         return sorted;
       }
@@ -991,12 +1003,12 @@
         button.addEventListener('click', function () {
           setActiveInGroup(this.dataset.group, this);
           if (this.dataset.group === 'web-sort') {
-            feedbackState.web.sort = this.textContent.trim();
+            feedbackState.web.sort = this.dataset.sort;
             feedbackState.web.currentPage = 1;
             renderFeedbackSection('web');
           }
           if (this.dataset.group === 'admin-sort') {
-            feedbackState.admin.sort = this.textContent.trim();
+            feedbackState.admin.sort = this.dataset.sort;
             feedbackState.admin.currentPage = 1;
             renderFeedbackSection('admin');
           }
