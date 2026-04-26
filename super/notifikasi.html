@@ -35,6 +35,10 @@
         border-bottom: 1px solid #e7e7e7;
       }
 
+      .notification-actions {
+        border-bottom: 1px solid #ededed;
+      }
+
       .notification-tabs .nav-link {
         border: none;
         color: #5a5a5a;
@@ -794,6 +798,21 @@
           <p class="mb-0 mt-2 text-muted">Pantau notifikasi terbaru dan status baca notifikasi di halaman ini.</p>
         </div>
 
+        <div class="notification-actions p-3 p-lg-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <div class="d-flex align-items-center gap-3">
+              <div class="form-check m-0">
+                <input class="form-check-input" type="checkbox" id="selectAllCurrentPage" />
+                <label class="form-check-label small" for="selectAllCurrentPage">Pilih Semua</label>
+              </div>
+              <span class="text-muted small" id="selectedInfo">0 notifikasi dipilih</span>
+            </div>
+            <button type="button" class="btn btn-outline-danger btn-sm" id="deleteSelectedBtn" disabled>
+              <i class="bi bi-trash3"></i> Hapus Terpilih
+            </button>
+          </div>
+        </div>
+
         <div class="p-3 p-lg-4">
           <ul class="nav nav-pills notification-tabs mb-3" id="notificationTabs" role="tablist">
             <li class="nav-item" role="presentation">
@@ -887,8 +906,9 @@
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
 
     <script>
-      const notificationData = [
+      let notificationData = [
         {
+          id: 'notif-001',
           title: 'Pembayaran donasi berhasil',
           message: 'Donasi dari D-11-1521 sebesar Rp500.000 telah berhasil diverifikasi.',
           time: '26 April 2026, 08:15 WIB',
@@ -896,6 +916,7 @@
           status: 'unread',
         },
         {
+          id: 'notif-002',
           title: 'SPP anak asuh jatuh tempo',
           message: 'SPP untuk AA-2026-021 akan jatuh tempo dalam 2 hari.',
           time: '25 April 2026, 14:10 WIB',
@@ -903,6 +924,7 @@
           status: 'unread',
         },
         {
+          id: 'notif-003',
           title: 'Laporan bulanan tersedia',
           message: 'Laporan bulanan periode April 2026 sudah dapat diakses pada menu laporan.',
           time: '24 April 2026, 10:32 WIB',
@@ -910,6 +932,7 @@
           status: 'read',
         },
         {
+          id: 'notif-004',
           title: 'Pengajuan anak asuh baru',
           message: 'Terdapat 1 pengajuan anak asuh baru dari Sekretariat Yogyakarta.',
           time: '23 April 2026, 09:00 WIB',
@@ -917,6 +940,7 @@
           status: 'read',
         },
         {
+          id: 'notif-005',
           title: 'Konfirmasi penggantian rekening',
           message: '2 permintaan penggantian rekening menunggu persetujuan admin.',
           time: '22 April 2026, 16:40 WIB',
@@ -924,6 +948,7 @@
           status: 'unread',
         },
         {
+          id: 'notif-006',
           title: 'Pengembalian dana berlebih',
           message: 'Ada 1 transaksi pengembalian dana berlebih yang perlu ditinjau.',
           time: '21 April 2026, 11:25 WIB',
@@ -931,6 +956,7 @@
           status: 'read',
         },
       ];
+      const selectedNotificationIds = new Set();
 
       const notificationState = {
         semua: { currentPage: 1, perPage: 4 },
@@ -949,10 +975,14 @@
         const iconClass = isUnread ? 'bi-bell-fill unread' : 'bi-check-circle-fill read';
         const badgeClass = isUnread ? 'text-bg-primary' : 'text-bg-secondary';
         const badgeText = isUnread ? 'Belum Dibaca' : 'Dibaca';
+        const isChecked = selectedNotificationIds.has(item.id) ? 'checked' : '';
 
         return `
           <article class="notification-item ${isUnread ? 'unread' : ''}">
             <div class="d-flex gap-3">
+              <div class="form-check m-0 pt-1">
+                <input class="form-check-input notification-select" type="checkbox" data-id="${item.id}" ${isChecked} />
+              </div>
               <span class="notification-icon ${isUnread ? 'unread' : 'read'}">
                 <i class="bi ${iconClass}"></i>
               </span>
@@ -991,6 +1021,72 @@
         target.innerHTML = data.map(notificationTemplate).join('');
       }
 
+      function updateSelectionInfo() {
+        const selectedCount = selectedNotificationIds.size;
+        document.getElementById('selectedInfo').textContent = `${selectedCount} notifikasi dipilih`;
+        document.getElementById('deleteSelectedBtn').disabled = selectedCount === 0;
+      }
+
+      function getActiveTabListId() {
+        const activeTabButton = document.querySelector('#notificationTabs .nav-link.active');
+        if (!activeTabButton) return null;
+        const targetPane = activeTabButton.getAttribute('data-bs-target');
+        if (targetPane === '#panel-semua') return 'listSemua';
+        if (targetPane === '#panel-belum-dibaca') return 'listBelumDibaca';
+        if (targetPane === '#panel-sudah-dibaca') return 'listSudahDibaca';
+        return null;
+      }
+
+      function updateSelectAllControl() {
+        const selectAllCheckbox = document.getElementById('selectAllCurrentPage');
+        const activeListId = getActiveTabListId();
+        if (!activeListId) {
+          selectAllCheckbox.checked = false;
+          selectAllCheckbox.indeterminate = false;
+          selectAllCheckbox.disabled = true;
+          return;
+        }
+
+        const checkboxes = Array.from(document.querySelectorAll(`#${activeListId} .notification-select`));
+        if (!checkboxes.length) {
+          selectAllCheckbox.checked = false;
+          selectAllCheckbox.indeterminate = false;
+          selectAllCheckbox.disabled = true;
+          return;
+        }
+
+        selectAllCheckbox.disabled = false;
+        const checkedCount = checkboxes.filter((checkbox) => checkbox.checked).length;
+        selectAllCheckbox.checked = checkedCount === checkboxes.length;
+        selectAllCheckbox.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
+      }
+
+      function updateCounterBadges() {
+        const unreadNotifications = getNotificationsByCategory('belumDibaca');
+        const readNotifications = getNotificationsByCategory('sudahDibaca');
+
+        document.getElementById('countSemua').textContent = notificationData.length;
+        document.getElementById('countBelumDibaca').textContent = unreadNotifications.length;
+        document.getElementById('countSudahDibaca').textContent = readNotifications.length;
+        document.getElementById('totalNotificationBadge').textContent = `${notificationData.length} Notifikasi`;
+      }
+
+      function bindSelectionEvents(targetId) {
+        const target = document.getElementById(targetId);
+        target.querySelectorAll('.notification-select').forEach((checkbox) => {
+          checkbox.addEventListener('change', function () {
+            const notificationId = this.dataset.id;
+            if (this.checked) {
+              selectedNotificationIds.add(notificationId);
+            } else {
+              selectedNotificationIds.delete(notificationId);
+            }
+            updateSelectionInfo();
+            updateSelectAllControl();
+          });
+        });
+      }
+
       function renderNotificationCategory(category) {
         const config = notificationViewMap[category];
         const state = notificationState[category];
@@ -1003,6 +1099,7 @@
         const paginatedData = data.slice(startIndex, startIndex + state.perPage);
 
         renderNotificationList(config.listId, paginatedData);
+        bindSelectionEvents(config.listId);
 
         const paginationElement = document.getElementById(config.paginationId);
         paginationElement.innerHTML = generatePagination(totalPages, state.currentPage);
@@ -1016,18 +1113,57 @@
           });
         });
       }
+      function renderAllCategories() {
+        renderNotificationCategory('semua');
+        renderNotificationCategory('belumDibaca');
+        renderNotificationCategory('sudahDibaca');
+        updateSelectAllControl();
+      }
 
-      const unreadNotifications = getNotificationsByCategory('belumDibaca');
-      const readNotifications = getNotificationsByCategory('sudahDibaca');
+      document.getElementById('selectAllCurrentPage').addEventListener('change', function () {
+        const activeListId = getActiveTabListId();
+        if (!activeListId) return;
 
-      document.getElementById('countSemua').textContent = notificationData.length;
-      document.getElementById('countBelumDibaca').textContent = unreadNotifications.length;
-      document.getElementById('countSudahDibaca').textContent = readNotifications.length;
-      document.getElementById('totalNotificationBadge').textContent = `${notificationData.length} Notifikasi`;
+        document.querySelectorAll(`#${activeListId} .notification-select`).forEach((checkbox) => {
+          checkbox.checked = this.checked;
+          const notificationId = checkbox.dataset.id;
+          if (this.checked) {
+            selectedNotificationIds.add(notificationId);
+          } else {
+            selectedNotificationIds.delete(notificationId);
+          }
+        });
 
-      renderNotificationCategory('semua');
-      renderNotificationCategory('belumDibaca');
-      renderNotificationCategory('sudahDibaca');
+        updateSelectionInfo();
+        updateSelectAllControl();
+      });
+
+      document.querySelectorAll('#notificationTabs .nav-link').forEach((tabButton) => {
+        tabButton.addEventListener('shown.bs.tab', function () {
+          updateSelectAllControl();
+        });
+      });
+
+      document.getElementById('deleteSelectedBtn').addEventListener('click', function () {
+        if (!selectedNotificationIds.size) return;
+
+        swal_confirm('Konfirmasi', `Hapus ${selectedNotificationIds.size} notifikasi terpilih?`, 'warning').then(
+          (result) => {
+            if (result.isConfirmed) {
+              notificationData = notificationData.filter((item) => !selectedNotificationIds.has(item.id));
+              selectedNotificationIds.clear();
+              updateCounterBadges();
+              updateSelectionInfo();
+              renderAllCategories();
+              swal_alert('Berhasil', 'Notifikasi terpilih berhasil dihapus.', 'success');
+            }
+          }
+        );
+      });
+
+      updateCounterBadges();
+      updateSelectionInfo();
+      renderAllCategories();
     </script>
   </body>
 </html>
