@@ -2,17 +2,121 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Admin Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Notifikasi | Sistem Informasi Anak Asuh</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
 
     <link href="../assets/css/style.css" rel="stylesheet" />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" />
     <!-- Sweet Alerts css -->
     <link href="../assets/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Select2 CSS & JS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Date Range Picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+      .notification-board {
+        border-color: #d5d5d5 !important;
+        font-size: 12px;
+      }
+
+      .notification-header {
+        border-bottom: 1px solid #e7e7e7;
+      }
+
+      .notification-tabs .nav-link {
+        border: none;
+        color: #5a5a5a;
+        font-weight: 600;
+        font-size: 12px;
+        border-radius: 8px;
+      }
+
+      .notification-tabs .nav-link.active {
+        background-color: #e9f4ff;
+        color: #0d6efd;
+      }
+
+      @media (max-width: 576px) {
+        .notification-tabs {
+          display: flex;
+          flex-wrap: nowrap;
+          gap: 6px;
+        }
+
+        .notification-tabs .nav-item {
+          flex: 1 1 0;
+          min-width: 0;
+        }
+
+        .notification-tabs .nav-link {
+          width: 100%;
+          white-space: normal;
+          word-break: break-word;
+          line-height: 1.2;
+          font-size: 11px;
+          padding: 6px 10px;
+        }
+      }
+
+      .notification-item {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 12px;
+      }
+
+      .notification-item.unread {
+        border-color: #cfe2ff;
+        background-color: #f8fbff;
+      }
+
+      .notification-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .notification-icon.unread {
+        background: #dcebff;
+        color: #0d6efd;
+      }
+
+      .notification-icon.read {
+        background: #efefef;
+        color: #6c757d;
+      }
+
+      .notification-title {
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .notification-message {
+        font-size: 12px;
+        color: #444;
+      }
+
+      .notification-time {
+        font-size: 11px;
+        color: #757575;
+      }
+    </style>
   </head>
   <body class="d-flex flex-column min-vh-100">
     <!-- Header fixed -->
@@ -388,7 +492,7 @@
         <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
           <i class="bi bi-list"></i>
         </button>
-        <span class="navbar-brand mx-auto">Pengelolaan Admin</span>
+        <span class="navbar-brand mx-auto">Notifikasi</span>
         <div class="d-flex">
           <div class="dropdown me-1">
             <button
@@ -497,8 +601,9 @@
           </a>
           <div class="collapse" id="donatur">
             <a href="donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">List Donatur</a>
-            <a href="riwayat_donasi_donatur.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Riwayat Donasi Donatur</a>
+            <a href="riwayat_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
+              >Riwayat Donasi Donatur</a
+            >
             <a href="lelang.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
               >Pemilihan Anak Asuh oleh Donatur</a
             >
@@ -593,28 +698,6 @@
             href="#"
             class="list-group-item list-group-item-action bg-aat text-white"
             data-bs-toggle="collapse"
-            data-bs-target="#pembayaranDonasi"
-          >
-            <i class="bi bi-cash-coin me-2"></i> Pembayaran & Donasi <i class="bi bi-chevron-down float-end"></i>
-          </a>
-          <div class="collapse" id="pembayaranDonasi">
-            <a href="konfirmasi_status_pembayaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Konfirmasi & Status Pembayaran</a
-            >
-            <a href="pemindahan_sisa_donasi.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Pemindahan Sisa Donasi</a
-            >
-            <a href="transfer_tak_dikenal.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Transfer Tak Dikenal</a
-            >
-            <a href="donasi_langsung.html" class="list-group-item list-group-item-action bg-aat-grey ps-5"
-              >Donasi Langsung</a
-            >
-          </div>
-          <a
-            href="#"
-            class="list-group-item list-group-item-action bg-aat text-white"
-            data-bs-toggle="collapse"
             data-bs-target="#laporan"
           >
             <i class="bi bi-journal-text me-2"></i> Laporan <i class="bi bi-chevron-down float-end"></i>
@@ -656,13 +739,14 @@
             <a href="tahun_ajaran.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Tahun Ajaran</a>
             <a href="pengurus_inti.html" class="list-group-item list-group-item-action bg-aat-grey ps-5">Pengurus Inti</a>
           </div>
-          <button
-            type="button"
+          <a
+            href="#"
             class="list-group-item list-group-item-action bg-aat text-white"
-            onclick="openPage('kontak')"
+            data-bs-toggle="modal"
+            data-bs-target="#kontakYayasanModal"
           >
-            <i class="bi bi-house me-2"></i> Hubungi Kami
-          </button>
+            <i class="bi bi-telephone me-2"></i> Hubungi Kami
+          </a>
         </div>
 
         <!-- Footer Mobile -->
@@ -699,190 +783,86 @@
 
     <main class="container-fluid pt-3 pt-lg-5 pb-5 mt-5">
       <div class="d-none d-lg-block mb-5"></div>
-      <h3 class="text-center page-title d-none d-lg-block">Pengelolaan Admin</h3>
-      <div class="container-fluid form-wrapper">
-        <div class="row g-4">
-          <!-- Kolom kiri -->
-          <div class="col-lg-2">
-            <!-- ✅ Tombol Toggle Filter (hanya tampil di mobile) -->
-            <div class="d-md-none mt-2">
+      <h3 class="text-center page-title d-none d-lg-block">Notifikasi</h3>
+
+      <section class="notification-board border rounded-3 bg-white overflow-hidden">
+        <div class="notification-header p-3 p-lg-4">
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+            <h5 class="mb-0 fw-bold">Semua Data Notifikasi</h5>
+            <span class="badge text-bg-primary rounded-pill" id="totalNotificationBadge">0 Notifikasi</span>
+          </div>
+          <p class="mb-0 mt-2 text-muted">Pantau notifikasi terbaru dan status baca notifikasi di halaman ini.</p>
+        </div>
+
+        <div class="p-3 p-lg-4">
+          <ul class="nav nav-pills notification-tabs mb-3" id="notificationTabs" role="tablist">
+            <li class="nav-item" role="presentation">
               <button
-                class="btn btn-outline-primary w-100"
+                class="nav-link active"
+                id="tab-semua"
+                data-bs-toggle="pill"
+                data-bs-target="#panel-semua"
                 type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#filterCollapse"
-                aria-expanded="false"
-                aria-controls="filterCollapse"
+                role="tab"
+                aria-controls="panel-semua"
+                aria-selected="true"
               >
-                <i class="bi bi-funnel"></i> Tampilkan Filter
+                Semua (<span id="countSemua">0</span>)
               </button>
-            </div>
-            <div id="filterCollapse" class="collapse d-md-block mt-3">
-              <div class="filter-section shadow-sm">
-                <label class="form-label fw-bold">Status</label>
-                <div class="form-check">
-                  <input class="form-check-input status" type="checkbox" value="Aktif" id="aktif" checked />
-                  <label class="form-check-label badge bg-success" for="aktif">Aktif</label>
-                </div>
-                <div class="form-check mb-3">
-                  <input class="form-check-input status" type="checkbox" value="Tidak Aktif" id="nonaktif" />
-                  <label class="form-check-label badge bg-danger" for="nonaktif">Tidak Aktif</label>
-                </div>
-              </div>
-            </div>
-          </div>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-sudah-dibaca"
+                data-bs-toggle="pill"
+                data-bs-target="#panel-sudah-dibaca"
+                type="button"
+                role="tab"
+                aria-controls="panel-sudah-dibaca"
+                aria-selected="false"
+              >
+                Dibaca (<span id="countSudahDibaca">0</span>)
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="tab-belum-dibaca"
+                data-bs-toggle="pill"
+                data-bs-target="#panel-belum-dibaca"
+                type="button"
+                role="tab"
+                aria-controls="panel-belum-dibaca"
+                aria-selected="false"
+              >
+                Belum Dibaca (<span id="countBelumDibaca">0</span>)
+              </button>
+            </li>
+          </ul>
 
-          <!-- Kolom kanan -->
-          <div class="col-lg-10">
-            <div class="p-4 border rounded-4 text-start">
-              <div class="row g-2 align-items-center mb-3">
-                <!-- Sort -->
-                <div class="col-12 col-md-auto d-flex flex-nowrap align-items-center gap-2 sort-wrapper">
-                  <label class="fw-bold mb-0">Sort:</label>
-                  <button class="sort-pill" data-sort="id">ID <span class="sort-arrow">↑</span></button>
-                  <button class="sort-pill active" data-sort="nama">Nama <span class="sort-arrow">↑</span></button>
-                </div>
-
-                <!-- Search -->
-                <div class="col-12 col-md">
-                  <div class="input-group input-group-sm">
-                    <input
-                      type="text"
-                      id="searchInput"
-                      class="form-control form-control-sm"
-                      placeholder="Cari admin..."
-                    />
-                    <button class="btn btn-outline-secondary" type="button" id="clearSearchBtn">
-                      <i class="bi bi-x text-body"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div id="childGrid" class="row g-2"></div>
-
-              <!-- Pagination -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="panel-semua" role="tabpanel" aria-labelledby="tab-semua">
+              <div class="vstack gap-2" id="listSemua"></div>
               <div class="d-flex justify-content-center mt-3">
-                <nav><ul class="pagination" id="pagination"></ul></nav>
-              </div>              
-              <span class="text-danger fw-italic m-2 d-none d-lg-block">Klik kanan mouse untuk memunculkan menu aksi</span>
+                <nav><ul class="pagination mb-0" id="paginationSemua"></ul></nav>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="panel-belum-dibaca" role="tabpanel" aria-labelledby="tab-belum-dibaca">
+              <div class="vstack gap-2" id="listBelumDibaca"></div>
+              <div class="d-flex justify-content-center mt-3">
+                <nav><ul class="pagination mb-0" id="paginationBelumDibaca"></ul></nav>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="panel-sudah-dibaca" role="tabpanel" aria-labelledby="tab-sudah-dibaca">
+              <div class="vstack gap-2" id="listSudahDibaca"></div>
+              <div class="d-flex justify-content-center mt-3">
+                <nav><ul class="pagination mb-0" id="paginationSudahDibaca"></ul></nav>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
-
-    <!-- Modal Form Admin -->
-    <div
-      class="modal fade"
-      id="formAdminModal"
-      tabindex="-1"
-      aria-labelledby="formAdminLabel"
-      aria-hidden="true"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-    >
-      <div class="modal-dialog modal-dialog-centered modal-wide">
-        <div class="modal-content">
-          <div class="modal-header bg-aat text-white">
-            <h5 class="modal-title">Form Admin</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <div class="modal-body">
-            <form>
-              <span class="text-important">*) Wajib Diisi</span>
-              <div class="row">
-                <!-- Kolom Kiri -->
-                <div class="col-lg-8 col-md-6">
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Nama Lengkap <sup class="text-important">*)</sup></label>
-                    <div class="col-sm-7">
-                      <input type="text" class="form-control form-control-sm" />
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">Email <sup class="text-important">*)</sup></label>
-                    <div class="col-sm-7">
-                      <input type="email" class="form-control form-control-sm" />
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label">
-                      No HP/WhatsApp <sup class="text-important">*)</sup>
-                    </label>
-
-                    <!-- Select + Input dalam satu baris -->
-                    <div class="col-sm-7">
-                      <div class="row g-2">
-                        <div class="col-6">
-                          <select class="form-control form-control-sm" required>
-                            <option value="62">(+62) Indonesia</option>
-                          </select>
-                        </div>
-                        <div class="col-6">
-                          <input type="text" class="form-control form-control-sm" placeholder="812xxxxxxx" required />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
-                      >Level <sup class="text-important">*)</sup></label
-                    >
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Pilih Level</option>
-                        <option>Admin Umum</option>
-                        <option>Admin Keuangan</option>
-                        <option>Admin Sianas</option>
-                        <option>Super Admin</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="mb-2 row">
-                    <label class="col-sm-5 col-form-label form-label"
-                      >Status <sup class="text-important">*)</sup></label
-                    >
-                    <div class="col-sm-7">
-                      <select class="form-select form-select-sm">
-                        <option>Aktif</option>
-                        <option>Tidak Aktif</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Kolom Tengah (Foto) -->
-                <div class="col-lg-4 col-md-12 text-center">
-                  <div class="upload-box">
-                    <input type="file" accept="image/*" onchange="previewFoto(this)" />
-                    <div class="placeholder">
-                      <div><em>Foto Profil</em></div>
-                      <span>+</span>
-                    </div>
-                  </div>
-                  <small class="d-block mt-2 text-muted text-start text-note">
-                    *) Format foto JPEG, JPG, PNG, max 200Kb<br />
-                  </small>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div class="modal-footer justify-content-center d-flex flex-nowrap">
-            <button type="button" class="btn btn-success px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-check me-1"></i> Simpan
-            </button>
-            <button type="button" class="btn btn-danger px-2 px-lg-4" data-bs-dismiss="modal">
-              <i class="bi bi-x me-1"></i> Batal
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Form Admin -->
 
     <!-- Footer Desktop (sticky di bawah halaman) -->
     <footer class="fixed-bottom text-white text-center py-2 mt-auto d-none d-lg-block bg-aat">
@@ -897,296 +877,157 @@
       </small>
     </footer>
 
-    <!-- Floating Input Button -->
-    <button class="btn-float bg-aat" data-bs-toggle="modal" data-bs-target="#formAdminModal">
-      <i class="bi bi-plus-lg text-center"></i>
-    </button>
-
-    <!-- Context Menu for Right-Click Actions -->
-    <ul id="contextMenu" class="dropdown-menu" style="display: none; position: absolute; z-index: 1050">
-      <li>
-        <a class="dropdown-item" href="#" id="editAction" data-bs-toggle="modal" data-bs-target="#formAdminModal">
-          <i class="bi bi-pencil"></i> Edit
-        </a>
-      </li>
-      <li>
-        <a
-          class="dropdown-item"
-          href="#"
-          id="deleteAction"
-          onclick="deleteData(this.closest('#contextMenu').dataset.rowNama)"
-        >
-          <i class="bi bi-trash"></i> Hapus
-        </a>
-      </li>
-    </ul>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/badges.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
     <!-- Sweet Alerts Js-->
     <script src="../assets/plugins/sweetalert2/sweetalert2.min.js"></script>
     <script src="../assets/plugins/sweetalert2/sweetshow.js"></script>
+
     <script>
-      const admin = [
+      const notificationData = [
         {
-          id: 'ADM-0001',
-          name: 'Andreas Deddie A. (Gareng)',
-          sekretariat: 'Super Admin',
-          phone: '0854-XXXX-XXXX',
-          email: 'andreas.dedi@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/1.jpg`,
+          title: 'Pembayaran donasi berhasil',
+          message: 'Donasi dari D-11-1521 sebesar Rp500.000 telah berhasil diverifikasi.',
+          time: '26 April 2026, 08:15 WIB',
+          dateValue: '2026-04-26T08:15:00',
+          status: 'unread',
         },
         {
-          id: 'ADM-0002',
-          name: 'Budi Santoso',
-          sekretariat: 'Admin Keuangan',
-          phone: '0856-XXXX-XXXX',
-          email: 'budi.santoso@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/2.jpg`,
+          title: 'SPP anak asuh jatuh tempo',
+          message: 'SPP untuk AA-2026-021 akan jatuh tempo dalam 2 hari.',
+          time: '25 April 2026, 14:10 WIB',
+          dateValue: '2026-04-25T14:10:00',
+          status: 'unread',
         },
         {
-          id: 'ADM-0003',
-          name: 'Siti Aminah',
-          sekretariat: 'Admin Sianas',
-          phone: '0857-XXXX-XXXX',
-          email: 'siti.aminah@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/1.jpg`,
+          title: 'Laporan bulanan tersedia',
+          message: 'Laporan bulanan periode April 2026 sudah dapat diakses pada menu laporan.',
+          time: '24 April 2026, 10:32 WIB',
+          dateValue: '2026-04-24T10:32:00',
+          status: 'read',
         },
         {
-          id: 'ADM-0004',
-          name: 'Ahmad Rahman',
-          sekretariat: 'Admin Umum',
-          phone: '0858-XXXX-XXXX',
-          email: 'Ahmad.Rahman@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/4.jpg`,
+          title: 'Pengajuan anak asuh baru',
+          message: 'Terdapat 1 pengajuan anak asuh baru dari Sekretariat Yogyakarta.',
+          time: '23 April 2026, 09:00 WIB',
+          dateValue: '2026-04-23T09:00:00',
+          status: 'read',
         },
         {
-          id: 'ADM-0005',
-          name: 'Dewi Lestari',
-          sekretariat: 'Super Admin',
-          phone: '0859-XXXX-XXXX',
-          email: 'Dewi.Lestari@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/2.jpg`,
+          title: 'Konfirmasi penggantian rekening',
+          message: '2 permintaan penggantian rekening menunggu persetujuan admin.',
+          time: '22 April 2026, 16:40 WIB',
+          dateValue: '2026-04-22T16:40:00',
+          status: 'unread',
         },
         {
-          id: 'ADM-0006',
-          name: 'Eko Prasetyo',
-          sekretariat: 'Admin Keuangan',
-          phone: '0860-XXXX-XXXX',
-          email: 'Eko.Prasetyo@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/men/5.jpg`,
-        },
-        {
-          id: 'ADM-0007',
-          name: 'Rina Sari',
-          sekretariat: 'Admin Sianas',
-          phone: '0861-XXXX-XXXX',
-          email: 'rina.sari@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/3.jpg`,
-        },
-        {
-          id: 'ADM-0008',
-          name: 'Joko Widodo',
-          sekretariat: 'Admin Umum',
-          phone: '0862-XXXX-XXXX',
-          email: 'joko.widodo@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/men/6.jpg`,
-        },
-        {
-          id: 'ADM-0009',
-          name: 'Maya Putri',
-          sekretariat: 'Super Admin',
-          phone: '0863-XXXX-XXXX',
-          email: 'maya.putri@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/women/4.jpg`,
-        },
-        {
-          id: 'ADM-0010',
-          name: 'Agus Setiawan',
-          sekretariat: 'Admin Keuangan',
-          phone: '0864-XXXX-XXXX',
-          email: 'agus.setiawan@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/men/7.jpg`,
-        },
-        {
-          id: 'ADM-0011',
-          name: 'Lina Marlina',
-          sekretariat: 'Admin Sianas',
-          phone: '0865-XXXX-XXXX',
-          email: 'lina.marlina@mail.com',
-          status: 'Aktif',
-          foto: `https://randomuser.me/api/portraits/women/5.jpg`,
-        },
-        {
-          id: 'ADM-0012',
-          name: 'Dedi Kusuma',
-          sekretariat: 'Admin Umum',
-          phone: '0866-XXXX-XXXX',
-          email: 'dedi.kusuma@mail.com',
-          status: 'Tidak Aktif',
-          foto: `https://randomuser.me/api/portraits/men/8.jpg`,
+          title: 'Pengembalian dana berlebih',
+          message: 'Ada 1 transaksi pengembalian dana berlebih yang perlu ditinjau.',
+          time: '21 April 2026, 11:25 WIB',
+          dateValue: '2026-04-21T11:25:00',
+          status: 'read',
         },
       ];
 
-      function generateCard(data) {
-        let badgeClass = 'bg-success';
-        if (data.status === 'Tidak Aktif') badgeClass = 'bg-danger';
+      const notificationState = {
+        semua: { currentPage: 1, perPage: 4 },
+        belumDibaca: { currentPage: 1, perPage: 4 },
+        sudahDibaca: { currentPage: 1, perPage: 4 },
+      };
+
+      const notificationViewMap = {
+        semua: { listId: 'listSemua', paginationId: 'paginationSemua' },
+        belumDibaca: { listId: 'listBelumDibaca', paginationId: 'paginationBelumDibaca' },
+        sudahDibaca: { listId: 'listSudahDibaca', paginationId: 'paginationSudahDibaca' },
+      };
+
+      function notificationTemplate(item) {
+        const isUnread = item.status === 'unread';
+        const iconClass = isUnread ? 'bi-bell-fill unread' : 'bi-check-circle-fill read';
+        const badgeClass = isUnread ? 'text-bg-primary' : 'text-bg-secondary';
+        const badgeText = isUnread ? 'Belum Dibaca' : 'Dibaca';
+
         return `
-          <div class="col-12 col-sm-6 col-lg-4">
-            <div class="list-card shadow p-3" data-name="${data.name}" data-status="${data.status}">
-              <div class="row g-3 align-items-start">
-                <!-- FOTO -->
-                <div class="col-4 col-md-4 text-center">
-                  <img
-                    src="${data.foto}"
-                    class="list-img list-img-mobile rounded"
-                    alt="Foto"
-                  />
+          <article class="notification-item ${isUnread ? 'unread' : ''}">
+            <div class="d-flex gap-3">
+              <span class="notification-icon ${isUnread ? 'unread' : 'read'}">
+                <i class="bi ${iconClass}"></i>
+              </span>
+              <div class="w-100">
+                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-1">
+                  <h6 class="notification-title mb-0">${item.title}</h6>
+                  <span class="badge rounded-pill ${badgeClass}">${badgeText}</span>
                 </div>
-
-                <!-- DETAIL -->
-                <div class="col-8 col-md-8 detail-card-section">
-                  <div class="list-name">
-                    <a href="#">${data.name}</a>
-                  </div>
-
-                  <div class="list-info">ID: ${data.id}</div>
-                  <div class="list-info">${data.sekretariat}</div>
-                  <div class="list-info">${data.phone}</div>
-                  <div class="list-info">${data.email}</div>
-                  <div class="list-info"><span class="badge ${badgeClass}"> ${data.status}</span></div>
-                </div>
+                <p class="notification-message mb-1">${item.message}</p>
+                <span class="notification-time">${item.time}</span>
               </div>
             </div>
-          </div>
+          </article>
         `;
       }
 
-      const sekretariatGrid = document.getElementById('childGrid');
-      const searchInput = document.getElementById('searchInput');
-      const clearSearchBtn = document.getElementById('clearSearchBtn');
-      const pagination = document.getElementById('pagination');
-      const sortPills = document.querySelectorAll('.sort-pill');
-      const statusCheckboxes = document.querySelectorAll('.status');
-
-      let perPage = 6;
-      let currentPage = 1;
-      let sortBy = 'nama'; // default sort by nama
-      let sortDir = 'asc'; // default ascending
-
-      function renderSekretariat() {
-        const searchTerm = searchInput.value.toLowerCase();
-
-        // Get selected status filters
-        const selectedStatuses = Array.from(statusCheckboxes)
-          .filter(checkbox => checkbox.checked)
-          .map(checkbox => checkbox.value);
-
-        // Filter by search
-        let filtered = admin.filter(
-          s =>
-            s.name.toLowerCase().includes(searchTerm) ||
-            s.sekretariat.toLowerCase().includes(searchTerm) ||
-            s.email.toLowerCase().includes(searchTerm) ||
-            s.phone.toLowerCase().includes(searchTerm) ||
-            s.status.toLowerCase().includes(searchTerm)
-        );
-
-        // Filter by status
-        if (selectedStatuses.length > 0) {
-          filtered = filtered.filter(s => selectedStatuses.includes(s.status));
-        }
-
-        // Sorting logic
-        if (sortBy === 'id') {
-          filtered.sort((a, b) => (sortDir === 'asc' ? a.id.localeCompare(b.id) : b.id.localeCompare(a.id)));
-        } else if (sortBy === 'nama') {
-          filtered.sort((a, b) => (sortDir === 'asc' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)));
-        }
-
-        const totalPages = Math.ceil(filtered.length / perPage);
-        if (currentPage > totalPages) currentPage = totalPages || 1;
-
-        const start = (currentPage - 1) * perPage;
-        const paginated = filtered.slice(start, start + perPage);
-
-        sekretariatGrid.innerHTML = paginated.map(s => generateCard(s)).join('');
-
-        createPagination(pagination, totalPages, currentPage, newPage => {
-          currentPage = newPage;
-          renderSekretariat();
-        });
+      function getNotificationsByCategory(category) {
+        const sorted = [...notificationData].sort((a, b) => new Date(b.dateValue) - new Date(a.dateValue));
+        if (category === 'belumDibaca') return sorted.filter((item) => item.status === 'unread');
+        if (category === 'sudahDibaca') return sorted.filter((item) => item.status === 'read');
+        return sorted;
       }
 
-      // Event listeners for sort pills
-      sortPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-          const newSortBy = pill.getAttribute('data-sort');
-          if (sortBy === newSortBy) {
-            // Toggle direction
-            sortDir = sortDir === 'asc' ? 'desc' : 'asc';
-          } else {
-            // Change sort by and reset to asc
-            sortBy = newSortBy;
-            sortDir = 'asc';
-          }
-          // Update active class
-          sortPills.forEach(p => p.classList.remove('active'));
-          pill.classList.add('active');
-          // Update arrow
-          sortPills.forEach(p => {
-            const arrow = p.querySelector('.sort-arrow');
-            if (p === pill) {
-              arrow.textContent = sortDir === 'asc' ? '↑' : '↓';
-            } else {
-              arrow.textContent = '↑'; // reset others
-            }
+      function renderNotificationList(targetId, data) {
+        const target = document.getElementById(targetId);
+
+        if (!data.length) {
+          target.innerHTML = `
+            <div class="text-center border rounded-3 py-4 text-muted">
+              Tidak ada notifikasi pada kategori ini.
+            </div>
+          `;
+          return;
+        }
+
+        target.innerHTML = data.map(notificationTemplate).join('');
+      }
+
+      function renderNotificationCategory(category) {
+        const config = notificationViewMap[category];
+        const state = notificationState[category];
+        const data = getNotificationsByCategory(category);
+
+        const totalPages = Math.ceil(data.length / state.perPage) || 1;
+        if (state.currentPage > totalPages) state.currentPage = totalPages;
+
+        const startIndex = (state.currentPage - 1) * state.perPage;
+        const paginatedData = data.slice(startIndex, startIndex + state.perPage);
+
+        renderNotificationList(config.listId, paginatedData);
+
+        const paginationElement = document.getElementById(config.paginationId);
+        paginationElement.innerHTML = generatePagination(totalPages, state.currentPage);
+        paginationElement.querySelectorAll('.page-link[data-page]').forEach((btn) => {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetPage = parseInt(this.dataset.page, 10);
+            if (targetPage < 1 || targetPage > totalPages) return;
+            state.currentPage = targetPage;
+            renderNotificationCategory(category);
           });
-          currentPage = 1;
-          renderSekretariat();
-        });
-      });
-
-      searchInput.addEventListener('input', () => {
-        currentPage = 1;
-        renderSekretariat();
-      });
-
-      clearSearchBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        currentPage = 1;
-        renderSekretariat();
-      });
-
-      // Event listeners for status checkboxes
-      statusCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-          currentPage = 1;
-          renderSekretariat();
-        });
-      });
-
-      window.addEventListener('resize', renderSekretariat);
-      renderSekretariat();
-
-      // Delete Data Action
-      function deleteData(nama) {
-        swal_confirm('Konfirmasi', `Yakin ingin menghapus ${nama}?`, 'warning').then(result => {
-          if (result.isConfirmed) {
-            swal_alert('Berhasil', `${nama} berhasil dihapus!`, 'success');
-          }
         });
       }
+
+      const unreadNotifications = getNotificationsByCategory('belumDibaca');
+      const readNotifications = getNotificationsByCategory('sudahDibaca');
+
+      document.getElementById('countSemua').textContent = notificationData.length;
+      document.getElementById('countBelumDibaca').textContent = unreadNotifications.length;
+      document.getElementById('countSudahDibaca').textContent = readNotifications.length;
+      document.getElementById('totalNotificationBadge').textContent = `${notificationData.length} Notifikasi`;
+
+      renderNotificationCategory('semua');
+      renderNotificationCategory('belumDibaca');
+      renderNotificationCategory('sudahDibaca');
     </script>
   </body>
 </html>
