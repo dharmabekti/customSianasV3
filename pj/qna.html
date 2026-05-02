@@ -769,34 +769,21 @@
 
         <div class="p-3 p-lg-4 border-bottom">
           <div class="row g-2">
-            <div class="col-md-8">
+            <div class="col-md-6">
               <input type="text" class="form-control form-control-sm" id="searchQna" placeholder="Cari pertanyaan atau jawaban..." />
             </div>
-            <div class="col-md-4">
-              <select id="sortQna" class="form-select form-select-sm">
-                <option value="newest">Terbaru</option>
-                <option value="oldest">Terlama</option>
+            <div class="col-md-3">
+              <select id="categoryQna" class="form-select form-select-sm">
+                <option value="semua">Semua (0)</option>
+                <option value="Akademik">Akademik (0)</option>
+                <option value="Transfer">Transfer (0)</option>
+                <option value="Administrasi">Administrasi (0)</option>
               </select>
             </div>
           </div>
         </div>
 
         <div class="p-3 p-lg-4">
-          <ul class="nav nav-pills qa-tabs mb-3" id="qnaTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="tab-semua" data-category="semua" type="button">Semua (<span id="countSemua">0</span>)</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="tab-akademik" data-category="Akademik" type="button">Akademik (<span id="countAkademik">0</span>)</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="tab-transfer" data-category="Transfer" type="button">Transfer (<span id="countTransfer">0</span>)</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="tab-administrasi" data-category="Administrasi" type="button">Administrasi (<span id="countAdministrasi">0</span>)</button>
-            </li>
-          </ul>
-
           <div class="vstack gap-2" id="qnaList"></div>
           <div class="d-flex justify-content-center mt-3">
             <nav><ul class="pagination mb-0" id="qnaPagination"></ul></nav>
@@ -869,7 +856,6 @@
       const qnaState = {
         activeCategory: 'semua',
         keyword: '',
-        sort: 'newest',
         currentPage: 1,
         perPage: 4,
       };
@@ -918,20 +904,25 @@
           return byCategory && byKeyword;
         });
 
-        data = data.sort((a, b) =>
-          qnaState.sort === 'newest'
-            ? new Date(b.updatedAt) - new Date(a.updatedAt)
-            : new Date(a.updatedAt) - new Date(b.updatedAt)
-        );
+        data = data.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
 
         return data;
       }
 
       function updateCounters() {
-        document.getElementById('countSemua').textContent = qnaData.length;
-        document.getElementById('countAkademik').textContent = qnaData.filter((item) => item.category === 'Akademik').length;
-        document.getElementById('countTransfer').textContent = qnaData.filter((item) => item.category === 'Transfer').length;
-        document.getElementById('countAdministrasi').textContent = qnaData.filter((item) => item.category === 'Administrasi').length;
+        const total = qnaData.length;
+        const akademik = qnaData.filter((item) => item.category === 'Akademik').length;
+        const transfer = qnaData.filter((item) => item.category === 'Transfer').length;
+        const administrasi = qnaData.filter((item) => item.category === 'Administrasi').length;
+
+        const categorySelect = document.getElementById('categoryQna');
+        categorySelect.innerHTML = `
+          <option value="semua">Semua (${total})</option>
+          <option value="Akademik">Akademik (${akademik})</option>
+          <option value="Transfer">Transfer (${transfer})</option>
+          <option value="Administrasi">Administrasi (${administrasi})</option>
+        `;
+        categorySelect.value = qnaState.activeCategory;
       }
 
       function renderQna() {
@@ -962,24 +953,14 @@
         });
       }
 
-      document.querySelectorAll('#qnaTabs .nav-link').forEach((tabButton) => {
-        tabButton.addEventListener('click', () => {
-          document.querySelectorAll('#qnaTabs .nav-link').forEach((btn) => btn.classList.remove('active'));
-          tabButton.classList.add('active');
-          qnaState.activeCategory = tabButton.dataset.category;
-          qnaState.currentPage = 1;
-          renderQna();
-        });
-      });
-
       document.getElementById('searchQna').addEventListener('input', function () {
         qnaState.keyword = this.value;
         qnaState.currentPage = 1;
         renderQna();
       });
 
-      document.getElementById('sortQna').addEventListener('change', function () {
-        qnaState.sort = this.value;
+      document.getElementById('categoryQna').addEventListener('change', function () {
+        qnaState.activeCategory = this.value;
         qnaState.currentPage = 1;
         renderQna();
       });
